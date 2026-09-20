@@ -14,13 +14,200 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      b2b_requests: {
+        Row: {
+          company: string
+          contact_name: string
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          phone: string | null
+          trade: string | null
+          user_id: string | null
+          vat_number: string | null
+        }
+        Insert: {
+          company: string
+          contact_name: string
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          phone?: string | null
+          trade?: string | null
+          user_id?: string | null
+          vat_number?: string | null
+        }
+        Update: {
+          company?: string
+          contact_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          phone?: string | null
+          trade?: string | null
+          user_id?: string | null
+          vat_number?: string | null
+        }
+        Relationships: []
+      }
+      points_ledger: {
+        Row: {
+          created_at: string
+          delta: number
+          id: string
+          reason: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          delta: number
+          id?: string
+          reason: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          delta?: number
+          id?: string
+          reason?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          points: number
+          updated_at: string
+          vat_number: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          phone?: string | null
+          points?: number
+          updated_at?: string
+          vat_number?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          points?: number
+          updated_at?: string
+          vat_number?: string | null
+        }
+        Relationships: []
+      }
+      raffle_entries: {
+        Row: {
+          created_at: string
+          id: string
+          raffle_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          raffle_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          raffle_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "raffle_entries_raffle_id_fkey"
+            columns: ["raffle_id"]
+            isOneToOne: false
+            referencedRelation: "raffles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      raffles: {
+        Row: {
+          created_at: string
+          drawn_at: string | null
+          id: string
+          prize: string
+          prize_brand: string | null
+          status: string
+          title: string
+          week_start: string
+          winner_label: string | null
+          winner_user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          drawn_at?: string | null
+          id?: string
+          prize: string
+          prize_brand?: string | null
+          status?: string
+          title: string
+          week_start: string
+          winner_label?: string | null
+          winner_user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          drawn_at?: string | null
+          id?: string
+          prize?: string
+          prize_brand?: string | null
+          status?: string
+          title?: string
+          week_start?: string
+          winner_label?: string | null
+          winner_user_id?: string | null
+        }
+        Relationships: []
+      }
+      waitlist: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          locale: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          locale?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          locale?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      draw_weekly_raffle: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
