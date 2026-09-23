@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BadgeCheck, PackageSearch, Ticket } from "lucide-react";
-import { useT } from "@/lib/i18n";
+import { useT, useLocale, type Locale } from "@/lib/i18n";
 import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -29,18 +29,19 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const PACKS = [
+const PACKS: { key: string; label: Record<Locale, string> }[] = [
   { key: "hvac", label: { pt: "AVAC", en: "HVAC", es: "HVAC" } },
   { key: "eletricista", label: { pt: "Eletricista", en: "Electrician", es: "Electricista" } },
   { key: "manutencao", label: { pt: "Manutenção", en: "Maintenance", es: "Mantenimiento" } },
   { key: "solar", label: { pt: "Solar", en: "Solar", es: "Solar" } },
   { key: "canalizacao", label: { pt: "Canalização", en: "Plumbing", es: "Fontanería" } },
-] as const;
+];
 
-const BRANDS = ["Wera", "Knipex", "Bahco", "Wiha", "Stabila", "FACOM", "Beta", "Klauke"] as const;
+const BRANDS = ["Wera", "Knipex", "Bahco", "Wiha", "Stabila", "FACOM", "Beta", "Klauke"];
 
 function Index() {
   const t = useT();
+  const locale = useLocale((s) => s.locale);
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", "home"],
     queryFn: () => fetchProducts(8),
@@ -158,9 +159,11 @@ function Index() {
                 to="/packs"
                 className="group rounded-lg border border-border bg-card p-5 transition-colors hover:border-primary/50"
               >
-                <p className="tech-label text-muted-foreground">{t("packs.core")} · {t("packs.compact")} · {t("packs.pro")}</p>
+                <p className="tech-label text-muted-foreground">
+                  {t("packs.core")} · {t("packs.compact")} · {t("packs.pro")}
+                </p>
                 <h3 className="mt-2 font-display text-lg font-semibold group-hover:text-primary">
-                  {p.label[t("home") && useLocaleSafe()] ?? p.label.pt}
+                  {p.label[locale]}
                 </h3>
               </Link>
             ))}
@@ -177,7 +180,9 @@ function Index() {
               <h2 className="mt-2 font-display text-2xl font-bold tracking-tight sm:text-3xl">
                 {t("home.pointsTitle")}
               </h2>
-              <p className="mt-3 text-sm text-muted-foreground sm:text-base">{t("home.pointsText")}</p>
+              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+                {t("home.pointsText")}
+              </p>
               <Button className="mt-6" variant="secondary" asChild>
                 <Link to="/pontos">{t("home.pointsCta")}</Link>
               </Button>
@@ -185,12 +190,14 @@ function Index() {
             <div className="hatch rounded-md border border-border p-6">
               <p className="font-mono text-sm text-muted-foreground">{t("points.howTitle")}</p>
               <ul className="mt-4 space-y-3 font-mono text-sm">
-                {[t("points.how1"), t("points.how2"), t("points.how3"), t("points.how4")].map((line) => (
-                  <li key={line} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-primary" />
-                    {line}
-                  </li>
-                ))}
+                {[t("points.how1"), t("points.how2"), t("points.how3"), t("points.how4")].map(
+                  (line) => (
+                    <li key={line} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-primary" />
+                      {line}
+                    </li>
+                  ),
+                )}
               </ul>
             </div>
           </div>
@@ -219,15 +226,4 @@ function Index() {
       </section>
     </div>
   );
-}
-
-// Locale-aware pack label without conditional hooks.
-function useLocaleSafe(): "pt" | "en" | "es" {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useLocaleSafeImpl();
-}
-
-import { useLocale } from "@/lib/i18n";
-function useLocaleSafeImpl(): "pt" | "en" | "es" {
-  return useLocale((s) => s.locale);
 }
