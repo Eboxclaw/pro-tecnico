@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Clock } from "lucide-react";
-import { useT } from "@/lib/i18n";
+import { useT, useLocale } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/packs")({
@@ -33,7 +33,7 @@ const TRADES = [
 
 function PacksPage() {
   const t = useT();
-  const locale = t("nav.home") ? null : null;
+  const locale = useLocale((s) => s.locale);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
@@ -44,9 +44,7 @@ function PacksPage() {
         {TRADES.map((trade) => (
           <div key={trade.key} className="rounded-lg border border-border bg-card p-6">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h2 className="font-display text-xl font-bold">
-                {trade.label[useLocaleProxy()] ?? trade.label.pt}
-              </h2>
+              <h2 className="font-display text-xl font-bold">{trade.label[locale]}</h2>
               <span className="tech-label flex items-center gap-1.5 text-muted-foreground">
                 <Clock className="h-3 w-3" />
                 {t("packs.soon")}
@@ -82,7 +80,3 @@ function PacksPage() {
   );
 }
 
-// placeholder helper to keep TS happy until locale plumbing is refined
-function useLocaleProxy(): "pt" {
-  return "pt";
-}
