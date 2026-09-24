@@ -17,6 +17,9 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const Route = createFileRoute("/shop")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    brand: typeof search.brand === "string" ? search.brand : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Loja — Rejendarī" },
@@ -38,8 +41,10 @@ export const Route = createFileRoute("/shop")({
 
 function ShopPage() {
   const t = useT();
-  const [brand, setBrand] = useState<string>("all");
+  const search = Route.useSearch();
+  const [brand, setBrand] = useState<string>(search.brand ?? "all");
   const [category, setCategory] = useState<string>("all");
+  const [task, setTask] = useState<string>("all");
   const [maxPrice, setMaxPrice] = useState<string>("");
 
   const { data: products, isLoading } = useQuery({
@@ -60,14 +65,16 @@ function ShopPage() {
     let list = products ?? [];
     if (brand !== "all") list = list.filter((p) => p.node.vendor === brand);
     if (category !== "all") list = list.filter((p) => p.node.productType === category);
+    if (task !== "all") list = list.filter((p) => p.node.tags.some((tag) => tag.toLowerCase() === task.toLowerCase()));
     const cap = parseFloat(maxPrice);
     if (Number.isFinite(cap) && cap > 0) {
       list = list.filter((p) => parseFloat(p.node.priceRange.minVariantPrice.amount) <= cap);
     }
     return list;
-  }, [products, brand, category, maxPrice]);
+  }, [products, brand, category, task, maxPrice]);
 
-  const hasFilters = brand !== "all" || category !== "all" || maxPrice !== "";
+  const tasks = ["Aparafusar", "Impacto", "Precisão", "Corte", "Aperto", "Manutenção"];
+  const hasFilters = brand !== "all" || category !== "all" || task !== "all" || maxPrice !== "";
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
@@ -102,6 +109,15 @@ function ShopPage() {
             ))}
           </SelectContent>
         </Select>
+        <Select value={task} onValueChange={setTask}>
+          <SelectTrigger className="w-44">
+            <SelectValue placeholder={t("shop.allTasks")} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">{t("shop.allTasks")}</SelectItem>
+            {tasks.map((value) => <SelectItem key={value} value={value}>{value}</SelectItem>)}
+          </SelectContent>
+        </Select>
         <Input
           type="number"
           min="0"
@@ -117,6 +133,7 @@ function ShopPage() {
             onClick={() => {
               setBrand("all");
               setCategory("all");
+              setTask("all");
               setMaxPrice("");
             }}
           >
