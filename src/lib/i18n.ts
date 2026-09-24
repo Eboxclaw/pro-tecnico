@@ -41,13 +41,17 @@ const pt = {
     badge: "Loja em construção — abertura em breve",
     title: "Ferramenta profissional escolhida para o trabalho",
     subtitle:
-      "Marcas âncora europeias, packs próprios por profissão e um programa de pontos com sorteios semanais. Sem linguagem de bricolage.",
+      "Precisão japonesa para profissionais europeus. VESSEL e ANEX lideram uma seleção técnica, curta e verificada.",
     ctaShop: "Ver a loja",
     ctaPacks: "Ver packs por profissão",
     packsTitle: "Packs por profissão",
     packsSubtitle: "Conjuntos desenhados para o trabalho real, em três níveis: Core, Compact e Pro.",
-    brandsTitle: "Marcas âncora",
-    brandsSubtitle: "Trabalhamos com fabricantes europeus de referência — selecionados por durabilidade e serviço de garantia.",
+    brandsTitle: "Japão, escolhido com critério",
+    brandsSubtitle: "VESSEL e ANEX são as marcas âncora. Cada referência é validada por aplicação, origem e assistência.",
+    japanLabel: "Seleção japonesa",
+    japanTitle: "Ferramenta precisa. Sem ruído.",
+    japanText: "Aparafusar, impacto, precisão, corte, aperto e manutenção — organizados pela tarefa real, não pelo marketing.",
+    originNote: "Marca japonesa e país de fabrico são verificados separadamente em cada produto.",
     pointsTitle: "Pontos e sorteios semanais",
     pointsText:
       "Compra, regista-te e participa: pontos trocáveis por desconto garantido e um sorteio semanal com entrada gratuita. A raspadinha é a revelação do prémio já atribuído.",
@@ -65,6 +69,9 @@ const pt = {
     empty: "Ainda não há produtos",
     emptyHint: "O catálogo abre em breve. Enquanto isso, diz-nos que ferramentas queres ver primeiro.",
     noResults: "Nenhum produto corresponde aos filtros.",
+    japaneseFocus: "Ferramenta japonesa",
+    allTasks: "Todas as tarefas",
+    originVerified: "Origem confirmada por produto",
   },
   product: {
     backToShop: "Voltar à loja",
@@ -77,6 +84,8 @@ const pt = {
     variants: "Variantes",
     notFound: "Produto não encontrado",
     notFoundHint: "Este produto já não existe ou ainda não está publicado.",
+    whySelected: "Porque foi escolhida",
+    whySelectedText: "Selecionada pela aplicação, construção e suporte profissional. A origem de fabrico só é indicada quando confirmada para este SKU.",
   },
   packs: {
     title: "Packs por profissão",
@@ -127,8 +136,11 @@ const pt = {
   },
   brands: {
     title: "Marcas",
-    subtitle: "Fabricantes europeus de referência, escolhidos por durabilidade e serviço pós-venda.",
+    subtitle: "Fabricantes japoneses escolhidos por precisão, especialidade e serviço pós-venda.",
     detail: "Ver produtos",
+    anchor: "Marca âncora",
+    next: "Em avaliação",
+    originRule: "A origem da marca não garante o país de fabrico. Confirmamos essa informação em cada produto.",
   },
   legal: {
     title: "Informação legal",
@@ -163,9 +175,9 @@ const pt = {
   },
   gate: {
     badge: "Acesso fechado",
-    title: "pro'tecnico abre em breve",
+    title: "Rejendarī abre em breve",
     subtitle:
-      "Estamos a fechar fornecedores e a montar o catálogo. Deixa o email para ser avisado no dia da abertura — ou entra com o código de acesso se já o tens.",
+      "Estamos a preparar uma seleção de ferramenta profissional japonesa, começando por VESSEL e ANEX. Deixa o email para ser avisado na abertura.",
     codeLabel: "Código de acesso",
     enter: "Entrar",
     wrongCode: "Código incorreto.",
@@ -225,13 +237,17 @@ const en: Dict = {
     badge: "Store in the works — opening soon",
     title: "Professional tools chosen for the job",
     subtitle:
-      "Anchor European brands, trade-specific packs and a points program with weekly draws. No DIY talk.",
+      "Japanese precision for European professionals. VESSEL and ANEX lead a short, technical and verified selection.",
     ctaShop: "Browse the shop",
     ctaPacks: "See packs by trade",
     packsTitle: "Packs by trade",
     packsSubtitle: "Sets designed for real work, in three tiers: Core, Compact and Pro.",
-    brandsTitle: "Anchor brands",
-    brandsSubtitle: "We work with reference European manufacturers — selected for durability and warranty service.",
+    brandsTitle: "Japan, selected with purpose",
+    brandsSubtitle: "VESSEL and ANEX are our anchor brands. Every reference is checked for use, origin and support.",
+    japanLabel: "Japanese selection",
+    japanTitle: "Precise tools. No noise.",
+    japanText: "Driving, impact, precision, cutting, fastening and maintenance — organised by the real task, not marketing.",
+    originNote: "Japanese brand and country of manufacture are verified separately for every product.",
     pointsTitle: "Points & weekly draws",
     pointsText:
       "Buy, register and take part: points redeemable for a guaranteed discount and a weekly draw with free entry. The scratch card reveals an already-assigned prize.",
@@ -249,6 +265,9 @@ const en: Dict = {
     empty: "No products yet",
     emptyHint: "The catalog opens soon. Meanwhile, tell us which tools you want first.",
     noResults: "No products match the filters.",
+    japaneseFocus: "Japanese tools",
+    allTasks: "All tasks",
+    originVerified: "Origin confirmed per product",
   },
   product: {
     backToShop: "Back to shop",
@@ -261,6 +280,8 @@ const en: Dict = {
     variants: "Variants",
     notFound: "Product not found",
     notFoundHint: "This product no longer exists or isn't published yet.",
+    whySelected: "Why we selected it",
+    whySelectedText: "Selected for its application, construction and professional support. Manufacturing origin is only shown when confirmed for this SKU.",
   },
   packs: {
     title: "Packs by trade",
@@ -311,8 +332,11 @@ const en: Dict = {
   },
   brands: {
     title: "Brands",
-    subtitle: "Reference European manufacturers, chosen for durability and after-sales service.",
+    subtitle: "Japanese manufacturers selected for precision, specialism and after-sales support.",
     detail: "View products",
+    anchor: "Anchor brand",
+    next: "Under review",
+    originRule: "A brand's origin does not guarantee its manufacturing country. We confirm that for each product.",
   },
   legal: {
     title: "Legal information",
@@ -347,9 +371,9 @@ const en: Dict = {
   },
   gate: {
     badge: "Closed access",
-    title: "pro'tecnico opens soon",
+    title: "Rejendarī opens soon",
     subtitle:
-      "We're closing supplier deals and building the catalog. Leave your email to be told on opening day — or enter the access code if you already have it.",
+      "We're preparing a selection of professional Japanese tools, starting with VESSEL and ANEX. Leave your email to hear when we open.",
     codeLabel: "Access code",
     enter: "Enter",
     wrongCode: "Wrong code.",
@@ -407,13 +431,17 @@ const es: Dict = {
     badge: "Tienda en construcción — próxima apertura",
     title: "Herramienta profesional elegida para el trabajo",
     subtitle:
-      "Marcas europeas de referencia, packs por oficio y un programa de puntos con sorteos semanales. Sin lenguaje de bricolaje.",
+      "Precisión japonesa para profesionales europeos. VESSEL y ANEX lideran una selección técnica, corta y verificada.",
     ctaShop: "Ver la tienda",
     ctaPacks: "Ver packs por oficio",
     packsTitle: "Packs por oficio",
     packsSubtitle: "Conjuntos diseñados para el trabajo real, en tres niveles: Core, Compact y Pro.",
-    brandsTitle: "Marcas ancla",
-    brandsSubtitle: "Trabajamos con fabricantes europeos de referencia — elegidos por durabilidad y servicio de garantía.",
+    brandsTitle: "Japón, elegido con criterio",
+    brandsSubtitle: "VESSEL y ANEX son las marcas ancla. Cada referencia se valida por aplicación, origen y asistencia.",
+    japanLabel: "Selección japonesa",
+    japanTitle: "Herramienta precisa. Sin ruido.",
+    japanText: "Atornillado, impacto, precisión, corte, apriete y mantenimiento — organizados por la tarea real, no por el marketing.",
+    originNote: "La marca japonesa y el país de fabricación se verifican por separado en cada producto.",
     pointsTitle: "Puntos y sorteos semanales",
     pointsText:
       "Compra, regístrate y participa: puntos canjeables por descuento garantizado y un sorteo semanal con entrada gratuita. El rasca revela un premio ya asignado.",
@@ -431,6 +459,9 @@ const es: Dict = {
     empty: "Aún no hay productos",
     emptyHint: "El catálogo abre pronto. Mientras tanto, dinos qué herramientas quieres ver primero.",
     noResults: "Ningún producto coincide con los filtros.",
+    japaneseFocus: "Herramienta japonesa",
+    allTasks: "Todas las tareas",
+    originVerified: "Origen confirmado por producto",
   },
   product: {
     backToShop: "Volver a la tienda",
@@ -443,6 +474,8 @@ const es: Dict = {
     variants: "Variantes",
     notFound: "Producto no encontrado",
     notFoundHint: "Este producto ya no existe o aún no está publicado.",
+    whySelected: "Por qué la elegimos",
+    whySelectedText: "Seleccionada por su aplicación, construcción y soporte profesional. El origen de fabricación solo se indica cuando está confirmado para este SKU.",
   },
   packs: {
     title: "Packs por oficio",
@@ -493,8 +526,11 @@ const es: Dict = {
   },
   brands: {
     title: "Marcas",
-    subtitle: "Fabricantes europeos de referencia, elegidos por durabilidad y servicio posventa.",
+    subtitle: "Fabricantes japoneses elegidos por precisión, especialidad y servicio posventa.",
     detail: "Ver productos",
+    anchor: "Marca ancla",
+    next: "En evaluación",
+    originRule: "El origen de la marca no garantiza el país de fabricación. Lo confirmamos en cada producto.",
   },
   legal: {
     title: "Información legal",
@@ -529,9 +565,9 @@ const es: Dict = {
   },
   gate: {
     badge: "Acceso cerrado",
-    title: "pro'tecnico abre pronto",
+    title: "Rejendarī abre pronto",
     subtitle:
-      "Estamos cerrando proveedores y montando el catálogo. Deja tu email para avisarte el día de la apertura — o entra con el código de acceso si ya lo tienes.",
+      "Estamos preparando una selección de herramienta profesional japonesa, empezando por VESSEL y ANEX. Deja tu email para avisarte en la apertura.",
     codeLabel: "Código de acceso",
     enter: "Entrar",
     wrongCode: "Código incorrecto.",
