@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as B2bRouteImport } from './routes/b2b'
+import { Route as MarcasRouteImport } from './routes/marcas'
 import { Route as PacksRouteImport } from './routes/packs'
 import { Route as PontosRouteImport } from './routes/pontos'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const B2bRoute = B2bRouteImport.update({
   id: '/b2b',
   path: '/b2b',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarcasRoute = MarcasRouteImport.update({
+  id: '/marcas',
+  path: '/marcas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PacksRoute = PacksRouteImport.update({
@@ -50,6 +56,7 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/b2b': typeof B2bRoute
+  '/marcas': typeof MarcasRoute
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/b2b': typeof B2bRoute
+  '/marcas': typeof MarcasRoute
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/b2b': typeof B2bRoute
+  '/marcas': typeof MarcasRoute
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
@@ -74,13 +83,28 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/b2b' | '/packs' | '/pontos' | '/shop' | '/product/$handle'
+  fullPaths:
+    | '/'
+    | '/b2b'
+    | '/marcas'
+    | '/packs'
+    | '/pontos'
+    | '/shop'
+    | '/product/$handle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/b2b' | '/packs' | '/pontos' | '/shop' | '/product/$handle'
+  to:
+    | '/'
+    | '/b2b'
+    | '/marcas'
+    | '/packs'
+    | '/pontos'
+    | '/shop'
+    | '/product/$handle'
   id:
     | '__root__'
     | '/'
     | '/b2b'
+    | '/marcas'
     | '/packs'
     | '/pontos'
     | '/shop'
@@ -90,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   B2bRoute: typeof B2bRoute
+  MarcasRoute: typeof MarcasRoute
   PacksRoute: typeof PacksRoute
   PontosRoute: typeof PontosRoute
   ShopRoute: typeof ShopRoute
@@ -110,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/b2b'
       fullPath: '/b2b'
       preLoaderRoute: typeof B2bRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marcas': {
+      id: '/marcas'
+      path: '/marcas'
+      fullPath: '/marcas'
+      preLoaderRoute: typeof MarcasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/packs': {
@@ -146,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   B2bRoute: B2bRoute,
+  MarcasRoute: MarcasRoute,
   PacksRoute: PacksRoute,
   PontosRoute: PontosRoute,
   ShopRoute: ShopRoute,
