@@ -133,6 +133,11 @@ function ProductPage() {
           </p>
           <p className="mt-4 whitespace-pre-line text-sm text-muted-foreground">{node.description}</p>
 
+          <div className="mt-6 border-l-2 border-primary pl-4">
+            <p className="tech-label text-primary">{t("product.whySelected")}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{t("product.whySelectedText")}</p>
+          </div>
+
           {variants.length > 1 && (
             <div className="mt-6">
               <p className="tech-label text-muted-foreground">{t("product.variants")}</p>

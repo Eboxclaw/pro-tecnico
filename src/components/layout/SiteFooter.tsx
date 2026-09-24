@@ -9,9 +9,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="font-display text-lg font-bold tracking-tight">
-            pro<span className="text-primary">'</span>tecnico
-          </p>
+          <p className="font-display text-lg font-bold">Rejendarī</p>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">{t("footer.tagline")}</p>
         </div>
         <div>
@@ -36,7 +34,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>© {year} pro'tecnico. {t("footer.rights")}</p>
+          <p>© {year} Rejendarī. {t("footer.rights")}</p>
           <p>{t("footer.contactNote")}</p>
         </div>
       </div>

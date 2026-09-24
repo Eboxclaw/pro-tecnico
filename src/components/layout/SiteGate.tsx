@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import hero from "@/assets/hero-tools.jpg";
+import hero from "@/assets/hero-japanese-tools.jpg";
 
 const LANGS: { id: Locale; label: string }[] = [
   { id: "pt", label: "PT" },
@@ -72,7 +72,7 @@ export function SiteGate({ onUnlock }: { onUnlock: () => void }) {
           {t("gate.badge")}
         </span>
         <h1 className="mt-4 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-          pro<span className="text-primary">'</span>tecnico
+          Rejendarī
         </h1>
         <p className="mt-2 font-display text-lg font-semibold">{t("gate.title")}</p>
         <p className="mt-3 text-sm text-muted-foreground">{t("gate.subtitle")}</p>

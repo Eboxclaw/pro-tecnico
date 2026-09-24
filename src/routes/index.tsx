@@ -6,21 +6,21 @@ import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import hero from "@/assets/hero-tools.jpg";
+import hero from "@/assets/hero-japanese-tools.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "pro'tecnico — Ferramenta profissional escolhida para o trabalho" },
+      { title: "Rejendarī — Ferramenta profissional japonesa" },
       {
         name: "description",
         content:
-          "Loja portuguesa de ferramenta profissional: marcas âncora europeias, packs por profissão e programa de pontos com sorteios semanais.",
+          "Loja portuguesa especialista em ferramenta profissional japonesa, com VESSEL e ANEX como marcas âncora.",
       },
-      { property: "og:title", content: "pro'tecnico — Ferramenta profissional escolhida para o trabalho" },
+      { property: "og:title", content: "Rejendarī — Ferramenta profissional japonesa" },
       {
         property: "og:description",
-        content: "Marcas âncora europeias, packs por profissão e pontos com sorteios semanais.",
+        content: "Precisão japonesa para profissionais europeus. VESSEL e ANEX em destaque.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,7 +37,16 @@ const PACKS: { key: string; label: Record<Locale, string> }[] = [
   { key: "canalizacao", label: { pt: "Canalização", en: "Plumbing", es: "Fontanería" } },
 ];
 
-const BRANDS = ["Wera", "Knipex", "Bahco", "Wiha", "Stabila", "FACOM", "Beta", "Klauke"];
+const BRANDS = ["VESSEL", "ANEX", "ENGINEER", "FUJIYA", "TSUNODA", "TONE", "KO-KEN", "OLFA"];
+
+const TASKS = [
+  { pt: "Aparafusar", en: "Driving", es: "Atornillar" },
+  { pt: "Impacto", en: "Impact", es: "Impacto" },
+  { pt: "Precisão", en: "Precision", es: "Precisión" },
+  { pt: "Corte", en: "Cutting", es: "Corte" },
+  { pt: "Aperto", en: "Fastening", es: "Apriete" },
+  { pt: "Manutenção", en: "Maintenance", es: "Mantenimiento" },
+];
 
 function Index() {
   const t = useT();
@@ -58,14 +67,15 @@ function Index() {
           width={1600}
           height={900}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/30" />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
-          <span className="tech-label inline-flex items-center gap-2 rounded-md border border-border bg-surface/80 px-3 py-1.5 text-primary backdrop-blur">
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/75 to-transparent" />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
+          <p className="font-display text-2xl font-bold sm:text-3xl">Rejendarī</p>
+          <span className="tech-label mt-8 inline-flex items-center gap-2 border-l-2 border-primary pl-3 text-primary">
             <BadgeCheck className="h-3.5 w-3.5" />
             {t("home.badge")}
           </span>
-          <h1 className="mt-6 max-w-2xl font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            {t("home.title")}
+          <h1 className="mt-5 max-w-2xl font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            {t("home.japanTitle")}
           </h1>
           <p className="mt-4 max-w-xl text-base text-muted-foreground sm:text-lg">
             {t("home.subtitle")}
@@ -81,6 +91,26 @@ function Index() {
               <Link to="/packs">{t("home.ctaPacks")}</Link>
             </Button>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="tech-label text-primary">{t("home.japanLabel")}</p>
+              <h2 className="mt-3 font-display text-3xl font-bold">VESSEL / ANEX</h2>
+              <p className="mt-3 max-w-xl text-sm text-muted-foreground">{t("home.japanText")}</p>
+            </div>
+            <div className="grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-3">
+              {TASKS.map((task) => (
+                <Link key={task.pt} to="/shop" className="bg-surface px-4 py-5 font-mono text-sm transition-colors hover:bg-secondary">
+                  {task[locale]}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <p className="mt-6 border-l border-border pl-3 font-mono text-xs text-muted-foreground">{t("home.originNote")}</p>
         </div>
       </section>
 
