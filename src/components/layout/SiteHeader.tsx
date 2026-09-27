@@ -8,7 +8,7 @@ import { CartDrawer } from "@/components/shop/CartDrawer";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
-import { QUICK_BRANDS, referencesForTask } from "@/data/curated-tool-references";
+import { QUICK_BRANDS, QUICK_FOCUS, referencesForTask } from "@/data/curated-tool-references";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 
 const CATEGORIES: Array<{ label: string; jp: string; task: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power"; icon: ToolGlyphName }> = [
@@ -91,6 +91,18 @@ export function SiteHeader() {
               <div className="grid grid-cols-[1.1fr_0.9fr] border border-border bg-background shadow-[0_24px_70px_rgba(35,30,25,0.2)]">
                 <div className="p-5">
                   <p className="jp-label text-primary">仕事別 · filtros rápidos</p>
+                  <div className="mt-4 flex flex-wrap gap-2 border-b border-border pb-4">
+                    {QUICK_FOCUS.map((focus) => (
+                      <Link
+                        key={focus.id}
+                        to="/shop"
+                        search={{ focus: focus.id }}
+                        className="border border-border bg-[#24211d] px-3 py-2 text-[10px] font-medium text-white/75 transition-colors hover:border-primary hover:text-white"
+                      >
+                        {focus.label}
+                      </Link>
+                    ))}
+                  </div>
                   <div className="mt-4 grid grid-cols-2 gap-2">
                     {CATEGORIES.map((category) => (
                       <Link
@@ -115,8 +127,8 @@ export function SiteHeader() {
                     {topRefs.map((tool) => tool && (
                       <Link
                         key={tool.id}
-                        to="/marcas"
-                        search={{ brand: tool.brandSlug }}
+                        to="/referencia/$id"
+                        params={{ id: tool.id }}
                         className="flex items-start justify-between gap-3 border-b border-border py-2.5 text-xs last:border-0 hover:text-primary"
                       >
                         <span>
@@ -253,8 +265,8 @@ export function SiteHeader() {
                         {quickProducts.map((tool) => (
                           <Link
                             key={tool.id}
-                            to="/marcas"
-                            search={{ brand: tool.brandSlug }}
+                            to="/referencia/$id"
+                            params={{ id: tool.id }}
                             className="flex items-center justify-between gap-3 py-2.5 text-xs hover:text-primary"
                           >
                             <span>

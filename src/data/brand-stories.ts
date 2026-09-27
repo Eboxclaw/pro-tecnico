@@ -18,7 +18,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Acesso difícil · bits · precisão · eletricidade",
     headline: "Quando o parafuso está no sítio errado, a ferramenta tem de pensar diferente.",
     story:
-      "Na seleção REJENDARI, a ANEX representa soluções de acesso: offset adapters, mini roquetes, bits slim e ferramentas para trabalhar onde um punho ou uma máquina normal já não entram.",
+      "Na seleção REJENDARI, a ANEX representa sistemas compactos: Quick Ball 72, MiniSta72, torque adapters M3–M6, conversões 3/8″↔1/4″, bits slim, bits isolados 1000 V e ferramentas offset para trabalhar onde um punho normal já não entra.",
     whyPt:
       "É uma marca especialmente interessante para instalação, manutenção, AVAC e eletricidade porque transforma limitações de espaço em produtos muito específicos.",
     sourceUrl: "https://www.anextool.co.jp/item_post/",
@@ -44,7 +44,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Ball Grip · chaves · mini roquetes · precisão",
     headline: "O punho Ball Grip tornou-se uma linguagem própria de aparafusamento.",
     story:
-      "A VESSEL junta chaves manuais, roquetes compactos e assistência elétrica sem abandonar a lógica do aperto à mão. A família 220USB resume bem isso: velocidade para avançar, controlo manual para terminar.",
+      "A VESSEL junta Ball Grip manual e elétrica, punhos intercambiáveis, ratchet screwdrivers 72 dentes, kits low-profile, bits ultra-curtos, precisão e isolamento VDE. A força da marca está em poder construir um sistema de aperto inteiro sem sair da mesma linguagem de produto.",
     whyPt:
       "É uma das marcas mais completas para construir uma seleção de aparafusamento diferente do catálogo europeu habitual.",
     sourceUrl: "https://www.vessel.co.jp/english/product/screwdriver-search",
@@ -68,11 +68,11 @@ export const BRAND_STORIES: BrandStory[] = [
     name: "TAJIMA",
     jp: "測定・切削",
     specialty: "Medição · marcação · corte · obra",
-    headline: "Medição para obra europeia começa em metros, não em pés.",
+    headline: "Ferramenta de obra japonesa, escolhida em variantes que façam sentido na Europa.",
     story:
-      "A TAJIMA entra pela medição e marcação de obra. Para Portugal, a curadoria privilegia referências europeias em metros e milímetros, mantendo a leitura rápida e a robustez de ferramentas pensadas para uso diário.",
+      "A TAJIMA é forte em medição, marcação e corte. Na REJENDARI damos prioridade a referências europeias com especificações claras e adequadas ao trabalho profissional em Portugal.",
     whyPt:
-      "A fita métrica é um exemplo simples da nossa regra de mercado: uma excelente ferramenta só entra se a variante fizer sentido para quem a vai usar cá.",
+      "Na seleção atual destacamos o Driver Cutter DC660 europeu de 25 mm: uma referência de obra direta, fácil de comparar e sem ambiguidades de escala ou unidade.",
     sourceUrl: "https://tajima.ch/",
     sourceLabel: "TAJIMA Europe",
   },
@@ -138,6 +138,32 @@ export const BRAND_STORIES: BrandStory[] = [
       "É importante para equilibrar a loja: não queremos uma seleção japonesa feita só de aparafusamento e corte.",
     sourceUrl: "https://www.lobtex.co.jp/",
     sourceLabel: "LOBTEX",
+  },
+  {
+    slug: "NEPROS",
+    name: "NEPROS",
+    jp: "ネプロス",
+    specialty: "Roquetes premium · sockets · mecânica",
+    headline: "A linha premium da KTC transforma mecânica em engenharia de detalhe.",
+    story:
+      "Nepros nasceu dentro da KTC com a ideia de combinar durabilidade, utilização e acabamento. O NBR390A resume a abordagem: 90 dentes, arco de 4°, cabeça mais compacta e equilíbrio revisto.",
+    whyPt:
+      "Na REJENDARI, Nepros faz sentido como contraponto premium à Ko-ken Z-Series: duas escolas japonesas fortes para quem trabalha diariamente com sockets e roquetes.",
+    sourceUrl: "https://ktc.jp/nepros/nbr390a/",
+    sourceLabel: "KTC / Nepros · referência oficial",
+  },
+  {
+    slug: "KTC",
+    name: "KTC",
+    jp: "京都機械工具",
+    specialty: "Roquetes · drivers · mecânica",
+    headline: "Uma referência japonesa de mecânica com sistemas de aperto pensados para oficina.",
+    story:
+      "KTC entra na REJENDARI pela profundidade em mecânica e pela família DBR: punhos que recebem bits dupla ponta, sockets 1/4″ e versões stubby, com acessórios armazenados na própria ferramenta. É uma abordagem muito diferente de comprar várias chaves isoladas.",
+    whyPt:
+      "DBR16 e DBRM11 mostram duas escalas da mesma ideia: um punho completo para variedade de perfis e um mini roquete para espaços apertados.",
+    sourceUrl: "https://en.ktc.jp/products/",
+    sourceLabel: "KTC · catálogo oficial",
   },
   {
     slug: "TONE",

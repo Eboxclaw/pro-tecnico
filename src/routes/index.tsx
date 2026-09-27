@@ -5,6 +5,9 @@ import { useT } from "@/lib/i18n";
 import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
+import { RatchetDriverComparison } from "@/components/shop/RatchetDriverComparison";
+import { SmartKitShowcase } from "@/components/shop/SmartKitShowcase";
+import { BitKitRail } from "@/components/shop/BitKitRail";
 import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
@@ -44,6 +47,8 @@ const BRANDS = [
   { label: "HOZAN", slug: "HOZAN" },
   { label: "LOBSTER / LOBTEX", slug: "LOBSTER" },
   { label: "TONE", slug: "TONE" },
+  { label: "KTC", slug: "KTC" },
+  { label: "NEPROS", slug: "NEPROS" },
 ];
 
 const CATEGORIES: Array<{
@@ -197,10 +202,10 @@ function Index() {
             <div className="lg:pb-1">
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
                 ANEX, Makita, VESSEL, OLFA, TAJIMA e Ko-ken mostram seis formas diferentes de engenharia japonesa:
-                acesso, potência, aparafusamento, corte, medição e mecânica.
+                acesso, potência, aparafusamento, corte profissional e mecânica.
               </p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                Referências de medição priorizam escala métrica; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
+                Medidas de produto seguem o sistema métrico quando aplicável; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
               </p>
             </div>
           </div>
@@ -230,6 +235,12 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <RatchetDriverComparison />
+
+      <SmartKitShowcase />
+
+      <BitKitRail />
 
       <section className="paper-panel overflow-hidden">
         <div className="mx-auto grid max-w-[1440px] gap-0 lg:grid-cols-2">

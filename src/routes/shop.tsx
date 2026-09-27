@@ -7,7 +7,7 @@ import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
-import { JAPAN_TOOL_REFERENCES, QUICK_BRANDS } from "@/data/curated-tool-references";
+import { JAPAN_TOOL_REFERENCES, QUICK_BRANDS, QUICK_FOCUS, referencesForFocus } from "@/data/curated-tool-references";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -31,9 +31,10 @@ const TASKS: Array<{ id: "precision" | "fastening" | "sockets" | "grip" | "cutti
 ];
 
 export const Route = createFileRoute("/shop")({
-  validateSearch: (search: Record<string, unknown>): { brand?: string; task?: string } => ({
+  validateSearch: (search: Record<string, unknown>): { brand?: string; task?: string; focus?: string } => ({
     brand: typeof search["brand"] === "string" ? (search["brand"] as string) : undefined,
     task: typeof search["task"] === "string" ? (search["task"] as string) : undefined,
+    focus: typeof search["focus"] === "string" ? (search["focus"] as string) : undefined,
   }),
   head: () => ({
     meta: [
@@ -73,12 +74,14 @@ function ShopPage() {
   const [brand, setBrand] = useState<string>(search.brand?.toUpperCase() ?? "all");
   const [category, setCategory] = useState<string>("all");
   const [task, setTask] = useState<string>(search.task ?? "all");
+  const [focus, setFocus] = useState<string>(search.focus ?? "all");
   const [maxPrice, setMaxPrice] = useState<string>("");
 
   useEffect(() => {
     if (search.brand) setBrand(search.brand.toUpperCase());
     if (search.task) setTask(search.task);
-  }, [search.brand, search.task]);
+    if (search.focus) setFocus(search.focus);
+  }, [search.brand, search.task, search.focus]);
 
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", "shop"],
@@ -107,24 +110,27 @@ function ShopPage() {
   }, [products, brand, category, task, maxPrice]);
 
   const referenceFiltered = useMemo(() => {
+    const focusedIds = focus === "all" ? null : new Set(referencesForFocus(focus).map((tool) => tool.id));
     return JAPAN_TOOL_REFERENCES.filter((tool) => {
       if (brand !== "all" && tool.brandSlug !== brand) return false;
       if (task !== "all" && tool.task !== task) return false;
+      if (focusedIds && !focusedIds.has(tool.id)) return false;
       return true;
     });
-  }, [brand, task]);
+  }, [brand, task, focus]);
 
   const filterBrands = useMemo(
     () => Array.from(new Set([...QUICK_BRANDS, ...shopifyBrands.map((value) => value.toUpperCase())])),
     [shopifyBrands],
   );
 
-  const hasFilters = brand !== "all" || category !== "all" || task !== "all" || maxPrice !== "";
+  const hasFilters = brand !== "all" || category !== "all" || task !== "all" || focus !== "all" || maxPrice !== "";
 
   const clearFilters = () => {
     setBrand("all");
     setCategory("all");
     setTask("all");
+    setFocus("all");
     setMaxPrice("");
   };
 
@@ -188,6 +194,29 @@ function ShopPage() {
         </div>
       </section>
 
+      <section className="border-b border-border bg-[#24211d] text-[#f5f0e5]">
+        <div className="mx-auto flex max-w-[1440px] items-center gap-2 overflow-x-auto px-4 py-3 sm:px-6">
+          <span className="mr-2 min-w-max font-mono text-[9px] uppercase tracking-[0.15em] text-white/45">Filtros rápidos</span>
+          <button
+            type="button"
+            onClick={() => setFocus("all")}
+            className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === "all" ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
+          >
+            Tudo
+          </button>
+          {QUICK_FOCUS.map((item) => (
+            <button
+              type="button"
+              key={item.id}
+              onClick={() => setFocus(item.id)}
+              className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === item.id ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
+            >
+              {item.label} <span className="ml-1 font-display text-[9px] text-current/55">{item.jp}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
       <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
         <div className="signal-rule flex flex-wrap items-center gap-3 border border-border bg-card p-4 pt-5">
           <SlidersHorizontal className="h-4 w-4 text-primary" />
@@ -243,7 +272,13 @@ function ShopPage() {
             <div>
               <p className="jp-label text-primary">選定工具 · referências selecionadas</p>
               <h2 className="mt-2 font-display text-3xl font-semibold tracking-[-0.045em]">
-                {brand !== "all" ? BRAND_STORY_MAP[brand]?.name ?? brand : task !== "all" ? TASKS.find((item) => item.id === task)?.label : "Seleção japonesa"}
+                {focus !== "all"
+                  ? QUICK_FOCUS.find((item) => item.id === focus)?.label
+                  : brand !== "all"
+                    ? BRAND_STORY_MAP[brand]?.name ?? brand
+                    : task !== "all"
+                      ? TASKS.find((item) => item.id === task)?.label
+                      : "Seleção japonesa"}
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
                 Explora as referências antes de comprar. Cada cartão mostra a função, medidas úteis e acesso à ficha oficial.

@@ -1,7 +1,7 @@
 import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { JapaneseAmbientScene } from "@/components/brand/JapaneseAmbientScene";
 
-const HERO_IDS = ["anex-aoa-17s1", "vessel-220usb-s1eb", "tajima-g3lock-eur-5m", "koken-3725z"];
+const HERO_IDS = ["anex-aoa-17s1", "vessel-220usb-s1eb", "tajima-dc660w-eur", "koken-3725z"];
 
 export function HeroToolConstellation() {
   const tools = HERO_IDS.map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);

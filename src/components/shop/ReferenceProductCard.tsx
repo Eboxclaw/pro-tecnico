@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ExternalLink, ImageOff, Sparkles } from "lucide-react";
+import { ArrowRight, ImageOff, Sparkles } from "lucide-react";
 import type { CuratedToolReference } from "@/data/curated-tool-references";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
@@ -60,7 +60,9 @@ export function ReferenceProductCard({
           <div className={`flex flex-1 flex-col ${featured ? "p-6" : "p-5"}`}>
             <div className="flex items-center justify-between gap-3">
               <span className="tech-label text-primary">{tool.brand}</span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">{tool.model}</span>
+              <span className="text-right font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+                {tool.officialCode ? `REF ${tool.officialCode}` : tool.model}
+              </span>
             </div>
 
             <h3 className={`mt-3 font-display font-semibold leading-[1.08] tracking-[-0.04em] ${featured ? "text-2xl" : "text-xl"}`}>
@@ -82,16 +84,13 @@ export function ReferenceProductCard({
 
             <div className="mt-auto flex flex-wrap gap-2 border-t border-border pt-4">
               <Button size="sm" className="rounded-none" asChild>
-                <Link to="/b2b">
-                  Pedir disponibilidade
+                <Link to="/referencia/$id" params={{ id: tool.id }}>
+                  Conhecer produto
                   <ArrowRight className="ml-2 h-3.5 w-3.5" />
                 </Link>
               </Button>
               <Button size="sm" variant="ghost" className="rounded-none" asChild>
-                <a href={tool.referenceUrl} target="_blank" rel="noreferrer">
-                  Ficha oficial
-                  <ExternalLink className="ml-2 h-3.5 w-3.5" />
-                </a>
+                <Link to="/b2b">Disponibilidade</Link>
               </Button>
             </div>
           </div>
@@ -109,15 +108,15 @@ export function ReferenceProductCard({
           <div className="relative">
             <p className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[#b33f2d]">
               <Sparkles className="h-3 w-3" />
-              porque recomendamos
+              a história desta ferramenta
             </p>
             <p className="mt-3 font-display text-xl font-semibold tracking-[-0.04em]">{tool.brand} {tool.model}</p>
-            <p className="mt-2 text-xs leading-5 text-black/62">{tool.notePt}</p>
+            <p className="mt-2 text-xs leading-5 text-black/62">{tool.storyPt ?? tool.notePt}</p>
             {tool.evidencePt && (
               <p className="mt-4 border-t border-black/10 pt-4 text-[11px] leading-5 text-black/50">{tool.evidencePt}</p>
             )}
             <p className="mt-4 font-mono text-[8px] uppercase tracking-[0.13em] text-black/40">
-              Consulta disponibilidade ou abre a ficha oficial
+              Abre a história, fonte oficial e alternativas semelhantes
             </p>
           </div>
         </div>
