@@ -25,15 +25,19 @@ export function SmartProductVisual({
     const rect = stage.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
-    stage.style.setProperty("--product-x", x.toFixed(3));
-    stage.style.setProperty("--product-y", y.toFixed(3));
+    stage.style.setProperty("--product-x", `${(x * 14).toFixed(2)}px`);
+    stage.style.setProperty("--product-y", `${(y * 12).toFixed(2)}px`);
+    stage.style.setProperty("--product-rx", `${(-y * 2.2).toFixed(2)}deg`);
+    stage.style.setProperty("--product-ry", `${(x * 2.8).toFixed(2)}deg`);
   };
 
   const reset = () => {
     const stage = stageRef.current;
     if (!stage) return;
-    stage.style.setProperty("--product-x", "0");
-    stage.style.setProperty("--product-y", "0");
+    stage.style.setProperty("--product-x", "0px");
+    stage.style.setProperty("--product-y", "0px");
+    stage.style.setProperty("--product-rx", "0deg");
+    stage.style.setProperty("--product-ry", "0deg");
   };
 
   return (
