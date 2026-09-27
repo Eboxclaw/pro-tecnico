@@ -8,6 +8,9 @@ import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { RatchetDriverComparison } from "@/components/shop/RatchetDriverComparison";
 import { SmartKitShowcase } from "@/components/shop/SmartKitShowcase";
 import { BitKitRail } from "@/components/shop/BitKitRail";
+import { RejendariEdit } from "@/components/shop/RejendariEdit";
+import { RejendariPromiseStrip } from "@/components/brand/RejendariPromiseStrip";
+import { RejendariSeal } from "@/components/brand/RejendariSeal";
 import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
@@ -99,6 +102,9 @@ function Index() {
             <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
               {t("home.subtitle")}
             </p>
+            <p className="mt-4 max-w-xl border-l border-primary/60 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.13em] text-muted-foreground">
+              Menos catálogo. Mais ferramenta que merece espaço na mala.
+            </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button size="lg" asChild className="rounded-none px-6">
@@ -127,6 +133,7 @@ function Index() {
           </div>
 
           <div className="relative">
+            <RejendariSeal className="absolute -left-5 -top-6 z-40 hidden md:grid" />
             <div className="absolute -right-3 -top-5 z-30 hidden w-52 border border-black/15 bg-[#f5f0e5]/94 p-3 text-[#25211c] shadow-[0_12px_35px_rgba(40,33,26,0.12)] backdrop-blur md:block">
               <p className="jp-label text-primary">選定 · escolha técnica</p>
               <p className="mt-2 text-xs leading-5 text-black/58">
@@ -155,6 +162,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <RejendariPromiseStrip />
 
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
@@ -189,6 +198,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <RejendariEdit />
 
       <section className="border-y border-border bg-surface/35">
         <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
