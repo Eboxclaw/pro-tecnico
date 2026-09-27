@@ -501,8 +501,7 @@
     height: 25%;
   }
 
-  .hero-floating-tool-4,
-  .comparison-card img {
+  .hero-floating-tool-4 {
     left: 5%;
     bottom: 18%;
     width: 37%;
@@ -560,7 +559,8 @@
   .hero-floating-tool-1,
   .hero-floating-tool-2,
   .hero-floating-tool-3,
-  .hero-floating-tool-4 {
+  .hero-floating-tool-4,
+  .comparison-card img {
     animation: none;
   }
 
