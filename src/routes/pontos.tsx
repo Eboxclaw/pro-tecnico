@@ -14,13 +14,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Route = createFileRoute("/pontos")({
   head: () => ({
     meta: [
-      { title: "Pontos & convites — REJENDARI" },
+      { title: "Pontos e vantagens — REJENDARI" },
       {
         name: "description",
-        content: "Fidelização REJENDARI: pontos, atribuição de convites e sorteios semanais com entrada gratuita.",
+        content: "Pontos REJENDARI, convites, vantagens e sorteios elegíveis reunidos numa só conta.",
       },
-      { property: "og:title", content: "Pontos & convites — REJENDARI" },
-      { property: "og:description", content: "Um único saldo para pontos de fidelização e recompensas de convites." },
+      { property: "og:title", content: "Pontos e vantagens — REJENDARI" },
+      { property: "og:description", content: "Acumula pontos e acompanha as vantagens disponíveis na tua conta REJENDARI." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
