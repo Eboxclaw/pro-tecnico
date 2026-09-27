@@ -201,7 +201,7 @@ function Index() {
                 acesso, potência, aparafusamento, corte, medição e mecânica.
               </p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                Disponibilidade e país de fabrico são indicados por referência quando confirmados
+                Referências de medição priorizam escala métrica; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
               </p>
             </div>
           </div>
@@ -271,7 +271,7 @@ function Index() {
             <div className="mt-10 grid gap-6 sm:grid-cols-3">
               {[
                 ["01", "Trabalho", "A ferramenta resolve melhor uma tarefa concreta?"],
-                ["02", "Construção", "Materiais, medidas e compatibilidades estão claros?"],
+                ["02", "Compatibilidade", "Medidas úteis para Portugal/UE e interfaces técnicas claramente identificadas."],
                 ["03", "Confiança", "Há informação suficiente para comprar e manter a ferramenta?"],
               ].map(([number, title, text]) => (
                 <div key={number} className="border-t border-black/20 pt-4">

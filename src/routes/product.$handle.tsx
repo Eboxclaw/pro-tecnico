@@ -227,6 +227,9 @@ function ProductPage() {
           <div className="mt-10 border border-border bg-surface">
             <div className="border-b border-border px-5 py-4">
               <p className="jp-label text-muted-foreground">仕様 · {t("product.specs")}</p>
+              <p className="mt-2 text-[11px] leading-5 text-muted-foreground">
+                Medidas apresentadas em sistema métrico/SI sempre que aplicável. Encaixes normalizados, como drive 1/4″, 3/8″ ou 1/2″, mantêm a medida técnica original.
+              </p>
             </div>
             <dl className="divide-y divide-border font-mono text-[11px]">
               {[
