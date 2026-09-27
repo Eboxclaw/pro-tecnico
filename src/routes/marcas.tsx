@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/marcas")({
   head: () => ({
     meta: [
-      { title: "Japanese tool brands — REJENDARI" },
+      { title: "Marcas de ferramenta japonesa — REJENDARI" },
       {
         name: "description",
         content:
-          "VESSEL, Ko-ken, OLFA, LOBSTER / LOBTEX, ANEX, Makita, ENGINEER, Fujiya, Tsunoda, TONE, KTC, Tajima and Silky.",
+          "VESSEL, Ko-ken, OLFA, LOBSTER / LOBTEX, ANEX, Makita, ENGINEER, Fujiya, Tsunoda, TONE, KTC, Tajima e Silky.",
       },
-      { property: "og:title", content: "Japanese tool brands — REJENDARI" },
-      { property: "og:description", content: "A curated research pool of professional Japanese tool makers." },
+      { property: "og:title", content: "Marcas de ferramenta japonesa — REJENDARI" },
+      { property: "og:description", content: "Uma seleção técnica e curada de fabricantes japoneses de ferramenta profissional." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -22,19 +22,19 @@ export const Route = createFileRoute("/marcas")({
 });
 
 const BRANDS = [
-  { name: "VESSEL", specialty: "Drivers · Impact bits · Megadora", status: "Core research pool" },
-  { name: "KO-KEN", specialty: "Sockets · Ratchets · Drive tools", status: "Core research pool" },
-  { name: "OLFA", specialty: "Professional blades · Cutters", status: "Core research pool" },
-  { name: "LOBSTER / LOBTEX", specialty: "Riveting · Wrenches · Hand tools", status: "Core research pool" },
-  { name: "ANEX", specialty: "Precision · Bit holders · ESD", status: "Core research pool" },
-  { name: "MAKITA", specialty: "18V+ cordless ecosystems", status: "Power-tool research" },
-  { name: "ENGINEER", specialty: "Extraction · Precision · Pliers", status: "Research pool" },
-  { name: "FUJIYA", specialty: "Pliers · Cutting · Electrical", status: "Research pool" },
-  { name: "TSUNODA", specialty: "Pliers · Precision gripping", status: "Research pool" },
-  { name: "TONE", specialty: "Sockets · Torque · Automotive", status: "Research pool" },
-  { name: "KTC", specialty: "Automotive · Sockets · Service tools", status: "Research pool" },
-  { name: "TAJIMA", specialty: "Measurement · Cutting · Site tools", status: "Research pool" },
-  { name: "SILKY", specialty: "Professional saws · Arborist cutting", status: "Research pool" },
+  { name: "VESSEL", jp: "ドライバー", specialty: "Chaves · bits de impacto · Ball Grip", status: "Núcleo prioritário" },
+  { name: "KO-KEN", jp: "ソケット", specialty: "Sockets · roquetes · drive tools", status: "Núcleo prioritário" },
+  { name: "OLFA", jp: "カッター", specialty: "Lâminas profissionais · cutters", status: "Núcleo prioritário" },
+  { name: "LOBSTER / LOBTEX", jp: "作業工具", specialty: "Rebitagem · chaves · ferramenta manual", status: "Núcleo prioritário" },
+  { name: "ANEX", jp: "締結工具", specialty: "Precisão · bit holders · offset · ESD", status: "Núcleo prioritário" },
+  { name: "MAKITA", jp: "電動工具", specialty: "Ecossistema sem fios 18V+", status: "Máquinas 18V+" },
+  { name: "ENGINEER", jp: "精密工具", specialty: "Extração · precisão · alicates", status: "Em avaliação" },
+  { name: "FUJIYA", jp: "プライヤー", specialty: "Alicates · corte · eletricidade", status: "Em avaliação" },
+  { name: "TSUNODA", jp: "作業工具", specialty: "Alicates · grip de precisão", status: "Em avaliação" },
+  { name: "TONE", jp: "整備工具", specialty: "Sockets · torque · mecânica", status: "Em avaliação" },
+  { name: "KTC", jp: "整備工具", specialty: "Automóvel · sockets · assistência", status: "Em avaliação" },
+  { name: "TAJIMA", jp: "測定・切削", specialty: "Medição · marcação · corte · obra", status: "Em avaliação" },
+  { name: "SILKY", jp: "鋸", specialty: "Serras profissionais · corte arborista", status: "Em avaliação" },
 ];
 
 function BrandsPage() {
@@ -44,18 +44,18 @@ function BrandsPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-          <p className="tech-label text-primary">日本の工具 · Japanese tool makers</p>
+          <p className="jp-label text-primary">日本の工具 · fabricantes japoneses</p>
           <div className="mt-5 grid gap-7 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <h1 className="max-w-3xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
-              More than two brands.
+              Mais do que duas marcas.
               <br />
-              <span className="text-primary">One strict filter.</span>
+              <span className="text-primary">Um filtro exigente.</span>
             </h1>
             <div>
               <p className="max-w-xl text-sm leading-7 text-muted-foreground">{t("brands.subtitle")}</p>
               <p className="mt-5 border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-                A brand can be Japanese while an individual SKU is manufactured elsewhere. We treat brand origin and
-                manufacturing origin as separate product data.
+                Uma marca pode ser japonesa e um SKU individual ser fabricado noutro país. Origem da marca e país de
+                fabrico são dados separados.
               </p>
             </div>
           </div>
@@ -74,7 +74,8 @@ function BrandsPage() {
                   <span className="tech-label text-muted-foreground">{brand.status}</span>
                   {index < 6 && <ShieldCheck className="h-4 w-4 text-primary" />}
                 </div>
-                <h2 className="mt-12 font-display text-3xl font-semibold tracking-[-0.05em]">{brand.name}</h2>
+                <p className="jp-label mt-10 text-primary/70">{brand.jp}</p>
+                <h2 className="mt-1 font-display text-3xl font-semibold tracking-[-0.05em]">{brand.name}</h2>
                 <p className="mt-2 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
                   {brand.specialty}
                 </p>
@@ -91,20 +92,19 @@ function BrandsPage() {
 
         <div className="paper-panel mt-10 grid gap-8 p-7 sm:p-10 lg:grid-cols-[0.7fr_1.3fr] lg:p-12">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/48">What "in the pool" means</p>
+            <p className="jp-label text-black/48">選定 · o que significa “em avaliação”</p>
             <h2 className="mt-4 font-display text-3xl font-semibold leading-[1] tracking-[-0.05em]">
-              Research is not the same as stocking.
+              Investigar não é o mesmo que ter em stock.
             </h2>
           </div>
           <div className="grid gap-5 text-sm leading-6 text-black/62 sm:grid-cols-2">
             <p>
-              A manufacturer enters the research pool because its engineering, category depth or specialist reputation
-              is relevant. A product only enters the store after supplier access, pricing, warranty and technical data
-              are verified.
+              Uma marca entra no nosso radar porque a engenharia, profundidade de catálogo ou especialização merece
+              atenção. Um produto só entra na loja depois de validarmos fornecedor, preço, garantia e dados técnicos.
             </p>
             <p>
-              This keeps REJENDARI open to exceptional German, Swiss and American products later without turning the
-              launch into an impossible inventory exercise. Japan remains the specialist core.
+              Isto deixa espaço para exceções alemãs, suíças, espanholas e americanas sem diluir o núcleo. O Japão
+              continua a ser a identidade principal; as exceções entram quando resolvem melhor um trabalho real.
             </p>
           </div>
         </div>
