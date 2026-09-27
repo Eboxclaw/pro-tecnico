@@ -8,7 +8,7 @@ import { CartDrawer } from "@/components/shop/CartDrawer";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
-import { QUICK_BRANDS, QUICK_FOCUS, referencesForTask } from "@/data/curated-tool-references";
+import { JAPAN_TOOL_REFERENCES, QUICK_BRANDS, QUICK_FOCUS, referencesForTask } from "@/data/curated-tool-references";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 
 const CATEGORIES: Array<{ label: string; jp: string; task: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power"; icon: ToolGlyphName }> = [
@@ -59,8 +59,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/94 backdrop-blur-xl supports-[backdrop-filter]:bg-background/82">
       <div className="border-b border-border/70 bg-black/20">
         <div className="mx-auto flex h-7 max-w-[1440px] items-center justify-between px-4 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:px-6">
-          <span>Seleção japonesa · Curadoria em Portugal</span>
-          <span className="hidden sm:inline">Filtros rápidos · ferramenta por trabalho e marca</span>
+          <span>JAPAN FIRST · PORTUGAL READY</span>
+          <span className="hidden sm:inline">{JAPAN_TOOL_REFERENCES.length} referências · métrico primeiro · códigos oficiais</span>
         </div>
       </div>
 
@@ -69,9 +69,9 @@ export function SiteHeader() {
           <RejendariLogo compact className="sm:hidden" />
           <RejendariLogo className="hidden transition-transform duration-300 group-hover:scale-[1.015] sm:flex" />
           <span className="hidden border-l border-border pl-3 font-mono text-[8px] uppercase tracking-[0.17em] text-muted-foreground 2xl:block">
-            tradição × precisão
+            selecionar × explicar
             <br />
-            trabalho × japão
+            usar × confiar
           </span>
         </Link>
 

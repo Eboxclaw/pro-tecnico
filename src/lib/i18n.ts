@@ -3,7 +3,7 @@ import { create } from "zustand";
 export type Locale = "pt" | "en" | "es";
 
 const pt = {
-  brand: { tagline: "Ferramenta profissional japonesa escolhida para trabalhar" },
+  brand: { tagline: "Japan first. Portugal ready." },
   nav: {
     home: "Início",
     shop: "Loja",
@@ -40,7 +40,7 @@ const pt = {
     badge: "Seleção japonesa para profissionais",
     title: "Ferramentas japonesas escolhidas para trabalhar melhor",
     subtitle:
-      "Uma seleção curta de ferramentas profissionais japonesas, organizada por tarefa e com informação técnica clara. Menos tempo a procurar, mais confiança a escolher.",
+      "Ferramenta japonesa escolhida para profissionais em Portugal: referências oficiais, medidas úteis, comparações claras e sistemas compactos que evitam encher a mala de duplicados.",
     ctaShop: "Comprar ferramentas",
     ctaPacks: "Ver kits profissionais",
     packsTitle: "Kits por profissão",
