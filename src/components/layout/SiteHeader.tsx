@@ -21,7 +21,7 @@ const CATEGORIES: Array<{ label: string; jp: string; task: "precision" | "fasten
   { label: "Máquinas 18V+", jp: "電動工具", task: "power", icon: "power" },
 ];
 
-const TOP_REFERENCE_IDS = ["anex-aoa-17s1", "makita-dtd172rtj", "vessel-220usb-s1eb", "koken-3725z"];
+const TOP_REFERENCE_IDS = ["anex-397-d", "vessel-220usb-s1eb", "top-hm32", "tsunoda-wp250sc"];
 
 export function SiteHeader() {
   const t = useT();
@@ -168,7 +168,7 @@ export function SiteHeader() {
                   <Link to="/marcas" className="text-xs font-medium text-primary">Todas →</Link>
                 </div>
                 <div className="mt-5 grid grid-cols-3 gap-2">
-                  {QUICK_BRANDS.slice(0, 9).map((brand) => {
+                  {QUICK_BRANDS.slice(0, 12).map((brand) => {
                     const story = BRAND_STORY_MAP[brand];
                     return (
                       <Link

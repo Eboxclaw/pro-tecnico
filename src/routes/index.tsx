@@ -9,6 +9,7 @@ import { RatchetDriverComparison } from "@/components/shop/RatchetDriverComparis
 import { SmartKitShowcase } from "@/components/shop/SmartKitShowcase";
 import { BitKitRail } from "@/components/shop/BitKitRail";
 import { RejendariEdit } from "@/components/shop/RejendariEdit";
+import { GripWrenchSpotlight } from "@/components/shop/GripWrenchSpotlight";
 import { RejendariPromiseStrip } from "@/components/brand/RejendariPromiseStrip";
 import { RejendariSeal } from "@/components/brand/RejendariSeal";
 import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
@@ -46,6 +47,8 @@ const BRANDS = [
   { label: "TAJIMA", slug: "TAJIMA" },
   { label: "KO-KEN", slug: "KO-KEN" },
   { label: "FUJIYA", slug: "FUJIYA" },
+  { label: "TSUNODA", slug: "TSUNODA" },
+  { label: "TOP KOGYO", slug: "TOP" },
   { label: "ENGINEER", slug: "ENGINEER" },
   { label: "HOZAN", slug: "HOZAN" },
   { label: "LOBSTER / LOBTEX", slug: "LOBSTER" },
@@ -71,12 +74,36 @@ const CATEGORIES: Array<{
 
 const PACKS = ["AVAC", "Eletricidade", "Manutenção", "Solar"];
 
+const HIGHLIGHT_IDS = [
+  "anex-397-d",
+  "vessel-220usb-s1eb",
+  "top-hm32",
+  "tsunoda-wp250sc",
+  "olfa-xh-1",
+  "fujiya-3300n-200",
+];
+
+const CURATION_IMAGE_IDS = [
+  "vessel-220usb-s1eb",
+  "top-hm32",
+  "tsunoda-wp250sc",
+  "olfa-xh-1",
+];
+
 function Index() {
   const t = useT();
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", "home"],
     queryFn: () => fetchProducts(8),
   });
+
+  const highlightTools = HIGHLIGHT_IDS
+    .map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id))
+    .filter((tool): tool is (typeof JAPAN_TOOL_REFERENCES)[number] => Boolean(tool));
+
+  const curationImageTools = CURATION_IMAGE_IDS
+    .map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id))
+    .filter((tool): tool is (typeof JAPAN_TOOL_REFERENCES)[number] => Boolean(tool?.imageUrl));
 
   return (
     <div>
@@ -199,6 +226,8 @@ function Index() {
         </div>
       </section>
 
+      <GripWrenchSpotlight />
+
       <RejendariEdit />
 
       <section className="border-y border-border bg-surface/35">
@@ -212,8 +241,8 @@ function Index() {
             </div>
             <div className="lg:pb-1">
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-                ANEX, Makita, VESSEL, OLFA, TAJIMA e Ko-ken mostram seis formas diferentes de engenharia japonesa:
-                acesso, potência, aparafusamento, corte profissional e mecânica.
+                ANEX, VESSEL, TOP KOGYO, TSUNODA, OLFA e FUJIYA mostram seis áreas da seleção:
+                aperto, chaves ajustáveis, alicates extensíveis, corte e trabalho elétrico.
               </p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
                 Medidas de produto seguem o sistema métrico quando aplicável; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
@@ -222,7 +251,7 @@ function Index() {
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {JAPAN_TOOL_REFERENCES.slice(0, 6).map((tool) => (
+            {highlightTools.map((tool) => (
               <ReferenceProductCard key={tool.id} tool={tool} featured />
             ))}
           </div>
@@ -256,26 +285,25 @@ function Index() {
       <section className="paper-panel overflow-hidden">
         <div className="mx-auto grid max-w-[1440px] gap-0 lg:grid-cols-2">
           <div className="washi-noise relative grid min-h-[430px] grid-cols-2 gap-px overflow-hidden bg-black/10 p-px lg:min-h-[620px]">
-            {JAPAN_TOOL_REFERENCES.slice(2, 6).map((tool, index) => (
-              <a
+            {curationImageTools.map((tool) => (
+              <Link
                 key={tool.id}
-                href={tool.referenceUrl}
-                target="_blank"
-                rel="noreferrer"
+                to="/referencia/$id"
+                params={{ id: tool.id }}
                 className="group relative overflow-hidden bg-[#eee9de]"
               >
                 <img
-                  src={tool.imageUrl}
-                  alt={tool.imageAlt}
-                  className="absolute inset-0 h-full w-full object-contain p-7 transition-transform duration-500 group-hover:scale-105"
+                  src={tool.imageUrl!}
+                  alt={tool.imageAlt ?? tool.namePt}
+                  className="absolute inset-0 h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent p-4 pt-12 text-white">
                   <p className="jp-label text-white/65">{tool.japanese}</p>
                   <p className="mt-1 font-display text-lg font-semibold">{tool.brand}</p>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/65">{tool.model}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/65">REF {tool.officialCode ?? tool.model}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
 
