@@ -18,7 +18,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Acesso difícil · bits · precisão · eletricidade",
     headline: "Quando o parafuso está no sítio errado, a ferramenta tem de pensar diferente.",
     story:
-      "Na seleção REJENDARI, a ANEX representa soluções de acesso: offset adapters, mini roquetes, bits slim e ferramentas para trabalhar onde um punho ou uma máquina normal já não entram.",
+      "Na seleção REJENDARI, a ANEX representa sistemas compactos: Quick Ball 72, MiniSta72, adapters 3/8″↔1/4″, bits slim, bits isolados 1000 V e ferramentas offset para trabalhar onde um punho normal já não entra.",
     whyPt:
       "É uma marca especialmente interessante para instalação, manutenção, AVAC e eletricidade porque transforma limitações de espaço em produtos muito específicos.",
     sourceUrl: "https://www.anextool.co.jp/item_post/",
@@ -44,7 +44,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Ball Grip · chaves · mini roquetes · precisão",
     headline: "O punho Ball Grip tornou-se uma linguagem própria de aparafusamento.",
     story:
-      "A VESSEL junta chaves manuais, roquetes compactos e assistência elétrica sem abandonar a lógica do aperto à mão. A família 220USB resume bem isso: velocidade para avançar, controlo manual para terminar.",
+      "A VESSEL junta Ball Grip, ratchet screwdrivers 72 dentes, kits low-profile, bits ultra-curtos, precisão e assistência elétrica. A força da marca está em poder construir um sistema de aperto inteiro sem sair da mesma linguagem de produto.",
     whyPt:
       "É uma das marcas mais completas para construir uma seleção de aparafusamento diferente do catálogo europeu habitual.",
     sourceUrl: "https://www.vessel.co.jp/english/product/screwdriver-search",
