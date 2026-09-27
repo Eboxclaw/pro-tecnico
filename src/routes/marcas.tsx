@@ -6,7 +6,7 @@ import { BRAND_STORIES, BRAND_STORY_MAP } from "@/data/brand-stories";
 import { QUICK_BRANDS, referencesForBrand } from "@/data/curated-tool-references";
 
 export const Route = createFileRoute("/marcas")({
-  validateSearch: (search: Record<string, unknown>): { brand?: string } => ({
+  validateSearch: (search: Record<string, unknown>): { brand?: string | undefined } => ({
     brand: typeof search["brand"] === "string" ? (search["brand"] as string) : undefined,
   }),
   head: () => ({
@@ -31,6 +31,7 @@ function BrandsPage() {
   const requested = search.brand?.toUpperCase();
   const selectedSlug = requested && BRAND_STORY_MAP[requested] ? requested : QUICK_BRANDS[0];
   const selected = BRAND_STORY_MAP[selectedSlug];
+  if (!selected) return <p className="p-8">Ainda não existem marcas para apresentar.</p>;
   const products = referencesForBrand(selectedSlug);
   const otherBrands = BRAND_STORIES.filter((brand) => brand.slug !== selectedSlug);
 
