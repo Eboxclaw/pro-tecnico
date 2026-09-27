@@ -531,6 +531,48 @@
 }
 
 
+
+.rejendari-seal {
+  animation: seal-drift 12s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.rejendari-seal::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px dashed oklch(0.61 0.19 36 / 0.22);
+  border-radius: 999px;
+}
+
+.editorial-lead,
+.editorial-tile {
+  isolation: isolate;
+}
+
+.editorial-lead::after,
+.editorial-tile::after {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -35%;
+  width: 24%;
+  transform: skewX(-16deg) translateX(-180%);
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.13), transparent);
+  transition: transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.editorial-lead:hover::after,
+.editorial-tile:hover::after {
+  transform: skewX(-16deg) translateX(620%);
+}
+
+@keyframes seal-drift {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(-5px); }
+}
+
 .comparison-card,
 .smart-kit-card {
   isolation: isolate;
@@ -576,6 +618,7 @@
 
   .brand-marquee-track,
   .bit-rail-track,
+  .rejendari-seal,
   .scan-accent::after,
   .reveal-line > span,
   .hero-floating-tool-1,
