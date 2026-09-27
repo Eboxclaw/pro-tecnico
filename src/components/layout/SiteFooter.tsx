@@ -40,8 +40,8 @@ export function SiteFooter() {
           <RejendariLogo inverted className="max-w-[270px]" />
           <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">{t("footer.tagline")}</p>
           <p className="mt-7 max-w-md border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-            A origem japonesa da marca e o país de fabrico são dados diferentes. Confirmamos o país de
-            fabrico por SKU antes de fazer essa afirmação.
+            A origem da marca e o país de fabrico não são a mesma coisa. Quando essa informação está confirmada,
+            indicamo-la na ficha da referência.
           </p>
         </div>
 
@@ -67,10 +67,10 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="tech-label text-white/45">Nota de curadoria · 選定</p>
+          <p className="tech-label text-white/45">Porque REJENDARI · 選定</p>
           <p className="mt-4 text-sm leading-6 text-muted-foreground">
-            Catálogo curto, especificações reais, bom pós-venda e ferramentas escolhidas pelo trabalho que resolvem,
-            não pela categoria de marketing.
+            Menos ruído, mais contexto: ferramentas organizadas pelo trabalho que resolvem, com especificações claras
+            e atenção ao pós-venda.
           </p>
         </div>
       </div>
