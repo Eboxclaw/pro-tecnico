@@ -140,6 +140,19 @@ export const BRAND_STORIES: BrandStory[] = [
     sourceLabel: "LOBTEX",
   },
   {
+    slug: "KTC",
+    name: "KTC",
+    jp: "京都機械工具",
+    specialty: "Roquetes · drivers · mecânica",
+    headline: "Uma referência japonesa de mecânica com sistemas de aperto pensados para oficina.",
+    story:
+      "KTC entra na REJENDARI pela profundidade em ferramentas de mecânica e pelos ratchet screwdrivers que integram bits no próprio corpo. É uma abordagem muito diferente de comprar várias chaves isoladas.",
+    whyPt:
+      "DBR16 e DBRM11 mostram duas escalas da mesma ideia: um punho completo para variedade de perfis e um mini roquete para espaços apertados.",
+    sourceUrl: "https://en.ktc.jp/products/",
+    sourceLabel: "KTC · catálogo oficial",
+  },
+  {
     slug: "TONE",
     name: "TONE",
     jp: "整備工具",
