@@ -46,6 +46,7 @@ const BRANDS = [
   { label: "HOZAN", slug: "HOZAN" },
   { label: "LOBSTER / LOBTEX", slug: "LOBSTER" },
   { label: "TONE", slug: "TONE" },
+  { label: "KTC", slug: "KTC" },
 ];
 
 const CATEGORIES: Array<{
