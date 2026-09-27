@@ -25,7 +25,7 @@ const SMART = [
 
 export function SmartKitShowcase() {
   return (
-    <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-20">
+    <section className="section-reveal mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-20">
       <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
         <div>
           <p className="jp-label text-primary">少ない道具 · kits inteligentes</p>

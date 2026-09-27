@@ -9,7 +9,7 @@ export function RatchetDriverComparison() {
   const tools = IDS.map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
 
   return (
-    <section className="border-y border-border bg-[#24211d] text-[#f5f0e5]">
+    <section className="section-reveal border-y border-border bg-[#24211d] text-[#f5f0e5]">
       <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
