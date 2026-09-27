@@ -69,9 +69,9 @@ export function RejendariLogo({
         </div>
         {showTagline && (
           <div className={`mt-1 flex items-center gap-2 whitespace-nowrap font-mono text-[6.5px] uppercase tracking-[0.18em] ${mutedClass}`}>
-            <span className="font-sans text-[8px] tracking-[0.08em]">日本の工具</span>
+            <span className="font-sans text-[8px] tracking-[0.08em]">選定工具</span>
             <span aria-hidden="true">·</span>
-            <span>ferramenta profissional</span>
+            <span>japan first · portugal ready</span>
           </div>
         )}
       </div>
