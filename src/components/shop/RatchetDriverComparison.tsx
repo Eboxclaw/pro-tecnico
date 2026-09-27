@@ -3,7 +3,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { Button } from "@/components/ui/button";
 
-const IDS = ["anex-370", "vessel-td6816mg", "ktc-dbr16"];
+const IDS = ["anex-397-d", "vessel-td6816mg", "ktc-dbr16"];
 
 export function RatchetDriverComparison() {
   const tools = IDS.map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
@@ -19,7 +19,7 @@ export function RatchetDriverComparison() {
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-white/58">
-            ANEX, VESSEL e KTC resolvem o mesmo problema de maneiras diferentes: mais alavanca, mais bits no punho ou mais cobertura de perfis. A comparação ajuda a perceber o formato antes de escolher.
+            ANEX, VESSEL e KTC resolvem o mesmo problema de maneiras diferentes: Ball Grip de 72 dentes, cassete de 16 bits ou armazenamento integrado para mecânica. A comparação ajuda a escolher pelo modo de trabalho, não só pela marca.
           </p>
         </div>
 
@@ -63,9 +63,9 @@ export function RatchetDriverComparison() {
 
         <div className="mt-6 grid gap-px border border-white/12 bg-white/12 sm:grid-cols-3">
           <div className="bg-[#171614] p-5">
-            <p className="jp-label text-[#d65a41]">ANEX 370</p>
-            <p className="mt-2 text-sm font-medium">Punho em T</p>
-            <p className="mt-2 text-xs leading-5 text-white/52">Foco em alavanca e simplicidade, com bits curtos guardados no corpo.</p>
+            <p className="jp-label text-[#d65a41]">ANEX 397-D</p>
+            <p className="mt-2 text-sm font-medium">Quick Ball 72</p>
+            <p className="mt-2 text-xs leading-5 text-white/52">72 dentes, 25 N·m e formato Ball Grip para avanço rápido e aperto final forte.</p>
           </div>
           <div className="bg-[#171614] p-5">
             <p className="jp-label text-[#d65a41]">VESSEL TD-6816MG</p>
