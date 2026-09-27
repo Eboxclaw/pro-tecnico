@@ -12,7 +12,7 @@ export function BitKitRail() {
   const repeated = [...tools, ...tools];
 
   return (
-    <section className="overflow-hidden border-y border-border bg-[#ede7db] text-[#24211d]">
+    <section className="section-reveal overflow-hidden border-y border-border bg-[#ede7db] text-[#24211d]">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-5 px-4 pb-5 pt-12 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="jp-label text-[#b54530]">小物こそ重要 · bits, isolação & adapters</p>
