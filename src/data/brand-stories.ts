@@ -18,7 +18,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Acesso difícil · bits · precisão · eletricidade",
     headline: "Quando o parafuso está no sítio errado, a ferramenta tem de pensar diferente.",
     story:
-      "Na seleção REJENDARI, a ANEX representa sistemas compactos: Quick Ball 72, MiniSta72, adapters 3/8″↔1/4″, bits slim, bits isolados 1000 V e ferramentas offset para trabalhar onde um punho normal já não entra.",
+      "Na seleção REJENDARI, a ANEX representa sistemas compactos: Quick Ball 72, MiniSta72, torque adapters M3–M6, conversões 3/8″↔1/4″, bits slim, bits isolados 1000 V e ferramentas offset para trabalhar onde um punho normal já não entra.",
     whyPt:
       "É uma marca especialmente interessante para instalação, manutenção, AVAC e eletricidade porque transforma limitações de espaço em produtos muito específicos.",
     sourceUrl: "https://www.anextool.co.jp/item_post/",
@@ -44,7 +44,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Ball Grip · chaves · mini roquetes · precisão",
     headline: "O punho Ball Grip tornou-se uma linguagem própria de aparafusamento.",
     story:
-      "A VESSEL junta Ball Grip, ratchet screwdrivers 72 dentes, kits low-profile, bits ultra-curtos, precisão e assistência elétrica. A força da marca está em poder construir um sistema de aperto inteiro sem sair da mesma linguagem de produto.",
+      "A VESSEL junta Ball Grip manual e elétrica, punhos intercambiáveis, ratchet screwdrivers 72 dentes, kits low-profile, bits ultra-curtos, precisão e isolamento VDE. A força da marca está em poder construir um sistema de aperto inteiro sem sair da mesma linguagem de produto.",
     whyPt:
       "É uma das marcas mais completas para construir uma seleção de aparafusamento diferente do catálogo europeu habitual.",
     sourceUrl: "https://www.vessel.co.jp/english/product/screwdriver-search",
@@ -159,7 +159,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Roquetes · drivers · mecânica",
     headline: "Uma referência japonesa de mecânica com sistemas de aperto pensados para oficina.",
     story:
-      "KTC entra na REJENDARI pela profundidade em ferramentas de mecânica e pelos ratchet screwdrivers que integram bits no próprio corpo. É uma abordagem muito diferente de comprar várias chaves isoladas.",
+      "KTC entra na REJENDARI pela profundidade em mecânica e pela família DBR: punhos que recebem bits dupla ponta, sockets 1/4″ e versões stubby, com acessórios armazenados na própria ferramenta. É uma abordagem muito diferente de comprar várias chaves isoladas.",
     whyPt:
       "DBR16 e DBRM11 mostram duas escalas da mesma ideia: um punho completo para variedade de perfis e um mini roquete para espaços apertados.",
     sourceUrl: "https://en.ktc.jp/products/",
