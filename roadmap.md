@@ -10,8 +10,8 @@
 ## In progress
 - [ ] Rebranding Rejendarī com foco principal em ferramenta japonesa; VESSEL e ANEX como marcas âncora
 - [ ] Remover referências visíveis restantes a pro'tecnico (as chaves locais antigas mantêm-se para preservar sessões e carrinhos)
-- [ ] Routes: /shop, /product/$handle, /packs, /pontos, /b2b, /marcas, /legal, /auth, /conta (_authenticated)
-- [ ] __root.tsx: head metadata Rejendarī, fonts Archivo/IBM Plex, favicon.png, Toaster, SiteLayout
+- [x] Routes: /shop, /product/$handle, /packs, /pontos, /b2b, /marcas, /legal, /auth, /conta (_authenticated)
+- [x] __root.tsx: head metadata Rejendarī, fonts Archivo/IBM Plex, favicon.png, Toaster, SiteLayout
 
 ## Blocked / waiting
 - [ ] Produtos: loja Shopify tem 0 produtos — obter lista real VESSEL/ANEX (nome, preço, variantes, stock e imagens autorizadas)
