@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { ArrowUpRight, ImageOff, Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, ExternalLink, ImageOff, Sparkles } from "lucide-react";
 import type { CuratedToolReference } from "@/data/curated-tool-references";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Button } from "@/components/ui/button";
 
 export function ReferenceProductCard({
   tool,
@@ -15,11 +17,9 @@ export function ReferenceProductCard({
   return (
     <HoverCard openDelay={160} closeDelay={90}>
       <HoverCardTrigger asChild>
-        <a
-          href={tool.referenceUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="group flex min-h-full flex-col overflow-hidden border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/55 hover:shadow-[0_22px_55px_rgba(42,36,29,0.16)]"
+        <article
+          tabIndex={0}
+          className="group flex min-h-full flex-col overflow-hidden border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/55 hover:shadow-[0_22px_55px_rgba(42,36,29,0.16)] focus:outline-none focus:ring-2 focus:ring-primary/35"
         >
           <div className={`relative overflow-hidden bg-[#f4f0e7] ${featured ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
             <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
@@ -72,12 +72,22 @@ export function ReferenceProductCard({
               </p>
             )}
 
-            <div className="mt-auto flex items-center justify-between gap-4 border-t border-border pt-4">
-              <span className="text-xs font-medium">Ver ficha oficial</span>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+            <div className="mt-auto flex flex-wrap gap-2 border-t border-border pt-4">
+              <Button size="sm" className="rounded-none" asChild>
+                <Link to="/b2b">
+                  Pedir disponibilidade
+                  <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                </Link>
+              </Button>
+              <Button size="sm" variant="ghost" className="rounded-none" asChild>
+                <a href={tool.referenceUrl} target="_blank" rel="noreferrer">
+                  Ficha oficial
+                  <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                </a>
+              </Button>
             </div>
           </div>
-        </a>
+        </article>
       </HoverCardTrigger>
 
       <HoverCardContent
@@ -99,7 +109,7 @@ export function ReferenceProductCard({
               <p className="mt-4 border-t border-black/10 pt-4 text-[11px] leading-5 text-black/50">{tool.evidencePt}</p>
             )}
             <p className="mt-4 font-mono text-[8px] uppercase tracking-[0.13em] text-black/40">
-              abrir ficha oficial do fabricante
+              Consulta disponibilidade ou abre a ficha oficial
             </p>
           </div>
         </div>
