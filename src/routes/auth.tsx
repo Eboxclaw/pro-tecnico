@@ -9,7 +9,8 @@ import { getRememberedReferralCode } from "@/lib/referrals";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import hero from "@/assets/hero-japanese-tools.jpg";
+import { RejendariLogo } from "@/components/brand/RejendariLogo";
+import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -69,12 +70,11 @@ function AuthPage() {
 
   return (
     <div className="mx-auto grid min-h-[720px] max-w-[1440px] border-x border-border lg:grid-cols-[1.05fr_0.95fr]">
-      <section className="relative hidden overflow-hidden border-r border-border lg:block">
-        <img src={hero} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10" />
-        <div className="technical-grid absolute inset-0 opacity-20" />
-        <div className="absolute inset-x-0 bottom-0 p-10 xl:p-14">
-          <p className="jp-label text-primary">会員 · REJENDARI / conta</p>
+      <section className="relative hidden overflow-hidden border-r border-border bg-[#24211d] lg:flex lg:flex-col lg:justify-between">
+        <div className="washi-noise absolute inset-0 opacity-20" aria-hidden="true" />
+        <div className="relative p-10 xl:p-14">
+          <RejendariLogo inverted className="max-w-[320px]" />
+          <p className="jp-label mt-12 text-primary">会員 · conta REJENDARI</p>
           <h1 className="mt-5 max-w-xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] text-white xl:text-6xl">
             Uma conta para compras, pontos e vantagens.
           </h1>
@@ -83,6 +83,17 @@ function AuthPage() {
             <span>Saldo de pontos</span>
             <span>Convites e vantagens</span>
           </div>
+        </div>
+
+        <div className="relative grid grid-cols-2 gap-px border-t border-white/10 bg-white/10">
+          {JAPAN_TOOL_REFERENCES.slice(0, 4).map((tool) => (
+            <div key={tool.id} className="relative aspect-[4/3] overflow-hidden bg-[#eee9de]">
+              <img src={tool.imageUrl} alt={tool.imageAlt} className="h-full w-full object-contain p-5" loading="lazy" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-3 pt-8">
+                <p className="font-mono text-[8px] uppercase tracking-[0.13em] text-white/70">{tool.brand} · {tool.model}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
