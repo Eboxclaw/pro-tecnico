@@ -179,7 +179,7 @@ function PointsPage() {
                   </Button>
                   <Button variant="outline" size="sm" onClick={shareReferral}>
                     <Share2 className="mr-2 h-4 w-4" />
-                    Share
+                    Partilhar
                   </Button>
                 </div>
                 <div className="mt-5 grid grid-cols-2 gap-px bg-border">
