@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
 import { useT } from "@/lib/i18n";
+import { getRememberedReferralCode } from "@/lib/referrals";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -40,7 +41,10 @@ function AuthPage() {
         : await supabase.auth.signUp({
             email,
             password,
-            options: { emailRedirectTo: window.location.origin + "/conta" },
+            options: {
+              emailRedirectTo: window.location.origin + "/conta",
+              data: { referred_by_code: getRememberedReferralCode() || undefined },
+            },
           });
     setBusy(false);
     if (error) {
@@ -62,6 +66,14 @@ function AuthPage() {
       <p className="tech-label text-primary">Rejendarī</p>
       <h1 className="mt-3 font-display text-3xl font-bold">{mode === "in" ? t("auth.title") : t("auth.signUp")}</h1>
       <p className="mt-2 text-sm text-muted-foreground">{t("auth.subtitle")}</p>
+      {getRememberedReferralCode() && (
+        <div className="mt-5 border-l-2 border-primary bg-primary/5 px-4 py-3">
+          <p className="tech-label text-primary">Referral captured</p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Code {getRememberedReferralCode()} will be attached to this account after sign-up.
+          </p>
+        </div>
+      )}
       <Button variant="secondary" className="mt-8 w-full" onClick={google}>{t("auth.google")}</Button>
       <p className="my-6 text-center font-mono text-xs text-muted-foreground">— {t("auth.or")} —</p>
       <form onSubmit={submit} className="space-y-4">
