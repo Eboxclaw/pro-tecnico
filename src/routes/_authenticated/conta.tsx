@@ -129,13 +129,13 @@ function AccountPage() {
           <section className="mt-6 border border-border bg-card p-6 sm:p-8">
             <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
               <div>
-                <p className="jp-label text-primary">紹介リンク · o teu link de convite</p>
+                <p className="jp-label text-primary">紹介リンク · o teu link pessoal</p>
                 <h2 className="mt-3 font-display text-2xl font-semibold tracking-[-0.04em]">
-                  Pronto para partilhar.
+                  Partilha quando quiseres.
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  O link é guardado antes do login. As regras da recompensa são definidas pela campanha ativa e os pontos
-                  entram no mesmo saldo depois da qualificação.
+                  Quando houver uma campanha de convites ativa, as condições e os pontos disponíveis aparecem na área de pontos.
+                  Os pontos ganhos ficam reunidos no mesmo saldo.
                 </p>
               </div>
               <div className="border border-border bg-background p-4">

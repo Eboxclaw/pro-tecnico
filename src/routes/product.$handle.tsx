@@ -116,7 +116,7 @@ function ProductPage() {
             <LegendaryProductStage
               imageUrl={mainImage?.url}
               alt={mainImage?.altText ?? node.title}
-              eyebrow={`${node.vendor || "REJENDARI"} / 名品 · OBJETO DE DESTAQUE`}
+              eyebrow={`${node.vendor || "REJENDARI"} / 選定 · SELEÇÃO REJENDARI`}
               className="min-h-[480px] lg:min-h-[680px]"
             />
           ) : (
@@ -134,7 +134,7 @@ function ProductPage() {
                 <div className="hatch h-64 w-64 border border-black/10" />
               )}
               <span className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-[0.13em] text-black/40">
-                RJD / estudo de produto
+                Detalhe da referência
               </span>
             </div>
           )}
@@ -236,7 +236,7 @@ function ProductPage() {
                 ["Aplicação", task || node.productType || "—"],
                 ["Material", material || "—"],
                 ["Norma", standard || "—"],
-                ["País de fabrico", madeIn || "Não afirmado / por verificar"],
+                ["País de fabrico", madeIn || "Informação a confirmar"],
                 [t("product.warranty"), t("product.warrantyValue")],
               ].map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[0.9fr_1.1fr] gap-4 px-5 py-3">
@@ -246,11 +246,6 @@ function ProductPage() {
               ))}
             </dl>
           </div>
-
-          <p className="mt-5 font-mono text-[9px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-            A apresentação especial é ativada pelas tags Shopify legendary, flagship ou icon. A camada WebGL é carregada
-            apenas quando necessária, respeita movimento reduzido e nunca substitui a imagem real do produto.
-          </p>
         </div>
       </div>
     </div>

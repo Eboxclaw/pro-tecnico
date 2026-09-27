@@ -43,9 +43,9 @@ function PacksPage() {
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <p className="jp-label text-primary">職人キット · REJENDARI / kits</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
-            Menos peso duplicado.
+            Kits pensados para levar menos.
             <br />
-            <span className="text-primary">Mais cobertura útil.</span>
+            <span className="text-primary">E resolver mais.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">{t("packs.subtitle")}</p>
         </div>
@@ -89,9 +89,9 @@ function PacksPage() {
 
         <div className="paper-panel mt-8 grid gap-6 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">商品構成 · dependente do catálogo</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">相談 · precisas de um kit específico?</p>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-black/65">
-              Os kits só ficam disponíveis para compra quando os produtos individuais, stock e dados aprovados pelo fornecedor existirem no Shopify. Sem preços fictícios de bundle.
+              Se compras para uma equipa, profissão ou obra específica, diz-nos o que já tens e o que precisas de cobrir. Podemos preparar uma proposta sem duplicar ferramentas desnecessárias.
             </p>
           </div>
           <Button className="rounded-none bg-black text-white hover:bg-black/85" asChild>

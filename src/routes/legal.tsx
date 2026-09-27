@@ -23,7 +23,7 @@ function LegalPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1100px] px-4 py-14 sm:px-6">
-          <p className="jp-label text-primary">規約 · REJENDARI / legal</p>
+          <p className="jp-label text-primary">規約 · informação legal</p>
           <h1 className="mt-4 font-display text-5xl font-semibold tracking-[-0.055em]">{t("legal.title")}</h1>
         </div>
       </section>

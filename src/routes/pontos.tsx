@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 import { Check, Copy, ScrollText, Share2, Trophy, Users } from "lucide-react";
 import { toast } from "sonner";
-import { useT, useLocale } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 import { getPublicRaffles, type PublicRaffle } from "@/lib/points.functions";
 import { buildReferralLink } from "@/lib/referrals";
 import { supabase } from "@/integrations/supabase/client";
@@ -14,13 +14,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Route = createFileRoute("/pontos")({
   head: () => ({
     meta: [
-      { title: "Pontos & convites — REJENDARI" },
+      { title: "Pontos e vantagens — REJENDARI" },
       {
         name: "description",
-        content: "Fidelização REJENDARI: pontos, atribuição de convites e sorteios semanais com entrada gratuita.",
+        content: "Pontos REJENDARI, convites, vantagens e sorteios elegíveis reunidos numa só conta.",
       },
-      { property: "og:title", content: "Pontos & convites — REJENDARI" },
-      { property: "og:description", content: "Um único saldo para pontos de fidelização e recompensas de convites." },
+      { property: "og:title", content: "Pontos e vantagens — REJENDARI" },
+      { property: "og:description", content: "Acumula pontos e acompanha as vantagens disponíveis na tua conta REJENDARI." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -38,7 +38,6 @@ type ReferralRow = {
 
 function PointsPage() {
   const t = useT();
-  const locale = useLocale((s) => s.locale);
   const queryClient = useQueryClient();
   const [userId, setUserId] = useState<string | null>(null);
   const [entering, setEntering] = useState(false);
@@ -114,7 +113,7 @@ function PointsPage() {
     if (navigator.share) {
       await navigator.share({
         title: "REJENDARI",
-        text: locale === "pt" ? "Ferramenta profissional escolhida com critério." : "Ferramenta profissional escolhida com critério.",
+        text: "Ferramenta profissional japonesa escolhida para trabalhar.",
         url: referralLink,
       });
     } else {
@@ -128,9 +127,9 @@ function PointsPage() {
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <p className="jp-label text-primary">ポイント · fidelização REJENDARI</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
-            Pontos e convites,
+            Pontos e vantagens,
             <br />
-            <span className="text-primary">um só saldo.</span>
+            <span className="text-primary">num só lugar.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">{t("points.subtitle")}</p>
         </div>
@@ -160,17 +159,16 @@ function PointsPage() {
               <span className="jp-label">紹介 · Convites</span>
             </div>
             <h2 className="mt-6 font-display text-3xl font-semibold tracking-[-0.045em]">
-              Partilha um link. A atribuição mantém-se depois do login.
+              Partilha o teu link e acompanha os convites.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
-              O código de convite é guardado antes do registo e associado à conta depois. Os valores da recompensa
-              não ficam hardcoded no site: a campanha ativa define a condição e os pontos, e a recompensa entra
-              no mesmo saldo.
+              Quando existirem campanhas de convite ativas, partilha o teu link pessoal. As condições e os pontos disponíveis
+              ficam visíveis na campanha e os pontos ganhos aparecem na tua conta.
             </p>
 
             {userId && referralCode ? (
               <div className="mt-7 border border-border bg-background p-4">
-                <p className="tech-label text-muted-foreground">O teu link de convite</p>
+                <p className="tech-label text-muted-foreground">O teu link pessoal</p>
                 <p className="mt-3 break-all font-mono text-xs text-foreground">{referralLink}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Button variant="secondary" size="sm" onClick={copyReferral}>
@@ -185,7 +183,7 @@ function PointsPage() {
                 <div className="mt-5 grid grid-cols-2 gap-px bg-border">
                   <div className="bg-surface p-4">
                     <p className="font-display text-2xl font-semibold">{referrals.length}</p>
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Atribuídos</p>
+                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Convites</p>
                   </div>
                   <div className="bg-surface p-4">
                     <p className="font-display text-2xl font-semibold">{earnedFromReferrals}</p>

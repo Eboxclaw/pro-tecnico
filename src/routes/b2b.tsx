@@ -68,7 +68,7 @@ function B2BPage() {
         <div className="technical-grid mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:py-20">
           <span className="jp-label flex items-center gap-2 text-primary">
             <Building2 className="h-3.5 w-3.5" />
-            法人 · REJENDARI / B2B
+            法人 · profissionais & empresas
           </span>
           <h1 className="mt-5 max-w-3xl font-display text-5xl font-semibold leading-[0.94] tracking-[-0.06em] sm:text-6xl">{t("b2b.title")}</h1>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">{t("b2b.subtitle")}</p>
@@ -77,12 +77,12 @@ function B2BPage() {
 
       <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[0.65fr_1.35fr] lg:py-14">
         <aside className="h-fit border border-border bg-card p-6 lg:sticky lg:top-40">
-          <p className="jp-label text-primary">法人向け · conta profissional</p>
+          <p className="jp-label text-primary">法人向け · vantagens profissionais</p>
           <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
-            <li>Condições para volume e encomendas recorrentes.</li>
-            <li>Procurement técnico para equipas profissionais.</li>
-            <li>Seleção japonesa especializada com contexto de suporte europeu.</li>
-            <li>Sem descontos fictícios antes de confirmar as condições do fornecedor.</li>
+            <li>Condições para volume, compras recorrentes e equipas.</li>
+            <li>Ajuda a encontrar referências, compatibilidades e alternativas.</li>
+            <li>Kits e seleções por profissão, tarefa ou orçamento.</li>
+            <li>Condições comerciais definidas conforme volume e disponibilidade.</li>
           </ul>
         </aside>
 

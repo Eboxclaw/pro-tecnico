@@ -1,25 +1,13 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Gift, LogOut, ShoppingBag, User } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useT, useLocale, type Locale } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 import { useCartStore } from "@/stores/cartStore";
 import { supabase } from "@/integrations/supabase/client";
 import { CartDrawer } from "@/components/shop/CartDrawer";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
-
-const LANGS: { id: Locale; label: string }[] = [
-  { id: "pt", label: "PT" },
-  { id: "en", label: "EN" },
-  { id: "es", label: "ES" },
-];
 
 const CATEGORIES: Array<{ label: string; jp: string; task: string; icon: ToolGlyphName }> = [
   { label: "Precisão & eletrónica", jp: "精密工具", task: "precision", icon: "precision" },
@@ -34,8 +22,6 @@ const CATEGORIES: Array<{ label: string; jp: string; task: string; icon: ToolGly
 export function SiteHeader() {
   const t = useT();
   const navigate = useNavigate();
-  const locale = useLocale((s) => s.locale);
-  const setLocale = useLocale((s) => s.setLocale);
   const items = useCartStore((s) => s.items);
   const [signedIn, setSignedIn] = useState(false);
 
@@ -65,8 +51,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/94 backdrop-blur-xl supports-[backdrop-filter]:bg-background/82">
       <div className="border-b border-border/70 bg-black/20">
         <div className="mx-auto flex h-7 max-w-[1440px] items-center justify-between px-4 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:px-6">
-          <span>Curadoria em Portugal · Ferramenta profissional japonesa</span>
-          <span className="hidden sm:inline">Origem da marca ≠ país de fabrico · verificado por SKU</span>
+          <span>Seleção japonesa · Curadoria em Portugal</span>
+          <span className="hidden sm:inline">Escolha por trabalho · apoio a profissionais e empresas</span>
         </div>
       </div>
 
@@ -101,27 +87,8 @@ export function SiteHeader() {
             className="hidden items-center gap-2 rounded-md border border-border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground md:flex"
           >
             <Gift className="h-3.5 w-3.5 text-primary" />
-            Pontos / convites
+            Pontos & vantagens
           </Link>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="font-mono text-[10px] tracking-[0.16em]">
-                {locale.toUpperCase()}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {LANGS.map((lang) => (
-                <DropdownMenuItem
-                  key={lang.id}
-                  onClick={() => setLocale(lang.id)}
-                  className={lang.id === locale ? "bg-secondary" : ""}
-                >
-                  {lang.label}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
 
           {signedIn ? (
             <div className="flex items-center gap-0.5">
