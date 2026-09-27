@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Loader2, X } from "lucide-react";
 import { useT, useLocale } from "@/lib/i18n";
@@ -18,9 +18,11 @@ export function WaitlistBanner() {
   const [email, setEmail] = useState("");
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
-  const [dismissed, setDismissed] = useState(
-    () => localStorage.getItem(DISMISS_KEY) === "1",
-  );
+  // Start hidden-safe on the server; read browser storage only after mount.
+  const [dismissed, setDismissed] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem(DISMISS_KEY) === "1") setDismissed(true);
+  }, []);
 
   if (dismissed) return null;
 
