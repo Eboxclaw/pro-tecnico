@@ -29,6 +29,8 @@ export function SmartProductVisual({
     stage.style.setProperty("--product-y", `${(y * 12).toFixed(2)}px`);
     stage.style.setProperty("--product-rx", `${(-y * 2.2).toFixed(2)}deg`);
     stage.style.setProperty("--product-ry", `${(x * 2.8).toFixed(2)}deg`);
+    stage.style.setProperty("--product-back-x", `${(-x * 6).toFixed(2)}px`);
+    stage.style.setProperty("--product-back-y", `${(-y * 5).toFixed(2)}px`);
   };
 
   const reset = () => {
@@ -38,6 +40,8 @@ export function SmartProductVisual({
     stage.style.setProperty("--product-y", "0px");
     stage.style.setProperty("--product-rx", "0deg");
     stage.style.setProperty("--product-ry", "0deg");
+    stage.style.setProperty("--product-back-x", "0px");
+    stage.style.setProperty("--product-back-y", "0px");
   };
 
   return (
