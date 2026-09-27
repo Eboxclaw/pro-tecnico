@@ -14,6 +14,7 @@ const JAPANESE_BRANDS = [
   "TONE",
   "KTC",
   "TAJIMA",
+  "SILKY",
 ];
 
 export function SiteFooter() {
