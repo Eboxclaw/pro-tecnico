@@ -5,7 +5,7 @@ import { ArrowLeft, Loader2, PackageSearch, ShieldCheck, Sparkles } from "lucide
 import { useT } from "@/lib/i18n";
 import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
-import { ÍconeProductStage } from "@/components/brand/LegendaryProductStage";
+import { LegendaryProductStage } from "@/components/brand/LegendaryProductStage";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -166,7 +166,7 @@ function ProductPage() {
             {isLegendary && (
               <Badge variant="secondary" className="gap-1.5 rounded-full">
                 <Sparkles className="h-3 w-3 text-primary" />
-                Legendary
+                Ícone
               </Badge>
             )}
             {selected && !selected.availableForSale && <Badge variant="secondary">{t("common.outOfStock")}</Badge>}
