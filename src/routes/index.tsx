@@ -5,7 +5,7 @@ import { useT, useLocale, type Locale } from "@/lib/i18n";
 import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
-import { CURATED_TOOL_REFERENCES, REFERENCE_QUEUE } from "@/data/curated-tool-references";
+import { JAPAN_TOOL_REFERENCES, JAPAN_REFERENCE_QUEUE } from "@/data/curated-tool-references";
 import { LegendaryProductStage } from "@/components/brand/LegendaryProductStage";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
@@ -204,25 +204,31 @@ function Index() {
         <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div>
-              <p className="jp-label text-primary">選定工具 · referências discutidas</p>
+              <p className="jp-label text-primary">日本の定番 · seleção japonesa</p>
               <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
-                Ferramentas que já discutimos, agora com rosto.
+                Best sellers, ícones e ferramentas assinatura do Japão.
               </h2>
             </div>
             <div className="lg:pb-1">
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-                Esta prateleira junta referências que apareceram nas nossas decisões anteriores com a direção atual da
-                REJENDARI. São estudos editoriais com imagem e página oficial do fabricante — não significam stock,
-                preço, autorização de revenda ou país de fabrico confirmado para venda.
+                Aqui a regra é simples: só entram marcas japonesas. Escolhemos uma referência forte por fabricante para
+                evitar repetir a mesma marca e para mostrar melhor a amplitude real do catálogo japonês — aparafusamento,
+                roquetes, corte, medição, eletricidade, grip e ferramentas de resolução de problemas.
               </p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                Imagens de referência do fabricante · substituir por assets comerciais aprovados antes do catálogo público
+                Referências editoriais · não significam stock · país de fabrico continua a ser verificado por SKU
               </p>
             </div>
           </div>
 
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {CURATED_TOOL_REFERENCES.map((tool) => (
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {JAPAN_TOOL_REFERENCES.slice(0, 3).map((tool) => (
+              <ReferenceProductCard key={tool.id} tool={tool} featured />
+            ))}
+          </div>
+
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {JAPAN_TOOL_REFERENCES.slice(3).map((tool) => (
               <ReferenceProductCard key={tool.id} tool={tool} />
             ))}
           </div>
@@ -230,13 +236,13 @@ function Index() {
           <div className="mt-7 border border-border bg-background p-5">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <p className="jp-label text-primary">次の候補 · próximas referências</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Mantidas como fila de validação — não como catálogo fechado.
+                <p className="jp-label text-primary">次の候補 · próximos japoneses</p>
+                <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">
+                  Próxima camada de pesquisa, sem misturar Global Specials nesta secção.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {REFERENCE_QUEUE.map((item) => (
+              <div className="flex flex-wrap gap-2 lg:max-w-3xl lg:justify-end">
+                {JAPAN_REFERENCE_QUEUE.map((item) => (
                   <span key={item} className="border border-border bg-card px-3 py-2 font-mono text-[9px] uppercase tracking-[0.11em] text-muted-foreground">
                     {item}
                   </span>
