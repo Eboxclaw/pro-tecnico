@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import logo from "@/assets/logo.png";
+import { RejendariLogo } from "@/components/brand/RejendariLogo";
 
 const LANGS: { id: Locale; label: string }[] = [
   { id: "pt", label: "PT" },
@@ -72,15 +72,11 @@ export function SiteHeader() {
 
       <div className="mx-auto flex h-[70px] max-w-[1440px] items-center gap-5 px-4 sm:px-6">
         <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="REJENDARI">
-          <img
-            src={logo}
-            alt="REJENDARI"
-            className="h-10 w-auto rounded-sm transition-transform duration-300 group-hover:scale-[1.03]"
-          />
-          <span className="hidden border-l border-border pl-3 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground xl:block">
-            ferramentas
+          <RejendariLogo className="transition-transform duration-300 group-hover:scale-[1.015]" />
+          <span className="hidden border-l border-border pl-3 font-mono text-[8px] uppercase tracking-[0.17em] text-muted-foreground 2xl:block">
+            tradição × precisão
             <br />
-            escolhidas
+            trabalho × japão
           </span>
         </Link>
 
