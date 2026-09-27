@@ -197,10 +197,10 @@ function Index() {
             <div className="lg:pb-1">
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
                 ANEX, Makita, VESSEL, OLFA, TAJIMA e Ko-ken mostram seis formas diferentes de engenharia japonesa:
-                acesso, potência, aparafusamento, corte, medição e mecânica.
+                acesso, potência, aparafusamento, corte profissional e mecânica.
               </p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                Referências de medição priorizam escala métrica; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
+                Medidas de produto seguem o sistema métrico quando aplicável; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
               </p>
             </div>
           </div>
