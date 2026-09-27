@@ -4,6 +4,8 @@ import { ArrowRight, PackageSearch, ShieldCheck, Sparkles } from "lucide-react";
 import { useT, useLocale, type Locale } from "@/lib/i18n";
 import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
+import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
+import { CURATED_TOOL_REFERENCES, REFERENCE_QUEUE } from "@/data/curated-tool-references";
 import { LegendaryProductStage } from "@/components/brand/LegendaryProductStage";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
@@ -14,16 +16,16 @@ import heroTools from "@/assets/hero-tools.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "REJENDARI — Japanese professional tools, curated in Portugal" },
+      { title: "REJENDARI — Ferramenta profissional japonesa, curada em Portugal" },
       {
         name: "description",
         content:
-          "Premium Japanese professional tools selected by task, specification and support. VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita and more.",
+          "Ferramenta profissional japonesa selecionada por trabalho, especificação e suporte. VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita, Tajima e mais.",
       },
-      { property: "og:title", content: "REJENDARI — Tools worth knowing" },
+      { property: "og:title", content: "REJENDARI — Ferramentas que vale a pena conhecer" },
       {
         property: "og:description",
-        content: "Japanese precision for European professionals, curated by task instead of hype.",
+        content: "Precisão japonesa para profissionais europeus, organizada pelo trabalho real e não pelo hype.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -121,15 +123,15 @@ function Index() {
           <div className="relative z-10 py-5 lg:py-12">
             <div className="flex items-center gap-3">
               <span className="h-px w-10 bg-primary" />
-              <span className="tech-label text-primary">日本の道具 · Curated in Portugal</span>
+              <span className="jp-label text-primary">日本の工具 · Curadoria em Portugal</span>
             </div>
 
             <div className="reveal-line mt-8">
               <span>
                 <h1 className="max-w-3xl font-display text-[clamp(3.4rem,7vw,7.2rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
-                  Tools worth
+                  Ferramentas que vale
                   <br />
-                  <span className="text-primary">knowing.</span>
+                  <span className="text-primary">a pena conhecer.</span>
                 </h1>
               </span>
             </div>
@@ -166,15 +168,15 @@ function Index() {
 
           <div className="relative">
             <div className="absolute -right-3 -top-5 z-20 hidden w-44 border border-border bg-background/90 p-3 backdrop-blur md:block">
-              <p className="tech-label text-primary">Selection protocol</p>
+              <p className="jp-label text-primary">選定基準 · critério de seleção</p>
               <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                Task → material → fit → support → origin data.
+                Trabalho → material → ergonomia → suporte → origem.
               </p>
             </div>
             <LegendaryProductStage
               imageUrl={heroTools}
               alt="Professional hand tools selected by REJENDARI"
-              eyebrow="REJENDARI / OBJECT STUDY 001"
+              eyebrow="REJENDARI / ESTUDO DE OBJETO 001"
               className="min-h-[430px] lg:min-h-[590px]"
             />
           </div>
@@ -198,16 +200,62 @@ function Index() {
         </div>
       </section>
 
+      <section className="border-b border-border bg-surface/35">
+        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <p className="jp-label text-primary">選定工具 · referências discutidas</p>
+              <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+                Ferramentas que já discutimos, agora com rosto.
+              </h2>
+            </div>
+            <div className="lg:pb-1">
+              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+                Esta prateleira junta referências que apareceram nas nossas decisões anteriores com a direção atual da
+                REJENDARI. São estudos editoriais com imagem e página oficial do fabricante — não significam stock,
+                preço, autorização de revenda ou país de fabrico confirmado para venda.
+              </p>
+              <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+                Imagens de referência do fabricante · substituir por assets comerciais aprovados antes do catálogo público
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {CURATED_TOOL_REFERENCES.map((tool) => (
+              <ReferenceProductCard key={tool.id} tool={tool} />
+            ))}
+          </div>
+
+          <div className="mt-7 border border-border bg-background p-5">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="jp-label text-primary">次の候補 · próximas referências</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Mantidas como fila de validação — não como catálogo fechado.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {REFERENCE_QUEUE.map((item) => (
+                  <span key={item} className="border border-border bg-card px-3 py-2 font-mono text-[9px] uppercase tracking-[0.11em] text-muted-foreground">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
       <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="lg:sticky lg:top-40 lg:self-start">
-            <p className="tech-label text-primary">Shop by real task</p>
+            <p className="jp-label text-primary">仕事別 · comprar pelo trabalho real</p>
             <h2 className="mt-4 max-w-md font-display text-4xl font-semibold leading-[0.98] sm:text-5xl">
-              Categories made for how tools are actually used.
+              Categorias feitas para a forma como as ferramentas são realmente usadas.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
-              Precision lives with electronics. Plumbing belongs with grip and wrenches. Sockets live with ratchets.
-              The shop follows the work instead of inherited retail shelves.
+              Precisão vive com eletrónica. Canalização conduz naturalmente a alicates e chaves. Sockets vivem com roquetes.
+              A loja segue o trabalho real em vez de repetir prateleiras herdadas do retalho.
             </p>
           </div>
 
@@ -246,26 +294,26 @@ function Index() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 border border-white/25 bg-black/55 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-              Product images / specification first / no invented ratings
+              Fotografia de produto / especificação primeiro / sem ratings inventados
             </div>
           </div>
 
           <div className="flex flex-col justify-center p-7 sm:p-12 lg:p-16">
-            <p className="font-mono text-[10px] uppercase tracking-[0.19em] text-black/50">The REJENDARI standard</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.19em] text-black/50">基準 · o padrão REJENDARI</p>
             <h2 className="mt-5 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl">
-              Japanese is the starting point. Good engineering is the rule.
+              O Japão é o ponto de partida. Boa engenharia é a regra.
             </h2>
             <p className="mt-6 max-w-xl text-sm leading-7 text-black/65">
-              VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita, ENGINEER, Fujiya, Tsunoda, TONE, KTC, Tajima and Silky
-              form the first research pool. Availability, supplier rights, warranty and margin still decide what enters
-              the shelf.
+              VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita, ENGINEER, Fujiya, Tsunoda, TONE, KTC, Tajima e Silky
+              formam o primeiro núcleo de pesquisa. Disponibilidade, direitos de imagem, fornecedor, garantia e margem
+              continuam a decidir o que entra realmente na loja.
             </p>
 
             <div className="mt-10 grid gap-6 sm:grid-cols-3">
               {[
-                ["01", "Application", "Does it solve a real professional task better?"],
-                ["02", "Evidence", "Materials, standards, dimensions and compatibility are explicit."],
-                ["03", "After-sales", "Supply, warranty and replacement matter as much as the first impression."],
+                ["01", "Aplicação", "Resolve melhor um trabalho profissional real?"],
+                ["02", "Evidência", "Materiais, normas, dimensões e compatibilidade ficam explícitos."],
+                ["03", "Pós-venda", "Fornecimento, garantia e reposição contam tanto como a primeira impressão."],
               ].map(([number, title, text]) => (
                 <div key={number} className="border-t border-black/20 pt-4">
                   <span className="font-mono text-[10px] text-black/40">{number}</span>
@@ -281,7 +329,7 @@ function Index() {
       <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="flex items-end justify-between gap-6 border-b border-border pb-5">
           <div>
-            <p className="tech-label text-primary">Current shelf</p>
+            <p className="jp-label text-primary">販売準備 · catálogo real</p>
             <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">{t("nav.shop")}</h2>
           </div>
           <Button variant="ghost" asChild>
@@ -311,8 +359,8 @@ function Index() {
               <div className="border-t border-border bg-surface p-8 lg:border-l lg:border-t-0">
                 <span className="tech-label text-primary">Catalog integrity</span>
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                  We are intentionally not filling the shelf with invented SKUs, fake reviews or scraped product claims.
-                  Shopify becomes visible here as real supplier-approved products are loaded.
+                  Não vamos encher a loja com SKUs inventados, reviews falsas ou claims copiados. O catálogo Shopify aparece aqui
+                  à medida que entram produtos reais com dados e imagens aprovados pelo fornecedor.
                 </p>
               </div>
             </div>
@@ -331,10 +379,10 @@ function Index() {
           <div className="bg-background p-7 sm:p-12 lg:p-16">
             <div className="flex items-center gap-3 text-primary">
               <ToolGlyph name="reward" className="h-8 w-8" />
-              <span className="tech-label">REJENDARI Points</span>
+              <span className="jp-label">ポイント · REJENDARI Points</span>
             </div>
             <h2 className="mt-6 max-w-lg font-display text-4xl font-semibold leading-[1] tracking-[-0.05em]">
-              Loyalty that remains useful even when luck is removed.
+              Fidelização com valor útil mesmo sem depender da sorte.
             </h2>
             <p className="mt-5 max-w-lg text-sm leading-6 text-muted-foreground">{t("home.pointsText")}</p>
             <Button className="mt-7 rounded-none" variant="secondary" asChild>
@@ -345,17 +393,17 @@ function Index() {
           <div className="bg-background p-7 sm:p-12 lg:p-16">
             <div className="flex items-center gap-3 text-primary">
               <ToolGlyph name="referral" className="h-8 w-8" />
-              <span className="tech-label">Referrals</span>
+              <span className="jp-label">紹介 · Convites</span>
             </div>
             <h2 className="mt-6 max-w-lg font-display text-4xl font-semibold leading-[1] tracking-[-0.05em]">
-              Your link, your attribution, one points ledger.
+              O teu link, a tua atribuição, o mesmo saldo de pontos.
             </h2>
             <p className="mt-5 max-w-lg text-sm leading-6 text-muted-foreground">
-              Referral links are now captured before sign-in and attached to the account after registration. Rewards can
-              be awarded into the same points ledger once the campaign condition is met.
+              Os links de convite são guardados antes do login e associados à conta depois do registo. Quando a condição da
+              campanha for cumprida, a recompensa entra no mesmo saldo de pontos.
             </p>
             <Button className="mt-7 rounded-none" variant="outline" asChild>
-              <Link to="/pontos">Points & referrals</Link>
+              <Link to="/pontos">Pontos & convites</Link>
             </Button>
           </div>
         </div>
@@ -364,7 +412,7 @@ function Index() {
       <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-20">
         <div className="flex items-center gap-3">
           <ShieldCheck className="h-5 w-5 text-primary" />
-          <p className="tech-label text-primary">Professional packs</p>
+          <p className="jp-label text-primary">職人キット · malas profissionais</p>
         </div>
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {PACKS.map((pack) => (
