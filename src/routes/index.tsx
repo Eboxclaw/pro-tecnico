@@ -33,19 +33,17 @@ export const Route = createFileRoute("/")({
 });
 
 const BRANDS = [
-  "ANEX",
-  "MAKITA",
-  "VESSEL",
-  "OLFA",
-  "TAJIMA",
-  "KO-KEN",
-  "LOBSTER / LOBTEX",
-  "ENGINEER",
-  "FUJIYA",
-  "TSUNODA",
-  "TONE",
-  "KTC",
-  "SILKY",
+  { label: "ANEX", slug: "ANEX" },
+  { label: "MAKITA", slug: "MAKITA" },
+  { label: "VESSEL", slug: "VESSEL" },
+  { label: "OLFA", slug: "OLFA" },
+  { label: "TAJIMA", slug: "TAJIMA" },
+  { label: "KO-KEN", slug: "KO-KEN" },
+  { label: "FUJIYA", slug: "FUJIYA" },
+  { label: "ENGINEER", slug: "ENGINEER" },
+  { label: "HOZAN", slug: "HOZAN" },
+  { label: "LOBSTER / LOBTEX", slug: "LOBSTER" },
+  { label: "TONE", slug: "TONE" },
 ];
 
 const CATEGORIES: Array<{
@@ -140,11 +138,12 @@ function Index() {
           <div className="brand-marquee-track gap-12 pr-12">
             {[...BRANDS, ...BRANDS].map((brand, index) => (
               <Link
-                key={brand + index}
+                key={brand.slug + index}
                 to="/marcas"
+                search={{ brand: brand.slug }}
                 className="flex items-center gap-12 font-mono text-[11px] uppercase tracking-[0.19em] text-white/46 transition-colors hover:text-white"
               >
-                {brand}
+                {brand.label}
                 <span className="h-1 w-1 rounded-full bg-primary" />
               </Link>
             ))}
