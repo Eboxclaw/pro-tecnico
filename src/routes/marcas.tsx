@@ -22,19 +22,19 @@ export const Route = createFileRoute("/marcas")({
 });
 
 const BRANDS = [
-  { name: "VESSEL", jp: "ドライバー", specialty: "Chaves · bits de impacto · Ball Grip", status: "Núcleo prioritário" },
-  { name: "KO-KEN", jp: "ソケット", specialty: "Sockets · roquetes · drive tools", status: "Núcleo prioritário" },
-  { name: "OLFA", jp: "カッター", specialty: "Lâminas profissionais · cutters", status: "Núcleo prioritário" },
-  { name: "LOBSTER / LOBTEX", jp: "作業工具", specialty: "Rebitagem · chaves · ferramenta manual", status: "Núcleo prioritário" },
-  { name: "ANEX", jp: "締結工具", specialty: "Precisão · bit holders · offset · ESD", status: "Núcleo prioritário" },
-  { name: "MAKITA", jp: "電動工具", specialty: "Ecossistema sem fios 18V+", status: "Máquinas 18V+" },
-  { name: "ENGINEER", jp: "精密工具", specialty: "Extração · precisão · alicates", status: "Em avaliação" },
-  { name: "FUJIYA", jp: "プライヤー", specialty: "Alicates · corte · eletricidade", status: "Em avaliação" },
-  { name: "TSUNODA", jp: "作業工具", specialty: "Alicates · grip de precisão", status: "Em avaliação" },
-  { name: "TONE", jp: "整備工具", specialty: "Sockets · torque · mecânica", status: "Em avaliação" },
-  { name: "KTC", jp: "整備工具", specialty: "Automóvel · sockets · assistência", status: "Em avaliação" },
-  { name: "TAJIMA", jp: "測定・切削", specialty: "Medição · marcação · corte · obra", status: "Em avaliação" },
-  { name: "SILKY", jp: "鋸", specialty: "Serras profissionais · corte arborista", status: "Em avaliação" },
+  { name: "VESSEL", jp: "ドライバー", specialty: "Chaves · bits de impacto · Ball Grip", status: "Destaque REJENDARI" },
+  { name: "KO-KEN", jp: "ソケット", specialty: "Sockets · roquetes · drive tools", status: "Destaque REJENDARI" },
+  { name: "OLFA", jp: "カッター", specialty: "Lâminas profissionais · cutters", status: "Destaque REJENDARI" },
+  { name: "LOBSTER / LOBTEX", jp: "作業工具", specialty: "Rebitagem · chaves · ferramenta manual", status: "Destaque REJENDARI" },
+  { name: "ANEX", jp: "締結工具", specialty: "Precisão · bit holders · offset · ESD", status: "Destaque REJENDARI" },
+  { name: "MAKITA", jp: "電動工具", specialty: "Ecossistema sem fios 18V+", status: "Destaque 18V" },
+  { name: "ENGINEER", jp: "精密工具", specialty: "Extração · precisão · alicates", status: "Especialista japonês" },
+  { name: "FUJIYA", jp: "プライヤー", specialty: "Alicates · corte · eletricidade", status: "Especialista japonês" },
+  { name: "TSUNODA", jp: "作業工具", specialty: "Alicates · grip de precisão", status: "Especialista japonês" },
+  { name: "TONE", jp: "整備工具", specialty: "Sockets · torque · mecânica", status: "Especialista japonês" },
+  { name: "KTC", jp: "整備工具", specialty: "Automóvel · sockets · assistência", status: "Especialista japonês" },
+  { name: "TAJIMA", jp: "測定・切削", specialty: "Medição · marcação · corte · obra", status: "Especialista japonês" },
+  { name: "SILKY", jp: "鋸", specialty: "Serras profissionais · corte arborista", status: "Especialista japonês" },
 ];
 
 function BrandsPage() {
@@ -47,15 +47,15 @@ function BrandsPage() {
           <p className="jp-label text-primary">日本の工具 · fabricantes japoneses</p>
           <div className="mt-5 grid gap-7 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <h1 className="max-w-3xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
-              Mais do que duas marcas.
+              Japão, marca a marca.
               <br />
-              <span className="text-primary">Um filtro exigente.</span>
+              <span className="text-primary">Especialistas para trabalhos diferentes.</span>
             </h1>
             <div>
               <p className="max-w-xl text-sm leading-7 text-muted-foreground">{t("brands.subtitle")}</p>
               <p className="mt-5 border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-                Uma marca pode ser japonesa e um SKU individual ser fabricado noutro país. Origem da marca e país de
-                fabrico são dados separados.
+                A origem da marca e o país de fabrico são dados diferentes. Quando o fabrico está confirmado para uma referência,
+                indicamo-lo na ficha do produto.
               </p>
             </div>
           </div>
@@ -92,19 +92,19 @@ function BrandsPage() {
 
         <div className="paper-panel mt-10 grid gap-8 p-7 sm:p-10 lg:grid-cols-[0.7fr_1.3fr] lg:p-12">
           <div>
-            <p className="jp-label text-black/48">選定 · o que significa “em avaliação”</p>
+            <p className="jp-label text-black/48">選定 · como escolhemos</p>
             <h2 className="mt-4 font-display text-3xl font-semibold leading-[1] tracking-[-0.05em]">
-              Investigar não é o mesmo que ter em stock.
+              Cada marca tem de acrescentar alguma coisa.
             </h2>
           </div>
           <div className="grid gap-5 text-sm leading-6 text-black/62 sm:grid-cols-2">
             <p>
-              Uma marca entra no nosso radar porque a engenharia, profundidade de catálogo ou especialização merece
-              atenção. Um produto só entra na loja depois de validarmos fornecedor, preço, garantia e dados técnicos.
+              Procuramos fabricantes fortes numa tarefa concreta: aparafusamento, sockets, corte, grip, medição, eletricidade
+              ou máquinas. A especialização conta mais do que ter um catálogo enorme.
             </p>
             <p>
-              Isto deixa espaço para exceções alemãs, suíças, espanholas e americanas sem diluir o núcleo. O Japão
-              continua a ser a identidade principal; as exceções entram quando resolvem melhor um trabalho real.
+              Dentro de cada marca, damos prioridade às referências que fazem sentido para profissionais: compatibilidade clara,
+              boa ergonomia, construção adequada e suporte que permita continuar a usar a ferramenta.
             </p>
           </div>
         </div>
