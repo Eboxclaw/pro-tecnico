@@ -43,7 +43,10 @@ function AuthPage() {
             options: { emailRedirectTo: window.location.origin + "/conta" },
           });
     setBusy(false);
-    if (error) return toast.error(t("auth.error"));
+    if (error) {
+      toast.error(t("auth.error"));
+      return;
+    }
     if (mode === "up") toast.success("Verifica o teu email para confirmar a conta.");
     else navigate({ to: "/conta" });
   }
