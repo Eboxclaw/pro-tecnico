@@ -6,8 +6,8 @@ const EDIT_IDS = [
   "anex-397-d",
   "vessel-td6816mg",
   "ktc-dbr14",
-  "koken-3725z",
-  "fujiya-3300n-200",
+  "top-hm32",
+  "tsunoda-wp250sc",
   "olfa-xh-1",
 ];
 
