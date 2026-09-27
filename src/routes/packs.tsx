@@ -7,12 +7,12 @@ import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 export const Route = createFileRoute("/packs")({
   head: () => ({
     meta: [
-      { title: "Professional tool packs — REJENDARI" },
+      { title: "Malas e kits profissionais — REJENDARI" },
       {
         name: "description",
-        content: "Curated Core, Compact and Pro tool packs for HVAC, electrical, maintenance, solar and installation work.",
+        content: "Kits Core, Compact e Pro para AVAC, eletricidade, manutenção, solar e instalação.",
       },
-      { property: "og:title", content: "Professional packs — REJENDARI" },
+      { property: "og:title", content: "Kits profissionais — REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -26,11 +26,11 @@ const TRADES: Array<{
   label: { pt: string; en: string; es: string };
   desc: string;
 }> = [
-  { key: "hvac", icon: "hvac", label: { pt: "AVAC", en: "HVAC", es: "HVAC" }, desc: "Heat pumps, split systems and installation." },
-  { key: "electrical", icon: "precision", label: { pt: "Eletricidade", en: "Electrical", es: "Electricidad" }, desc: "Panels, precision, measurement and fastening." },
-  { key: "maintenance", icon: "socket", label: { pt: "Manutenção", en: "Maintenance", es: "Mantenimiento" }, desc: "Industrial maintenance and technical facilities." },
-  { key: "solar", icon: "power", label: { pt: "Solar", en: "Solar", es: "Solar" }, desc: "PV installation, storage and field service." },
-  { key: "plumbing", icon: "grip", label: { pt: "Canalização", en: "Plumbing", es: "Fontanería" }, desc: "Grip, wrenches, water and heating work." },
+  { key: "hvac", icon: "hvac", label: { pt: "AVAC", en: "HVAC", es: "HVAC" }, desc: "Bombas de calor, sistemas split e instalação." },
+  { key: "electrical", icon: "precision", label: { pt: "Eletricidade", en: "Electrical", es: "Electricidad" }, desc: "Quadros, precisão, medição e aperto." },
+  { key: "maintenance", icon: "socket", label: { pt: "Manutenção", en: "Maintenance", es: "Mantenimiento" }, desc: "Manutenção industrial e instalações técnicas." },
+  { key: "solar", icon: "power", label: { pt: "Solar", en: "Solar", es: "Solar" }, desc: "Instalação fotovoltaica, armazenamento e assistência em obra." },
+  { key: "plumbing", icon: "grip", label: { pt: "Canalização", en: "Plumbing", es: "Fontanería" }, desc: "Grip, chaves, água e aquecimento." },
 ];
 
 function PacksPage() {
@@ -41,11 +41,11 @@ function PacksPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-          <p className="tech-label text-primary">REJENDARI / Kits</p>
+          <p className="jp-label text-primary">職人キット · REJENDARI / kits</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
-            Less duplicate weight.
+            Menos peso duplicado.
             <br />
-            <span className="text-primary">More useful coverage.</span>
+            <span className="text-primary">Mais cobertura útil.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">{t("packs.subtitle")}</p>
         </div>
@@ -89,9 +89,9 @@ function PacksPage() {
 
         <div className="paper-panel mt-8 grid gap-6 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">Catalog-dependent</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">商品構成 · dependente do catálogo</p>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-black/65">
-              Packs only become purchasable after the individual products, stock and supplier-approved data exist in Shopify. No fictional bundle pricing.
+              Os kits só ficam disponíveis para compra quando os produtos individuais, stock e dados aprovados pelo fornecedor existirem no Shopify. Sem preços fictícios de bundle.
             </p>
           </div>
           <Button className="rounded-none bg-black text-white hover:bg-black/85" asChild>
