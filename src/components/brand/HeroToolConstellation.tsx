@@ -7,7 +7,7 @@ export function HeroToolConstellation() {
   const tools = HERO_IDS.map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
 
   return (
-    <div className="hero-tool-constellation relative min-h-[480px] overflow-hidden border border-charcoal/15 bg-[var(--paper)] lg:min-h-[610px]">
+    <div className="hero-tool-constellation relative min-h-[480px] overflow-hidden border border-black/15 bg-[var(--paper)] lg:min-h-[610px]">
       <JapaneseAmbientScene className="opacity-85" />
       <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
       <div className="absolute left-5 top-5 z-20">
