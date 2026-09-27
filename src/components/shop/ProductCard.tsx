@@ -81,7 +81,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         )}
 
         <div className="absolute inset-x-4 bottom-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.14em] text-black/43">
-          <span>{originTag ? originTag.replace(/^made-in:/i, "") : "Origem por SKU"}</span>
+          <span>{originTag ? originTag.replace(/^made-in:/i, "") : "Origem na ficha"}</span>
           <span>RJD / SELEÇÃO</span>
         </div>
       </div>
@@ -100,7 +100,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         <div className="mt-4 flex min-h-5 items-center gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
           <span>{task || "Uso profissional"}</span>
           <span className="h-1 w-1 rounded-full bg-primary/70" />
-          <span>Dados verificados</span>
+          <span>Ficha técnica</span>
         </div>
 
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4">
