@@ -32,18 +32,21 @@ export function ReferenceProductCard({
               </span>
             </div>
 
-            {!imageFailed ? (
+            {tool.imageUrl && !imageFailed ? (
               <img
                 src={tool.imageUrl}
-                alt={tool.imageAlt}
+                alt={tool.imageAlt ?? `${tool.brand} ${tool.model}`}
                 loading="lazy"
                 referrerPolicy="no-referrer"
                 onError={() => setImageFailed(true)}
                 className={`relative z-[1] h-full w-full object-contain transition duration-500 ease-out group-hover:scale-[1.055] group-hover:-rotate-[0.25deg] ${featured ? "p-8 sm:p-10" : "p-7"}`}
               />
             ) : (
-              <div className="micro-grid relative z-[1] flex h-full w-full items-center justify-center text-black/35">
-                <ImageOff className="h-7 w-7" />
+              <div className="micro-grid relative z-[1] flex h-full w-full flex-col items-center justify-center p-8 text-center">
+                <span className="jp-label text-primary">{tool.japanese}</span>
+                <span className="mt-4 font-display text-4xl font-semibold tracking-[-0.06em] text-black/16">{tool.brand}</span>
+                <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-black/42">{tool.model}</span>
+                {imageFailed && <ImageOff className="mt-5 h-5 w-5 text-black/25" />}
               </div>
             )}
 
