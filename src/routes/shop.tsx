@@ -17,14 +17,14 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const TASKS: Array<{ id: string; label: string; icon: ToolGlyphName }> = [
-  { id: "precision", label: "Precision & Electronics", icon: "precision" },
-  { id: "fastening", label: "Drivers, Bits & Fastening", icon: "driver" },
-  { id: "sockets", label: "Ratchets & Sockets", icon: "socket" },
-  { id: "grip", label: "Pliers, Gripping & Wrenches", icon: "grip" },
-  { id: "cutting", label: "Cutting & Blades", icon: "cut" },
-  { id: "hvac", label: "HVAC / Mechanical / Installation", icon: "hvac" },
-  { id: "power", label: "Power Tools 18V+", icon: "power" },
+const TASKS: Array<{ id: string; label: string; jp: string; icon: ToolGlyphName }> = [
+  { id: "precision", label: "Precisão & eletrónica", jp: "精密工具", icon: "precision" },
+  { id: "fastening", label: "Chaves, bits & aperto", jp: "締結工具", icon: "driver" },
+  { id: "sockets", label: "Roquetes & sockets", jp: "ソケット", icon: "socket" },
+  { id: "grip", label: "Alicates, grip & chaves", jp: "作業工具", icon: "grip" },
+  { id: "cutting", label: "Corte & lâminas", jp: "切削工具", icon: "cut" },
+  { id: "hvac", label: "AVAC, mecânica & instalação", jp: "設備工具", icon: "hvac" },
+  { id: "power", label: "Máquinas 18V+", jp: "電動工具", icon: "power" },
 ];
 
 export const Route = createFileRoute("/shop")({
@@ -34,13 +34,13 @@ export const Route = createFileRoute("/shop")({
   }),
   head: () => ({
     meta: [
-      { title: "Shop professional tools — REJENDARI" },
+      { title: "Loja de ferramenta profissional — REJENDARI" },
       {
         name: "description",
-        content: "Japanese professional tools organised by real task: precision, sockets, grip, cutting, HVAC and 18V+ power tools.",
+        content: "Ferramenta profissional japonesa organizada por trabalho real: precisão, sockets, grip, corte, AVAC e máquinas 18V+.",
       },
-      { property: "og:title", content: "Shop — REJENDARI" },
-      { property: "og:description", content: "Professional tools organised by task, brand, technical data and price." },
+      { property: "og:title", content: "Loja — REJENDARI" },
+      { property: "og:description", content: "Ferramenta profissional organizada por trabalho, marca, dados técnicos e preço." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -99,14 +99,14 @@ function ShopPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
-          <p className="tech-label text-primary">REJENDARI / Catalog</p>
+          <p className="jp-label text-primary">工具一覧 · REJENDARI / catálogo</p>
           <div className="mt-4 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <h1 className="font-display text-5xl font-semibold tracking-[-0.055em] sm:text-6xl">{t("shop.title")}</h1>
               <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">{t("shop.subtitle")}</p>
             </div>
             <p className="max-w-md border-l border-primary/65 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-              Brand origin and manufacturing origin are separate fields. "Made in Japan" only appears when confirmed for that SKU.
+              Origem da marca e país de fabrico são campos separados. “Made in Japan” só aparece quando estiver confirmado para esse SKU.
             </p>
           </div>
         </div>
@@ -124,7 +124,10 @@ function ShopPage() {
               }`}
             >
               <ToolGlyph name={item.icon} className={`h-6 w-6 ${task === item.id ? "text-primary" : ""}`} />
-              <span className="mt-5 text-[11px] leading-4">{item.label}</span>
+              <span className="mt-5">
+                <span className="block text-[11px] leading-4">{item.label}</span>
+                <span className="jp-label mt-1 block text-[9px] text-muted-foreground/55">{item.jp}</span>
+              </span>
             </button>
           ))}
         </div>
@@ -205,12 +208,12 @@ function ShopPage() {
                 </div>
               </div>
               <div className="border-t border-border bg-surface p-8 lg:border-l lg:border-t-0">
-                <p className="tech-label text-primary">What appears here</p>
+                <p className="jp-label text-primary">掲載基準 · o que aparece aqui</p>
                 <ul className="mt-5 space-y-4 text-sm leading-6 text-muted-foreground">
-                  <li>Supplier-approved product images, not invented renders.</li>
-                  <li>SKU / EAN / dimensions / compatibility before marketing copy.</li>
-                  <li>Manufacturing origin only when it is verified for the exact reference.</li>
-                  <li>Legendary / flagship presentation is activated from Shopify tags.</li>
+                  <li>Imagens de produto aprovadas pelo fornecedor, não renders inventados.</li>
+                  <li>SKU / EAN / dimensões / compatibilidade antes de copy de marketing.</li>
+                  <li>País de fabrico apenas quando estiver verificado para a referência exata.</li>
+                  <li>A apresentação especial de produto é ativada por tags no Shopify.</li>
                 </ul>
               </div>
             </div>
