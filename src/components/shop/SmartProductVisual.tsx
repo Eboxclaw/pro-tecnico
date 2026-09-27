@@ -17,6 +17,15 @@ export function SmartProductVisual({
 }: SmartProductVisualProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const [imageFailed, setImageFailed] = useState(false);
+  const imagePadding = hero
+    ? "p-7 sm:p-12 lg:p-16"
+    : tool.task === "grip"
+      ? featured
+        ? "p-3 sm:p-5"
+        : "p-3 sm:p-4"
+      : featured
+        ? "p-7 sm:p-9"
+        : "p-6";
 
   const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
     if (event.pointerType !== "mouse") return;
@@ -73,7 +82,7 @@ export function SmartProductVisual({
             aria-hidden="true"
             loading="lazy"
             referrerPolicy="no-referrer"
-            className={`smart-product-ghost absolute inset-0 z-[1] h-full w-full object-contain opacity-[0.08] blur-[0.4px] ${hero ? "p-8 sm:p-14 lg:p-18" : featured ? "p-8 sm:p-10" : "p-7"}`}
+            className={`smart-product-ghost absolute inset-0 z-[1] h-full w-full object-contain opacity-[0.08] blur-[0.4px] ${imagePadding}`}
           />
           <img
             src={tool.imageUrl}
@@ -81,7 +90,7 @@ export function SmartProductVisual({
             loading="lazy"
             referrerPolicy="no-referrer"
             onError={() => setImageFailed(true)}
-            className={`smart-product-main relative z-[3] h-full w-full object-contain ${hero ? "p-8 sm:p-14 lg:p-18" : featured ? "p-8 sm:p-10" : "p-7"}`}
+            className={`smart-product-main relative z-[3] h-full w-full object-contain ${imagePadding}`}
           />
         </>
       ) : (
