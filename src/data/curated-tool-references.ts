@@ -12,6 +12,7 @@ export type CuratedToolReference = {
   imageAlt: string;
   imageSourceLabel?: string;
   evidencePt?: string;
+  specPt?: string;
 };
 
 export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
@@ -29,6 +30,7 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "ANEX AOA-17S1 offset adapter 17 mm socket set",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt: "A ANEX especifica 230 N·m de torque máximo, compatibilidade 40V/18V e fabrico no Japão para esta referência.",
+    specPt: "17 mm · 230 N·m · 18 V / 40 V",
   },
   {
     id: "makita-td173d",
@@ -44,6 +46,7 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "Makita TD173D 18V cordless impact driver",
     imageSourceLabel: "Imagem de produto Makita",
     evidencePt: "A Makita apresentou o TD173D como modelo flagship 18V, com 111 mm de comprimento e iluminação LED em anel.",
+    specPt: "18 V · 111 mm",
   },
   {
     id: "vessel-220usb-s1eb",
@@ -59,6 +62,7 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "VESSEL 220USB-S1 high-speed rechargeable Ball Grip screwdriver",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "A VESSEL anuncia 1.200 rpm sem carga, 0,4 N·m em modo elétrico e bit hexagonal de 6,35 mm.",
+    specPt: "6,35 mm (1/4″) · 0,4 N·m · 1.200 rpm",
   },
   {
     id: "olfa-xh-1",
@@ -74,21 +78,23 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "OLFA XH-1 extra heavy-duty cutter",
     imageSourceLabel: "Imagem oficial OLFA",
     evidencePt: "A OLFA especifica lâmina de 25 mm com 0,7 mm de espessura, punho em elastómero e polipropileno reforçado com fibra de vidro.",
+    specPt: "Lâmina 25 mm · 0,7 mm",
   },
   {
-    id: "tajima-gs-lock",
+    id: "tajima-g3lock-eur-5m",
     brand: "TAJIMA",
-    model: "GS-25BW",
-    namePt: "GS LOCK · fita métrica reforçada",
+    model: "G3GLM27-50EB-EUR",
+    namePt: "G³-LOCK · fita métrica 5 m",
     japanese: "コンベックス",
     categoryPt: "Medição · marcação · obra",
-    notePt: "A TAJIMA deve entrar no topo pela medição e layout. O GS LOCK tem a presença visual e a função de obra que tornam a marca imediatamente compreensível.",
-    badge: "Medição / obra",
-    referenceUrl: "https://www.tajimatool.com/product/gs-lock/",
-    imageUrl: "https://www.equipementpolar.com/cdn/shop/files/GS25BW_1_grande.jpg?v=1746573657",
-    imageAlt: "TAJIMA GS LOCK GS-25BW tape measure",
-    imageSourceLabel: "Imagem de referência TAJIMA",
-    evidencePt: "A GS LOCK combina fita extra espessa, proteção do gancho e ponto de tether de segurança.",
+    notePt: "Versão europeia de 5 m com fita de 27 mm, gancho magnético e graduação métrica. É a referência certa para uma loja portuguesa: metros primeiro, leitura clara e formato de obra.",
+    badge: "Métrica · EU",
+    referenceUrl: "https://tajima.ch/product/g-lock-27/?lang=en",
+    imageUrl: "https://tajima.ch/wp-content/uploads/2018/06/G3-Lock-27-600x500.jpg",
+    imageAlt: "TAJIMA G3-Lock 27 mm 5 m metric tape measure",
+    imageSourceLabel: "Imagem TAJIMA Europa",
+    evidencePt: "A referência europeia G3GLM27-50EB-EUR é de 5 m × 27 mm e o catálogo europeu indica precisão EC Class 2.",
+    specPt: "5 m · 27 mm · EC Class 2",
   },
   {
     id: "koken-3725z",
@@ -104,6 +110,7 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "Ko-ken Z-Series 3725Z 3/8 inch reversible ratchet",
     imageSourceLabel: "Imagem Ko-ken specialist",
     evidencePt: "O 3725Z atual usa 72 dentes, arco de 5°, cabeça de 28 mm e comprimento de 178 mm.",
+    specPt: "Drive 3/8″ · 178 mm · 72 dentes",
   },
   {
     id: "fujiya-770-200",
@@ -119,6 +126,7 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "Fujiya 770-200 diagonal cutting pliers",
     imageSourceLabel: "Imagem oficial FUJIYA",
     evidencePt: "A própria Fujiya identifica o 770-200 como No.1 best-selling product na categoria Amazon DIY/Tools Strong Nippers.",
+    specPt: "Comprimento 200 mm",
   },
   {
     id: "engineer-pz58",
