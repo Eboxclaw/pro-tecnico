@@ -63,20 +63,35 @@ function B2BPage() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
-      <span className="tech-label flex items-center gap-2 text-primary">
-        <Building2 className="h-3.5 w-3.5" />
-        B2B
-      </span>
-      <h1 className="mt-2 font-display text-3xl font-bold tracking-tight">{t("b2b.title")}</h1>
-      <p className="mt-1 text-sm text-muted-foreground">{t("b2b.subtitle")}</p>
-
-      {sent ? (
-        <div className="mt-8 rounded-lg border border-border bg-card p-8 text-center">
-          <p className="font-display text-lg font-semibold">{t("b2b.success")}</p>
+    <div>
+      <section className="border-b border-border">
+        <div className="technical-grid mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:py-20">
+          <span className="tech-label flex items-center gap-2 text-primary">
+            <Building2 className="h-3.5 w-3.5" />
+            REJENDARI / B2B
+          </span>
+          <h1 className="mt-5 max-w-3xl font-display text-5xl font-semibold leading-[0.94] tracking-[-0.06em] sm:text-6xl">{t("b2b.title")}</h1>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">{t("b2b.subtitle")}</p>
         </div>
-      ) : (
-        <form onSubmit={submit} className="mt-8 space-y-4">
+      </section>
+
+      <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[0.65fr_1.35fr] lg:py-14">
+        <aside className="h-fit border border-border bg-card p-6 lg:sticky lg:top-40">
+          <p className="tech-label text-primary">Professional account</p>
+          <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
+            <li>Volume and recurring-order discussion.</li>
+            <li>Technical product sourcing for professional teams.</li>
+            <li>Japanese specialist catalog with EU support context.</li>
+            <li>No fictional discounts before supplier terms are confirmed.</li>
+          </ul>
+        </aside>
+
+        {sent ? (
+          <div className="border border-border bg-card p-10 text-center">
+            <p className="font-display text-2xl font-semibold">{t("b2b.success")}</p>
+          </div>
+        ) : (
+          <form onSubmit={submit} className="space-y-5 border border-border bg-card p-6 sm:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-1.5">
               <Label htmlFor="company">{t("b2b.company")} *</Label>
@@ -107,11 +122,12 @@ function B2BPage() {
             <Label htmlFor="message">{t("b2b.message")}</Label>
             <Textarea id="message" rows={4} value={form.message} onChange={set("message")} />
           </div>
-          <Button type="submit" size="lg" disabled={submitting} className="w-full sm:w-auto">
+          <Button type="submit" size="lg" disabled={submitting} className="w-full rounded-none sm:w-auto">
             {t("b2b.submit")}
           </Button>
         </form>
-      )}
+        )}
+      </div>
     </div>
   );
 }
