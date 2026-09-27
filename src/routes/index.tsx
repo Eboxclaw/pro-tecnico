@@ -199,14 +199,14 @@ function Index() {
             <div>
               <p className="jp-label text-primary">日本の定番 · seleção japonesa</p>
               <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
-                Best sellers, ícones e ferramentas assinatura do Japão.
+                Seis referências japonesas no topo. Sem ruído.
               </h2>
             </div>
             <div className="lg:pb-1">
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-                Aqui a regra é simples: só entram marcas japonesas. Escolhemos uma referência forte por fabricante para
-                evitar repetir a mesma marca e para mostrar melhor a amplitude real do catálogo japonês — aparafusamento,
-                roquetes, corte, medição, eletricidade, grip e ferramentas de resolução de problemas.
+                ANEX, Makita, VESSEL, OLFA, TAJIMA e Ko-ken abrem a seleção com uma referência forte por marca.
+                Depois entram especialistas como Fujiya, ENGINEER, HOZAN e LOBTEX. A secção continua exclusivamente
+                japonesa e sem repetir marcas só para preencher espaço.
               </p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
                 Referências editoriais · não significam stock · país de fabrico continua a ser verificado por SKU
@@ -214,14 +214,14 @@ function Index() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {JAPAN_TOOL_REFERENCES.slice(0, 3).map((tool) => (
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {JAPAN_TOOL_REFERENCES.slice(0, 6).map((tool) => (
               <ReferenceProductCard key={tool.id} tool={tool} featured />
             ))}
           </div>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {JAPAN_TOOL_REFERENCES.slice(3).map((tool) => (
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {JAPAN_TOOL_REFERENCES.slice(6).map((tool) => (
               <ReferenceProductCard key={tool.id} tool={tool} />
             ))}
           </div>
