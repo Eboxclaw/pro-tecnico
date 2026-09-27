@@ -11,9 +11,9 @@ import { ToolGlyph } from "@/components/brand/ToolGlyph";
 export const Route = createFileRoute("/_authenticated/conta")({
   head: () => ({
     meta: [
-      { title: "My account — REJENDARI" },
-      { name: "description", content: "REJENDARI account: points, referrals, draws and orders." },
-      { property: "og:title", content: "My account — REJENDARI" },
+      { title: "A minha conta — REJENDARI" },
+      { name: "description", content: "Conta REJENDARI: pontos, convites, sorteios e encomendas." },
+      { property: "og:title", content: "A minha conta — REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
@@ -106,11 +106,11 @@ function AccountPage() {
           <div className="bg-card p-6">
             <div className="flex items-center gap-2 text-primary">
               <ToolGlyph name="referral" className="h-5 w-5" />
-              <p className="tech-label">Referrals</p>
+              <p className="jp-label">紹介 · Convites</p>
             </div>
             <p className="mt-5 font-display text-5xl font-semibold tracking-[-0.06em]">{data?.referrals.length ?? "—"}</p>
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-              {referralPoints} points earned
+              {referralPoints} pontos ganhos
             </p>
           </div>
 
@@ -129,13 +129,13 @@ function AccountPage() {
           <section className="mt-6 border border-border bg-card p-6 sm:p-8">
             <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
               <div>
-                <p className="tech-label text-primary">Your referral link</p>
+                <p className="jp-label text-primary">紹介リンク · o teu link de convite</p>
                 <h2 className="mt-3 font-display text-2xl font-semibold tracking-[-0.04em]">
-                  Attribution ready to share.
+                  Pronto para partilhar.
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  The link is captured before login. Reward rules are controlled by the active campaign and are posted
-                  to the same points ledger after qualification.
+                  O link é guardado antes do login. As regras da recompensa são definidas pela campanha ativa e os pontos
+                  entram no mesmo saldo depois da qualificação.
                 </p>
               </div>
               <div className="border border-border bg-background p-4">
@@ -143,7 +143,7 @@ function AccountPage() {
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Button variant="secondary" size="sm" onClick={copy}>
                     {copied ? <Check className="mr-2 h-4 w-4" /> : <Copy className="mr-2 h-4 w-4" />}
-                    {copied ? "Copied" : "Copy"}
+                    {copied ? "Copiado" : "Copiar"}
                   </Button>
                   <Button variant="outline" size="sm" onClick={share}>
                     <Share2 className="mr-2 h-4 w-4" />
@@ -176,7 +176,7 @@ function AccountPage() {
                 </li>
               ))
             ) : (
-              <li className="px-5 py-8 text-sm text-muted-foreground">No points activity yet.</li>
+              <li className="px-5 py-8 text-sm text-muted-foreground">Ainda não existe atividade de pontos.</li>
             )}
           </ul>
         </section>
