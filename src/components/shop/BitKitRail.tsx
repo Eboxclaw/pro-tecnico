@@ -6,6 +6,7 @@ export function BitKitRail() {
     ...referencesForFocus("bits"),
     ...referencesForFocus("adapters"),
     ...referencesForFocus("insulated"),
+    ...referencesForFocus("torque"),
   ].filter((tool, index, list) => tool.imageUrl && list.findIndex((entry) => entry.id === tool.id) === index);
 
   const repeated = [...tools, ...tools];
@@ -20,7 +21,7 @@ export function BitKitRail() {
           </h2>
         </div>
         <p className="max-w-xl text-sm leading-6 text-black/58">
-          Bits ultra-curtos, dual-side 1000 V, conversão 3/8″ ↔ 1/4″ e adapters de socket. São estas peças que permitem reduzir ferramentas duplicadas no kit.
+          Bits ultra-curtos, dual-side 1000 V, conversão 3/8″ ↔ 1/4″, adapters de socket e controlo de torque. São estas peças que permitem reduzir ferramentas duplicadas no kit.
         </p>
       </div>
 
