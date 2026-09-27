@@ -14,9 +14,9 @@ import hero from "@/assets/hero-japanese-tools.jpg";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Account — REJENDARI" },
-      { name: "description", content: "Sign in or create a REJENDARI account for orders, points and referrals." },
-      { property: "og:title", content: "Account — REJENDARI" },
+      { title: "Conta — REJENDARI" },
+      { name: "description", content: "Entra ou cria uma conta REJENDARI para encomendas, pontos e convites." },
+      { property: "og:title", content: "Conta — REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
@@ -74,21 +74,21 @@ function AuthPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10" />
         <div className="technical-grid absolute inset-0 opacity-20" />
         <div className="absolute inset-x-0 bottom-0 p-10 xl:p-14">
-          <p className="tech-label text-primary">REJENDARI / Account</p>
+          <p className="jp-label text-primary">会員 · REJENDARI / conta</p>
           <h1 className="mt-5 max-w-xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] text-white xl:text-6xl">
-            One identity for the tools, points and referrals.
+            Uma só conta para ferramentas, pontos e convites.
           </h1>
           <div className="mt-8 grid max-w-xl grid-cols-3 border-y border-white/20 py-4 font-mono text-[9px] uppercase tracking-[0.13em] text-white/60">
-            <span>Orders</span>
-            <span>Points ledger</span>
-            <span>Referral attribution</span>
+            <span>Encomendas</span>
+            <span>Saldo de pontos</span>
+            <span>Atribuição de convites</span>
           </div>
         </div>
       </section>
 
       <section className="flex items-center px-4 py-12 sm:px-10 lg:px-14 xl:px-20">
         <div className="mx-auto w-full max-w-md">
-          <p className="tech-label text-primary">{mode === "in" ? "Sign in" : "Create account"}</p>
+          <p className="jp-label text-primary">{mode === "in" ? "ログイン · entrar" : "新規登録 · criar conta"}</p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.05em]">
             {mode === "in" ? t("auth.title") : t("auth.signUp")}
           </h2>
@@ -98,9 +98,9 @@ function AuthPage() {
             <div className="mt-6 flex gap-3 border border-primary/30 bg-primary/[0.05] p-4">
               <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <div>
-                <p className="tech-label text-primary">Referral captured</p>
+                <p className="jp-label text-primary">紹介 · convite guardado</p>
                 <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                  Code {referralCode} stays attached through registration. Campaign rewards are credited after qualification.
+                  O código {referralCode} mantém-se associado durante o registo. As recompensas da campanha são creditadas depois da qualificação.
                 </p>
               </div>
             </div>
