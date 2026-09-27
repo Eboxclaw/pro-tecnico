@@ -48,6 +48,7 @@ const BRANDS = [
   { label: "LOBSTER / LOBTEX", slug: "LOBSTER" },
   { label: "TONE", slug: "TONE" },
   { label: "KTC", slug: "KTC" },
+  { label: "NEPROS", slug: "NEPROS" },
 ];
 
 const CATEGORIES: Array<{
