@@ -134,6 +134,7 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     evidencePt: "A Z-Series usa roquete de 72 dentes e a Ko-ken destaca a compactação e o baixo esforço de rotação.",
     specPt: "Drive 3/8″ · 178 mm · 72 dentes",
     featured: true,
+    compareGroup: "3-8-ratchet",
   },
 
   {
@@ -929,6 +930,27 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
   },
 
   {
+    id: "nepros-nbr390a",
+    brand: "NEPROS / KTC",
+    brandSlug: "NEPROS",
+    model: "NBR390A",
+    officialCode: "NBR390A",
+    namePt: "Nepros Ratchet Handle 3/8″ · 90 dentes",
+    japanese: "ネプロスラチェット",
+    task: "sockets",
+    categoryPt: "Roquete premium · 3/8″",
+    notePt: "Roquete premium Nepros de cabeça compacta, 90 dentes e arco de 4°, orientado a mecânica profissional.",
+    badge: "Nepros",
+    referenceUrl: "https://ktc.jp/nepros/nbr390a/",
+    imageUrl: "https://ktc.jp/nepros/nbr390a/images/nbr390a.jpg",
+    imageAlt: "Nepros KTC NBR390A 3/8 inch ratchet handle",
+    imageSourceLabel: "Imagem oficial KTC / Nepros",
+    evidencePt: "KTC especifica drive 9,5 mm (3/8″), 90 dentes, avanço de 4°, 180 mm de comprimento e 245 g.",
+    specPt: "Drive 3/8″ · 90 dentes · 4° · 180 mm",
+    storyPt: "Nepros é a interpretação premium da KTC: menos massa na cabeça, acabamento de alto nível e um mecanismo de 90 dentes pensado para espaços apertados.",
+    compareGroup: "3-8-ratchet",
+  },
+  {
     id: "fujiya-3300n-200",
     brand: "FUJIYA",
     brandSlug: "FUJIYA",
@@ -1135,6 +1157,7 @@ export const QUICK_BRANDS = [
   "LOBSTER",
   "TONE",
   "KTC",
+  "NEPROS",
 ] as const;
 
 export function referencesForBrand(brand: string) {
