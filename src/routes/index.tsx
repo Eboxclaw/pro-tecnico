@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { RatchetDriverComparison } from "@/components/shop/RatchetDriverComparison";
 import { SmartKitShowcase } from "@/components/shop/SmartKitShowcase";
+import { BitKitRail } from "@/components/shop/BitKitRail";
 import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
@@ -237,6 +238,8 @@ function Index() {
       <RatchetDriverComparison />
 
       <SmartKitShowcase />
+
+      <BitKitRail />
 
       <section className="paper-panel overflow-hidden">
         <div className="mx-auto grid max-w-[1440px] gap-0 lg:grid-cols-2">
