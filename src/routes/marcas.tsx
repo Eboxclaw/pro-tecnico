@@ -10,7 +10,7 @@ export const Route = createFileRoute("/marcas")({
       {
         name: "description",
         content:
-          "VESSEL, Ko-ken, OLFA, LOBSTER / LOBTEX, ANEX, Makita, ENGINEER, Fujiya, Tsunoda, TONE, KTC, Tajima e Silky.",
+          "ANEX, Makita, VESSEL, OLFA, Tajima, Ko-ken, LOBSTER / LOBTEX, ENGINEER, Fujiya, Tsunoda, TONE, KTC e Silky.",
       },
       { property: "og:title", content: "Marcas de ferramenta japonesa — REJENDARI" },
       { property: "og:description", content: "Uma seleção técnica e curada de fabricantes japoneses de ferramenta profissional." },
@@ -22,18 +22,18 @@ export const Route = createFileRoute("/marcas")({
 });
 
 const BRANDS = [
-  { name: "VESSEL", jp: "ドライバー", specialty: "Chaves · bits de impacto · Ball Grip", status: "Destaque REJENDARI" },
-  { name: "KO-KEN", jp: "ソケット", specialty: "Sockets · roquetes · drive tools", status: "Destaque REJENDARI" },
-  { name: "OLFA", jp: "カッター", specialty: "Lâminas profissionais · cutters", status: "Destaque REJENDARI" },
-  { name: "LOBSTER / LOBTEX", jp: "作業工具", specialty: "Rebitagem · chaves · ferramenta manual", status: "Destaque REJENDARI" },
   { name: "ANEX", jp: "締結工具", specialty: "Precisão · bit holders · offset · ESD", status: "Destaque REJENDARI" },
-  { name: "MAKITA", jp: "電動工具", specialty: "Ecossistema sem fios 18V+", status: "Destaque 18V" },
+  { name: "MAKITA", jp: "電動工具", specialty: "Máquinas profissionais · plataforma 18V", status: "Destaque REJENDARI" },
+  { name: "VESSEL", jp: "ドライバー", specialty: "Chaves · bits de impacto · Ball Grip", status: "Destaque REJENDARI" },
+  { name: "OLFA", jp: "カッター", specialty: "Cutters · lâminas profissionais", status: "Destaque REJENDARI" },
+  { name: "TAJIMA", jp: "測定・切削", specialty: "Medição · marcação · corte · obra", status: "Destaque REJENDARI" },
+  { name: "KO-KEN", jp: "ソケット", specialty: "Sockets · roquetes · drive tools", status: "Destaque REJENDARI" },
+  { name: "LOBSTER / LOBTEX", jp: "作業工具", specialty: "Rebitagem · chaves · ferramenta manual", status: "Especialista japonês" },
   { name: "ENGINEER", jp: "精密工具", specialty: "Extração · precisão · alicates", status: "Especialista japonês" },
   { name: "FUJIYA", jp: "プライヤー", specialty: "Alicates · corte · eletricidade", status: "Especialista japonês" },
   { name: "TSUNODA", jp: "作業工具", specialty: "Alicates · grip de precisão", status: "Especialista japonês" },
   { name: "TONE", jp: "整備工具", specialty: "Sockets · torque · mecânica", status: "Especialista japonês" },
   { name: "KTC", jp: "整備工具", specialty: "Automóvel · sockets · assistência", status: "Especialista japonês" },
-  { name: "TAJIMA", jp: "測定・切削", specialty: "Medição · marcação · corte · obra", status: "Especialista japonês" },
   { name: "SILKY", jp: "鋸", specialty: "Serras profissionais · corte arborista", status: "Especialista japonês" },
 ];
 
