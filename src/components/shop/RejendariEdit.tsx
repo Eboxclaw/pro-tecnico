@@ -18,7 +18,7 @@ export function RejendariEdit() {
   if (!lead) return null;
 
   return (
-    <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+    <section className="section-reveal mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
       <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
         <div>
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-primary">THE REJENDARI EDIT · 今週の選定</p>
