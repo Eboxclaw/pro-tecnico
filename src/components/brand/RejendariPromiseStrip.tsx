@@ -26,7 +26,7 @@ const ITEMS = [
 
 export function RejendariPromiseStrip() {
   return (
-    <section className="border-y border-border bg-[#171613] text-[#f5f0e5]">
+    <section className="section-reveal border-y border-border bg-[#171613] text-[#f5f0e5]">
       <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
         <div className="flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
