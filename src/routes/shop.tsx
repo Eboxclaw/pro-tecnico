@@ -106,7 +106,7 @@ function ShopPage() {
               <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">{t("shop.subtitle")}</p>
             </div>
             <p className="max-w-md border-l border-primary/65 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-              Quando o país de fabrico está confirmado, indicamo-lo na ficha da referência.
+              Usamos medidas métricas e unidades SI/UE sempre que fazem sentido: mm, cm, m, g, kg, °C, N·m e bar. Encaixes técnicos como 1/4″, 3/8″ e 1/2″ mantêm a designação usada pela ferramenta.
             </p>
           </div>
         </div>
