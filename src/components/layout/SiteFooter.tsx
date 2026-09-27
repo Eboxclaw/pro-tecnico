@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
+import { RejendariLogo } from "@/components/brand/RejendariLogo";
 
 const JAPANESE_BRANDS = [
   "VESSEL",
@@ -36,7 +37,7 @@ export function SiteFooter() {
 
       <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_0.7fr_0.7fr_0.9fr]">
         <div>
-          <p className="font-display text-2xl font-semibold tracking-[-0.04em]">REJENDARI</p>
+          <RejendariLogo inverted className="max-w-[270px]" />
           <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">{t("footer.tagline")}</p>
           <p className="mt-7 max-w-md border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
             A origem japonesa da marca e o país de fabrico são dados diferentes. Confirmamos o país de
