@@ -537,6 +537,8 @@
   --product-y: 0px;
   --product-rx: 0deg;
   --product-ry: 0deg;
+  --product-back-x: 0px;
+  --product-back-y: 0px;
   perspective: 900px;
   transform-style: preserve-3d;
 }
@@ -565,14 +567,14 @@
 
 .smart-product-ghost {
   transform:
-    translate3d(calc(var(--product-x) * -0.45), calc(var(--product-y) * -0.45), 0)
+    translate3d(var(--product-back-x), var(--product-back-y), 0)
     scale(1.045);
   transition: transform 180ms ease-out;
   will-change: transform;
 }
 
 .smart-product-orbit {
-  transform: translate3d(calc(var(--product-x) * -0.25), calc(var(--product-y) * -0.25), 0);
+  transform: translate3d(var(--product-back-x), var(--product-back-y), 0);
   transition: transform 180ms ease-out;
 }
 
