@@ -12,12 +12,12 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/b2b")({
   head: () => ({
     meta: [
-      { title: "Conta profissional (B2B) — Rejendarī" },
+      { title: "Conta profissional (B2B) — REJENDARI" },
       {
         name: "description",
-        content: "Pedido de conta profissional Rejendarī: preços por volume, orçamentos e apoio técnico para empresas.",
+        content: "Pedido de conta profissional REJENDARI: preços por volume, orçamentos e apoio técnico para empresas.",
       },
-      { property: "og:title", content: "Conta profissional (B2B) — Rejendarī" },
+      { property: "og:title", content: "Conta profissional (B2B) — REJENDARI" },
       {
         property: "og:description",
         content: "Conta dedicada, preços por volume e apoio técnico para empresas e profissionais.",
@@ -66,9 +66,9 @@ function B2BPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:py-20">
-          <span className="tech-label flex items-center gap-2 text-primary">
+          <span className="jp-label flex items-center gap-2 text-primary">
             <Building2 className="h-3.5 w-3.5" />
-            REJENDARI / B2B
+            法人 · REJENDARI / B2B
           </span>
           <h1 className="mt-5 max-w-3xl font-display text-5xl font-semibold leading-[0.94] tracking-[-0.06em] sm:text-6xl">{t("b2b.title")}</h1>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">{t("b2b.subtitle")}</p>
@@ -77,12 +77,12 @@ function B2BPage() {
 
       <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[0.65fr_1.35fr] lg:py-14">
         <aside className="h-fit border border-border bg-card p-6 lg:sticky lg:top-40">
-          <p className="tech-label text-primary">Professional account</p>
+          <p className="jp-label text-primary">法人向け · conta profissional</p>
           <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
-            <li>Volume and recurring-order discussion.</li>
-            <li>Technical product sourcing for professional teams.</li>
-            <li>Japanese specialist catalog with EU support context.</li>
-            <li>No fictional discounts before supplier terms are confirmed.</li>
+            <li>Condições para volume e encomendas recorrentes.</li>
+            <li>Procurement técnico para equipas profissionais.</li>
+            <li>Seleção japonesa especializada com contexto de suporte europeu.</li>
+            <li>Sem descontos fictícios antes de confirmar as condições do fornecedor.</li>
           </ul>
         </aside>
 
