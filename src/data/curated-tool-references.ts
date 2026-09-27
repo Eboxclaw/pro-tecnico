@@ -16,6 +16,9 @@ export type CuratedToolReference = {
   evidencePt?: string;
   specPt?: string;
   featured?: boolean;
+  storyPt?: string;
+  compareGroup?: string;
+  officialCode?: string;
 };
 
 export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
@@ -37,6 +40,7 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     evidencePt: "A ANEX especifica H8 a H21 mm no conjunto e torque máximo de 230 N·m.",
     specPt: "17 mm · 230 N·m · H8–H21",
     featured: true,
+    storyPt: "Uma ferramenta escolhida porque resolve um problema real de trabalho sem depender de um conjunto maior do que o necessário.",
   },
   {
     id: "makita-dtd172rtj",
@@ -197,20 +201,168 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     specPt: "+2 × 100 mm · 1000 V",
   },
   {
-    id: "anex-abrs5-01",
+    id: "anex-abrs5-2065",
     brand: "ANEX",
     brandSlug: "ANEX",
-    model: "ABRS5-01",
-    namePt: "Black Ryujin Bits Slim · 5 peças",
+    model: "ABRS5-2065",
+    officialCode: "ABRS5-2065",
+    namePt: "Black Ryujin Bits Slim +2×65 · 5 peças",
     japanese: "黒龍靭ビット",
     task: "fastening",
     categoryPt: "Bits impacto · slim",
-    notePt: "Conjunto de bits slim +2 para impacto, pensado para manter boa visibilidade da ponta e resistir a trabalho repetido.",
+    notePt: "Cinco bits +2 slim de 65 mm para impacto, com ponta mais visível e foco em durabilidade.",
     badge: "Impacto",
-    referenceUrl: "https://www.anextool.co.jp/item/abrs5-01/",
-    imageAlt: "ANEX Black Ryujin slim impact bit set",
-    evidencePt: "A ANEX lista dureza máxima HRC62.5, encaixe 6,35 mm e compatibilidade 18 V / 40 V.",
-    specPt: "6,35 mm · HRC62.5 · 65–110 mm",
+    referenceUrl: "https://www.anextool.co.jp/item/abrs5-2065/",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ABRS5-2065-1-768x768.jpg",
+    imageAlt: "ANEX ABRS5-2065 Black Ryujin slim impact bits",
+    imageSourceLabel: "Imagem oficial ANEX",
+    evidencePt: "ANEX indica HRC62.5, haste hexagonal 6,35 mm, compatibilidade 18 V / 40 V e fabrico no Japão.",
+    specPt: "+2 × 65 mm · 5 peças · 6,35 mm",
+    storyPt: "É o consumível inteligente da seleção: em vez de carregar muitos comprimentos pouco usados, começa-se pelo +2 de 65 mm, uma das medidas mais úteis em montagem e instalação.",
+  },
+
+  {
+    id: "anex-370",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "370",
+    officialCode: "370",
+    namePt: "T-Handle Ratchet Driver",
+    japanese: "Ｔ型ラチェットドライバー",
+    task: "fastening",
+    categoryPt: "Roquete de bits · T-handle",
+    notePt: "Punho em T para aplicar mais força, com roquete e armazenamento de bits curtos no próprio corpo.",
+    badge: "Smart handle",
+    referenceUrl: "https://www.anextool.co.jp/item/370/",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/370_a02-768x768.jpg",
+    imageAlt: "ANEX 370 T-handle ratchet screwdriver",
+    imageSourceLabel: "Imagem oficial ANEX",
+    evidencePt: "ANEX especifica encaixe hexagonal 6,35 mm, 10 dentes, bits combinados +/− e peso de 165 g.",
+    specPt: "6,35 mm · 10 dentes · 165 g",
+    storyPt: "Um punho em T, roquete e bits guardados no próprio corpo substituem várias ferramentas separadas quando o objetivo é força e rapidez.",
+    compareGroup: "ratchet-driver",
+  },
+  {
+    id: "anex-307-s1",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "307-S1",
+    officialCode: "307-S1",
+    namePt: "MiniSta72 Ratchet Driver Set",
+    japanese: "ミニスタ72",
+    task: "fastening",
+    categoryPt: "Kit inteligente · 28 perfis",
+    notePt: "Mini roquete 72 dentes com bits ultra-curtos, holder magnético e sockets métricos num único estojo compacto.",
+    badge: "Smart kit",
+    referenceUrl: "https://www.anextool.co.jp/item/307-s1/",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/307-S1_1-768x768.jpg",
+    imageAlt: "ANEX 307-S1 MiniSta72 ratchet screwdriver set",
+    imageSourceLabel: "Imagem oficial ANEX",
+    evidencePt: "ANEX declara 72 dentes, 28 tamanhos de parafuso cobertos, sockets H5 a H13 e fabrico no Japão.",
+    specPt: "72 dentes · 28 perfis · H5–H13",
+    storyPt: "Este é exatamente o tipo de conjunto que queremos: menos cabos e chaves duplicadas, mais cobertura útil através de um único mecanismo compacto.",
+  },
+  {
+    id: "vessel-td6816mg",
+    brand: "VESSEL",
+    brandSlug: "VESSEL",
+    model: "TD-6816MG",
+    officialCode: "247025",
+    namePt: "Ratchet Screwdriver · 16 bits",
+    japanese: "ラチェットドライバー",
+    task: "fastening",
+    categoryPt: "Roquete de bits · 16 perfis",
+    notePt: "Punho clássico com roquete 72 dentes, armazenamento interno e 16 bits PH, SL, HEX e Torx tamper-resistant.",
+    badge: "72 dentes",
+    referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/247025",
+    imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD6816MG_d.jpg",
+    imageAlt: "VESSEL TD-6816MG ratchet screwdriver with 16 bits",
+    imageSourceLabel: "Imagem oficial VESSEL",
+    evidencePt: "VESSEL especifica 72 dentes, passo de 5°, 177 mm e 16 tipos de bit em encaixe 6,35 mm.",
+    specPt: "72 dentes · 177 mm · 16 bits",
+    storyPt: "É a abordagem VESSEL ao kit compacto: o punho continua a parecer uma chave normal, mas transporta dentro dele a variedade que normalmente exigiria uma bolsa de bits.",
+    compareGroup: "ratchet-driver",
+  },
+  {
+    id: "vessel-tdbs23",
+    brand: "VESSEL",
+    brandSlug: "VESSEL",
+    model: "TD-BS23",
+    officialCode: "251447",
+    namePt: "Ultra-short Bit Set · 10 peças",
+    japanese: "超短ビット",
+    task: "fastening",
+    categoryPt: "Bits PH / SL / HEX",
+    notePt: "Dez bits ultra-curtos de 18 mm com holders identificados, pensados para mini-roquetes e acesso muito baixo.",
+    badge: "Bits compactos",
+    referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/251447",
+    imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TDBS23_d1.jpg",
+    imageAlt: "VESSEL TD-BS23 ultra-short bit set",
+    imageSourceLabel: "Imagem oficial VESSEL",
+    evidencePt: "O conjunto inclui PH1/2/3, SL4/6 e HEX 2,5/3/4/5/6 em bits de 18 mm.",
+    specPt: "10 peças · 18 mm · PH/SL/HEX",
+    storyPt: "Em vez de um estojo grande de bits longos, este conjunto existe para quando cada milímetro de altura conta.",
+  },
+  {
+    id: "vessel-9836",
+    brand: "VESSEL",
+    brandSlug: "VESSEL",
+    model: "9836",
+    officialCode: "125498",
+    namePt: "Precision Screwdriver · 36 bits",
+    japanese: "精密ドライバー",
+    task: "precision",
+    categoryPt: "Precisão · eletrónica",
+    notePt: "Punho de precisão em liga de alumínio com 36 bits e estojo vertical compacto.",
+    badge: "36 bits",
+    referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/125498",
+    imageUrl: "https://www.vessel.co.jp/userfiles/handtools/9836_02.jpg",
+    imageAlt: "VESSEL 9836 precision screwdriver 36 bit set",
+    imageSourceLabel: "Imagem oficial VESSEL",
+    evidencePt: "VESSEL lista 36 bits, haste H4, 94 mm de comprimento e punho de liga de alumínio.",
+    specPt: "36 bits · H4 · 94 mm",
+    storyPt: "Um único punho de precisão cobre eletrónica, PCs e pequenos equipamentos sem obrigar a comprar uma gaveta inteira de microchaves.",
+  },
+  {
+    id: "ktc-dbr16",
+    brand: "KTC",
+    brandSlug: "KTC",
+    model: "DBR16",
+    officialCode: "DBR16",
+    namePt: "Ratchet Screwdriver · multi-bit",
+    japanese: "ラチェットドライバ",
+    task: "fastening",
+    categoryPt: "Roquete de bits · KTC",
+    notePt: "Roquete reversível que também bloqueia como chave normal, com bits guardados no eixo e no topo do punho.",
+    badge: "KTC",
+    referenceUrl: "https://ktc.jp/catalog/index-category/category-list/dbr16",
+    imageUrl: "https://ktc.jp/files/catalog/dbr16.jpg",
+    imageAlt: "KTC DBR16 ratchet screwdriver",
+    imageSourceLabel: "Imagem oficial KTC",
+    evidencePt: "KTC inclui PH/SL, HEX 1,5–8 mm e Torx tamper-resistant T15H–T40H; peso 340 g.",
+    specPt: "PH/SL · HEX 1,5–8 · Torx T15H–T40H",
+    storyPt: "A KTC leva a lógica do kit integrado mais longe no próprio punho: bits de mecânica e manutenção ficam guardados na ferramenta, prontos para trocar.",
+    compareGroup: "ratchet-driver",
+  },
+  {
+    id: "ktc-dbrm11",
+    brand: "KTC",
+    brandSlug: "KTC",
+    model: "DBRM11",
+    officialCode: "DBRM11",
+    namePt: "Mini Ratchet Driver · 10 bits",
+    japanese: "ミニラチェットドライバ",
+    task: "fastening",
+    categoryPt: "Mini roquete · espaços apertados",
+    notePt: "Mini roquete KTC para zonas de pouca altura, com PH, SL e HEX métricos.",
+    badge: "Compacto",
+    referenceUrl: "https://ktc.jp/catalog/index-category/category-list/dbrm11",
+    imageUrl: "https://ktc.jp/files/catalog/dbrm11.jpg",
+    imageAlt: "KTC DBRM11 mini ratchet screwdriver",
+    imageSourceLabel: "Imagem oficial KTC",
+    evidencePt: "KTC lista 115 g e bits PH0/1/2/3, SL5/6 e HEX 3/4/5/6 mm.",
+    specPt: "115 g · 10 bits · HEX 3–6 mm",
+    storyPt: "É o tipo de ferramenta que reduz o kit de campo: um corpo muito curto e dez perfis úteis em vez de vários stubbies separados.",
   },
 
   {
@@ -492,6 +644,7 @@ export const QUICK_BRANDS = [
   "HOZAN",
   "LOBSTER",
   "TONE",
+  "KTC",
 ] as const;
 
 export function referencesForBrand(brand: string) {
@@ -500,4 +653,16 @@ export function referencesForBrand(brand: string) {
 
 export function referencesForTask(task: string) {
   return JAPAN_TOOL_REFERENCES.filter((tool) => tool.task === task);
+}
+
+export function referenceById(id: string) {
+  return JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id);
+}
+
+export function similarReferences(tool: CuratedToolReference, limit = 4) {
+  const compared = tool.compareGroup
+    ? JAPAN_TOOL_REFERENCES.filter((item) => item.compareGroup === tool.compareGroup && item.id !== tool.id)
+    : [];
+  const sameTask = JAPAN_TOOL_REFERENCES.filter((item) => item.task === tool.task && item.id !== tool.id && !compared.some((x) => x.id === item.id));
+  return [...compared, ...sameTask].slice(0, limit);
 }
