@@ -49,8 +49,8 @@ export function ReferenceProductCard({
 
             <div className="pointer-events-none absolute inset-x-[14%] bottom-5 h-7 rounded-[50%] bg-black/10 blur-xl" />
             <div className="absolute inset-x-3 bottom-3 z-[2] flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.14em] text-black/42">
-              <span>{tool.imageSourceLabel ?? "Imagem de referência"}</span>
-              <span>RJD / JP</span>
+              <span>{tool.categoryPt}</span>
+              <span>日本工具</span>
             </div>
           </div>
 
@@ -73,7 +73,7 @@ export function ReferenceProductCard({
             )}
 
             <div className="mt-auto flex items-center justify-between gap-4 border-t border-border pt-4">
-              <span className="text-xs font-medium">Ver referência</span>
+              <span className="text-xs font-medium">Ver ficha oficial</span>
               <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
             </div>
           </div>
@@ -91,7 +91,7 @@ export function ReferenceProductCard({
           <div className="relative">
             <p className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[#b33f2d]">
               <Sparkles className="h-3 w-3" />
-              porque está aqui
+              porque recomendamos
             </p>
             <p className="mt-3 font-display text-xl font-semibold tracking-[-0.04em]">{tool.brand} {tool.model}</p>
             <p className="mt-2 text-xs leading-5 text-black/62">{tool.notePt}</p>
@@ -99,7 +99,7 @@ export function ReferenceProductCard({
               <p className="mt-4 border-t border-black/10 pt-4 text-[11px] leading-5 text-black/50">{tool.evidencePt}</p>
             )}
             <p className="mt-4 font-mono text-[8px] uppercase tracking-[0.13em] text-black/40">
-              hover = contexto · click = fabricante
+              abrir ficha oficial do fabricante
             </p>
           </div>
         </div>
