@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { PackageSearch, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, PackageSearch, SlidersHorizontal } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
@@ -106,7 +106,7 @@ function ShopPage() {
               <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">{t("shop.subtitle")}</p>
             </div>
             <p className="max-w-md border-l border-primary/65 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-              Origem da marca e país de fabrico são campos separados. “Made in Japan” só aparece quando estiver confirmado para esse SKU.
+              Quando o país de fabrico está confirmado, indicamo-lo na ficha da referência.
             </p>
           </div>
         </div>
@@ -207,14 +207,18 @@ function ShopPage() {
                   <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-muted-foreground">{t("shop.emptyHint")}</p>
                 </div>
               </div>
-              <div className="border-t border-border bg-surface p-8 lg:border-l lg:border-t-0">
-                <p className="jp-label text-primary">掲載基準 · o que aparece aqui</p>
-                <ul className="mt-5 space-y-4 text-sm leading-6 text-muted-foreground">
-                  <li>Imagens de produto aprovadas pelo fornecedor, não renders inventados.</li>
-                  <li>SKU / EAN / dimensões / compatibilidade antes de copy de marketing.</li>
-                  <li>País de fabrico apenas quando estiver verificado para a referência exata.</li>
-                  <li>A apresentação especial de produto é ativada por tags no Shopify.</li>
-                </ul>
+              <div className="flex flex-col justify-center border-t border-border bg-surface p-8 lg:border-l lg:border-t-0">
+                <p className="jp-label text-primary">相談 · ajuda a escolher</p>
+                <h2 className="mt-3 font-display text-2xl font-semibold">Não encontraste a referência certa?</h2>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  Diz-nos a marca, o modelo ou a tarefa. Podemos ajudar a identificar uma opção compatível ou preparar uma proposta profissional.
+                </p>
+                <Button className="mt-6 w-fit rounded-none" asChild>
+                  <Link to="/b2b">
+                    Pedir ajuda
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
             </div>
           ) : filtered.length === 0 ? (
