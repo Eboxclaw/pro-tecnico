@@ -40,9 +40,9 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     notePt: "O TD173D representa bem a Makita japonesa: corpo compacto, equilíbrio revisto, cabeça mais estreita e iluminação LED em anel para trabalho profissional diário.",
     badge: "Flagship 18V",
     referenceUrl: "https://www.makita.co.jp/product/detail/?model=TD173D",
-    imageUrl: "https://www.makita.co.jp/app/img/specialcorp/TD173D_HP_im_PC.jpg?20240327=",
+    imageUrl: "https://www.makita.co.th/images/productnewv2/6386365338582709062377.jpg",
     imageAlt: "Makita TD173D 18V cordless impact driver",
-    imageSourceLabel: "Imagem oficial Makita",
+    imageSourceLabel: "Imagem de produto Makita",
     evidencePt: "A Makita apresentou o TD173D como modelo flagship 18V, com 111 mm de comprimento e iluminação LED em anel.",
   },
   {
@@ -85,9 +85,9 @@ export const JAPAN_TOOL_REFERENCES: CuratedToolReference[] = [
     notePt: "A TAJIMA deve entrar no topo pela medição e layout. O GS LOCK tem a presença visual e a função de obra que tornam a marca imediatamente compreensível.",
     badge: "Medição / obra",
     referenceUrl: "https://www.tajimatool.com/product/gs-lock/",
-    imageUrl: "https://www.tajimatool.com/wp-content/uploads/2018/06/GS25BW_3.jpg",
+    imageUrl: "https://www.equipementpolar.com/cdn/shop/files/GS25BW_1_grande.jpg?v=1746573657",
     imageAlt: "TAJIMA GS LOCK GS-25BW tape measure",
-    imageSourceLabel: "Imagem oficial TAJIMA",
+    imageSourceLabel: "Imagem de referência TAJIMA",
     evidencePt: "A GS LOCK combina fita extra espessa, proteção do gancho e ponto de tether de segurança.",
   },
   {
