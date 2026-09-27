@@ -736,6 +736,34 @@ export function referencesForTask(task: string) {
   return JAPAN_TOOL_REFERENCES.filter((tool) => tool.task === task);
 }
 
+export const QUICK_FOCUS = [
+  {
+    id: "bits",
+    label: "Bits & pontas",
+    jp: "ビット",
+    ids: ["anex-abrs5-2065", "anex-abrs5-01", "vessel-tdbs21", "vessel-tdbs22", "vessel-tdbs23", "vessel-tx11"],
+  },
+  {
+    id: "ratchet",
+    label: "Ratchet screwdrivers",
+    jp: "ラチェット",
+    ids: ["anex-370", "anex-307-s1", "anex-525", "vessel-td6816mg", "vessel-900rt-7p", "vessel-td24", "ktc-dbr16", "ktc-dbrm11"],
+  },
+  {
+    id: "smart-kit",
+    label: "Kits inteligentes",
+    jp: "スマートキット",
+    ids: ["anex-307-s1", "vessel-td6816mg", "vessel-mr36", "vessel-9836", "ktc-dbr16", "ktc-dbrm11"],
+  },
+] as const;
+
+export function referencesForFocus(focus: string) {
+  const group = QUICK_FOCUS.find((item) => item.id === focus);
+  if (!group) return JAPAN_TOOL_REFERENCES;
+  const ids = new Set<string>(group.ids);
+  return JAPAN_TOOL_REFERENCES.filter((tool) => ids.has(tool.id));
+}
+
 export function referenceById(id: string) {
   return JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id);
 }
