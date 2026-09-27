@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ShoppingCart, User, LogOut } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+import { Gift, LogOut, ShoppingBag, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useT, useLocale, type Locale } from "@/lib/i18n";
 import { useCartStore } from "@/stores/cartStore";
 import { supabase } from "@/integrations/supabase/client";
 import { CartDrawer } from "@/components/shop/CartDrawer";
+import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,6 +19,16 @@ const LANGS: { id: Locale; label: string }[] = [
   { id: "pt", label: "PT" },
   { id: "en", label: "EN" },
   { id: "es", label: "ES" },
+];
+
+const CATEGORIES: Array<{ label: string; task: string; icon: ToolGlyphName }> = [
+  { label: "Precision & Electronics", task: "precision", icon: "precision" },
+  { label: "Drivers & Bits", task: "fastening", icon: "driver" },
+  { label: "Ratchets & Sockets", task: "sockets", icon: "socket" },
+  { label: "Pliers & Wrenches", task: "grip", icon: "grip" },
+  { label: "Cutting & Blades", task: "cutting", icon: "cut" },
+  { label: "HVAC / Installation", task: "hvac", icon: "hvac" },
+  { label: "Power Tools 18V+", task: "power", icon: "power" },
 ];
 
 export function SiteHeader() {
@@ -41,61 +51,86 @@ export function SiteHeader() {
     return () => sub.subscription.unsubscribe();
   }, [navigate]);
 
-  const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const nav = [
     { to: "/shop", label: t("nav.shop") },
+    { to: "/marcas", label: t("nav.brands") },
     { to: "/packs", label: t("nav.packs") },
     { to: "/pontos", label: t("nav.points") },
-    { to: "/marcas", label: t("nav.brands") },
     { to: "/b2b", label: t("nav.b2b") },
   ] as const;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Rejendarī" className="h-9 w-auto rounded-sm" />
+    <header className="sticky top-0 z-50 border-b border-border bg-background/94 backdrop-blur-xl supports-[backdrop-filter]:bg-background/82">
+      <div className="border-b border-border/70 bg-black/20">
+        <div className="mx-auto flex h-7 max-w-[1440px] items-center justify-between px-4 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:px-6">
+          <span>Curated in Portugal · Japanese professional tools</span>
+          <span className="hidden sm:inline">Brand origin ≠ manufacturing origin · verified per SKU</span>
+        </div>
+      </div>
+
+      <div className="mx-auto flex h-[70px] max-w-[1440px] items-center gap-5 px-4 sm:px-6">
+        <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="REJENDARI">
+          <img
+            src={logo}
+            alt="Rejendarī"
+            className="h-10 w-auto rounded-sm transition-transform duration-300 group-hover:scale-[1.03]"
+          />
+          <span className="hidden border-l border-border pl-3 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground xl:block">
+            tools worth
+            <br />
+            knowing
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground [&.active]:text-foreground"
+              className="relative px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
               activeProps={{ className: "text-foreground" }}
             >
               {item.label}
+              <span className="absolute inset-x-3 -bottom-[24px] h-px scale-x-0 bg-primary transition-transform [.active_&]:scale-x-100" />
             </Link>
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-1.5">
+          <Link
+            to="/pontos"
+            className="hidden items-center gap-2 rounded-md border border-border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground md:flex"
+          >
+            <Gift className="h-3.5 w-3.5 text-primary" />
+            Points / referrals
+          </Link>
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="font-mono text-xs tracking-widest">
+              <Button variant="ghost" size="sm" className="font-mono text-[10px] tracking-[0.16em]">
                 {locale.toUpperCase()}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              {LANGS.map((l) => (
+              {LANGS.map((lang) => (
                 <DropdownMenuItem
-                  key={l.id}
-                  onClick={() => setLocale(l.id)}
-                  className={l.id === locale ? "bg-secondary" : ""}
+                  key={lang.id}
+                  onClick={() => setLocale(lang.id)}
+                  className={lang.id === locale ? "bg-secondary" : ""}
                 >
-                  {l.label}
+                  {lang.label}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
 
           {signedIn ? (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-0.5">
               <Button variant="ghost" size="icon" aria-label={t("nav.account")} asChild>
                 <Link to="/conta">
-                  <User className="h-5 w-5" />
+                  <User className="h-4.5 w-4.5" />
                 </Link>
               </Button>
               <Button
@@ -104,22 +139,22 @@ export function SiteHeader() {
                 aria-label={t("nav.signOut")}
                 onClick={() => supabase.auth.signOut()}
               >
-                <LogOut className="h-5 w-5" />
+                <LogOut className="h-4.5 w-4.5" />
               </Button>
             </div>
           ) : (
-            <Button variant="ghost" size="sm" asChild>
+            <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
               <Link to="/auth">{t("nav.signIn")}</Link>
             </Button>
           )}
 
           <CartDrawer
             trigger={
-              <Button variant="outline" size="sm" className="relative gap-2">
-                <ShoppingCart className="h-4 w-4" />
-                <span className="hidden sm:inline">{t("common.cart")}</span>
+              <Button variant="outline" size="sm" className="relative gap-2 border-border bg-transparent">
+                <ShoppingBag className="h-4 w-4" />
+                <span className="hidden xl:inline">{t("common.cart")}</span>
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 font-mono text-xs font-bold text-primary-foreground">
+                  <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 font-mono text-[10px] font-bold text-primary-foreground">
                     {totalItems}
                   </span>
                 )}
@@ -129,16 +164,40 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <nav className="flex items-center gap-1 overflow-x-auto border-t border-border px-4 py-2 md:hidden">
+      <div className="border-t border-border/70">
+        <div className="mx-auto flex max-w-[1440px] items-stretch overflow-x-auto px-2 sm:px-4">
+          {CATEGORIES.map((category) => (
+            <Link
+              key={category.task}
+              to="/shop"
+              search={{ task: category.task }}
+              className="group flex min-w-max items-center gap-2.5 border-r border-border/60 px-3 py-2.5 text-[11px] text-muted-foreground transition-colors first:border-l hover:bg-secondary/70 hover:text-foreground xl:flex-1 xl:justify-center"
+            >
+              <ToolGlyph
+                name={category.icon}
+                className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary"
+              />
+              <span>{category.label}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <nav className="flex items-center gap-1 overflow-x-auto border-t border-border/60 px-4 py-2 lg:hidden">
         {nav.map((item) => (
           <Link
             key={item.to}
             to={item.to}
-            className="whitespace-nowrap rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
+            className="whitespace-nowrap px-2.5 py-1 text-xs text-muted-foreground hover:text-foreground"
           >
             {item.label}
           </Link>
         ))}
+        {!signedIn && (
+          <Link to="/auth" className="whitespace-nowrap px-2.5 py-1 text-xs text-primary">
+            {t("nav.signIn")}
+          </Link>
+        )}
       </nav>
     </header>
   );
