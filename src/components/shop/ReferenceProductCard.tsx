@@ -64,6 +64,11 @@ export function ReferenceProductCard({
               {tool.namePt}
             </h3>
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">{tool.categoryPt}</p>
+            {tool.specPt && (
+              <p className="mt-3 inline-flex w-fit border border-border bg-background px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-foreground">
+                {tool.specPt}
+              </p>
+            )}
             <p className="mt-4 text-[13px] leading-6 text-muted-foreground">{tool.notePt}</p>
 
             {tool.evidencePt && (
