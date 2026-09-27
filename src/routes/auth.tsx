@@ -76,12 +76,12 @@ function AuthPage() {
         <div className="absolute inset-x-0 bottom-0 p-10 xl:p-14">
           <p className="jp-label text-primary">会員 · REJENDARI / conta</p>
           <h1 className="mt-5 max-w-xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] text-white xl:text-6xl">
-            Uma só conta para ferramentas, pontos e convites.
+            Uma conta para compras, pontos e vantagens.
           </h1>
           <div className="mt-8 grid max-w-xl grid-cols-3 border-y border-white/20 py-4 font-mono text-[9px] uppercase tracking-[0.13em] text-white/60">
             <span>Encomendas</span>
             <span>Saldo de pontos</span>
-            <span>Atribuição de convites</span>
+            <span>Convites e vantagens</span>
           </div>
         </div>
       </section>
@@ -98,9 +98,9 @@ function AuthPage() {
             <div className="mt-6 flex gap-3 border border-primary/30 bg-primary/[0.05] p-4">
               <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <div>
-                <p className="jp-label text-primary">紹介 · convite guardado</p>
+                <p className="jp-label text-primary">紹介 · convite reconhecido</p>
                 <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                  O código {referralCode} mantém-se associado durante o registo. As recompensas da campanha são creditadas depois da qualificação.
+                  O convite {referralCode} fica associado à tua conta. Se existir uma campanha elegível, as condições e vantagens aparecem depois do registo.
                 </p>
               </div>
             </div>
