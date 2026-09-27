@@ -6,12 +6,10 @@ import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { JAPAN_TOOL_REFERENCES, JAPAN_REFERENCE_QUEUE } from "@/data/curated-tool-references";
-import { LegendaryProductStage } from "@/components/brand/LegendaryProductStage";
+import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import heroJapanese from "@/assets/hero-japanese-tools.jpg";
-import heroTools from "@/assets/hero-tools.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -167,18 +165,13 @@ function Index() {
           </div>
 
           <div className="relative">
-            <div className="absolute -right-3 -top-5 z-20 hidden w-44 border border-border bg-background/90 p-3 backdrop-blur md:block">
+            <div className="absolute -right-3 -top-5 z-30 hidden w-48 border border-black/15 bg-[#f5f0e5]/94 p-3 text-[#25211c] shadow-[0_12px_35px_rgba(40,33,26,0.12)] backdrop-blur md:block">
               <p className="jp-label text-primary">選定基準 · critério de seleção</p>
-              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+              <p className="mt-2 text-xs leading-5 text-black/58">
                 Trabalho → material → ergonomia → suporte → origem.
               </p>
             </div>
-            <LegendaryProductStage
-              imageUrl={heroTools}
-              alt="Ferramentas profissionais selecionadas pela REJENDARI"
-              eyebrow="REJENDARI / ESTUDO DE OBJETO 001"
-              className="min-h-[430px] lg:min-h-[590px]"
-            />
+            <HeroToolConstellation />
           </div>
         </div>
       </section>
@@ -291,17 +284,35 @@ function Index() {
 
       <section className="paper-panel overflow-hidden">
         <div className="mx-auto grid max-w-[1440px] gap-0 lg:grid-cols-2">
-          <div className="relative min-h-[430px] overflow-hidden lg:min-h-[640px]">
-            <img
-              src={heroJapanese}
-              alt="Ferramentas manuais profissionais japonesas"
-              className="absolute inset-0 h-full w-full object-cover grayscale-[12%] contrast-[1.04]"
-              width={1200}
-              height={900}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 border border-white/25 bg-black/55 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-              Fotografia de produto / especificação primeiro / sem ratings inventados
+          <div className="washi-noise relative grid min-h-[430px] grid-cols-2 gap-px overflow-hidden bg-black/10 p-px lg:min-h-[640px]">
+            {JAPAN_TOOL_REFERENCES.slice(3, 7).map((tool, index) => (
+              <a
+                key={tool.id}
+                href={tool.referenceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative overflow-hidden bg-[#eee9de]"
+              >
+                <img
+                  src={tool.imageUrl}
+                  alt={tool.imageAlt}
+                  className="absolute inset-0 h-full w-full object-contain p-7 transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent p-4 pt-12 text-white">
+                  <p className="jp-label text-white/65">{tool.japanese}</p>
+                  <div className="mt-1 flex items-end justify-between gap-3">
+                    <div>
+                      <p className="font-display text-lg font-semibold">{tool.brand}</p>
+                      <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/65">{tool.model}</p>
+                    </div>
+                    <span className="font-mono text-[9px] text-white/45">0{index + 1}</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+            <div className="absolute bottom-5 left-5 z-20 border border-white/20 bg-black/65 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.15em] text-white/85 backdrop-blur-sm">
+              Imagem real de produto · composição editorial
             </div>
           </div>
 
