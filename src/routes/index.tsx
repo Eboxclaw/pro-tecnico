@@ -175,7 +175,7 @@ function Index() {
             </div>
             <LegendaryProductStage
               imageUrl={heroTools}
-              alt="Professional hand tools selected by REJENDARI"
+              alt="Ferramentas profissionais selecionadas pela REJENDARI"
               eyebrow="REJENDARI / ESTUDO DE OBJETO 001"
               className="min-h-[430px] lg:min-h-[590px]"
             />
@@ -245,6 +245,7 @@ function Index() {
             </div>
           </div>
         </div>
+      </section>
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
@@ -287,7 +288,7 @@ function Index() {
           <div className="relative min-h-[430px] overflow-hidden lg:min-h-[640px]">
             <img
               src={heroJapanese}
-              alt="Japanese professional hand tools"
+              alt="Ferramentas manuais profissionais japonesas"
               className="absolute inset-0 h-full w-full object-cover grayscale-[12%] contrast-[1.04]"
               width={1200}
               height={900}
@@ -357,7 +358,7 @@ function Index() {
                 </div>
               </div>
               <div className="border-t border-border bg-surface p-8 lg:border-l lg:border-t-0">
-                <span className="tech-label text-primary">Catalog integrity</span>
+                <span className="jp-label text-primary">商品情報 · integridade do catálogo</span>
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">
                   Não vamos encher a loja com SKUs inventados, reviews falsas ou claims copiados. O catálogo Shopify aparece aqui
                   à medida que entram produtos reais com dados e imagens aprovados pelo fornecedor.
