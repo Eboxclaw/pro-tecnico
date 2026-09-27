@@ -35,10 +35,24 @@ export function SiteFooter() {
         </div>
       </div>
 
+      <div className="border-b border-border/70">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-8 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-primary">REJENDARI · 選定工具</p>
+            <p className="mt-2 font-display text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">Japan first. Portugal ready.</p>
+          </div>
+          <p className="max-w-xl text-sm leading-6 text-white/42">
+            Ferramenta escolhida, explicada e comparada antes de ocupar espaço na tua mala.
+          </p>
+        </div>
+      </div>
+
       <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_0.7fr_0.7fr_0.9fr]">
         <div>
           <RejendariLogo inverted className="max-w-[270px]" />
-          <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">{t("footer.tagline")}</p>
+          <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">
+            Não queremos a maior loja de ferramentas. Queremos que cada referência tenha uma razão técnica para estar aqui.
+          </p>
           <p className="mt-7 max-w-md border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
             A origem da marca e o país de fabrico não são a mesma coisa. Quando essa informação está confirmada,
             indicamo-la na ficha da referência.
@@ -69,8 +83,8 @@ export function SiteFooter() {
         <div>
           <p className="tech-label text-white/45">Porque REJENDARI · 選定</p>
           <p className="mt-4 text-sm leading-6 text-muted-foreground">
-            Menos ruído, mais contexto: ferramentas organizadas pelo trabalho que resolvem, com especificações claras
-            e atenção ao pós-venda.
+            Referência oficial, métrico quando aplicável, comparação útil e preferência por sistemas que reduzem
+            peças repetidas. Curadoria antes de catálogo.
           </p>
         </div>
       </div>
