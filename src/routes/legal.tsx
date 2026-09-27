@@ -4,9 +4,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/legal")({
   head: () => ({
     meta: [
-      { title: "Informação legal — Rejendarī" },
-      { name: "description", content: "Termos, privacidade, devoluções, garantia e regulamento do sorteio da Rejendarī." },
-      { property: "og:title", content: "Informação legal — Rejendarī" },
+      { title: "Informação legal — REJENDARI" },
+      { name: "description", content: "Termos, privacidade, devoluções, garantia e regulamento do sorteio da REJENDARI." },
+      { property: "og:title", content: "Informação legal — REJENDARI" },
       { property: "og:description", content: "Termos, privacidade, devoluções, garantia e regulamento do sorteio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -23,7 +23,7 @@ function LegalPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1100px] px-4 py-14 sm:px-6">
-          <p className="tech-label text-primary">REJENDARI / Legal</p>
+          <p className="jp-label text-primary">規約 · REJENDARI / legal</p>
           <h1 className="mt-4 font-display text-5xl font-semibold tracking-[-0.055em]">{t("legal.title")}</h1>
         </div>
       </section>
