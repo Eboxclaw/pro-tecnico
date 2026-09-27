@@ -371,6 +371,27 @@
   pointer-events: none;
 }
 
+.bit-rail {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+}
+
+.bit-rail-track {
+  display: flex;
+  width: max-content;
+  animation: bit-drift 46s linear infinite;
+}
+
+.bit-rail:hover .bit-rail-track {
+  animation-play-state: paused;
+}
+
+@keyframes bit-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes brand-drift {
   to {
     transform: translateX(-50%);
@@ -554,6 +575,7 @@
   }
 
   .brand-marquee-track,
+  .bit-rail-track,
   .scan-accent::after,
   .reveal-line > span,
   .hero-floating-tool-1,
