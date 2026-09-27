@@ -39,7 +39,7 @@ export function ReferenceProductCard({ tool }: { tool: CuratedToolReference }) {
 
         <div className="absolute inset-x-3 bottom-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.14em] text-black/43">
           <span>Imagem de referência</span>
-          <span>RJD / STUDY</span>
+          <span>RJD / ESTUDO</span>
         </div>
       </div>
 
