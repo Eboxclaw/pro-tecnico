@@ -17,8 +17,8 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const Route = createFileRoute("/shop")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    brand: typeof search.brand === "string" ? search.brand : undefined,
+  validateSearch: (search: Record<string, unknown>): { brand?: string } => ({
+    brand: typeof search["brand"] === "string" ? (search["brand"] as string) : undefined,
   }),
   head: () => ({
     meta: [
