@@ -20,6 +20,15 @@ export const Route = createFileRoute("/packs")({
   component: PacksPage,
 });
 
+const OFFICIAL_SET_IDS = [
+  "anex-307-s1",
+  "anex-1902",
+  "vessel-td70",
+  "vessel-td72",
+  "vessel-td6808tx",
+  "vessel-900rt-7p",
+];
+
 const SMART_PACKS = [
   {
     name: "Aperto compacto",
@@ -63,6 +72,51 @@ function PacksPage() {
           <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">
             Um bom kit não é a maior mala. É a combinação mais pequena que cobre mais situações reais. Roquetes, bits intercambiáveis, ferramentas offset e sistemas compactos entram antes de duplicarmos cinco cabos para cinco tarefas.
           </p>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-surface/45">
+        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+          <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="jp-label text-primary">メーカーセット · sets das próprias marcas</p>
+              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Antes de inventar um bundle, vemos o que o fabricante já resolveu.</h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-muted-foreground">
+              Estes conjuntos já vêm pensados como sistema: roquete, bits, sockets ou adapters compatíveis entre si e com código oficial único.
+            </p>
+          </div>
+
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {OFFICIAL_SET_IDS.map((id) => {
+              const tool = JAPAN_TOOL_REFERENCES.find((entry) => entry.id === id);
+              if (!tool) return null;
+              return (
+                <Link
+                  key={id}
+                  to="/referencia/$id"
+                  params={{ id }}
+                  className="group overflow-hidden border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/55 hover:shadow-[0_20px_50px_rgba(42,36,29,0.14)]"
+                >
+                  <div className="aspect-[16/10] overflow-hidden bg-[#eee9de]">
+                    {tool.imageUrl ? (
+                      <img src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-105" />
+                    ) : (
+                      <div className="flex h-full items-center justify-center font-display text-3xl text-black/15">{tool.brand}</div>
+                    )}
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">{tool.brand}</p>
+                      <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground">REF {tool.officialCode ?? tool.model}</p>
+                    </div>
+                    <h3 className="mt-2 font-display text-xl font-semibold">{tool.namePt}</h3>
+                    <p className="mt-3 text-xs leading-5 text-muted-foreground">{tool.specPt}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 
