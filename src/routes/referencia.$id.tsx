@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import { referenceById, similarReferences } from "@/data/curated-tool-references";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
+import { SmartProductVisual } from "@/components/shop/SmartProductVisual";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/referencia/$id")({
@@ -44,22 +45,9 @@ function ReferencePage() {
       </section>
 
       <section className="mx-auto grid max-w-[1440px] gap-0 border-x border-border lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="product-image-stage relative min-h-[520px] overflow-hidden border-b border-border lg:min-h-[720px] lg:border-b-0 lg:border-r">
-          <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
-          {tool.imageUrl ? (
-            <img
-              src={tool.imageUrl}
-              alt={tool.imageAlt ?? `${tool.brand} ${tool.model}`}
-              className="absolute inset-0 h-full w-full object-contain p-10 sm:p-16 lg:p-20"
-            />
-          ) : (
-            <div className="flex h-full min-h-[520px] flex-col items-center justify-center p-10 text-center">
-              <span className="jp-label text-primary">{tool.japanese}</span>
-              <span className="mt-5 font-display text-6xl font-semibold text-black/12">{tool.brand}</span>
-              <span className="mt-3 font-mono text-sm uppercase tracking-[0.16em] text-black/40">{tool.model}</span>
-            </div>
-          )}
-          <div className="absolute left-5 top-5 border border-black/10 bg-white/88 px-3 py-2 backdrop-blur">
+        <div className="relative border-b border-border lg:border-b-0 lg:border-r">
+          <SmartProductVisual tool={tool} hero />
+          <div className="absolute left-5 top-16 z-30 border border-black/10 bg-white/88 px-3 py-2 backdrop-blur">
             <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-black/55">{tool.imageSourceLabel ?? "Referência oficial"}</p>
           </div>
         </div>
