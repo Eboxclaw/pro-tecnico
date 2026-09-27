@@ -20,24 +20,32 @@ const SECTIONS = ["terms", "privacy", "returns", "warranty", "raffle"] as const;
 function LegalPage() {
   const t = useT();
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-      <p className="tech-label text-primary">Legal</p>
-      <h1 className="mt-3 font-display text-4xl font-bold">{t("legal.title")}</h1>
-      <nav className="mt-8 flex flex-wrap gap-2">
+    <div>
+      <section className="border-b border-border">
+        <div className="technical-grid mx-auto max-w-[1100px] px-4 py-14 sm:px-6">
+          <p className="tech-label text-primary">REJENDARI / Legal</p>
+          <h1 className="mt-4 font-display text-5xl font-semibold tracking-[-0.055em]">{t("legal.title")}</h1>
+        </div>
+      </section>
+      <div className="mx-auto max-w-[1100px] px-4 py-10 sm:px-6 lg:py-14">
+      <nav className="flex flex-wrap gap-2">
         {SECTIONS.map((s) => (
           <a key={s} href={`#${s}`} className="border border-border px-3 py-1.5 font-mono text-xs hover:border-primary">
             {t(`legal.${s}`)}
           </a>
         ))}
       </nav>
-      <div className="mt-10 space-y-6">
+      <div className="mt-10 divide-y divide-border border-y border-border">
         {SECTIONS.map((s, i) => (
-          <section key={s} id={s} className="scroll-mt-24 border-l-2 border-border pl-5">
-            <p className="font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
-            <h2 className="mt-1 font-display text-xl font-semibold">{t(`legal.${s}`)}</h2>
-            <p className="mt-2 text-sm text-muted-foreground">{t("legal.pending")}</p>
+          <section key={s} id={s} className="scroll-mt-40 grid gap-4 py-7 sm:grid-cols-[90px_1fr]">
+            <p className="font-mono text-xs text-primary">{String(i + 1).padStart(2, "0")}</p>
+            <div>
+              <h2 className="font-display text-2xl font-semibold tracking-[-0.035em]">{t(`legal.${s}`)}</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{t("legal.pending")}</p>
+            </div>
           </section>
         ))}
+      </div>
       </div>
     </div>
   );

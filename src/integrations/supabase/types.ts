@@ -86,6 +86,8 @@ export type Database = {
           id: string
           phone: string | null
           points: number
+          referral_code: string
+          referred_by: string | null
           updated_at: string
           vat_number: string | null
         }
@@ -97,6 +99,8 @@ export type Database = {
           id: string
           phone?: string | null
           points?: number
+          referral_code?: string
+          referred_by?: string | null
           updated_at?: string
           vat_number?: string | null
         }
@@ -108,10 +112,20 @@ export type Database = {
           id?: string
           phone?: string | null
           points?: number
+          referral_code?: string
+          referred_by?: string | null
           updated_at?: string
           vat_number?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "profiles_referred_by_fkey"
+            columns: ["referred_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       raffle_entries: {
         Row: {
@@ -181,6 +195,60 @@ export type Database = {
         }
         Relationships: []
       }
+      referrals: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          qualified_at: string | null
+          referred_points: number
+          referred_user_id: string
+          referrer_id: string
+          referrer_points: number
+          rewarded_at: string | null
+          status: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          qualified_at?: string | null
+          referred_points?: number
+          referred_user_id: string
+          referrer_id: string
+          referrer_points?: number
+          rewarded_at?: string | null
+          status?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          qualified_at?: string | null
+          referred_points?: number
+          referred_user_id?: string
+          referrer_id?: string
+          referrer_points?: number
+          rewarded_at?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_referred_user_id_fkey"
+            columns: ["referred_user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "referrals_referrer_id_fkey"
+            columns: ["referrer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       waitlist: {
         Row: {
           created_at: string
@@ -207,6 +275,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      award_referral_points: {
+        Args: {
+          p_referral_id: string
+          p_referred_points: number
+          p_referrer_points: number
+        }
+        Returns: boolean
+      }
+      claim_referral: { Args: { p_code: string }; Returns: boolean }
       draw_weekly_raffle: { Args: never; Returns: undefined }
     }
     Enums: {

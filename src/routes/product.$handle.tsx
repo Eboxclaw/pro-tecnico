@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { ArrowLeft, Loader2, PackageSearch } from "lucide-react";
+import { ArrowLeft, Loader2, PackageSearch, ShieldCheck, Sparkles } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
+import { LegendaryProductStage } from "@/components/brand/LegendaryProductStage";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -12,14 +13,19 @@ import { Badge } from "@/components/ui/badge";
 export const Route = createFileRoute("/product/$handle")({
   head: () => ({
     meta: [
-      { title: "Produto — Rejendarī" },
-      { name: "description", content: "Ficha de produto profissional: especificações, variantes e garantia." },
+      { title: "Product — REJENDARI" },
+      { name: "description", content: "Professional product sheet with technical data, variants, origin and warranty." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ProductPage,
 });
+
+function getTaggedValue(tags: string[], prefix: string) {
+  const found = tags.find((tag) => tag.toLowerCase().startsWith(prefix.toLowerCase() + ":"));
+  return found ? found.slice(found.indexOf(":") + 1).trim() : null;
+}
 
 function ProductPage() {
   const { handle } = Route.useParams();
@@ -35,8 +41,8 @@ function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-2">
-        <Skeleton className="aspect-square w-full rounded-lg" />
+      <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <Skeleton className="aspect-square w-full rounded-none" />
         <div className="space-y-4">
           <Skeleton className="h-8 w-2/3" />
           <Skeleton className="h-4 w-1/3" />
@@ -50,7 +56,7 @@ function ProductPage() {
     return (
       <div className="mx-auto max-w-2xl px-4 py-24 text-center sm:px-6">
         <PackageSearch className="mx-auto h-10 w-10 text-muted-foreground" />
-        <h1 className="mt-4 font-display text-2xl font-bold">{t("product.notFound")}</h1>
+        <h1 className="mt-4 font-display text-2xl font-semibold">{t("product.notFound")}</h1>
         <p className="mt-2 text-sm text-muted-foreground">{t("product.notFoundHint")}</p>
         <Button className="mt-6" variant="secondary" asChild>
           <Link to="/shop">
@@ -63,14 +69,20 @@ function ProductPage() {
   }
 
   const node = product.node;
-  const variants = node.variants.edges.map((e) => e.node);
-  const selected = variants.find((v) => v.id === selectedVariantId) ?? variants[0];
+  const variants = node.variants.edges.map((edge) => edge.node);
+  const selected = variants.find((variant) => variant.id === selectedVariantId) ?? variants[0];
   const price = selected?.price ?? node.priceRange.minVariantPrice;
-  const images = node.images.edges.map((e) => e.node);
+  const images = node.images.edges.map((edge) => edge.node);
   const mainImage = images[0];
+  const normalizedTags = node.tags.map((tag) => tag.toLowerCase());
+  const isLegendary = normalizedTags.some((tag) => ["legendary", "flagship", "icon"].includes(tag));
 
-  const sku = selected?.sku ?? variants.find((v) => v.sku)?.sku ?? null;
-  const ean = selected?.barcode ?? variants.find((v) => v.barcode)?.barcode ?? null;
+  const sku = selected?.sku ?? variants.find((variant) => variant.sku)?.sku ?? null;
+  const ean = selected?.barcode ?? variants.find((variant) => variant.barcode)?.barcode ?? null;
+  const madeIn = getTaggedValue(node.tags, "made-in");
+  const material = getTaggedValue(node.tags, "material");
+  const standard = getTaggedValue(node.tags, "standard");
+  const task = getTaggedValue(node.tags, "task");
 
   const handleAdd = async () => {
     if (!selected) return;
@@ -85,75 +97,118 @@ function ProductPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-      <Link
-        to="/shop"
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        {t("product.backToShop")}
-      </Link>
+    <div>
+      <div className="border-b border-border">
+        <div className="mx-auto max-w-[1440px] px-4 py-4 sm:px-6">
+          <Link
+            to="/shop"
+            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            {t("product.backToShop")}
+          </Link>
+        </div>
+      </div>
 
-      <div className="mt-6 grid gap-10 lg:grid-cols-2">
-        <div>
-          <div className="aspect-square overflow-hidden rounded-lg border border-border bg-secondary">
-            {mainImage ? (
-              <img
-                src={mainImage.url}
-                alt={mainImage.altText ?? node.title}
-                className="h-full w-full object-cover"
-                width={800}
-                height={800}
-              />
-            ) : (
-              <div className="hatch h-full w-full" />
-            )}
-          </div>
+      <div className="mx-auto grid max-w-[1440px] gap-0 lg:grid-cols-[1.12fr_0.88fr]">
+        <div className="border-b border-border p-4 sm:p-6 lg:border-b-0 lg:border-r">
+          {isLegendary ? (
+            <LegendaryProductStage
+              imageUrl={mainImage?.url}
+              alt={mainImage?.altText ?? node.title}
+              eyebrow={`${node.vendor || "REJENDARI"} / LEGENDARY OBJECT`}
+              className="min-h-[480px] lg:min-h-[680px]"
+            />
+          ) : (
+            <div className="product-image-stage relative flex min-h-[480px] items-center justify-center overflow-hidden border border-border lg:min-h-[680px]">
+              <div className="micro-grid absolute inset-0 opacity-35" />
+              {mainImage ? (
+                <img
+                  src={mainImage.url}
+                  alt={mainImage.altText ?? node.title}
+                  className="relative z-10 max-h-[620px] w-full object-contain p-8 sm:p-14"
+                  width={1000}
+                  height={1000}
+                />
+              ) : (
+                <div className="hatch h-64 w-64 border border-black/10" />
+              )}
+              <span className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-[0.13em] text-black/40">
+                RJD / product study
+              </span>
+            </div>
+          )}
+
           {images.length > 1 && (
-            <div className="mt-3 grid grid-cols-5 gap-2">
-              {images.slice(1, 6).map((img, i) => (
-                <div key={i} className="aspect-square overflow-hidden rounded-md border border-border bg-secondary">
-                  <img src={img.url} alt={img.altText ?? ""} className="h-full w-full object-cover" loading="lazy" width={200} height={200} />
+            <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-6">
+              {images.slice(1, 7).map((image, index) => (
+                <div
+                  key={image.url + index}
+                  className="product-image-stage aspect-square overflow-hidden border border-border"
+                >
+                  <img
+                    src={image.url}
+                    alt={image.altText ?? ""}
+                    className="h-full w-full object-contain p-2"
+                    loading="lazy"
+                    width={220}
+                    height={220}
+                  />
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        <div>
-          <div className="flex items-center gap-3">
-            <span className="tech-label text-muted-foreground">{node.vendor}</span>
-            {selected && !selected.availableForSale && (
-              <Badge variant="secondary">{t("common.outOfStock")}</Badge>
+        <div className="p-6 sm:p-10 lg:p-12 xl:p-16">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="tech-label text-primary">{node.vendor || "REJENDARI"}</span>
+            {isLegendary && (
+              <Badge variant="secondary" className="gap-1.5 rounded-full">
+                <Sparkles className="h-3 w-3 text-primary" />
+                Legendary
+              </Badge>
             )}
+            {selected && !selected.availableForSale && <Badge variant="secondary">{t("common.outOfStock")}</Badge>}
           </div>
-          <h1 className="mt-2 font-display text-3xl font-bold tracking-tight">{node.title}</h1>
-          <p className="mt-3 font-display text-2xl font-bold text-primary">
+
+          <h1 className="mt-5 max-w-xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl">
+            {node.title}
+          </h1>
+
+          <p className="mt-5 font-display text-2xl font-semibold tracking-[-0.04em]">
             {formatPrice(price.amount, price.currencyCode)}
           </p>
-          <p className="mt-4 whitespace-pre-line text-sm text-muted-foreground">{node.description}</p>
 
-          <div className="mt-6 border-l-2 border-primary pl-4">
-            <p className="tech-label text-primary">{t("product.whySelected")}</p>
-            <p className="mt-2 text-sm text-muted-foreground">{t("product.whySelectedText")}</p>
+          <p className="mt-6 max-w-xl whitespace-pre-line text-sm leading-7 text-muted-foreground">{node.description}</p>
+
+          <div className="signal-rule mt-8 border-y border-border py-6">
+            <div className="flex items-start gap-4">
+              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <p className="tech-label text-primary">{t("product.whySelected")}</p>
+                <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">{t("product.whySelectedText")}</p>
+              </div>
+            </div>
           </div>
 
           {variants.length > 1 && (
-            <div className="mt-6">
+            <div className="mt-7">
               <p className="tech-label text-muted-foreground">{t("product.variants")}</p>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {variants.map((v) => (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {variants.map((variant) => (
                   <button
-                    key={v.id}
-                    onClick={() => setSelectedVariantId(v.id)}
-                    disabled={!v.availableForSale}
-                    className={`rounded-md border px-3 py-2 text-sm transition-colors ${
-                      selected?.id === v.id
+                    key={variant.id}
+                    type="button"
+                    onClick={() => setSelectedVariantId(variant.id)}
+                    disabled={!variant.availableForSale}
+                    className={`border px-3 py-2 text-sm transition-colors ${
+                      selected?.id === variant.id
                         ? "border-primary bg-primary/10 text-foreground"
                         : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
                     } disabled:cursor-not-allowed disabled:opacity-40`}
                   >
-                    {v.title}
+                    {variant.title}
                   </button>
                 ))}
               </div>
@@ -162,34 +217,40 @@ function ProductPage() {
 
           <Button
             size="lg"
-            className="mt-8 w-full sm:w-auto"
+            className="mt-8 w-full rounded-none sm:w-auto"
             onClick={handleAdd}
             disabled={isLoadingCart || !selected || !selected.availableForSale}
           >
             {isLoadingCart ? <Loader2 className="h-4 w-4 animate-spin" /> : t("common.addToCart")}
           </Button>
 
-          <div className="mt-8 rounded-lg border border-border bg-surface p-5">
-            <p className="tech-label text-muted-foreground">{t("product.specs")}</p>
-            <dl className="mt-3 space-y-2 font-mono text-sm">
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted-foreground">{t("product.vendor")}</dt>
-                <dd>{node.vendor || "—"}</dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted-foreground">{t("product.sku")}</dt>
-                <dd>{sku || "—"}</dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted-foreground">{t("product.ean")}</dt>
-                <dd>{ean || "—"}</dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-muted-foreground">{t("product.warranty")}</dt>
-                <dd>{t("product.warrantyValue")}</dd>
-              </div>
+          <div className="mt-10 border border-border bg-surface">
+            <div className="border-b border-border px-5 py-4">
+              <p className="tech-label text-muted-foreground">{t("product.specs")}</p>
+            </div>
+            <dl className="divide-y divide-border font-mono text-[11px]">
+              {[
+                [t("product.vendor"), node.vendor || "—"],
+                [t("product.sku"), sku || "—"],
+                [t("product.ean"), ean || "—"],
+                ["Task", task || node.productType || "—"],
+                ["Material", material || "—"],
+                ["Standard", standard || "—"],
+                ["Manufacturing origin", madeIn || "Not claimed / pending verification"],
+                [t("product.warranty"), t("product.warrantyValue")],
+              ].map(([label, value]) => (
+                <div key={label} className="grid grid-cols-[0.9fr_1.1fr] gap-4 px-5 py-3">
+                  <dt className="text-muted-foreground">{label}</dt>
+                  <dd className="text-right text-foreground">{value}</dd>
+                </div>
+              ))}
             </dl>
           </div>
+
+          <p className="mt-5 font-mono text-[9px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
+            Legendary presentation is triggered by Shopify tags: legendary, flagship or icon. The WebGL layer is lazy,
+            respects reduced motion and never replaces the real product image.
+          </p>
         </div>
       </div>
     </div>
