@@ -140,6 +140,19 @@ export const BRAND_STORIES: BrandStory[] = [
     sourceLabel: "LOBTEX",
   },
   {
+    slug: "NEPROS",
+    name: "NEPROS",
+    jp: "ネプロス",
+    specialty: "Roquetes premium · sockets · mecânica",
+    headline: "A linha premium da KTC transforma mecânica em engenharia de detalhe.",
+    story:
+      "Nepros nasceu dentro da KTC com a ideia de combinar durabilidade, utilização e acabamento. O NBR390A resume a abordagem: 90 dentes, arco de 4°, cabeça mais compacta e equilíbrio revisto.",
+    whyPt:
+      "Na REJENDARI, Nepros faz sentido como contraponto premium à Ko-ken Z-Series: duas escolas japonesas fortes para quem trabalha diariamente com sockets e roquetes.",
+    sourceUrl: "https://ktc.jp/nepros/nbr390a/",
+    sourceLabel: "KTC / Nepros · referência oficial",
+  },
+  {
     slug: "KTC",
     name: "KTC",
     jp: "京都機械工具",
