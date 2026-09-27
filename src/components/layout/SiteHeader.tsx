@@ -87,7 +87,7 @@ export function SiteHeader() {
               <span className="absolute inset-x-3 -bottom-[24px] h-px scale-x-0 bg-primary transition-transform [.active_&]:scale-x-100" />
             </Link>
 
-            <div className="invisible absolute left-[-180px] top-full z-[80] w-[760px] pt-5 opacity-0 transition-all duration-150 group-hover/nav:visible group-hover/nav:opacity-100">
+            <div className="invisible absolute left-[-180px] top-full z-[80] w-[760px] pt-5 opacity-0 transition-all duration-150 group-hover/nav:visible group-hover/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:opacity-100">
               <div className="grid grid-cols-[1.1fr_0.9fr] border border-border bg-background shadow-[0_24px_70px_rgba(35,30,25,0.2)]">
                 <div className="p-5">
                   <p className="jp-label text-primary">仕事別 · filtros rápidos</p>
@@ -158,7 +158,7 @@ export function SiteHeader() {
               <span className="absolute inset-x-3 -bottom-[24px] h-px scale-x-0 bg-primary transition-transform [.active_&]:scale-x-100" />
             </Link>
 
-            <div className="invisible absolute left-[-120px] top-full z-[80] w-[680px] pt-5 opacity-0 transition-all duration-150 group-hover/nav:visible group-hover/nav:opacity-100">
+            <div className="invisible absolute left-[-120px] top-full z-[80] w-[680px] pt-5 opacity-0 transition-all duration-150 group-hover/nav:visible group-hover/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:opacity-100">
               <div className="border border-border bg-background p-5 shadow-[0_24px_70px_rgba(35,30,25,0.2)]">
                 <div className="flex items-end justify-between gap-5">
                   <div>
@@ -224,7 +224,7 @@ export function SiteHeader() {
 
           <CartDrawer
             trigger={
-              <Button variant="outline" size="sm" className="relative gap-2 border-border bg-transparent">
+              <Button variant="outline" size="sm" className="relative gap-2 border-border bg-transparent" aria-label={`${t("common.cart")}: ${totalItems} artigos`}>
                 <ShoppingBag className="h-4 w-4" />
                 <span className="hidden xl:inline">{t("common.cart")}</span>
                 {totalItems > 0 && (
@@ -255,7 +255,7 @@ export function SiteHeader() {
                 </Link>
 
                 {quickProducts.length > 0 && (
-                  <div className={`invisible absolute top-full z-[75] w-[360px] pt-1 opacity-0 transition-all duration-150 group-hover/cat:visible group-hover/cat:opacity-100 ${alignRight ? "right-0" : "left-0"}`}>
+                  <div className={`invisible absolute top-full z-[75] w-[360px] pt-1 opacity-0 transition-all duration-150 group-hover/cat:visible group-hover/cat:opacity-100 group-focus-within/cat:visible group-focus-within/cat:opacity-100 ${alignRight ? "right-0" : "left-0"}`}>
                     <div className="border border-border bg-background p-4 shadow-[0_18px_50px_rgba(35,30,25,0.18)]">
                       <div className="flex items-center justify-between">
                         <p className="jp-label text-primary">{category.jp} · rápido</p>

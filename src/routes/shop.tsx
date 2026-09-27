@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { matchesCatalogQuery, parseCatalogSearch, type CatalogSearch } from "@/lib/catalog-search";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const TASKS: Array<{ id: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power"; label: string; jp: string; icon: ToolGlyphName }> = [
@@ -31,11 +32,7 @@ const TASKS: Array<{ id: "precision" | "fastening" | "sockets" | "grip" | "cutti
 ];
 
 export const Route = createFileRoute("/shop")({
-  validateSearch: (search: Record<string, unknown>): { brand?: string; task?: string; focus?: string } => ({
-    brand: typeof search["brand"] === "string" ? (search["brand"] as string) : undefined,
-    task: typeof search["task"] === "string" ? (search["task"] as string) : undefined,
-    focus: typeof search["focus"] === "string" ? (search["focus"] as string) : undefined,
-  }),
+  validateSearch: parseCatalogSearch,
   head: () => ({
     meta: [
       { title: "Loja de ferramenta profissional — REJENDARI" },
@@ -71,19 +68,25 @@ function shopifyMatchesBrand(vendor: string, brand: string) {
 function ShopPage() {
   const t = useT();
   const search = Route.useSearch();
-  const [brand, setBrand] = useState<string>(search.brand?.toUpperCase() ?? "all");
-  const [category, setCategory] = useState<string>("all");
-  const [task, setTask] = useState<string>(search.task ?? "all");
-  const [focus, setFocus] = useState<string>(search.focus ?? "all");
-  const [maxPrice, setMaxPrice] = useState<string>("");
+  const navigate = Route.useNavigate();
+  const brand = search.brand?.toUpperCase() ?? "all";
+  const category = search.category ?? "all";
+  const task = search.task ?? "all";
+  const focus = search.focus ?? "all";
+  const maxPrice = search.maxPrice ?? "";
+  const query = search.q ?? "";
+  const [queryDraft, setQueryDraft] = useState(query);
+  useEffect(() => setQueryDraft(query), [query]);
+  const updateFilter = (key: keyof CatalogSearch, value: string) => {
+    void navigate({ search: (previous) => ({ ...previous, [key]: value === "all" || !value ? undefined : value, page: undefined }), resetScroll: false });
+  };
+  const setBrand = (value: string) => updateFilter("brand", value);
+  const setTask = (value: string) => updateFilter("task", value);
+  const setFocus = (value: string) => updateFilter("focus", value);
+  const setCategory = (value: string) => updateFilter("category", value);
+  const setMaxPrice = (value: string) => updateFilter("maxPrice", value);
 
-  useEffect(() => {
-    if (search.brand) setBrand(search.brand.toUpperCase());
-    if (search.task) setTask(search.task);
-    if (search.focus) setFocus(search.focus);
-  }, [search.brand, search.task, search.focus]);
-
-  const { data: products, isLoading } = useQuery({
+  const { data: products, isLoading, isError, refetch } = useQuery({
     queryKey: ["products", "shop"],
     queryFn: () => fetchProducts(100),
   });
@@ -106,8 +109,9 @@ function ShopPage() {
     if (Number.isFinite(cap) && cap > 0) {
       list = list.filter((p) => parseFloat(p.node.priceRange.minVariantPrice.amount) <= cap);
     }
-    return list;
-  }, [products, brand, category, task, maxPrice]);
+    list = list.filter(({ node }) => matchesCatalogQuery(query, [node.title, node.vendor, node.productType, ...node.tags, ...node.variants.edges.map(({ node: variant }) => variant.sku)]));
+    return search.sort === "name" ? [...list].sort((a, b) => a.node.title.localeCompare(b.node.title, "pt")) : list;
+  }, [products, brand, category, task, maxPrice, query, search.sort]);
 
   const referenceFiltered = useMemo(() => {
     const focusedIds = focus === "all" ? null : new Set(referencesForFocus(focus).map((tool) => tool.id));
@@ -115,24 +119,21 @@ function ShopPage() {
       if (brand !== "all" && tool.brandSlug !== brand) return false;
       if (task !== "all" && tool.task !== task) return false;
       if (focusedIds && !focusedIds.has(tool.id)) return false;
-      return true;
-    });
-  }, [brand, task, focus]);
+      return matchesCatalogQuery(query, [tool.brand, tool.model, tool.namePt, tool.officialCode, tool.categoryPt, tool.notePt, tool.specPt]);
+    }).sort((a, b) => search.sort === "name" ? a.namePt.localeCompare(b.namePt, "pt") : 0);
+  }, [brand, task, focus, query, search.sort]);
+
+  const pageCount = Math.max(1, Math.ceil(referenceFiltered.length / 24));
+  const page = Math.min(search.page ?? 1, pageCount);
+  const visibleReferences = referenceFiltered.slice((page - 1) * 24, page * 24);
 
   const filterBrands = useMemo(
     () => Array.from(new Set([...QUICK_BRANDS, ...shopifyBrands.map((value) => value.toUpperCase())])),
     [shopifyBrands],
   );
 
-  const hasFilters = brand !== "all" || category !== "all" || task !== "all" || focus !== "all" || maxPrice !== "";
-
-  const clearFilters = () => {
-    setBrand("all");
-    setCategory("all");
-    setTask("all");
-    setFocus("all");
-    setMaxPrice("");
-  };
+  const hasFilters = brand !== "all" || category !== "all" || task !== "all" || focus !== "all" || maxPrice !== "" || query !== "";
+  const clearFilters = () => { setQueryDraft(""); void navigate({ search: {}, resetScroll: false }); };
 
   return (
     <div>
@@ -157,6 +158,7 @@ function ShopPage() {
             <button
               type="button"
               key={item.id}
+              aria-pressed={task === item.id}
               onClick={() => setTask(task === item.id ? "all" : item.id)}
               className={`category-tile flex min-h-28 flex-col items-start justify-between p-4 text-left ${task === item.id ? "bg-secondary text-foreground" : "bg-surface text-muted-foreground"}`}
             >
@@ -219,10 +221,14 @@ function ShopPage() {
 
       <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
         <div className="signal-rule flex flex-wrap items-center gap-3 border border-border bg-card p-4 pt-5">
+          <form role="search" className="flex w-full gap-2" onSubmit={(event) => { event.preventDefault(); updateFilter("q", queryDraft); }}>
+            <Input aria-label="Pesquisar ferramentas" placeholder="Marca, modelo, código ou trabalho…" value={queryDraft} onChange={(event) => setQueryDraft(event.target.value)} className="min-w-0 flex-1 bg-background" maxLength={160} />
+            <Button type="submit">Pesquisar</Button>
+          </form>
           <SlidersHorizontal className="h-4 w-4 text-primary" />
 
           <Select value={brand} onValueChange={setBrand}>
-            <SelectTrigger className="w-44 bg-background">
+            <SelectTrigger aria-label="Marca" className="w-44 bg-background">
               <SelectValue placeholder={t("common.allBrands")} />
             </SelectTrigger>
             <SelectContent>
@@ -235,7 +241,7 @@ function ShopPage() {
 
           {categories.length > 0 && (
             <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger className="w-48 bg-background">
+              <SelectTrigger aria-label="Categoria de produtos publicados" className="w-48 bg-background">
                 <SelectValue placeholder={t("common.allCategories")} />
               </SelectTrigger>
               <SelectContent>
@@ -250,6 +256,7 @@ function ShopPage() {
           {(products?.length ?? 0) > 0 && (
             <Input
               type="number"
+              aria-label="Preço máximo dos produtos publicados, em euros"
               min="0"
               placeholder={t("common.price")}
               value={maxPrice}
@@ -258,11 +265,15 @@ function ShopPage() {
             />
           )}
 
+          <Select value={search.sort ?? "selection"} onValueChange={(value) => updateFilter("sort", value)}>
+            <SelectTrigger aria-label="Ordenação" className="w-44"><SelectValue /></SelectTrigger>
+            <SelectContent><SelectItem value="selection">Seleção REJENDARI</SelectItem><SelectItem value="name">Nome: A–Z</SelectItem></SelectContent>
+          </Select>
           {hasFilters && (
             <Button variant="ghost" size="sm" onClick={clearFilters}>{t("common.clearFilters")}</Button>
           )}
 
-          <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
+          <span role="status" className="ml-auto font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
             {referenceFiltered.length} referências
           </span>
         </div>
@@ -298,18 +309,24 @@ function ShopPage() {
             <div className="mt-6 border border-border bg-surface p-8 text-center">
               <p className="font-display text-xl font-semibold">Ainda não encontrámos uma referência para esta combinação.</p>
               <p className="mt-2 text-sm text-muted-foreground">Limpa um filtro ou pede-nos uma referência específica.</p>
+              <Button variant="outline" className="mt-5 mr-3 rounded-none" onClick={clearFilters}>Limpar filtros</Button>
               <Button className="mt-5 rounded-none" asChild><Link to="/b2b">Pedir referência</Link></Button>
             </div>
           ) : (
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {referenceFiltered.map((tool) => (
+              {visibleReferences.map((tool) => (
                 <ReferenceProductCard key={tool.id} tool={tool} />
               ))}
             </div>
           )}
+          {pageCount > 1 && <nav aria-label="Páginas de referências" className="mt-8 flex items-center justify-center gap-4">
+            <Button variant="outline" disabled={page === 1} onClick={() => void navigate({ search: (previous) => ({ ...previous, page: page - 1 }), resetScroll: false })}>Anterior</Button>
+            <span role="status" className="text-sm">{page} / {pageCount}</span>
+            <Button variant="outline" disabled={page === pageCount} onClick={() => void navigate({ search: (previous) => ({ ...previous, page: page + 1 }), resetScroll: false })}>Seguinte</Button>
+          </nav>}
         </section>
 
-        {(isLoading || (products?.length ?? 0) > 0) && (
+        {(isError || isLoading || (products?.length ?? 0) > 0) && (
           <section className="mt-14 border-t border-border pt-10">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -320,7 +337,9 @@ function ShopPage() {
             </div>
 
             <div className="mt-6">
-              {isLoading ? (
+              {isError ? (
+                <div role="alert" className="border border-border bg-surface p-6"><p>Não foi possível carregar preços e disponibilidade. As referências continuam disponíveis para consulta.</p><Button variant="outline" className="mt-4" onClick={() => void refetch()}>Tentar novamente</Button></div>
+              ) : isLoading ? (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <Skeleton key={i} className="aspect-[4/5] w-full rounded-none" />

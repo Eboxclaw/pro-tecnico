@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 type LegendaryProductStageProps = {
-  imageUrl?: string | null;
+  imageUrl?: string | null | undefined;
   alt: string;
   eyebrow?: string;
   className?: string;

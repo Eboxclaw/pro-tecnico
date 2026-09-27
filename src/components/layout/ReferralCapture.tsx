@@ -25,16 +25,21 @@ export function ReferralCapture() {
     if (code) {
       rememberReferralCode(code);
       url.searchParams.delete("ref");
-      window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+      window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
     }
 
-    void claimStoredReferral();
+    const claim = () => { void claimStoredReferral().catch(() => { /* Keep the code for a later session when the network recovers. */ }); };
+    claim();
 
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const { data: subscription } = supabase.auth.onAuthStateChange((event) => {
-      if (event === "SIGNED_IN") void claimStoredReferral();
+      if (event === "SIGNED_IN") {
+        clearTimeout(timer);
+        timer = setTimeout(claim, 0);
+      }
     });
 
-    return () => subscription.subscription.unsubscribe();
+    return () => { clearTimeout(timer); subscription.subscription.unsubscribe(); };
   }, []);
 
   return null;
