@@ -103,6 +103,32 @@ export const BRAND_STORIES: BrandStory[] = [
     sourceLabel: "Fujiya · empresa",
   },
   {
+    slug: "TSUNODA",
+    name: "TSUNODA / King TTC",
+    jp: "燕三条の作業工具",
+    specialty: "Alicates · slip joint · water pump · corte",
+    headline: "Grip e articulação também merecem engenharia própria.",
+    story:
+      "A TSUNODA amplia a REJENDARI para alicates slip-joint, water-pump e ferramentas de corte. A seleção privilegia modelos métricos com capacidades e articulações claramente documentadas, incluindo soluções com mordentes em resina para superfícies delicadas.",
+    whyPt:
+      "É uma marca importante para AVAC, canalização, elétrica e manutenção porque traz variedade real de alicates em vez de tratarmos todo o grip como uma única ferramenta.",
+    sourceUrl: "https://tsunoda-japan.com/EN/pliers.html",
+    sourceLabel: "TSUNODA · catálogo oficial",
+  },
+  {
+    slug: "TOP",
+    name: "TOP KOGYO",
+    jp: "トップ工業",
+    specialty: "Chaves ajustáveis · roquetes · AVAC · manutenção",
+    headline: "Uma das escolas japonesas mais interessantes para chaves ajustáveis.",
+    story:
+      "TOP KOGYO tem uma gama extensa de chaves ajustáveis e ferramentas de manutenção. Na REJENDARI começamos pela Hyper Monkey ZERO porque ataca diretamente a folga do mordente e oferece variantes de 25 a 43 mm de abertura.",
+    whyPt:
+      "HM-32 e HM-38 dão-nos duas chaves inglesas japonesas sérias para comparar com LOBTEX: uma mais compacta para manutenção geral e outra com capacidade mais próxima de AVAC e canalização.",
+    sourceUrl: "https://www.toptools.co.jp/tools/wrenches-0001_4/",
+    sourceLabel: "TOP KOGYO · referência oficial",
+  },
+  {
     slug: "ENGINEER",
     name: "ENGINEER",
     jp: "精密工具",
@@ -133,7 +159,7 @@ export const BRAND_STORIES: BrandStory[] = [
     specialty: "Chaves · rebitagem · grip · manutenção",
     headline: "A ferramenta manual japonesa também vive de grip, ajuste e manutenção.",
     story:
-      "LOBSTER / LOBTEX entra para cobrir chaves ajustáveis, rebitagem e ferramenta de manutenção. A UM-XG é um bom exemplo: uma chave ajustável com mecanismos desenhados para reduzir folga e melhorar o contacto.",
+      "LOBSTER / LOBTEX entra para cobrir chaves ajustáveis, rebitagem e manutenção. A família UM-XG vai de 150 a 300 mm e combina X-DRIVE com o mecanismo G-LESS para reduzir folga e melhorar o contacto no parafuso ou porca.",
     whyPt:
       "É importante para equilibrar a loja: não queremos uma seleção japonesa feita só de aparafusamento e corte.",
     sourceUrl: "https://www.lobtex.co.jp/",
