@@ -72,7 +72,8 @@ export function SiteHeader() {
 
       <div className="mx-auto flex h-[70px] max-w-[1440px] items-center gap-5 px-4 sm:px-6">
         <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="REJENDARI">
-          <RejendariLogo className="transition-transform duration-300 group-hover:scale-[1.015]" />
+          <RejendariLogo compact className="sm:hidden" />
+          <RejendariLogo className="hidden transition-transform duration-300 group-hover:scale-[1.015] sm:flex" />
           <span className="hidden border-l border-border pl-3 font-mono text-[8px] uppercase tracking-[0.17em] text-muted-foreground 2xl:block">
             tradição × precisão
             <br />
