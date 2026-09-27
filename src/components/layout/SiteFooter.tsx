@@ -78,7 +78,7 @@ export function SiteFooter() {
       <div className="border-t border-border/70">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>© {year} REJENDARI · {t("footer.rights")}</p>
-          <p>Portugal / UE · {t("footer.contactNote")}</p>
+          <p>{t("footer.contactNote")}</p>
         </div>
       </div>
     </footer>
