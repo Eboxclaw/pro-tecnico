@@ -6,6 +6,16 @@ import { formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
+const JP_TASK: Record<string, string> = {
+  precision: "精密工具",
+  fastening: "締結工具",
+  sockets: "ソケット",
+  grip: "作業工具",
+  cutting: "切削工具",
+  hvac: "設備工具",
+  power: "電動工具",
+};
+
 export function ProductCard({ product }: { product: ShopifyProduct }) {
   const t = useT();
   const addItem = useCartStore((s) => s.addItem);
@@ -20,6 +30,8 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
   const isLegendary = normalizedTags.some((tag) => ["legendary", "flagship", "icon"].includes(tag));
   const originTag = node.tags.find((tag) => tag.toLowerCase().startsWith("made-in:"));
   const taskTag = node.tags.find((tag) => tag.toLowerCase().startsWith("task:"));
+  const task = taskTag?.replace(/^task:/i, "").trim().toLowerCase() ?? "";
+  const japaneseTask = JP_TASK[task] ?? "選定工具";
 
   const handleAdd = async (event: React.MouseEvent) => {
     event.preventDefault();
@@ -40,51 +52,55 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
     <Link
       to="/product/$handle"
       params={{ handle: node.handle }}
-      className="product-card group flex min-h-full flex-col overflow-hidden border border-border bg-card"
+      className="product-card group flex min-h-full flex-col overflow-hidden border border-border bg-card transition-colors hover:border-primary/55"
     >
-      <div className="product-image-stage relative aspect-[5/4] overflow-hidden">
+      <div className="product-image-stage relative aspect-[5/4] overflow-hidden bg-[#ece9e2]">
         {isLegendary && (
-          <span className="absolute left-3 top-3 z-10 flex items-center gap-1.5 rounded-full border border-black/10 bg-black/80 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-white">
+          <span className="absolute left-3 top-3 z-10 flex items-center gap-1.5 border border-black/10 bg-black/82 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-white">
             <Sparkles className="h-3 w-3 text-primary" />
-            Legendary
+            Ícone
           </span>
         )}
-        <span className="absolute right-3 top-3 z-10 font-mono text-[9px] uppercase tracking-[0.14em] text-black/45">
-          {node.productType || "professional tool"}
+        <span className="absolute right-3 top-3 z-10 font-display text-[11px] font-semibold tracking-[0.06em] text-black/45">
+          {japaneseTask}
         </span>
+
         {image ? (
           <img
             src={image.url}
             alt={image.altText ?? node.title}
-            className="h-full w-full object-contain p-5 transition duration-500 ease-out group-hover:scale-[1.035] group-hover:-rotate-[0.4deg]"
+            className="h-full w-full object-contain p-6 transition duration-500 ease-out group-hover:scale-[1.045] group-hover:-rotate-[0.35deg]"
             loading="lazy"
             width={700}
             height={560}
           />
         ) : (
-          <div className="micro-grid h-full w-full opacity-45" />
+          <div className="micro-grid flex h-full w-full items-end p-5">
+            <span className="font-display text-5xl font-semibold tracking-[-0.08em] text-black/[0.08]">道具</span>
+          </div>
         )}
-        <div className="absolute inset-x-4 bottom-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.13em] text-black/42">
-          <span>{originTag ? originTag.replace(/^made-in:/i, "") : "Origin per SKU"}</span>
-          <span>RJD / SELECT</span>
+
+        <div className="absolute inset-x-4 bottom-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.14em] text-black/43">
+          <span>{originTag ? originTag.replace(/^made-in:/i, "") : "Origem por SKU"}</span>
+          <span>RJD / SELEÇÃO</span>
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-4.5">
+      <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center justify-between gap-3">
           <span className="tech-label text-primary">{node.vendor || "REJENDARI"}</span>
           {!available && <Badge variant="secondary">{t("common.outOfStock")}</Badge>}
         </div>
 
-        <h3 className="mt-3 font-display text-[17px] font-semibold leading-[1.2] tracking-[-0.025em]">
+        <h3 className="mt-3 font-display text-[18px] font-semibold leading-[1.12] tracking-[-0.035em]">
           {node.title}
         </h3>
         <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-muted-foreground">{node.description}</p>
 
         <div className="mt-4 flex min-h-5 items-center gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-          {taskTag ? <span>{taskTag.replace(/^task:/i, "")}</span> : <span>Professional grade</span>}
+          <span>{task || "Uso profissional"}</span>
           <span className="h-1 w-1 rounded-full bg-primary/70" />
-          <span>Verified specs</span>
+          <span>Dados verificados</span>
         </div>
 
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4">
@@ -97,7 +113,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
             onClick={handleAdd}
             disabled={isLoading || !variant || !available}
             aria-label={t("common.addToCart")}
-            className="h-9 w-9 p-0"
+            className="h-9 w-9 rounded-none p-0"
           >
             {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
           </Button>

@@ -175,7 +175,7 @@ const pt = {
   },
   gate: {
     badge: "Acesso fechado",
-    title: "Rejendarī abre em breve",
+    title: "REJENDARI abre em breve",
     subtitle:
       "Estamos a preparar uma seleção de ferramenta profissional japonesa com VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita e outros fabricantes. Deixa o email para ser avisado na abertura.",
     codeLabel: "Código de acesso",
@@ -371,7 +371,7 @@ const en: Dict = {
   },
   gate: {
     badge: "Closed access",
-    title: "Rejendarī opens soon",
+    title: "REJENDARI opens soon",
     subtitle:
       "We're preparing a professional Japanese tool selection spanning VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita and other makers. Leave your email to hear when we open.",
     codeLabel: "Access code",
@@ -565,7 +565,7 @@ const es: Dict = {
   },
   gate: {
     badge: "Acceso cerrado",
-    title: "Rejendarī abre pronto",
+    title: "REJENDARI abre pronto",
     subtitle:
       "Estamos preparando una selección de herramienta profesional japonesa con VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita y otros fabricantes. Deja tu email para avisarte en la apertura.",
     codeLabel: "Código de acceso",

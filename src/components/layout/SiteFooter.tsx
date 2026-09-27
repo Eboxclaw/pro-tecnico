@@ -14,6 +14,7 @@ const JAPANESE_BRANDS = [
   "TONE",
   "KTC",
   "TAJIMA",
+  "SILKY",
 ];
 
 export function SiteFooter() {
@@ -38,8 +39,8 @@ export function SiteFooter() {
           <p className="font-display text-2xl font-semibold tracking-[-0.04em]">REJENDARI</p>
           <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">{t("footer.tagline")}</p>
           <p className="mt-7 max-w-md border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-            Japanese brand origin and manufacturing origin are different data points. We verify country of
-            manufacture per SKU before making a claim.
+            A origem japonesa da marca e o país de fabrico são dados diferentes. Confirmamos o país de
+            fabrico por SKU antes de fazer essa afirmação.
           </p>
         </div>
 
@@ -65,10 +66,10 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="tech-label text-white/45">Curator note</p>
+          <p className="tech-label text-white/45">Nota de curadoria · 選定</p>
           <p className="mt-4 text-sm leading-6 text-muted-foreground">
-            Short catalog, real specifications, strong after-sales support and products chosen by task instead of
-            marketing category.
+            Catálogo curto, especificações reais, bom pós-venda e ferramentas escolhidas pelo trabalho que resolvem,
+            não pela categoria de marketing.
           </p>
         </div>
       </div>
@@ -76,7 +77,7 @@ export function SiteFooter() {
       <div className="border-t border-border/70">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>© {year} REJENDARI · {t("footer.rights")}</p>
-          <p>Portugal / EU · {t("footer.contactNote")}</p>
+          <p>Portugal / UE · {t("footer.contactNote")}</p>
         </div>
       </div>
     </footer>

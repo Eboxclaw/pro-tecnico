@@ -13,8 +13,8 @@ import { Badge } from "@/components/ui/badge";
 export const Route = createFileRoute("/product/$handle")({
   head: () => ({
     meta: [
-      { title: "Product — REJENDARI" },
-      { name: "description", content: "Professional product sheet with technical data, variants, origin and warranty." },
+      { title: "Produto — REJENDARI" },
+      { name: "description", content: "Ficha de produto profissional com dados técnicos, variantes, origem e garantia." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -116,7 +116,7 @@ function ProductPage() {
             <LegendaryProductStage
               imageUrl={mainImage?.url}
               alt={mainImage?.altText ?? node.title}
-              eyebrow={`${node.vendor || "REJENDARI"} / LEGENDARY OBJECT`}
+              eyebrow={`${node.vendor || "REJENDARI"} / 名品 · OBJETO DE DESTAQUE`}
               className="min-h-[480px] lg:min-h-[680px]"
             />
           ) : (
@@ -134,7 +134,7 @@ function ProductPage() {
                 <div className="hatch h-64 w-64 border border-black/10" />
               )}
               <span className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-[0.13em] text-black/40">
-                RJD / product study
+                RJD / estudo de produto
               </span>
             </div>
           )}
@@ -166,7 +166,7 @@ function ProductPage() {
             {isLegendary && (
               <Badge variant="secondary" className="gap-1.5 rounded-full">
                 <Sparkles className="h-3 w-3 text-primary" />
-                Legendary
+                Ícone
               </Badge>
             )}
             {selected && !selected.availableForSale && <Badge variant="secondary">{t("common.outOfStock")}</Badge>}
@@ -186,7 +186,7 @@ function ProductPage() {
             <div className="flex items-start gap-4">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
-                <p className="tech-label text-primary">{t("product.whySelected")}</p>
+                <p className="jp-label text-primary">選定理由 · {t("product.whySelected")}</p>
                 <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">{t("product.whySelectedText")}</p>
               </div>
             </div>
@@ -226,17 +226,17 @@ function ProductPage() {
 
           <div className="mt-10 border border-border bg-surface">
             <div className="border-b border-border px-5 py-4">
-              <p className="tech-label text-muted-foreground">{t("product.specs")}</p>
+              <p className="jp-label text-muted-foreground">仕様 · {t("product.specs")}</p>
             </div>
             <dl className="divide-y divide-border font-mono text-[11px]">
               {[
                 [t("product.vendor"), node.vendor || "—"],
                 [t("product.sku"), sku || "—"],
                 [t("product.ean"), ean || "—"],
-                ["Task", task || node.productType || "—"],
+                ["Aplicação", task || node.productType || "—"],
                 ["Material", material || "—"],
-                ["Standard", standard || "—"],
-                ["Manufacturing origin", madeIn || "Not claimed / pending verification"],
+                ["Norma", standard || "—"],
+                ["País de fabrico", madeIn || "Não afirmado / por verificar"],
                 [t("product.warranty"), t("product.warrantyValue")],
               ].map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[0.9fr_1.1fr] gap-4 px-5 py-3">
@@ -248,8 +248,8 @@ function ProductPage() {
           </div>
 
           <p className="mt-5 font-mono text-[9px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-            Legendary presentation is triggered by Shopify tags: legendary, flagship or icon. The WebGL layer is lazy,
-            respects reduced motion and never replaces the real product image.
+            A apresentação especial é ativada pelas tags Shopify legendary, flagship ou icon. A camada WebGL é carregada
+            apenas quando necessária, respeita movimento reduzido e nunca substitui a imagem real do produto.
           </p>
         </div>
       </div>

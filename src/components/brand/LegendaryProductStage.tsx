@@ -72,7 +72,7 @@ function compile(gl: WebGL2RenderingContext, type: number, source: string) {
 export function LegendaryProductStage({
   imageUrl,
   alt,
-  eyebrow = "LEGENDARY OBJECT",
+  eyebrow = "名品 · OBJETO DE DESTAQUE",
   className = "",
 }: LegendaryProductStageProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -231,7 +231,7 @@ export function LegendaryProductStage({
         <span className="tech-label text-white/70">{eyebrow}</span>
       </div>
       <div className="absolute right-5 top-5 z-20 font-mono text-[10px] tracking-[0.18em] text-white/40">
-        WEBGL / FALLBACK READY
+        WEBGL / MODO SEGURO
       </div>
       <div className="relative z-10 flex min-h-[360px] items-center justify-center p-10 sm:p-14">
         {imageUrl ? (
@@ -249,7 +249,7 @@ export function LegendaryProductStage({
       <span className="measure-line measure-line-x" aria-hidden="true" />
       <span className="measure-line measure-line-y" aria-hidden="true" />
       <div className="absolute bottom-5 left-5 z-20 font-mono text-[10px] text-white/45">
-        PRECISION CURATION / REJENDARI
+        精密選定 / CURADORIA REJENDARI
       </div>
     </div>
   );

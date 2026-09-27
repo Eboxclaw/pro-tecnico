@@ -21,14 +21,14 @@ const LANGS: { id: Locale; label: string }[] = [
   { id: "es", label: "ES" },
 ];
 
-const CATEGORIES: Array<{ label: string; task: string; icon: ToolGlyphName }> = [
-  { label: "Precision & Electronics", task: "precision", icon: "precision" },
-  { label: "Drivers & Bits", task: "fastening", icon: "driver" },
-  { label: "Ratchets & Sockets", task: "sockets", icon: "socket" },
-  { label: "Pliers & Wrenches", task: "grip", icon: "grip" },
-  { label: "Cutting & Blades", task: "cutting", icon: "cut" },
-  { label: "HVAC / Installation", task: "hvac", icon: "hvac" },
-  { label: "Power Tools 18V+", task: "power", icon: "power" },
+const CATEGORIES: Array<{ label: string; jp: string; task: string; icon: ToolGlyphName }> = [
+  { label: "Precisão & eletrónica", jp: "精密工具", task: "precision", icon: "precision" },
+  { label: "Chaves, bits & aperto", jp: "締結工具", task: "fastening", icon: "driver" },
+  { label: "Roquetes & sockets", jp: "ソケット", task: "sockets", icon: "socket" },
+  { label: "Alicates & chaves", jp: "作業工具", task: "grip", icon: "grip" },
+  { label: "Corte & lâminas", jp: "切削工具", task: "cutting", icon: "cut" },
+  { label: "AVAC & instalação", jp: "設備工具", task: "hvac", icon: "hvac" },
+  { label: "Máquinas 18V+", jp: "電動工具", task: "power", icon: "power" },
 ];
 
 export function SiteHeader() {
@@ -65,8 +65,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/94 backdrop-blur-xl supports-[backdrop-filter]:bg-background/82">
       <div className="border-b border-border/70 bg-black/20">
         <div className="mx-auto flex h-7 max-w-[1440px] items-center justify-between px-4 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:px-6">
-          <span>Curated in Portugal · Japanese professional tools</span>
-          <span className="hidden sm:inline">Brand origin ≠ manufacturing origin · verified per SKU</span>
+          <span>Curadoria em Portugal · Ferramenta profissional japonesa</span>
+          <span className="hidden sm:inline">Origem da marca ≠ país de fabrico · verificado por SKU</span>
         </div>
       </div>
 
@@ -74,13 +74,13 @@ export function SiteHeader() {
         <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="REJENDARI">
           <img
             src={logo}
-            alt="Rejendarī"
+            alt="REJENDARI"
             className="h-10 w-auto rounded-sm transition-transform duration-300 group-hover:scale-[1.03]"
           />
           <span className="hidden border-l border-border pl-3 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground xl:block">
-            tools worth
+            ferramentas
             <br />
-            knowing
+            escolhidas
           </span>
         </Link>
 
@@ -104,7 +104,7 @@ export function SiteHeader() {
             className="hidden items-center gap-2 rounded-md border border-border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground md:flex"
           >
             <Gift className="h-3.5 w-3.5 text-primary" />
-            Points / referrals
+            Pontos / convites
           </Link>
 
           <DropdownMenu>
@@ -177,7 +177,10 @@ export function SiteHeader() {
                 name={category.icon}
                 className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary"
               />
-              <span>{category.label}</span>
+              <span className="flex items-baseline gap-2">
+                <span>{category.label}</span>
+                <span className="hidden font-display text-[9px] tracking-[0.04em] text-muted-foreground/55 2xl:inline">{category.jp}</span>
+              </span>
             </Link>
           ))}
         </div>

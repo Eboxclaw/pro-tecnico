@@ -14,13 +14,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Route = createFileRoute("/pontos")({
   head: () => ({
     meta: [
-      { title: "Points & referrals — REJENDARI" },
+      { title: "Pontos & convites — REJENDARI" },
       {
         name: "description",
-        content: "REJENDARI loyalty: points, referral attribution and free-entry weekly draws.",
+        content: "Fidelização REJENDARI: pontos, atribuição de convites e sorteios semanais com entrada gratuita.",
       },
-      { property: "og:title", content: "Points & referrals — REJENDARI" },
-      { property: "og:description", content: "One account ledger for loyalty points and referral rewards." },
+      { property: "og:title", content: "Pontos & convites — REJENDARI" },
+      { property: "og:description", content: "Um único saldo para pontos de fidelização e recompensas de convites." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -114,7 +114,7 @@ function PointsPage() {
     if (navigator.share) {
       await navigator.share({
         title: "REJENDARI",
-        text: locale === "pt" ? "Ferramenta profissional escolhida com critério." : "Professional tools selected with purpose.",
+        text: locale === "pt" ? "Ferramenta profissional escolhida com critério." : "Ferramenta profissional escolhida com critério.",
         url: referralLink,
       });
     } else {
@@ -126,11 +126,11 @@ function PointsPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-          <p className="tech-label text-primary">REJENDARI / Loyalty infrastructure</p>
+          <p className="jp-label text-primary">ポイント · fidelização REJENDARI</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
-            Points, referrals,
+            Pontos e convites,
             <br />
-            <span className="text-primary">one ledger.</span>
+            <span className="text-primary">um só saldo.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">{t("points.subtitle")}</p>
         </div>
@@ -141,7 +141,7 @@ function PointsPage() {
           <article className="bg-card p-6 sm:p-8">
             <div className="flex items-center gap-3 text-primary">
               <ToolGlyph name="reward" className="h-8 w-8" />
-              <span className="tech-label">Points</span>
+              <span className="jp-label">ポイント · Pontos</span>
             </div>
             <h2 className="mt-6 font-display text-3xl font-semibold tracking-[-0.045em]">{t("points.howTitle")}</h2>
             <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
@@ -157,45 +157,45 @@ function PointsPage() {
           <article className="bg-card p-6 sm:p-8">
             <div className="flex items-center gap-3 text-primary">
               <ToolGlyph name="referral" className="h-8 w-8" />
-              <span className="tech-label">Referrals</span>
+              <span className="jp-label">紹介 · Convites</span>
             </div>
             <h2 className="mt-6 font-display text-3xl font-semibold tracking-[-0.045em]">
-              Share a link. Attribution survives sign-in.
+              Partilha um link. A atribuição mantém-se depois do login.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
-              The referral code is captured before registration and attached to the account afterwards. Reward amounts
-              are deliberately not hard-coded into the website: the active campaign decides the qualification rule and
-              point amount, then the reward lands in the same points ledger.
+              O código de convite é guardado antes do registo e associado à conta depois. Os valores da recompensa
+              não ficam hardcoded no site: a campanha ativa define a condição e os pontos, e a recompensa entra
+              no mesmo saldo.
             </p>
 
             {userId && referralCode ? (
               <div className="mt-7 border border-border bg-background p-4">
-                <p className="tech-label text-muted-foreground">Your referral link</p>
+                <p className="tech-label text-muted-foreground">O teu link de convite</p>
                 <p className="mt-3 break-all font-mono text-xs text-foreground">{referralLink}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Button variant="secondary" size="sm" onClick={copyReferral}>
                     {copied ? <Check className="mr-2 h-4 w-4" /> : <Copy className="mr-2 h-4 w-4" />}
-                    {copied ? "Copied" : "Copy"}
+                    {copied ? "Copiado" : "Copiar"}
                   </Button>
                   <Button variant="outline" size="sm" onClick={shareReferral}>
                     <Share2 className="mr-2 h-4 w-4" />
-                    Share
+                    Partilhar
                   </Button>
                 </div>
                 <div className="mt-5 grid grid-cols-2 gap-px bg-border">
                   <div className="bg-surface p-4">
                     <p className="font-display text-2xl font-semibold">{referrals.length}</p>
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Attributed</p>
+                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Atribuídos</p>
                   </div>
                   <div className="bg-surface p-4">
                     <p className="font-display text-2xl font-semibold">{earnedFromReferrals}</p>
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Points earned</p>
+                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Pontos ganhos</p>
                   </div>
                 </div>
               </div>
             ) : (
               <Button className="mt-7 rounded-none" asChild>
-                <Link to="/auth">{userId ? "Open account" : t("nav.signIn")}</Link>
+                <Link to="/auth">{userId ? "Abrir conta" : t("nav.signIn")}</Link>
               </Button>
             )}
           </article>
