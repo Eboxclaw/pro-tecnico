@@ -13,8 +13,8 @@ async function claimStoredReferral() {
   const { data } = await supabase.auth.getSession();
   if (!data.session) return;
 
-  const { data: claimed, error } = await supabase.rpc("claim_referral", { p_code: code });
-  if (!error && claimed) clearRememberedReferralCode();
+  const { error } = await supabase.rpc("claim_referral", { p_code: code });
+  if (!error) clearRememberedReferralCode();
 }
 
 export function ReferralCapture() {
