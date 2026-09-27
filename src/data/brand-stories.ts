@@ -68,11 +68,11 @@ export const BRAND_STORIES: BrandStory[] = [
     name: "TAJIMA",
     jp: "測定・切削",
     specialty: "Medição · marcação · corte · obra",
-    headline: "Medição para obra europeia começa em metros, não em pés.",
+    headline: "Ferramenta de obra japonesa, escolhida em variantes que façam sentido na Europa.",
     story:
-      "A TAJIMA entra pela medição e marcação de obra. Para Portugal, a curadoria privilegia referências europeias em metros e milímetros, mantendo a leitura rápida e a robustez de ferramentas pensadas para uso diário.",
+      "A TAJIMA é forte em medição, marcação e corte. Na REJENDARI damos prioridade a referências europeias com especificações claras e adequadas ao trabalho profissional em Portugal.",
     whyPt:
-      "A fita métrica é um exemplo simples da nossa regra de mercado: uma excelente ferramenta só entra se a variante fizer sentido para quem a vai usar cá.",
+      "Na seleção atual destacamos o Driver Cutter DC660 europeu de 25 mm: uma referência de obra direta, fácil de comparar e sem ambiguidades de escala ou unidade.",
     sourceUrl: "https://tajima.ch/",
     sourceLabel: "TAJIMA Europe",
   },
