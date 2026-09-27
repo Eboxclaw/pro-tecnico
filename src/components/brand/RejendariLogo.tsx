@@ -7,37 +7,17 @@ type LogoProps = {
 
 export function RejendariMark({ className = "", inverted = false }: Pick<LogoProps, "className" | "inverted">) {
   const ink = inverted ? "#f5f0e5" : "#24211d";
+  const frame = inverted ? "#f5f0e5" : "#24211d";
+
   return (
     <svg viewBox="0 0 64 64" className={className} role="img" aria-label="REJENDARI">
+      <rect x="7.5" y="7.5" width="49" height="49" rx="3" fill="none" stroke={frame} strokeWidth="1.5" opacity=".18" />
       <path
-        d="M51.5 18.5c-6.8-8.2-18-11.8-28-8.7C13.3 13 6.8 22.7 7.8 33.4c1.1 11.3 10.9 20.1 22.3 20.1 10.2 0 18.6-6.6 21.7-15.4"
-        fill="none"
-        stroke="#b54530"
-        strokeWidth="5.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M47.7 13.3c4.4 4.1 7.2 9.7 7.6 15.7"
-        fill="none"
-        stroke="#d35a42"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        opacity=".68"
-      />
-      <path
-        d="M20 17h12.7c8.1 0 12.9 4.1 12.9 10.2 0 4.8-2.9 8.3-7.8 9.7L47 48H37.8l-8-10h-2.9v10H20V17Zm7 6.2v8.7h5.3c3.9 0 6.1-1.6 6.1-4.4 0-2.9-2.1-4.3-6.1-4.3H27Z"
+        d="M18 48V16h14.2c8.2 0 13.5 4.4 13.5 11.3 0 5.1-3.1 8.9-8.3 10.2L47 48h-9.1l-8.1-9.5H26V48h-8Zm8-25.5v9.4h5.8c3.8 0 6-1.8 6-4.8 0-3-2.2-4.6-6-4.6H26Z"
         fill={ink}
       />
-    </svg>
-  );
-}
-
-function RejendariA({ inverted = false }: { inverted?: boolean }) {
-  const ink = inverted ? "#f5f0e5" : "#24211d";
-  return (
-    <svg viewBox="0 0 42 42" className="h-[0.88em] w-[0.86em] overflow-visible" aria-hidden="true">
-      <path d="M4 36 19.8 5.5h5.3L38 36h-8.1l-2.8-7.3H15.5L12 36H4Zm14.2-13.7h6.2l-2.8-7.5-3.4 7.5Z" fill={ink} />
-      <path d="m16.9 29.2 4.6-9.8 4.3 9.8h-8.9Z" fill="#b54530" />
+      <path d="M11 52 53 12" fill="none" stroke="#b54530" strokeWidth="4.2" strokeLinecap="round" />
+      <path d="M45.5 9.5H54.5V18.5" fill="none" stroke="#d35a42" strokeWidth="1.8" strokeLinecap="round" opacity=".7" />
     </svg>
   );
 }
@@ -60,15 +40,18 @@ export function RejendariLogo({
       <RejendariMark inverted={inverted} className="h-11 w-11 shrink-0" />
       <div className="min-w-0">
         <div
-          className={`flex items-baseline whitespace-nowrap font-display text-[1.36rem] font-bold leading-none tracking-[-0.085em] sm:text-[1.5rem] ${inkClass}`}
+          className={`whitespace-nowrap font-display text-[1.35rem] font-bold leading-none tracking-[-0.065em] sm:text-[1.52rem] ${inkClass}`}
           aria-label="REJENDARI"
         >
           <span>REJEND</span>
-          <RejendariA inverted={inverted} />
+          <span className="relative inline-block">
+            A
+            <span className="absolute -bottom-[0.18em] left-[18%] h-[2px] w-[68%] bg-[#b54530]" aria-hidden="true" />
+          </span>
           <span>RI</span>
         </div>
         {showTagline && (
-          <div className={`mt-1 flex items-center gap-2 whitespace-nowrap font-mono text-[6.5px] uppercase tracking-[0.18em] ${mutedClass}`}>
+          <div className={`mt-1.5 flex items-center gap-2 whitespace-nowrap font-mono text-[6.5px] uppercase tracking-[0.17em] ${mutedClass}`}>
             <span className="font-sans text-[8px] tracking-[0.08em]">選定工具</span>
             <span aria-hidden="true">·</span>
             <span>japan first · portugal ready</span>
