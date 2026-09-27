@@ -532,6 +532,94 @@
 
 
 
+.smart-product-visual {
+  --product-x: 0px;
+  --product-y: 0px;
+  --product-rx: 0deg;
+  --product-ry: 0deg;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.smart-product-grid {
+  background-image:
+    linear-gradient(oklch(0.24 0.012 65 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.24 0.012 65 / 0.045) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+}
+
+.smart-product-main {
+  transform:
+    translate3d(var(--product-x), var(--product-y), 28px)
+    rotateX(var(--product-rx))
+    rotateY(var(--product-ry))
+    scale(1.01);
+  transform-origin: center;
+  filter: drop-shadow(0 24px 30px oklch(0.2 0.01 65 / 0.18));
+  transition:
+    transform 140ms ease-out,
+    filter 220ms ease;
+  will-change: transform;
+}
+
+.smart-product-ghost {
+  transform:
+    translate3d(calc(var(--product-x) * -0.45), calc(var(--product-y) * -0.45), 0)
+    scale(1.045);
+  transition: transform 180ms ease-out;
+  will-change: transform;
+}
+
+.smart-product-orbit {
+  transform: translate3d(calc(var(--product-x) * -0.25), calc(var(--product-y) * -0.25), 0);
+  transition: transform 180ms ease-out;
+}
+
+.smart-product-visual:hover .smart-product-main {
+  filter: drop-shadow(0 30px 38px oklch(0.2 0.01 65 / 0.22));
+}
+
+.smart-product-visual::after {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -32%;
+  z-index: 10;
+  width: 20%;
+  transform: skewX(-17deg) translateX(-180%);
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.20), transparent);
+  transition: transform 850ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+
+.smart-product-visual:hover::after {
+  transform: skewX(-17deg) translateX(720%);
+}
+
+.section-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@supports (animation-timeline: view()) {
+  .section-reveal {
+    animation: section-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 4% cover 24%;
+  }
+
+  @keyframes section-rise {
+    from {
+      opacity: 0.35;
+      transform: translateY(26px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 .rejendari-seal {
   animation: seal-drift 12s ease-in-out infinite;
   transform-origin: center;
@@ -619,6 +707,7 @@
   .brand-marquee-track,
   .bit-rail-track,
   .rejendari-seal,
+  .section-reveal,
   .scan-accent::after,
   .reveal-line > span,
   .hero-floating-tool-1,
@@ -631,13 +720,24 @@
 
   .category-tile,
   .product-card,
-  .legendary-object {
+  .legendary-object,
+  .smart-product-main,
+  .smart-product-ghost,
+  .smart-product-orbit {
     transition: none;
   }
 
   .product-card:hover,
-  .category-tile:hover {
+  .category-tile:hover,
+  .smart-product-main,
+  .smart-product-ghost,
+  .smart-product-orbit,
+  .section-reveal {
     transform: none;
+  }
+
+  .smart-product-visual::after {
+    display: none;
   }
 }
 
