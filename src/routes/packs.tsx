@@ -22,6 +22,7 @@ export const Route = createFileRoute("/packs")({
 
 const OFFICIAL_SET_IDS = [
   "anex-307-s1",
+  "anex-525-10b",
   "anex-1902",
   "anex-ata-s1",
   "vessel-220w-3",
