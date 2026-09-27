@@ -60,7 +60,9 @@ export function ReferenceProductCard({
           <div className={`flex flex-1 flex-col ${featured ? "p-6" : "p-5"}`}>
             <div className="flex items-center justify-between gap-3">
               <span className="tech-label text-primary">{tool.brand}</span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">{tool.model}</span>
+              <span className="text-right font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+                {tool.officialCode ? `REF ${tool.officialCode}` : tool.model}
+              </span>
             </div>
 
             <h3 className={`mt-3 font-display font-semibold leading-[1.08] tracking-[-0.04em] ${featured ? "text-2xl" : "text-xl"}`}>
