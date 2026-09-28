@@ -52,7 +52,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
     <Link
       to="/product/$handle"
       params={{ handle: node.handle }}
-      className="product-card group flex min-h-full flex-col overflow-hidden border border-border bg-card transition-colors hover:border-primary/55"
+      className="product-card catalogue-card group flex min-h-full flex-col overflow-hidden"
     >
       <div className="product-image-stage relative aspect-[5/4] overflow-hidden bg-[#ece9e2]">
         {isLegendary && (
@@ -86,7 +86,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center justify-between gap-3">
           <span className="tech-label text-primary">{node.vendor || "REJENDARI"}</span>
           {!available && <Badge variant="secondary">{t("common.outOfStock")}</Badge>}
@@ -97,7 +97,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         </h3>
         <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-muted-foreground">{node.description}</p>
 
-        <div className="mt-4 flex min-h-5 items-center gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+        <div className="mb-6 mt-4 flex min-h-5 items-center gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
           <span>{task || "Uso profissional"}</span>
           <span className="h-1 w-1 rounded-full bg-primary/70" />
           <span>Ficha técnica</span>

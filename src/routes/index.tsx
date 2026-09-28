@@ -82,8 +82,8 @@ function Index() {
     <div>
       <section className="relative overflow-hidden border-b border-border">
         <div className="technical-grid absolute inset-0 opacity-35" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-[1440px] gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
-          <div className="relative z-10 py-5 lg:py-12">
+        <div className="relative mx-auto grid max-w-[1440px] gap-12 px-4 py-8 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
+          <div className="relative z-10 py-5 lg:py-6">
             <div className="flex items-center gap-3">
               <span className="h-px w-10 bg-primary" />
               <span className="jp-label text-primary">日本の工具 · Ferramenta profissional japonesa</span>
@@ -91,19 +91,19 @@ function Index() {
 
             <div className="reveal-line mt-8">
               <span>
-                <h1 className="max-w-3xl font-display text-[clamp(3.2rem,6.8vw,7rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
-                  Ferramenta japonesa
+                <h1 className="max-w-3xl font-display text-[clamp(3rem,5vw,5.3rem)] font-medium leading-[1.02] tracking-[-0.055em]">
+                  Precisão na escolha.
                   <br />
-                  <span className="text-primary">escolhida para trabalhar.</span>
+                  <span className="text-primary">Confiança na mão.</span>
                 </h1>
               </span>
             </div>
 
             <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-              {t("home.subtitle")}
+              Ferramenta japonesa para quem conhece o valor de um trabalho bem feito. VESSEL, Ko-ken, ANEX, OLFA e outras marcas, com contexto técnico para escolher.
             </p>
             <p className="mt-4 max-w-xl border-l border-primary/60 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.13em] text-muted-foreground">
-              Menos catálogo. Mais ferramenta que merece espaço na mala.
+              Cada referência, uma razão para estar aqui.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -134,12 +134,6 @@ function Index() {
 
           <div className="relative">
             <RejendariSeal className="absolute -left-5 -top-6 z-40 hidden md:grid" />
-            <div className="absolute -right-3 -top-5 z-30 hidden w-52 border border-black/15 bg-[#f5f0e5]/94 p-3 text-[#25211c] shadow-[0_12px_35px_rgba(40,33,26,0.12)] backdrop-blur md:block">
-              <p className="jp-label text-primary">選定 · escolha técnica</p>
-              <p className="mt-2 text-xs leading-5 text-black/58">
-                Menos tempo a comparar centenas de referências. Mais contexto para escolher a ferramenta certa.
-              </p>
-            </div>
             <HeroToolConstellation />
           </div>
         </div>
@@ -202,7 +196,7 @@ function Index() {
       <RejendariEdit />
 
       <section className="border-y border-border bg-surface/35">
-        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-16">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div>
               <p className="jp-label text-primary">日本の定番 · destaques japoneses</p>
