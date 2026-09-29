@@ -25,7 +25,7 @@ export function AnexFeature({ compact = false }: { compact?: boolean }) {
   return (
     <section className="anex-feature" aria-labelledby="anex-feature-title">
       <div className="anex-feature-copy">
-        <p className="anex-kicker">PREFERÊNCIA DA CASA / ANEX</p>
+        <p className="anex-kicker">03 / PREFERÊNCIA DA CASA · ANEX</p>
         <h2 id="anex-feature-title">
           O engenho
           <br />

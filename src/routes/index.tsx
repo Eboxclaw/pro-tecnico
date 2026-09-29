@@ -18,6 +18,8 @@ import { RejendariPromiseStrip } from "@/components/brand/RejendariPromiseStrip"
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { LxtCollection } from "@/components/shop/LxtCollection";
 import { ArtisanHero } from "@/components/brand/ArtisanHero";
+import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
+import { RejendariSeal } from "@/components/brand/RejendariSeal";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -133,6 +135,13 @@ function Index() {
         <div><p>O equilíbrio na mão. O encaixe exato. O controlo no último aperto. Procuramos esses detalhes nas ferramentas que escolhemos.</p><p>A ANEX tem um lugar especial nesta seleção, ao lado de VESSEL, Ko-ken e outras marcas que estudamos pelo trabalho que resolvem.</p><Link to="/shop" className="artisan-text-link">Encontrar a ferramenta certa <ArrowRight size={16} aria-hidden="true" /></Link></div>
       </section>
 
+      <section className="mx-auto max-w-[1440px] px-4 pb-16 pt-14 sm:px-6 lg:pb-20">
+        <div className="relative">
+          <RejendariSeal className="absolute -left-5 -top-6 z-40 hidden md:grid" />
+          <HeroToolConstellation />
+        </div>
+      </section>
+
       <section className="border-b border-border bg-[#0d0f12]">
         <div className="brand-marquee py-5">
           <div className="brand-marquee-track gap-12 pr-12">
@@ -150,6 +159,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <LxtCollection />
 
       <AnexFeature />
       <AnexSignatureSolutions />
@@ -279,7 +290,6 @@ function Index() {
 
       <BitRegimeComparison />
 
-      <LxtCollection />
       <SmartKitShowcase />
 
       <BitKitRail />

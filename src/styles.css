@@ -486,6 +486,14 @@
   animation: tool-float-b 8.2s ease-in-out 1.4s infinite reverse;
 }
 
+.hero-floating-tool-5 {
+  left: 38%;
+  bottom: 6%;
+  width: 26%;
+  height: 24%;
+  animation: tool-float-a 9.4s ease-in-out 0.6s infinite;
+}
+
 .hero-floating-tool:hover {
   z-index: 30;
   border-color: oklch(0.61 0.19 36 / 0.5);
@@ -534,6 +542,10 @@
     bottom: 18%;
     width: 37%;
     height: 23%;
+  }
+
+  .hero-floating-tool-5 {
+    display: none;
   }
 }
 
@@ -791,6 +803,7 @@
 .artisan-hero h1 { margin-top: 36px; font-family: var(--font-display); font-size: clamp(3.5rem, 7.2vw, 7rem); font-weight: 400; letter-spacing: -.065em; line-height: .99; }
 .artisan-hero h1 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; color: #dfbba4; letter-spacing: -.06em; }
 .artisan-hero-description { margin-top: 32px; font-size: 15px; line-height: 1.8; color: #e0e0d8; }
+.artisan-hero-motto { margin-top: 18px; padding-left: 16px; border-left: 2px solid #dfbba4; font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .18em; color: #cfc9ba; }
 .artisan-hero-actions { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 36px; }
 .artisan-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; padding: 17px 22px; border: 1px solid #ffffff60; font-size: 12px; transition: background .2s, color .2s; }
 .artisan-link:hover { background: #ffffff18; }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
 import { useT } from "@/lib/i18n";
 import { getRememberedReferralCode } from "@/lib/referrals";
@@ -38,6 +38,10 @@ function AuthPage() {
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
+    if (!isSupabaseConfigured()) {
+      toast.error("Serviço de conta indisponível. Tenta mais tarde.");
+      return;
+    }
     setBusy(true);
 
     const { error } =

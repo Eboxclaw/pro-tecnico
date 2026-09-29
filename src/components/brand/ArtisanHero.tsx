@@ -17,18 +17,19 @@ export function ArtisanHero() {
       <div className="artisan-hero-shade" />
       <div className="artisan-hero-content">
         <p className="artisan-eyebrow">
-          <span /> REJENDARI — FERRAMENTA COM CRITÉRIO
+          <span /> 厳選工具 · FERRAMENTA COM CRITÉRIO
         </p>
         <h1 id="artisan-title">
-          O valor está
+          Precisão na escolha.
           <br />
-          no <em>detalhe.</em>
+          <em>Confiança na mão.</em>
         </h1>
         <p className="artisan-hero-description">
-          Precisão japonesa. Engenharia europeia.
+          Ferramenta japonesa e europeia para quem conhece o valor
           <br />
-          Escolhidas para o trabalho que levas a sério.
+          de um trabalho bem feito. Escolhida pelo trabalho que resolve.
         </p>
+        <p className="artisan-hero-motto">Cada referência, uma razão para estar aqui.</p>
         <div className="artisan-hero-actions">
           <Link to="/shop" className="artisan-link artisan-link-solid">
             Explorar ferramentas <ArrowUpRight aria-hidden="true" size={18} />
@@ -42,6 +43,11 @@ export function ArtisanHero() {
         <a href="#selecao" className="flex items-center gap-3">
           <ArrowDown size={14} aria-hidden="true" /> DESCOBRIR A SELEÇÃO
         </a>
+        <span className="flex items-center gap-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/70">
+          <span>JP·DE·SE / seleção</span>
+          <span>PT / curadoria</span>
+          <span>PRO / dados claros</span>
+        </span>
         <Link
           to="/referencia/$id"
           params={{ id: "makita-dtd173z" }}

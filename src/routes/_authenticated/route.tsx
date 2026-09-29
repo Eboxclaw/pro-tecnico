@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Outlet, useNavigate } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/_authenticated")({
   component: AuthGate,
@@ -11,6 +11,10 @@ function AuthGate() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    if (!isSupabaseConfigured()) {
+      navigate({ to: "/auth" });
+      return;
+    }
     supabase.auth.getSession().then(({ data }) => {
       if (!data.session) navigate({ to: "/auth" });
       else setReady(true);

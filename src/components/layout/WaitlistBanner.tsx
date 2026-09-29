@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Loader2, X } from "lucide-react";
 import { useT, useLocale } from "@/lib/i18n";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -33,6 +33,10 @@ export function WaitlistBanner() {
 
   const notify = async () => {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      toast.error(t("gate.notifyError"));
+      return;
+    }
+    if (!isSupabaseConfigured()) {
       toast.error(t("gate.notifyError"));
       return;
     }

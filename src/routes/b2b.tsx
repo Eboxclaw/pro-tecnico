@@ -5,7 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Building2 } from "lucide-react";
 import { useT } from "@/lib/i18n";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -59,6 +59,10 @@ function B2BPage({ reference }: { reference?: string | undefined }) {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isSupabaseConfigured()) {
+      toast.error(t("b2b.error"));
+      return;
+    }
     setSubmitting(true);
     try {
       const { data: sessionData } = await supabase.auth.getSession();

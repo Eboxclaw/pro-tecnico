@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import {
   clearRememberedReferralCode,
   getRememberedReferralCode,
@@ -27,6 +27,10 @@ export function ReferralCapture() {
       url.searchParams.delete("ref");
       window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
     }
+
+    // Sem credenciais (ex.: alojamento sem variáveis Supabase configuradas)
+    // guardamos o código para uma sessão futura e mantemos a loja navegável.
+    if (!isSupabaseConfigured()) return;
 
     const claim = () => { void claimStoredReferral().catch(() => { /* Keep the code for a later session when the network recovers. */ }); };
     claim();

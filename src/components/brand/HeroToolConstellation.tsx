@@ -1,7 +1,7 @@
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { JapaneseAmbientScene } from "@/components/brand/JapaneseAmbientScene";
 
-const HERO_IDS = ["anex-397-d", "wera-kk-vde-17-ra-1", "knipex-cobra-250", "vessel-220usb-s1eb"];
+const HERO_IDS = ["anex-397-d", "makita-dtd173z", "wera-kk-vde-17-ra-1", "knipex-cobra-250", "vessel-220usb-s1eb"];
 
 export function HeroToolConstellation() {
   const tools = HERO_IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
@@ -12,7 +12,7 @@ export function HeroToolConstellation() {
       <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
       <div className="absolute left-5 top-5 z-20">
         <p className="jp-label text-primary">注目の工具 · referências em destaque</p>
-        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-black/42">ANEX · WERA · KNIPEX · VESSEL</p>
+        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-black/42">ANEX · MAKITA · WERA · KNIPEX · VESSEL</p>
       </div>
 
       <div className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 writing-vertical font-display text-[11px] tracking-[0.22em] text-black/28 md:block">
@@ -59,7 +59,7 @@ export function HeroToolConstellation() {
       <div className="absolute bottom-5 left-5 z-20 border-l border-primary/70 pl-3">
         <p className="font-display text-sm font-semibold text-[#24211d]">Ferramentas reais. Escolhidas para o trabalho.</p>
         <p className="mt-1 max-w-xs text-[10px] leading-4 text-black/48">
-          Passa o rato pelas referências para ver aperto, grip e manutenção em quatro sistemas japoneses diferentes.
+          Passa o rato pelas referências: aperto de impacto, 1000 V, grip e acesso — cinco sistemas escolhidos pelo trabalho.
         </p>
       </div>
     </div>

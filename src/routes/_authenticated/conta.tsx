@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Check, Copy, Share2 } from "lucide-react";
 import { useMemo, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { useT } from "@/lib/i18n";
 import { buildReferralLink } from "@/lib/referrals";
 import { Button } from "@/components/ui/button";
@@ -29,6 +29,7 @@ function AccountPage() {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["account"],
     queryFn: async () => {
+      if (!isSupabaseConfigured()) throw new Error("Serviço de conta indisponível.");
       const { data: userData } = await supabase.auth.getUser();
       if (!userData.user) throw new Error("Sessão indisponível");
       const uid = userData.user.id;
