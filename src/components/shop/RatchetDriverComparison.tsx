@@ -4,7 +4,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { Button } from "@/components/ui/button";
 
-const IDS = ["anex-397-d", "vessel-td6816mg", "ktc-dbr16"];
+const IDS = ["anex-397-d", "vessel-td6816mg", "anex-431"];
 
 export function RatchetDriverComparison() {
   const tools = IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
@@ -20,7 +20,7 @@ export function RatchetDriverComparison() {
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-white/58">
-            ANEX, VESSEL e KTC resolvem o mesmo problema de maneiras diferentes: Ball Grip de 72 dentes, cassete de 16 bits ou armazenamento integrado para mecânica. A comparação ajuda a escolher pelo modo de trabalho, não só pela marca.
+            ANEX e VESSEL resolvem o mesmo problema de maneiras diferentes: Ball Grip de 72 dentes, cassete de 16 bits ou o Gandora com bits guardados no corpo. A comparação ajuda a escolher pelo modo de trabalho, não só pela marca.
           </p>
         </div>
 
@@ -74,9 +74,9 @@ export function RatchetDriverComparison() {
             <p className="mt-2 text-xs leading-5 text-white/52">72 dentes, 5° e cobertura PH, SL, HEX e Torx tamper-resistant.</p>
           </div>
           <div className="bg-[#171614] p-5">
-            <p className="jp-label text-[#d65a41]">KTC DBR16</p>
-            <p className="mt-2 text-sm font-medium">Bits integrados no punho</p>
-            <p className="mt-2 text-xs leading-5 text-white/52">Foco em mecânica: PH/SL, HEX métricos e Torx de segurança na própria ferramenta.</p>
+            <p className="jp-label text-[#d65a41]">ANEX 431</p>
+            <p className="mt-2 text-sm font-medium">Bits guardados no corpo</p>
+            <p className="mt-2 text-xs leading-5 text-white/52">Roquete de vaivém com 10 dentes e bits Neji-Pita (+2/−6) guardados no próprio punho.</p>
           </div>
         </div>
       </div>

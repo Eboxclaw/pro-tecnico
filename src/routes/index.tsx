@@ -64,7 +64,6 @@ const BRANDS = [
   { label: "HOZAN", slug: "HOZAN" },
   { label: "LOBSTER / LOBTEX", slug: "LOBSTER" },
   { label: "TONE", slug: "TONE" },
-  { label: "KTC", slug: "KTC" },
   { label: "NEPROS", slug: "NEPROS" },
 ];
 
@@ -76,7 +75,7 @@ const CATEGORIES: Array<{
 }> = [
   { task: "precision", icon: "precision", label: "Precisão & slim", note: "Elétrico slim, microparafusos e bancada" },
   { task: "fastening", icon: "driver", label: "Chaves, bits & aperto", note: "Impacto, torsion e controlo de torque" },
-  { task: "sockets", icon: "socket", label: "Roquetes & sockets", note: "Ko-ken, TONE, KTC e Wera VDE" },
+  { task: "sockets", icon: "socket", label: "Roquetes & sockets", note: "Ko-ken, TONE e Wera VDE" },
   { task: "grip", icon: "grip", label: "Alicates & chaves", note: "Cobra, Pliers Wrench e ajustáveis" },
   { task: "cutting", icon: "cut", label: "Corte & lâminas", note: "OLFA, TAJIMA e corte de obra" },
   { task: "hvac", icon: "hvac", label: "AVAC & instalação", note: "Tubo, cobre e trabalho de campo" },
