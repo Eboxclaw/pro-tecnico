@@ -864,3 +864,23 @@
   .anex-catalog-note { padding: 40px 24px; gap: 28px; }
   .anex-family-nav a { flex: 1 1 130px; justify-content: space-between; padding: 12px 16px; }
 }
+
+/* ---------- ANEX duo hero (Quick Ball 397 + AOA-17) ---------- */
+.anex-duo { display: grid; grid-template-columns: 1.05fr .95fr; max-width: 1440px; margin: 0 auto; border-y: 1px solid rgba(0,0,0,.08); }
+.anex-duo-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 460px; padding: clamp(28px, 5vw, 72px); background: #eee8dd; overflow: hidden; }
+.anex-duo-object { position: relative; display: flex; flex-direction: column; }
+.anex-duo-object-main { width: 74%; max-width: 470px; aspect-ratio: 1; transform: rotate(-3deg); transition: transform .45s ease; z-index: 2; }
+.anex-duo-object-main:hover { transform: rotate(-1deg); }
+.anex-duo-object-offset { position: absolute; right: clamp(16px, 4vw, 56px); bottom: clamp(18px, 4vw, 52px); width: 34%; max-width: 220px; aspect-ratio: 1; background: #faf8f3; border: 1px solid rgba(0,0,0,.12); box-shadow: 0 24px 60px rgba(35,31,25,.18); padding: 12px; transform: rotate(3deg); transition: transform .45s ease; z-index: 3; }
+.anex-duo-object-offset:hover { transform: rotate(1deg) scale(1.03); }
+.anex-duo-tag { position: absolute; left: 0; right: 0; bottom: 0; border-top: 1px solid rgba(0,0,0,.12); background: rgba(250,248,243,.95); padding: 10px 14px; }
+.anex-duo-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 76px); color: #f7f3e9; background: #813d2f; }
+.anex-duo-copy h2 { margin: 28px 0 24px; font-size: clamp(38px, 4.4vw, 65px); line-height: 1.03; letter-spacing: -.05em; }
+.anex-duo-copy h2 em { font-family: Georgia, serif; font-weight: 400; }
+.anex-duo-copy > p:not(.anex-kicker) { max-width: 420px; font-size: 14px; line-height: 1.9; color: #f0e4d9; margin-bottom: 28px; }
+.anex-duo-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+@media (max-width: 767px) {
+  .anex-duo { grid-template-columns: 1fr; }
+  .anex-duo-stage { min-height: 380px; }
+  .anex-duo-object-main { width: 64%; }
+}

@@ -9,7 +9,7 @@ export const ANEX_CHAPTERS = [
     printed: "36–40",
     description:
       "Adaptadores offset e ferramentas de perfil baixo para obstáculos que não se resolvem com mais força.",
-    ids: ["anex-aoa-17s1", "anex-aoa-19", "anex-6102-t", "anex-6103-f"],
+    ids: ["anex-aoa-17s1", "anex-6102-t", "anex-6103-f"],
   },
   {
     id: "ratchet",
@@ -19,7 +19,7 @@ export const ANEX_CHAPTERS = [
     printed: "55–58",
     description:
       "Quick Ball 72, MiniSta72 e roquetes compactos: escolhe pelo espaço, pelo punho e pelos bits que precisas.",
-    ids: ["anex-397-d", "anex-397-h", "anex-307-s1", "anex-525-10b", "anex-370"],
+    ids: ["anex-397-d", "anex-397-h", "anex-431", "anex-307-s1", "anex-525-10b", "anex-370"],
   },
   {
     id: "bits",

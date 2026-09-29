@@ -3,28 +3,28 @@ import { ArrowRight } from "lucide-react";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { Button } from "@/components/ui/button";
 
-const IDS = ["wera-bit-check-30-bitorsion", "wera-impaktor-bits", "anex-ryujin-artm5-01", "wiha-t-bit"];
+const IDS = ["anex-abrs5-2065", "anex-adrs-2065", "anex-ryujin-artm5-01", "anex-azm-2698"];
 
 const REGIME_FOOTNOTES = [
   {
-    ref: "WERA BIT-CHECK 30",
-    regime: "Montagem geral",
-    note: "BiTorsion: dupla zona torsional para trabalho repetitivo sem destruir pontas.",
+    ref: "ANEX BLACK RYUJIN",
+    regime: "Impacto",
+    note: "HRC 62,5 em Cr-Mo-V com zona torsional: a ponta para chapa grossa e impacto forte.",
   },
   {
-    ref: "WERA IMPAKTOR",
-    regime: "Impacto forte",
-    note: "Sistema dimensionado para a aparafusadora de impacto de 18 V.",
+    ref: "ANEX DIAMOND RYUJIN",
+    regime: "Inox · aderência",
+    note: "Partículas de diamante que mordem o parafuso inox que o ímã não segura.",
   },
   {
     ref: "ANEX 龍神 RYUJIN",
-    regime: "Parafuso estrutural",
-    note: "Fabricado no Japão em Cr-Mo-V, especificado para 18 V e 40 V.",
+    regime: "Montagem geral",
+    note: "Fabricado no Japão em Cr-Mo-V, especificado para 18 V e 40 V, em três alcances.",
   },
   {
-    ref: "WIHA T-BIT",
-    regime: "Power tools",
-    note: "Zona torsional especificada pela Wiha para impacto e uso elétrico.",
+    ref: "ANEX AZM 1000 V",
+    regime: "Elétrico",
+    note: "Bit isolado 1000 V sobre haste hex 6,35 mm: o aperto dentro do quadro.",
   },
 ];
 
@@ -42,9 +42,9 @@ export function BitRegimeComparison() {
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-            Não vendemos todos os bits de todas as marcas: vendemos o bit certo para impacto, torsion, precisão,
-            retenção, acesso estreito e 1000 V — e depois os holders, cabos e máquinas que os transformam num sistema.
-            Alemanha e Japão no mesmo critério.
+            Não vendemos todos os bits de todas as marcas: vendemos o bit certo para impacto, aderência em inox,
+            montagem geral e 1000 V — e depois os holders, adaptadores e máquinas que os transformam num sistema.
+            A família Ryujin da ANEX é o fio condutor.
           </p>
         </div>
 
