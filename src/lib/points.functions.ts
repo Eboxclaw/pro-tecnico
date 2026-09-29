@@ -12,14 +12,20 @@ export interface PublicRaffle {
   drawn_at: string | null;
 }
 
-const supabasePublic = createClient(
-  process.env["SUPABASE_URL"]!,
-  process.env["SUPABASE_PUBLISHABLE_KEY"]!,
-  { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } },
-);
+function createPublicClient() {
+  // Lazy: sem variáveis de ambiente o servidor não pode criar o cliente e a
+  // função responde vazio em vez de derrubar o modulo/lambda.
+  const url = process.env["SUPABASE_URL"];
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } });
+}
 
 export const getPublicRaffles = createServerFn({ method: "GET" }).handler(
   async (): Promise<{ open: PublicRaffle | null; winners: PublicRaffle[] }> => {
+    const supabasePublic = createPublicClient();
+    if (!supabasePublic) return { open: null, winners: [] };
+
     const { data: open } = await supabasePublic
       .from("raffles")
       .select("id,title,prize,prize_brand,status,week_start,winner_label,drawn_at")

@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useT } from "@/lib/i18n";
 import { getPublicRaffles, type PublicRaffle } from "@/lib/points.functions";
 import { buildReferralLink } from "@/lib/referrals";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { ToolGlyph } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -52,6 +52,7 @@ function PointsPage() {
   });
 
   useEffect(() => {
+    if (!isSupabaseConfigured()) return;
     supabase.auth.getSession().then(async ({ data: sessionData }) => {
       const uid = sessionData.session?.user.id ?? null;
       setUserId(uid);
