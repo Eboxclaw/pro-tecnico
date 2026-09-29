@@ -65,8 +65,15 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     name: "Electrician 1000",
     jp: "絶縁 · 1000 V",
     work: "Elétrico",
-    desc: "Bits AZM isolados 1000 V, chave slim isolada VESSEL e corte de alta alavanca ~64 HRC: o circuito 1000 V completo.",
-    ids: ["anex-azm-2698", "vessel-960-ph2-100", "knipex-74-06-200"],
+    desc: "Bits AZM isolados 1000 V, chave slim isolada VESSEL, corte de alta alavanca ~64 HRC e o alicate de seis funções 1000 V: o circuito completo do eletricista.",
+    ids: ["anex-azm-2698", "vessel-960-ph2-100", "knipex-74-06-200", "knipex-13-96-200"],
+  },
+  {
+    name: "Drywall Finish",
+    jp: "石膏ボード · pladur",
+    work: "Pladur · acabamento",
+    desc: "Serrote de ponta para aberturas, raspador inox para juntas e o catch&stop ANEX que segura o parafuso de gesso: montar pladur sem parafuso no chão.",
+    ids: ["tajima-ng165js-k1", "olfa-scr-l", "anex-abs-2065"],
   },
   {
     name: "Slim Electrician",
