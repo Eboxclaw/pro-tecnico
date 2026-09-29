@@ -29,7 +29,17 @@ export const ANEX_CHAPTERS = [
     printed: "8–13",
     description:
       "A família Ryujin merece uma escolha por perfil, comprimento e encaixe. O nome da série não substitui a compatibilidade.",
-    ids: ["anex-abrs5-2065", "anex-abrs5-01"],
+    ids: ["anex-adrs-2065", "anex-adsk-2065", "anex-ryujin-artm5-01", "anex-abrs5-01"],
+  },
+  {
+    id: "insulated",
+    label: "Isolamento com limites claros",
+    short: "AZM 1000 V",
+    page: 26,
+    printed: "24",
+    description:
+      "Bits isolados AZM de dupla ponta. A recomendação ANEX para máquinas é até 7,2 V; a classificação do bit não certifica todo o conjunto.",
+    ids: ["anex-azm-2698", "anex-azm-1598"],
   },
   {
     id: "torque",
@@ -62,3 +72,31 @@ export function parseAnexSearch(input: Record<string, unknown>): { family?: stri
         : undefined,
   };
 }
+
+export const ANEX_SIGNATURE_SOLUTIONS = [
+  { id: "anex-adrs-2065", name: "Diamond", detail: "Aderência sem íman.", code: "ADRS-2065" },
+  {
+    id: "anex-ryujin-artm5-01",
+    name: "Ryujin / Dragon",
+    detail: "Cinco bits. Três alcances.",
+    code: "ARTM5-01",
+  },
+  {
+    id: "anex-397-d",
+    name: "Quick Ball 397",
+    detail: "72 dentes. Movimento preciso.",
+    code: "397-D",
+  },
+  {
+    id: "anex-azm-2698",
+    name: "AZM 1000 V",
+    detail: "Isolamento no próprio bit.",
+    code: "AZM-2698",
+  },
+  {
+    id: "anex-aoa-17s1",
+    name: "Offset AOA-17",
+    detail: "O aperto além do obstáculo.",
+    code: "AOA-17S1",
+  },
+] as const;

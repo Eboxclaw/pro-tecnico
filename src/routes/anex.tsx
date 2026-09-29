@@ -1,3 +1,4 @@
+import { AnexSignatureSolutions } from "@/components/shop/AnexSignatureSolutions";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
 import { ANEX_CATALOG_URL, ANEX_CHAPTERS, parseAnexSearch } from "@/data/anex-editorial";
@@ -83,6 +84,8 @@ function AnexPage() {
           </Link>
         </div>
       </section>
+
+      <AnexSignatureSolutions />
 
       <section className="anex-principles" aria-label="Critérios da seleção ANEX">
         {[

@@ -1,3 +1,4 @@
+import { AnexSignatureSolutions } from "@/components/shop/AnexSignatureSolutions";
 import { AnexFeature } from "@/components/shop/AnexFeature";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -151,6 +152,7 @@ function Index() {
       </section>
 
       <AnexFeature />
+      <AnexSignatureSolutions />
       <RejendariPromiseStrip />
 
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">

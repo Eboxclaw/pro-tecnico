@@ -6,7 +6,7 @@ Destaque independente, sem parceria, representação autorizada ou endosso da AN
 Página /anex, entrada no menu desktop/mobile, capítulo na homepage e chamadas na
 loja e na página de marcas. Mantém a seleção das restantes marcas.
 
-Cinco aplicações com estado no URL: acesso, roquetes, bits, binário e extração.
+Seis aplicações com estado no URL: acesso, roquetes, bits, isolamento, binário e extração.
 Cada capítulo permite abrir o catálogo original e consultar as fichas selecionadas.
 Não publica preço, disponibilidade, prazo ou possibilidade de compra para referências
 que ainda não estão reconciliadas com Shopify.
@@ -56,3 +56,17 @@ O ficheiro .env deixou de ser versionado e permanece localmente. .env.example
 contém apenas placeholders. Os nomes de variáveis existentes referem configuração
 Supabase pública/publicável; não foi confirmada exposição de uma chave privada
 nesta alteração. O histórico publicado não foi reescrito.
+
+
+## Seleção principal
+Homepage e /anex destacam Diamond, Ryujin (Dragon), Quick Ball 397, AZM 1000 V
+e AOA-17. Não são apresentados como um kit ou sistema certificado em conjunto.
+ADRS-2065 (visualizador 11 / impressa 9) e ADSK-2065 (23 / 21) acrescentados:
+https://www.anextool.co.jp/item/adrs-2065/
+https://www.anextool.co.jp/item/adsk-2065/
+ARTM5-01 corrigido para conjunto de cinco bits: 1×65, 2×85 e 2×110 mm.
+Fonte: https://www.anextool.co.jp/item/artm5-01/
+AZM-2698 e AZM-1598: recomendação de máquina até 7,2 V e classificação do bit,
+sem estender 1000 V ao punho ou adaptador.
+Fontes: https://www.anextool.co.jp/item/azm-2698/ e
+https://www.anextool.co.jp/item/azm-1598/
