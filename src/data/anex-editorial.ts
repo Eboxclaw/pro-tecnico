@@ -9,7 +9,7 @@ export const ANEX_CHAPTERS = [
     printed: "36–40",
     description:
       "Adaptadores offset e ferramentas de perfil baixo para obstáculos que não se resolvem com mais força.",
-    ids: ["anex-aoa-17s1", "anex-6102-t", "anex-6103-f"],
+    ids: ["anex-aoa-17s1", "anex-6102-t", "anex-6103-f", "anex-436"],
   },
   {
     id: "ratchet",
@@ -59,7 +59,7 @@ export const ANEX_CHAPTERS = [
     printed: "42–47",
     description:
       "Da precisão manual à extração por perfuração: o tamanho e o material do parafuso decidem o método.",
-    ids: ["anex-3610-n", "anex-anh-s3", "anex-1902"],
+    ids: ["anex-3610-n", "anex-anh-s3", "anex-1902", "anex-3980-2-100"],
   },
 ] as const;
 
