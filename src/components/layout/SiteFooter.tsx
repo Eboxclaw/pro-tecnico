@@ -13,7 +13,6 @@ const JAPANESE_BRANDS = [
   "FUJIYA",
   "TSUNODA",
   "TONE",
-  "KTC",
   "TAJIMA",
   "HOZAN",
   "TOP KOGYO",

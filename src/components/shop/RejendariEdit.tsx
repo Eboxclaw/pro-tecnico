@@ -8,7 +8,7 @@ const EDIT_IDS = [
   "anex-adrs-2065",
   "vessel-td6816mg",
   "knipex-cobra-250",
-  "ktc-dbr14",
+  "anex-436",
   "olfa-xh-1",
 ];
 
