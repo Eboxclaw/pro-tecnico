@@ -1,7 +1,7 @@
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { JapaneseAmbientScene } from "@/components/brand/JapaneseAmbientScene";
 
-const HERO_IDS = ["anex-397-d", "makita-dtd173z", "wera-kk-vde-17-ra-1", "knipex-cobra-250", "vessel-220usb-s1eb"];
+const HERO_IDS = ["anex-397-d", "makita-dtd173z", "wera-838-ra-r-m", "knipex-cobra-250", "vessel-220usb-s1eb"];
 
 export function HeroToolConstellation() {
   const tools = HERO_IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);

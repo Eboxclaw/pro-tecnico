@@ -5,7 +5,7 @@ import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 const EDIT_IDS = [
   "anex-397-d",
-  "wera-kk-vde-17-ra-1",
+  "anex-adrs-2065",
   "vessel-td6816mg",
   "knipex-cobra-250",
   "ktc-dbr14",

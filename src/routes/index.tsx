@@ -1,4 +1,5 @@
 import { AnexSignatureSolutions } from "@/components/shop/AnexSignatureSolutions";
+import { AnexDuoHero } from "@/components/shop/AnexDuoHero";
 import { AnexFeature } from "@/components/shop/AnexFeature";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -85,8 +86,8 @@ const CATEGORIES: Array<{
 ];
 
 const REGIMES: Array<{ jp: string; label: string; note: string; focus: string }> = [
-  { jp: "衝撃", label: "Impacto", note: "Impaktor e Ryujin Cr-Mo-V", focus: "impact-bits" },
-  { jp: "捻り", label: "Torsion", note: "BiTorsion e zonas torsionais", focus: "bits" },
+  { jp: "衝撃", label: "Impacto", note: "Black Ryujin em Cr-Mo-V", focus: "impact-bits" },
+  { jp: "捻り", label: "Torsion", note: "Black Ryujin e zonas torsionais", focus: "bits" },
   { jp: "絶縁", label: "1000 V", note: "VDE, slimBits e isolados", focus: "insulated" },
   { jp: "電子", label: "Eletrónica", note: "ESD e precisão de bancada", focus: "electronics" },
   { jp: "電動", label: "VE", note: "Torque e cabos de alta tensão", focus: "ev" },
@@ -97,7 +98,7 @@ const PACKS = ["AVAC", "Eletricidade", "Manutenção", "Solar", "Eletrónica", "
 
 const HIGHLIGHT_IDS = [
   "anex-397-d",
-  "wera-kk-vde-17-ra-1",
+  "anex-adrs-2065",
   "knipex-cobra-250",
   "vessel-220usb-s1eb",
   "knipex-pliers-wrench-250",
@@ -164,6 +165,7 @@ function Index() {
 
       <AnexFeature />
       <AnexSignatureSolutions />
+      <AnexDuoHero />
       <RejendariPromiseStrip />
 
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
