@@ -32,8 +32,8 @@ export function AnexFeature({ compact = false }: { compact?: boolean }) {
           está nos <em>detalhes.</em>
         </h2>
         <p>
-          Um parafuso sem acesso. Um movimento demasiado curto. Uma cabeça danificada. É nestes
-          momentos que o catálogo ANEX nos interessa especialmente.
+          Diamond e Ryujin no contacto com o parafuso. Quick Ball 397 no movimento. AZM no
+          isolamento do bit. AOA-17 onde falta espaço. Cinco razões para olhar de perto.
         </p>
         <Link to="/anex" className="artisan-link artisan-link-solid">
           Descobrir a seleção ANEX <ArrowUpRight size={17} aria-hidden="true" />

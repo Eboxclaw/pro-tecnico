@@ -28,3 +28,13 @@ test('new ANEX references retain official evidence and application limits withou
   assert.match(ANEX_ADDITIONS.find(t => t.id === 'anex-ata-m4').limitationsPt, /Não utilizar.*impacto/);
   assert.match(ANEX_ADDITIONS.find(t => t.id === 'anex-3610-n').limitationsPt, /exclusivamente manual/);
 });
+
+test('AZM machine limits and Ryujin set contents remain explicit', () => {
+  for (const id of ['anex-azm-2698', 'anex-azm-1598']) {
+    const tool = CURATED_TOOL_REFERENCES.find(t => t.id === id);
+    assert.match(tool.limitationsPt, /7,2 V/);
+    assert.match(tool.limitationsPt, /não certifica o conjunto/);
+  }
+  const ryujin = CURATED_TOOL_REFERENCES.find(t => t.id === 'anex-ryujin-artm5-01');
+  assert.deepEqual(ryujin.kitContents, ['1 × PH2 de 65 mm', '2 × PH2 de 85 mm', '2 × PH2 de 110 mm']);
+});
