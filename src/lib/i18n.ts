@@ -37,15 +37,15 @@ const pt = {
     checkoutNote: "Serás encaminhado para o pagamento seguro da loja.",
   },
   home: {
-    badge: "Seleção japonesa para profissionais",
-    title: "Ferramentas japonesas escolhidas para trabalhar melhor",
+    badge: "Curadoria Japão + Europa",
+    title: "O melhor para cada regime de trabalho",
     subtitle:
-      "Ferramenta japonesa escolhida para profissionais em Portugal: referências oficiais, medidas úteis, comparações claras e sistemas compactos que evitam encher a mala de duplicados.",
+      "Ferramenta escolhida por regime de trabalho — impacto, torsion, precisão, retenção, acesso estreito e 1000 V — com referências oficiais, medidas úteis e comparações claras.",
     ctaShop: "Comprar ferramentas",
     ctaPacks: "Ver kits profissionais",
     packsTitle: "Kits por profissão",
     packsSubtitle: "Seleções práticas para AVAC, eletricidade, manutenção, solar e canalização.",
-    brandsTitle: "Marcas japonesas que vale a pena conhecer",
+    brandsTitle: "Marcas que vale a pena conhecer",
     brandsSubtitle: "Fabricantes escolhidos pela especialização, qualidade de construção e utilidade no trabalho real.",
     japanLabel: "Seleção japonesa",
     japanTitle: "Referências japonesas para trabalho sério",
@@ -176,7 +176,7 @@ const pt = {
     badge: "Abertura em breve",
     title: "REJENDARI abre em breve",
     subtitle:
-      "Estamos a preparar uma seleção de ferramenta profissional japonesa para Portugal e Europa. Deixa o email para saberes quando o catálogo abrir.",
+      "Estamos a preparar uma curadoria de ferramenta profissional — Japão e Europa no mesmo critério — para Portugal. Deixa o email para saberes quando o catálogo abrir.",
     codeLabel: "Código de acesso",
     enter: "Entrar",
     wrongCode: "Código incorreto.",
@@ -187,7 +187,7 @@ const pt = {
     langLabel: "Idioma",
   },
   footer: {
-    tagline: "Ferramenta profissional japonesa escolhida para trabalhar.",
+    tagline: "O melhor para cada regime de trabalho.",
     legal: "Legal",
     shopLinks: "Explorar",
     rights: "Todos os direitos reservados.",

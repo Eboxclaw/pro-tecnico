@@ -1,3 +1,4 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -34,7 +35,8 @@ function ProductPage() {
   const isLoadingCart = useCartStore((s) => s.isLoading);
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
 
-  const { data: product, isLoading } = useQuery({
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { data: product, isLoading, isError, refetch } = useQuery({
     queryKey: ["product", handle],
     queryFn: () => fetchProductByHandle(handle),
   });
@@ -51,6 +53,8 @@ function ProductPage() {
       </div>
     );
   }
+
+  if (isError) return <div className="mx-auto max-w-xl px-6 py-24 text-center"><h1 className="font-display text-3xl">Não foi possível carregar o produto.</h1><p className="mt-4 text-muted-foreground">Verifica a ligação e tenta novamente.</p><Button className="mt-6" onClick={() => void refetch()}>Tentar novamente</Button></div>;
 
   if (!product) {
     return (
@@ -73,7 +77,7 @@ function ProductPage() {
   const selected = variants.find((variant) => variant.id === selectedVariantId) ?? variants[0];
   const price = selected?.price ?? node.priceRange.minVariantPrice;
   const images = node.images.edges.map((edge) => edge.node);
-  const mainImage = images[0];
+  const mainImage = images.find((image) => image.url === selectedImage) ?? images[0];
   const normalizedTags = node.tags.map((tag) => tag.toLowerCase());
   const isLegendary = normalizedTags.some((tag) => ["legendary", "flagship", "icon"].includes(tag));
 
@@ -123,7 +127,7 @@ function ProductPage() {
             <div className="product-image-stage relative flex min-h-[480px] items-center justify-center overflow-hidden border border-border lg:min-h-[680px]">
               <div className="micro-grid absolute inset-0 opacity-35" />
               {mainImage ? (
-                <img
+                <ProductImage
                   src={mainImage.url}
                   alt={mainImage.altText ?? node.title}
                   className="relative z-10 max-h-[620px] w-full object-contain p-8 sm:p-14"
@@ -141,12 +145,16 @@ function ProductPage() {
 
           {images.length > 1 && (
             <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-6">
-              {images.slice(1, 7).map((image, index) => (
-                <div
+              {images.map((image, index) => (
+                <button
+                  type="button"
+                  onClick={() => setSelectedImage(image.url)}
+                  aria-label={`Ver fotografia ${index + 1} de ${node.title}`}
+                  aria-pressed={mainImage?.url === image.url}
                   key={image.url + index}
-                  className="product-image-stage aspect-square overflow-hidden border border-border"
+                  className="product-image-stage aspect-square overflow-hidden border border-border focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary aria-pressed:border-primary"
                 >
-                  <img
+                  <ProductImage
                     src={image.url}
                     alt={image.altText ?? ""}
                     className="h-full w-full object-contain p-2"
@@ -154,7 +162,7 @@ function ProductPage() {
                     width={220}
                     height={220}
                   />
-                </div>
+                </button>
               ))}
             </div>
           )}

@@ -8,6 +8,8 @@ export type ToolGlyphName =
   | "cut"
   | "hvac"
   | "power"
+  | "electronics"
+  | "ev"
   | "reward"
   | "referral";
 
@@ -75,6 +77,23 @@ export function ToolGlyph({
           <path d="M17 12v10M22 17h5" {...shared} />
           <path d="M8 22v5h7v-5" {...shared} />
           <path d="M10 15h4" {...shared} />
+        </>
+      )}
+      {name === "electronics" && (
+        <>
+          <path d="M10 10h12v12H10z" {...shared} />
+          <path d="M13 13h6v6h-6z" {...shared} />
+          <path d="M6 12.5h4M6 16h4M6 19.5h4M22 12.5h4M22 16h4M22 19.5h4" {...shared} />
+          <path d="M12.5 6v4M16 6v4M19.5 6v4M12.5 22v4M16 22v4M19.5 22v4" {...shared} />
+        </>
+      )}
+      {name === "ev" && (
+        <>
+          <path d="M6.5 21.5 9 14.5h14l2.5 7" {...shared} />
+          <path d="M4.5 21.5h23" {...shared} />
+          <circle cx="10" cy="24" r="1.9" {...shared} />
+          <circle cx="22" cy="24" r="1.9" {...shared} />
+          <path d="M17 10.5 13.5 15h2.8l-1.6 4 4.3-5h-2.7l1.4-3.5z" {...shared} />
         </>
       )}
       {name === "reward" && (

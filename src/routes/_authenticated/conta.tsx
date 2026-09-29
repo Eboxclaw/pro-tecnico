@@ -26,11 +26,12 @@ function AccountPage() {
   const t = useT();
   const [copied, setCopied] = useState(false);
 
-  const { data } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["account"],
     queryFn: async () => {
       const { data: userData } = await supabase.auth.getUser();
-      const uid = userData.user!.id;
+      if (!userData.user) throw new Error("Sessão indisponível");
+      const uid = userData.user.id;
 
       const [profile, ledger, entries, referrals] = await Promise.all([
         supabase.from("profiles").select("*").eq("id", uid).maybeSingle(),
@@ -52,6 +53,8 @@ function AccountPage() {
           .order("created_at", { ascending: false }),
       ]);
 
+      const failure = [profile, ledger, entries, referrals].find(result => result.error)?.error;
+      if (failure) throw failure;
       return {
         email: userData.user!.email,
         profile: profile.data,
@@ -83,6 +86,9 @@ function AccountPage() {
       await copy();
     }
   };
+
+  if (isLoading) return <div className="mx-auto max-w-3xl px-6 py-24" role="status">A carregar a tua conta…</div>;
+  if (isError) return <div className="mx-auto max-w-3xl px-6 py-24" role="alert"><h1 className="font-display text-3xl">Não foi possível carregar a conta.</h1><p className="mt-4">Os teus dados não estão disponíveis neste momento.</p><Button className="mt-6" onClick={() => void refetch()}>Tentar novamente</Button></div>;
 
   return (
     <div>

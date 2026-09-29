@@ -1,3 +1,4 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { Link } from "@tanstack/react-router";
 import { referencesForFocus } from "@/data/curated-tool-references";
 
@@ -35,7 +36,7 @@ export function BitKitRail() {
               className="group grid w-[300px] shrink-0 grid-cols-[112px_1fr] overflow-hidden border border-black/10 bg-[#f8f4eb] transition-all duration-300 hover:-translate-y-1 hover:border-[#b54530]/50 hover:shadow-[0_18px_45px_rgba(45,37,29,0.14)] sm:w-[360px] sm:grid-cols-[136px_1fr]"
             >
               <div className="relative aspect-square overflow-hidden bg-[#e8e1d4]">
-                <img
+                <ProductImage
                   src={tool.imageUrl!}
                   alt={tool.imageAlt ?? tool.namePt}
                   className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-110"

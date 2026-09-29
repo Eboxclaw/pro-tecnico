@@ -16,7 +16,7 @@ Base: GitHub main at 9ecbfc9. This change extends the existing REJENDARI compone
 - `npx tsc --noEmit`: passed.
 - `npm run build`: passed.
 - `node --experimental-strip-types --test tests/catalog-search.test.mjs` (Node 22): 3 tests passed, covering search normalization, URL bounds and referral storage fallback.
-- Browser: all 70 curated references available; search `VESSEL 220USB` returns two references; browser Back restores all 70 and clears the query; desktop layout inspected.
+- Browser: all 130 curated references available; search `VESSEL 220USB` returns two references; browser Back restores all 130 and clears the query; desktop layout inspected.
 
 ## Not validated
 

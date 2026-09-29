@@ -21,6 +21,17 @@
 - [ ] Testes ponta a ponta de compra + revisão mobile
 
 
+## 2026-09-28 — Culture convergence: regimes de trabalho + Eletrónica + VE
+- [x] Fusão das duas culturas do projeto (pro'tecnico europeia + Rejendarī japonesa): curadoria por regime de trabalho — impacto, torsion, precisão, retenção, acesso estreito, 1000 V — Japão, Alemanha e Suécia no mesmo critério.
+- [x] Renome cultural do data layer: `JAPAN_TOOL_REFERENCES` → `CURATED_TOOL_REFERENCES`, `JAPAN_REFERENCE_QUEUE` → `REFERENCE_QUEUE`.
+- [x] Novas marcas com story própria: WERA, KNIPEX, WIHA, BAHCO (bits/holders, 1000 V VDE, alicates, ajustáveis).
+- [x] +45 referências curadas (catálogo fundador do documento de estratégia) e 6 entradas migradas para a nova task `electronics`.
+- [x] Novas tasks de topo `electronics` e `ev` com glifos próprios; grupo de focus `impact-bits`, `electronics` e `ev`.
+- [x] Legendary Combos: 13 combos editoriais (Impact Beast … EV High-Voltage) na página /packs.
+- [x] Homepage: manifesto "Seis regimes de trabalho", secção "A parede de bits" (BiTorsion vs Impaktor vs Ryujin vs T-Bit), narrativa hero/meta convergida.
+- [ ] Preencher `imageUrl` das novas referências europeias quando existirem imagens aprovadas dos fabricantes.
+- [ ] Espelhar combos/referências como produtos Shopify quando a loja abrir (tags `task:*`, `legendary`).
+
 ## 2026-09-27 — Legendary redesign PR
 - [x] Full REJENDARI visual system refresh: typography, industrial/editorial grid, premium image treatment and motion.
 - [x] Japanese brand architecture expanded beyond ANEX/VESSEL: Ko-ken, OLFA, LOBSTER/LOBTEX, Makita, ENGINEER, Fujiya, Tsunoda, TONE, KTC, Tajima and Silky.

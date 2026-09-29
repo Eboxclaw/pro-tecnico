@@ -1,12 +1,13 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { Button } from "@/components/ui/button";
 
 const IDS = ["anex-397-d", "vessel-td6816mg", "ktc-dbr16"];
 
 export function RatchetDriverComparison() {
-  const tools = IDS.map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
+  const tools = IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
 
   return (
     <section className="section-reveal border-y border-border bg-[#24211d] text-[#f5f0e5]">
@@ -29,7 +30,7 @@ export function RatchetDriverComparison() {
               <span className="absolute right-4 top-3 font-mono text-5xl font-semibold text-white/[0.035]">0{index + 1}</span>
               <div className="relative aspect-[4/3] overflow-hidden bg-[#eee9de]">
                 {tool.imageUrl ? (
-                  <img
+                  <ProductImage
                     src={tool.imageUrl}
                     alt={tool.imageAlt ?? `${tool.brand} ${tool.model}`}
                     className="h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-[1.07] group-hover:-rotate-1"

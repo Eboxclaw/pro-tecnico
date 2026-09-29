@@ -1,3 +1,4 @@
+import { AnexFeature } from "@/components/shop/AnexFeature";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
@@ -7,7 +8,7 @@ import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
-import { JAPAN_TOOL_REFERENCES, QUICK_BRANDS, QUICK_FOCUS, referencesForFocus } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES, QUICK_BRANDS, QUICK_FOCUS, referencesForFocus } from "@/data/curated-tool-references";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -21,14 +22,16 @@ import {
 import { matchesCatalogQuery, parseCatalogSearch, type CatalogSearch } from "@/lib/catalog-search";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const TASKS: Array<{ id: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power"; label: string; jp: string; icon: ToolGlyphName }> = [
-  { id: "precision", label: "Precisão & eletrónica", jp: "精密工具", icon: "precision" },
+const TASKS: Array<{ id: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power" | "electronics" | "ev"; label: string; jp: string; icon: ToolGlyphName }> = [
+  { id: "precision", label: "Precisão & slim", jp: "精密工具", icon: "precision" },
   { id: "fastening", label: "Chaves, bits & aperto", jp: "締結工具", icon: "driver" },
   { id: "sockets", label: "Roquetes & sockets", jp: "ソケット", icon: "socket" },
   { id: "grip", label: "Alicates, grip & chaves", jp: "作業工具", icon: "grip" },
   { id: "cutting", label: "Corte & lâminas", jp: "切削工具", icon: "cut" },
   { id: "hvac", label: "AVAC, medição & instalação", jp: "設備工具", icon: "hvac" },
   { id: "power", label: "Máquinas 18V+", jp: "電動工具", icon: "power" },
+  { id: "electronics", label: "Eletrónica & bancada", jp: "電子工具", icon: "electronics" },
+  { id: "ev", label: "Veículos elétricos", jp: "電気自動車", icon: "ev" },
 ];
 
 export const Route = createFileRoute("/shop")({
@@ -38,10 +41,10 @@ export const Route = createFileRoute("/shop")({
       { title: "Loja de ferramenta profissional — REJENDARI" },
       {
         name: "description",
-        content: "Ferramenta profissional japonesa organizada por trabalho, marca e especificação: precisão, sockets, grip, corte, AVAC e máquinas 18V+.",
+        content: "Ferramenta profissional japonesa e europeia organizada por regime de trabalho: bits e impacto, 1000 V isolado, grip, sockets, eletrónica, veículos elétricos e máquinas 18V+.",
       },
       { property: "og:title", content: "Loja — REJENDARI" },
-      { property: "og:description", content: "Explora referências japonesas por trabalho e marca, com filtros rápidos e especificações úteis para Portugal." },
+      { property: "og:description", content: "Explora referências japonesas e europeias por regime de trabalho e marca, com filtros rápidos e especificações úteis para Portugal." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -115,7 +118,7 @@ function ShopPage() {
 
   const referenceFiltered = useMemo(() => {
     const focusedIds = focus === "all" ? null : new Set(referencesForFocus(focus).map((tool) => tool.id));
-    return JAPAN_TOOL_REFERENCES.filter((tool) => {
+    return CURATED_TOOL_REFERENCES.filter((tool) => {
       if (brand !== "all" && tool.brandSlug !== brand) return false;
       if (task !== "all" && tool.task !== task) return false;
       if (focusedIds && !focusedIds.has(tool.id)) return false;
@@ -152,6 +155,7 @@ function ShopPage() {
         </div>
       </section>
 
+      {(!hasFilters || (brand === "ANEX" && !query)) && <AnexFeature compact />}
       <section className="border-b border-border bg-surface">
         <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-px bg-border sm:grid-cols-3 lg:grid-cols-7">
           {TASKS.map((item) => (
@@ -289,7 +293,7 @@ function ShopPage() {
                     ? BRAND_STORY_MAP[brand]?.name ?? brand
                     : task !== "all"
                       ? TASKS.find((item) => item.id === task)?.label
-                      : "Seleção japonesa"}
+                      : "Seleção REJENDARI"}
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
                 Explora as referências antes de comprar. Cada cartão mostra a função, medidas úteis e acesso à ficha oficial.

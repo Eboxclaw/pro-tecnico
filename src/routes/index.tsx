@@ -1,3 +1,5 @@
+import { AnexFeature } from "@/components/shop/AnexFeature";
+import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, PackageSearch, ShieldCheck, Sparkles } from "lucide-react";
@@ -6,14 +8,15 @@ import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { RatchetDriverComparison } from "@/components/shop/RatchetDriverComparison";
+import { BitRegimeComparison } from "@/components/shop/BitRegimeComparison";
 import { SmartKitShowcase } from "@/components/shop/SmartKitShowcase";
 import { BitKitRail } from "@/components/shop/BitKitRail";
 import { RejendariEdit } from "@/components/shop/RejendariEdit";
 import { GripWrenchSpotlight } from "@/components/shop/GripWrenchSpotlight";
 import { RejendariPromiseStrip } from "@/components/brand/RejendariPromiseStrip";
-import { RejendariSeal } from "@/components/brand/RejendariSeal";
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
-import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { LxtCollection } from "@/components/shop/LxtCollection";
+import { ArtisanHero } from "@/components/brand/ArtisanHero";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -21,16 +24,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "REJENDARI — Ferramenta profissional japonesa" },
+      { title: "REJENDARI — O melhor para cada regime de trabalho" },
       {
         name: "description",
         content:
-          "Ferramentas profissionais japonesas escolhidas por tarefa, construção e utilidade. ANEX, Makita, VESSEL, OLFA, TAJIMA, Ko-ken e outros especialistas.",
+          "Ferramenta profissional escolhida por regime de trabalho: bits e impacto, 1000 V isolado, grip, sockets, eletrónica e veículos elétricos. Japão e Europa no mesmo critério.",
       },
-      { property: "og:title", content: "REJENDARI — Ferramenta japonesa escolhida para trabalhar" },
+      { property: "og:title", content: "REJENDARI — Ferramenta escolhida para trabalhar" },
       {
         property: "og:description",
-        content: "Encontra ferramentas japonesas por trabalho, marca e especificação, com curadoria em Portugal.",
+        content: "VESSEL, Ko-ken, ANEX, Wera, Knipex, Wiha e Bahco: curadoria técnica em Portugal, do impacto ao 1000 V.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -43,6 +46,10 @@ const BRANDS = [
   { label: "ANEX", slug: "ANEX" },
   { label: "MAKITA", slug: "MAKITA" },
   { label: "VESSEL", slug: "VESSEL" },
+  { label: "WERA", slug: "WERA" },
+  { label: "KNIPEX", slug: "KNIPEX" },
+  { label: "WIHA", slug: "WIHA" },
+  { label: "BAHCO", slug: "BAHCO" },
   { label: "OLFA", slug: "OLFA" },
   { label: "TAJIMA", slug: "TAJIMA" },
   { label: "KO-KEN", slug: "KO-KEN" },
@@ -63,24 +70,35 @@ const CATEGORIES: Array<{
   label: string;
   note: string;
 }> = [
-  { task: "precision", icon: "precision", label: "Precisão & eletrónica", note: "ESD, microparafusos, PCs e bancada" },
-  { task: "fastening", icon: "driver", label: "Chaves, bits & aperto", note: "Manual, impacto e controlo de torque" },
-  { task: "sockets", icon: "socket", label: "Roquetes & sockets", note: "Ko-ken, TONE, KTC e mecânica" },
-  { task: "grip", icon: "grip", label: "Alicates & chaves", note: "Grip, corte, canalização e manutenção" },
-  { task: "cutting", icon: "cut", label: "Corte & lâminas", note: "OLFA, TAJIMA, Silky e corte de obra" },
-  { task: "hvac", icon: "hvac", label: "AVAC & instalação", note: "Instalação, manutenção e trabalho de campo" },
+  { task: "precision", icon: "precision", label: "Precisão & slim", note: "Elétrico slim, microparafusos e bancada" },
+  { task: "fastening", icon: "driver", label: "Chaves, bits & aperto", note: "Impacto, torsion e controlo de torque" },
+  { task: "sockets", icon: "socket", label: "Roquetes & sockets", note: "Ko-ken, TONE, KTC e Wera VDE" },
+  { task: "grip", icon: "grip", label: "Alicates & chaves", note: "Cobra, Pliers Wrench e ajustáveis" },
+  { task: "cutting", icon: "cut", label: "Corte & lâminas", note: "OLFA, TAJIMA e corte de obra" },
+  { task: "hvac", icon: "hvac", label: "AVAC & instalação", note: "Tubo, cobre e trabalho de campo" },
   { task: "power", icon: "power", label: "Máquinas 18V+", note: "Plataformas profissionais a bateria" },
+  { task: "electronics", icon: "electronics", label: "Eletrónica & bancada", note: "ESD, precisão, PCBs e equipamentos" },
+  { task: "ev", icon: "ev", label: "Veículos elétricos", note: "1000 V, torque e cabos HV" },
 ];
 
-const PACKS = ["AVAC", "Eletricidade", "Manutenção", "Solar"];
+const REGIMES: Array<{ jp: string; label: string; note: string; focus: string }> = [
+  { jp: "衝撃", label: "Impacto", note: "Impaktor e Ryujin Cr-Mo-V", focus: "impact-bits" },
+  { jp: "捻り", label: "Torsion", note: "BiTorsion e zonas torsionais", focus: "bits" },
+  { jp: "絶縁", label: "1000 V", note: "VDE, slimBits e isolados", focus: "insulated" },
+  { jp: "電子", label: "Eletrónica", note: "ESD e precisão de bancada", focus: "electronics" },
+  { jp: "電動", label: "VE", note: "Torque e cabos de alta tensão", focus: "ev" },
+  { jp: "トルク", label: "Torque", note: "Binário calibrado e controlado", focus: "torque" },
+];
+
+const PACKS = ["AVAC", "Eletricidade", "Manutenção", "Solar", "Eletrónica", "Veículos elétricos"];
 
 const HIGHLIGHT_IDS = [
   "anex-397-d",
+  "wera-kk-vde-17-ra-1",
+  "knipex-cobra-250",
   "vessel-220usb-s1eb",
-  "top-hm32",
-  "tsunoda-wp250sc",
+  "knipex-pliers-wrench-250",
   "olfa-xh-1",
-  "fujiya-3300n-200",
 ];
 
 const CURATION_IMAGE_IDS = [
@@ -98,72 +116,20 @@ function Index() {
   });
 
   const highlightTools = HIGHLIGHT_IDS
-    .map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id))
-    .filter((tool): tool is (typeof JAPAN_TOOL_REFERENCES)[number] => Boolean(tool));
+    .map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id))
+    .filter((tool): tool is (typeof CURATED_TOOL_REFERENCES)[number] => Boolean(tool));
 
   const curationImageTools = CURATION_IMAGE_IDS
-    .map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id))
-    .filter((tool): tool is (typeof JAPAN_TOOL_REFERENCES)[number] => Boolean(tool?.imageUrl));
+    .map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id))
+    .filter((tool): tool is (typeof CURATED_TOOL_REFERENCES)[number] => Boolean(tool?.imageUrl));
 
   return (
     <div>
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="technical-grid absolute inset-0 opacity-35" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-[1440px] gap-12 px-4 py-8 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
-          <div className="relative z-10 py-5 lg:py-6">
-            <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-primary" />
-              <span className="jp-label text-primary">日本の工具 · Ferramenta profissional japonesa</span>
-            </div>
-
-            <div className="reveal-line mt-8">
-              <span>
-                <h1 className="max-w-3xl font-display text-[clamp(3rem,5vw,5.3rem)] font-medium leading-[1.02] tracking-[-0.055em]">
-                  Precisão na escolha.
-                  <br />
-                  <span className="text-primary">Confiança na mão.</span>
-                </h1>
-              </span>
-            </div>
-
-            <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-              Ferramenta japonesa para quem conhece o valor de um trabalho bem feito. VESSEL, Ko-ken, ANEX, OLFA e outras marcas, com contexto técnico para escolher.
-            </p>
-            <p className="mt-4 max-w-xl border-l border-primary/60 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.13em] text-muted-foreground">
-              Cada referência, uma razão para estar aqui.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button size="lg" asChild className="rounded-none px-6">
-                <Link to="/shop">
-                  {t("home.ctaShop")}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="rounded-none border-border bg-transparent px-6">
-                <Link to="/marcas">Explorar marcas</Link>
-              </Button>
-            </div>
-
-            <div className="mt-10 grid max-w-xl grid-cols-3 border-y border-border">
-              {[
-                ["JP", "seleção japonesa"],
-                ["PT", "curadoria em Portugal"],
-                ["PRO", "dados técnicos claros"],
-              ].map(([code, label]) => (
-                <div key={code} className="border-r border-border px-3 py-4 first:pl-0 last:border-r-0">
-                  <p className="font-display text-xl font-semibold">{code}</p>
-                  <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">{label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <RejendariSeal className="absolute -left-5 -top-6 z-40 hidden md:grid" />
-            <HeroToolConstellation />
-          </div>
-        </div>
+      <ArtisanHero />
+      <section id="selecao" className="artisan-introduction scroll-mt-40">
+        <p className="artisan-section-index">01 / A NOSSA SELEÇÃO</p>
+        <h2>Uma boa ferramenta<br /><span>muda a forma de trabalhar.</span></h2>
+        <div><p>O equilíbrio na mão. O encaixe exato. O controlo no último aperto. Procuramos esses detalhes nas ferramentas que escolhemos.</p><p>A ANEX tem um lugar especial nesta seleção, ao lado de VESSEL, Ko-ken e outras marcas que estudamos pelo trabalho que resolvem.</p><Link to="/shop" className="artisan-text-link">Encontrar a ferramenta certa <ArrowRight size={16} aria-hidden="true" /></Link></div>
       </section>
 
       <section className="border-b border-border bg-[#0d0f12]">
@@ -184,6 +150,7 @@ function Index() {
         </div>
       </section>
 
+      <AnexFeature />
       <RejendariPromiseStrip />
 
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
@@ -220,6 +187,42 @@ function Index() {
         </div>
       </section>
 
+      <section className="paper-panel">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-18">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.19em] text-black/50">仕事の条件 · como organizamos tudo</p>
+              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl">
+                Seis regimes de trabalho. Uma só curadoria.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-black/60">
+              Não é uma loja de marcas — é uma loja de regimes. Cada família tem de ter uma razão técnica para estar
+              aqui, venha do Japão, da Alemanha ou da Suécia.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-px border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-3">
+            {REGIMES.map((regime, index) => (
+              <Link
+                key={regime.label}
+                to="/shop"
+                search={{ focus: regime.focus }}
+                className="group relative bg-[#f3eee2] p-6 transition-colors hover:bg-[#efe8d8]"
+              >
+                <div className="flex items-baseline justify-between">
+                  <span className="jp-label text-primary">{regime.jp}</span>
+                  <span className="font-mono text-[10px] text-black/38">0{index + 1}</span>
+                </div>
+                <h3 className="mt-6 font-display text-2xl font-semibold tracking-[-0.035em]">{regime.label}</h3>
+                <p className="mt-2 text-xs text-black/58">{regime.note}</p>
+                <ArrowRight className="mt-5 h-4 w-4 -translate-x-1 text-black/40 opacity-0 transition-all group-hover:translate-x-0 group-hover:text-primary group-hover:opacity-100" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <GripWrenchSpotlight />
 
       <RejendariEdit />
@@ -228,15 +231,15 @@ function Index() {
         <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-16">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div>
-              <p className="jp-label text-primary">日本の定番 · destaques japoneses</p>
+              <p className="jp-label text-primary">選定 · destaques da seleção</p>
               <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
                 Seis referências para conhecer a seleção.
               </h2>
             </div>
             <div className="lg:pb-1">
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-                ANEX, VESSEL, TOP KOGYO, TSUNODA, OLFA e FUJIYA mostram seis áreas da seleção:
-                aperto, chaves ajustáveis, alicates extensíveis, corte e trabalho elétrico.
+                ANEX, WERA, KNIPEX, VESSEL e OLFA mostram cinco escolas da seleção: aperto ratchet, sistema VDE com
+                roquete, alicate auto-bloqueante, Ball Grip elétrico e corte industrial.
               </p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
                 Medidas de produto seguem o sistema métrico quando aplicável; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
@@ -272,6 +275,9 @@ function Index() {
 
       <RatchetDriverComparison />
 
+      <BitRegimeComparison />
+
+      <LxtCollection />
       <SmartKitShowcase />
 
       <BitKitRail />
@@ -286,7 +292,7 @@ function Index() {
                 params={{ id: tool.id }}
                 className="group relative overflow-hidden bg-[#eee9de]"
               >
-                <img
+                <ProductImage
                   src={tool.imageUrl!}
                   alt={tool.imageAlt ?? tool.namePt}
                   className="absolute inset-0 h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-105"
@@ -304,11 +310,12 @@ function Index() {
           <div className="flex flex-col justify-center p-7 sm:p-12 lg:p-16">
             <p className="font-mono text-[10px] uppercase tracking-[0.19em] text-black/50">基準 · como escolhemos</p>
             <h2 className="mt-5 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl">
-              O Japão é o ponto de partida. A utilidade decide.
+              O regime de trabalho é o ponto de partida. A utilidade decide.
             </h2>
             <p className="mt-6 max-w-xl text-sm leading-7 text-black/65">
-              Procuramos ferramentas que façam sentido no trabalho profissional: boa construção, ergonomia, aplicação clara
-              e informação suficiente para saberes o que estás a comprar.
+              Procuramos ferramentas que façam sentido no trabalho profissional, venham do Japão, da Alemanha ou da
+              Suécia: boa construção, ergonomia, aplicação clara e informação suficiente para saberes o que estás a
+              comprar.
             </p>
 
             <div className="mt-10 grid gap-6 sm:grid-cols-3">
@@ -396,7 +403,7 @@ function Index() {
             </Button>
           </div>
 
-          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {PACKS.map((pack) => (
               <Link
                 key={pack}

@@ -1,3 +1,4 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { Link } from "@tanstack/react-router";
 import { Loader2, Plus, Sparkles } from "lucide-react";
 import { useT } from "@/lib/i18n";
@@ -66,7 +67,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         </span>
 
         {image ? (
-          <img
+          <ProductImage
             src={image.url}
             alt={image.altText ?? node.title}
             className="h-full w-full object-contain p-6 transition duration-500 ease-out group-hover:scale-[1.045] group-hover:-rotate-[0.35deg]"
