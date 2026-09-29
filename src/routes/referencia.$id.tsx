@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import { referenceById, similarReferences } from "@/data/curated-tool-references";
+import { ANEX_CATALOG_URL } from "@/data/anex-editorial";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { SmartProductVisual } from "@/components/shop/SmartProductVisual";
@@ -9,7 +10,7 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/referencia/$id")({
   head: () => ({
     meta: [
-      { title: "Referência japonesa — REJENDARI" },
+      { title: "Referência — REJENDARI" },
       { name: "description", content: "História, especificações, fonte oficial e alternativas de uma referência REJENDARI." },
     ],
   }),
@@ -47,6 +48,7 @@ function ReferencePage() {
       <section className="mx-auto grid max-w-[1440px] gap-0 border-x border-border lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative border-b border-border lg:border-b-0 lg:border-r">
           <SmartProductVisual tool={tool} hero />
+          {tool.imageCaption && <p className="border-t border-border px-5 py-3 text-xs leading-5 text-muted-foreground">{tool.imageCaption}</p>}
           <div className="absolute left-5 top-16 z-30 border border-black/10 bg-white/88 px-3 py-2 backdrop-blur">
             <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-black/55">{tool.imageSourceLabel ?? "Referência oficial"}</p>
           </div>
@@ -62,6 +64,7 @@ function ReferencePage() {
           <h1 className="mt-3 max-w-2xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-6xl">{tool.namePt}</h1>
           <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">{tool.notePt}</p>
 
+          {tool.kitContents && <section className="mt-6 border border-border bg-surface p-5"><h2 className="font-display text-xl font-semibold">O que inclui o conjunto</h2><ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground">{tool.kitContents.map((item) => <li key={item}>{item}</li>)}</ul><p className="mt-4 text-xs leading-5 text-muted-foreground">Composição publicada pelo fabricante para esta referência. Confirma a versão regional, o carregador e o conteúdo no orçamento.</p></section>}
           {tool.specPt && (
             <div className="mt-7 border-y border-border py-4">
               <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-foreground">{tool.specPt}</p>
@@ -71,7 +74,7 @@ function ReferencePage() {
 
           <div className="mt-8">
             <p className="jp-label text-primary">物語 · a história desta ferramenta</p>
-            <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">{tool.storyPt ?? tool.notePt}</p>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">{tool.storyPt ?? `A ${tool.model} faz parte da seleção ${tool.categoryPt.toLowerCase()}. Compara as medidas e o encaixe com a ferramenta que já utilizas antes de escolher.`}</p>
           </div>
 
           {tool.evidencePt && (
@@ -81,9 +84,16 @@ function ReferencePage() {
             </div>
           )}
 
+          {tool.limitationsPt && <section className="mt-6 border-l-2 border-primary bg-surface p-4"><h2 className="text-sm font-semibold">Antes de escolher</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{tool.limitationsPt}</p></section>}
+          {tool.manufacturedIn && <p className="mt-5 text-xs text-muted-foreground">País de fabrico indicado pelo fabricante: <strong>{tool.manufacturedIn}</strong></p>}
+          {tool.catalogViewerPage && <a className="mt-4 inline-flex items-center gap-2 text-xs text-primary underline underline-offset-4" href={`${ANEX_CATALOG_URL}?page=${tool.catalogViewerPage}`} target="_blank" rel="noreferrer">Ver no catálogo ANEX 2026 · página {tool.catalogViewerPage} do visualizador <ExternalLink size={12} aria-hidden="true" /></a>}
+          <div className="mt-7 border-l-2 border-primary pl-4 text-sm leading-6 text-muted-foreground">
+            Referência editorial: preço, variante e prazo são confirmados no pedido. A presença nesta seleção não indica stock disponível.
+          </div>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <Button className="rounded-none" asChild>
-              <Link to="/b2b">
+              <Link to="/b2b" search={{ reference: tool.id }}>
                 Pedir disponibilidade
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

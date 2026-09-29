@@ -46,7 +46,7 @@ function PointsPage() {
   const [referrals, setReferrals] = useState<ReferralRow[]>([]);
   const [copied, setCopied] = useState(false);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["public-raffles"],
     queryFn: getPublicRaffles,
   });
@@ -113,7 +113,7 @@ function PointsPage() {
     if (navigator.share) {
       await navigator.share({
         title: "REJENDARI",
-        text: "Ferramenta profissional japonesa escolhida para trabalhar.",
+        text: "O melhor para cada regime de trabalho. Curadoria REJENDARI.",
         url: referralLink,
       });
     } else {
@@ -210,7 +210,7 @@ function PointsPage() {
               <Skeleton className="h-7 w-2/3" />
               <Skeleton className="h-4 w-1/3" />
             </div>
-          ) : !openRaffle ? (
+          ) : isError ? (<div role="alert" className="border border-border p-6"><p>Não foi possível consultar as campanhas.</p><Button className="mt-4" variant="outline" onClick={() => void refetch()}>Tentar novamente</Button></div>) : !openRaffle ? (
             <p className="mt-4 text-sm text-muted-foreground">{t("points.noWinners")}</p>
           ) : (
             <div className="mt-5 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">

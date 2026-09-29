@@ -15,7 +15,9 @@ const JAPANESE_BRANDS = [
   "TONE",
   "KTC",
   "TAJIMA",
-  "SILKY",
+  "HOZAN",
+  "TOP KOGYO",
+  "NEPROS",
 ];
 
 export function SiteFooter() {
@@ -73,10 +75,10 @@ export function SiteFooter() {
         <div>
           <p className="tech-label text-white/45">{t("footer.legal")}</p>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li><Link to="/legal" className="text-muted-foreground hover:text-foreground">{t("legal.terms")}</Link></li>
-            <li><Link to="/legal" className="text-muted-foreground hover:text-foreground">{t("legal.privacy")}</Link></li>
-            <li><Link to="/legal" className="text-muted-foreground hover:text-foreground">{t("legal.returns")}</Link></li>
-            <li><Link to="/legal" className="text-muted-foreground hover:text-foreground">{t("legal.raffle")}</Link></li>
+            <li><Link to="/legal" hash="terms" className="text-muted-foreground hover:text-foreground">{t("legal.terms")}</Link></li>
+            <li><Link to="/legal" hash="privacy" className="text-muted-foreground hover:text-foreground">{t("legal.privacy")}</Link></li>
+            <li><Link to="/legal" hash="returns" className="text-muted-foreground hover:text-foreground">{t("legal.returns")}</Link></li>
+            <li><Link to="/legal" hash="raffle" className="text-muted-foreground hover:text-foreground">{t("legal.raffle")}</Link></li>
           </ul>
         </div>
 

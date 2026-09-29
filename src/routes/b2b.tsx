@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { referenceById, CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { ProductImage } from "@/components/shop/ProductImage";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Building2 } from "lucide-react";
@@ -10,6 +12,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/b2b")({
+  validateSearch: (search: Record<string, unknown>): { reference?: string | undefined } => ({
+    reference: typeof search["reference"] === "string" && referenceById(search["reference"]) ? search["reference"] : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Conta profissional (B2B) — REJENDARI" },
@@ -26,10 +31,16 @@ export const Route = createFileRoute("/b2b")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: B2BPage,
+  component: B2BRoute,
 });
 
-function B2BPage() {
+function B2BRoute() {
+  const { reference } = Route.useSearch();
+  return <B2BPage key={reference ?? "general"} reference={reference} />;
+}
+
+function B2BPage({ reference }: { reference?: string | undefined }) {
+  const tool = reference ? referenceById(reference) : undefined;
   const t = useT();
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
@@ -40,7 +51,7 @@ function B2BPage() {
     phone: "",
     vat_number: "",
     trade: "",
-    message: "",
+    message: tool ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model} — ${tool.namePt}.\nQuantidade: \nAplicação: ` : "",
   });
 
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -49,16 +60,19 @@ function B2BPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    const { data: sessionData } = await supabase.auth.getSession();
-    const { error } = await supabase.from("b2b_requests").insert({
-      ...form,
-      user_id: sessionData.session?.user.id ?? null,
-    });
-    setSubmitting(false);
-    if (error) toast.error(t("b2b.error"));
-    else {
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const { error } = await supabase.from("b2b_requests").insert({
+        ...form,
+        user_id: sessionData.session?.user.id ?? null,
+      });
+      if (error) throw error;
       toast.success(t("b2b.success"));
       setSent(true);
+    } catch {
+      toast.error(t("b2b.error"));
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -77,6 +91,12 @@ function B2BPage() {
 
       <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[0.65fr_1.35fr] lg:py-14">
         <aside className="h-fit border border-border bg-card p-6 lg:sticky lg:top-40">
+          <div className="mb-6 grid grid-cols-2 gap-2" aria-label="Referências para profissionais">
+            {["vessel-td6816mg", "koken-3725z", "olfa-l5", "lobster-um30xg"].map((id) => {
+              const item = CURATED_TOOL_REFERENCES.find((entry) => entry.id === id)!;
+              return <Link key={id} to="/referencia/$id" params={{ id }} className="bg-[#eee8dc] p-2"><ProductImage src={item.imageUrl} alt={`${item.brand} ${item.model}`} className="aspect-square w-full object-contain" /><p className="mt-2 text-center font-mono text-[9px] text-[#625c53]">{item.brand}</p></Link>;
+            })}
+          </div>
           <p className="jp-label text-primary">法人向け · vantagens profissionais</p>
           <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
             <li>Condições para volume, compras recorrentes e equipas.</li>
@@ -89,9 +109,16 @@ function B2BPage() {
         {sent ? (
           <div className="border border-border bg-card p-10 text-center">
             <p className="font-display text-2xl font-semibold">{t("b2b.success")}</p>
+            <p className="mt-4 text-sm text-muted-foreground">O pedido foi registado. A confirmação de disponibilidade e condições será feita através dos contactos indicados.</p>
+            <Link to="/shop" className="mt-6 inline-block text-primary underline">Continuar a explorar ferramentas</Link>
           </div>
         ) : (
           <form onSubmit={submit} className="space-y-5 border border-border bg-card p-6 sm:p-8">
+          <div>
+            <h2 className="font-display text-2xl font-semibold">O teu pedido, com contexto.</h2>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">Indica as referências, quantidades e o trabalho a realizar. Confirmamos as condições antes de qualquer compromisso de compra.</p>
+            {tool && <p className="mt-3 border-l-2 border-primary pl-3 text-sm">Referência selecionada: <strong>{tool.brand} {tool.model}</strong></p>}
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-1.5">
               <Label htmlFor="company">{t("b2b.company")} *</Label>
@@ -120,10 +147,11 @@ function B2BPage() {
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="message">{t("b2b.message")}</Label>
-            <Textarea id="message" rows={4} value={form.message} onChange={set("message")} />
+            <Textarea id="message" placeholder="Ex.: 3 unidades, utilização em manutenção e entrega pretendida em Portugal." maxLength={4000} rows={6} value={form.message} onChange={set("message")} />
           </div>
+          <p className="text-xs leading-5 text-muted-foreground">Usamos estes dados para analisar e responder ao pedido. Consulta a <Link to="/legal" hash="privacy" className="underline">informação de privacidade</Link>. O pedido não cria uma conta profissional aprovada nem uma encomenda.</p>
           <Button type="submit" size="lg" disabled={submitting} className="w-full rounded-none sm:w-auto">
-            {t("b2b.submit")}
+            {submitting ? "A enviar…" : t("b2b.submit")}
           </Button>
         </form>
         )}

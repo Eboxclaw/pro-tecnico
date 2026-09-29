@@ -1,3 +1,4 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck } from "lucide-react";
@@ -10,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -86,9 +87,9 @@ function AuthPage() {
         </div>
 
         <div className="relative grid grid-cols-2 gap-px border-t border-white/10 bg-white/10">
-          {JAPAN_TOOL_REFERENCES.filter((tool) => tool.imageUrl).slice(0, 4).map((tool) => (
+          {CURATED_TOOL_REFERENCES.filter((tool) => tool.imageUrl).slice(0, 4).map((tool) => (
             <div key={tool.id} className="relative aspect-[4/3] overflow-hidden bg-[#eee9de]">
-              <img src={tool.imageUrl!} alt={tool.imageAlt ?? `${tool.brand} ${tool.model}` } className="h-full w-full object-contain p-5" loading="lazy" />
+              <ProductImage src={tool.imageUrl!} alt={tool.imageAlt ?? `${tool.brand} ${tool.model}` } className="h-full w-full object-contain p-5" loading="lazy" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-3 pt-8">
                 <p className="font-mono text-[8px] uppercase tracking-[0.13em] text-white/70">{tool.brand} · {tool.model}</p>
               </div>

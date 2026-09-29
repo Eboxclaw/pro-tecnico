@@ -16,7 +16,8 @@ export function SmartProductVisual({
   className = "",
 }: SmartProductVisualProps) {
   const stageRef = useRef<HTMLDivElement>(null);
-  const [imageFailed, setImageFailed] = useState(false);
+  const [failedSrc, setFailedSrc] = useState<string>();
+  const imageFailed = failedSrc === tool.imageUrl;
   const imagePadding = hero
     ? "p-7 sm:p-12 lg:p-16"
     : tool.task === "grip"
@@ -58,7 +59,7 @@ export function SmartProductVisual({
       ref={stageRef}
       onPointerMove={onPointerMove}
       onPointerLeave={reset}
-      className={`smart-product-visual group/visual relative overflow-hidden bg-[#eee8dc] ${hero ? "min-h-[520px] lg:min-h-[720px]" : featured ? "aspect-[16/10]" : "aspect-[4/3]"} ${className}`}
+      className={`smart-product-visual group/visual relative overflow-hidden bg-[#eee8dc] ${hero ? "h-[420px] sm:h-[520px] lg:h-[640px]" : featured ? "aspect-[16/10]" : "aspect-[4/3]"} ${className}`}
     >
       <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
       <div className="smart-product-grid absolute inset-0 opacity-70" aria-hidden="true" />
@@ -80,17 +81,17 @@ export function SmartProductVisual({
             src={tool.imageUrl}
             alt=""
             aria-hidden="true"
-            loading="lazy"
+            loading={hero ? "eager" : "lazy"}
             referrerPolicy="no-referrer"
             className={`smart-product-ghost absolute inset-0 z-[1] h-full w-full object-contain opacity-[0.08] blur-[0.4px] ${imagePadding}`}
           />
           <img
             src={tool.imageUrl}
             alt={tool.imageAlt ?? `${tool.brand} ${tool.model}`}
-            loading="lazy"
+            loading={hero ? "eager" : "lazy"}
             referrerPolicy="no-referrer"
-            onError={() => setImageFailed(true)}
-            className={`smart-product-main relative z-[3] h-full w-full object-contain ${imagePadding}`}
+            onError={() => setFailedSrc(tool.imageUrl)}
+            className={`smart-product-main absolute inset-0 z-[3] h-full w-full object-contain ${imagePadding}`}
           />
         </>
       ) : (
@@ -98,6 +99,7 @@ export function SmartProductVisual({
           <span className="jp-label text-primary">{tool.japanese}</span>
           <span className="mt-4 font-display text-4xl font-semibold tracking-[-0.06em] text-black/16">{tool.brand}</span>
           <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-black/42">{tool.model}</span>
+          <span className="mt-3 text-xs text-black/55">{imageFailed ? "Fotografia indisponível" : "Fotografia em preparação"}</span>
           {imageFailed && <ImageOff className="mt-5 h-5 w-5 text-black/25" />}
         </div>
       )}

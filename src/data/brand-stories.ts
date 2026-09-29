@@ -20,9 +20,9 @@ export const BRAND_STORIES: BrandStory[] = [
     story:
       "Na seleção REJENDARI, a ANEX representa sistemas compactos: Quick Ball 72, MiniSta72, torque adapters M3–M6, conversões 3/8″↔1/4″, bits slim, bits isolados 1000 V e ferramentas offset para trabalhar onde um punho normal já não entra.",
     whyPt:
-      "É uma marca especialmente interessante para instalação, manutenção, AVAC e eletricidade porque transforma limitações de espaço em produtos muito específicos.",
-    sourceUrl: "https://www.anextool.co.jp/item_post/",
-    sourceLabel: "ANEX · catálogo oficial",
+      "É uma preferência editorial da REJENDARI pela forma como resolve limitações de espaço e de aperto. Esta seleção é independente; não existe parceria ou representação oficial da ANEX.",
+    sourceUrl: "https://my.ebook5.net/anextool_catalog/k9dGJL/",
+    sourceLabel: "ANEX · catálogo do fabricante 2026",
   },
   {
     slug: "MAKITA",
@@ -203,6 +203,58 @@ export const BRAND_STORIES: BrandStory[] = [
       "Permite construir kits de mecânica e manutenção sem obrigar o cliente a escolher entre uma linguagem de drive familiar e sockets que não usa.",
     sourceUrl: "https://www.tonetool.co.jp/",
     sourceLabel: "TONE",
+  },
+  {
+    slug: "WERA",
+    name: "WERA",
+    jp: "トルション",
+    specialty: "Bits · torsion · VDE 1000 V · roquetes",
+    headline: "Cada bit tem um regime de trabalho — a Wera foi a primeira a tratar isso a sério.",
+    story:
+      "A Wera construiu a sua reputação em aparafusamento: BiTorsion para montagem geral e repetitiva, Impaktor para impacto forte, TORX HF e Hex-Plus para retenção e geometria, Zyklop e 838 RA-R para roquetes de utilização rápida, e o sistema Kraftform Kompakt VDE com ensaio individual a 10.000 V. Em Wuppertal, a alemanha do aparafusamento.",
+    whyPt:
+      "É a coluna dorsal do nosso regime de aparafusamento europeu: o melhor bit para cada regime de trabalho, não todos os bits de todas as marcas.",
+    sourceUrl: "https://www.wera.de/de/",
+    sourceLabel: "Wera · site oficial",
+  },
+  {
+    slug: "KNIPEX",
+    name: "KNIPEX",
+    jp: "プライヤー",
+    specialty: "Alicates · grip · corte · VDE",
+    headline: "Um século e meio de Wuppertal dedicado a uma só categoria: alicates.",
+    story:
+      "A Knipex faz alicates desde 1882 e é hoje a referência mundial da categoria. Na REJENDARI entram pela Cobra auto-bloqueante (~61 HRC nos dentes), pela Pliers Wrench de mordentes paralelos até 52 mm, pelo TwinGrip para parafusos destruídos e pelas versões VDE com arestas a ~64 HRC que cortam fio piano.",
+    whyPt:
+      "Agarrar e cortar é metade do trabalho de instalação — queremos a melhor escola alemã dessa metade, a par da japonesa.",
+    sourceUrl: "https://www.knipex.com/",
+    sourceLabel: "Knipex · site oficial",
+  },
+  {
+    slug: "WIHA",
+    name: "WIHA",
+    jp: "絶縁工具",
+    specialty: "VDE 1000 V · slimBits · torque · ESD",
+    headline: "O sistema isolado de 6 mm que não é um bit 1/4″ — e é melhor assim.",
+    story:
+      "A Wiha, de Schonach na Floresta Negra, é a casa do sistema elétrico slim: o cabo modular slimVario, as lâminas slimBits de 6 mm ensaiadas individualmente segundo IEC 60900, o TorqueVario-S electric e o speedE!, o primeiro aparafusador assistido com punho isolado. Para a bancada, PicoFinish, pinças ESD e precisão.",
+    whyPt:
+      "Permite-nos vender duas famílias claramente diferentes — o sistema standard 1/4″ e o sistema isolado 1000 V — e explicar ao cliente exatamente porquê.",
+    sourceUrl: "https://www.wiha.com/",
+    sourceLabel: "Wiha · site oficial",
+  },
+  {
+    slug: "BAHCO",
+    name: "BAHCO",
+    jp: "調整工具",
+    specialty: "Ajustáveis · AVAC · VDE · aço de liga",
+    headline: "A escola sueca da chave ajustável, do aço de liga ao isolamento 1000 V.",
+    story:
+      "A Bahco tem quase um século e meio de história sueca e continua a fabricar ajustáveis de referência. Na REJENDARI entram pela 9031P com mandíbula reversível para tubo, pela 9033 de abertura extra larga e pela família isolada 8071V–8073V em aço de liga de alto desempenho com ensaio individual a 10 kV.",
+    whyPt:
+      "É a ponte perfeita entre AVAC e elétrico: ajustáveis genuinamente isoladas e geometrias que a concorrência não replica.",
+    sourceUrl: "https://www.bahco.com/",
+    sourceLabel: "Bahco · site oficial",
   },
 ];
 

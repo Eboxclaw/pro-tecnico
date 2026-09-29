@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AnexRouteImport } from './routes/anex'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as B2bRouteImport } from './routes/b2b'
 import { Route as LegalRouteImport } from './routes/legal'
@@ -29,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 } as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnexRoute = AnexRouteImport.update({
+  id: '/anex',
+  path: '/anex',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -84,6 +90,7 @@ const ReferenciaIdRoute = ReferenciaIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/anex': typeof AnexRoute
   '/auth': typeof AuthRoute
   '/b2b': typeof B2bRoute
   '/legal': typeof LegalRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/anex': typeof AnexRoute
   '/auth': typeof AuthRoute
   '/b2b': typeof B2bRoute
   '/legal': typeof LegalRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/anex': typeof AnexRoute
   '/auth': typeof AuthRoute
   '/b2b': typeof B2bRoute
   '/legal': typeof LegalRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/anex'
     | '/auth'
     | '/b2b'
     | '/legal'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/anex'
     | '/auth'
     | '/b2b'
     | '/legal'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/anex'
     | '/auth'
     | '/b2b'
     | '/legal'
@@ -169,6 +181,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AnexRoute: typeof AnexRoute
   AuthRoute: typeof AuthRoute
   B2bRoute: typeof B2bRoute
   LegalRoute: typeof LegalRoute
@@ -194,6 +207,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/anex': {
+      id: '/anex'
+      path: '/anex'
+      fullPath: '/anex'
+      preLoaderRoute: typeof AnexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -283,6 +303,7 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AnexRoute: AnexRoute,
   AuthRoute: AuthRoute,
   B2bRoute: B2bRoute,
   LegalRoute: LegalRoute,

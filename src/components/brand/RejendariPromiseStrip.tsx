@@ -1,5 +1,5 @@
 import { BadgeCheck, Gauge, ScanSearch, Sparkles } from "lucide-react";
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 const ITEMS = [
   {
@@ -34,7 +34,7 @@ export function RejendariPromiseStrip() {
             <h2 className="mt-3 font-display text-2xl font-semibold tracking-[-0.045em] sm:text-3xl">Curadoria que se consegue verificar.</h2>
           </div>
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/38">
-            {JAPAN_TOOL_REFERENCES.length} referências selecionadas · Japan-first · Portugal-ready
+            {CURATED_TOOL_REFERENCES.length} referências selecionadas · Japan-first · Portugal-ready
           </p>
         </div>
         <div className="grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-4">

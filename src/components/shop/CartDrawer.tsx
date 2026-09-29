@@ -1,3 +1,4 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { useEffect } from "react";
 import { useT } from "@/lib/i18n";
 import { useCartStore } from "@/stores/cartStore";
@@ -68,7 +69,7 @@ export function CartDrawer({
                 <div key={item.variantId} className="flex gap-3 rounded-md border border-border p-2">
                   <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-sm bg-secondary">
                     {item.product.node.images?.edges?.[0]?.node && (
-                      <img
+                      <ProductImage
                         src={item.product.node.images.edges[0].node.url}
                         alt={item.product.node.title}
                         className="h-full w-full object-contain p-1"

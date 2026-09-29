@@ -1,6 +1,7 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 const SMART = [
   {
@@ -39,7 +40,7 @@ export function SmartKitShowcase() {
 
         <div className="grid gap-4 sm:grid-cols-3">
           {SMART.map((item, index) => {
-            const tool = JAPAN_TOOL_REFERENCES.find((entry) => entry.id === item.id);
+            const tool = CURATED_TOOL_REFERENCES.find((entry) => entry.id === item.id);
             if (!tool) return null;
             return (
               <Link
@@ -50,7 +51,7 @@ export function SmartKitShowcase() {
               >
                 <div className="relative aspect-square overflow-hidden bg-[#eee9de]">
                   {tool.imageUrl ? (
-                    <img src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-105" />
+                    <ProductImage src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-105" />
                   ) : (
                     <div className="flex h-full items-center justify-center font-display text-3xl text-black/15">{tool.brand}</div>
                   )}

@@ -1,18 +1,19 @@
+import { ProductImage } from "@/components/shop/ProductImage";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 const EDIT_IDS = [
   "anex-397-d",
+  "wera-kk-vde-17-ra-1",
   "vessel-td6816mg",
+  "knipex-cobra-250",
   "ktc-dbr14",
-  "top-hm32",
-  "tsunoda-wp250sc",
   "olfa-xh-1",
 ];
 
 export function RejendariEdit() {
-  const tools = EDIT_IDS.map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
+  const tools = EDIT_IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
   const [lead, ...rest] = tools;
 
   if (!lead) return null;
@@ -27,7 +28,7 @@ export function RejendariEdit() {
           </h2>
         </div>
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-          Não é uma lista de “bestsellers” inventada. É uma seleção editorial de produtos que explicam a REJENDARI: compactos, inteligentes, técnicos e com uma razão clara para existirem.
+          Uma seleção editorial para comparar soluções compactas, acesso difícil e controlo no aperto. Cada ferramenta entra pela utilidade que acrescenta ao trabalho.
         </p>
       </div>
 
@@ -39,7 +40,7 @@ export function RejendariEdit() {
         >
           <div className="absolute inset-0 technical-grid opacity-[0.08]" />
           {lead.imageUrl && (
-            <img
+            <ProductImage
               src={lead.imageUrl}
               alt={lead.imageAlt ?? lead.namePt}
               className="absolute inset-0 h-full w-full object-contain p-10 transition-transform duration-700 group-hover:scale-[1.06] group-hover:-rotate-1 sm:p-16"
@@ -69,7 +70,7 @@ export function RejendariEdit() {
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-[#eee9de]">
                 {tool.imageUrl ? (
-                  <img
+                  <ProductImage
                     src={tool.imageUrl}
                     alt={tool.imageAlt ?? tool.namePt}
                     className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.07]"

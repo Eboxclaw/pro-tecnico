@@ -1,10 +1,10 @@
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { JapaneseAmbientScene } from "@/components/brand/JapaneseAmbientScene";
 
-const HERO_IDS = ["anex-397-d", "vessel-220usb-s1eb", "top-hm32", "tsunoda-wp250sc"];
+const HERO_IDS = ["anex-397-d", "wera-kk-vde-17-ra-1", "knipex-cobra-250", "vessel-220usb-s1eb"];
 
 export function HeroToolConstellation() {
-  const tools = HERO_IDS.map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
+  const tools = HERO_IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
 
   return (
     <div className="hero-tool-constellation relative min-h-[480px] overflow-hidden border border-black/15 bg-[var(--paper)] lg:min-h-[610px]">
@@ -12,11 +12,11 @@ export function HeroToolConstellation() {
       <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
       <div className="absolute left-5 top-5 z-20">
         <p className="jp-label text-primary">注目の工具 · referências em destaque</p>
-        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-black/42">ANEX · VESSEL · TOP · TSUNODA</p>
+        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-black/42">ANEX · WERA · KNIPEX · VESSEL</p>
       </div>
 
       <div className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 writing-vertical font-display text-[11px] tracking-[0.22em] text-black/28 md:block">
-        日本の工具 · 選定 · 実用品
+        厳選工具 · 選定 · 実用品
       </div>
 
       {tools.map((tool, index) => {

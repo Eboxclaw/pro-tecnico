@@ -1,20 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Ruler, Wrench } from "lucide-react";
-import { JAPAN_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { SmartProductVisual } from "@/components/shop/SmartProductVisual";
 import { ProductQuickStudy } from "@/components/shop/ProductQuickStudy";
 import { Button } from "@/components/ui/button";
 
-const VISUAL_IDS = ["top-hm32", "top-hm38", "tsunoda-pl200", "tsunoda-wp250sc"];
+const VISUAL_IDS = ["top-hm32", "tsunoda-wp250sc", "knipex-cobra-250", "bahco-9031p"];
 const COMPACT_COMPARE_IDS = ["lobster-um24xg", "lobster-um30xg", "lobster-um36xg"];
 
 export function GripWrenchSpotlight() {
   const tools = VISUAL_IDS
-    .map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id))
+    .map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id))
     .filter((tool): tool is NonNullable<typeof tool> => Boolean(tool));
 
   const compact = COMPACT_COMPARE_IDS
-    .map((id) => JAPAN_TOOL_REFERENCES.find((tool) => tool.id === id))
+    .map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id))
     .filter((tool): tool is NonNullable<typeof tool> => Boolean(tool));
 
   return (
@@ -24,11 +24,12 @@ export function GripWrenchSpotlight() {
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#e0694f]">GRIP / CHAVES · 握る・回す</p>
             <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
-              Chaves inglesas e alicates que faltavam à seleção.
+              A pega certa. O aperto controlado.
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-white/58">
-            AVAC, canalização e manutenção pedem mais do que bits e roquetes. Aqui entram chaves ajustáveis japonesas, slip-joint e alicates extensíveis com capacidades métricas claras.
+            AVAC, canalização e manutenção pedem mais do que bits e roquetes. Aqui entram a Cobra auto-bloqueante, a
+            9031P com mandíbula para tubo e as ajustáveis japonesas — Japão e Europa no mesmo regime de agarrar.
           </p>
         </div>
 
@@ -59,9 +60,9 @@ export function GripWrenchSpotlight() {
               <Wrench className="h-5 w-5 text-[#e0694f]" />
               <p className="font-mono text-[9px] uppercase tracking-[0.17em] text-[#e0694f]">LOBSTER / LOBTEX · UM-XG</p>
             </div>
-            <h3 className="mt-4 font-display text-2xl font-semibold">Três tamanhos úteis, sem forçar uma fotografia fraca.</h3>
+            <h3 className="mt-4 font-display text-2xl font-semibold">Uma chave ajustável à medida do trabalho.</h3>
             <p className="mt-3 text-sm leading-6 text-white/50">
-              A antiga imagem pequena da UM24XG foi retirada. Enquanto não houver um asset oficial com qualidade suficiente, mostramos a referência e os números, não uma imagem ampliada e degradada.
+              Compara abertura, comprimento e peso dos três modelos UM-XG. Escolhe pela dimensão da união e pelo espaço disponível para trabalhar.
             </p>
           </div>
 

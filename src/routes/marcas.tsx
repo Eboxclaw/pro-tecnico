@@ -1,3 +1,5 @@
+import { AnexFeature } from "@/components/shop/AnexFeature";
+import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,13 +13,13 @@ export const Route = createFileRoute("/marcas")({
   }),
   head: () => ({
     meta: [
-      { title: "Marcas de ferramenta japonesa — REJENDARI" },
+      { title: "Marcas de ferramenta profissional — REJENDARI" },
       {
         name: "description",
         content:
-          "Histórias, especialidades e referências selecionadas de ANEX, Makita, VESSEL, OLFA, Tajima, Ko-ken, Fujiya, ENGINEER, HOZAN, LOBTEX e TONE.",
+          "Histórias, especialidades e referências selecionadas: VESSEL, ANEX, Ko-ken, Wera, Knipex, Wiha, Bahco, Makita, OLFA, ENGINEER e HOZAN.",
       },
-      { property: "og:title", content: "Marcas japonesas — REJENDARI" },
+      { property: "og:title", content: "Marcas — REJENDARI" },
       { property: "og:description", content: "Conhece a história de cada marca e explora todas as referências REJENDARI selecionadas desse fabricante." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -39,7 +41,7 @@ function BrandsPage() {
     <div>
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-18">
-          <p className="jp-label text-primary">ブランド · marcas japonesas</p>
+          <p className="jp-label text-primary">ブランド · marcas, japão e europa</p>
           <div className="mt-5 grid gap-7 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <h1 className="max-w-3xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
               A ferramenta começa
@@ -79,6 +81,7 @@ function BrandsPage() {
         </div>
       </section>
 
+      {selectedSlug === "ANEX" && <AnexFeature compact />}
       <section className="paper-panel overflow-hidden border-b border-border">
         <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[0.82fr_1.18fr]">
           <div className="relative overflow-hidden border-b border-black/10 p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-14">
@@ -93,6 +96,7 @@ function BrandsPage() {
                 </div>
                 <ShieldCheck className="h-6 w-6 text-[#b54530]" />
               </div>
+              {products[0] && <Link to="/referencia/$id" params={{ id: products[0].id }} className="mt-8 block border border-black/10 bg-white/50"><ProductImage key={products[0].id} src={products[0].imageUrl} alt={`${products[0].brand} ${products[0].model}`} className="aspect-[16/10] w-full object-contain p-8" /><p className="px-4 pb-4 text-xs text-black/60">{products[0].model} · conhecer a referência{products[0].imageCaption && <span className="mt-2 block">{products[0].imageCaption}</span>}</p></Link>}
               <h3 className="mt-10 max-w-2xl font-display text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-[#24211d]">
                 {selected.headline}
               </h3>
@@ -154,7 +158,9 @@ function BrandsPage() {
 
         <div className="mt-7 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {otherBrands.map((brand) => {
-            const count = referencesForBrand(brand.slug).length;
+            const brandProducts = referencesForBrand(brand.slug);
+            const count = brandProducts.length;
+            const cover = brandProducts.find((tool) => tool.imageUrl);
             return (
               <Link
                 key={brand.slug}
@@ -166,6 +172,7 @@ function BrandsPage() {
                   <span className="jp-label text-primary">{brand.jp}</span>
                   <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">{count} refs.</span>
                 </div>
+                {cover && <ProductImage src={cover.imageUrl} alt={`${cover.brand} ${cover.model}`} className="mt-5 aspect-[16/9] w-full bg-[#eee8dc] object-contain p-4" />}
                 <h3 className="mt-8 font-display text-3xl font-semibold tracking-[-0.05em]">{brand.name}</h3>
                 <p className="mt-2 text-xs leading-5 text-muted-foreground">{brand.specialty}</p>
                 <p className="mt-5 line-clamp-2 text-sm leading-6 text-muted-foreground">{brand.headline}</p>

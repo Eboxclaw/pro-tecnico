@@ -8,20 +8,22 @@ import { CartDrawer } from "@/components/shop/CartDrawer";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
-import { JAPAN_TOOL_REFERENCES, QUICK_BRANDS, QUICK_FOCUS, referencesForTask } from "@/data/curated-tool-references";
+import { CURATED_TOOL_REFERENCES, QUICK_BRANDS, QUICK_FOCUS, referencesForTask } from "@/data/curated-tool-references";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 
-const CATEGORIES: Array<{ label: string; jp: string; task: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power"; icon: ToolGlyphName }> = [
-  { label: "Precisão & eletrónica", jp: "精密工具", task: "precision", icon: "precision" },
+const CATEGORIES: Array<{ label: string; jp: string; task: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power" | "electronics" | "ev"; icon: ToolGlyphName }> = [
+  { label: "Precisão & slim", jp: "精密工具", task: "precision", icon: "precision" },
   { label: "Chaves, bits & aperto", jp: "締結工具", task: "fastening", icon: "driver" },
   { label: "Roquetes & sockets", jp: "ソケット", task: "sockets", icon: "socket" },
   { label: "Alicates & chaves", jp: "作業工具", task: "grip", icon: "grip" },
   { label: "Corte & lâminas", jp: "切削工具", task: "cutting", icon: "cut" },
   { label: "AVAC & instalação", jp: "設備工具", task: "hvac", icon: "hvac" },
   { label: "Máquinas 18V+", jp: "電動工具", task: "power", icon: "power" },
+  { label: "Eletrónica & bancada", jp: "電子工具", task: "electronics", icon: "electronics" },
+  { label: "Veículos elétricos", jp: "電気自動車", task: "ev", icon: "ev" },
 ];
 
-const TOP_REFERENCE_IDS = ["anex-397-d", "vessel-220usb-s1eb", "top-hm32", "tsunoda-wp250sc"];
+const TOP_REFERENCE_IDS = ["anex-397-d", "wera-kk-vde-17-ra-1", "knipex-cobra-250", "tsunoda-wp250sc"];
 
 export function SiteHeader() {
   const t = useT();
@@ -50,6 +52,7 @@ export function SiteHeader() {
   const mobileNav = [
     { to: "/shop", label: t("nav.shop") },
     { to: "/marcas", label: t("nav.brands") },
+    { to: "/anex", label: "ANEX" },
     { to: "/packs", label: t("nav.packs") },
     { to: "/pontos", label: t("nav.points") },
     { to: "/b2b", label: t("nav.b2b") },
@@ -60,7 +63,7 @@ export function SiteHeader() {
       <div className="border-b border-border/70 bg-black/20">
         <div className="mx-auto flex h-7 max-w-[1440px] items-center justify-between px-4 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:px-6">
           <span>JAPAN FIRST · PORTUGAL READY</span>
-          <span className="hidden sm:inline">{JAPAN_TOOL_REFERENCES.length} referências · métrico primeiro · códigos oficiais</span>
+          <span className="hidden sm:inline">{CURATED_TOOL_REFERENCES.length} referências · métrico primeiro · códigos oficiais</span>
         </div>
       </div>
 
@@ -178,7 +181,7 @@ export function SiteHeader() {
                         className="border border-border bg-card p-3 transition-colors hover:border-primary/55 hover:bg-secondary"
                       >
                         <span className="block font-display text-sm font-semibold">{story?.name ?? brand}</span>
-                        <span className="mt-1 block text-[9px] leading-4 text-muted-foreground">{story?.specialty ?? "Ferramenta profissional japonesa"}</span>
+                        <span className="mt-1 block text-[9px] leading-4 text-muted-foreground">{story?.specialty ?? "Ferramenta profissional por regime de trabalho"}</span>
                       </Link>
                     );
                   })}
@@ -187,6 +190,7 @@ export function SiteHeader() {
             </div>
           </div>
 
+          <Link to="/anex" className="px-3 py-2 text-[13px] font-semibold text-primary underline-offset-4 hover:underline">ANEX</Link>
           <Link to="/packs" className="relative px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground">
             {t("nav.packs")}
           </Link>
