@@ -13,6 +13,7 @@ import { RatchetDriverComparison } from "@/components/shop/RatchetDriverComparis
 import { BitRegimeComparison } from "@/components/shop/BitRegimeComparison";
 import { SmartKitShowcase } from "@/components/shop/SmartKitShowcase";
 import { BitKitRail } from "@/components/shop/BitKitRail";
+import { WeraFeature } from "@/components/shop/WeraFeature";
 import { RejendariEdit } from "@/components/shop/RejendariEdit";
 import { GripWrenchSpotlight } from "@/components/shop/GripWrenchSpotlight";
 import { RejendariPromiseStrip } from "@/components/brand/RejendariPromiseStrip";
@@ -348,6 +349,58 @@ function Index() {
         </div>
       </section>
 
+      <section className="border-y border-border bg-surface">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-18">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="h-5 w-5 text-primary" />
+                <p className="jp-label text-primary">職人キット · kits profissionais</p>
+              </div>
+              <h2 className="mt-4 font-display text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">
+                Menos ferramentas repetidas. Mais cobertura útil.
+              </h2>
+            </div>
+            <Button variant="outline" asChild className="w-fit rounded-none">
+              <Link to="/packs">Ver todos os kits</Link>
+            </Button>
+          </div>
+
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {PACKS.map((pack) => (
+              <Link
+                key={pack}
+                to="/packs"
+                className="group flex min-h-32 items-end justify-between border border-border bg-card p-5 transition-colors hover:border-primary/55"
+              >
+                <div>
+                  <p className="font-display text-xl font-semibold">{pack}</p>
+                  <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+                    Compact → Core → Pro
+                  </p>
+                  <p className="mt-2 max-w-[26ch] text-xs leading-5 text-muted-foreground">
+                    Malas desenhadas para o dia de trabalho, peça a peça — com o pedido B2B já composto.
+                  </p>
+                </div>
+                <Sparkles className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-4 flex flex-col gap-4 border border-border bg-background p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-display text-lg font-semibold">Compras para empresa ou equipa?</p>
+              <p className="mt-1 text-sm text-muted-foreground">Pede condições para volume, compras recorrentes ou um kit à medida.</p>
+            </div>
+            <Button asChild className="w-fit rounded-none">
+              <Link to="/b2b">Falar com a REJENDARI</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <WeraFeature />
+
       <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-20">
         <div className="flex items-end justify-between gap-6 border-b border-border pb-5">
           <div>
@@ -396,56 +449,6 @@ function Index() {
               ))}
             </div>
           )}
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-surface">
-        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-18">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <div className="flex items-center gap-3">
-                <ShieldCheck className="h-5 w-5 text-primary" />
-                <p className="jp-label text-primary">職人キット · kits profissionais</p>
-              </div>
-              <h2 className="mt-4 font-display text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">
-                Menos ferramentas repetidas. Mais cobertura útil.
-              </h2>
-            </div>
-            <Button variant="outline" asChild className="w-fit rounded-none">
-              <Link to="/packs">Ver todos os kits</Link>
-            </Button>
-          </div>
-
-          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {PACKS.map((pack) => (
-              <Link
-                key={pack}
-                to="/packs"
-                className="group flex min-h-32 items-end justify-between border border-border bg-card p-5 transition-colors hover:border-primary/55"
-              >
-                <div>
-                  <p className="font-display text-xl font-semibold">{pack}</p>
-                  <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                    Compact → Core → Pro
-                  </p>
-                  <p className="mt-2 max-w-[26ch] text-xs leading-5 text-muted-foreground">
-                    Malas desenhadas para o dia de trabalho, peça a peça — com o pedido B2B já composto.
-                  </p>
-                </div>
-                <Sparkles className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-4 flex flex-col gap-4 border border-border bg-background p-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="font-display text-lg font-semibold">Compras para empresa ou equipa?</p>
-              <p className="mt-1 text-sm text-muted-foreground">Pede condições para volume, compras recorrentes ou um kit à medida.</p>
-            </div>
-            <Button asChild className="w-fit rounded-none">
-              <Link to="/b2b">Falar com a REJENDARI</Link>
-            </Button>
-          </div>
         </div>
       </section>
 
