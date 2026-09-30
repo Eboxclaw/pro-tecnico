@@ -34,9 +34,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
   const task = taskTag?.replace(/^task:/i, "").trim().toLowerCase() ?? "";
   const japaneseTask = JP_TASK[task] ?? "選定工具";
 
-  const handleAdd = async (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const handleAdd = async () => {
     if (!variant) return;
 
     await addItem({
@@ -50,11 +48,13 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
   };
 
   return (
-    <Link
-      to="/product/$handle"
-      params={{ handle: node.handle }}
-      className="product-card catalogue-card group flex min-h-full flex-col overflow-hidden"
-    >
+    <article className="product-card catalogue-card group relative flex min-h-full flex-col overflow-hidden">
+      <Link
+        to="/product/$handle"
+        params={{ handle: node.handle }}
+        aria-label={node.title}
+        className="absolute inset-0 z-10"
+      />
       <div className="product-image-stage relative aspect-[5/4] overflow-hidden bg-[#ece9e2]">
         {isLegendary && (
           <span className="absolute left-3 top-3 z-10 flex items-center gap-1.5 border border-black/10 bg-black/82 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-white">
@@ -114,12 +114,12 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
             onClick={handleAdd}
             disabled={isLoading || !variant || !available}
             aria-label={t("common.addToCart")}
-            className="h-9 w-9 rounded-none p-0"
+            className="relative z-20 h-11 w-11 rounded-none p-0"
           >
             {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
           </Button>
         </div>
       </div>
-    </Link>
+    </article>
   );
 }

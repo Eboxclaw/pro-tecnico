@@ -544,8 +544,13 @@
     height: 23%;
   }
 
+  /* A 5ª peça deixa de desaparecer: ganha o seu lugar no palco mobile. */
   .hero-floating-tool-5 {
-    display: none;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2%;
+    width: 30%;
+    height: 14%;
   }
 }
 
@@ -819,7 +824,7 @@
 .artisan-text-link { display: inline-flex; align-items: center; gap: 22px; border-bottom: 1px solid var(--border); padding: 10px 0; font-size: 12px; }
 .artisan-text-link:hover { color: var(--primary); border-color: var(--primary); }
 @keyframes artisan-arrive { from { opacity: .5; transform: scale(1.56); } to { opacity: 1; transform: scale(1.52); } }
-@media (max-width: 767px) { .artisan-hero { min-height: 650px; } .artisan-hero-media { left: 0; opacity: .6; } .artisan-hero-shade { background: linear-gradient(90deg,rgba(21,25,24,.9),rgba(21,25,24,.35)),linear-gradient(0deg,#151918,transparent); } .artisan-hero-content { padding: 64px 24px; } .artisan-hero-foot { padding: 20px 24px; flex-wrap: wrap; font-size: 8px; } .artisan-introduction { padding: 56px 24px; grid-template-columns: 1fr; gap: 24px; } .artisan-hero-actions { gap: 10px; } .artisan-link { padding: 15px 17px; gap: 14px; } }
+@media (max-width: 767px) { .artisan-hero { min-height: 650px; } .artisan-hero-media { left: 0; opacity: .6; } .artisan-hero-shade { background: linear-gradient(90deg,rgba(21,25,24,.9),rgba(21,25,24,.35)),linear-gradient(0deg,#151918,transparent); } .artisan-hero-content { padding: 64px 24px; } .artisan-hero-foot { padding: 20px 24px; flex-wrap: wrap; font-size: 10px; } .artisan-introduction { padding: 56px 24px; grid-template-columns: 1fr; gap: 24px; } .artisan-hero-actions { gap: 10px; } .artisan-link { padding: 15px 17px; gap: 14px; } }
 @media (prefers-reduced-motion: reduce) { .artisan-hero-media img { animation: none; } }
 
 /* ANEX: independent REJENDARI editorial, with restrained product photography. */
@@ -923,3 +928,22 @@
 @media (prefers-reduced-motion: reduce) { .anex-motion-control { display: none; } }
 .anex-motion-control, .anex-stage-tool { scroll-margin-top: 220px; }
 @media (max-width: 767px) { .anex-stage-tools { padding-top: 64px; } }
+
+/* ── Mobile de classe (sprint 3) ─────────────────────────────── */
+:root { --header-h: 106px; }
+/* Tracks de marquee clipados não inflam o scroll horizontal do documento. */
+html, body { overflow-x: clip; }
+.site-header { padding-top: env(safe-area-inset-top, 0px); }
+.site-header[data-compact="true"] .site-topstrip { display: none; }
+@media (max-width: 1023.98px) {
+  .site-header[data-compact="true"] .site-scrollrows { display: none; }
+}
+/* Rails infinitos param ao tocar: alvo estável debaixo do dedo. */
+.brand-marquee:active .brand-marquee-track,
+.brand-marquee:focus-within .brand-marquee-track,
+.bit-rail:active .bit-rail-track,
+.bit-rail:focus-within .bit-rail-track { animation-play-state: paused; }
+@media (hover: none) {
+  .bit-rail-track { animation-duration: 90s; }
+  .brand-marquee-track { animation-duration: 56s; }
+}

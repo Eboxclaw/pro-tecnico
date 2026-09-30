@@ -69,10 +69,10 @@ export function WaitlistBanner() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && notify()}
-              className="h-8 w-52"
+              className="h-10 w-full min-w-0 sm:w-52"
               aria-label="Email"
             />
-            <Button size="sm" className="h-8" onClick={notify} disabled={sending}>
+            <Button size="sm" className="h-10 shrink-0" onClick={notify} disabled={sending}>
               {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : t("gate.notifyMe")}
             </Button>
           </div>
@@ -80,7 +80,7 @@ export function WaitlistBanner() {
         <button
           onClick={dismiss}
           aria-label="Fechar"
-          className="ml-auto text-muted-foreground transition-colors hover:text-foreground"
+          className="ml-auto flex h-11 w-11 shrink-0 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
         >
           <X className="h-4 w-4" />
         </button>

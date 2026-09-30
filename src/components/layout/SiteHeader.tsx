@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { ChevronDown, Gift, LogOut, ShoppingBag, User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/i18n";
 import { useCartStore } from "@/stores/cartStore";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
@@ -30,6 +30,38 @@ export function SiteHeader() {
   const navigate = useNavigate();
   const items = useCartStore((s) => s.items);
   const [signedIn, setSignedIn] = useState(false);
+  const [compact, setCompact] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Colapso ao descer; nunca com foco interno (menus, pesquisa, navegação por teclado).
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const active = document.activeElement;
+      if (active && active !== document.body && el.contains(active)) return;
+      setCompact(y > 96 && y > lastY + 4);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Altura real publicada como --header-h para offsets sticky de outras páginas.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const publish = () => document.documentElement.style.setProperty("--header-h", `${el.offsetHeight}px`);
+    publish();
+    const observer = new ResizeObserver(publish);
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty("--header-h");
+    };
+  }, []);
 
   useEffect(() => {
     if (!isSupabaseConfigured()) return;
@@ -60,8 +92,12 @@ export function SiteHeader() {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/94 backdrop-blur-xl supports-[backdrop-filter]:bg-background/82">
-      <div className="border-b border-border/70 bg-black/20">
+    <header
+      ref={headerRef}
+      data-compact={compact ? true : undefined}
+      className="site-header sticky top-0 z-50 border-b border-border bg-background/94 backdrop-blur-xl supports-[backdrop-filter]:bg-background/82"
+    >
+      <div className="site-topstrip border-b border-border/70 bg-black/20">
         <div className="mx-auto flex h-7 max-w-[1440px] items-center justify-between px-4 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:px-6">
           <span>JAPAN FIRST · PORTUGAL READY</span>
           <span className="hidden sm:inline">{CURATED_TOOL_REFERENCES.length} referências · métrico primeiro · códigos oficiais</span>
@@ -291,13 +327,13 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div className="flex items-stretch overflow-x-auto border-t border-border/70 lg:hidden">
+      <div className="site-scrollrows flex snap-x snap-mandatory items-stretch overflow-x-auto border-t border-border/70 lg:hidden">
         {CATEGORIES.map((category) => (
           <Link
             key={category.task}
             to="/shop"
             search={{ task: category.task }}
-            className="flex min-w-max items-center gap-2.5 border-r border-border/60 px-3 py-2.5 text-[11px] text-muted-foreground"
+            className="flex min-h-11 min-w-max snap-start items-center gap-2.5 border-r border-border/60 px-3 py-2.5 text-[11px] text-muted-foreground"
           >
             <ToolGlyph name={category.icon} className="h-4 w-4 text-primary" />
             <span>{category.label}</span>
@@ -305,14 +341,14 @@ export function SiteHeader() {
         ))}
       </div>
 
-      <nav className="flex items-center gap-1 overflow-x-auto border-t border-border/60 px-4 py-2 lg:hidden">
+      <nav className="site-scrollrows flex snap-x snap-mandatory items-center gap-1 overflow-x-auto border-t border-border/60 px-4 py-2 lg:hidden">
         {mobileNav.map((item) => (
-          <Link key={item.to} to={item.to} className="whitespace-nowrap px-2.5 py-1 text-xs text-muted-foreground hover:text-foreground">
+          <Link key={item.to} to={item.to} className="flex min-h-11 min-w-max snap-start items-center whitespace-nowrap px-3 text-xs text-muted-foreground hover:text-foreground">
             {item.label}
           </Link>
         ))}
         {!signedIn && (
-          <Link to="/auth" className="whitespace-nowrap px-2.5 py-1 text-xs text-primary">{t("nav.signIn")}</Link>
+          <Link to="/auth" className="flex min-h-11 min-w-max snap-start items-center whitespace-nowrap px-3 text-xs text-primary">{t("nav.signIn")}</Link>
         )}
       </nav>
     </header>

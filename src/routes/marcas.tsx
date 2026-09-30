@@ -60,7 +60,7 @@ function BrandsPage() {
         </div>
       </section>
 
-      <section className="sticky top-[137px] z-30 border-b border-border bg-background/94 backdrop-blur-xl">
+      <section className="sticky top-[var(--header-h,137px)] z-30 border-b border-border bg-background/94 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 py-3 sm:px-6">
           {QUICK_BRANDS.map((brand) => {
             const story = BRAND_STORY_MAP[brand];
