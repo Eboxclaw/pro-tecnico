@@ -2396,6 +2396,34 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "TAJIMA N-G165JS-K1 jab saw for plasterboard",
     imageSourceLabel: "Imagem TAJIMA Europe",
   },
+  {
+    id: "wera-kompakt-vde-17-ra-1",
+    brand: "WERA",
+    brandSlug: "WERA",
+    model: "Kraftform Kompakt VDE 17 RA 1",
+    officialCode: "05006618001",
+    namePt: "Roquete porta-lâminas VDE 1000 V · 17 peças",
+    japanese: "絶縁ラチェット",
+    task: "fastening",
+    categoryPt: "1000 V · roquete com catraca",
+    notePt:
+      "O 837 i RA integra catraca de 40 dentes (retorno 9°) num cabo Kraftform isolado, com lâminas VDE de 157 mm e segundo porta-lâminas 817 VDE: o vaivém rápido com certificação de ferramenta completa.",
+    storyPt:
+      "A pergunta 'existe roquete para trabalho sob tensão?' tem resposta oficial: este. A catraca vive dentro do cabo isolado e o conjunto é ensaiado peça a peça — a velocidade do vaivém sem abrir mão da certificação.",
+    specPt: "40 dentes · retorno 9° · lâminas VDE 157 mm · 17 peças · 1000 V (IEC 60900)",
+    evidencePt:
+      "Página oficial Wera: artigo 05006618001, 17 peças — cabo 837 i RA porta-lâminas com catraca (40 dentes, retorno 9°) + 817 VDE; lâminas VDE de 157 mm com função spinner, ensaio individual em banho de água a 10.000 V segundo IEC 60900 para trabalho a 1.000 V; marcação GS, anti-rolloff e estojo de pano compatível Wera 2go.",
+    limitationsPt:
+      "Certificação válida para a ferramenta completa tal como fornecida. Um bit isolado montado num porta-bits comum não constitui ferramenta certificada para trabalho sob tensão: a EN/IEC 60900 aplica-se ao conjunto ensaiado e marcado.",
+    badge: "VDE 1000 V",
+    referenceUrl: "https://www.wera.de/en/tools/kraftform-kompakt-vde-17-ra-1",
+    imageUrl: "https://www.wera.de/prodimg/832x832/kraftform_kompakt_vde_17_ra_1.webp",
+    imageAlt: "Wera Kraftform Kompakt VDE 17 RA 1 — roquete isolado 1000 V com lâminas 157 mm",
+    imageSourceLabel: "Imagem oficial Wera",
+    compareGroup: "ratchet-driver",
+    manufacturedIn: "Alemanha",
+    featured: true,
+  },
 ];
 
 export const REFERENCE_QUEUE = [
@@ -2437,8 +2465,62 @@ export function referencesForTask(task: string) {
 }
 
 export const QUICK_FOCUS = [
+  {
+    id: "ratchet",
+    label: "Ratchet screwdrivers",
+    jp: "ラチェット",
+    ids: ["anex-397-d", "anex-397-h", "anex-370", "anex-431", "anex-307-s1", "anex-525-10b", "anex-525", "wiha-47169", "vessel-2200-ph2-100", "vessel-td6816mg", "vessel-td6808mg", "vessel-td6808tx", "vessel-td70", "vessel-td80", "vessel-900rt-7p", "vessel-td24", "tone-brfs27", "tone-rdbs11", "wera-838-ra-r-l", "wera-838-ra-r-m", "wera-kompakt-vde-17-ra-1"]
+  },
+  {
+    id: "bits",
+    label: "Bits & pontas",
+    jp: "ビット",
+    ids: ["anex-abrs5-2065", "anex-abrs5-01", "vessel-tdbs21", "vessel-tdbs22", "vessel-tdbs23", "vessel-tx11", "anex-ryujin-artm5-01", "anex-ryujin-slim", "vessel-at14p", "anex-art-14m-2-65", "anex-acmh9-e"],
+  },
+  {
+    id: "impact-bits",
+    label: "Impacto & torsion",
+    jp: "衝撃ビット",
+    ids: ["anex-ryujin-artm5-01", "anex-ryujin-slim", "anex-abrs5-2065", "anex-abrs5-01", "vessel-at14p"],
+  },
+  {
+    id: "insulated",
+    label: "1000 V / isoladas",
+    jp: "絶縁",
+    ids: ["anex-azm-2698", "anex-azm-1598", "anex-7920", "vessel-200-ph2-100", "vessel-960-ph2-100", "wiha-slimvario", "wiha-slimbits-set", "knipex-74-06-200", "knipex-13-96-200", "wera-kompakt-vde-17-ra-1"]
+  },
   { id: "diamond", label: "Bits Diamante", jp: "ダイヤモンド", ids: ["anex-adrs-2065"] },
-  { id: "vde", label: "VDE documentado", jp: "検証", ids: ["knipex-74-06-200", "knipex-13-96-200"] },
+  { id: "vde", label: "VDE documentado", jp: "検証", ids: ["knipex-74-06-200", "knipex-13-96-200", "wera-kompakt-vde-17-ra-1"] },
+  {
+    id: "adapters",
+    label: "Adaptadores & porta-bits",
+    jp: "アダプター",
+    ids: ["anex-1902-ba2", "anex-asad-3e", "anex-asad-4e", "anex-ak20ad-635", "anex-aoa-17s1", "wiha-40331", "vessel-td72", "porta-porcas-magneticos-1-4", "anex-aqh-s1", "anex-aeh-100"]
+  },
+  {
+    id: "sockets-kit",
+    label: "Sockets & kits",
+    jp: "ソケット",
+    ids: ["wera-8100-sb-6", "bahco-s330", "bahco-s138", "tone-cx3172"],
+  },
+  {
+    id: "torque",
+    label: "Torque control",
+    jp: "トルク管理",
+    ids: ["anex-ata-m4", "anex-ata-s1"],
+  },
+  {
+    id: "smart-kit",
+    label: "Kits inteligentes",
+    jp: "スマートキット",
+    ids: ["anex-307-s1", "anex-525-10b", "anex-397-d", "vessel-td6816mg", "vessel-td70", "vessel-mr36", "vessel-9836", "anex-acmh9-e", "anex-aqh-s1", "anex-abh-10"],
+  },
+  {
+    id: "sets",
+    label: "Sets oficiais",
+    jp: "セット",
+    ids: ["anex-anh-s3", "anex-307-s1", "anex-525-10b", "anex-1902", "anex-ata-s1", "vessel-220w-3", "vessel-td2100", "vessel-td6816mg", "vessel-td6808mg", "vessel-td6808tx", "vessel-td70", "vessel-td72", "vessel-td80", "vessel-mr36", "vessel-9836", "tone-brfs27", "tone-rdbs11", "engineer-pds02", "wiha-slimvario", "wiha-slimbits-set", "makita-dhp489z"],
+  },
   { id: "extraction", label: "Extração de parafusos", jp: "ネジはずし", ids: ["anex-3610-n", "anex-anh-s3", "anex-1902", "anex-3980-2-100"] },
   {
     id: "wrenches",
@@ -2457,42 +2539,6 @@ export const QUICK_FOCUS = [
     label: "Alicates extensíveis",
     jp: "ウォーターポンプ",
     ids: ["tsunoda-wp250sc", "tsunoda-kt606", "knipex-cobra-250", "lobster-uu4150"],
-  },
-  {
-    id: "bits",
-    label: "Bits & pontas",
-    jp: "ビット",
-    ids: ["anex-abrs5-2065", "anex-abrs5-01", "vessel-tdbs21", "vessel-tdbs22", "vessel-tdbs23", "vessel-tx11", "anex-ryujin-artm5-01", "anex-ryujin-slim", "vessel-at14p", "anex-art-14m-2-65", "anex-acmh9-e"],
-  },
-  {
-    id: "impact-bits",
-    label: "Impacto & torsion",
-    jp: "衝撃ビット",
-    ids: ["anex-ryujin-artm5-01", "anex-ryujin-slim", "anex-abrs5-2065", "anex-abrs5-01", "vessel-at14p"],
-  },
-  {
-    id: "ratchet",
-    label: "Ratchet screwdrivers",
-    jp: "ラチェット",
-    ids: ["anex-397-d", "anex-397-h", "anex-370", "anex-431", "anex-307-s1", "anex-525-10b", "anex-525", "wiha-47169", "vessel-2200-ph2-100", "vessel-td6816mg", "vessel-td6808mg", "vessel-td6808tx", "vessel-td70", "vessel-td80", "vessel-900rt-7p", "vessel-td24", "tone-brfs27", "tone-rdbs11", "wera-838-ra-r-l", "wera-838-ra-r-m"],
-  },
-  {
-    id: "adapters",
-    label: "Adaptadores & porta-bits",
-    jp: "アダプター",
-    ids: ["anex-1902-ba2", "anex-asad-3e", "anex-asad-4e", "anex-ak20ad-635", "anex-aoa-17s1", "wiha-40331", "vessel-td72", "porta-porcas-magneticos-1-4", "anex-aqh-s1", "anex-aeh-100"],
-  },
-  {
-    id: "sockets-kit",
-    label: "Sockets & kits",
-    jp: "ソケット",
-    ids: ["wera-8100-sb-6", "bahco-s330", "bahco-s138", "tone-cx3172"],
-  },
-  {
-    id: "insulated",
-    label: "1000 V / isoladas",
-    jp: "絶縁",
-    ids: ["anex-azm-2698", "anex-azm-1598", "anex-7920", "vessel-200-ph2-100", "vessel-960-ph2-100", "wiha-slimvario", "wiha-slimbits-set", "knipex-74-06-200", "knipex-13-96-200"],
   },
   {
     id: "electronics",
@@ -2518,24 +2564,7 @@ export const QUICK_FOCUS = [
     jp: "電気自動車",
     ids: ["anex-azm-2698"],
   },
-  {
-    id: "torque",
-    label: "Torque control",
-    jp: "トルク管理",
-    ids: ["anex-ata-m4", "anex-ata-s1"],
-  },
-  {
-    id: "sets",
-    label: "Sets oficiais",
-    jp: "セット",
-    ids: ["anex-anh-s3", "anex-307-s1", "anex-525-10b", "anex-1902", "anex-ata-s1", "vessel-220w-3", "vessel-td2100", "vessel-td6816mg", "vessel-td6808mg", "vessel-td6808tx", "vessel-td70", "vessel-td72", "vessel-td80", "vessel-mr36", "vessel-9836", "tone-brfs27", "tone-rdbs11", "engineer-pds02", "wiha-slimvario", "wiha-slimbits-set", "makita-dhp489z"],
-  },
-  {
-    id: "smart-kit",
-    label: "Kits inteligentes",
-    jp: "スマートキット",
-    ids: ["anex-307-s1", "anex-525-10b", "anex-397-d", "vessel-td6816mg", "vessel-td70", "vessel-mr36", "vessel-9836", "anex-acmh9-e", "anex-aqh-s1", "anex-abh-10"],
-  },
+
 ] as const;
 
 export function referencesForFocus(focus: string) {

@@ -60,6 +60,7 @@ export function AnexDuoHero() {
           aperto para lá do obstáculo, com a máquina fora do caminho. Um par de assinatura ANEX para
           o espaço curto e o ângulo impossível.
         </p>
+        <p className="anex-kicker mt-5">三条市 NIIGATA · DESDE 1949</p>
         <div className="anex-duo-actions">
           <Link to="/referencia/$id" params={{ id: quickBall.id }} className="artisan-link artisan-link-solid">
             Ver a Quick Ball 397 <ArrowUpRight size={17} aria-hidden="true" />

@@ -20,7 +20,7 @@ function PackCard({ pack }: { pack: SmartPack }) {
     return tool ? [{ tool, quantity: piece.quantity, whyPt: piece.whyPt }] : [];
   });
   return (
-    <article className="flex flex-col border border-border bg-card">
+    <article className="smart-pack-card flex flex-col border border-border bg-card" data-signature={pack.trade === "Assinatura REJENDARI" || undefined}>
       <header className="border-b border-border bg-surface p-5">
         <p className="jp-label text-primary">{pack.tier}</p>
         <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.03em]">{pack.title}</h3>

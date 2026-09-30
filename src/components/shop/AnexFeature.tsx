@@ -39,7 +39,7 @@ export function AnexFeature({ compact = false }: { compact?: boolean }) {
           Descobrir a seleção ANEX <ArrowUpRight size={17} aria-hidden="true" />
         </Link>
         <span className="mt-6 block text-xs leading-5 text-white/65">
-          Uma escolha editorial independente da REJENDARI.
+          Desde 1949 em Sanjo, Niigata. Uma escolha editorial independente da REJENDARI.
         </span>
       </div>
       <Link
