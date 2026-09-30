@@ -2386,6 +2386,8 @@ export function referencesForTask(task: string) {
 }
 
 export const QUICK_FOCUS = [
+  { id: "diamond", label: "Bits Diamante", jp: "ダイヤモンド", ids: ["anex-adrs-2065"] },
+  { id: "vde", label: "VDE documentado", jp: "検証", ids: ["knipex-74-06-200", "knipex-13-96-200"] },
   { id: "extraction", label: "Extração de parafusos", jp: "ネジはずし", ids: ["anex-3610-n", "anex-anh-s3", "anex-1902", "anex-3980-2-100"] },
   {
     id: "wrenches",
@@ -2469,7 +2471,7 @@ export const QUICK_FOCUS = [
     id: "torque",
     label: "Torque control",
     jp: "トルク管理",
-    ids: ["anex-ata-m4", "anex-ata-s1", "anex-397-d", "anex-397-h"],
+    ids: ["anex-ata-m4", "anex-ata-s1"],
   },
   {
     id: "sets",
@@ -2487,7 +2489,7 @@ export const QUICK_FOCUS = [
 
 export function referencesForFocus(focus: string) {
   const group = QUICK_FOCUS.find((item) => item.id === focus);
-  if (!group) return CURATED_TOOL_REFERENCES;
+  if (!group) return focus === "all" ? CURATED_TOOL_REFERENCES : [];
   const ids = new Set<string>(group.ids);
   return CURATED_TOOL_REFERENCES.filter((tool) => ids.has(tool.id));
 }

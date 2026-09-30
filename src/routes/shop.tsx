@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { matchesCatalogQuery, parseCatalogSearch, type CatalogSearch } from "@/lib/catalog-search";
+import { matchesCatalogQuery, parseCatalogSearch, resolveSmartQuery, matchesStructuredIntents, type CatalogSearch } from "@/lib/catalog-search";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const TASKS: Array<{ id: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power" | "electronics" | "ev"; label: string; jp: string; icon: ToolGlyphName }> = [
@@ -75,17 +75,19 @@ function ShopPage() {
   const brand = search.brand?.toUpperCase() ?? "all";
   const category = search.category ?? "all";
   const task = search.task ?? "all";
-  const focus = search.focus ?? "all";
+  const smart = useMemo(() => resolveSmartQuery(search), [search]);
+  const focus = search.focus ?? smart.intents.find((intent) => intent.dimension !== "task")?.id ?? "all";
+  const criteria = [...smart.intents, ...(search.focus ? [{ id: search.focus, label: search.focus, dimension: search.focus === "vde" ? "certification" as const : "focus" as const }] : [])];
   const maxPrice = search.maxPrice ?? "";
   const query = search.q ?? "";
   const [queryDraft, setQueryDraft] = useState(query);
   useEffect(() => setQueryDraft(query), [query]);
   const updateFilter = (key: keyof CatalogSearch, value: string) => {
-    void navigate({ search: (previous) => ({ ...previous, [key]: value === "all" || !value ? undefined : value, page: undefined }), resetScroll: false });
+    void navigate({ search: (previous) => ({ ...previous, literal: key === "q" && value !== previous.q ? undefined : previous.literal, [key]: value === "all" || !value ? undefined : value, page: undefined }), resetScroll: false });
   };
   const setBrand = (value: string) => updateFilter("brand", value);
   const setTask = (value: string) => updateFilter("task", value);
-  const setFocus = (value: string) => updateFilter("focus", value);
+  const setFocus = (value: string) => { void navigate({ search: (previous) => ({ ...previous, focus: value === "all" ? undefined : value, literal: value === "all" ? true : previous.literal, page: undefined }), resetScroll: false }); };
   const setCategory = (value: string) => updateFilter("category", value);
   const setMaxPrice = (value: string) => updateFilter("maxPrice", value);
 
@@ -112,19 +114,19 @@ function ShopPage() {
     if (Number.isFinite(cap) && cap > 0) {
       list = list.filter((p) => parseFloat(p.node.priceRange.minVariantPrice.amount) <= cap);
     }
-    list = list.filter(({ node }) => matchesCatalogQuery(query, [node.title, node.vendor, node.productType, ...node.tags, ...node.variants.edges.map(({ node: variant }) => variant.sku)]));
+    list = list.filter(({ node }) => matchesStructuredIntents(node.tags, criteria) && matchesCatalogQuery(smart.residual, [node.title, node.vendor, node.productType, ...node.tags, ...node.variants.edges.map(({ node: variant }) => variant.sku)]));
     return search.sort === "name" ? [...list].sort((a, b) => a.node.title.localeCompare(b.node.title, "pt")) : list;
-  }, [products, brand, category, task, maxPrice, query, search.sort]);
+  }, [products, brand, category, task, maxPrice, smart, search.focus, search.sort]);
 
   const referenceFiltered = useMemo(() => {
-    const focusedIds = focus === "all" ? null : new Set(referencesForFocus(focus).map((tool) => tool.id));
+    const groups = criteria.map((intent) => ({ ...intent, ids: new Set(referencesForFocus(intent.id).map((tool) => tool.id)) }));
     return CURATED_TOOL_REFERENCES.filter((tool) => {
       if (brand !== "all" && tool.brandSlug !== brand) return false;
       if (task !== "all" && tool.task !== task) return false;
-      if (focusedIds && !focusedIds.has(tool.id)) return false;
-      return matchesCatalogQuery(query, [tool.brand, tool.model, tool.namePt, tool.officialCode, tool.categoryPt, tool.notePt, tool.specPt]);
+      if (!groups.every((intent) => intent.dimension === "task" ? tool.task === intent.id : intent.ids.has(tool.id))) return false;
+      return matchesCatalogQuery(smart.residual, [tool.brand, tool.model, tool.namePt, tool.officialCode, tool.categoryPt, tool.notePt, tool.specPt]);
     }).sort((a, b) => search.sort === "name" ? a.namePt.localeCompare(b.namePt, "pt") : 0);
-  }, [brand, task, focus, query, search.sort]);
+  }, [brand, task, smart, search.focus, search.sort]);
 
   const pageCount = Math.max(1, Math.ceil(referenceFiltered.length / 24));
   const page = Math.min(search.page ?? 1, pageCount);
@@ -205,7 +207,8 @@ function ShopPage() {
           <span className="mr-2 min-w-max font-mono text-[9px] uppercase tracking-[0.15em] text-white/45">Filtros rápidos</span>
           <button
             type="button"
-            onClick={() => setFocus("all")}
+            aria-pressed={focus === "all"}
+            onClick={() => { setFocus("all"); }}
             className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === "all" ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
           >
             Tudo
@@ -214,10 +217,11 @@ function ShopPage() {
             <button
               type="button"
               key={item.id}
-              onClick={() => setFocus(item.id)}
+              aria-pressed={focus === item.id}
+              onClick={() => setFocus(focus === item.id ? "all" : item.id)}
               className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === item.id ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
             >
-              {item.label} <span className="ml-1 font-display text-[9px] text-current/55">{item.jp}</span>
+              {item.label} <span aria-label="referências editoriais">({referencesForFocus(item.id).filter((tool) => (brand === "all" || tool.brandSlug === brand) && (task === "all" || tool.task === task) && matchesCatalogQuery(smart.residual, [tool.brand, tool.model, tool.namePt, tool.officialCode, tool.categoryPt, tool.notePt, tool.specPt])).length})</span> <span className="ml-1 font-display text-[9px] text-current/55">{item.jp}</span>
             </button>
           ))}
         </div>
@@ -229,6 +233,13 @@ function ShopPage() {
             <Input aria-label="Pesquisar ferramentas" placeholder="Marca, modelo, código ou trabalho…" value={queryDraft} onChange={(event) => setQueryDraft(event.target.value)} className="min-w-0 flex-1 bg-background" maxLength={160} />
             <Button type="submit">Pesquisar</Button>
           </form>
+          <div className="flex w-full flex-wrap gap-2" aria-label="Sugestões de pesquisa">
+            {["ANEX diamante PH2", "1000v", "vde", "ratchet"].map((suggestion) => <button type="button" className="min-h-11 border border-border px-3 text-xs" key={suggestion} onClick={() => updateFilter("q", suggestion)}>{suggestion}</button>)}
+          </div>
+          {smart.intents.length > 0 && <button type="button" className="min-h-11 w-full border border-primary/30 bg-primary/5 p-3 text-left text-sm" onClick={() => { void navigate({ search: (previous) => ({ ...previous, literal: true, page: undefined }), resetScroll: false }); }} aria-label="Remover interpretação e pesquisar literalmente">
+            Interpretação: {smart.intents.map((intent) => intent.label).join(" + ")} · remover ×
+          </button>}
+          {search.literal && <p className="w-full text-sm text-muted-foreground">Pesquisa literal. A interpretação volta a ativar-se quando mudares a consulta.</p>}
           <SlidersHorizontal className="h-4 w-4 text-primary" />
 
           <Select value={brand} onValueChange={setBrand}>
