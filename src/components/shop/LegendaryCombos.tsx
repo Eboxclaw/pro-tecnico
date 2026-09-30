@@ -28,7 +28,7 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
   },
   {
     name: "Japanese Impact",
-    jp: "龍神 · made in Japan",
+    jp: "龍靭 · made in Japan",
     work: "Chapa · madeira · montagem",
     desc: "Bits Ryujin em Cr-Mo-V fabricados no Japão, especificados pela ANEX para máquinas de 18 V e 40 V.",
     ids: ["makita-dtd172z", "anex-ryujin-artm5-01", "anex-ryujin-slim"],
