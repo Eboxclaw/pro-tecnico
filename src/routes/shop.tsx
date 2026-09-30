@@ -1,4 +1,5 @@
 import { AnexFeature } from "@/components/shop/AnexFeature";
+import { WeraFeature } from "@/components/shop/WeraFeature";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
@@ -158,6 +159,7 @@ function ShopPage() {
       </section>
 
       {(!hasFilters || (brand === "ANEX" && !query)) && <AnexFeature compact />}
+      {brand === "WERA" && <WeraFeature compact />}
       <section className="border-b border-border bg-surface">
         <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-px bg-border sm:grid-cols-3 lg:grid-cols-7">
           {TASKS.map((item) => (

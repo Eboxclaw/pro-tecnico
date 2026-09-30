@@ -1,4 +1,5 @@
 import { AnexFeature } from "@/components/shop/AnexFeature";
+import { WeraFeature } from "@/components/shop/WeraFeature";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
@@ -82,6 +83,7 @@ function BrandsPage() {
       </section>
 
       {selectedSlug === "ANEX" && <AnexFeature compact />}
+      {selectedSlug === "WERA" && <WeraFeature compact />}
       <section className="paper-panel overflow-hidden border-b border-border">
         <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[0.82fr_1.18fr]">
           <div className="relative overflow-hidden border-b border-black/10 p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-14">
