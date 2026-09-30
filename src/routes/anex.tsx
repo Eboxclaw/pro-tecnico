@@ -1,9 +1,8 @@
-import { AnexSignatureSolutions } from "@/components/shop/AnexSignatureSolutions";
+import { AnexSignatureStage } from "@/components/brand/AnexSignatureStage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
-import { ANEX_CATALOG_URL, ANEX_CHAPTERS, parseAnexSearch } from "@/data/anex-editorial";
+import { ANEX_CATALOG_URL, ANEX_CHAPTERS, ANEX_ACCESSORY_IDS, parseAnexSearch } from "@/data/anex-editorial";
 import { referenceById, referencesForBrand } from "@/data/curated-tool-references";
-import { ProductImage } from "@/components/shop/ProductImage";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 
 export const Route = createFileRoute("/anex")({
@@ -31,7 +30,6 @@ export const Route = createFileRoute("/anex")({
 function AnexPage() {
   const { family } = Route.useSearch();
   const chapter = ANEX_CHAPTERS.find((item) => item.id === family) ?? ANEX_CHAPTERS[0];
-  const hero = referenceById("anex-aoa-17s1");
   const selected = chapter.ids.map(referenceById).filter((tool) => tool !== undefined);
   const total = referencesForBrand("ANEX").length;
   return (
@@ -61,31 +59,10 @@ function AnexPage() {
             Seleção independente REJENDARI. Sem parceria ou representação oficial da ANEX.
           </p>
         </div>
-        <div className="anex-opening-visual">
-          <p className="anex-kicker">EM FOCO / AOA-17S1</p>
-          <Link to="/referencia/$id" params={{ id: "anex-aoa-17s1" }} className="block">
-            <ProductImage
-              src={hero?.imageUrl}
-              alt="Conjunto ANEX AOA-17S1 com adaptador offset e sockets"
-              loading="eager"
-              fetchPriority="high"
-              className="aspect-square w-full object-contain p-5 mix-blend-multiply sm:p-10"
-            />
-            <div className="flex items-end justify-between gap-4 border-t border-black/20 pt-5">
-              <div>
-                <p className="text-xl font-medium">
-                  O obstáculo muda.
-                  <br />O ponto de aperto também.
-                </p>
-                <p className="mt-2 text-xs text-[#645e54]">Conhecer o conjunto offset de 17 mm</p>
-              </div>
-              <ArrowUpRight size={25} aria-hidden="true" />
-            </div>
-          </Link>
-        </div>
+        <AnexSignatureStage />
       </section>
 
-      <AnexSignatureSolutions />
+
 
       <section className="anex-principles" aria-label="Critérios da seleção ANEX">
         {[
@@ -152,9 +129,9 @@ function AnexPage() {
           aria-atomic="true"
           className="mb-8 grid gap-5 border-b border-border pb-8 lg:grid-cols-2"
         >
-          <h3 className="font-display text-3xl tracking-tight">{chapter.label}</h3>
+          <div><p className="anex-kicker text-primary">{chapter.japanese} / ANEX</p><h3 className="mt-4 font-display text-3xl tracking-tight">{chapter.label}</h3></div>
           <div>
-            <p className="text-sm leading-7 text-muted-foreground">{chapter.description}</p>
+            <p className="text-sm leading-7 text-muted-foreground">{chapter.talePt}</p>
             <a
               href={`${ANEX_CATALOG_URL}?page=${chapter.page}`}
               target="_blank"
@@ -170,6 +147,15 @@ function AnexPage() {
           {selected.map((tool) => (
             <ReferenceProductCard key={tool.id} tool={tool} />
           ))}
+        </div>
+      </section>
+
+      <section className="anex-accessories" aria-labelledby="anex-accessories-title">
+        <p className="anex-kicker">小物 / ACESSÓRIOS COM UMA FUNÇÃO</p>
+        <h2 id="anex-accessories-title">O detalhe que completa o trabalho.</h2>
+        <p>Transportar, organizar, alcançar ou reter. Cinco respostas diferentes; escolhe pela aplicação e confirma a compatibilidade na ficha.</p>
+        <div className="anex-accessory-rail">
+          {ANEX_ACCESSORY_IDS.map(referenceById).filter((tool) => tool !== undefined).map((tool) => <ReferenceProductCard key={tool.id} tool={tool} />)}
         </div>
       </section>
 

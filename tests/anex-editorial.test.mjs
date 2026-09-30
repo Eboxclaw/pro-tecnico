@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ANEX_CHAPTERS, parseAnexSearch } from '../src/data/anex-editorial.ts';
+import { ANEX_CHAPTERS, ANEX_ACCESSORY_IDS, ANEX_SIGNATURE_SOLUTIONS, parseAnexSearch } from '../src/data/anex-editorial.ts';
 import { ANEX_ADDITIONS } from '../src/data/anex-additions.ts';
 import { CURATED_TOOL_REFERENCES } from '../src/data/curated-tool-references.ts';
 
@@ -37,4 +37,16 @@ test('AZM machine limits and Ryujin set contents remain explicit', () => {
   }
   const ryujin = CURATED_TOOL_REFERENCES.find(t => t.id === 'anex-ryujin-artm5-01');
   assert.deepEqual(ryujin.kitContents, ['1 × PH2 de 65 mm', '2 × PH2 de 85 mm', '2 × PH2 de 110 mm']);
+});
+
+test('signature and accessory selections resolve to photographed official references', () => {
+  const references = new Map(CURATED_TOOL_REFERENCES.map(tool => [tool.id, tool]));
+  for (const id of [...ANEX_SIGNATURE_SOLUTIONS.map(tool => tool.id), ...ANEX_ACCESSORY_IDS]) {
+    const tool = references.get(id);
+    assert.ok(tool, id);
+    assert.equal(tool.brand, 'ANEX');
+    assert.ok(tool.imageUrl && tool.referenceUrl);
+  }
+  assert.equal(ANEX_SIGNATURE_SOLUTIONS.length, 5);
+  for (const chapter of ANEX_CHAPTERS) assert.ok(chapter.talePt && chapter.japanese);
 });

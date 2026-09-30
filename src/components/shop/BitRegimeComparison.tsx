@@ -17,7 +17,7 @@ const REGIME_FOOTNOTES = [
     note: "Partículas de diamante que mordem o parafuso inox que o ímã não segura.",
   },
   {
-    ref: "ANEX 龍神 RYUJIN",
+    ref: "ANEX 龍靭 RYUJIN",
     regime: "Montagem geral",
     note: "Fabricado no Japão em Cr-Mo-V, especificado para 18 V e 40 V, em três alcances.",
   },
