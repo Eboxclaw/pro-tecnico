@@ -110,7 +110,7 @@ export function SmartProductVisual({
         <span>REF {tool.officialCode ?? tool.model}</span>
       </div>
       {tool.specPt && (
-        <span className="absolute bottom-3 right-3 z-20 max-w-[48%] truncate border border-black/10 bg-white/72 px-2 py-1 font-mono text-[7px] uppercase tracking-[0.1em] text-black/48 backdrop-blur">
+        <span className="absolute bottom-3 right-3 z-20 max-w-[48%] truncate border border-black/10 bg-white/72 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-black/48 backdrop-blur">
           {tool.specPt}
         </span>
       )}

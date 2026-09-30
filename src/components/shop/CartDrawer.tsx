@@ -90,29 +90,29 @@ export function CartDrawer({
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-6 w-6"
+                      className="h-11 w-11"
                       aria-label="remover"
                       onClick={() => removeItem(item.variantId)}
                     >
-                      <Trash2 className="h-3.5 w-3.5" />
+                      <Trash2 className="h-4 w-4" />
                     </Button>
                     <div className="flex items-center gap-1">
                       <Button
                         variant="outline"
                         size="icon"
-                        className="h-6 w-6"
+                        className="h-11 w-11"
                         onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
                       >
-                        <Minus className="h-3 w-3" />
+                        <Minus className="h-4 w-4" />
                       </Button>
                       <span className="w-7 text-center font-mono text-sm">{item.quantity}</span>
                       <Button
                         variant="outline"
                         size="icon"
-                        className="h-6 w-6"
+                        className="h-11 w-11"
                         onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
                       >
-                        <Plus className="h-3 w-3" />
+                        <Plus className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>

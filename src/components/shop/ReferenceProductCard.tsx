@@ -17,7 +17,7 @@ export function ReferenceProductCard({
       <div className="relative">
         <SmartProductVisual tool={tool} featured={featured} />
         {tool.imageCaption && <p className="border-t border-border bg-card px-4 py-2 text-[10px] leading-4 text-muted-foreground">{tool.imageCaption}</p>}
-        <div className="absolute right-3 top-12 z-30 opacity-100 transition-all duration-200 sm:translate-y-1 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 sm:group-focus-within:translate-y-0">
+        <div className="absolute right-3 top-12 z-30 opacity-100 transition-all duration-200 [@media(hover:hover)]:translate-y-1 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100 [@media(hover:hover)]:group-focus-within:translate-y-0">
           <ProductQuickStudy tool={tool} compact />
         </div>
       </div>
