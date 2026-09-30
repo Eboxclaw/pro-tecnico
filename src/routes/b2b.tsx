@@ -1,4 +1,5 @@
 import { referenceById, CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { smartPackById } from "@/data/smart-packs";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
@@ -12,8 +13,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/b2b")({
-  validateSearch: (search: Record<string, unknown>): { reference?: string | undefined } => ({
+  validateSearch: (search: Record<string, unknown>): { reference?: string | undefined; pack?: string | undefined } => ({
     reference: typeof search["reference"] === "string" && referenceById(search["reference"]) ? search["reference"] : undefined,
+    pack: typeof search["pack"] === "string" && smartPackById(search["pack"]) ? search["pack"] : undefined,
   }),
   head: () => ({
     meta: [
@@ -35,11 +37,24 @@ export const Route = createFileRoute("/b2b")({
 });
 
 function B2BRoute() {
-  const { reference } = Route.useSearch();
-  return <B2BPage key={reference ?? "general"} reference={reference} />;
+  const { reference, pack } = Route.useSearch();
+  return <B2BPage key={pack ?? reference ?? "general"} reference={reference} packId={pack} />;
 }
 
-function B2BPage({ reference }: { reference?: string | undefined }) {
+function packPrefill(packId: string) {
+  const pack = smartPackById(packId);
+  if (!pack) return "";
+  const lines = pack.pieces
+    .map((piece) => {
+      const tool = referenceById(piece.id);
+      return tool ? `- ${tool.brand} ${tool.model}${piece.quantity > 1 ? ` × ${piece.quantity}` : ""} — ${piece.whyPt}` : null;
+    })
+    .filter(Boolean)
+    .join("\n");
+  return `Pack REJENDARI ${pack.tier} · ${pack.trade}\n"${pack.title}"\n\nComposição:\n${lines}\n\nQuantidade de packs: \nObservações: `;
+}
+
+function B2BPage({ reference, packId }: { reference?: string | undefined; packId?: string | undefined }) {
   const tool = reference ? referenceById(reference) : undefined;
   const t = useT();
   const [submitting, setSubmitting] = useState(false);
@@ -51,7 +66,11 @@ function B2BPage({ reference }: { reference?: string | undefined }) {
     phone: "",
     vat_number: "",
     trade: "",
-    message: tool ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model} — ${tool.namePt}.\nQuantidade: \nAplicação: ` : "",
+    message: tool
+      ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model} — ${tool.namePt}.\nQuantidade: \nAplicação: `
+      : packId
+        ? packPrefill(packId)
+        : "",
   });
 
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>

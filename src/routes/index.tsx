@@ -426,10 +426,13 @@ function Index() {
                 <div>
                   <p className="font-display text-xl font-semibold">{pack}</p>
                   <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                    Core / Compact / Pro
+                    Compact → Core → Pro
+                  </p>
+                  <p className="mt-2 max-w-[26ch] text-xs leading-5 text-muted-foreground">
+                    Malas desenhadas para o dia de trabalho, peça a peça — com o pedido B2B já composto.
                   </p>
                 </div>
-                <Sparkles className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
+                <Sparkles className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
               </Link>
             ))}
           </div>

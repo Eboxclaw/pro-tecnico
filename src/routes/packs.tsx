@@ -4,6 +4,7 @@ import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { LegendaryCombos } from "@/components/shop/LegendaryCombos";
+import { SmartPacksSection } from "@/components/shop/SmartPacksSection";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 export const Route = createFileRoute("/packs")({
@@ -115,6 +116,8 @@ function PacksPage() {
           </div>
         </div>
       </section>
+
+      <SmartPacksSection />
 
       <LegendaryCombos />
 
