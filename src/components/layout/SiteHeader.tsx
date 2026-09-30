@@ -27,9 +27,9 @@ const TOP_REFERENCE_IDS = [
   "anex-397-d",
   "anex-ryujin-artm5-01",
   "anex-aoa-17s1",
-  "anex-azm-2698",
-  "wera-8100-sb-6",
-  "knipex-13-96-200",
+  "makita-dtd173z",
+  "vessel-220usb-s1eb",
+  "koken-3725z",
 ];
 
 export function SiteHeader() {
@@ -40,17 +40,36 @@ export function SiteHeader() {
   const [compact, setCompact] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
-  // Colapso ao descer; nunca com foco interno (menus, pesquisa, navegação por teclado).
+  // Colapso ao descer com histerese de 24 px: um só sentido conta de cada vez,
+  // nada de oscilar com o bounce do scroll. Nunca colapsa perto do topo nem
+  // com foco interno (menus, pesquisa, navegação por teclado).
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
-    let lastY = window.scrollY;
+    let compacted = false;
+    let anchor = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
       const active = document.activeElement;
-      if (active && active !== document.body && el.contains(active)) return;
-      setCompact(y > 96 && y > lastY + 4);
-      lastY = y;
+      if (active && active !== document.body && el.contains(active)) {
+        anchor = y;
+        return;
+      }
+      if (compacted) {
+        anchor = Math.max(anchor, y);
+        if (anchor - y > 24) {
+          compacted = false;
+          setCompact(false);
+        }
+      } else if (y > 120) {
+        anchor = Math.min(anchor, y);
+        if (y - anchor > 24) {
+          compacted = true;
+          setCompact(true);
+        }
+      } else {
+        anchor = y;
+      }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
