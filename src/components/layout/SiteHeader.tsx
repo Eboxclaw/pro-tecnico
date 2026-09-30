@@ -23,7 +23,14 @@ const CATEGORIES: Array<{ label: string; jp: string; task: "precision" | "fasten
   { label: "Veículos elétricos", jp: "電気自動車", task: "ev", icon: "ev" },
 ];
 
-const TOP_REFERENCE_IDS = ["anex-397-d", "anex-aoa-17s1", "knipex-cobra-250", "tsunoda-wp250sc"];
+const TOP_REFERENCE_IDS = [
+  "anex-397-d",
+  "anex-ryujin-artm5-01",
+  "anex-aoa-17s1",
+  "anex-azm-2698",
+  "wera-8100-sb-6",
+  "knipex-13-96-200",
+];
 
 export function SiteHeader() {
   const t = useT();

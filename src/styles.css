@@ -947,3 +947,30 @@ html, body { overflow-x: clip; }
   .bit-rail-track { animation-duration: 90s; }
   .brand-marquee-track { animation-duration: 56s; }
 }
+
+/* ── Herança ANEX (sprint 7) ──────────────────────────────────── */
+.anex-heritage { border-bottom: 1px solid #29272022; background: #f4efe4; padding: 56px 24px; }
+.anex-heritage .anex-kicker { margin-bottom: 28px; }
+.anex-heritage-grid { display: grid; grid-template-columns: 1.1fr 1.2fr 0.9fr; gap: 40px; max-width: 1280px; margin: 0 auto; }
+.anex-heritage-quote blockquote { font-size: clamp(17px, 2.2vw, 24px); line-height: 1.6; letter-spacing: .02em; }
+.anex-heritage-quote p { margin-top: 10px; font-size: 13px; line-height: 1.7; color: #57503f; }
+.anex-heritage-source { font-family: var(--font-mono); font-size: 10px !important; text-transform: uppercase; letter-spacing: .12em; }
+.anex-heritage-source a { color: #913d29; text-underline-offset: 3px; }
+.anex-heritage-timeline { list-style: none; display: grid; gap: 14px; }
+.anex-heritage-timeline li { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: baseline; border-left: 2px solid #913d2933; padding-left: 16px; }
+.anex-heritage-timeline span { font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: #913d29; }
+.anex-heritage-timeline p { font-size: 13px; line-height: 1.55; color: #3a3529; }
+.anex-heritage-provenance { border: 1px solid #29272028; background: #faf8f2; padding: 22px; align-self: start; }
+.anex-heritage-jp { font-family: var(--font-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #913d29; }
+.anex-heritage-provenance p + p { margin-top: 10px; font-size: 13px; line-height: 1.65; color: #57503f; }
+.anex-heritage-bridge { font-family: var(--font-display); font-size: 16px !important; color: #302c26 !important; }
+.anex-heritage-bridge em { font-style: italic; color: #913d29; }
+@media (max-width: 1023.98px) { .anex-heritage-grid { grid-template-columns: 1fr; gap: 28px; } }
+/* Proveniência nos cartões de palco + washi mais profundo */
+.anex-stage-tool { position: relative; background-image: radial-gradient(#2927200c 1px, transparent 1px); background-size: 7px 7px; }
+.anex-stage-tool::after { content: "三条市 NIIGATA · 1949—"; position: absolute; left: 15px; bottom: 11px; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; color: #29272059; pointer-events: none; }
+@media (max-width: 767px) { .anex-stage-tool::after { font-size: 8px; } }
+/* Marca d'água 選 nos packs de assinatura */
+.smart-pack-card { position: relative; overflow: hidden; }
+.smart-pack-card > header { position: relative; }
+.smart-pack-card[data-signature="true"] > header::after { content: "選"; position: absolute; right: 10px; top: 2px; font-size: 84px; line-height: 1; color: #d65a4110; pointer-events: none; }

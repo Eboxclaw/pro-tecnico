@@ -62,7 +62,52 @@ function AnexPage() {
         <AnexSignatureStage />
       </section>
 
-
+      <section className="anex-heritage" aria-label="Herança ANEX">
+        <p className="anex-kicker">由来 · A ORIGEM</p>
+        <div className="anex-heritage-grid">
+          <div className="anex-heritage-quote">
+            <blockquote lang="ja">「より良いハンドツールづくりを通じて社会の発展に貢献します。」</blockquote>
+            <p>
+              "Através da fabricação de melhores ferramentas manuais, contribuímos para o desenvolvimento da
+              sociedade."
+            </p>
+            <p className="anex-heritage-source">
+              Filosofia oficial ·{" "}
+              <a href="https://www.anextool.co.jp/company/" target="_blank" rel="noreferrer">
+                anextool.co.jp/company
+              </a>
+            </p>
+          </div>
+          <ol className="anex-heritage-timeline">
+            <li>
+              <span>1949</span>
+              <p>Hideo Kaneko funda a Kaneko Seisakusho e começa a fazer chaves de parafusos.</p>
+            </li>
+            <li>
+              <span>1954</span>
+              <p>Formalização da empresa em Sanjo, na província de Niigata.</p>
+            </li>
+            <li>
+              <span>1984</span>
+              <p>Primeiro de uma série contínua de Good Design Awards — 40 edições seguidas.</p>
+            </li>
+            <li>
+              <span>2022</span>
+              <p>A Kaneko Seisakusho passa a chamar-se Annex Tools Co.</p>
+            </li>
+          </ol>
+          <div className="anex-heritage-provenance">
+            <p className="anex-heritage-jp">三条市 NIIGATA · 日本</p>
+            <p>
+              Fábrica própria com maquinação, tratamento térmico, moldação e montagem integradas — 75 anos de
+              ferramentas centradas na chave de parafusos.
+            </p>
+            <p className="anex-heritage-bridge">
+              Feito em Sanjo. <em>Escolhido em Portugal.</em>
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="anex-principles" aria-label="Critérios da seleção ANEX">
         {[
