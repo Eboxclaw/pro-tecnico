@@ -1,5 +1,6 @@
 import { ProductImage } from "@/components/shop/ProductImage";
 import { useEffect } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice, type ShopifyProduct } from "@/lib/shopify";
@@ -13,7 +14,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Minus, Plus, Trash2, ExternalLink, Loader2, ShoppingCart } from "lucide-react";
+import { Minus, Plus, Trash2, Loader2, ShoppingCart } from "lucide-react";
 
 export function CartDrawer({
   trigger,
@@ -21,7 +22,8 @@ export function CartDrawer({
   trigger: React.ReactElement;
 }) {
   const t = useT();
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } =
+  const navigate = useNavigate();
+  const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } =
     useCartStore();
 
   useEffect(() => {
@@ -37,8 +39,10 @@ export function CartDrawer({
   const currency = items[0]?.price.currencyCode ?? "EUR";
 
   const handleCheckout = () => {
-    const checkoutUrl = getCheckoutUrl();
-    if (checkoutUrl) window.open(checkoutUrl, "_blank");
+    // O checkout REJENDARI valida os preços no servidor e aceita os métodos ativos.
+    // Se ainda não houver chaves de pagamento, a própria página explica o estado e
+    // oferece o pedido profissional em alternativa.
+    void navigate({ to: "/checkout" });
   };
 
   return (
@@ -136,7 +140,7 @@ export function CartDrawer({
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
                   <>
-                    <ExternalLink className="mr-2 h-4 w-4" />
+                    
                     {t("common.checkout")}
                   </>
                 )}

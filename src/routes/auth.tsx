@@ -1,7 +1,7 @@
 import { ProductImage } from "@/components/shop/ProductImage";
 import { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, MailCheck, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
@@ -20,12 +20,23 @@ export const Route = createFileRoute("/auth")({
       { name: "description", content: "Entra ou cria uma conta REJENDARI para encomendas, pontos e convites." },
       { property: "og:title", content: "Conta — REJENDARI" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
     ],
   }),
   component: AuthPage,
 });
+
+/** Traduz os erros da Supabase para a causa real, sem expor detalhes técnicos. */
+function authErrorText(t: (k: string) => string, message: string) {
+  const m = message.toLowerCase();
+  if (m.includes("invalid login credentials")) return t("auth.errorCredentials");
+  if (m.includes("already") && m.includes("registered")) return t("auth.errorEmailUsed");
+  if (m.includes("email not confirmed")) return t("auth.errorEmailNotConfirmed");
+  if (m.includes("password") && (m.includes("least") || m.includes("short") || m.includes("weak"))) return t("auth.errorWeakPassword");
+  if (m.includes("rate limit") || m.includes("too many")) return t("auth.errorRateLimited");
+  return t("auth.error");
+}
 
 function AuthPage() {
   const t = useT();
@@ -34,43 +45,89 @@ function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [awaitingConfirmation, setAwaitingConfirmation] = useState(false);
+  const supabaseReady = isSupabaseConfigured();
   const referralCode = getRememberedReferralCode();
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
-    if (!isSupabaseConfigured()) {
+    if (!supabaseReady) {
       toast.error("Serviço de conta indisponível. Tenta mais tarde.");
+      return;
+    }
+    if (mode === "up" && password.length < 8) {
+      toast.error(t("auth.errorWeakPassword"));
       return;
     }
     setBusy(true);
 
-    const { error } =
-      mode === "in"
-        ? await supabase.auth.signInWithPassword({ email, password })
-        : await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-              emailRedirectTo: window.location.origin + "/conta",
-              data: { referred_by_code: referralCode || undefined },
-            },
-          });
-
-    setBusy(false);
-
-    if (error) {
-      toast.error(t("auth.error"));
+    if (mode === "in") {
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      setBusy(false);
+      if (error) {
+        toast.error(authErrorText(t, error.message));
+        return;
+      }
+      navigate({ to: "/conta" });
       return;
     }
 
-    if (mode === "up") toast.success("Verifica o teu email para confirmar a conta.");
-    else navigate({ to: "/conta" });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: window.location.origin + "/conta",
+        data: { referred_by_code: referralCode || undefined },
+      },
+    });
+    setBusy(false);
+
+    if (error) {
+      toast.error(authErrorText(t, error.message));
+      return;
+    }
+    if (data.session) {
+      toast.success(t("auth.accountReady"));
+      navigate({ to: "/conta" });
+      return;
+    }
+    // Sem sessão: o projeto exige confirmação de email — estado explícito, não um toast que desaparece.
+    if (data.user) setAwaitingConfirmation(true);
+    else toast.success(t("auth.checkEmailTitle"));
   }
 
   async function google() {
+    if (!supabaseReady) {
+      toast.error(t("auth.googleUnavailable"));
+      return;
+    }
     const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin });
     if (result.error) toast.error(t("auth.error"));
     else if (!result.redirected) navigate({ to: "/conta" });
+  }
+
+  if (awaitingConfirmation) {
+    return (
+      <div className="mx-auto flex min-h-[720px] max-w-[560px] flex-col justify-center px-4 py-16">
+        <div className="border border-border bg-surface p-8">
+          <MailCheck className="h-8 w-8 text-primary" />
+          <p className="jp-label mt-5 text-primary">確認 · quase lá</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.04em]">{t("auth.checkEmailTitle")}</h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">{t("auth.checkEmailBody")}</p>
+          <p className="mt-4 border border-border bg-background px-4 py-3 font-mono text-sm">{email}</p>
+          <Button
+            className="mt-6 w-full rounded-none"
+            onClick={() => {
+              setAwaitingConfirmation(false);
+              setMode("in");
+            }}
+          >
+            {t("auth.checkEmailCta")}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -122,7 +179,7 @@ function AuthPage() {
             </div>
           )}
 
-          <Button variant="secondary" className="mt-8 w-full rounded-none" onClick={google}>
+          <Button variant="secondary" className="mt-8 w-full rounded-none" onClick={google} disabled={!supabaseReady}>
             {t("auth.google")}
           </Button>
 
@@ -153,8 +210,14 @@ function AuthPage() {
                 minLength={8}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                aria-describedby={mode === "up" ? "pw-hint" : undefined}
                 className="mt-2 rounded-none bg-background"
               />
+              {mode === "up" && (
+                <p id="pw-hint" className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                  {t("auth.passwordHint")}
+                </p>
+              )}
             </div>
             <Button type="submit" className="w-full rounded-none" size="lg" disabled={busy}>
               {mode === "in" ? t("auth.signIn") : t("auth.signUp")}
