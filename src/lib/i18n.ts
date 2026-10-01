@@ -34,7 +34,7 @@ const pt = {
     total: "Total",
     emptyCart: "O carrinho está vazio",
     emptyCartHint: "Adiciona as ferramentas de que precisas. O carrinho fica guardado durante esta sessão.",
-    checkoutNote: "Serás encaminhado para o pagamento seguro da loja.",
+    checkoutNote: "Pagamento seguro com validação de preços no servidor.",
   },
   home: {
     badge: "Curadoria Japão + Europa",
@@ -148,6 +148,7 @@ const pt = {
     returns: "Devoluções",
     warranty: "Garantia e assistência",
     raffle: "Condições dos sorteios",
+    payments: "Pagamentos",
     pending: "O conteúdo completo desta secção será publicado antes de qualquer venda ao público.",
   },
   auth: {
@@ -241,7 +242,7 @@ const en: Dict = {
     total: "Total",
     emptyCart: "Your cart is empty",
     emptyCartHint: "Add tools and your cart stays saved in this session.",
-    checkoutNote: "Checkout opens on Shopify in a new tab.",
+    checkoutNote: "Secure checkout with server-side price validation.",
   },
   home: {
     badge: "Store in the works — opening soon",
@@ -355,6 +356,7 @@ const en: Dict = {
     returns: "Returns",
     warranty: "Warranty & RMA",
     raffle: "Draw rules",
+    payments: "Payments",
     pending: "Legal text being prepared with our lawyer before the public opening.",
   },
   auth: {
@@ -446,7 +448,7 @@ const es: Dict = {
     total: "Total",
     emptyCart: "El carrito está vacío",
     emptyCartHint: "Añade herramientas y el carrito se guarda en esta sesión.",
-    checkoutNote: "El checkout se abre en Shopify en una pestaña nueva.",
+    checkoutNote: "Pago seguro con validación de precios en el servidor.",
   },
   home: {
     badge: "Tienda en construcción — próxima apertura",
@@ -560,6 +562,7 @@ const es: Dict = {
     returns: "Devoluciones",
     warranty: "Garantía y RMA",
     raffle: "Reglamento del sorteo",
+    payments: "Pagos",
     pending: "Texto legal en preparación con nuestro abogado antes de la apertura al público.",
   },
   auth: {
