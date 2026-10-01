@@ -31,8 +31,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# Local service configuration
-.env
+# Local service configuration — .env (publicáveis) é comitado de propósito:
+# é assim que as contas funcionam no build da Vercel sem dashboard.
+# Segredos e configuração local vivem em .env.local (ignorado por *.local).
+!.env
 .env.*
 !.env.example
 .zcode/
