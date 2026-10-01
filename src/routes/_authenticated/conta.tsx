@@ -22,6 +22,14 @@ export const Route = createFileRoute("/_authenticated/conta")({
   component: AccountPage,
 });
 
+type AccountOrder = {
+  id: string;
+  status: string;
+  total_amount: number;
+  total_currency: string | null;
+  created_at: string;
+};
+
 function AccountPage() {
   const t = useT();
   const [copied, setCopied] = useState(false);
@@ -34,7 +42,7 @@ function AccountPage() {
       if (!userData.user) throw new Error("Sessão indisponível");
       const uid = userData.user.id;
 
-      const [profile, ledger, entries, referrals] = await Promise.all([
+      const [profile, ledger, entries, referrals, orders] = await Promise.all([
         supabase.from("profiles").select("*").eq("id", uid).maybeSingle(),
         supabase
           .from("points_ledger")
@@ -52,6 +60,14 @@ function AccountPage() {
           .select("id,status,referrer_points,created_at")
           .eq("referrer_id", uid)
           .order("created_at", { ascending: false }),
+        // A tabela chega com a fase de pagamentos (migração orders); enquanto os tipos
+        // gerados não a conhecem, o builder é tipado manualmente e o erro degrada para vazio.
+        supabase
+          .from("orders" as never)
+          .select("id,status,total_amount,total_currency,created_at" as never)
+          .eq("user_id" as never, uid as never)
+          .order("created_at" as never, { ascending: false } as never)
+          .limit(20) as unknown as Promise<{ data: AccountOrder[] | null; error: { message: string } | null }>,
       ]);
 
       const failure = [profile, ledger, entries, referrals].find(result => result.error)?.error;
@@ -62,6 +78,7 @@ function AccountPage() {
         ledger: ledger.data ?? [],
         entries: entries.data ?? [],
         referrals: referrals.data ?? [],
+        orders: orders.error ? [] : orders.data ?? [],
       };
     },
   });
@@ -128,7 +145,21 @@ function AccountPage() {
 
           <div className="bg-card p-6">
             <p className="tech-label text-muted-foreground">{t("account.orders")}</p>
-            <p className="mt-5 text-sm leading-6 text-muted-foreground">{t("account.ordersHint")}</p>
+            {(data?.orders ?? []).length > 0 ? (
+              <ul className="mt-4 divide-y divide-border">
+                {(data?.orders ?? []).map((order) => (
+                  <li key={order.id} className="flex items-center justify-between gap-3 py-3 text-sm">
+                    <span className="font-mono text-xs">{new Date(order.created_at).toLocaleDateString("pt-PT")}</span>
+                    <span className="text-muted-foreground">{order.status}</span>
+                    <span className="font-semibold">
+                      {new Intl.NumberFormat("pt-PT", { style: "currency", currency: order.total_currency || "EUR" }).format(order.total_amount)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-5 text-sm leading-6 text-muted-foreground">{t("account.ordersHint")}</p>
+            )}
           </div>
         </div>
 
