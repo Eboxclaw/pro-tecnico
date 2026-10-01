@@ -14,14 +14,12 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AnexRouteImport } from './routes/anex'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as B2bRouteImport } from './routes/b2b'
-import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as MarcasRouteImport } from './routes/marcas'
 import { Route as PacksRouteImport } from './routes/packs'
 import { Route as PontosRouteImport } from './routes/pontos'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as AuthenticatedContaRouteImport } from './routes/_authenticated/conta'
-import { Route as EncomendaIdRouteImport } from './routes/encomenda.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as ReferenciaIdRouteImport } from './routes/referencia.$id'
 
@@ -47,11 +45,6 @@ const AuthRoute = AuthRouteImport.update({
 const B2bRoute = B2bRouteImport.update({
   id: '/b2b',
   path: '/b2b',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutRoute = CheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalRoute = LegalRouteImport.update({
@@ -84,11 +77,6 @@ const AuthenticatedContaRoute = AuthenticatedContaRouteImport.update({
   path: '/conta',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const EncomendaIdRoute = EncomendaIdRouteImport.update({
-  id: '/encomenda/$id',
-  path: '/encomenda/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProductHandleRoute = ProductHandleRouteImport.update({
   id: '/product/$handle',
   path: '/product/$handle',
@@ -105,14 +93,12 @@ export interface FileRoutesByFullPath {
   '/anex': typeof AnexRoute
   '/auth': typeof AuthRoute
   '/b2b': typeof B2bRoute
-  '/checkout': typeof CheckoutRoute
   '/legal': typeof LegalRoute
   '/marcas': typeof MarcasRoute
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
   '/conta': typeof AuthenticatedContaRoute
-  '/encomenda/$id': typeof EncomendaIdRoute
   '/product/$handle': typeof ProductHandleRoute
   '/referencia/$id': typeof ReferenciaIdRoute
 }
@@ -121,14 +107,12 @@ export interface FileRoutesByTo {
   '/anex': typeof AnexRoute
   '/auth': typeof AuthRoute
   '/b2b': typeof B2bRoute
-  '/checkout': typeof CheckoutRoute
   '/legal': typeof LegalRoute
   '/marcas': typeof MarcasRoute
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
   '/conta': typeof AuthenticatedContaRoute
-  '/encomenda/$id': typeof EncomendaIdRoute
   '/product/$handle': typeof ProductHandleRoute
   '/referencia/$id': typeof ReferenciaIdRoute
 }
@@ -139,14 +123,12 @@ export interface FileRoutesById {
   '/anex': typeof AnexRoute
   '/auth': typeof AuthRoute
   '/b2b': typeof B2bRoute
-  '/checkout': typeof CheckoutRoute
   '/legal': typeof LegalRoute
   '/marcas': typeof MarcasRoute
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
   '/_authenticated/conta': typeof AuthenticatedContaRoute
-  '/encomenda/$id': typeof EncomendaIdRoute
   '/product/$handle': typeof ProductHandleRoute
   '/referencia/$id': typeof ReferenciaIdRoute
 }
@@ -157,14 +139,12 @@ export interface FileRouteTypes {
     | '/anex'
     | '/auth'
     | '/b2b'
-    | '/checkout'
     | '/legal'
     | '/marcas'
     | '/packs'
     | '/pontos'
     | '/shop'
     | '/conta'
-    | '/encomenda/$id'
     | '/product/$handle'
     | '/referencia/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -173,14 +153,12 @@ export interface FileRouteTypes {
     | '/anex'
     | '/auth'
     | '/b2b'
-    | '/checkout'
     | '/legal'
     | '/marcas'
     | '/packs'
     | '/pontos'
     | '/shop'
     | '/conta'
-    | '/encomenda/$id'
     | '/product/$handle'
     | '/referencia/$id'
   id:
@@ -190,14 +168,12 @@ export interface FileRouteTypes {
     | '/anex'
     | '/auth'
     | '/b2b'
-    | '/checkout'
     | '/legal'
     | '/marcas'
     | '/packs'
     | '/pontos'
     | '/shop'
     | '/_authenticated/conta'
-    | '/encomenda/$id'
     | '/product/$handle'
     | '/referencia/$id'
   fileRoutesById: FileRoutesById
@@ -208,13 +184,11 @@ export interface RootRouteChildren {
   AnexRoute: typeof AnexRoute
   AuthRoute: typeof AuthRoute
   B2bRoute: typeof B2bRoute
-  CheckoutRoute: typeof CheckoutRoute
   LegalRoute: typeof LegalRoute
   MarcasRoute: typeof MarcasRoute
   PacksRoute: typeof PacksRoute
   PontosRoute: typeof PontosRoute
   ShopRoute: typeof ShopRoute
-  EncomendaIdRoute: typeof EncomendaIdRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ReferenciaIdRoute: typeof ReferenciaIdRoute
 }
@@ -254,13 +228,6 @@ declare module '@tanstack/react-router' {
       path: '/b2b'
       fullPath: '/b2b'
       preLoaderRoute: typeof B2bRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkout': {
-      id: '/checkout'
-      path: '/checkout'
-      fullPath: '/checkout'
-      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal': {
@@ -305,13 +272,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedContaRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/encomenda/$id': {
-      id: '/encomenda/$id'
-      path: '/encomenda/$id'
-      fullPath: '/encomenda/$id'
-      preLoaderRoute: typeof EncomendaIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/product/$handle': {
       id: '/product/$handle'
       path: '/product/$handle'
@@ -346,13 +306,11 @@ const rootRouteChildren: RootRouteChildren = {
   AnexRoute: AnexRoute,
   AuthRoute: AuthRoute,
   B2bRoute: B2bRoute,
-  CheckoutRoute: CheckoutRoute,
   LegalRoute: LegalRoute,
   MarcasRoute: MarcasRoute,
   PacksRoute: PacksRoute,
   PontosRoute: PontosRoute,
   ShopRoute: ShopRoute,
-  EncomendaIdRoute: EncomendaIdRoute,
   ProductHandleRoute: ProductHandleRoute,
   ReferenciaIdRoute: ReferenciaIdRoute,
 }
