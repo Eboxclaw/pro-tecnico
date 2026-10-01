@@ -1,5 +1,6 @@
 import { ProductImage } from "@/components/shop/ProductImage";
 import { useEffect } from "react";
+import { toast } from "sonner";
 import { useT } from "@/lib/i18n";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice, type ShopifyProduct } from "@/lib/shopify";
@@ -38,7 +39,14 @@ export function CartDrawer({
 
   const handleCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
-    if (checkoutUrl) window.open(checkoutUrl, "_blank");
+    if (!checkoutUrl) {
+      // Carrinho sem URL de checkout (estado persistido antigo ou loja inativa):
+      // re-sincroniza e mostra caminho alternativo em vez de falhar em silêncio.
+      toast.error("O checkout não está disponível de momento. A tentar re-sincronizar o carrinho…");
+      void syncCart();
+      return;
+    }
+    window.open(checkoutUrl, "_blank");
   };
 
   return (
