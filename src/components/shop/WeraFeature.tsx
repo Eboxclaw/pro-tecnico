@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { referenceById } from "@/data/curated-tool-references";
 import { ProductImage } from "./ProductImage";
 
-const DUO_IDS = ["wera-838-ra-r-m", "wera-838-ra-r-l"];
+const SYSTEM_IDS = ["wera-838-ra-r-m", "wera-838-ra-r-l", "wera-8784-b1", "wera-8794-b", "wera-899-4-1-sb"];
 
 export function WeraFeature({ compact = false }: { compact?: boolean }) {
   if (compact)
@@ -39,7 +39,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
             coerência: cada peça justifica a seguinte.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            {DUO_IDS.map((id) => {
+            {SYSTEM_IDS.map((id) => {
               const tool = referenceById(id);
               if (!tool) return null;
               return (
@@ -62,6 +62,10 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
               );
             })}
           </div>
+          <p className="mt-4 max-w-xl text-xs leading-5 text-white/45">
+            O sistema completo: o kit Zyklop Speed 3/8″ traz a conversão 8784 B1 incluída — a extensão wobble e o Rapidaptor
+            inox completam o acesso e a fixação a uma mão.
+          </p>
           <Link to="/shop" search={{ brand: "WERA" }} className="mt-8 inline-flex items-center gap-3 border border-[#d65a41] px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#d65a41]">
             Ver o sistema Wera <ArrowUpRight size={17} aria-hidden="true" />
           </Link>

@@ -26,10 +26,10 @@ const CATEGORIES: Array<{ label: string; jp: string; task: "precision" | "fasten
 const TOP_REFERENCE_IDS = [
   "anex-397-d",
   "anex-ryujin-artm5-01",
-  "anex-aoa-17s1",
+  "anex-adrs-2065",
+  "anex-azm-2698",
+  "olfa-xh-1",
   "makita-dtd173z",
-  "vessel-220usb-s1eb",
-  "koken-3725z",
 ];
 
 export function SiteHeader() {
