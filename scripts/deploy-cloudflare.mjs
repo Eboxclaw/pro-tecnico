@@ -3,13 +3,12 @@
 // corrige o nome do worker e injeta as variáveis publicáveis antes do deploy.
 //
 // Uso: bun run deploy:cloudflare   (requer `npx wrangler login` prévio)
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, rmSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 
 const NAME = "rejendari";
-const ENV = JSON.parse(readFileSync(new URL("../.env", import.meta.url), "utf8"));
 const vars = {};
-for (const line of ENV.split("\n")) {
+for (const line of readFileSync(new URL("../.env", import.meta.url), "utf8").split("\n")) {
   const match = line.match(/^([A-Z_]+)="(.*)"$/);
   if (match) vars[match[1]] = match[2];
 }
@@ -22,9 +21,14 @@ for (const path of [".output/server/wrangler.json", ".wrangler/deploy/config.jso
     writeFileSync(path, JSON.stringify(config, null, 2));
     console.log(`${path} → worker "${NAME}" + ${Object.keys(vars).length} vars`);
   } catch {
-    // ficheiro opcional (.wrangler pode não existir)
+    // ficheiro opcional
   }
 }
+
+// O nitro deixa um .wrangler/deploy que conflita com o wrangler.json do build — remove-o.
+try {
+  rmSync(".wrangler/deploy/config.json", { force: true });
+} catch {}
 
 const result = spawnSync("npx", ["-y", "wrangler", "deploy"], {
   cwd: ".output/server",
