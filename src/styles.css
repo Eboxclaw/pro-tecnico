@@ -974,3 +974,19 @@ html, body { overflow-x: clip; }
 .smart-pack-card { position: relative; overflow: hidden; }
 .smart-pack-card > header { position: relative; }
 .smart-pack-card[data-signature="true"] > header::after { content: "選"; position: absolute; right: 10px; top: 2px; font-size: 84px; line-height: 1; color: #d65a4110; pointer-events: none; }
+
+/* ── Palco topo: 397 + bits Diamond (sprint 8) ────────────────── */
+.artisan-hero-stage { position: absolute; z-index: 1; top: 50%; right: 4%; transform: translateY(-50%); width: min(38%, 460px); display: grid; place-items: center; }
+.artisan-stage-main { position: relative; display: block; width: 92%; aspect-ratio: 1; background: #faf8f2; border: 1px solid #ffffff26; box-shadow: 0 28px 70px #00000059; transition: transform .45s ease; animation: artisan-arrive 1.4s ease-out both; }
+.artisan-stage-main:hover { transform: translateY(-6px) rotate(-1.2deg); }
+.artisan-stage-main img { filter: saturate(1.02); }
+.artisan-stage-bit { position: absolute; display: block; width: 30%; aspect-ratio: 1; background: #faf8f2; border: 1px solid #ffffff33; box-shadow: 0 16px 40px #0000004d; transition: transform .45s ease; }
+.artisan-stage-bit-1 { top: -9%; right: -7%; animation: tool-float-a 8.4s ease-in-out infinite; }
+.artisan-stage-bit-2 { bottom: -7%; left: -6%; animation: tool-float-b 9.6s ease-in-out infinite; }
+.artisan-stage-bit:hover { transform: translateY(-5px) scale(1.05); }
+.artisan-stage-tag { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #302c26; background: #faf8f2e6; border: 1px solid #302c2633; padding: 4px 10px; }
+.artisan-stage-tag-sm { font-size: 8px; padding: 3px 7px; }
+@media (max-width: 1023.98px) {
+  .artisan-hero-stage { position: static; transform: none; width: min(78%, 380px); margin: 8px auto 40px; }
+}
+@media (prefers-reduced-motion: reduce) { .artisan-stage-main, .artisan-stage-bit { animation: none; } .artisan-stage-bit-1, .artisan-stage-bit-2 { animation: none; } }
