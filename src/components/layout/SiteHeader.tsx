@@ -163,7 +163,7 @@ export function SiteHeader() {
                         key={focus.id}
                         to="/shop"
                         search={{ focus: focus.id }}
-                        className="border border-border bg-[#24211d] px-3 py-2 text-[10px] font-medium text-white/75 transition-colors hover:border-primary hover:text-white"
+                        className="border border-border bg-[#1b1917] px-3 py-2 text-[10px] font-medium text-white/75 transition-colors hover:border-primary hover:text-white"
                       >
                         {focus.label}
                       </Link>

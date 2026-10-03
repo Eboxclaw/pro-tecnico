@@ -1,4 +1,5 @@
 import { AnexSignatureStage } from "@/components/brand/AnexSignatureStage";
+import { AnexDuoHero } from "@/components/shop/AnexDuoHero";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
 import { ANEX_CATALOG_URL, ANEX_CHAPTERS, ANEX_ACCESSORY_IDS, parseAnexSearch } from "@/data/anex-editorial";
@@ -108,6 +109,8 @@ function AnexPage() {
           </div>
         </div>
       </section>
+
+      <AnexDuoHero />
 
       <section className="anex-principles" aria-label="Critérios da seleção ANEX">
         {[

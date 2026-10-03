@@ -93,7 +93,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
           {!available && <Badge variant="secondary">{t("common.outOfStock")}</Badge>}
         </div>
 
-        <h3 className="mt-3 font-display text-[18px] font-semibold leading-[1.12] tracking-[-0.035em]">
+        <h3 className="mt-3 font-display text-lg font-semibold leading-[1.2] tracking-[-0.02em]">
           {node.title}
         </h3>
         <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-muted-foreground">{node.description}</p>

@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
 const EDIT_IDS = [
-  "anex-397-d",
-  "anex-adrs-2065",
+  "wera-kompakt-vde-17-ra-1",
+  "anex-3980-2-100",
   "vessel-td6816mg",
   "knipex-cobra-250",
   "anex-436",
@@ -36,7 +36,7 @@ export function RejendariEdit() {
         <Link
           to="/referencia/$id"
           params={{ id: lead.id }}
-          className="editorial-lead group relative min-h-[520px] overflow-hidden border border-border bg-[#24211d] text-white"
+          className="editorial-lead group relative min-h-[520px] overflow-hidden border border-border bg-[#1b1917] text-white"
         >
           <div className="absolute inset-0 technical-grid opacity-[0.08]" />
           {lead.imageUrl && (
@@ -76,7 +76,7 @@ export function RejendariEdit() {
                     className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.07]"
                   />
                 ) : null}
-                <span className="absolute left-3 top-3 bg-[#24211d] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white/72">
+                <span className="absolute left-3 top-3 bg-[#1b1917] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white/72">
                   RJD / 0{index + 2}
                 </span>
               </div>

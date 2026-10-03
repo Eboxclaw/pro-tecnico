@@ -1,6 +1,4 @@
 import { AnexSignatureSolutions } from "@/components/shop/AnexSignatureSolutions";
-import { AnexDuoHero } from "@/components/shop/AnexDuoHero";
-import { AnexFeature } from "@/components/shop/AnexFeature";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
@@ -97,8 +95,8 @@ const REGIMES: Array<{ jp: string; label: string; note: string; focus: string }>
 const PACKS = ["AVAC", "Eletricidade", "Manutenção", "Solar", "Eletrónica", "Veículos elétricos"];
 
 const HIGHLIGHT_IDS = [
-  "anex-397-d",
-  "anex-adrs-2065",
+  "anex-7920",
+  "koken-3725z",
   "knipex-cobra-250",
   "vessel-220usb-s1eb",
   "knipex-pliers-wrench-250",
@@ -143,7 +141,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-[#0d0f12]">
+      <section className="border-b border-border bg-[#1b1917]">
         <div className="brand-marquee py-5">
           <div className="brand-marquee-track gap-12 pr-12">
             {[...BRANDS, ...BRANDS].map((brand, index) => (
@@ -163,16 +161,16 @@ function Index() {
 
       <LxtCollection />
 
-      <AnexFeature />
       <AnexSignatureSolutions />
-      <AnexDuoHero />
       <RejendariPromiseStrip />
 
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="lg:sticky lg:top-40 lg:self-start">
-            <p className="jp-label text-primary">仕事別 · comprar por trabalho</p>
-            <h2 className="mt-4 max-w-md font-display text-4xl font-semibold leading-[0.98] sm:text-5xl">
+            <p className="jp-label text-primary">
+              <span className="mr-3 font-mono">02</span>仕事別 · comprar por trabalho
+            </p>
+            <h2 className="mt-4 max-w-md font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
               Começa pelo trabalho que tens para fazer.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
@@ -206,8 +204,10 @@ function Index() {
         <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-18">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.19em] text-black/50">仕事の条件 · como organizamos tudo</p>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl">
+              <p className="jp-label text-primary">
+                <span className="mr-3 font-mono">03</span>仕事の条件 · como organizamos tudo
+              </p>
+              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
                 Seis regimes de trabalho. Uma só curadoria.
               </h2>
             </div>
@@ -353,11 +353,10 @@ function Index() {
         <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-18">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div className="flex items-center gap-3">
-                <ShieldCheck className="h-5 w-5 text-primary" />
-                <p className="jp-label text-primary">職人キット · kits profissionais</p>
-              </div>
-              <h2 className="mt-4 font-display text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">
+              <p className="jp-label text-primary">
+                <span className="mr-3 font-mono">04</span>職人キット · kits profissionais
+              </p>
+              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
                 Menos ferramentas repetidas. Mais cobertura útil.
               </h2>
             </div>
@@ -404,10 +403,14 @@ function Index() {
       <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-20">
         <div className="flex items-end justify-between gap-6 border-b border-border pb-5">
           <div>
-            <p className="jp-label text-primary">買い物 · comprar</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Loja REJENDARI</h2>
+            <p className="jp-label text-primary">
+              <span className="mr-3 font-mono">05</span>買い物 · comprar
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
+              Loja REJENDARI
+            </h2>
           </div>
-          <Button variant="ghost" asChild>
+          <Button variant="outline" asChild className="rounded-none">
             <Link to="/shop">
               Ir para a loja
               <ArrowRight className="ml-2 h-4 w-4" />

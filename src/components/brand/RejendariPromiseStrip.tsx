@@ -26,7 +26,7 @@ const ITEMS = [
 
 export function RejendariPromiseStrip() {
   return (
-    <section className="section-reveal border-y border-border bg-[#171613] text-[#f5f0e5]">
+    <section className="section-reveal border-y border-border bg-[#1b1917] text-[#f5f0e5]">
       <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
         <div className="flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -41,7 +41,7 @@ export function RejendariPromiseStrip() {
           {ITEMS.map((item) => {
             const Icon = item.icon;
             return (
-              <div key={item.title} className="bg-[#171613] p-5">
+              <div key={item.title} className="bg-[#1b1917] p-5">
                 <Icon className="h-5 w-5 text-[#d65a41]" />
                 <h3 className="mt-4 font-display text-lg font-semibold">{item.title}</h3>
                 <p className="mt-2 text-xs leading-5 text-white/48">{item.text}</p>

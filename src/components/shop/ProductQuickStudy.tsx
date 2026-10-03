@@ -34,7 +34,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-h-[92vh] w-[min(96vw,980px)] max-w-[980px] gap-0 overflow-y-auto rounded-none border-black/15 bg-[#f5f0e5] p-0 text-[#24211d] shadow-[0_28px_90px_rgba(31,26,21,0.32)]">
+      <DialogContent className="max-h-[92vh] w-[min(96vw,980px)] max-w-[980px] gap-0 overflow-y-auto rounded-none border-black/15 bg-[#f5f0e5] p-0 text-[#1b1917] shadow-[0_28px_90px_rgba(31,26,21,0.32)]">
         <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
           <SmartProductVisual tool={tool} className="min-h-[330px] border-b border-black/10 lg:min-h-full lg:border-b-0 lg:border-r" />
 

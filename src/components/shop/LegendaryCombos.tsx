@@ -114,7 +114,7 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
 
 export function LegendaryCombos() {
   return (
-    <section className="section-reveal border-y border-border bg-[#24211d] text-[#f5f0e5]">
+    <section className="section-reveal border-y border-border bg-[#1b1917] text-[#f5f0e5]">
       <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
@@ -135,7 +135,7 @@ export function LegendaryCombos() {
               .map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id))
               .filter(Boolean);
             return (
-              <article key={combo.name} className="flex flex-col overflow-hidden bg-[#1d1b18] ring-1 ring-white/10">
+              <article key={combo.name} className="flex flex-col overflow-hidden bg-[#23211d] ring-1 ring-white/10">
                 <div className="flex items-start justify-between gap-4 border-b border-white/10 p-5">
                   <div>
                     <p className="jp-label text-[#d65a41]">{combo.jp}</p>

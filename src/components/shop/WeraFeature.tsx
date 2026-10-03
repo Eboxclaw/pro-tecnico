@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { RejendariSeal } from "@/components/brand/RejendariSeal";
 import { ArrowUpRight } from "lucide-react";
 import { referenceById } from "@/data/curated-tool-references";
 import { ProductImage } from "./ProductImage";
@@ -8,7 +9,7 @@ const SYSTEM_IDS = ["wera-838-ra-r-m", "wera-838-ra-r-l", "wera-8784-b1", "wera-
 export function WeraFeature({ compact = false }: { compact?: boolean }) {
   if (compact)
     return (
-      <aside className="border-b border-border bg-[#24211d]">
+      <aside className="border-b border-border bg-[#1b1917]">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-6">
           <p className="text-sm text-[#f5f0e5]">
             <strong className="mr-3 font-display text-xl">WERA</strong> A gama alemã pela
@@ -23,8 +24,9 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
 
   const kit = referenceById("wera-8100-sb-6");
   return (
-    <section className="section-reveal border-y border-border bg-[#24211d] text-[#f5f0e5]" aria-labelledby="wera-feature-title">
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:items-center lg:py-24">
+    <section className="section-reveal border-y border-border bg-[#1b1917] text-[#f5f0e5]" aria-labelledby="wera-feature-title">
+      <div className="relative mx-auto grid max-w-[1440px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:items-center lg:py-24">
+        <RejendariSeal className="absolute -top-3 right-6 z-10 hidden h-20 w-20 opacity-80 lg:grid" />
         <div>
           <p className="jp-label text-[#d65a41]">ドイツ品質 · a gama alemã</p>
           <h2 id="wera-feature-title" className="mt-4 font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
@@ -70,7 +72,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
             Ver o sistema Wera <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
         </div>
-        <Link to="/referencia/$id" params={{ id: "wera-8100-sb-6" }} className="group relative block border border-white/12 bg-[#1d1b18] p-6">
+        <Link to="/referencia/$id" params={{ id: "wera-8100-sb-6" }} className="group relative block border border-white/12 bg-[#23211d] p-6">
           <span className="absolute right-5 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">05004046001</span>
           {kit?.imageUrl ? (
             <ProductImage

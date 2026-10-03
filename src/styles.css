@@ -797,11 +797,11 @@
 }
 
 /* Editorial direction: generous image scale, quiet typography and fine rules. */
-.artisan-hero { position: relative; isolation: isolate; min-height: min(760px, 85svh); background: #181b1a; color: #faf8f2; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+.artisan-hero { position: relative; isolation: isolate; min-height: min(760px, 85svh); background: #1b1917; color: #faf8f2; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
 .artisan-hero-media, .artisan-hero-shade { position: absolute; inset: 0; z-index: -1; }
 .artisan-hero-media { left: 28%; }
 .artisan-hero-media img { object-position: center; filter: saturate(.56); transform: scale(1.52); animation: artisan-arrive 1.4s ease-out both; }
-.artisan-hero-shade { background: linear-gradient(90deg, #151918 0%, rgba(21,25,24,.92) 25%, rgba(21,25,24,.38) 63%, rgba(21,25,24,.1)), linear-gradient(0deg,rgba(12,16,14,.6),transparent 40%); }
+.artisan-hero-shade { background: linear-gradient(90deg, #141210 0%, rgba(20,18,16,.92) 25%, rgba(20,18,16,.38) 63%, rgba(21,25,24,.1)), linear-gradient(0deg,rgba(14,12,10,.6),transparent 40%); }
 .artisan-hero-content { width: 100%; max-width: 1440px; margin: auto; padding: 84px 5.5% 92px; }
 .artisan-eyebrow { display: flex; align-items: center; gap: 14px; font: 9px var(--font-mono); letter-spacing: .19em; color: #e0dfd6; }
 .artisan-eyebrow span { width: 26px; height: 1px; background: #c58262; }
@@ -990,3 +990,18 @@ html, body { overflow-x: clip; }
   .artisan-hero-stage { position: static; transform: none; width: min(78%, 380px); margin: 8px auto 40px; }
 }
 @media (prefers-reduced-motion: reduce) { .artisan-stage-main, .artisan-stage-bit { animation: none; } .artisan-stage-bit-1, .artisan-stage-bit-2 { animation: none; } }
+
+/* ── Sprint 9 · identidade premium consolidada ────────────────── */
+:root {
+  --ink-950: #1b1917;       /* o único preto de banda */
+  --ink-900: #23211d;       /* cartão sobre banda escura */
+  --ink-rule: rgba(250, 248, 242, 0.14);
+  --primary-bright: #d65a41;
+  --plate: #eee8dc;         /* o único prato de imagem */
+  --shadow-1: 0 10px 28px rgba(35, 30, 25, 0.1);
+  --shadow-2: 0 18px 48px rgba(35, 30, 25, 0.16);
+}
+
+/* Variante fantasma do link artisan — usada em produção, agora definida. */
+.artisan-link-ghost { display: inline-flex; align-items: center; border: 1px solid rgba(250,248,242,.28); padding: 15px 22px; font-size: 14px; font-weight: 600; color: #faf8f2; transition: border-color .25s ease, background .25s ease; }
+.artisan-link-ghost:hover { border-color: #d65a41; background: #d65a4114; }

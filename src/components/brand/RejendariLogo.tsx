@@ -6,8 +6,8 @@ type LogoProps = {
 };
 
 export function RejendariMark({ className = "", inverted = false }: Pick<LogoProps, "className" | "inverted">) {
-  const field = inverted ? "#f5f0e5" : "#24211d";
-  const letter = inverted ? "#24211d" : "#f5f0e5";
+  const field = inverted ? "#f5f0e5" : "#1b1917";
+  const letter = inverted ? "#1b1917" : "#f5f0e5";
 
   return (
     <svg viewBox="0 0 64 64" className={className} role="img" aria-label="REJENDARI">
@@ -28,7 +28,7 @@ export function RejendariLogo({
   compact = false,
   showTagline = true,
 }: LogoProps) {
-  const inkClass = inverted ? "text-[#f5f0e5]" : "text-[#24211d]";
+  const inkClass = inverted ? "text-[#f5f0e5]" : "text-[#1b1917]";
   const mutedClass = inverted ? "text-white/48" : "text-black/46";
 
   if (compact) {
