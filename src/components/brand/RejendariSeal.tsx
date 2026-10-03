@@ -1,7 +1,7 @@
 export function RejendariSeal({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`rejendari-seal relative grid h-24 w-24 place-items-center rounded-full border border-primary/45 bg-[#f3ede1]/88 text-[#24211d] shadow-[0_14px_35px_rgba(45,37,29,0.12)] backdrop-blur ${className}`}
+      className={`rejendari-seal relative grid h-24 w-24 place-items-center rounded-full border border-primary/45 bg-[#f3ede1]/88 text-[#1b1917] shadow-[0_14px_35px_rgba(45,37,29,0.12)] backdrop-blur ${className}`}
       aria-label="REJENDARI Select"
     >
       <div className="absolute inset-2 rounded-full border border-primary/25" />

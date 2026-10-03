@@ -55,7 +55,7 @@ export function SmartKitShowcase() {
                   ) : (
                     <div className="flex h-full items-center justify-center font-display text-3xl text-black/15">{tool.brand}</div>
                   )}
-                  <span className="absolute left-3 top-3 bg-[#24211d] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white">0{index + 1}</span>
+                  <span className="absolute left-3 top-3 bg-[#1b1917] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white">0{index + 1}</span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <p className="jp-label text-primary">{item.label}</p>

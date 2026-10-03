@@ -26,7 +26,7 @@ export function AnexDuoHero() {
           />
           <span className="anex-duo-tag">
             <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">397-D</span>
-            <span className="mt-1 block font-display text-sm font-semibold text-[#24211d]">Quick Ball 72</span>
+            <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">Quick Ball 72</span>
             <span className="mt-1 block text-[10px] leading-4 text-black/55">72 dentes. Um gesto contínuo.</span>
           </span>
         </Link>
@@ -42,7 +42,7 @@ export function AnexDuoHero() {
           />
           <span className="anex-duo-tag">
             <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">AOA-17S1</span>
-            <span className="mt-1 block font-display text-sm font-semibold text-[#24211d]">Offset 17 mm</span>
+            <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">Offset 17 mm</span>
             <span className="mt-1 block text-[10px] leading-4 text-black/55">O cotovelo além do obstáculo.</span>
           </span>
         </Link>

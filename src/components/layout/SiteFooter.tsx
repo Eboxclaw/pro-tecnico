@@ -24,7 +24,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-[#0d0f12]">
+    <footer className="border-t border-border bg-[#1b1917]">
       <div className="brand-marquee border-b border-border/70 py-4">
         <div className="brand-marquee-track gap-10 pr-10 font-mono text-[11px] uppercase tracking-[0.2em] text-white/38">
           {[...JAPANESE_BRANDS, ...JAPANESE_BRANDS].map((brand, index) => (

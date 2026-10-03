@@ -92,14 +92,14 @@ function BrandsPage() {
               <div className="flex items-center justify-between gap-5">
                 <div>
                   <p className="jp-label text-[#b54530]">{selected.jp} · {selected.specialty}</p>
-                  <h2 className="mt-4 font-display text-5xl font-semibold tracking-[-0.06em] text-[#24211d] sm:text-6xl">
+                  <h2 className="mt-4 font-display text-5xl font-semibold tracking-[-0.06em] text-[#1b1917] sm:text-6xl">
                     {selected.name}
                   </h2>
                 </div>
                 <ShieldCheck className="h-6 w-6 text-[#b54530]" />
               </div>
               {products[0] && <Link to="/referencia/$id" params={{ id: products[0].id }} className="mt-8 block border border-black/10 bg-white/50"><ProductImage key={products[0].id} src={products[0].imageUrl} alt={`${products[0].brand} ${products[0].model}`} className="aspect-[16/10] w-full object-contain p-8" /><p className="px-4 pb-4 text-xs text-black/60">{products[0].model} · conhecer a referência{products[0].imageCaption && <span className="mt-2 block">{products[0].imageCaption}</span>}</p></Link>}
-              <h3 className="mt-10 max-w-2xl font-display text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-[#24211d]">
+              <h3 className="mt-10 max-w-2xl font-display text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-[#1b1917]">
                 {selected.headline}
               </h3>
               <p className="mt-6 max-w-2xl text-sm leading-7 text-black/65">{selected.story}</p>

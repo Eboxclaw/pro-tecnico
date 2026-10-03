@@ -1,8 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { ANEX_SIGNATURE_SOLUTIONS } from "@/data/anex-editorial";
-import { referenceById } from "@/data/curated-tool-references";
-import { ProductImage } from "./ProductImage";
+
+/**
+ * Índice tipográfico das cinco soluções ANEX — sem imagens de produto:
+ * o banner do topo já apresenta os objetos; esta banda é o mapa das soluções.
+ */
+const SOLUTION_GLYPHS = ["ダイヤ", "龍靭", "球", "絶縁", "偏"] as const;
 
 export function AnexSignatureSolutions() {
   return (
@@ -21,34 +25,25 @@ export function AnexSignatureSolutions() {
           </p>
         </div>
         <div className="grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-5">
-          {ANEX_SIGNATURE_SOLUTIONS.map((solution, index) => {
-            const tool = referenceById(solution.id);
-            return (
-              <Link
-                key={solution.id}
-                to="/referencia/$id"
-                params={{ id: solution.id }}
-                className="group flex flex-col bg-[#faf8f3] p-5 transition-colors hover:bg-white focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#913d29] motion-reduce:transition-none"
-              >
-                <div className="flex items-center justify-between font-mono text-[10px] tracking-wider text-[#746b5c]">
-                  <span>
-                    0{index + 1} / {solution.code}
-                  </span>
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </div>
-                <ProductImage
-                  src={tool?.imageUrl}
-                  alt={tool?.imageAlt ?? solution.name}
-                  className="my-5 h-44 w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
-                />
-                <h3 className="mt-auto font-display text-xl">{solution.name}</h3>
-                <p className="mt-2 text-xs leading-5 text-[#645e54]">{solution.detail}</p>
-                <span className="mt-5 text-xs font-semibold text-[#913d29]">
-                  Conhecer a solução
-                </span>
-              </Link>
-            );
-          })}
+          {ANEX_SIGNATURE_SOLUTIONS.map((solution, index) => (
+            <Link
+              key={solution.id}
+              to="/referencia/$id"
+              params={{ id: solution.id }}
+              className="group flex flex-col bg-[#faf8f3] p-6 transition-colors hover:bg-white focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#913d29] motion-reduce:transition-none"
+            >
+              <span className="jp-label text-[#913d29]">{SOLUTION_GLYPHS[index] ?? "解"}</span>
+              <span className="mt-6 font-display text-5xl font-semibold tracking-[-0.05em] text-[#25252114]">
+                0{index + 1}
+              </span>
+              <h3 className="mt-6 font-display text-xl leading-tight">{solution.name}</h3>
+              <p className="mt-2 flex-1 text-xs leading-5 text-[#645e54]">{solution.detail}</p>
+              <span className="mt-6 flex items-center justify-between border-t border-black/10 pt-3 font-mono text-[10px] uppercase tracking-[0.12em] text-[#746b5c]">
+                {solution.code}
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </span>
+            </Link>
+          ))}
         </div>
         <p className="mt-5 text-xs leading-5 text-[#645e54]">
           Seleção editorial independente. Consulta aplicações e limites em cada ficha. As cinco

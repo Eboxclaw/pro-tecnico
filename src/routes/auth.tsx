@@ -132,7 +132,7 @@ function AuthPage() {
 
   return (
     <div className="mx-auto grid min-h-[720px] max-w-[1440px] border-x border-border lg:grid-cols-[1.05fr_0.95fr]">
-      <section className="relative hidden overflow-hidden border-r border-border bg-[#24211d] lg:flex lg:flex-col lg:justify-between">
+      <section className="relative hidden overflow-hidden border-r border-border bg-[#1b1917] lg:flex lg:flex-col lg:justify-between">
         <div className="washi-noise absolute inset-0 opacity-20" aria-hidden="true" />
         <div className="relative p-10 xl:p-14">
           <RejendariLogo inverted className="max-w-[320px]" />

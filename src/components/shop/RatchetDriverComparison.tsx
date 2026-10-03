@@ -10,7 +10,7 @@ export function RatchetDriverComparison() {
   const tools = IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
 
   return (
-    <section className="section-reveal border-y border-border bg-[#24211d] text-[#f5f0e5]">
+    <section className="section-reveal border-y border-border bg-[#1b1917] text-[#f5f0e5]">
       <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
@@ -26,7 +26,7 @@ export function RatchetDriverComparison() {
 
         <div className="mt-10 grid gap-px border border-white/12 bg-white/12 lg:grid-cols-3">
           {tools.map((tool, index) => tool && (
-            <article key={tool.id} className="comparison-card group relative overflow-hidden bg-[#1d1b18] p-5 sm:p-6">
+            <article key={tool.id} className="comparison-card group relative overflow-hidden bg-[#23211d] p-5 sm:p-6">
               <span className="absolute right-4 top-3 font-mono text-5xl font-semibold text-white/[0.035]">0{index + 1}</span>
               <div className="relative aspect-[4/3] overflow-hidden bg-[#eee9de]">
                 {tool.imageUrl ? (
@@ -63,17 +63,17 @@ export function RatchetDriverComparison() {
         </div>
 
         <div className="mt-6 grid gap-px border border-white/12 bg-white/12 sm:grid-cols-3">
-          <div className="bg-[#171614] p-5">
+          <div className="bg-[#23211d] p-5">
             <p className="jp-label text-[#d65a41]">ANEX 397-D</p>
             <p className="mt-2 text-sm font-medium">Quick Ball 72</p>
             <p className="mt-2 text-xs leading-5 text-white/52">72 dentes, 25 N·m e formato Ball Grip para avanço rápido e aperto final forte.</p>
           </div>
-          <div className="bg-[#171614] p-5">
+          <div className="bg-[#23211d] p-5">
             <p className="jp-label text-[#d65a41]">VESSEL TD-6816MG</p>
             <p className="mt-2 text-sm font-medium">Punho clássico + 16 bits</p>
             <p className="mt-2 text-xs leading-5 text-white/52">72 dentes, 5° e cobertura PH, SL, HEX e Torx tamper-resistant.</p>
           </div>
-          <div className="bg-[#171614] p-5">
+          <div className="bg-[#23211d] p-5">
             <p className="jp-label text-[#d65a41]">ANEX 431</p>
             <p className="mt-2 text-sm font-medium">Bits guardados no corpo</p>
             <p className="mt-2 text-xs leading-5 text-white/52">Roquete de vaivém com 10 dentes e bits Neji-Pita (+2/−6) guardados no próprio punho.</p>

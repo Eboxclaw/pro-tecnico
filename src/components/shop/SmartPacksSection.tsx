@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { RejendariSeal } from "@/components/brand/RejendariSeal";
 import { ArrowRight, PackageCheck } from "lucide-react";
 import { referenceById } from "@/data/curated-tool-references";
 import { smartPacksByTrade, type SmartPack } from "@/data/smart-packs";
@@ -72,8 +73,9 @@ function PackCard({ pack }: { pack: SmartPack }) {
 export function SmartPacksSection() {
   const trades = smartPacksByTrade();
   return (
-    <section className="section-reveal border-y border-border bg-[#24211d] py-16 text-[#f5f0e5] lg:py-24">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+    <section className="section-reveal border-y border-border bg-[#1b1917] py-16 text-[#f5f0e5] lg:py-24">
+      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6">
+        <RejendariSeal className="absolute -top-2 right-6 z-10 hidden h-20 w-20 opacity-80 lg:grid" />
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
             <p className="jp-label text-[#d65a41]">
@@ -93,7 +95,7 @@ export function SmartPacksSection() {
 
         <ol className="mt-10 grid gap-px border border-white/12 bg-white/12 sm:grid-cols-2 lg:grid-cols-4">
           {JOURNEY.map((step, index) => (
-            <li key={step.label} className="bg-[#1d1b18] p-5">
+            <li key={step.label} className="bg-[#23211d] p-5">
               <p className="jp-label text-[#d65a41]">{step.jp}</p>
               <p className="mt-2 text-sm font-medium">
                 {index + 1}. {step.label}

@@ -204,7 +204,7 @@ function ShopPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-[#24211d] text-[#f5f0e5]">
+      <section className="border-b border-border bg-[#1b1917] text-[#f5f0e5]">
         <div className="mx-auto flex max-w-[1440px] items-center gap-2 overflow-x-auto px-4 py-3 sm:px-6">
           <span className="mr-2 min-w-max font-mono text-[9px] uppercase tracking-[0.15em] text-white/45">Filtros rápidos</span>
           <button
