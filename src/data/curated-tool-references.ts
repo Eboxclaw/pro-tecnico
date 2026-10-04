@@ -3014,6 +3014,30 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     limitationsPt:
       "Porta-bits manual 1/4″: não é a variante certificada para impacto nem isolada 1000 V.",
   },
+  {
+    id: "wera-889-4-1-k",
+    brand: "WERA",
+    brandSlug: "WERA",
+    model: "889/4/1 K",
+    officialCode: "05052502001",
+    namePt: "Rapidaptor universal · porta-bits 50 mm",
+    japanese: "ラピダプター",
+    task: "fastening",
+    categoryPt: "Porta-bits · Rapidaptor",
+    notePt:
+      "O Rapidaptor da geração atual: o bit engata por pressão, sem accionar a manga; a manga roda livre para guiar a máquina e a remoção faz-se empurrando o bit para a frente.",
+    storyPt:
+      "É a evolução do 899 inox: mesmo clique rápido, menos peso no veio e o bit entra num movimento — o porta-bits universal que acompanha a máquina do dia inteiro.",
+    badge: "Rapidaptor",
+    specPt: "1/4″ hex × 50 mm · Ø15 mm · magnético · manga de rotação livre · 26 g",
+    evidencePt:
+      "Dados oficiais Wera (folha de dados do artigo 05052502001): 889/4/1 K Rapidaptor universal 1/4″ × 50 mm, retenção magnética para bits DIN ISO 1173-C 6,3 (hex 6,35) e E 6,3, engate press-in sem accionar a manga, manga de rotação livre, 26 g. Substitui a geração 899/4/1 inox como porta-bits universal da linha.",
+    referenceUrl:
+      "https://hybris-media.wera.de/download/pdfgenerator-datasheets/en/05052502001.pdf",
+    compareGroup: "bit-holders",
+    limitationsPt:
+      "Porta-bits manual 1/4″: a variante certificada para impacto é artigo próprio — confirmar o binário máximo antes de uso com impacto.",
+  },
 ];
 
 export const REFERENCE_QUEUE = [
