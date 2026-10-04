@@ -49,9 +49,6 @@ const OFFICIAL_SET_IDS = [
   "vessel-td72",
   "vessel-td6808tx",
   "vessel-900rt-7p",
-  "tone-brfs27",
-  "tone-rdbs11",
-  "engineer-pds02",
 ];
 
 const TRADES: Array<{ key: string; icon: ToolGlyphName; label: string; desc: string }> = [

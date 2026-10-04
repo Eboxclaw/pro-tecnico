@@ -1,3 +1,5 @@
+import { SHOWCASED_BRANDS, type ShowcasedBrand } from "@/data/curated-tool-references";
+
 export type BrandStory = {
   slug: string;
   name: string;
@@ -10,7 +12,7 @@ export type BrandStory = {
   sourceLabel?: string;
 };
 
-export const BRAND_STORIES: BrandStory[] = [
+const ALL_BRAND_STORIES: BrandStory[] = [
   {
     slug: "ANEX",
     name: "ANEX",
@@ -245,4 +247,11 @@ export const BRAND_STORIES: BrandStory[] = [
   },
 ];
 
-export const BRAND_STORY_MAP = Object.fromEntries(BRAND_STORIES.map((brand) => [brand.slug, brand])) as Record<string, BrandStory>;
+/** Só as marcas em vitrina navegam; as histórias de reserva continuam guardadas. */
+export const BRAND_STORIES: BrandStory[] = ALL_BRAND_STORIES.filter((brand) =>
+  (SHOWCASED_BRANDS as readonly string[]).includes(brand.slug),
+);
+
+export const BRAND_STORY_MAP = Object.fromEntries(
+  BRAND_STORIES.map((brand) => [brand.slug, brand]),
+) as Record<ShowcasedBrand | string, BrandStory>;

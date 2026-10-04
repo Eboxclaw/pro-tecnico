@@ -18,10 +18,14 @@ export const Route = createFileRoute("/marcas")({
       {
         name: "description",
         content:
-          "Histórias, especialidades e referências selecionadas: VESSEL, ANEX, Ko-ken, Wera, Knipex, Wiha, Bahco, Makita, OLFA, ENGINEER e HOZAN.",
+          "Histórias, especialidades e referências selecionadas: ANEX, MAKITA, VESSEL, Wera, Knipex, Bahco, TAJIMA e OLFA.",
       },
       { property: "og:title", content: "Marcas — REJENDARI" },
-      { property: "og:description", content: "Conhece a história de cada marca e explora todas as referências REJENDARI selecionadas desse fabricante." },
+      {
+        property: "og:description",
+        content:
+          "Conhece a história de cada marca e explora todas as referências REJENDARI selecionadas desse fabricante.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -51,10 +55,12 @@ function BrandsPage() {
             </h1>
             <div>
               <p className="max-w-xl text-sm leading-7 text-muted-foreground">
-                Escolhe uma marca para perceber onde ela é realmente forte e ver todas as referências que já fazem parte da seleção REJENDARI.
+                Escolhe uma marca para perceber onde ela é realmente forte e ver todas as
+                referências que já fazem parte da seleção REJENDARI.
               </p>
               <p className="mt-5 border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-                Filtros rápidos por marca · produtos organizados por aplicação · medidas adaptadas a Portugal / UE
+                Filtros rápidos por marca · produtos organizados por aplicação · medidas adaptadas a
+                Portugal / UE
               </p>
             </div>
           </div>
@@ -75,7 +81,11 @@ function BrandsPage() {
                 className={`flex min-w-max items-center gap-2 border px-3 py-2 text-xs transition-colors ${active ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"}`}
               >
                 <span className="font-semibold">{story?.name ?? brand}</span>
-                <span className={`font-mono text-[9px] ${active ? "text-primary-foreground/65" : "text-muted-foreground/55"}`}>{count}</span>
+                <span
+                  className={`font-mono text-[9px] ${active ? "text-primary-foreground/65" : "text-muted-foreground/55"}`}
+                >
+                  {count}
+                </span>
               </Link>
             );
           })}
@@ -91,19 +101,42 @@ function BrandsPage() {
             <div className="relative">
               <div className="flex items-center justify-between gap-5">
                 <div>
-                  <p className="jp-label text-[#b54530]">{selected.jp} · {selected.specialty}</p>
+                  <p className="jp-label text-[#b54530]">
+                    {selected.jp} · {selected.specialty}
+                  </p>
                   <h2 className="mt-4 font-display text-5xl font-semibold tracking-[-0.06em] text-[#1b1917] sm:text-6xl">
                     {selected.name}
                   </h2>
                 </div>
                 <ShieldCheck className="h-6 w-6 text-[#b54530]" />
               </div>
-              {products[0] && <Link to="/referencia/$id" params={{ id: products[0].id }} className="mt-8 block border border-black/10 bg-white/50"><ProductImage key={products[0].id} src={products[0].imageUrl} alt={`${products[0].brand} ${products[0].model}`} className="aspect-[16/10] w-full object-contain p-8" /><p className="px-4 pb-4 text-xs text-black/60">{products[0].model} · conhecer a referência{products[0].imageCaption && <span className="mt-2 block">{products[0].imageCaption}</span>}</p></Link>}
+              {products[0] && (
+                <Link
+                  to="/referencia/$id"
+                  params={{ id: products[0].id }}
+                  className="mt-8 block border border-black/10 bg-white/50"
+                >
+                  <ProductImage
+                    key={products[0].id}
+                    src={products[0].imageUrl}
+                    alt={`${products[0].brand} ${products[0].model}`}
+                    className="aspect-[16/10] w-full object-contain p-8"
+                  />
+                  <p className="px-4 pb-4 text-xs text-black/60">
+                    {products[0].model} · conhecer a referência
+                    {products[0].imageCaption && (
+                      <span className="mt-2 block">{products[0].imageCaption}</span>
+                    )}
+                  </p>
+                </Link>
+              )}
               <h3 className="mt-10 max-w-2xl font-display text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-[#1b1917]">
                 {selected.headline}
               </h3>
               <p className="mt-6 max-w-2xl text-sm leading-7 text-black/65">{selected.story}</p>
-              <p className="mt-5 max-w-2xl border-l border-[#b54530]/55 pl-4 text-sm leading-7 text-black/58">{selected.whyPt}</p>
+              <p className="mt-5 max-w-2xl border-l border-[#b54530]/55 pl-4 text-sm leading-7 text-black/58">
+                {selected.whyPt}
+              </p>
 
               {selected.sourceUrl && (
                 <a
@@ -127,7 +160,8 @@ function BrandsPage() {
                   Todas as referências {selected.name}
                 </h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {products.length} {products.length === 1 ? "referência selecionada" : "referências selecionadas"}.
+                  {products.length}{" "}
+                  {products.length === 1 ? "referência selecionada" : "referências selecionadas"}.
                 </p>
               </div>
               <Button variant="outline" className="w-fit rounded-none" asChild>
@@ -151,10 +185,13 @@ function BrandsPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="jp-label text-primary">次のブランド · descobrir mais</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.045em]">Outros especialistas japoneses</h2>
+            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.045em]">
+              Outros especialistas japoneses
+            </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-            Cada marca entra por uma especialidade concreta. Usa estes cartões como filtro rápido para saltar diretamente para a história e os produtos.
+            Cada marca entra por uma especialidade concreta. Usa estes cartões como filtro rápido
+            para saltar diretamente para a história e os produtos.
           </p>
         </div>
 
@@ -172,12 +209,24 @@ function BrandsPage() {
               >
                 <div className="flex items-center justify-between gap-4">
                   <span className="jp-label text-primary">{brand.jp}</span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">{count} refs.</span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {count} refs.
+                  </span>
                 </div>
-                {cover && <ProductImage src={cover.imageUrl} alt={`${cover.brand} ${cover.model}`} className="mt-5 aspect-[16/9] w-full bg-[#eee8dc] object-contain p-4" />}
-                <h3 className="mt-8 font-display text-3xl font-semibold tracking-[-0.05em]">{brand.name}</h3>
+                {cover && (
+                  <ProductImage
+                    src={cover.imageUrl}
+                    alt={`${cover.brand} ${cover.model}`}
+                    className="mt-5 aspect-[16/9] w-full bg-[#eee8dc] object-contain p-4"
+                  />
+                )}
+                <h3 className="mt-8 font-display text-3xl font-semibold tracking-[-0.05em]">
+                  {brand.name}
+                </h3>
                 <p className="mt-2 text-xs leading-5 text-muted-foreground">{brand.specialty}</p>
-                <p className="mt-5 line-clamp-2 text-sm leading-6 text-muted-foreground">{brand.headline}</p>
+                <p className="mt-5 line-clamp-2 text-sm leading-6 text-muted-foreground">
+                  {brand.headline}
+                </p>
                 <span className="mt-auto inline-flex items-center text-xs font-medium text-primary">
                   Ver marca
                   <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />

@@ -33,7 +33,8 @@ const pt = {
     checkout: "Finalizar compra",
     total: "Total",
     emptyCart: "O carrinho está vazio",
-    emptyCartHint: "Adiciona as ferramentas de que precisas. O carrinho fica guardado durante esta sessão.",
+    emptyCartHint:
+      "Adiciona as ferramentas de que precisas. O carrinho fica guardado durante esta sessão.",
     checkoutNote: "Pagamento seguro com validação de preços no servidor.",
   },
   home: {
@@ -46,19 +47,23 @@ const pt = {
     packsTitle: "Kits por profissão",
     packsSubtitle: "Seleções práticas para AVAC, eletricidade, manutenção, solar e canalização.",
     brandsTitle: "Marcas que vale a pena conhecer",
-    brandsSubtitle: "Fabricantes escolhidos pela especialização, qualidade de construção e utilidade no trabalho real.",
+    brandsSubtitle:
+      "Fabricantes escolhidos pela especialização, qualidade de construção e utilidade no trabalho real.",
     japanLabel: "Seleção japonesa",
     japanTitle: "Referências japonesas para trabalho sério",
-    japanText: "Aparafusamento, sockets, corte, medição, eletricidade e manutenção, organizados pela tarefa que tens pela frente.",
+    japanText:
+      "Aparafusamento, sockets, corte, medição, eletricidade e manutenção, organizados pela tarefa que tens pela frente.",
     originNote: "Indicamos o país de fabrico quando está confirmado para a referência.",
     pointsTitle: "Pontos REJENDARI",
     pointsText:
       "Cria conta, compra e acumula pontos para vantagens e descontos. Algumas campanhas podem ainda dar acesso a sorteios com participação gratuita.",
     pointsCta: "Ver pontos e vantagens",
     value1Title: "Escolha mais rápida",
-    value1Text: "Organizamos por tarefa, compatibilidade e especificações para encontrares mais depressa a ferramenta certa.",
+    value1Text:
+      "Organizamos por tarefa, compatibilidade e especificações para encontrares mais depressa a ferramenta certa.",
     value2Title: "Kits para o trabalho",
-    value2Text: "AVAC, eletricidade, manutenção, solar e canalização com níveis adaptados a diferentes necessidades.",
+    value2Text:
+      "AVAC, eletricidade, manutenção, solar e canalização com níveis adaptados a diferentes necessidades.",
     value3Title: "Vantagens que acompanham as compras",
     value3Text: "A tua conta reúne pontos, convites, sorteios elegíveis e histórico num só lugar.",
   },
@@ -66,7 +71,8 @@ const pt = {
     title: "Loja",
     subtitle: "Escolhe por tarefa, marca ou categoria e compara o que interessa antes de comprar.",
     empty: "Catálogo em preparação",
-    emptyHint: "Procuras uma referência específica? Diz-nos a marca, modelo ou trabalho a fazer e ajudamos a encontrar a opção certa.",
+    emptyHint:
+      "Procuras uma referência específica? Diz-nos a marca, modelo ou trabalho a fazer e ajudamos a encontrar a opção certa.",
     noResults: "Não encontrámos produtos com estes filtros.",
     japaneseFocus: "Ferramenta japonesa",
     allTasks: "Todas as tarefas",
@@ -84,11 +90,13 @@ const pt = {
     notFound: "Produto não encontrado",
     notFoundHint: "Esta referência pode ter sido retirada ou ainda não estar disponível.",
     whySelected: "Porque está na REJENDARI",
-    whySelectedText: "Escolhemos ferramentas pela utilidade, construção, ergonomia e adequação ao trabalho profissional. A origem de fabrico é indicada quando está confirmada para a referência.",
+    whySelectedText:
+      "Escolhemos ferramentas pela utilidade, construção, ergonomia e adequação ao trabalho profissional. A origem de fabrico é indicada quando está confirmada para a referência.",
   },
   packs: {
     title: "Kits por profissão",
-    subtitle: "Três níveis para levares o essencial sem carregar ferramentas repetidas ou pouco úteis.",
+    subtitle:
+      "Três níveis para levares o essencial sem carregar ferramentas repetidas ou pouco úteis.",
     core: "Core",
     coreDesc: "A base essencial para começar bem equipado.",
     compact: "Compact",
@@ -100,7 +108,8 @@ const pt = {
   },
   points: {
     title: "Pontos e vantagens",
-    subtitle: "Uma conta, um saldo de pontos e vantagens que acompanham a tua relação com a REJENDARI.",
+    subtitle:
+      "Uma conta, um saldo de pontos e vantagens que acompanham a tua relação com a REJENDARI.",
     howTitle: "Como ganhar pontos",
     how1: "50 pontos ao criar conta",
     how2: "1 ponto por cada 1 € em compras elegíveis",
@@ -121,7 +130,8 @@ const pt = {
   },
   b2b: {
     title: "Conta profissional",
-    subtitle: "Para empresas e profissionais que precisam de comprar por volume, repetir referências ou montar kits para equipas.",
+    subtitle:
+      "Para empresas e profissionais que precisam de comprar por volume, repetir referências ou montar kits para equipas.",
     company: "Empresa",
     contactName: "Nome de contacto",
     email: "Email",
@@ -135,11 +145,13 @@ const pt = {
   },
   brands: {
     title: "Marcas",
-    subtitle: "Fabricantes japoneses escolhidos pela especialização, qualidade de construção e utilidade profissional.",
+    subtitle:
+      "Fabricantes japoneses escolhidos pela especialização, qualidade de construção e utilidade profissional.",
     detail: "Explorar marca",
     anchor: "Destaque REJENDARI",
     next: "Especialista japonês",
-    originRule: "A origem da marca e o país de fabrico são informações diferentes; indicamos o fabrico quando confirmado por referência.",
+    originRule:
+      "A origem da marca e o país de fabrico são informações diferentes; indicamos o fabrico quando confirmado por referência.",
   },
   legal: {
     title: "Informação legal",
@@ -171,7 +183,8 @@ const pt = {
     errorRateLimited: "Demasiadas tentativas. Espera um minuto.",
     passwordHint: "Mínimo de 8 caracteres, com letras e números.",
     checkEmailTitle: "Confirma o teu email",
-    checkEmailBody: "Enviamos um link de confirmação. Depois de confirmares, entra para ativar pontos e convites.",
+    checkEmailBody:
+      "Enviamos um link de confirmação. Depois de confirmares, entra para ativar pontos e convites.",
     checkEmailCta: "Já confirmei — entrar",
     accountReady: "Conta criada. Bem-vindo.",
   },
@@ -248,17 +261,20 @@ const en: Dict = {
     badge: "Store in the works — opening soon",
     title: "Professional tools chosen for the job",
     subtitle:
-      "Japanese precision for European professionals. VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita and other makers enter a short, technical and verified selection.",
+      "Japanese precision for European professionals. ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA and OLFA enter a short, technical and verified selection.",
     ctaShop: "Browse the shop",
     ctaPacks: "See packs by trade",
     packsTitle: "Packs by trade",
     packsSubtitle: "Sets designed for real work, in three tiers: Core, Compact and Pro.",
     brandsTitle: "Japan, selected with purpose",
-    brandsSubtitle: "VESSEL, Ko-ken, OLFA, LOBSTER / LOBTEX, ANEX, Makita and other makers are assessed for application, origin, support and availability.",
+    brandsSubtitle:
+      "ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA and OLFA are assessed for application, origin, support and availability.",
     japanLabel: "Japanese selection",
     japanTitle: "Precise tools. No noise.",
-    japanText: "Driving, impact, precision, cutting, fastening and maintenance — organised by the real task, not marketing.",
-    originNote: "Japanese brand and country of manufacture are verified separately for every product.",
+    japanText:
+      "Driving, impact, precision, cutting, fastening and maintenance — organised by the real task, not marketing.",
+    originNote:
+      "Japanese brand and country of manufacture are verified separately for every product.",
     pointsTitle: "Points & weekly draws",
     pointsText:
       "Buy, register and take part: points redeemable for a guaranteed discount and a weekly draw with free entry. The scratch card reveals an already-assigned prize.",
@@ -292,7 +308,8 @@ const en: Dict = {
     notFound: "Product not found",
     notFoundHint: "This product no longer exists or isn't published yet.",
     whySelected: "Why we selected it",
-    whySelectedText: "Selected for its application, construction and professional support. Manufacturing origin is only shown when confirmed for this SKU.",
+    whySelectedText:
+      "Selected for its application, construction and professional support. Manufacturing origin is only shown when confirmed for this SKU.",
   },
   packs: {
     title: "Packs by trade",
@@ -319,7 +336,8 @@ const en: Dict = {
     raffleEnter: "Enter this week",
     raffleEntered: "You're in this week. Good luck!",
     raffleSignIn: "Sign in to enter — entry is free.",
-    raffleFree: "Free entry: all you need is an account and to opt in for the week. A purchase is never required.",
+    raffleFree:
+      "Free entry: all you need is an account and to opt in for the week. A purchase is never required.",
     winners: "Previous winners",
     noWinners: "No draws held yet.",
     rules: "Rules",
@@ -329,7 +347,8 @@ const en: Dict = {
   },
   b2b: {
     title: "Professional account",
-    subtitle: "Companies and tradespeople: a dedicated account, volume pricing and technical support.",
+    subtitle:
+      "Companies and tradespeople: a dedicated account, volume pricing and technical support.",
     company: "Company",
     contactName: "Contact name",
     email: "Email",
@@ -347,7 +366,8 @@ const en: Dict = {
     detail: "View products",
     anchor: "Anchor brand",
     next: "Under review",
-    originRule: "A brand's origin does not guarantee its manufacturing country. We confirm that for each product.",
+    originRule:
+      "A brand's origin does not guarantee its manufacturing country. We confirm that for each product.",
   },
   legal: {
     title: "Legal information",
@@ -379,7 +399,8 @@ const en: Dict = {
     errorRateLimited: "Too many attempts. Wait a minute.",
     passwordHint: "At least 8 characters, with letters and numbers.",
     checkEmailTitle: "Confirm your email",
-    checkEmailBody: "We sent a confirmation link. After confirming, sign in to activate points and referrals.",
+    checkEmailBody:
+      "We sent a confirmation link. After confirming, sign in to activate points and referrals.",
     checkEmailCta: "I've confirmed — sign in",
     accountReady: "Account created. Welcome.",
   },
@@ -396,7 +417,7 @@ const en: Dict = {
     badge: "Closed access",
     title: "REJENDARI opens soon",
     subtitle:
-      "We're preparing a professional Japanese tool selection spanning VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita and other makers. Leave your email to hear when we open.",
+      "We're preparing a professional Japanese tool selection spanning ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA and OLFA. Leave your email to hear when we open.",
     codeLabel: "Access code",
     enter: "Enter",
     wrongCode: "Wrong code.",
@@ -454,23 +475,28 @@ const es: Dict = {
     badge: "Tienda en construcción — próxima apertura",
     title: "Herramienta profesional elegida para el trabajo",
     subtitle:
-      "Precisión japonesa para profesionales europeos. VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita y otros fabricantes entran en una selección técnica, corta y verificada.",
+      "Precisión japonesa para profesionales europeos. ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA y OLFA entran en una selección técnica, corta y verificada.",
     ctaShop: "Ver la tienda",
     ctaPacks: "Ver packs por oficio",
     packsTitle: "Packs por oficio",
-    packsSubtitle: "Conjuntos diseñados para el trabajo real, en tres niveles: Core, Compact y Pro.",
+    packsSubtitle:
+      "Conjuntos diseñados para el trabajo real, en tres niveles: Core, Compact y Pro.",
     brandsTitle: "Japón, elegido con criterio",
-    brandsSubtitle: "VESSEL, Ko-ken, OLFA, LOBSTER / LOBTEX, ANEX, Makita y otros fabricantes se evalúan por aplicación, origen, asistencia y disponibilidad.",
+    brandsSubtitle:
+      "ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA y OLFA se evalúan por aplicación, origen, asistencia y disponibilidad.",
     japanLabel: "Selección japonesa",
     japanTitle: "Herramienta precisa. Sin ruido.",
-    japanText: "Atornillado, impacto, precisión, corte, apriete y mantenimiento — organizados por la tarea real, no por el marketing.",
-    originNote: "La marca japonesa y el país de fabricación se verifican por separado en cada producto.",
+    japanText:
+      "Atornillado, impacto, precisión, corte, apriete y mantenimiento — organizados por la tarea real, no por el marketing.",
+    originNote:
+      "La marca japonesa y el país de fabricación se verifican por separado en cada producto.",
     pointsTitle: "Puntos y sorteos semanales",
     pointsText:
       "Compra, regístrate y participa: puntos canjeables por descuento garantizado y un sorteo semanal con entrada gratuita. El rasca revela un premio ya asignado.",
     pointsCta: "Cómo funciona",
     value1Title: "Selección técnica",
-    value1Text: "Catálogo corto, productos verificados y especificaciones completas — EAN, VDE, medidas.",
+    value1Text:
+      "Catálogo corto, productos verificados y especificaciones completas — EAN, VDE, medidas.",
     value2Title: "Packs por oficio",
     value2Text: "HVAC, electricista, mantenimiento, solar y fontanería, listos para trabajar.",
     value3Title: "Puntos que valen descuento",
@@ -480,7 +506,8 @@ const es: Dict = {
     title: "Tienda",
     subtitle: "Catálogo profesional — filtra por marca, categoría y precio.",
     empty: "Aún no hay productos",
-    emptyHint: "El catálogo abre pronto. Mientras tanto, dinos qué herramientas quieres ver primero.",
+    emptyHint:
+      "El catálogo abre pronto. Mientras tanto, dinos qué herramientas quieres ver primero.",
     noResults: "Ningún producto coincide con los filtros.",
     japaneseFocus: "Herramienta japonesa",
     allTasks: "Todas las tareas",
@@ -498,7 +525,8 @@ const es: Dict = {
     notFound: "Producto no encontrado",
     notFoundHint: "Este producto ya no existe o aún no está publicado.",
     whySelected: "Por qué la elegimos",
-    whySelectedText: "Seleccionada por su aplicación, construcción y soporte profesional. El origen de fabricación solo se indica cuando está confirmado para este SKU.",
+    whySelectedText:
+      "Seleccionada por su aplicación, construcción y soporte profesional. El origen de fabricación solo se indica cuando está confirmado para este SKU.",
   },
   packs: {
     title: "Packs por oficio",
@@ -514,7 +542,8 @@ const es: Dict = {
   },
   points: {
     title: "Puntos y sorteos semanales",
-    subtitle: "Programa de fidelización — valor siempre garantizado, entrada gratuita al sorteo semanal.",
+    subtitle:
+      "Programa de fidelización — valor siempre garantizado, entrada gratuita al sorteo semanal.",
     howTitle: "Cómo ganar puntos",
     how1: "50 puntos al crear la cuenta",
     how2: "1 punto por cada 1 € de compra",
@@ -525,7 +554,8 @@ const es: Dict = {
     raffleEnter: "Participar esta semana",
     raffleEntered: "Ya estás inscrito esta semana. ¡Buena suerte!",
     raffleSignIn: "Entra en tu cuenta para participar — la inscripción es gratuita.",
-    raffleFree: "Participación gratuita: solo necesitas cuenta e inscribirte en la semana. Comprar nunca es obligatorio.",
+    raffleFree:
+      "Participación gratuita: solo necesitas cuenta e inscribirte en la semana. Comprar nunca es obligatorio.",
     winners: "Ganadores anteriores",
     noWinners: "Aún no hay sorteos realizados.",
     rules: "Reglamento",
@@ -553,7 +583,8 @@ const es: Dict = {
     detail: "Ver productos",
     anchor: "Marca ancla",
     next: "En evaluación",
-    originRule: "El origen de la marca no garantiza el país de fabricación. Lo confirmamos en cada producto.",
+    originRule:
+      "El origen de la marca no garantiza el país de fabricación. Lo confirmamos en cada producto.",
   },
   legal: {
     title: "Información legal",
@@ -585,7 +616,8 @@ const es: Dict = {
     errorRateLimited: "Demasiados intentos. Espera un minuto.",
     passwordHint: "Mínimo 8 caracteres, con letras y números.",
     checkEmailTitle: "Confirma tu email",
-    checkEmailBody: "Te enviamos un enlace de confirmación. Después de confirmar, entra para activar puntos e invitaciones.",
+    checkEmailBody:
+      "Te enviamos un enlace de confirmación. Después de confirmar, entra para activar puntos e invitaciones.",
     checkEmailCta: "Ya confirmé — entrar",
     accountReady: "Cuenta creada. Bienvenido.",
   },
@@ -602,7 +634,7 @@ const es: Dict = {
     badge: "Acceso cerrado",
     title: "REJENDARI abre pronto",
     subtitle:
-      "Estamos preparando una selección de herramienta profesional japonesa con VESSEL, Ko-ken, OLFA, LOBSTER, ANEX, Makita y otros fabricantes. Deja tu email para avisarte en la apertura.",
+      "Estamos preparando una selección de herramienta profesional japonesa con ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA y OLFA. Deja tu email para avisarte en la apertura.",
     codeLabel: "Código de acceso",
     enter: "Entrar",
     wrongCode: "Código incorrecto.",

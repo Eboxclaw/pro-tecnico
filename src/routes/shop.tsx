@@ -9,7 +9,13 @@ import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
-import { CURATED_TOOL_REFERENCES, QUICK_BRANDS, QUICK_FOCUS, referencesForFocus } from "@/data/curated-tool-references";
+import {
+  QUICK_BRANDS,
+  QUICK_FOCUS,
+  referencesForFocus,
+  showcasedReferences,
+  isShowcasedBrand,
+} from "@/data/curated-tool-references";
 import { BRAND_STORY_MAP } from "@/data/brand-stories";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -20,10 +26,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { matchesCatalogQuery, parseCatalogSearch, resolveSmartQuery, matchesStructuredIntents, type CatalogSearch } from "@/lib/catalog-search";
+import {
+  matchesCatalogQuery,
+  parseCatalogSearch,
+  resolveSmartQuery,
+  matchesStructuredIntents,
+  type CatalogSearch,
+} from "@/lib/catalog-search";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const TASKS: Array<{ id: "precision" | "fastening" | "sockets" | "grip" | "cutting" | "hvac" | "power" | "electronics" | "ev"; label: string; jp: string; icon: ToolGlyphName }> = [
+const TASKS: Array<{
+  id:
+    | "precision"
+    | "fastening"
+    | "sockets"
+    | "grip"
+    | "cutting"
+    | "hvac"
+    | "power"
+    | "electronics"
+    | "ev";
+  label: string;
+  jp: string;
+  icon: ToolGlyphName;
+}> = [
   { id: "precision", label: "Precisão & slim", jp: "精密工具", icon: "precision" },
   { id: "fastening", label: "Chaves, bits & aperto", jp: "締結工具", icon: "driver" },
   { id: "sockets", label: "Roquetes & sockets", jp: "ソケット", icon: "socket" },
@@ -42,10 +68,15 @@ export const Route = createFileRoute("/shop")({
       { title: "Loja de ferramenta profissional — REJENDARI" },
       {
         name: "description",
-        content: "Ferramenta profissional japonesa e europeia organizada por regime de trabalho: bits e impacto, 1000 V isolado, grip, sockets, eletrónica, veículos elétricos e máquinas 18V+.",
+        content:
+          "Ferramenta profissional japonesa e europeia organizada por regime de trabalho: bits e impacto, 1000 V isolado, grip, sockets, eletrónica, veículos elétricos e máquinas 18V+.",
       },
       { property: "og:title", content: "Loja — REJENDARI" },
-      { property: "og:description", content: "Explora referências japonesas e europeias por regime de trabalho e marca, com filtros rápidos e especificações úteis para Portugal." },
+      {
+        property: "og:description",
+        content:
+          "Explora referências japonesas e europeias por regime de trabalho e marca, com filtros rápidos e especificações úteis para Portugal.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -66,7 +97,11 @@ function hasTask(productTags: string[], task: string) {
 
 function shopifyMatchesBrand(vendor: string, brand: string) {
   const normalizedVendor = vendor.toUpperCase();
-  return normalizedVendor === brand || normalizedVendor.startsWith(brand) || normalizedVendor.includes(brand);
+  return (
+    normalizedVendor === brand ||
+    normalizedVendor.startsWith(brand) ||
+    normalizedVendor.includes(brand)
+  );
 }
 
 function ShopPage() {
@@ -77,37 +112,86 @@ function ShopPage() {
   const category = search.category ?? "all";
   const task = search.task ?? "all";
   const smart = useMemo(() => resolveSmartQuery(search), [search]);
-  const focus = search.focus ?? smart.intents.find((intent) => intent.dimension !== "task")?.id ?? "all";
-  const criteria = [...smart.intents, ...(search.focus ? [{ id: search.focus, label: search.focus, dimension: search.focus === "vde" ? "certification" as const : "focus" as const }] : [])];
+  const focus =
+    search.focus ?? smart.intents.find((intent) => intent.dimension !== "task")?.id ?? "all";
+  const criteria = [
+    ...smart.intents,
+    ...(search.focus
+      ? [
+          {
+            id: search.focus,
+            label: search.focus,
+            dimension: search.focus === "vde" ? ("certification" as const) : ("focus" as const),
+          },
+        ]
+      : []),
+  ];
   const maxPrice = search.maxPrice ?? "";
   const query = search.q ?? "";
   const [queryDraft, setQueryDraft] = useState(query);
   useEffect(() => setQueryDraft(query), [query]);
   const updateFilter = (key: keyof CatalogSearch, value: string) => {
-    void navigate({ search: (previous) => ({ ...previous, literal: key === "q" && value !== previous.q ? undefined : previous.literal, [key]: value === "all" || !value ? undefined : value, page: undefined }), resetScroll: false });
+    void navigate({
+      search: (previous) => ({
+        ...previous,
+        literal: key === "q" && value !== previous.q ? undefined : previous.literal,
+        [key]: value === "all" || !value ? undefined : value,
+        page: undefined,
+      }),
+      resetScroll: false,
+    });
   };
   const setBrand = (value: string) => updateFilter("brand", value);
   const setTask = (value: string) => updateFilter("task", value);
-  const setFocus = (value: string) => { void navigate({ search: (previous) => ({ ...previous, focus: value === "all" ? undefined : value, literal: value === "all" ? true : previous.literal, page: undefined }), resetScroll: false }); };
+  const setFocus = (value: string) => {
+    void navigate({
+      search: (previous) => ({
+        ...previous,
+        focus: value === "all" ? undefined : value,
+        literal: value === "all" ? true : previous.literal,
+        page: undefined,
+      }),
+      resetScroll: false,
+    });
+  };
   const setCategory = (value: string) => updateFilter("category", value);
   const setMaxPrice = (value: string) => updateFilter("maxPrice", value);
 
-  const { data: products, isLoading, isError, refetch } = useQuery({
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
     queryKey: ["products", "shop"],
     queryFn: () => fetchProducts(100),
   });
 
   const shopifyBrands = useMemo(
-    () => Array.from(new Set((products ?? []).map((p) => p.node.vendor).filter(Boolean))).sort(),
+    () =>
+      Array.from(
+        new Set(
+          (products ?? [])
+            .map((p) => p.node.vendor)
+            .filter(
+              (vendor): vendor is string =>
+                Boolean(vendor) && isShowcasedBrand(vendor.toUpperCase()),
+            ),
+        ),
+      ).sort(),
     [products],
   );
   const categories = useMemo(
-    () => Array.from(new Set((products ?? []).map((p) => p.node.productType).filter(Boolean))).sort(),
+    () =>
+      Array.from(new Set((products ?? []).map((p) => p.node.productType).filter(Boolean))).sort(),
     [products],
   );
 
   const filtered = useMemo(() => {
-    let list = products ?? [];
+    // vitrina: produtos Shopify de marcas fora da allowlist não entram na loja
+    let list = (products ?? []).filter((p) =>
+      isShowcasedBrand((p.node.vendor ?? "").toUpperCase()),
+    );
     if (brand !== "all") list = list.filter((p) => shopifyMatchesBrand(p.node.vendor, brand));
     if (category !== "all") list = list.filter((p) => p.node.productType === category);
     if (task !== "all") list = list.filter((p) => hasTask(p.node.tags, task));
@@ -115,18 +199,48 @@ function ShopPage() {
     if (Number.isFinite(cap) && cap > 0) {
       list = list.filter((p) => parseFloat(p.node.priceRange.minVariantPrice.amount) <= cap);
     }
-    list = list.filter(({ node }) => matchesStructuredIntents(node.tags, criteria) && matchesCatalogQuery(smart.residual, [node.title, node.vendor, node.productType, ...node.tags, ...node.variants.edges.map(({ node: variant }) => variant.sku)]));
-    return search.sort === "name" ? [...list].sort((a, b) => a.node.title.localeCompare(b.node.title, "pt")) : list;
+    list = list.filter(
+      ({ node }) =>
+        matchesStructuredIntents(node.tags, criteria) &&
+        matchesCatalogQuery(smart.residual, [
+          node.title,
+          node.vendor,
+          node.productType,
+          ...node.tags,
+          ...node.variants.edges.map(({ node: variant }) => variant.sku),
+        ]),
+    );
+    return search.sort === "name"
+      ? [...list].sort((a, b) => a.node.title.localeCompare(b.node.title, "pt"))
+      : list;
   }, [products, brand, category, task, maxPrice, smart, search.focus, search.sort]);
 
   const referenceFiltered = useMemo(() => {
-    const groups = criteria.map((intent) => ({ ...intent, ids: new Set(referencesForFocus(intent.id).map((tool) => tool.id)) }));
-    return CURATED_TOOL_REFERENCES.filter((tool) => {
-      if (brand !== "all" && tool.brandSlug !== brand) return false;
-      if (task !== "all" && tool.task !== task) return false;
-      if (!groups.every((intent) => intent.dimension === "task" ? tool.task === intent.id : intent.ids.has(tool.id))) return false;
-      return matchesCatalogQuery(smart.residual, [tool.brand, tool.model, tool.namePt, tool.officialCode, tool.categoryPt, tool.notePt, tool.specPt]);
-    }).sort((a, b) => search.sort === "name" ? a.namePt.localeCompare(b.namePt, "pt") : 0);
+    const groups = criteria.map((intent) => ({
+      ...intent,
+      ids: new Set(referencesForFocus(intent.id).map((tool) => tool.id)),
+    }));
+    return showcasedReferences()
+      .filter((tool) => {
+        if (brand !== "all" && tool.brandSlug !== brand) return false;
+        if (task !== "all" && tool.task !== task) return false;
+        if (
+          !groups.every((intent) =>
+            intent.dimension === "task" ? tool.task === intent.id : intent.ids.has(tool.id),
+          )
+        )
+          return false;
+        return matchesCatalogQuery(smart.residual, [
+          tool.brand,
+          tool.model,
+          tool.namePt,
+          tool.officialCode,
+          tool.categoryPt,
+          tool.notePt,
+          tool.specPt,
+        ]);
+      })
+      .sort((a, b) => (search.sort === "name" ? a.namePt.localeCompare(b.namePt, "pt") : 0));
   }, [brand, task, smart, search.focus, search.sort]);
 
   const pageCount = Math.max(1, Math.ceil(referenceFiltered.length / 24));
@@ -134,12 +248,22 @@ function ShopPage() {
   const visibleReferences = referenceFiltered.slice((page - 1) * 24, page * 24);
 
   const filterBrands = useMemo(
-    () => Array.from(new Set([...QUICK_BRANDS, ...shopifyBrands.map((value) => value.toUpperCase())])),
+    () =>
+      Array.from(new Set([...QUICK_BRANDS, ...shopifyBrands.map((value) => value.toUpperCase())])),
     [shopifyBrands],
   );
 
-  const hasFilters = brand !== "all" || category !== "all" || task !== "all" || focus !== "all" || maxPrice !== "" || query !== "";
-  const clearFilters = () => { setQueryDraft(""); void navigate({ search: {}, resetScroll: false }); };
+  const hasFilters =
+    brand !== "all" ||
+    category !== "all" ||
+    task !== "all" ||
+    focus !== "all" ||
+    maxPrice !== "" ||
+    query !== "";
+  const clearFilters = () => {
+    setQueryDraft("");
+    void navigate({ search: {}, resetScroll: false });
+  };
 
   return (
     <div>
@@ -148,11 +272,16 @@ function ShopPage() {
           <p className="jp-label text-primary">工具一覧 · catálogo REJENDARI</p>
           <div className="mt-4 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <h1 className="font-display text-5xl font-semibold tracking-[-0.055em] sm:text-6xl">{t("shop.title")}</h1>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">{t("shop.subtitle")}</p>
+              <h1 className="font-display text-5xl font-semibold tracking-[-0.055em] sm:text-6xl">
+                {t("shop.title")}
+              </h1>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
+                {t("shop.subtitle")}
+              </p>
             </div>
             <p className="max-w-md border-l border-primary/65 pl-4 text-xs leading-6 text-muted-foreground">
-              Sistema métrico/SI por defeito. Encaixes técnicos como 1/4″, 3/8″ e 1/2″ mantêm a medida usada profissionalmente.
+              Sistema métrico/SI por defeito. Encaixes técnicos como 1/4″, 3/8″ e 1/2″ mantêm a
+              medida usada profissionalmente.
             </p>
           </div>
         </div>
@@ -170,10 +299,15 @@ function ShopPage() {
               onClick={() => setTask(task === item.id ? "all" : item.id)}
               className={`category-tile flex min-h-28 flex-col items-start justify-between p-4 text-left ${task === item.id ? "bg-secondary text-foreground" : "bg-surface text-muted-foreground"}`}
             >
-              <ToolGlyph name={item.icon} className={`h-6 w-6 ${task === item.id ? "text-primary" : ""}`} />
+              <ToolGlyph
+                name={item.icon}
+                className={`h-6 w-6 ${task === item.id ? "text-primary" : ""}`}
+              />
               <span className="mt-5">
                 <span className="block text-[11px] leading-4">{item.label}</span>
-                <span className="jp-label mt-1 block text-[9px] text-muted-foreground/55">{item.jp}</span>
+                <span className="jp-label mt-1 block text-[9px] text-muted-foreground/55">
+                  {item.jp}
+                </span>
               </span>
             </button>
           ))}
@@ -206,11 +340,15 @@ function ShopPage() {
 
       <section className="border-b border-border bg-[#1b1917] text-[#f5f0e5]">
         <div className="mx-auto flex max-w-[1440px] items-center gap-2 overflow-x-auto px-4 py-3 sm:px-6">
-          <span className="mr-2 min-w-max font-mono text-[9px] uppercase tracking-[0.15em] text-white/45">Filtros rápidos</span>
+          <span className="mr-2 min-w-max font-mono text-[9px] uppercase tracking-[0.15em] text-white/45">
+            Filtros rápidos
+          </span>
           <button
             type="button"
             aria-pressed={focus === "all"}
-            onClick={() => { setFocus("all"); }}
+            onClick={() => {
+              setFocus("all");
+            }}
             className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === "all" ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
           >
             Tudo
@@ -223,7 +361,28 @@ function ShopPage() {
               onClick={() => setFocus(focus === item.id ? "all" : item.id)}
               className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === item.id ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
             >
-              {item.label} <span aria-label="referências editoriais">({referencesForFocus(item.id).filter((tool) => (brand === "all" || tool.brandSlug === brand) && (task === "all" || tool.task === task) && matchesCatalogQuery(smart.residual, [tool.brand, tool.model, tool.namePt, tool.officialCode, tool.categoryPt, tool.notePt, tool.specPt])).length})</span> <span className="ml-1 font-display text-[9px] text-current/55">{item.jp}</span>
+              {item.label}{" "}
+              <span aria-label="referências editoriais">
+                (
+                {
+                  referencesForFocus(item.id).filter(
+                    (tool) =>
+                      (brand === "all" || tool.brandSlug === brand) &&
+                      (task === "all" || tool.task === task) &&
+                      matchesCatalogQuery(smart.residual, [
+                        tool.brand,
+                        tool.model,
+                        tool.namePt,
+                        tool.officialCode,
+                        tool.categoryPt,
+                        tool.notePt,
+                        tool.specPt,
+                      ]),
+                  ).length
+                }
+                )
+              </span>{" "}
+              <span className="ml-1 font-display text-[9px] text-current/55">{item.jp}</span>
             </button>
           ))}
         </div>
@@ -231,17 +390,56 @@ function ShopPage() {
 
       <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
         <div className="signal-rule flex flex-wrap items-center gap-3 border border-border bg-card p-4 pt-5">
-          <form role="search" className="flex w-full gap-2" onSubmit={(event) => { event.preventDefault(); updateFilter("q", queryDraft); }}>
-            <Input aria-label="Pesquisar ferramentas" placeholder="Marca, modelo, código ou trabalho…" value={queryDraft} onChange={(event) => setQueryDraft(event.target.value)} className="min-w-0 flex-1 bg-background" maxLength={160} />
+          <form
+            role="search"
+            className="flex w-full gap-2"
+            onSubmit={(event) => {
+              event.preventDefault();
+              updateFilter("q", queryDraft);
+            }}
+          >
+            <Input
+              aria-label="Pesquisar ferramentas"
+              placeholder="Marca, modelo, código ou trabalho…"
+              value={queryDraft}
+              onChange={(event) => setQueryDraft(event.target.value)}
+              className="min-w-0 flex-1 bg-background"
+              maxLength={160}
+            />
             <Button type="submit">Pesquisar</Button>
           </form>
           <div className="flex w-full flex-wrap gap-2" aria-label="Sugestões de pesquisa">
-            {["ANEX diamante PH2", "1000v", "vde", "ratchet"].map((suggestion) => <button type="button" className="min-h-11 border border-border px-3 text-xs" key={suggestion} onClick={() => updateFilter("q", suggestion)}>{suggestion}</button>)}
+            {["ANEX diamante PH2", "1000v", "vde", "ratchet"].map((suggestion) => (
+              <button
+                type="button"
+                className="min-h-11 border border-border px-3 text-xs"
+                key={suggestion}
+                onClick={() => updateFilter("q", suggestion)}
+              >
+                {suggestion}
+              </button>
+            ))}
           </div>
-          {smart.intents.length > 0 && <button type="button" className="min-h-11 w-full border border-primary/30 bg-primary/5 p-3 text-left text-sm" onClick={() => { void navigate({ search: (previous) => ({ ...previous, literal: true, page: undefined }), resetScroll: false }); }} aria-label="Remover interpretação e pesquisar literalmente">
-            Interpretação: {smart.intents.map((intent) => intent.label).join(" + ")} · remover ×
-          </button>}
-          {search.literal && <p className="w-full text-sm text-muted-foreground">Pesquisa literal. A interpretação volta a ativar-se quando mudares a consulta.</p>}
+          {smart.intents.length > 0 && (
+            <button
+              type="button"
+              className="min-h-11 w-full border border-primary/30 bg-primary/5 p-3 text-left text-sm"
+              onClick={() => {
+                void navigate({
+                  search: (previous) => ({ ...previous, literal: true, page: undefined }),
+                  resetScroll: false,
+                });
+              }}
+              aria-label="Remover interpretação e pesquisar literalmente"
+            >
+              Interpretação: {smart.intents.map((intent) => intent.label).join(" + ")} · remover ×
+            </button>
+          )}
+          {search.literal && (
+            <p className="w-full text-sm text-muted-foreground">
+              Pesquisa literal. A interpretação volta a ativar-se quando mudares a consulta.
+            </p>
+          )}
           <SlidersHorizontal className="h-4 w-4 text-primary" />
 
           <Select value={brand} onValueChange={setBrand}>
@@ -251,20 +449,27 @@ function ShopPage() {
             <SelectContent>
               <SelectItem value="all">{t("common.allBrands")}</SelectItem>
               {filterBrands.map((value) => (
-                <SelectItem key={value} value={value}>{BRAND_STORY_MAP[value]?.name ?? value}</SelectItem>
+                <SelectItem key={value} value={value}>
+                  {BRAND_STORY_MAP[value]?.name ?? value}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
 
           {categories.length > 0 && (
             <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger aria-label="Categoria de produtos publicados" className="w-48 bg-background">
+              <SelectTrigger
+                aria-label="Categoria de produtos publicados"
+                className="w-48 bg-background"
+              >
                 <SelectValue placeholder={t("common.allCategories")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">{t("common.allCategories")}</SelectItem>
                 {categories.map((value) => (
-                  <SelectItem key={value} value={value}>{value}</SelectItem>
+                  <SelectItem key={value} value={value}>
+                    {value}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -282,15 +487,28 @@ function ShopPage() {
             />
           )}
 
-          <Select value={search.sort ?? "selection"} onValueChange={(value) => updateFilter("sort", value)}>
-            <SelectTrigger aria-label="Ordenação" className="w-44"><SelectValue /></SelectTrigger>
-            <SelectContent><SelectItem value="selection">Seleção REJENDARI</SelectItem><SelectItem value="name">Nome: A–Z</SelectItem></SelectContent>
+          <Select
+            value={search.sort ?? "selection"}
+            onValueChange={(value) => updateFilter("sort", value)}
+          >
+            <SelectTrigger aria-label="Ordenação" className="w-44">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="selection">Seleção REJENDARI</SelectItem>
+              <SelectItem value="name">Nome: A–Z</SelectItem>
+            </SelectContent>
           </Select>
           {hasFilters && (
-            <Button variant="ghost" size="sm" onClick={clearFilters}>{t("common.clearFilters")}</Button>
+            <Button variant="ghost" size="sm" onClick={clearFilters}>
+              {t("common.clearFilters")}
+            </Button>
           )}
 
-          <span role="status" className="ml-auto font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
+          <span
+            role="status"
+            className="ml-auto font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground"
+          >
             {referenceFiltered.length} referências
           </span>
         </div>
@@ -303,13 +521,14 @@ function ShopPage() {
                 {focus !== "all"
                   ? QUICK_FOCUS.find((item) => item.id === focus)?.label
                   : brand !== "all"
-                    ? BRAND_STORY_MAP[brand]?.name ?? brand
+                    ? (BRAND_STORY_MAP[brand]?.name ?? brand)
                     : task !== "all"
                       ? TASKS.find((item) => item.id === task)?.label
                       : "Seleção REJENDARI"}
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-                Explora as referências antes de comprar. Cada cartão mostra a função, medidas úteis e acesso à ficha oficial.
+                Explora as referências antes de comprar. Cada cartão mostra a função, medidas úteis
+                e acesso à ficha oficial.
               </p>
             </div>
             {brand !== "all" && BRAND_STORY_MAP[brand] && (
@@ -324,10 +543,18 @@ function ShopPage() {
 
           {referenceFiltered.length === 0 ? (
             <div className="mt-6 border border-border bg-surface p-8 text-center">
-              <p className="font-display text-xl font-semibold">Ainda não encontrámos uma referência para esta combinação.</p>
-              <p className="mt-2 text-sm text-muted-foreground">Limpa um filtro ou pede-nos uma referência específica.</p>
-              <Button variant="outline" className="mt-5 mr-3 rounded-none" onClick={clearFilters}>Limpar filtros</Button>
-              <Button className="mt-5 rounded-none" asChild><Link to="/b2b">Pedir referência</Link></Button>
+              <p className="font-display text-xl font-semibold">
+                Ainda não encontrámos uma referência para esta combinação.
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Limpa um filtro ou pede-nos uma referência específica.
+              </p>
+              <Button variant="outline" className="mt-5 mr-3 rounded-none" onClick={clearFilters}>
+                Limpar filtros
+              </Button>
+              <Button className="mt-5 rounded-none" asChild>
+                <Link to="/b2b">Pedir referência</Link>
+              </Button>
             </div>
           ) : (
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -336,11 +563,40 @@ function ShopPage() {
               ))}
             </div>
           )}
-          {pageCount > 1 && <nav aria-label="Páginas de referências" className="mt-8 flex items-center justify-center gap-4">
-            <Button variant="outline" disabled={page === 1} onClick={() => void navigate({ search: (previous) => ({ ...previous, page: page - 1 }), resetScroll: false })}>Anterior</Button>
-            <span role="status" className="text-sm">{page} / {pageCount}</span>
-            <Button variant="outline" disabled={page === pageCount} onClick={() => void navigate({ search: (previous) => ({ ...previous, page: page + 1 }), resetScroll: false })}>Seguinte</Button>
-          </nav>}
+          {pageCount > 1 && (
+            <nav
+              aria-label="Páginas de referências"
+              className="mt-8 flex items-center justify-center gap-4"
+            >
+              <Button
+                variant="outline"
+                disabled={page === 1}
+                onClick={() =>
+                  void navigate({
+                    search: (previous) => ({ ...previous, page: page - 1 }),
+                    resetScroll: false,
+                  })
+                }
+              >
+                Anterior
+              </Button>
+              <span role="status" className="text-sm">
+                {page} / {pageCount}
+              </span>
+              <Button
+                variant="outline"
+                disabled={page === pageCount}
+                onClick={() =>
+                  void navigate({
+                    search: (previous) => ({ ...previous, page: page + 1 }),
+                    resetScroll: false,
+                  })
+                }
+              >
+                Seguinte
+              </Button>
+            </nav>
+          )}
         </section>
 
         {(isError || isLoading || (products?.length ?? 0) > 0) && (
@@ -348,14 +604,26 @@ function ShopPage() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="jp-label text-primary">購入可能 · disponível para compra</p>
-                <h2 className="mt-2 font-display text-3xl font-semibold tracking-[-0.045em]">Produtos publicados</h2>
+                <h2 className="mt-2 font-display text-3xl font-semibold tracking-[-0.045em]">
+                  Produtos publicados
+                </h2>
               </div>
-              <p className="text-xs text-muted-foreground">Stock e preço vêm do catálogo de venda.</p>
+              <p className="text-xs text-muted-foreground">
+                Stock e preço vêm do catálogo de venda.
+              </p>
             </div>
 
             <div className="mt-6">
               {isError ? (
-                <div role="alert" className="border border-border bg-surface p-6"><p>Não foi possível carregar preços e disponibilidade. As referências continuam disponíveis para consulta.</p><Button variant="outline" className="mt-4" onClick={() => void refetch()}>Tentar novamente</Button></div>
+                <div role="alert" className="border border-border bg-surface p-6">
+                  <p>
+                    Não foi possível carregar preços e disponibilidade. As referências continuam
+                    disponíveis para consulta.
+                  </p>
+                  <Button variant="outline" className="mt-4" onClick={() => void refetch()}>
+                    Tentar novamente
+                  </Button>
+                </div>
               ) : isLoading ? (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {Array.from({ length: 8 }).map((_, i) => (
@@ -363,7 +631,9 @@ function ShopPage() {
                   ))}
                 </div>
               ) : filtered.length === 0 ? (
-                <p className="border border-border py-16 text-center text-muted-foreground">{t("shop.noResults")}</p>
+                <p className="border border-border py-16 text-center text-muted-foreground">
+                  {t("shop.noResults")}
+                </p>
               ) : (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {filtered.map((product) => (
@@ -378,9 +648,12 @@ function ShopPage() {
         <section className="mt-12 flex flex-col gap-5 border border-border bg-surface p-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="jp-label text-primary">相談 · não encontraste?</p>
-            <h2 className="mt-2 font-display text-2xl font-semibold">Diz-nos a marca, modelo ou trabalho.</h2>
+            <h2 className="mt-2 font-display text-2xl font-semibold">
+              Diz-nos a marca, modelo ou trabalho.
+            </h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-              Podemos procurar uma referência específica, alternativa compatível ou preparar uma seleção para empresa.
+              Podemos procurar uma referência específica, alternativa compatível ou preparar uma
+              seleção para empresa.
             </p>
           </div>
           <Button className="w-fit rounded-none" asChild>

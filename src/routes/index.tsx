@@ -1,43 +1,32 @@
-import { AnexSignatureSolutions } from "@/components/shop/AnexSignatureSolutions";
-import { ProductImage } from "@/components/shop/ProductImage";
+import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, PackageSearch, ShieldCheck, Sparkles } from "lucide-react";
-import { useT } from "@/lib/i18n";
-import { fetchProducts } from "@/lib/shopify";
-import { ProductCard } from "@/components/shop/ProductCard";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
-import { RatchetDriverComparison } from "@/components/shop/RatchetDriverComparison";
-import { BitRegimeComparison } from "@/components/shop/BitRegimeComparison";
-import { SmartKitShowcase } from "@/components/shop/SmartKitShowcase";
-import { BitKitRail } from "@/components/shop/BitKitRail";
-import { WeraFeature } from "@/components/shop/WeraFeature";
-import { RejendariEdit } from "@/components/shop/RejendariEdit";
-import { GripWrenchSpotlight } from "@/components/shop/GripWrenchSpotlight";
-import { RejendariPromiseStrip } from "@/components/brand/RejendariPromiseStrip";
-import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
-import { REJENDARI_KITS } from "@/data/kits";
-import { LxtCollection } from "@/components/shop/LxtCollection";
-import { ArtisanHero } from "@/components/brand/ArtisanHero";
-import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
+import { FeaturedDropCard } from "@/components/systems/SystemCards";
 import { RejendariSeal } from "@/components/brand/RejendariSeal";
-import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { BRAND_STORIES } from "@/data/brand-stories";
+import { referenceById, SHOWCASED_BRANDS } from "@/data/curated-tool-references";
+import { REJENDARI_KITS } from "@/data/kits";
+import { featuredSystem } from "@/data/systems";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "REJENDARI — O melhor para cada regime de trabalho" },
+      { title: "REJENDARI — Ferramentas excecionais. Sistemas mais inteligentes." },
       {
         name: "description",
         content:
-          "Ferramenta profissional escolhida por regime de trabalho: bits e impacto, 1000 V isolado, grip, sockets, eletrónica e veículos elétricos. Japão e Europa no mesmo critério.",
+          "A REJENDARI encontra ferramentas excecionais, testa compatibilidades e cria sistemas mais inteligentes. Curadoria técnica em Portugal — do impacto ao 1000 V.",
       },
-      { property: "og:title", content: "REJENDARI — Ferramenta escolhida para trabalhar" },
+      {
+        property: "og:title",
+        content: "REJENDARI — Ferramentas excecionais. Sistemas mais inteligentes.",
+      },
       {
         property: "og:description",
-        content: "VESSEL, Ko-ken, ANEX, Wera, Knipex, Wiha e Bahco: curadoria técnica em Portugal, do impacto ao 1000 V.",
+        content:
+          "ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA e OLFA: seleção, sistemas e procura da comunidade a decidir os próximos drops.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -46,113 +35,444 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const BRANDS = [
-  { label: "ANEX", slug: "ANEX" },
-  { label: "MAKITA", slug: "MAKITA" },
-  { label: "VESSEL", slug: "VESSEL" },
-  { label: "WERA", slug: "WERA" },
-  { label: "KNIPEX", slug: "KNIPEX" },
-  { label: "WIHA", slug: "WIHA" },
-  { label: "BAHCO", slug: "BAHCO" },
-  { label: "OLFA", slug: "OLFA" },
-  { label: "TAJIMA", slug: "TAJIMA" },
-  { label: "KO-KEN", slug: "KO-KEN" },
-  { label: "FUJIYA", slug: "FUJIYA" },
-  { label: "TSUNODA", slug: "TSUNODA" },
-  { label: "TOP KOGYO", slug: "TOP" },
-  { label: "ENGINEER", slug: "ENGINEER" },
-  { label: "HOZAN", slug: "HOZAN" },
-  { label: "LOBSTER / LOBTEX", slug: "LOBSTER" },
-  { label: "TONE", slug: "TONE" },
-  { label: "NEPROS", slug: "NEPROS" },
+/** A cadeia da casa: descobrir → escolher → combinar → trabalhar. */
+const PIPELINE = [
+  {
+    kanji: "探",
+    jp: "探す",
+    pt: "Descobrir",
+    note: "Fabricantes que resolvem problemas reais de trabalho.",
+  },
+  {
+    kanji: "選",
+    jp: "選ぶ",
+    pt: "Escolher",
+    note: "Uma referência por classe. A melhor ganha, sempre.",
+  },
+  {
+    kanji: "組",
+    jp: "組む",
+    pt: "Combinar",
+    note: "Sistemas que crescem por módulos, sem duplicar peças.",
+  },
+  {
+    kanji: "仕事",
+    jp: "仕事",
+    pt: "Trabalhar",
+    note: "Menos peso na mala, mais trabalho resolvido.",
+  },
 ];
 
-const CATEGORIES: Array<{
-  task: string;
-  icon: ToolGlyphName;
-  label: string;
-  note: string;
-}> = [
-  { task: "precision", icon: "precision", label: "Precisão & slim", note: "Elétrico slim, microparafusos e bancada" },
-  { task: "fastening", icon: "driver", label: "Chaves, bits & aperto", note: "Impacto, torsion e controlo de torque" },
-  { task: "sockets", icon: "socket", label: "Roquetes & sockets", note: "Ko-ken, TONE e Wera VDE" },
-  { task: "grip", icon: "grip", label: "Alicates & chaves", note: "Cobra, Pliers Wrench e ajustáveis" },
-  { task: "cutting", icon: "cut", label: "Corte & lâminas", note: "OLFA, TAJIMA e corte de obra" },
-  { task: "hvac", icon: "hvac", label: "AVAC & instalação", note: "Tubo, cobre e trabalho de campo" },
-  { task: "power", icon: "power", label: "Máquinas 18V+", note: "Plataformas profissionais a bateria" },
-  { task: "electronics", icon: "electronics", label: "Eletrónica & bancada", note: "ESD, precisão, PCBs e equipamentos" },
-  { task: "ev", icon: "ev", label: "Veículos elétricos", note: "1000 V, torque e cabos HV" },
+const SYMBOLS = [
+  {
+    kanji: "選",
+    title: "Descoberta & seleção",
+    text: "Não agregamos catálogos. Encontramos ferramentas excecionais — aço especificado, ergonomia provada, origem declarada — e deixamos as restantes de fora.",
+  },
+  {
+    kanji: "組",
+    title: "Compatibilidade & sistema",
+    text: "Testamos como as ferramentas trabalham juntas: o mesmo bit no roquete, na máquina e no impacto. Cada módulo entra porque desbloqueia trabalho novo.",
+  },
+  {
+    kanji: "仕事",
+    title: "Trabalho resolvido",
+    text: "O resultado mede-se no dia: menos peças repetidas, menos peso, mais cobertura. O investimento anterior continua útil quando o sistema cresce.",
+  },
 ];
 
-const REGIMES: Array<{ jp: string; label: string; note: string; focus: string }> = [
-  { jp: "衝撃", label: "Impacto", note: "Black Ryujin em Cr-Mo-V", focus: "impact-bits" },
-  { jp: "捻り", label: "Torsion", note: "Black Ryujin e zonas torsionais", focus: "bits" },
-  { jp: "絶縁", label: "1000 V", note: "VDE, slimBits e isolados", focus: "insulated" },
-  { jp: "電子", label: "Eletrónica", note: "ESD e precisão de bancada", focus: "electronics" },
-  { jp: "電動", label: "VE", note: "Torque e cabos de alta tensão", focus: "ev" },
-  { jp: "トルク", label: "Torque", note: "Binário calibrado e controlado", focus: "torque" },
+const HOUSE_RULES = [
+  ["BEST COMPONENT WINS", "Nem tudo de uma marca: cada peça entra porque é a certa."],
+  ["SÓ IMPACTO DOCUMENTADO", "O selo IMPACT READY só aparece quando está tecnicamente provado."],
+  ["MENOS DUPLICAÇÃO", "Se a resposta for “aumenta o número de peças”, não entra."],
+] as const;
+
+/** Peças ANEX que abrem a seleção individual — a escola fundadora. */
+const ANEX_PICKS = [
+  "anex-397-d",
+  "anex-ryujin-artm5-01",
+  "anex-adrs-2065",
+  "anex-art-14m-2-65",
+  "anex-431",
+  "anex-307-s1",
 ];
 
-const PACKS = ["AVAC", "Eletricidade", "Manutenção", "Solar", "Eletrónica", "Veículos elétricos"];
-
-const HIGHLIGHT_IDS = [
-  "anex-7920",
-  "koken-3725z",
+/** Destaques das outras escolas, todas em vitrina. */
+const SCHOOL_PICKS = [
+  "wera-8100-sb-6",
   "knipex-cobra-250",
   "vessel-220usb-s1eb",
-  "knipex-pliers-wrench-250",
+  "bahco-s330",
   "olfa-xh-1",
-];
-
-const CURATION_IMAGE_IDS = [
-  "vessel-220usb-s1eb",
-  "top-hm32",
-  "tsunoda-wp250sc",
-  "olfa-xh-1",
+  "tajima-l25-50e1-eur",
 ];
 
 function Index() {
-  const t = useT();
-  const { data: products, isLoading } = useQuery({
-    queryKey: ["products", "home"],
-    queryFn: () => fetchProducts(8),
-  });
-
-  const highlightTools = HIGHLIGHT_IDS
-    .map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id))
-    .filter((tool): tool is (typeof CURATED_TOOL_REFERENCES)[number] => Boolean(tool));
-
-  const curationImageTools = CURATION_IMAGE_IDS
-    .map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id))
-    .filter((tool): tool is (typeof CURATED_TOOL_REFERENCES)[number] => Boolean(tool?.imageUrl));
+  const featured = featuredSystem();
+  const anexPicks = ANEX_PICKS.map(referenceById).filter(Boolean);
+  const schoolPicks = SCHOOL_PICKS.map(referenceById).filter(Boolean);
 
   return (
     <div>
-      <ArtisanHero />
-      <section id="selecao" className="artisan-introduction scroll-mt-40">
-        <p className="artisan-section-index">01 / A NOSSA SELEÇÃO</p>
-        <h2>Uma boa ferramenta<br /><span>muda a forma de trabalhar.</span></h2>
-        <div><p>O equilíbrio na mão. O encaixe exato. O controlo no último aperto. Procuramos esses detalhes nas ferramentas que escolhemos.</p><p>A ANEX tem um lugar especial nesta seleção, ao lado de VESSEL, Ko-ken e outras marcas que estudamos pelo trabalho que resolvem.</p><Link to="/shop" className="artisan-text-link">Encontrar a ferramenta certa <ArrowRight size={16} aria-hidden="true" /></Link></div>
-      </section>
+      {/* ── HERO · a promessa ─────────────────────────────────── */}
+      <section className="relative flex min-h-[92svh] flex-col overflow-hidden bg-[#1b1917]">
+        <div className="technical-grid absolute inset-0 opacity-60" aria-hidden="true" />
+        <div className="washi-noise absolute inset-0 opacity-20" aria-hidden="true" />
+        <span
+          className="hero-kanji-ghost pointer-events-none absolute -right-8 top-1/2 hidden -translate-y-1/2 select-none font-display text-[26rem] font-semibold leading-none text-white/[0.05] lg:block"
+          aria-hidden="true"
+        >
+          選
+        </span>
+        <span
+          className="writing-vertical absolute right-6 top-28 hidden select-none font-display text-base leading-loose tracking-[0.4em] text-white/35 md:right-14 lg:block"
+          aria-hidden="true"
+        >
+          選り抜きの道具を、より賢く。
+        </span>
 
-      <section className="mx-auto max-w-[1440px] px-4 pb-16 pt-14 sm:px-6 lg:pb-20">
-        <div className="relative">
-          <RejendariSeal className="absolute -left-5 -top-6 z-40 hidden md:grid" />
-          <HeroToolConstellation />
+        <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-4 pb-24 pt-32 sm:px-6 lg:px-10">
+          <p className="hero-rise hero-rise-1 jp-label text-[#dfbba4]">
+            選定工具 · curated tool systems
+          </p>
+          <h1 className="hero-rise hero-rise-2 mt-6 max-w-5xl font-display text-6xl font-semibold leading-[0.9] tracking-[-0.06em] text-white sm:text-8xl">
+            REJENDARI
+          </h1>
+          <p className="hero-rise hero-rise-3 mt-6 max-w-2xl font-display text-2xl font-semibold leading-[1.1] tracking-[-0.04em] text-white/90 sm:text-3xl">
+            Encontramos ferramentas excecionais.
+            <span className="text-[#dfbba4]"> Criamos sistemas mais inteligentes.</span>
+          </p>
+          <p className="hero-rise hero-rise-3 mt-5 max-w-xl text-sm leading-7 text-white/55">
+            Não fabricamos. Não colamos autocolantes. Descobrimos, escolhemos, combinamos — e a
+            procura da comunidade decide o que entra em produção.
+          </p>
+
+          <div className="hero-rise hero-rise-4 mt-12 grid max-w-4xl grid-cols-2 gap-px border border-white/12 bg-white/12 sm:grid-cols-4">
+            {PIPELINE.map((step, index) => (
+              <div key={step.kanji} className="relative bg-[#1b1917] p-4 sm:p-5">
+                <span className="absolute right-3 top-3 font-mono text-[9px] text-white/25">
+                  0{index + 1}
+                </span>
+                <span className="font-display text-3xl text-[#dfbba4]">{step.kanji}</span>
+                <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-white/40">
+                  {step.jp}
+                </p>
+                <p className="mt-1 font-display text-lg font-semibold text-white">{step.pt}</p>
+                <p className="mt-2 text-[11px] leading-5 text-white/50">{step.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="hero-rise hero-rise-4 mt-10 flex flex-wrap items-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-none bg-white text-[#1b1917] hover:bg-[#dfbba4]"
+            >
+              <a href="#systems">
+                Ver os systems
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-none border-white/25 bg-transparent text-white hover:border-[#dfbba4] hover:bg-transparent hover:text-[#dfbba4]"
+            >
+              <a href="#anex">Começar pela ANEX</a>
+            </Button>
+          </div>
+        </div>
+
+        <div
+          className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
+          aria-hidden="true"
+        >
+          <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-white/30">
+            scroll
+          </span>
+          <span className="hero-scroll-hint block h-10 w-px bg-[#dfbba4]/60" />
         </div>
       </section>
 
-      <section className="border-b border-border bg-[#1b1917]">
-        <div className="brand-marquee py-5">
-          <div className="brand-marquee-track gap-12 pr-12">
-            {[...BRANDS, ...BRANDS].map((brand, index) => (
+      {/* ── 01 · SIMBOLOGIA ───────────────────────────────────── */}
+      <section className="section-reveal paper-panel">
+        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+          <div className="flex flex-col gap-4 border-b border-black/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="jp-label text-primary">
+                <span className="mr-3 font-mono">01</span>基準 · o que a marca significa
+              </p>
+              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
+                Três ideias. Uma casa de seleção.
+              </h2>
+            </div>
+            <RejendariSeal className="hidden lg:grid" />
+          </div>
+
+          <div className="mt-10 grid gap-px border border-black/15 bg-black/15 lg:grid-cols-3">
+            {SYMBOLS.map((symbol, index) => (
+              <article key={symbol.kanji} className="relative bg-[#f3eee2] p-7 sm:p-9">
+                <span
+                  className="pointer-events-none absolute -right-2 -top-6 select-none font-display text-[7rem] font-semibold leading-none text-black/[0.06]"
+                  aria-hidden="true"
+                >
+                  {symbol.kanji}
+                </span>
+                <span className="font-mono text-[10px] text-black/40">0{index + 1}</span>
+                <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-0.03em]">
+                  {symbol.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-black/62">{symbol.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-px grid gap-px border border-black/15 bg-black/15 sm:grid-cols-3">
+            {HOUSE_RULES.map(([rule, note]) => (
+              <p
+                key={rule}
+                className="bg-[#1b1917] p-5 font-mono text-[9px] uppercase leading-5 tracking-[0.15em] text-white/60"
+              >
+                <span className="mb-2 block text-[#dfbba4]">{rule}</span>
+                {note}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 02 · O DROP EM RESERVAS ───────────────────────────── */}
+      {featured && (
+        <section id="systems" className="section-reveal scroll-mt-24 bg-[#1b1917]">
+          <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+            <div className="flex flex-col gap-3 pb-8 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="jp-label text-[#dfbba4]">
+                  <span className="mr-3 font-mono">02</span>注目のドロップ · featured drop
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
+                  O primeiro system está em reservas.
+                </h2>
+              </div>
+              <p className="max-w-md text-sm leading-6 text-white/55">
+                €0 para reservar, sem cartão. Quando a procura atingir o MOQ, o drop é confirmado e
+                as reservas têm prioridade de 48 horas.
+              </p>
+            </div>
+            <FeaturedDropCard system={featured} />
+            <div className="mt-6 flex justify-end">
               <Link
-                key={brand.slug + index}
+                to="/packs"
+                className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-[#dfbba4]"
+              >
+                Todos os systems e módulos
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── 03 · KITS 組 ──────────────────────────────────────── */}
+      <section className="section-reveal border-b border-border">
+        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="jp-label text-primary">
+                <span className="mr-3 font-mono">03</span>職人キット · kits de assinatura
+              </p>
+              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
+                Dois sistemas, três caixas de ofício.
+              </h2>
+            </div>
+            <Button variant="outline" asChild className="rounded-none">
+              <Link to="/packs">
+                Ver os kits
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
+            {REJENDARI_KITS.map((kit) => (
+              <Link
+                key={kit.id}
+                to="/packs"
+                className="category-tile group flex min-h-44 flex-col bg-card p-5"
+              >
+                <span className="flex items-center justify-between">
+                  <span className="font-display text-3xl text-primary" aria-hidden>
+                    {kit.format === "kit" ? "組" : "箱"}
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {kit.jp.split(" · ")[0]}
+                  </span>
+                </span>
+                <span className="mt-auto text-sm font-medium leading-5">{kit.trade}</span>
+                <span className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">
+                  {kit.title}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 04 · PEÇAS INDIVIDUAIS · ANEX PRIMEIRO ────────────── */}
+      <section
+        id="anex"
+        className="section-reveal scroll-mt-24 border-b border-border bg-surface/40"
+      >
+        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+            <div>
+              <p className="jp-label text-primary">
+                <span className="mr-3 font-mono">04</span>アネックス · começa pela ANEX
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
+                A escola de Sanjō.
+                <br />
+                <span className="text-primary">Feita numa casa só.</span>
+              </h2>
+              <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground">
+                A ANEX é o alicerce da seleção: o Quick Ball 72 no punho, os bits Ryujin em Cr-Mo-V
+                fabricados no Japão, o aperto offset que chega onde os outros não chegam. 一貫生産 —
+                do aço ao fio, na mesma casa. É aqui que o sistema REJENDARI começa.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                <Button asChild className="rounded-none bg-black text-white hover:bg-black/85">
+                  <Link to="/anex">
+                    A seleção ANEX
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button variant="outline" asChild className="rounded-none">
+                  <Link to="/shop" search={{ brand: "ANEX" }}>
+                    Ver na loja
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-3">
+              {anexPicks.slice(0, 6).map((tool) => (
+                <Link
+                  key={tool!.id}
+                  to="/referencia/$id"
+                  params={{ id: tool!.id }}
+                  className="product-plate group relative aspect-square overflow-hidden"
+                >
+                  {tool!.imageUrl ? (
+                    <ProductImage
+                      src={tool!.imageUrl}
+                      alt={tool!.imageAlt ?? tool!.namePt}
+                      className="absolute inset-0 h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <ProductMonogram
+                      brand={tool!.brand}
+                      label={tool!.namePt}
+                      className="flex h-full w-full items-center justify-center"
+                    />
+                  )}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-3 pt-10 text-white">
+                    <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-white/70">
+                      {tool!.brand} · {tool!.model}
+                    </p>
+                    <p className="mt-0.5 line-clamp-1 font-display text-sm font-semibold">
+                      {tool!.namePt}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {anexPicks.slice(0, 3).map((tool) => (
+              <ReferenceProductCard key={tool!.id} tool={tool!} featured />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 05 · AS OUTRAS ESCOLAS ────────────────────────────── */}
+      <section className="section-reveal border-b border-border">
+        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+          <div className="flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="jp-label text-primary">
+                <span className="mr-3 font-mono">05</span>ブランド · as outras escolas
+              </p>
+              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
+                Oito casas. Um só critério.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-muted-foreground">
+              Best component wins: Wera para o roquete 3/8″, Knipex e Bahco para o grip, VESSEL para
+              o Ball Grip, Makita para as máquinas, TAJIMA e OLFA para medida e corte.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {BRAND_STORIES.map((brand) => (
+              <Link
+                key={brand.slug}
                 to="/marcas"
                 search={{ brand: brand.slug }}
+                className="category-tile group flex min-h-40 flex-col bg-card p-5"
+              >
+                <span className="jp-label text-muted-foreground">{brand.jp}</span>
+                <span className="mt-auto font-display text-xl font-semibold tracking-[-0.03em] group-hover:text-primary">
+                  {brand.name}
+                </span>
+                <span className="mt-1 line-clamp-1 text-xs text-muted-foreground">
+                  {brand.specialty}
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {schoolPicks.map((tool) => (
+              <ReferenceProductCard key={tool!.id} tool={tool!} featured />
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-col gap-4 border border-border bg-background p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-display text-xl font-semibold">
+                Procuras uma referência específica?
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Diz-nos a marca, o modelo ou o trabalho a fazer.
+              </p>
+            </div>
+            <Button asChild className="rounded-none">
+              <Link to="/b2b">
+                Pedir disponibilidade
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── divisor · marquee das marcas em vitrina ───────────── */}
+      <section className="bg-[#1b1917]">
+        <div className="brand-marquee py-5">
+          <div className="brand-marquee-track gap-12 pr-12">
+            {[...SHOWCASED_BRANDS, ...SHOWCASED_BRANDS].map((brand, index) => (
+              <Link
+                key={brand + index}
+                to="/marcas"
+                search={{ brand }}
                 className="flex items-center gap-12 font-mono text-[11px] uppercase tracking-[0.19em] text-white/46 transition-colors hover:text-white"
               >
-                {brand.label}
+                {brand}
                 <span className="h-1 w-1 rounded-full bg-primary" />
               </Link>
             ))}
@@ -160,368 +480,39 @@ function Index() {
         </div>
       </section>
 
-      <LxtCollection />
-
-      <AnexSignatureSolutions />
-      <RejendariPromiseStrip />
-
+      {/* ── fecho · B2B + vantagens ───────────────────────────── */}
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
-          <div className="lg:sticky lg:top-40 lg:self-start">
-            <p className="jp-label text-primary">
-              <span className="mr-3 font-mono">02</span>仕事別 · comprar por trabalho
-            </p>
-            <h2 className="mt-4 max-w-md font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
-              Começa pelo trabalho que tens para fazer.
+        <div className="paper-panel grid gap-7 p-7 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div>
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="h-5 w-5 text-[#b54530]" />
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
+                相談 · kit à medida
+              </p>
+            </div>
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1] tracking-[-0.05em]">
+              Diz-nos o que já tens antes de comprares mais.
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
-              Em vez de navegar por corredores genéricos, entra diretamente em precisão, aperto, sockets, grip, corte,
-              AVAC ou máquinas.
+          </div>
+          <div>
+            <p className="text-sm leading-7 text-black/65">
+              Para empresa, equipa ou profissional, construímos uma seleção à volta das ferramentas
+              existentes. A regra é evitar redundância: um bom roquete multi-bit, um sistema de
+              sockets coerente e ferramentas de acesso específicas antes de encher a mala com
+              duplicados.
             </p>
-          </div>
-
-          <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
-            {CATEGORIES.map((category, index) => (
-              <Link
-                key={category.task}
-                to="/shop"
-                search={{ task: category.task }}
-                className="category-tile group min-h-48 bg-surface p-6"
-              >
-                <div className="flex items-start justify-between">
-                  <ToolGlyph name={category.icon} className="h-9 w-9 text-primary" />
-                  <span className="font-mono text-[10px] text-muted-foreground">0{index + 1}</span>
-                </div>
-                <h3 className="mt-10 font-display text-xl font-semibold tracking-[-0.035em]">{category.label}</h3>
-                <p className="mt-2 text-xs text-muted-foreground">{category.note}</p>
-                <ArrowRight className="mt-5 h-4 w-4 -translate-x-1 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0 group-hover:text-primary group-hover:opacity-100" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="paper-panel">
-        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-18">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="jp-label text-primary">
-                <span className="mr-3 font-mono">03</span>仕事の条件 · como organizamos tudo
-              </p>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
-                Seis regimes de trabalho. Uma só curadoria.
-              </h2>
-            </div>
-            <p className="max-w-md text-sm leading-6 text-black/60">
-              Não é uma loja de marcas — é uma loja de regimes. Cada família tem de ter uma razão técnica para estar
-              aqui, venha do Japão, da Alemanha ou da Suécia.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-px border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-3">
-            {REGIMES.map((regime, index) => (
-              <Link
-                key={regime.label}
-                to="/shop"
-                search={{ focus: regime.focus }}
-                className="group relative bg-[#f3eee2] p-6 transition-colors hover:bg-[#efe8d8]"
-              >
-                <div className="flex items-baseline justify-between">
-                  <span className="jp-label text-primary">{regime.jp}</span>
-                  <span className="font-mono text-[10px] text-black/38">0{index + 1}</span>
-                </div>
-                <h3 className="mt-6 font-display text-2xl font-semibold tracking-[-0.035em]">{regime.label}</h3>
-                <p className="mt-2 text-xs text-black/58">{regime.note}</p>
-                <ArrowRight className="mt-5 h-4 w-4 -translate-x-1 text-black/40 opacity-0 transition-all group-hover:translate-x-0 group-hover:text-primary group-hover:opacity-100" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <GripWrenchSpotlight />
-
-      <RejendariEdit />
-
-      <section className="border-y border-border bg-surface/35">
-        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-16">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <div>
-              <p className="jp-label text-primary">選定 · destaques da seleção</p>
-              <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
-                Seis referências para conhecer a seleção.
-              </h2>
-            </div>
-            <div className="lg:pb-1">
-              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-                ANEX, WERA, KNIPEX, VESSEL e OLFA mostram cinco escolas da seleção: aperto ratchet, sistema VDE com
-                roquete, alicate auto-bloqueante, Ball Grip elétrico e corte industrial.
-              </p>
-              <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                Medidas de produto seguem o sistema métrico quando aplicável; encaixes técnicos mantêm 1/4″, 3/8″ ou 1/2″ quando esse é o padrão
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {highlightTools.map((tool) => (
-              <ReferenceProductCard key={tool.id} tool={tool} featured />
-            ))}
-          </div>
-
-          <div className="mt-8 flex flex-col gap-4 border border-border bg-background p-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="font-display text-xl font-semibold">Procuras uma referência específica?</p>
-              <p className="mt-1 text-sm text-muted-foreground">Diz-nos a marca, o modelo ou o trabalho a fazer.</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="outline" asChild className="rounded-none">
-                <Link to="/marcas">Ver marcas</Link>
-              </Button>
-              <Button asChild className="rounded-none">
+            <div className="mt-6 flex flex-wrap gap-2">
+              <Button className="rounded-none bg-black text-white hover:bg-black/85" asChild>
                 <Link to="/b2b">
-                  Pedir disponibilidade
+                  Pedir proposta
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
+              <Button variant="outline" className="rounded-none" asChild>
+                <Link to="/pontos">Pontos e convites</Link>
+              </Button>
             </div>
           </div>
-        </div>
-      </section>
-
-      <RatchetDriverComparison />
-
-      <BitRegimeComparison />
-
-      <section className="border-b border-border bg-surface/35">
-        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="jp-label text-primary">最初のキット · os primeiros kits</p>
-              <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
-                Dois sistemas, três caixas de ofício.
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Kit Bits Pro, Kit Roquetes Pro e as caixas AVAC, Eletricista e Técnico: composições REJENDARI feitas só
-                com referências com ficha própria — pedido via B2B, sem SKU inventado.
-              </p>
-            </div>
-            <Button className="self-start rounded-none lg:self-auto" asChild>
-              <Link to="/packs">
-                Ver os primeiros kits
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-          <div className="mt-7 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
-            {REJENDARI_KITS.map((kit) => (
-              <Link key={kit.id} to="/packs" className="category-tile group flex min-h-40 flex-col bg-card p-5">
-                <span className="flex items-center justify-between">
-                  <span className="font-display text-2xl text-primary" aria-hidden>
-                    {kit.format === "kit" ? "組" : "箱"}
-                  </span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">{kit.jp.split(" · ")[0]}</span>
-                </span>
-                <span className="mt-auto text-sm font-medium leading-5">{kit.trade}</span>
-                <span className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">{kit.title}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SmartKitShowcase />
-
-      <BitKitRail />
-
-      <section className="paper-panel overflow-hidden">
-        <div className="mx-auto grid max-w-[1440px] gap-0 lg:grid-cols-2">
-          <div className="washi-noise relative grid min-h-[430px] grid-cols-2 gap-px overflow-hidden bg-black/10 p-px lg:min-h-[620px]">
-            {curationImageTools.map((tool) => (
-              <Link
-                key={tool.id}
-                to="/referencia/$id"
-                params={{ id: tool.id }}
-                className="product-plate group relative overflow-hidden"
-              >
-                <ProductImage
-                  src={tool.imageUrl!}
-                  alt={tool.imageAlt ?? tool.namePt}
-                  className="absolute inset-0 h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent p-4 pt-12 text-white">
-                  <p className="jp-label text-white/65">{tool.japanese}</p>
-                  <p className="mt-1 font-display text-lg font-semibold">{tool.brand}</p>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/65">REF {tool.officialCode ?? tool.model}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex flex-col justify-center p-7 sm:p-12 lg:p-16">
-            <p className="font-mono text-[10px] uppercase tracking-[0.19em] text-black/50">基準 · como escolhemos</p>
-            <h2 className="mt-5 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl">
-              O regime de trabalho é o ponto de partida. A utilidade decide.
-            </h2>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-black/65">
-              Procuramos ferramentas que façam sentido no trabalho profissional, venham do Japão, da Alemanha ou da
-              Suécia: boa construção, ergonomia, aplicação clara e informação suficiente para saberes o que estás a
-              comprar.
-            </p>
-
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
-              {[
-                ["01", "Trabalho", "A ferramenta resolve melhor uma tarefa concreta?"],
-                ["02", "Compatibilidade", "Medidas úteis para Portugal/UE e interfaces técnicas claramente identificadas."],
-                ["03", "Confiança", "Há informação suficiente para comprar e manter a ferramenta?"],
-              ].map(([number, title, text]) => (
-                <div key={number} className="border-t border-black/20 pt-4">
-                  <span className="font-mono text-[10px] text-black/40">{number}</span>
-                  <h3 className="mt-3 font-display text-lg font-semibold">{title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-black/58">{text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-surface">
-        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-18">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="jp-label text-primary">
-                <span className="mr-3 font-mono">04</span>職人キット · kits profissionais
-              </p>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
-                Menos ferramentas repetidas. Mais cobertura útil.
-              </h2>
-            </div>
-            <Button variant="outline" asChild className="w-fit rounded-none">
-              <Link to="/packs">Ver todos os kits</Link>
-            </Button>
-          </div>
-
-          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {PACKS.map((pack) => (
-              <Link
-                key={pack}
-                to="/packs"
-                className="group flex min-h-32 items-end justify-between border border-border bg-card p-5 transition-colors hover:border-primary/55"
-              >
-                <div>
-                  <p className="font-display text-xl font-semibold">{pack}</p>
-                  <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                    Compact → Core → Pro
-                  </p>
-                  <p className="mt-2 max-w-[26ch] text-xs leading-5 text-muted-foreground">
-                    Malas desenhadas para o dia de trabalho, peça a peça — com o pedido B2B já composto.
-                  </p>
-                </div>
-                <Sparkles className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-4 flex flex-col gap-4 border border-border bg-background p-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="font-display text-lg font-semibold">Compras para empresa ou equipa?</p>
-              <p className="mt-1 text-sm text-muted-foreground">Pede condições para volume, compras recorrentes ou um kit à medida.</p>
-            </div>
-            <Button asChild className="w-fit rounded-none">
-              <Link to="/b2b">Falar com a REJENDARI</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <WeraFeature />
-
-      <section className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-20">
-        <div className="flex items-end justify-between gap-6 border-b border-border pb-5">
-          <div>
-            <p className="jp-label text-primary">
-              <span className="mr-3 font-mono">05</span>買い物 · comprar
-            </p>
-            <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-5xl">
-              Loja REJENDARI
-            </h2>
-          </div>
-          <Button variant="outline" asChild className="rounded-none">
-            <Link to="/shop">
-              Ir para a loja
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-
-        <div className="mt-8">
-          {isLoading ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {Array.from({ length: 4 }).map((_, i) => (
-                <Skeleton key={i} className="aspect-[4/5] w-full rounded-none" />
-              ))}
-            </div>
-          ) : !products || products.length === 0 ? (
-            <div className="grid gap-0 border border-border lg:grid-cols-[1fr_0.8fr]">
-              <div className="technical-grid flex min-h-72 items-center justify-center p-10">
-                <div className="text-center">
-                  <PackageSearch className="mx-auto h-10 w-10 text-primary" />
-                  <p className="mt-5 font-display text-2xl font-semibold">{t("shop.empty")}</p>
-                  <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-muted-foreground">{t("shop.emptyHint")}</p>
-                </div>
-              </div>
-              <div className="flex flex-col justify-center border-t border-border bg-surface p-8 lg:border-l lg:border-t-0">
-                <span className="jp-label text-primary">相談 · ajuda a escolher</span>
-                <h3 className="mt-3 font-display text-2xl font-semibold">Diz-nos o que procuras.</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  Marca, referência, profissão ou tarefa: quanto mais contexto deres, mais fácil é apontar-te para a opção certa.
-                </p>
-                <Button className="mt-6 w-fit rounded-none" asChild>
-                  <Link to="/b2b">Pedir contacto</Link>
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {products.slice(0, 8).map((product) => (
-                <ProductCard key={product.node.id} product={product} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-[1440px] gap-px bg-border lg:grid-cols-2">
-        <div className="bg-background p-7 sm:p-12 lg:p-16">
-          <div className="flex items-center gap-3 text-primary">
-            <ToolGlyph name="reward" className="h-8 w-8" />
-            <span className="jp-label">ポイント · Pontos</span>
-          </div>
-          <h2 className="mt-6 max-w-lg font-display text-4xl font-semibold leading-[1] tracking-[-0.05em]">
-            As tuas compras também acumulam vantagens.
-          </h2>
-          <p className="mt-5 max-w-lg text-sm leading-6 text-muted-foreground">{t("home.pointsText")}</p>
-          <Button className="mt-7 rounded-none" variant="secondary" asChild>
-            <Link to="/pontos">{t("home.pointsCta")}</Link>
-          </Button>
-        </div>
-
-        <div className="bg-background p-7 sm:p-12 lg:p-16">
-          <div className="flex items-center gap-3 text-primary">
-            <ToolGlyph name="referral" className="h-8 w-8" />
-            <span className="jp-label">紹介 · Convites</span>
-          </div>
-          <h2 className="mt-6 max-w-lg font-display text-4xl font-semibold leading-[1] tracking-[-0.05em]">
-            Partilha a REJENDARI e acompanha as tuas vantagens.
-          </h2>
-          <p className="mt-5 max-w-lg text-sm leading-6 text-muted-foreground">
-            Cada conta tem um link de convite. Quando existirem campanhas de convite ativas, as condições e os pontos disponíveis aparecem na tua conta.
-          </p>
-          <Button className="mt-7 rounded-none" variant="outline" asChild>
-            <Link to="/pontos">Ver pontos e convites</Link>
-          </Button>
         </div>
       </section>
     </div>

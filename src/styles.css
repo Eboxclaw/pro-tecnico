@@ -1039,3 +1039,44 @@ html, body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .photo-print, .photo-print:hover { transform: none; transition: none; }
 }
+
+/* ── Sprint 11 · cortina de abertura + landing com espírito japonês ── */
+
+/* Cortina: kanji entra em foco, a palavra assenta o tracking, a linha varre. */
+@keyframes intro-line-grow { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+@keyframes intro-kanji-in { from { opacity: 0; transform: scale(1.16); filter: blur(12px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+@keyframes intro-word-in { from { opacity: 0; letter-spacing: 0.55em; } to { opacity: 1; letter-spacing: 0.22em; } }
+@keyframes intro-fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes intro-vertical-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes intro-curtain { to { opacity: 0; visibility: hidden; } }
+
+.intro-splash { z-index: 200; }
+.intro-splash .intro-line { animation: intro-line-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.intro-splash .intro-line--bottom { animation-delay: 0.3s; }
+.intro-splash .intro-kanji { animation: intro-kanji-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both 0.15s; }
+.intro-splash .intro-mono { animation: intro-fade-up 0.8s ease both 0.75s; }
+.intro-splash .intro-word { animation: intro-word-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) both 0.45s; }
+.intro-splash .intro-sub { animation: intro-fade-up 0.8s ease both 0.95s; }
+.intro-splash .intro-vertical { animation: intro-vertical-in 1.4s ease both 0.8s; }
+.intro-splash--leave { animation: intro-curtain 0.75s cubic-bezier(0.65, 0, 0.35, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .intro-splash { display: none; }
+}
+
+/* Landing: kanji fantasma à deriva, linhas de medida a desenhar-se. */
+@keyframes kanji-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+.hero-kanji-ghost { animation: kanji-drift 10s ease-in-out infinite; }
+@keyframes measure-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hero-measure { transform-origin: left; animation: measure-grow 1.4s cubic-bezier(0.22, 1, 0.36, 1) both 0.5s; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero-rise { animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-rise-1 { animation-delay: 0.1s; }
+.hero-rise-2 { animation-delay: 0.25s; }
+.hero-rise-3 { animation-delay: 0.4s; }
+.hero-rise-4 { animation-delay: 0.55s; }
+@keyframes scroll-hint { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+.hero-scroll-hint { animation: scroll-hint 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-kanji-ghost, .hero-scroll-hint { animation: none; }
+  .hero-measure, .hero-rise { animation-duration: 0.01s; animation-delay: 0s; }
+}
