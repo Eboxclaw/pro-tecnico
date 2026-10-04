@@ -104,12 +104,12 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     name: "397 LOCK SYSTEM",
     jp: "ロックシステム",
     taglinePt:
-      "ANEX 397 + pack de 5 bits PH2 (65/85/110 mm) + Diamond Ryujin + Rapidaptor + extensor de impacto. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
+      "ANEX 397 + pack de 5 bits PH2 (65/85/110 mm) + Diamond Ryujin + o bit-lock que dá o nome + extensor de impacto. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
     status: "reserving",
     targetPriceEur: { min: 89, max: 99 },
     targetMoq: 100,
     seedDemand: { likes: 214, favorites: 96, reservations: 64, units: 89, momentum: 92 },
-    capabilitiesPt: ["72T · 25 N·m", "PH2 65–110 mm · 5 bits", "Rapidaptor + Reach"],
+    capabilitiesPt: ["72T · 25 N·m", "PH2 65–110 mm · 5 bits", "Locked by Rapidaptor"],
     imageRefId: "anex-397-d",
     leadRefId: "anex-397-d",
     modules: [
@@ -124,6 +124,18 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           },
         ],
       },
+      {
+        role: "LOCK",
+        title: "Bit-lock · Rapidaptor",
+        pieces: [
+          {
+            refId: "wera-899-4-1-sb",
+            whyPt:
+              "É o lock que dá o nome ao system: o anel de retenção do Rapidaptor trava o bit ao 397 — punho, lock, bits e extensor passam a trabalhar como uma só peça, com troca a uma mão. Para impacto contínuo, a variante certificada da Wera está em avaliação.",
+          },
+        ],
+      },
+
       {
         role: "IMPACT",
         title: "Bits PH2 · 65 a 110 mm",
@@ -147,17 +159,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         ],
         pendingPt: [
           "PH1 — perfil prioritário em negociação com a ANEX. Entra no drop assim que a referência impact-ready for confirmada; não inventamos compatibilidade.",
-        ],
-      },
-      {
-        role: "LOCK",
-        title: "Bit-lock · Rapidaptor",
-        pieces: [
-          {
-            refId: "wera-899-4-1-sb",
-            whyPt:
-              "Rapidaptor universal inox: o anel de retenção trava o bit e a troca faz-se a uma mão — funciona bem com o 397. Para impacto contínuo, a variante certificada da Wera está em avaliação.",
-          },
         ],
       },
       {
