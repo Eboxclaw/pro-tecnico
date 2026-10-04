@@ -3034,6 +3034,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Dados oficiais Wera (folha de dados do artigo 05052502001): 889/4/1 K Rapidaptor universal 1/4″ × 50 mm, retenção magnética para bits DIN ISO 1173-C 6,3 (hex 6,35) e E 6,3, engate press-in sem accionar a manga, manga de rotação livre, 26 g. Substitui a geração 899/4/1 inox como porta-bits universal da linha.",
     referenceUrl:
       "https://hybris-media.wera.de/download/pdfgenerator-datasheets/en/05052502001.pdf",
+    imageUrl: "https://www.wera.de/prodimg/832x832/889_4_1_k.webp",
+    imageAlt: "Wera 889/4/1 K — Rapidaptor universal 1/4″ × 50 mm",
+    imageSourceLabel: "Imagem oficial Wera",
     compareGroup: "bit-holders",
     limitationsPt:
       "Porta-bits manual 1/4″: a variante certificada para impacto é artigo próprio — confirmar o binário máximo antes de uso com impacto.",
