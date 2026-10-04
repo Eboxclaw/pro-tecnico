@@ -151,46 +151,46 @@ export type Database = {
       };
       profiles: {
         Row: {
-          company: string | null;
           created_at: string;
+          customer_code: string | null;
           email: string | null;
           full_name: string | null;
           id: string;
-          phone: string | null;
           points: number;
+          postal_code: string | null;
           referral_code: string;
           referred_by: string | null;
+          region: string | null;
           role: string;
           updated_at: string;
-          vat_number: string | null;
         };
         Insert: {
-          company?: string | null;
           created_at?: string;
+          customer_code?: string | null;
           email?: string | null;
           full_name?: string | null;
           id: string;
-          phone?: string | null;
           points?: number;
+          postal_code?: string | null;
           referral_code?: string;
           referred_by?: string | null;
+          region?: string | null;
           role?: string;
           updated_at?: string;
-          vat_number?: string | null;
         };
         Update: {
-          company?: string | null;
           created_at?: string;
+          customer_code?: string | null;
           email?: string | null;
           full_name?: string | null;
           id?: string;
-          phone?: string | null;
           points?: number;
+          postal_code?: string | null;
           referral_code?: string;
           referred_by?: string | null;
+          region?: string | null;
           role?: string;
           updated_at?: string;
-          vat_number?: string | null;
         };
         Relationships: [
           {
@@ -436,6 +436,29 @@ export type Database = {
       claim_referral: { Args: { p_code: string }; Returns: boolean };
       draw_weekly_raffle: { Args: never; Returns: undefined };
       is_admin: { Args: never; Returns: boolean };
+      like_system: {
+        Args: { p_system_id: string; p_visitor_id: string };
+        Returns: boolean;
+      };
+      admin_likes_today: {
+        Args: never;
+        Returns: { system_id: string; likes_last_24h: number }[];
+      };
+      admin_customers: {
+        Args: never;
+        Returns: {
+          user_id: string;
+          email: string | null;
+          customer_code: string | null;
+          region: string | null;
+          postal_code: string | null;
+          points: number;
+          orders_count: number;
+          orders_total_eur: number;
+          reservations_count: number;
+          last_activity: string;
+        }[];
+      };
       system_demand_counts: {
         Args: never;
         Returns: {

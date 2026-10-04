@@ -140,10 +140,21 @@ function AccountPage() {
           <h1 className="mt-4 font-display text-5xl font-semibold tracking-[-0.055em]">
             {t("account.title")}
           </h1>
+          {data?.profile?.customer_code && (
+            <p className="mt-3 inline-block border border-border bg-card px-3 py-1.5 font-mono text-[11px] tracking-[0.2em]">
+              {data.profile.customer_code}
+            </p>
+          )}
         </div>
       </section>
 
       <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:py-14">
+        {(data?.profile?.region || data?.profile?.postal_code) && (
+          <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+            Identificação:{" "}
+            {[data.profile.region, data.profile.postal_code].filter(Boolean).join(" · ")}
+          </p>
+        )}
         <div className="grid gap-px border border-border bg-border md:grid-cols-4">
           <div className="bg-card p-6">
             <div className="flex items-center gap-2 text-primary">

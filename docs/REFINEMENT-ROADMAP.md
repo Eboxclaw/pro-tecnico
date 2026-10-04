@@ -25,7 +25,8 @@ verificados com correções aplicadas (a correção liga sempre à evidência).
 | Página | Escopo | Estado |
 |---|---|---|
 | `/` | hero, simbologia (3 blocos + regras), featured drop, kits (5), ANEX (mosaico + 3 cards), escolas (8 tiles + 6 cards), fecho | ✅ auditoria desta passagem (JP, VDE, montagem no drop) |
-| `/packs` | hero, featured drop, systems (4), módulos (6), lab (3), community (3 colunas), kits, sets oficiais (14), smart packs, legendary, trades (7), B2B | ⬜ próxima sessão: conferir cada card de módulo/systema contra fichas |
+| `/packs` | hero, featured drop, systems (4), módulos (6), lab (3), community (3 colunas), kits, sets oficiais (14), smart packs, legendary, trades (7), B2B | 🔶 auditoria parcial (JP, VDE, preferência de aço); ⬜ conferir cada card contra fichas |
+| `/auth` | entrada passwordless (Google + código email) | ✅ implementada; ⬜ confirmar template OTP no dashboard Supabase (`{{ .Token }}`) e SMTP próprio quando o volume crescer |
 | `/systems/$id` | hero (montagem), módulos, transparência, perfect matches, best-component | ✅ montagem aplicada; ⬜ revisão copy das razões funcionais |
 | `/shop` | grelha curada + grelha Shopify, filtros, badges | ⬜ verificar badges (1000 V/impacto) contra evidência, ficha a ficha |
 | `/marcas` | 8 histórias de marca | ⬜ conferir claims de cada história com fonte oficial |
@@ -42,6 +43,11 @@ verificados com correções aplicadas (a correção liga sempre à evidência).
 - 1000 V só em ferramenta completa certificada; bit isolado ≠ conjunto
   certificado ( AZM ≤ 7,2 V em máquinas).
 - Target price nunca apresentado como preço final.
+- Bits de impacto e torsão: S2 ou S5 (ou Cr-Mo-V equivalente) com **HRC equilibrado** —
+  dureza com tenacidade. A escolha documenta a combinação de liga + tratamento térmico +
+  método de corte; nunca só pelo HRC máximo.
+- Dados de faturação (NIF, empresa, morada fiscal) vivem no payment provider (Stripe),
+  não no nosso perfil. B2B é exceção por ser pedido de orçamento.
 
 ## Caracteres japoneses — tabela verificada
 

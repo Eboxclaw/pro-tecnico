@@ -178,6 +178,17 @@ function PacksPage() {
             </p>
           </div>
 
+          <div className="mt-6 border border-primary/25 bg-primary/[0.04] p-5">
+            <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-primary">
+              AÇO E TÊMPERA · A PREFERÊNCIA REJENDARI
+            </p>
+            <p className="mt-2 max-w-4xl text-xs leading-5 text-muted-foreground">
+              Bits de impacto e torsão em S2 ou S5 — ou Cr-Mo-V equivalente — com HRC equilibrado:
+              dureza com tenacidade, nunca o número maior. Escolhemos pela combinação de liga,
+              tratamento térmico e método de corte, documentada pelo fabricante.
+            </p>
+          </div>
+
           <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {modules.map((module) => (
               <ModuleCard key={module.id} system={module} />

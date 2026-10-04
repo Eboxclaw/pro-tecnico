@@ -1,7 +1,7 @@
 import { ProductImage } from "@/components/shop/ProductImage";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { ArrowRight, MailCheck, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
@@ -40,76 +40,93 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
-/** Traduz os erros da Supabase para a causa real, sem expor detalhes técnicos. */
-function authErrorText(t: (k: string) => string, message: string) {
-  const m = message.toLowerCase();
-  if (m.includes("invalid login credentials")) return t("auth.errorCredentials");
-  if (m.includes("already") && m.includes("registered")) return t("auth.errorEmailUsed");
-  if (m.includes("email not confirmed")) return t("auth.errorEmailNotConfirmed");
-  if (m.includes("password") && (m.includes("least") || m.includes("short") || m.includes("weak")))
-    return t("auth.errorWeakPassword");
-  if (m.includes("rate limit") || m.includes("too many")) return t("auth.errorRateLimited");
-  return t("auth.error");
-}
+const CODE_RESEND_SECONDS = 45;
 
 function AuthPage() {
   const t = useT();
   const router = useRouter();
   const { redirect } = Route.useSearch();
   const destination = redirect ?? "/conta";
-  const [mode, setMode] = useState<"in" | "up">("in");
+  const [step, setStep] = useState<"email" | "code">("email");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
-  const [awaitingConfirmation, setAwaitingConfirmation] = useState(false);
+  const [resentIn, setResentIn] = useState(0);
+  const resendTimer = useRef<number | undefined>(undefined);
   const supabaseReady = isSupabaseConfigured();
   const referralCode = getRememberedReferralCode();
 
-  async function submit(event: React.FormEvent) {
+  useEffect(() => {
+    return () => window.clearInterval(resendTimer.current);
+  }, []);
+
+  const startResendCooldown = () => {
+    setResentIn(CODE_RESEND_SECONDS);
+    window.clearInterval(resendTimer.current);
+    resendTimer.current = window.setInterval(() => {
+      setResentIn((seconds) => {
+        if (seconds <= 1) {
+          window.clearInterval(resendTimer.current);
+          return 0;
+        }
+        return seconds - 1;
+      });
+    }, 1000);
+  };
+
+  /** Traduz os erros da Supabase sem expor detalhes técnicos. */
+  const errorText = (message: string) => {
+    const m = message.toLowerCase();
+    if (m.includes("rate limit") || m.includes("too many")) return t("auth.errorRateLimited");
+    if (m.includes("confirm")) return t("auth.errorEmailNotConfirmed");
+    if (m.includes("token") || m.includes("code") || m.includes("otp")) {
+      return "Código inválido ou expirado. Confirma o email mais recente ou pede um novo.";
+    }
+    return t("auth.error");
+  };
+
+  /** Passo 1: pede o código — cria conta nova se o email ainda não existir. */
+  async function requestCode(event: React.FormEvent) {
     event.preventDefault();
     if (!supabaseReady) {
       toast.error("Serviço de conta indisponível. Tenta mais tarde.");
       return;
     }
-    if (mode === "up" && password.length < 8) {
-      toast.error(t("auth.errorWeakPassword"));
-      return;
-    }
     setBusy(true);
-
-    if (mode === "in") {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      setBusy(false);
-      if (error) {
-        toast.error(authErrorText(t, error.message));
-        return;
-      }
-      router.history.push(destination);
-      return;
-    }
-
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signInWithOtp({
       email,
-      password,
       options: {
-        emailRedirectTo: window.location.origin + destination,
+        shouldCreateUser: true,
         data: { referred_by_code: referralCode || undefined },
       },
     });
     setBusy(false);
-
     if (error) {
-      toast.error(authErrorText(t, error.message));
+      toast.error(errorText(error.message));
       return;
     }
-    if (data.session) {
-      toast.success(t("auth.accountReady"));
-      router.history.push(destination);
+    setStep("code");
+    startResendCooldown();
+    toast.success(`Código enviado para ${email}.`);
+  }
+
+  /** Passo 2: confirma o código de 6 dígitos. */
+  async function confirmCode(event: React.FormEvent) {
+    event.preventDefault();
+    if (!supabaseReady) return;
+    setBusy(true);
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token: code.replace(/\s/g, ""),
+      type: "email",
+    });
+    setBusy(false);
+    if (error) {
+      toast.error(errorText(error.message));
       return;
     }
-    // Sem sessão: o projeto exige confirmação de email — estado explícito, não um toast que desaparece.
-    if (data.user) setAwaitingConfirmation(true);
-    else toast.success(t("auth.checkEmailTitle"));
+    toast.success(t("auth.accountReady"));
+    router.history.push(destination);
   }
 
   async function google() {
@@ -122,34 +139,6 @@ function AuthPage() {
     });
     if (result.error) toast.error(t("auth.error"));
     else if (!result.redirected) router.history.push(destination);
-  }
-
-  if (awaitingConfirmation) {
-    return (
-      <div className="mx-auto flex min-h-[720px] max-w-[560px] flex-col justify-center px-4 py-16">
-        <div className="border border-border bg-surface p-8">
-          <MailCheck className="h-8 w-8 text-primary" />
-          <p className="jp-label mt-5 text-primary">確認 · quase lá</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.04em]">
-            {t("auth.checkEmailTitle")}
-          </h2>
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">{t("auth.checkEmailBody")}</p>
-          <p className="mt-4 border border-border bg-background px-4 py-3 font-mono text-sm">
-            {email}
-          </p>
-          <Button
-            className="mt-6 w-full rounded-none"
-            onClick={() => {
-              setAwaitingConfirmation(false);
-              setMode("in");
-            }}
-          >
-            {t("auth.checkEmailCta")}
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -167,6 +156,11 @@ function AuthPage() {
             <span>Saldo de pontos</span>
             <span>Convites e vantagens</span>
           </div>
+          <p className="mt-8 max-w-md text-xs leading-6 text-white/45">
+            Sem passwords para gerir: entras com Google ou com um código de seis dígitos enviado
+            para o teu email. NIF e dados de faturação ficam para a altura do pagamento, tratados
+            pelo provider.
+          </p>
         </div>
 
         <div className="relative grid grid-cols-2 gap-px border-t border-white/10 bg-white/10">
@@ -193,14 +187,18 @@ function AuthPage() {
       <section className="flex items-center px-4 py-12 sm:px-10 lg:px-14 xl:px-20">
         <div className="mx-auto w-full max-w-md">
           <p className="jp-label text-primary">
-            {mode === "in" ? "ログイン · entrar" : "新規登録 · criar conta"}
+            {step === "email" ? "ログイン · entrar" : "確認 · código de acesso"}
           </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.05em]">
-            {mode === "in" ? t("auth.title") : t("auth.signUp")}
+            {step === "email" ? t("auth.title") : "Escreve o código"}
           </h2>
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">{t("auth.subtitle")}</p>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            {step === "email"
+              ? "Entra com Google ou recebe um código de seis dígitos no email — sem password."
+              : `Enviámos um código de seis dígitos para ${email}. Vale pouco tempo — escreve-o aqui.`}
+          </p>
 
-          {referralCode && (
+          {referralCode && step === "email" && (
             <div className="mt-6 flex gap-3 border border-primary/30 bg-primary/[0.05] p-4">
               <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <div>
@@ -213,69 +211,94 @@ function AuthPage() {
             </div>
           )}
 
-          <Button
-            variant="secondary"
-            className="mt-8 w-full rounded-none"
-            onClick={google}
-            disabled={!supabaseReady}
-          >
-            {t("auth.google")}
-          </Button>
+          {step === "email" ? (
+            <>
+              <Button
+                variant="secondary"
+                className="mt-8 w-full rounded-none"
+                onClick={google}
+                disabled={!supabaseReady}
+              >
+                {t("auth.google")}
+              </Button>
 
-          <div className="my-6 flex items-center gap-3">
-            <span className="h-px flex-1 bg-border" />
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
-              {t("auth.or")}
-            </span>
-            <span className="h-px flex-1 bg-border" />
-          </div>
+              <div className="my-6 flex items-center gap-3">
+                <span className="h-px flex-1 bg-border" />
+                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                  {t("auth.or")}
+                </span>
+                <span className="h-px flex-1 bg-border" />
+              </div>
 
-          <form onSubmit={submit} className="space-y-5">
-            <div>
-              <Label htmlFor="email">{t("auth.email")}</Label>
-              <Input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                className="mt-2 rounded-none bg-background"
-              />
-            </div>
-            <div>
-              <Label htmlFor="pw">{t("auth.password")}</Label>
-              <Input
-                id="pw"
-                type="password"
-                required
-                minLength={8}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                aria-describedby={mode === "up" ? "pw-hint" : undefined}
-                className="mt-2 rounded-none bg-background"
-              />
-              {mode === "up" && (
-                <p
-                  id="pw-hint"
-                  className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground"
+              <form onSubmit={requestCode} className="space-y-5">
+                <div>
+                  <Label htmlFor="email">{t("auth.email")}</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    className="mt-2 rounded-none bg-background"
+                  />
+                </div>
+                <Button type="submit" className="w-full rounded-none" size="lg" disabled={busy}>
+                  {busy ? "A enviar…" : "Receber código"}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </form>
+            </>
+          ) : (
+            <>
+              <form onSubmit={confirmCode} className="mt-8 space-y-5">
+                <div>
+                  <Label htmlFor="code">Código de 6 dígitos</Label>
+                  <Input
+                    id="code"
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    autoFocus
+                    required
+                    minLength={6}
+                    value={code}
+                    onChange={(event) => setCode(event.target.value)}
+                    placeholder="000000"
+                    className="mt-2 rounded-none bg-background text-center font-mono text-2xl tracking-[0.6em]"
+                  />
+                </div>
+                <Button type="submit" className="w-full rounded-none" size="lg" disabled={busy}>
+                  {busy ? "A confirmar…" : "Entrar"}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </form>
+
+              <div className="mt-6 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStep("email");
+                    setCode("");
+                  }}
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
-                  {t("auth.passwordHint")}
-                </p>
-              )}
-            </div>
-            <Button type="submit" className="w-full rounded-none" size="lg" disabled={busy}>
-              {mode === "in" ? t("auth.signIn") : t("auth.signUp")}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </form>
+                  <ArrowLeft className="h-3.5 w-3.5" />
+                  Usar outro email
+                </button>
+                <button
+                  type="button"
+                  onClick={requestCode}
+                  disabled={resentIn > 0 || busy}
+                  className="font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:text-primary disabled:opacity-50"
+                >
+                  {resentIn > 0 ? `Reenviar em ${resentIn}s` : "Reenviar código"}
+                </button>
+              </div>
 
-          <button
-            type="button"
-            onClick={() => setMode(mode === "in" ? "up" : "in")}
-            className="mt-6 w-full text-center text-sm text-muted-foreground transition-colors hover:text-primary"
-          >
-            {mode === "in" ? t("auth.needAccount") : t("auth.haveAccount")}
-          </button>
+              <p className="mt-6 border border-border bg-background px-4 py-3 text-xs leading-5 text-muted-foreground">
+                Se o email trouxer um link em vez de código, abre o link — entra na mesma.
+              </p>
+            </>
+          )}
         </div>
       </section>
     </div>

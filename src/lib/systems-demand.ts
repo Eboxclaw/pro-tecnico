@@ -96,12 +96,12 @@ export function useLikedSystems() {
       markLiked(system.id);
       setLikedIds(likedSystemIds());
       if (isSupabaseConfigured()) {
-        void supabase
-          .from("system_likes")
-          .upsert({ system_id: system.id, visitor_id: visitorId() })
-          .then(() => {
-            // a contagem refresca na próxima visitas; otimista aqui é suficiente
-          });
+        // porta de entrada única: RPC valida o id e impõe o máx. diário
+        // por visitante (INSERT direto está revocado na base de dados)
+        void supabase.rpc("like_system", {
+          p_system_id: system.id,
+          p_visitor_id: visitorId(),
+        });
       }
     },
     [likedIds],
@@ -205,6 +205,8 @@ export function useMyReservations() {
 export type ReserveInput = {
   quantity: number;
   profession?: ReserveProfession | null;
+  region?: string | null;
+  postalCode?: string | null;
 };
 
 /** Cria ou atualiza a reserva (uma por system por utilizador). €0, sem pagamento. */
@@ -215,7 +217,12 @@ export function useReserveSystem(
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ quantity, profession }: ReserveInput): Promise<boolean> => {
+    mutationFn: async ({
+      quantity,
+      profession,
+      region,
+      postalCode,
+    }: ReserveInput): Promise<boolean> => {
       if (!isSupabaseConfigured()) throw new Error("Serviço de conta indisponível.");
       const { data: userData } = await supabase.auth.getUser();
       if (!userData.user) {
@@ -223,6 +230,18 @@ export function useReserveSystem(
         return false;
       }
       const uid = userData.user.id;
+
+      // identificação opcional: região e código postal ficam no perfil
+      if (region?.trim() || postalCode?.trim()) {
+        await supabase
+          .from("profiles")
+          .update({
+            region: region?.trim() || null,
+            postal_code: postalCode?.trim() || null,
+          })
+          .eq("id", uid);
+      }
+
       const { error } = await supabase.from("system_reservations").upsert(
         {
           system_id: system.id,
@@ -240,6 +259,7 @@ export function useReserveSystem(
       if (!reserved) return;
       void queryClient.invalidateQueries({ queryKey: ["my-system-reservations"] });
       void queryClient.invalidateQueries({ queryKey: ["systems-demand"] });
+      void queryClient.invalidateQueries({ queryKey: ["account"] });
       toast.success(
         `Reserva registada — ${system.name}. €0 agora; preço final confirmado antes de qualquer pagamento.`,
       );

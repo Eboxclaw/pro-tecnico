@@ -50,13 +50,50 @@ function AdminPage() {
 
   const emailsQuery = useQuery({
     queryKey: ["admin-profile-emails"],
-    queryFn: async (): Promise<Record<string, string>> => {
+    queryFn: async (): Promise<
+      Record<string, { email: string; customer_code: string | null; region: string | null }>
+    > => {
       if (!isSupabaseConfigured()) return {};
-      const { data, error } = await supabase.from("profiles").select("id,email");
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("id,email,customer_code,region");
       if (error) return {};
-      const map: Record<string, string> = {};
-      for (const row of data ?? []) map[row.id] = row.email ?? "—";
+      const map: Record<
+        string,
+        { email: string; customer_code: string | null; region: string | null }
+      > = {};
+      for (const row of data ?? []) {
+        map[row.id] = {
+          email: row.email ?? "—",
+          customer_code: row.customer_code,
+          region: row.region,
+        };
+      }
       return map;
+    },
+    enabled: roleQuery.data === "admin",
+  });
+
+  const likesTodayQuery = useQuery({
+    queryKey: ["admin-likes-today"],
+    queryFn: async (): Promise<Record<string, number>> => {
+      if (!isSupabaseConfigured()) return {};
+      const { data, error } = await supabase.rpc("admin_likes_today");
+      if (error || !data) return {};
+      const map: Record<string, number> = {};
+      for (const row of data) map[row.system_id] = Number(row.likes_last_24h ?? 0);
+      return map;
+    },
+    enabled: roleQuery.data === "admin",
+  });
+
+  const customersQuery = useQuery({
+    queryKey: ["admin-customers"],
+    queryFn: async () => {
+      if (!isSupabaseConfigured()) return [];
+      const { data, error } = await supabase.rpc("admin_customers");
+      if (error) throw error;
+      return data ?? [];
     },
     enabled: roleQuery.data === "admin",
   });
@@ -125,6 +162,7 @@ function AdminPage() {
                 <th className="px-4 py-3">System</th>
                 <th className="px-4 py-3">Estado</th>
                 <th className="px-4 py-3 text-right">Likes</th>
+                <th className="px-4 py-3 text-right">Likes 24h</th>
                 <th className="px-4 py-3 text-right">Favoritos</th>
                 <th className="px-4 py-3 text-right">Reservas</th>
                 <th className="px-4 py-3 text-right">Unidades</th>
@@ -154,6 +192,15 @@ function AdminPage() {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-right font-mono text-xs">{demand.likes}</td>
+                    <td className="px-4 py-3 text-right font-mono text-xs">
+                      <span
+                        className={
+                          (likesTodayQuery.data?.[system.id] ?? 0) > 40 ? "text-primary" : ""
+                        }
+                      >
+                        {likesTodayQuery.data?.[system.id] ?? 0}
+                      </span>
+                    </td>
                     <td className="px-4 py-3 text-right font-mono text-xs">{demand.favorites}</td>
                     <td className="px-4 py-3 text-right font-mono text-xs">
                       {demand.reservations}
@@ -196,7 +243,8 @@ function AdminPage() {
                 <thead>
                   <tr className="border-b border-border font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
                     <th className="px-4 py-2.5">Data</th>
-                    <th className="px-4 py-2.5">Email</th>
+                    <th className="px-4 py-2.5">Cliente</th>
+                    <th className="px-4 py-2.5">Região</th>
                     <th className="px-4 py-2.5">System</th>
                     <th className="px-4 py-2.5 text-right">Qtd.</th>
                     <th className="px-4 py-2.5">Profissão</th>
@@ -204,27 +252,36 @@ function AdminPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
-                  {(reservationsQuery.data ?? []).map((reservation) => (
-                    <tr key={reservation.id}>
-                      <td className="px-4 py-2.5 font-mono text-xs">
-                        {new Date(reservation.created_at).toLocaleDateString("pt-PT")}
-                      </td>
-                      <td className="px-4 py-2.5 text-xs">
-                        {emails[reservation.user_id] ?? reservation.user_id.slice(0, 8)}
-                      </td>
-                      <td className="px-4 py-2.5 text-xs">{reservation.system_id}</td>
-                      <td className="px-4 py-2.5 text-right font-mono text-xs">
-                        {reservation.quantity}
-                      </td>
-                      <td className="px-4 py-2.5 text-xs">{reservation.profession ?? "—"}</td>
-                      <td className="px-4 py-2.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                        {reservation.status}
-                      </td>
-                    </tr>
-                  ))}
+                  {(reservationsQuery.data ?? []).map((reservation) => {
+                    const customer = emails[reservation.user_id];
+                    return (
+                      <tr key={reservation.id}>
+                        <td className="px-4 py-2.5 font-mono text-xs">
+                          {new Date(reservation.created_at).toLocaleDateString("pt-PT")}
+                        </td>
+                        <td className="px-4 py-2.5 text-xs">
+                          <p>{customer?.email ?? reservation.user_id.slice(0, 8)}</p>
+                          {customer?.customer_code ? (
+                            <p className="mt-0.5 font-mono text-[9px] tracking-[0.12em] text-primary">
+                              {customer.customer_code}
+                            </p>
+                          ) : null}
+                        </td>
+                        <td className="px-4 py-2.5 text-xs">{customer?.region ?? "—"}</td>
+                        <td className="px-4 py-2.5 text-xs">{reservation.system_id}</td>
+                        <td className="px-4 py-2.5 text-right font-mono text-xs">
+                          {reservation.quantity}
+                        </td>
+                        <td className="px-4 py-2.5 text-xs">{reservation.profession ?? "—"}</td>
+                        <td className="px-4 py-2.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                          {reservation.status}
+                        </td>
+                      </tr>
+                    );
+                  })}
                   {(reservationsQuery.data ?? []).length === 0 && (
                     <tr>
-                      <td colSpan={6} className="px-4 py-6 text-sm text-muted-foreground">
+                      <td colSpan={7} className="px-4 py-6 text-sm text-muted-foreground">
                         Ainda sem reservas online. A procura seed aparece nos contadores acima.
                       </td>
                     </tr>
@@ -256,6 +313,67 @@ function AdminPage() {
             </ul>
           </section>
         </div>
+
+        <section className="mt-6 border border-border bg-card">
+          <div className="border-b border-border p-5">
+            <p className="tech-label text-muted-foreground">
+              Clientes ({customersQuery.data?.length ?? 0}) — histórico de compras, pontos e
+              atividade
+            </p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[900px] text-left text-sm">
+              <thead>
+                <tr className="border-b border-border font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+                  <th className="px-4 py-2.5">Código</th>
+                  <th className="px-4 py-2.5">Email</th>
+                  <th className="px-4 py-2.5">Região</th>
+                  <th className="px-4 py-2.5">C. postal</th>
+                  <th className="px-4 py-2.5 text-right">Pontos</th>
+                  <th className="px-4 py-2.5 text-right">Encomendas</th>
+                  <th className="px-4 py-2.5 text-right">Total EUR</th>
+                  <th className="px-4 py-2.5 text-right">Reservas</th>
+                  <th className="px-4 py-2.5">Última atividade</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {(customersQuery.data ?? []).map((customer) => (
+                  <tr key={customer.user_id}>
+                    <td className="px-4 py-2.5 font-mono text-xs tracking-[0.1em] text-primary">
+                      {customer.customer_code ?? "—"}
+                    </td>
+                    <td className="px-4 py-2.5 text-xs">{customer.email ?? "—"}</td>
+                    <td className="px-4 py-2.5 text-xs">{customer.region ?? "—"}</td>
+                    <td className="px-4 py-2.5 font-mono text-xs">{customer.postal_code ?? "—"}</td>
+                    <td className="px-4 py-2.5 text-right font-mono text-xs">{customer.points}</td>
+                    <td className="px-4 py-2.5 text-right font-mono text-xs">
+                      {customer.orders_count}
+                    </td>
+                    <td className="px-4 py-2.5 text-right font-mono text-xs">
+                      {new Intl.NumberFormat("pt-PT", {
+                        style: "currency",
+                        currency: "EUR",
+                      }).format(Number(customer.orders_total_eur ?? 0))}
+                    </td>
+                    <td className="px-4 py-2.5 text-right font-mono text-xs">
+                      {customer.reservations_count}
+                    </td>
+                    <td className="px-4 py-2.5 font-mono text-xs">
+                      {new Date(customer.last_activity).toLocaleDateString("pt-PT")}
+                    </td>
+                  </tr>
+                ))}
+                {(customersQuery.data ?? []).length === 0 && (
+                  <tr>
+                    <td colSpan={9} className="px-4 py-6 text-sm text-muted-foreground">
+                      Ainda sem clientes registados.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
   );

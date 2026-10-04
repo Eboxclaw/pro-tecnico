@@ -18,6 +18,8 @@ import {
   useSystemDemand,
 } from "@/lib/systems-demand";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
@@ -193,6 +195,8 @@ export function ReserveDialog({
   const [quantity, setQuantity] = useState<number>(1);
   const [customQuantity, setCustomQuantity] = useState("");
   const [profession, setProfession] = useState<ReserveProfessionLogic>("");
+  const [region, setRegion] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const reserve = useReserveSystem(system, { onAuthRequired: useAuthRedirect() });
   const price = targetPriceLabel(system);
 
@@ -204,7 +208,12 @@ export function ReserveDialog({
 
   const submit = () => {
     reserve.mutate(
-      { quantity: resolvedQuantity(), profession: profession || null },
+      {
+        quantity: resolvedQuantity(),
+        profession: profession || null,
+        region: region.trim() || null,
+        postalCode: postalCode.trim() || null,
+      },
       {
         onSuccess: (reserved) => {
           if (reserved) onOpenChange(false);
@@ -293,6 +302,45 @@ export function ReserveDialog({
               ))}
             </select>
           </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <Label
+                htmlFor="reserve-region"
+                className="font-mono text-[10px] uppercase tracking-[0.14em]"
+              >
+                Região <span className="text-muted-foreground">(opcional)</span>
+              </Label>
+              <Input
+                id="reserve-region"
+                value={region}
+                onChange={(event) => setRegion(event.target.value)}
+                maxLength={60}
+                placeholder="ex.: Porto"
+                className="mt-2 rounded-none bg-background"
+              />
+            </div>
+            <div>
+              <Label
+                htmlFor="reserve-postal"
+                className="font-mono text-[10px] uppercase tracking-[0.14em]"
+              >
+                Código postal <span className="text-muted-foreground">(opcional)</span>
+              </Label>
+              <Input
+                id="reserve-postal"
+                value={postalCode}
+                onChange={(event) => setPostalCode(event.target.value)}
+                maxLength={12}
+                placeholder="0000-000"
+                className="mt-2 rounded-none bg-background"
+              />
+            </div>
+          </div>
+          <p className="font-mono text-[9px] uppercase leading-4 tracking-[0.12em] text-muted-foreground">
+            Região e código postal servem só para estimar procura por zona. NIF e dados de faturação
+            ficam para o pagamento, tratados pelo provider.
+          </p>
 
           {price && (
             <p className="border border-border bg-background px-4 py-3 font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
