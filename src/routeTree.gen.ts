@@ -20,10 +20,12 @@ import { Route as MarcasRouteImport } from './routes/marcas'
 import { Route as PacksRouteImport } from './routes/packs'
 import { Route as PontosRouteImport } from './routes/pontos'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedContaRouteImport } from './routes/_authenticated/conta'
 import { Route as EncomendaIdRouteImport } from './routes/encomenda.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as ReferenciaIdRouteImport } from './routes/referencia.$id'
+import { Route as SystemsIdRouteImport } from './routes/systems.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -79,6 +81,11 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedContaRoute = AuthenticatedContaRouteImport.update({
   id: '/conta',
   path: '/conta',
@@ -99,6 +106,11 @@ const ReferenciaIdRoute = ReferenciaIdRouteImport.update({
   path: '/referencia/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SystemsIdRoute = SystemsIdRouteImport.update({
+  id: '/systems/$id',
+  path: '/systems/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -111,10 +123,12 @@ export interface FileRoutesByFullPath {
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/conta': typeof AuthenticatedContaRoute
   '/encomenda/$id': typeof EncomendaIdRoute
   '/product/$handle': typeof ProductHandleRoute
   '/referencia/$id': typeof ReferenciaIdRoute
+  '/systems/$id': typeof SystemsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -127,10 +141,12 @@ export interface FileRoutesByTo {
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/conta': typeof AuthenticatedContaRoute
   '/encomenda/$id': typeof EncomendaIdRoute
   '/product/$handle': typeof ProductHandleRoute
   '/referencia/$id': typeof ReferenciaIdRoute
+  '/systems/$id': typeof SystemsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -145,10 +161,12 @@ export interface FileRoutesById {
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/conta': typeof AuthenticatedContaRoute
   '/encomenda/$id': typeof EncomendaIdRoute
   '/product/$handle': typeof ProductHandleRoute
   '/referencia/$id': typeof ReferenciaIdRoute
+  '/systems/$id': typeof SystemsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -163,10 +181,12 @@ export interface FileRouteTypes {
     | '/packs'
     | '/pontos'
     | '/shop'
+    | '/admin'
     | '/conta'
     | '/encomenda/$id'
     | '/product/$handle'
     | '/referencia/$id'
+    | '/systems/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -179,10 +199,12 @@ export interface FileRouteTypes {
     | '/packs'
     | '/pontos'
     | '/shop'
+    | '/admin'
     | '/conta'
     | '/encomenda/$id'
     | '/product/$handle'
     | '/referencia/$id'
+    | '/systems/$id'
   id:
     | '__root__'
     | '/'
@@ -196,10 +218,12 @@ export interface FileRouteTypes {
     | '/packs'
     | '/pontos'
     | '/shop'
+    | '/_authenticated/admin'
     | '/_authenticated/conta'
     | '/encomenda/$id'
     | '/product/$handle'
     | '/referencia/$id'
+    | '/systems/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -217,6 +241,7 @@ export interface RootRouteChildren {
   EncomendaIdRoute: typeof EncomendaIdRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ReferenciaIdRoute: typeof ReferenciaIdRoute
+  SystemsIdRoute: typeof SystemsIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -298,6 +323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/conta': {
       id: '/_authenticated/conta'
       path: '/conta'
@@ -326,14 +358,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReferenciaIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/systems/$id': {
+      id: '/systems/$id'
+      path: '/systems/$id'
+      fullPath: '/systems/$id'
+      preLoaderRoute: typeof SystemsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
   AuthenticatedContaRoute: typeof AuthenticatedContaRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
   AuthenticatedContaRoute: AuthenticatedContaRoute,
 }
 
@@ -355,6 +396,7 @@ const rootRouteChildren: RootRouteChildren = {
   EncomendaIdRoute: EncomendaIdRoute,
   ProductHandleRoute: ProductHandleRoute,
   ReferenciaIdRoute: ReferenciaIdRoute,
+  SystemsIdRoute: SystemsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

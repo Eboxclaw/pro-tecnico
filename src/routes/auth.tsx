@@ -1,6 +1,6 @@
 import { ProductImage } from "@/components/shop/ProductImage";
 import { useState } from "react";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { ArrowRight, MailCheck, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
@@ -13,11 +13,24 @@ import { Label } from "@/components/ui/label";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
+/** Só caminhos internos — evita redirects abertos para o exterior. */
+function safeRedirect(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  if (!value.startsWith("/") || value.startsWith("//")) return undefined;
+  return value;
+}
+
 export const Route = createFileRoute("/auth")({
+  validateSearch: (search: Record<string, unknown>): { redirect?: string } => ({
+    redirect: safeRedirect(search.redirect),
+  }),
   head: () => ({
     meta: [
       { title: "Conta — REJENDARI" },
-      { name: "description", content: "Entra ou cria uma conta REJENDARI para encomendas, pontos e convites." },
+      {
+        name: "description",
+        content: "Entra ou cria uma conta REJENDARI para encomendas, pontos e convites.",
+      },
       { property: "og:title", content: "Conta — REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -33,14 +46,17 @@ function authErrorText(t: (k: string) => string, message: string) {
   if (m.includes("invalid login credentials")) return t("auth.errorCredentials");
   if (m.includes("already") && m.includes("registered")) return t("auth.errorEmailUsed");
   if (m.includes("email not confirmed")) return t("auth.errorEmailNotConfirmed");
-  if (m.includes("password") && (m.includes("least") || m.includes("short") || m.includes("weak"))) return t("auth.errorWeakPassword");
+  if (m.includes("password") && (m.includes("least") || m.includes("short") || m.includes("weak")))
+    return t("auth.errorWeakPassword");
   if (m.includes("rate limit") || m.includes("too many")) return t("auth.errorRateLimited");
   return t("auth.error");
 }
 
 function AuthPage() {
   const t = useT();
-  const navigate = useNavigate();
+  const router = useRouter();
+  const { redirect } = Route.useSearch();
+  const destination = redirect ?? "/conta";
   const [mode, setMode] = useState<"in" | "up">("in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -68,7 +84,7 @@ function AuthPage() {
         toast.error(authErrorText(t, error.message));
         return;
       }
-      navigate({ to: "/conta" });
+      router.history.push(destination);
       return;
     }
 
@@ -76,7 +92,7 @@ function AuthPage() {
       email,
       password,
       options: {
-        emailRedirectTo: window.location.origin + "/conta",
+        emailRedirectTo: window.location.origin + destination,
         data: { referred_by_code: referralCode || undefined },
       },
     });
@@ -88,7 +104,7 @@ function AuthPage() {
     }
     if (data.session) {
       toast.success(t("auth.accountReady"));
-      navigate({ to: "/conta" });
+      router.history.push(destination);
       return;
     }
     // Sem sessão: o projeto exige confirmação de email — estado explícito, não um toast que desaparece.
@@ -101,9 +117,11 @@ function AuthPage() {
       toast.error(t("auth.googleUnavailable"));
       return;
     }
-    const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin });
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin,
+    });
     if (result.error) toast.error(t("auth.error"));
-    else if (!result.redirected) navigate({ to: "/conta" });
+    else if (!result.redirected) router.history.push(destination);
   }
 
   if (awaitingConfirmation) {
@@ -112,9 +130,13 @@ function AuthPage() {
         <div className="border border-border bg-surface p-8">
           <MailCheck className="h-8 w-8 text-primary" />
           <p className="jp-label mt-5 text-primary">確認 · quase lá</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.04em]">{t("auth.checkEmailTitle")}</h2>
+          <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.04em]">
+            {t("auth.checkEmailTitle")}
+          </h2>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">{t("auth.checkEmailBody")}</p>
-          <p className="mt-4 border border-border bg-background px-4 py-3 font-mono text-sm">{email}</p>
+          <p className="mt-4 border border-border bg-background px-4 py-3 font-mono text-sm">
+            {email}
+          </p>
           <Button
             className="mt-6 w-full rounded-none"
             onClick={() => {
@@ -148,20 +170,31 @@ function AuthPage() {
         </div>
 
         <div className="relative grid grid-cols-2 gap-px border-t border-white/10 bg-white/10">
-          {CURATED_TOOL_REFERENCES.filter((tool) => tool.imageUrl).slice(0, 4).map((tool) => (
-            <div key={tool.id} className="relative aspect-[4/3] overflow-hidden bg-[#eee9de]">
-              <ProductImage src={tool.imageUrl!} alt={tool.imageAlt ?? `${tool.brand} ${tool.model}` } className="h-full w-full object-contain p-5" loading="lazy" />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-3 pt-8">
-                <p className="font-mono text-[8px] uppercase tracking-[0.13em] text-white/70">{tool.brand} · {tool.model}</p>
+          {CURATED_TOOL_REFERENCES.filter((tool) => tool.imageUrl)
+            .slice(0, 4)
+            .map((tool) => (
+              <div key={tool.id} className="relative aspect-[4/3] overflow-hidden bg-[#eee9de]">
+                <ProductImage
+                  src={tool.imageUrl!}
+                  alt={tool.imageAlt ?? `${tool.brand} ${tool.model}`}
+                  className="h-full w-full object-contain p-5"
+                  loading="lazy"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-3 pt-8">
+                  <p className="font-mono text-[8px] uppercase tracking-[0.13em] text-white/70">
+                    {tool.brand} · {tool.model}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </section>
 
       <section className="flex items-center px-4 py-12 sm:px-10 lg:px-14 xl:px-20">
         <div className="mx-auto w-full max-w-md">
-          <p className="jp-label text-primary">{mode === "in" ? "ログイン · entrar" : "新規登録 · criar conta"}</p>
+          <p className="jp-label text-primary">
+            {mode === "in" ? "ログイン · entrar" : "新規登録 · criar conta"}
+          </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.05em]">
             {mode === "in" ? t("auth.title") : t("auth.signUp")}
           </h2>
@@ -173,19 +206,27 @@ function AuthPage() {
               <div>
                 <p className="jp-label text-primary">紹介 · convite reconhecido</p>
                 <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                  O convite {referralCode} fica associado à tua conta. Se existir uma campanha elegível, as condições e vantagens aparecem depois do registo.
+                  O convite {referralCode} fica associado à tua conta. Se existir uma campanha
+                  elegível, as condições e vantagens aparecem depois do registo.
                 </p>
               </div>
             </div>
           )}
 
-          <Button variant="secondary" className="mt-8 w-full rounded-none" onClick={google} disabled={!supabaseReady}>
+          <Button
+            variant="secondary"
+            className="mt-8 w-full rounded-none"
+            onClick={google}
+            disabled={!supabaseReady}
+          >
             {t("auth.google")}
           </Button>
 
           <div className="my-6 flex items-center gap-3">
             <span className="h-px flex-1 bg-border" />
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">{t("auth.or")}</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+              {t("auth.or")}
+            </span>
             <span className="h-px flex-1 bg-border" />
           </div>
 
@@ -214,7 +255,10 @@ function AuthPage() {
                 className="mt-2 rounded-none bg-background"
               />
               {mode === "up" && (
-                <p id="pw-hint" className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                <p
+                  id="pw-hint"
+                  className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground"
+                >
                   {t("auth.passwordHint")}
                 </p>
               )}

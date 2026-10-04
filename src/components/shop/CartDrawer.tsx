@@ -71,7 +71,7 @@ export function CartDrawer({
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4">
               {items.map((item) => (
                 <div key={item.variantId} className="flex gap-3 rounded-md border border-border p-2">
-                  <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-sm bg-secondary">
+                  <div className="product-plate h-16 w-16 flex-shrink-0 overflow-hidden rounded-sm">
                     {item.product.node.images?.edges?.[0]?.node && (
                       <ProductImage
                         src={item.product.node.images.edges[0].node.url}

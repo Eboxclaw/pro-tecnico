@@ -59,7 +59,7 @@ export function SmartProductVisual({
       ref={stageRef}
       onPointerMove={onPointerMove}
       onPointerLeave={reset}
-      className={`smart-product-visual group/visual relative overflow-hidden bg-[#eee8dc] ${hero ? "h-[420px] sm:h-[520px] lg:h-[640px]" : featured ? "aspect-[16/10]" : "aspect-[4/3]"} ${className}`}
+      className={`smart-product-visual group/visual relative overflow-hidden bg-[var(--plate)] ${hero ? "h-[420px] sm:h-[520px] lg:h-[640px]" : featured ? "aspect-[16/10]" : "aspect-[4/3]"} ${className}`}
     >
       <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
       <div className="smart-product-grid absolute inset-0 opacity-70" aria-hidden="true" />

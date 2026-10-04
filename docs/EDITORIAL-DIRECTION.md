@@ -44,6 +44,34 @@ A ambiguidade da palavra “torna” aguarda esclarecimento do utilizador. Foram
 aparafusadora de impacto, retificadora reta, rebarbadora e berbequim; não foi inferido um torno.
 Não foram submetidos formulários, criadas contas, feitas compras ou alterados dados de produção.
 
+## Padrão de imagem — o prato único (sprint 10, 4 outubro 2026)
+
+Regra: existe um só prato de imagem, `--plate` (#eee8dc), e duas montagens.
+
+- **Fundo claro → `.product-plate`**: fundo do token + textura de pontos + `mix-blend-mode:
+  multiply` na imagem. O fundo branco das fotos de catálogo derrete no papel — nunca um
+  retângulo branco colado ao creme. Aplicado em: ProductCard, SmartProductVisual,
+  thumbs de kits/packs/carrinho, Legendary Combos, Smart Kit, Bit Rail, comparações,
+  grelha de curadoria, tiles do Edit e sets oficiais.
+- **Fundo escuro → `.photo-print`**: a foto monta como cópia em papel fotográfico
+  (#faf8f3, border hairline, sombra, hover com leve rotação). Nunca uma foto solta sobre
+  banda escura. Aplicado em: hero WeraFeature e lead do RejendariEdit.
+- **Contact shadow**: `.product-ground` desenha a elipse de aterragem sob o produto nos
+  pratos onde a imagem flutua (comparações, Smart Kit). Não usar `drop-shadow` em fotos
+  JPEG de fundo branco — com multiply a sombra vira retângulo sujo; a elipse é
+  independente do alfa.
+- **Sem fotografia** → `ProductMonogram` (monograma da marca em cqi, escala com o prato).
+  **Fotografia que falha** → estado com ImageOff sobre o prato. São estados distintos.
+- Todos os hex antigos (`#eee9de`, `#ece9e2`, `#e8e1d4`, `#f5f4ee`, `#eee8dd`) foram
+  absorvidos pelo token; não criar novos tons de prato.
+
+Auditoria HTTP das 135 URLs (outubro 2026): 0 falhas, 0 imagens abaixo de 450 px;
+~85% com 832 px ou mais. Seis imagens ficam no limite e precisam de re-source manual
+(o padrão de URL não oferece originais maiores): 4× Knipex (480×480, CDN só serve
+`square_md`; knipex.com bloqueia scraping), Fujiya 770-200 (490×435, master pequeno),
+Ko-ken 3725Z (500×281, master pequeno). Substituir quando houver acesso a catálogo
+de alta resolução ou fotografia própria.
+
 ## Validação local
 
 - TypeScript e build de produção concluídos com sucesso em 29 setembro.

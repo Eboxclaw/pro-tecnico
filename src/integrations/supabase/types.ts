@@ -1,497 +1,574 @@
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
 export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.5"
-  }
+    PostgrestVersion: "14.5";
+  };
   public: {
     Tables: {
       b2b_requests: {
         Row: {
-          company: string
-          contact_name: string
-          created_at: string
-          email: string
-          id: string
-          message: string | null
-          phone: string | null
-          trade: string | null
-          user_id: string | null
-          vat_number: string | null
-        }
+          company: string;
+          contact_name: string;
+          created_at: string;
+          email: string;
+          id: string;
+          message: string | null;
+          phone: string | null;
+          trade: string | null;
+          user_id: string | null;
+          vat_number: string | null;
+        };
         Insert: {
-          company: string
-          contact_name: string
-          created_at?: string
-          email: string
-          id?: string
-          message?: string | null
-          phone?: string | null
-          trade?: string | null
-          user_id?: string | null
-          vat_number?: string | null
-        }
+          company: string;
+          contact_name: string;
+          created_at?: string;
+          email: string;
+          id?: string;
+          message?: string | null;
+          phone?: string | null;
+          trade?: string | null;
+          user_id?: string | null;
+          vat_number?: string | null;
+        };
         Update: {
-          company?: string
-          contact_name?: string
-          created_at?: string
-          email?: string
-          id?: string
-          message?: string | null
-          phone?: string | null
-          trade?: string | null
-          user_id?: string | null
-          vat_number?: string | null
-        }
-        Relationships: []
-      }
+          company?: string;
+          contact_name?: string;
+          created_at?: string;
+          email?: string;
+          id?: string;
+          message?: string | null;
+          phone?: string | null;
+          trade?: string | null;
+          user_id?: string | null;
+          vat_number?: string | null;
+        };
+        Relationships: [];
+      };
       points_ledger: {
         Row: {
-          created_at: string
-          delta: number
-          id: string
-          reason: string
-          user_id: string
-        }
+          created_at: string;
+          delta: number;
+          id: string;
+          reason: string;
+          user_id: string;
+        };
         Insert: {
-          created_at?: string
-          delta: number
-          id?: string
-          reason: string
-          user_id: string
-        }
+          created_at?: string;
+          delta: number;
+          id?: string;
+          reason: string;
+          user_id: string;
+        };
         Update: {
-          created_at?: string
-          delta?: number
-          id?: string
-          reason?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
+          created_at?: string;
+          delta?: number;
+          id?: string;
+          reason?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       orders: {
         Row: {
-          id: string
-          user_id: string | null
-          email: string | null
-          status: string
-          provider: string
-          provider_intent_id: string | null
-          total_amount: number
-          total_currency: string
-          created_at: string
-          updated_at: string
-        }
+          id: string;
+          user_id: string | null;
+          email: string | null;
+          status: string;
+          provider: string;
+          provider_intent_id: string | null;
+          total_amount: number;
+          total_currency: string;
+          created_at: string;
+          updated_at: string;
+        };
         Insert: {
-          id?: string
-          user_id?: string | null
-          email?: string | null
-          status?: string
-          provider?: string
-          provider_intent_id?: string | null
-          total_amount: number
-          total_currency?: string
-          created_at?: string
-          updated_at?: string
-        }
+          id?: string;
+          user_id?: string | null;
+          email?: string | null;
+          status?: string;
+          provider?: string;
+          provider_intent_id?: string | null;
+          total_amount: number;
+          total_currency?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
         Update: {
-          id?: string
-          user_id?: string | null
-          email?: string | null
-          status?: string
-          provider?: string
-          provider_intent_id?: string | null
-          total_amount?: number
-          total_currency?: string
-          created_at?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
+          id?: string;
+          user_id?: string | null;
+          email?: string | null;
+          status?: string;
+          provider?: string;
+          provider_intent_id?: string | null;
+          total_amount?: number;
+          total_currency?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       order_items: {
         Row: {
-          id: string
-          order_id: string
-          variant_gid: string
-          product_handle: string | null
-          product_title: string
-          variant_title: string | null
-          image_url: string | null
-          unit_price: number
-          quantity: number
-          line_total: number
-        }
+          id: string;
+          order_id: string;
+          variant_gid: string;
+          product_handle: string | null;
+          product_title: string;
+          variant_title: string | null;
+          image_url: string | null;
+          unit_price: number;
+          quantity: number;
+          line_total: number;
+        };
         Insert: {
-          id?: string
-          order_id: string
-          variant_gid: string
-          product_handle?: string | null
-          product_title: string
-          variant_title?: string | null
-          image_url?: string | null
-          unit_price: number
-          quantity: number
-          line_total: number
-        }
+          id?: string;
+          order_id: string;
+          variant_gid: string;
+          product_handle?: string | null;
+          product_title: string;
+          variant_title?: string | null;
+          image_url?: string | null;
+          unit_price: number;
+          quantity: number;
+          line_total: number;
+        };
         Update: {
-          id?: string
-          order_id?: string
-          variant_gid?: string
-          product_handle?: string | null
-          product_title?: string
-          variant_title?: string | null
-          image_url?: string | null
-          unit_price?: number
-          quantity?: number
-          line_total?: number
-        }
-        Relationships: []
-      }
+          id?: string;
+          order_id?: string;
+          variant_gid?: string;
+          product_handle?: string | null;
+          product_title?: string;
+          variant_title?: string | null;
+          image_url?: string | null;
+          unit_price?: number;
+          quantity?: number;
+          line_total?: number;
+        };
+        Relationships: [];
+      };
       profiles: {
         Row: {
-          company: string | null
-          created_at: string
-          email: string | null
-          full_name: string | null
-          id: string
-          phone: string | null
-          points: number
-          referral_code: string
-          referred_by: string | null
-          updated_at: string
-          vat_number: string | null
-        }
+          company: string | null;
+          created_at: string;
+          email: string | null;
+          full_name: string | null;
+          id: string;
+          phone: string | null;
+          points: number;
+          referral_code: string;
+          referred_by: string | null;
+          role: string;
+          updated_at: string;
+          vat_number: string | null;
+        };
         Insert: {
-          company?: string | null
-          created_at?: string
-          email?: string | null
-          full_name?: string | null
-          id: string
-          phone?: string | null
-          points?: number
-          referral_code?: string
-          referred_by?: string | null
-          updated_at?: string
-          vat_number?: string | null
-        }
+          company?: string | null;
+          created_at?: string;
+          email?: string | null;
+          full_name?: string | null;
+          id: string;
+          phone?: string | null;
+          points?: number;
+          referral_code?: string;
+          referred_by?: string | null;
+          role?: string;
+          updated_at?: string;
+          vat_number?: string | null;
+        };
         Update: {
-          company?: string | null
-          created_at?: string
-          email?: string | null
-          full_name?: string | null
-          id?: string
-          phone?: string | null
-          points?: number
-          referral_code?: string
-          referred_by?: string | null
-          updated_at?: string
-          vat_number?: string | null
-        }
+          company?: string | null;
+          created_at?: string;
+          email?: string | null;
+          full_name?: string | null;
+          id?: string;
+          phone?: string | null;
+          points?: number;
+          referral_code?: string;
+          referred_by?: string | null;
+          role?: string;
+          updated_at?: string;
+          vat_number?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "profiles_referred_by_fkey"
-            columns: ["referred_by"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
+            foreignKeyName: "profiles_referred_by_fkey";
+            columns: ["referred_by"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       raffle_entries: {
         Row: {
-          created_at: string
-          id: string
-          raffle_id: string
-          user_id: string
-        }
+          created_at: string;
+          id: string;
+          raffle_id: string;
+          user_id: string;
+        };
         Insert: {
-          created_at?: string
-          id?: string
-          raffle_id: string
-          user_id: string
-        }
+          created_at?: string;
+          id?: string;
+          raffle_id: string;
+          user_id: string;
+        };
         Update: {
-          created_at?: string
-          id?: string
-          raffle_id?: string
-          user_id?: string
-        }
+          created_at?: string;
+          id?: string;
+          raffle_id?: string;
+          user_id?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "raffle_entries_raffle_id_fkey"
-            columns: ["raffle_id"]
-            isOneToOne: false
-            referencedRelation: "raffles"
-            referencedColumns: ["id"]
+            foreignKeyName: "raffle_entries_raffle_id_fkey";
+            columns: ["raffle_id"];
+            isOneToOne: false;
+            referencedRelation: "raffles";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       raffles: {
         Row: {
-          created_at: string
-          drawn_at: string | null
-          id: string
-          prize: string
-          prize_brand: string | null
-          status: string
-          title: string
-          week_start: string
-          winner_label: string | null
-          winner_user_id: string | null
-        }
+          created_at: string;
+          drawn_at: string | null;
+          id: string;
+          prize: string;
+          prize_brand: string | null;
+          status: string;
+          title: string;
+          week_start: string;
+          winner_label: string | null;
+          winner_user_id: string | null;
+        };
         Insert: {
-          created_at?: string
-          drawn_at?: string | null
-          id?: string
-          prize: string
-          prize_brand?: string | null
-          status?: string
-          title: string
-          week_start: string
-          winner_label?: string | null
-          winner_user_id?: string | null
-        }
+          created_at?: string;
+          drawn_at?: string | null;
+          id?: string;
+          prize: string;
+          prize_brand?: string | null;
+          status?: string;
+          title: string;
+          week_start: string;
+          winner_label?: string | null;
+          winner_user_id?: string | null;
+        };
         Update: {
-          created_at?: string
-          drawn_at?: string | null
-          id?: string
-          prize?: string
-          prize_brand?: string | null
-          status?: string
-          title?: string
-          week_start?: string
-          winner_label?: string | null
-          winner_user_id?: string | null
-        }
-        Relationships: []
-      }
+          created_at?: string;
+          drawn_at?: string | null;
+          id?: string;
+          prize?: string;
+          prize_brand?: string | null;
+          status?: string;
+          title?: string;
+          week_start?: string;
+          winner_label?: string | null;
+          winner_user_id?: string | null;
+        };
+        Relationships: [];
+      };
       referrals: {
         Row: {
-          code: string
-          created_at: string
-          id: string
-          qualified_at: string | null
-          referred_points: number
-          referred_user_id: string
-          referrer_id: string
-          referrer_points: number
-          rewarded_at: string | null
-          status: string
-        }
+          code: string;
+          created_at: string;
+          id: string;
+          qualified_at: string | null;
+          referred_points: number;
+          referred_user_id: string;
+          referrer_id: string;
+          referrer_points: number;
+          rewarded_at: string | null;
+          status: string;
+        };
         Insert: {
-          code: string
-          created_at?: string
-          id?: string
-          qualified_at?: string | null
-          referred_points?: number
-          referred_user_id: string
-          referrer_id: string
-          referrer_points?: number
-          rewarded_at?: string | null
-          status?: string
-        }
+          code: string;
+          created_at?: string;
+          id?: string;
+          qualified_at?: string | null;
+          referred_points?: number;
+          referred_user_id: string;
+          referrer_id: string;
+          referrer_points?: number;
+          rewarded_at?: string | null;
+          status?: string;
+        };
         Update: {
-          code?: string
-          created_at?: string
-          id?: string
-          qualified_at?: string | null
-          referred_points?: number
-          referred_user_id?: string
-          referrer_id?: string
-          referrer_points?: number
-          rewarded_at?: string | null
-          status?: string
-        }
+          code?: string;
+          created_at?: string;
+          id?: string;
+          qualified_at?: string | null;
+          referred_points?: number;
+          referred_user_id?: string;
+          referrer_id?: string;
+          referrer_points?: number;
+          rewarded_at?: string | null;
+          status?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "referrals_referred_user_id_fkey"
-            columns: ["referred_user_id"]
-            isOneToOne: true
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
+            foreignKeyName: "referrals_referred_user_id_fkey";
+            columns: ["referred_user_id"];
+            isOneToOne: true;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: "referrals_referrer_id_fkey"
-            columns: ["referrer_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
+            foreignKeyName: "referrals_referrer_id_fkey";
+            columns: ["referrer_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
+      system_favorites: {
+        Row: {
+          created_at: string;
+          id: string;
+          system_id: string;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          system_id: string;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          system_id?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      system_likes: {
+        Row: {
+          created_at: string;
+          id: string;
+          system_id: string;
+          visitor_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          system_id: string;
+          visitor_id: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          system_id?: string;
+          visitor_id?: string;
+        };
+        Relationships: [];
+      };
+      system_reservations: {
+        Row: {
+          created_at: string;
+          id: string;
+          profession: string | null;
+          quantity: number;
+          status: string;
+          system_id: string;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          profession?: string | null;
+          quantity: number;
+          status?: string;
+          system_id: string;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          profession?: string | null;
+          quantity?: number;
+          status?: string;
+          system_id?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       waitlist: {
         Row: {
-          created_at: string
-          email: string
-          id: string
-          locale: string | null
-        }
+          created_at: string;
+          email: string;
+          id: string;
+          locale: string | null;
+        };
         Insert: {
-          created_at?: string
-          email: string
-          id?: string
-          locale?: string | null
-        }
+          created_at?: string;
+          email: string;
+          id?: string;
+          locale?: string | null;
+        };
         Update: {
-          created_at?: string
-          email?: string
-          id?: string
-          locale?: string | null
-        }
-        Relationships: []
-      }
-    }
+          created_at?: string;
+          email?: string;
+          id?: string;
+          locale?: string | null;
+        };
+        Relationships: [];
+      };
+    };
     Views: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Functions: {
       award_referral_points: {
         Args: {
-          p_referral_id: string
-          p_referred_points: number
-          p_referrer_points: number
-        }
-        Returns: boolean
-      }
-      claim_referral: { Args: { p_code: string }; Returns: boolean }
-      draw_weekly_raffle: { Args: never; Returns: undefined }
-    }
+          p_referral_id: string;
+          p_referred_points: number;
+          p_referrer_points: number;
+        };
+        Returns: boolean;
+      };
+      claim_referral: { Args: { p_code: string }; Returns: boolean };
+      draw_weekly_raffle: { Args: never; Returns: undefined };
+      is_admin: { Args: never; Returns: boolean };
+      system_demand_counts: {
+        Args: never;
+        Returns: {
+          system_id: string;
+          like_count: number;
+          favorite_count: number;
+          reservation_count: number;
+          unit_count: number;
+        }[];
+      };
+    };
     Enums: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
-}
+      [_ in never]: never;
+    };
+  };
+};
 
-type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
 
-type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">];
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
   TableName extends (DefaultSchemaTableNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals
+    schema: keyof DatabaseWithoutInternals;
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
     : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
+  schema: keyof DatabaseWithoutInternals;
 }
   ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
       DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
-      Row: infer R
+      Row: infer R;
     }
     ? R
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
-        DefaultSchema["Views"])
-    ? (DefaultSchema["Tables"] &
-        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
-        Row: infer R
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] & DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R;
       }
       ? R
       : never
-    : never
+    : never;
 
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema["Tables"]
-    | { schema: keyof DatabaseWithoutInternals },
+    keyof DefaultSchema["Tables"] | { schema: keyof DatabaseWithoutInternals },
   TableName extends (DefaultSchemaTableNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals
+    schema: keyof DatabaseWithoutInternals;
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
+  schema: keyof DatabaseWithoutInternals;
 }
   ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Insert: infer I
+      Insert: infer I;
     }
     ? I
     : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
     ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
-        Insert: infer I
+        Insert: infer I;
       }
       ? I
       : never
-    : never
+    : never;
 
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema["Tables"]
-    | { schema: keyof DatabaseWithoutInternals },
+    keyof DefaultSchema["Tables"] | { schema: keyof DatabaseWithoutInternals },
   TableName extends (DefaultSchemaTableNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals
+    schema: keyof DatabaseWithoutInternals;
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
+  schema: keyof DatabaseWithoutInternals;
 }
   ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Update: infer U
+      Update: infer U;
     }
     ? U
     : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
     ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
-        Update: infer U
+        Update: infer U;
       }
       ? U
       : never
-    : never
+    : never;
 
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema["Enums"]
-    | { schema: keyof DatabaseWithoutInternals },
+    keyof DefaultSchema["Enums"] | { schema: keyof DatabaseWithoutInternals },
   EnumName extends (DefaultSchemaEnumNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals
+    schema: keyof DatabaseWithoutInternals;
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
     : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
+  schema: keyof DatabaseWithoutInternals;
 }
   ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
     ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
-    : never
+    : never;
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema["CompositeTypes"]
-    | { schema: keyof DatabaseWithoutInternals },
+    keyof DefaultSchema["CompositeTypes"] | { schema: keyof DatabaseWithoutInternals },
   CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals
+    schema: keyof DatabaseWithoutInternals;
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
     : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
+  schema: keyof DatabaseWithoutInternals;
 }
   ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
   : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
     ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
-    : never
+    : never;
 
 export const Constants = {
   public: {
     Enums: {},
   },
-} as const
+} as const;

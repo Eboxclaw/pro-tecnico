@@ -1,5 +1,6 @@
 import { referenceById, CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { smartPackById } from "@/data/smart-packs";
+import { kitById } from "@/data/kits";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
@@ -13,9 +14,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/b2b")({
-  validateSearch: (search: Record<string, unknown>): { reference?: string | undefined; pack?: string | undefined } => ({
+  validateSearch: (search: Record<string, unknown>): { reference?: string | undefined; pack?: string | undefined; kit?: string | undefined } => ({
     reference: typeof search["reference"] === "string" && referenceById(search["reference"]) ? search["reference"] : undefined,
     pack: typeof search["pack"] === "string" && smartPackById(search["pack"]) ? search["pack"] : undefined,
+    kit: typeof search["kit"] === "string" && kitById(search["kit"]) ? search["kit"] : undefined,
   }),
   head: () => ({
     meta: [
@@ -37,24 +39,33 @@ export const Route = createFileRoute("/b2b")({
 });
 
 function B2BRoute() {
-  const { reference, pack } = Route.useSearch();
-  return <B2BPage key={pack ?? reference ?? "general"} reference={reference} packId={pack} />;
+  const { reference, pack, kit } = Route.useSearch();
+  return <B2BPage key={kit ?? pack ?? reference ?? "general"} reference={reference} packId={pack} kitId={kit} />;
 }
 
-function packPrefill(packId: string) {
-  const pack = smartPackById(packId);
-  if (!pack) return "";
-  const lines = pack.pieces
+function prefillComposition(pieces: Array<{ id: string; quantity: number; whyPt: string }>) {
+  return pieces
     .map((piece) => {
       const tool = referenceById(piece.id);
       return tool ? `- ${tool.brand} ${tool.model}${piece.quantity > 1 ? ` × ${piece.quantity}` : ""} — ${piece.whyPt}` : null;
     })
     .filter(Boolean)
     .join("\n");
-  return `Pack REJENDARI ${pack.tier} · ${pack.trade}\n"${pack.title}"\n\nComposição:\n${lines}\n\nQuantidade de packs: \nObservações: `;
 }
 
-function B2BPage({ reference, packId }: { reference?: string | undefined; packId?: string | undefined }) {
+function packPrefill(packId: string) {
+  const pack = smartPackById(packId);
+  if (!pack) return "";
+  return `Pack REJENDARI ${pack.tier} · ${pack.trade}\n"${pack.title}"\n\nComposição:\n${prefillComposition(pack.pieces)}\n\nQuantidade de packs: \nObservações: `;
+}
+
+function kitPrefill(kitId: string) {
+  const kit = kitById(kitId);
+  if (!kit) return "";
+  return `Kit REJENDARI · ${kit.trade}\n"${kit.title}"\n\nComposição:\n${prefillComposition(kit.pieces)}\n\nQuantidade de kits: \nObservações: `;
+}
+
+function B2BPage({ reference, packId, kitId }: { reference?: string | undefined; packId?: string | undefined; kitId?: string | undefined }) {
   const tool = reference ? referenceById(reference) : undefined;
   const t = useT();
   const [submitting, setSubmitting] = useState(false);
@@ -68,9 +79,11 @@ function B2BPage({ reference, packId }: { reference?: string | undefined; packId
     trade: "",
     message: tool
       ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model} — ${tool.namePt}.\nQuantidade: \nAplicação: `
-      : packId
-        ? packPrefill(packId)
-        : "",
+      : kitId
+        ? kitPrefill(kitId)
+        : packId
+          ? packPrefill(packId)
+          : "",
   });
 
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>

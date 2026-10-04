@@ -51,7 +51,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
                   params={{ id }}
                   className="group flex items-center gap-3 border border-white/15 px-4 py-3 transition-colors hover:border-[#d65a41]"
                 >
-                  <span className="h-12 w-12 overflow-hidden bg-white/95">
+                  <span className="product-plate h-12 w-12 overflow-hidden">
                     {tool.imageUrl ? (
                       <ProductImage src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-1" loading="lazy" />
                     ) : null}
@@ -75,11 +75,13 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
         <Link to="/referencia/$id" params={{ id: "wera-8100-sb-6" }} className="group relative block border border-white/12 bg-[#23211d] p-6">
           <span className="absolute right-5 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">05004046001</span>
           {kit?.imageUrl ? (
-            <ProductImage
-              src={kit.imageUrl}
-              alt={kit.imageAlt ?? "Wera 8100 SB 6 Zyklop Speed"}
-              className="h-64 w-full object-contain transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none sm:h-80"
-            />
+            <div className="photo-print overflow-hidden">
+              <ProductImage
+                src={kit.imageUrl}
+                alt={kit.imageAlt ?? "Wera 8100 SB 6 Zyklop Speed"}
+                className="h-64 w-full object-contain p-4 sm:h-80"
+              />
+            </div>
           ) : null}
           <div className="flex items-end justify-between gap-4 border-t border-white/12 pt-5">
             <div>

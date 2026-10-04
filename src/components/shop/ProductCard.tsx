@@ -55,7 +55,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         aria-label={node.title}
         className="absolute inset-0 z-10"
       />
-      <div className="product-image-stage relative aspect-[5/4] overflow-hidden bg-[#ece9e2]">
+      <div className="product-image-stage relative aspect-[5/4] overflow-hidden">
         {isLegendary && (
           <span className="absolute left-3 top-3 z-10 flex items-center gap-1.5 border border-black/10 bg-black/82 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-white">
             <Sparkles className="h-3 w-3 text-primary" />

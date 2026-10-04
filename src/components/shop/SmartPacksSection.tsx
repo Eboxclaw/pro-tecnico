@@ -3,7 +3,7 @@ import { RejendariSeal } from "@/components/brand/RejendariSeal";
 import { ArrowRight, PackageCheck } from "lucide-react";
 import { referenceById } from "@/data/curated-tool-references";
 import { smartPacksByTrade, type SmartPack } from "@/data/smart-packs";
-import { ProductImage } from "@/components/shop/ProductImage";
+import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
 import { Button } from "@/components/ui/button";
 
 const JOURNEY = [
@@ -31,11 +31,11 @@ function PackCard({ pack }: { pack: SmartPack }) {
         {pieces.map(({ tool, quantity, whyPt }) => (
           <li key={tool.id} className="flex items-start gap-4 p-4">
             <Link to="/referencia/$id" params={{ id: tool.id }} className="shrink-0" aria-label={`${tool.brand} ${tool.model}`}>
-              <span className="block h-16 w-16 overflow-hidden border border-border bg-background">
+              <span className="product-plate block h-16 w-16 overflow-hidden border border-border">
                 {tool.imageUrl ? (
                   <ProductImage src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-1" loading="lazy" />
                 ) : (
-                  <span className="flex h-full w-full items-center justify-center font-mono text-[9px] text-muted-foreground">{tool.model}</span>
+                  <ProductMonogram brand={tool.brand} label={tool.model} className="h-full w-full" />
                 )}
               </span>
             </Link>

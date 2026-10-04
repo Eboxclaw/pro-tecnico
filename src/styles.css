@@ -344,6 +344,9 @@
     radial-gradient(circle at 78% 18%, oklch(0.61 0.19 36 / 0.045), transparent 28%),
     linear-gradient(180deg, oklch(0.965 0.011 82), oklch(0.915 0.014 82));
 }
+.product-image-stage img {
+  mix-blend-mode: multiply;
+}
 
 .editorial-number {
   font-family: var(--font-mono);
@@ -582,14 +585,13 @@
     rotateY(var(--product-ry))
     scale(1.01);
   transform-origin: center;
-  filter: drop-shadow(0 24px 30px oklch(0.2 0.01 65 / 0.18));
-  transition:
-    transform 140ms ease-out,
-    filter 220ms ease;
+  mix-blend-mode: multiply;
+  transition: transform 140ms ease-out;
   will-change: transform;
 }
 
 .smart-product-ghost {
+  mix-blend-mode: multiply;
   transform:
     translate3d(var(--product-back-x), var(--product-back-y), 0)
     scale(1.045);
@@ -600,10 +602,6 @@
 .smart-product-orbit {
   transform: translate3d(var(--product-back-x), var(--product-back-y), 0);
   transition: transform 180ms ease-out;
-}
-
-.smart-product-visual:hover .smart-product-main {
-  filter: drop-shadow(0 30px 38px oklch(0.2 0.01 65 / 0.22));
 }
 
 .smart-product-visual::after {
@@ -713,7 +711,7 @@
 
 .comparison-card img,
 .smart-kit-card img {
-  filter: drop-shadow(0 18px 28px oklch(0.2 0.01 65 / 0.15));
+  mix-blend-mode: multiply;
 }
 
 .comparison-card:hover img {
@@ -787,9 +785,6 @@
 }
 .catalogue-card .smart-product-ghost { display: none; }
 .catalogue-card .smart-product-orbit { opacity: 0.35; }
-.catalogue-card .smart-product-main {
-  filter: drop-shadow(0 12px 16px oklch(0.2 0.01 65 / 0.1));
-}
 .catalogue-card .smart-product-grid { opacity: 0.45; }
 .catalogue-card .smart-product-visual::after { display: none; }
 @media (prefers-reduced-motion: reduce) {
@@ -834,7 +829,7 @@
 .anex-feature-copy h2 { margin: 28px 0 24px; font-size: clamp(38px, 4.4vw, 65px); line-height: 1.03; letter-spacing: -.05em; }
 .anex-feature-copy h2 em, .anex-opening h1 em, .anex-catalog-note h2 em { font-family: Georgia, serif; font-weight: 400; }
 .anex-feature-copy > p:not(.anex-kicker) { max-width: 410px; font-size: 14px; line-height: 1.9; color: #f0e4d9; margin-bottom: 28px; }
-.anex-feature-object { position: relative; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding: 32px; background: #eee8dd; color: #292720; }
+.anex-feature-object { position: relative; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding: 32px; background: var(--plate); color: #292720; }
 .anex-object-word { position: absolute; top: 22px; left: 24px; font-size: clamp(72px, 11vw, 170px); font-weight: 700; letter-spacing: -.08em; color: #ddd5c7; line-height: 1; }
 .anex-opening { display: grid; grid-template-columns: 1.08fr 1fr; background: #20231f; color: #f4f0e7; }
 .anex-opening-copy { padding: clamp(28px, 4vw, 64px) max(24px, calc((100vw - 1312px) / 2)); padding-right: clamp(28px, 4vw, 64px); }
@@ -843,8 +838,8 @@
 .anex-opening h1 { font-size: clamp(32px, 3.2vw, 52px); line-height: 1.12; letter-spacing: -.045em; }
 .anex-lead { max-width: 540px; margin: 25px 0; color: #d1d0c7; font-size: 14px; line-height: 1.9; }
 .anex-independent { max-width: 390px; margin-top: 28px; color: #b9beb3; font-size: 11px; line-height: 1.8; }
-.anex-opening-visual { padding: 28px clamp(24px, 4vw, 64px); background: #eee8dd; color: #302e26; display: flex; flex-direction: column; justify-content: center; }
-.anex-opening-visual img { max-height: 440px; }
+.anex-opening-visual { padding: 28px clamp(24px, 4vw, 64px); background: var(--plate); color: #302e26; display: flex; flex-direction: column; justify-content: center; }
+.anex-opening-visual img { max-height: 440px; mix-blend-mode: multiply; }
 .anex-principles { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1440px; margin: auto; border-bottom: 1px solid var(--border); }
 .anex-principles > div { padding: 32px; border-right: 1px solid var(--border); }
 .anex-principles span { color: #a84b33; font-family: var(--font-mono); font-size: 11px; }
@@ -872,7 +867,7 @@
 
 /* ---------- ANEX duo hero (Quick Ball 397 + AOA-17) ---------- */
 .anex-duo { display: grid; grid-template-columns: 1.05fr .95fr; max-width: 1440px; margin: 0 auto; border-y: 1px solid rgba(0,0,0,.08); }
-.anex-duo-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 460px; padding: clamp(28px, 5vw, 72px); background: #eee8dd; overflow: hidden; }
+.anex-duo-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 460px; padding: clamp(28px, 5vw, 72px); background: var(--plate); overflow: hidden; }
 .anex-duo-object { position: relative; display: flex; flex-direction: column; }
 .anex-duo-object-main { width: 74%; max-width: 470px; aspect-ratio: 1; transform: rotate(-3deg); transition: transform .45s ease; z-index: 2; }
 .anex-duo-object-main:hover { transform: rotate(-1deg); }
@@ -891,7 +886,7 @@
 }
 
 /* ANEX: a decorative stage with independently usable HTML product links. */
-.anex-signature-stage { position: relative; isolation: isolate; overflow: hidden; background: #eee8dd; color: #292720; min-width: 0; }
+.anex-signature-stage { position: relative; isolation: isolate; overflow: hidden; background: var(--plate); color: #292720; min-width: 0; }
 .anex-ryujin-scene { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 60% 35%, #b3443020 0 20%, transparent 20.2%); }
 .anex-ryujin-scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .anex-stage-mark { position: absolute; top: 4%; right: 5%; font-size: clamp(60px, 9vw, 135px); color: #302c2610; pointer-events: none; }
@@ -979,7 +974,7 @@ html, body { overflow-x: clip; }
 .artisan-hero-stage { position: absolute; z-index: 1; top: 50%; right: 4%; transform: translateY(-50%); width: min(38%, 460px); display: grid; place-items: center; }
 .artisan-stage-main { position: relative; display: block; width: 92%; aspect-ratio: 1; background: #faf8f2; border: 1px solid #ffffff26; box-shadow: 0 28px 70px #00000059; transition: transform .45s ease; animation: artisan-arrive 1.4s ease-out both; }
 .artisan-stage-main:hover { transform: translateY(-6px) rotate(-1.2deg); }
-.artisan-stage-main img { filter: saturate(1.02); }
+.artisan-stage-main img { filter: saturate(1.02); mix-blend-mode: multiply; }
 .artisan-stage-bit { position: absolute; display: block; width: 30%; aspect-ratio: 1; background: #faf8f2; border: 1px solid #ffffff33; box-shadow: 0 16px 40px #0000004d; transition: transform .45s ease; }
 .artisan-stage-bit-1 { top: -9%; right: -7%; animation: tool-float-a 8.4s ease-in-out infinite; }
 .artisan-stage-bit-2 { bottom: -7%; left: -6%; animation: tool-float-b 9.6s ease-in-out infinite; }
@@ -1005,3 +1000,42 @@ html, body { overflow-x: clip; }
 /* Variante fantasma do link artisan — usada em produção, agora definida. */
 .artisan-link-ghost { display: inline-flex; align-items: center; border: 1px solid rgba(250,248,242,.28); padding: 15px 22px; font-size: 14px; font-weight: 600; color: #faf8f2; transition: border-color .25s ease, background .25s ease; }
 .artisan-link-ghost:hover { border-color: #d65a41; background: #d65a4114; }
+
+/* ── Sprint 10 · o prato único: multiply em claro, photo-print em escuro ── */
+/* Um prato (--plate) para toda a imagem de produto. O multiply derrete o fundo
+   branco das fotos de catálogo no papel — sem retângulos colados. */
+.product-plate {
+  container-type: inline-size;
+  background: var(--plate);
+  background-image: radial-gradient(#2927200a 1px, transparent 1px);
+  background-size: 7px 7px;
+}
+.product-plate img { mix-blend-mode: multiply; }
+
+/* Sombra de contacto: assenta o produto no prato sem depender do alfa da foto. */
+.product-ground::after {
+  content: "";
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  bottom: 7%;
+  height: 8%;
+  border-radius: 50%;
+  background: rgba(35, 30, 25, 0.16);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+/* Em banda escura a foto monta como cópia em papel fotográfico: prato claro,
+   border hairline, sombra física. Nunca um retângulo branco solto. */
+.photo-print {
+  background: #faf8f3;
+  border: 1px solid rgba(35, 30, 25, 0.16);
+  box-shadow: var(--shadow-2);
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+.photo-print img { mix-blend-mode: multiply; }
+.photo-print:hover { transform: translateY(-4px) rotate(-0.6deg); box-shadow: 0 26px 64px rgba(35, 30, 25, 0.24); }
+@media (prefers-reduced-motion: reduce) {
+  .photo-print, .photo-print:hover { transform: none; transition: none; }
+}

@@ -28,7 +28,7 @@ export function RatchetDriverComparison() {
           {tools.map((tool, index) => tool && (
             <article key={tool.id} className="comparison-card group relative overflow-hidden bg-[#23211d] p-5 sm:p-6">
               <span className="absolute right-4 top-3 font-mono text-5xl font-semibold text-white/[0.035]">0{index + 1}</span>
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#eee9de]">
+              <div className="product-plate product-ground relative aspect-[4/3] overflow-hidden">
                 {tool.imageUrl ? (
                   <ProductImage
                     src={tool.imageUrl}

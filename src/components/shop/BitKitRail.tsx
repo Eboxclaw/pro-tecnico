@@ -35,7 +35,7 @@ export function BitKitRail() {
               params={{ id: tool.id }}
               className="group grid w-[300px] shrink-0 grid-cols-[112px_1fr] overflow-hidden border border-black/10 bg-[#f8f4eb] transition-all duration-300 hover:-translate-y-1 hover:border-[#b54530]/50 hover:shadow-[0_18px_45px_rgba(45,37,29,0.14)] sm:w-[360px] sm:grid-cols-[136px_1fr]"
             >
-              <div className="relative aspect-square overflow-hidden bg-[#e8e1d4]">
+              <div className="product-plate relative aspect-square overflow-hidden">
                 <ProductImage
                   src={tool.imageUrl!}
                   alt={tool.imageAlt ?? tool.namePt}

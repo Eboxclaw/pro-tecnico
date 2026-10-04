@@ -40,11 +40,13 @@ export function RejendariEdit() {
         >
           <div className="absolute inset-0 technical-grid opacity-[0.08]" />
           {lead.imageUrl && (
-            <ProductImage
-              src={lead.imageUrl}
-              alt={lead.imageAlt ?? lead.namePt}
-              className="absolute inset-0 h-full w-full object-contain p-10 transition-transform duration-700 group-hover:scale-[1.06] group-hover:-rotate-1 sm:p-16"
-            />
+            <div className="photo-print absolute inset-5 z-[1] overflow-hidden sm:inset-8">
+              <ProductImage
+                src={lead.imageUrl}
+                alt={lead.imageAlt ?? lead.namePt}
+                className="h-full w-full object-contain p-8 sm:p-12"
+              />
+            </div>
           )}
           <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black via-black/65 to-transparent p-6 pt-28 sm:p-8 sm:pt-32">
             <div className="flex items-center gap-3">
@@ -68,7 +70,7 @@ export function RejendariEdit() {
               params={{ id: tool.id }}
               className="editorial-tile group flex min-h-60 flex-col overflow-hidden border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/55 hover:shadow-[0_18px_50px_rgba(42,36,29,0.14)]"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#eee9de]">
+              <div className="product-plate relative aspect-[16/10] overflow-hidden">
                 {tool.imageUrl ? (
                   <ProductImage
                     src={tool.imageUrl}

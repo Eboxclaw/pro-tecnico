@@ -16,6 +16,7 @@ import { RejendariEdit } from "@/components/shop/RejendariEdit";
 import { GripWrenchSpotlight } from "@/components/shop/GripWrenchSpotlight";
 import { RejendariPromiseStrip } from "@/components/brand/RejendariPromiseStrip";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { REJENDARI_KITS } from "@/data/kits";
 import { LxtCollection } from "@/components/shop/LxtCollection";
 import { ArtisanHero } from "@/components/brand/ArtisanHero";
 import { HeroToolConstellation } from "@/components/brand/HeroToolConstellation";
@@ -292,6 +293,43 @@ function Index() {
 
       <BitRegimeComparison />
 
+      <section className="border-b border-border bg-surface/35">
+        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="jp-label text-primary">最初のキット · os primeiros kits</p>
+              <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                Dois sistemas, três caixas de ofício.
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Kit Bits Pro, Kit Roquetes Pro e as caixas AVAC, Eletricista e Técnico: composições REJENDARI feitas só
+                com referências com ficha própria — pedido via B2B, sem SKU inventado.
+              </p>
+            </div>
+            <Button className="self-start rounded-none lg:self-auto" asChild>
+              <Link to="/packs">
+                Ver os primeiros kits
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-7 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
+            {REJENDARI_KITS.map((kit) => (
+              <Link key={kit.id} to="/packs" className="category-tile group flex min-h-40 flex-col bg-card p-5">
+                <span className="flex items-center justify-between">
+                  <span className="font-display text-2xl text-primary" aria-hidden>
+                    {kit.format === "kit" ? "組" : "箱"}
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">{kit.jp.split(" · ")[0]}</span>
+                </span>
+                <span className="mt-auto text-sm font-medium leading-5">{kit.trade}</span>
+                <span className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">{kit.title}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <SmartKitShowcase />
 
       <BitKitRail />
@@ -304,7 +342,7 @@ function Index() {
                 key={tool.id}
                 to="/referencia/$id"
                 params={{ id: tool.id }}
-                className="group relative overflow-hidden bg-[#eee9de]"
+                className="product-plate group relative overflow-hidden"
               >
                 <ProductImage
                   src={tool.imageUrl!}

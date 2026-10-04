@@ -1,4 +1,4 @@
-import { ProductImage } from "@/components/shop/ProductImage";
+import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
@@ -156,7 +156,7 @@ export function LegendaryCombos() {
                       params={{ id: tool.id }}
                       className="group grid grid-cols-[52px_1fr_auto] items-center gap-3 px-5 py-3 transition-colors hover:bg-white/[0.04]"
                     >
-                      <div className="aspect-square overflow-hidden bg-[#eee9de]">
+                      <div className="product-plate relative aspect-square overflow-hidden">
                         {tool.imageUrl ? (
                           <ProductImage
                             src={tool.imageUrl}
@@ -164,9 +164,7 @@ export function LegendaryCombos() {
                             className="h-full w-full object-contain p-1.5 transition-transform duration-300 group-hover:scale-105"
                           />
                         ) : (
-                          <div className="flex h-full items-center justify-center font-display text-[10px] text-black/30">
-                            {tool.brand}
-                          </div>
+                          <ProductMonogram brand={tool.brand} label={tool.model} className="h-full w-full" />
                         )}
                       </div>
                       <div className="min-w-0">

@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "deploy:cloudflare": "vite build && node scripts/deploy-cloudflare.mjs",
     "lint": "eslint .",
+    "test": "node --experimental-strip-types --import ./tests/loader.mjs --test tests/*.test.mjs",
     "format": "prettier --write ."
   },
   "overrides": {

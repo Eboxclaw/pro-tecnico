@@ -53,7 +53,7 @@ export function LxtCollection() {
         <Link
           to="/referencia/$id"
           params={{ id: kit.id }}
-          className="group flex flex-col border-t border-border bg-[#f5f4ee] p-6 sm:p-12 lg:border-l lg:border-t-0"
+          className="group flex flex-col border-t border-border bg-[var(--plate)] p-6 sm:p-12 lg:border-l lg:border-t-0"
         >
           <div className="flex justify-between font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
             <span>Conjunto do fabricante</span>

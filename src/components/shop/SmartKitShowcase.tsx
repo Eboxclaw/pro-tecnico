@@ -49,7 +49,7 @@ export function SmartKitShowcase() {
                 params={{ id: item.id }}
                 className="smart-kit-card group flex min-h-[390px] flex-col overflow-hidden border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/55 hover:shadow-[0_22px_55px_rgba(42,36,29,0.14)]"
               >
-                <div className="relative aspect-square overflow-hidden bg-[#eee9de]">
+                <div className="product-plate product-ground relative aspect-square overflow-hidden">
                   {tool.imageUrl ? (
                     <ProductImage src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-105" />
                   ) : (
