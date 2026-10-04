@@ -104,12 +104,12 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     name: "397 LOCK SYSTEM",
     jp: "ロックシステム",
     taglinePt:
-      "ANEX 397 + bits Diamond Ryujin PH2/PH1 + bit-lock + extensor de impacto. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
+      "ANEX 397 + pack de 5 bits PH2 (65/85/110 mm) + Diamond Ryujin + Rapidaptor + extensor de impacto. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
     status: "reserving",
     targetPriceEur: { min: 89, max: 99 },
     targetMoq: 100,
     seedDemand: { likes: 214, favorites: 96, reservations: 64, units: 89, momentum: 92 },
-    capabilitiesPt: ["72T · 25 N·m", "Diamond Ryujin PH2", "Lock + Reach"],
+    capabilitiesPt: ["72T · 25 N·m", "PH2 65–110 mm · 5 bits", "Rapidaptor + Reach"],
     imageRefId: "anex-397-d",
     leadRefId: "anex-397-d",
     modules: [
@@ -126,9 +126,14 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
       },
       {
         role: "IMPACT",
-        title: "Diamond Ryujin PH2",
+        title: "Bits PH2 · 65 a 110 mm",
         impactReady: true,
         pieces: [
+          {
+            refId: "anex-ryujin-artm5-01",
+            whyPt:
+              "Pack de 5 bits Ryujin PH2 em 65/85/110 mm: todos os alcances cobertos num só pack, Cr-Mo-V made in Japan, especificado para 18 V e 40 V.",
+          },
           {
             refId: "anex-adrs-2065",
             whyPt:
@@ -141,15 +146,18 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           },
         ],
         pendingPt: [
-          "PH1 Diamond — perfil prioritário em negociação com a ANEX. Entra no drop assim que a referência impact-ready for confirmada; não inventamos compatibilidade.",
+          "PH1 — perfil prioritário em negociação com a ANEX. Entra no drop assim que a referência impact-ready for confirmada; não inventamos compatibilidade.",
         ],
       },
       {
         role: "LOCK",
-        title: "Bit-lock de impacto",
-        pieces: [],
-        pendingPt: [
-          "O bit-lock final pode ser o Wera Rapidaptor 899/4/1 (anel de retenção, troca a uma mão), uma versão ANEX ou outro equivalente super-class certificado para impacto e torsion. Só entra quando a amostra passar o teste de retenção sob impacto.",
+        title: "Bit-lock · Rapidaptor",
+        pieces: [
+          {
+            refId: "wera-899-4-1-sb",
+            whyPt:
+              "Rapidaptor universal inox: o anel de retenção trava o bit e a troca faz-se a uma mão — funciona bem com o 397. Para impacto contínuo, a variante certificada da Wera está em avaliação.",
+          },
         ],
       },
       {
@@ -562,10 +570,16 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     modules: [
       {
         role: "LOCK",
-        title: "Mechanical bit-lock",
-        pieces: [],
+        title: "Bit-lock · Rapidaptor",
+        pieces: [
+          {
+            refId: "wera-899-4-1-sb",
+            whyPt:
+              "Rapidaptor universal inox: anel de retenção que trava o bit, troca a uma mão — o bit-lock que funciona com o punho 397.",
+          },
+        ],
         pendingPt: [
-          "Seleção em curso: o candidato pode ser o Wera Rapidaptor 899/4/1, uma versão ANEX ou outro equivalente super-class certificado para impacto e torsion. Entra em drop quando a amostra passar o teste de retenção sob impacto.",
+          "Para impacto contínuo, a variante Rapidaptor certificada para impacto está em avaliação com a Wera. O selo IMPACT READY só entra quando estiver documentado.",
         ],
       },
     ],
