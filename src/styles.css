@@ -1051,14 +1051,14 @@ html, body { overflow-x: clip; }
 @keyframes intro-curtain { to { opacity: 0; visibility: hidden; } }
 
 .intro-splash { z-index: 200; }
-.intro-splash .intro-line { animation: intro-line-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.intro-splash .intro-line--bottom { animation-delay: 0.3s; }
-.intro-splash .intro-kanji { animation: intro-kanji-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both 0.15s; }
-.intro-splash .intro-mono { animation: intro-fade-up 0.8s ease both 0.75s; }
-.intro-splash .intro-word { animation: intro-word-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) both 0.45s; }
-.intro-splash .intro-sub { animation: intro-fade-up 0.8s ease both 0.95s; }
-.intro-splash .intro-vertical { animation: intro-vertical-in 1.4s ease both 0.8s; }
-.intro-splash--leave { animation: intro-curtain 0.75s cubic-bezier(0.65, 0, 0.35, 1) both; }
+.intro-splash .intro-line { animation: intro-line-grow 1.1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.intro-splash .intro-line--bottom { animation-delay: 0.45s; }
+.intro-splash .intro-kanji { animation: intro-kanji-in 1.5s cubic-bezier(0.22, 1, 0.36, 1) both 0.25s; }
+.intro-splash .intro-mono { animation: intro-fade-up 0.9s ease both 1.05s; }
+.intro-splash .intro-word { animation: intro-word-in 1.5s cubic-bezier(0.22, 1, 0.36, 1) both 0.65s; }
+.intro-splash .intro-sub { animation: intro-fade-up 0.9s ease both 1.2s; }
+.intro-splash .intro-vertical { animation: intro-vertical-in 1.8s ease both 1s; }
+.intro-splash--leave { animation: intro-curtain 0.9s cubic-bezier(0.65, 0, 0.35, 1) both; }
 @media (prefers-reduced-motion: reduce) {
   .intro-splash { display: none; }
 }

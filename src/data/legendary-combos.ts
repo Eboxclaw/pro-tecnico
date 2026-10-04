@@ -49,7 +49,7 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
   },
   {
     name: "Pocket Mechanic",
-    jp: "携帯 · bolso",
+    jp: "ポケット · bolso",
     work: "Assistência",
     desc: "Catraca compacta de bolso 52, a versão com dez bits incluídos e porta-porcas magnéticos: um sistema de assistência num cinto.",
     ids: ["anex-525", "anex-525-10b", "porta-porcas-magneticos-1-4"],
@@ -100,7 +100,7 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     name: "EV High-Voltage",
     jp: "電気自動車 · VE",
     work: "Veículos elétricos",
-    desc: "Bits 1000 V AZM, adaptadores de binário ATA e a chave USB isolada: a cadeia de aperto calibrada para HV.",
-    ids: ["anex-azm-2698", "anex-ata-s1", "vessel-220usb-s1eb"],
+    desc: "Bits AZM isolados 1000 V (máquinas até 7,2 V, segundo o fabricante) e a chave slim isolada para o lado de tensão; os adaptadores ATA fazem o aperto calibrado fora de tensão — cada peça no sítio certo.",
+    ids: ["anex-azm-2698", "anex-7920", "anex-ata-s1"],
   },
 ];

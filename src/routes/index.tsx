@@ -329,7 +329,7 @@ function Index() {
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
             <div>
               <p className="jp-label text-primary">
-                <span className="mr-3 font-mono">04</span>アネックス · começa pela ANEX
+                <span className="mr-3 font-mono">04</span>原点 · começa pela ANEX
               </p>
               <h2 className="mt-4 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
                 A escola de Sanjō.

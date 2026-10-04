@@ -18,11 +18,11 @@ export function IntroSplash() {
   useEffect(() => {
     if (phase === "hidden") return;
     document.documentElement.style.overflow = "hidden";
-    const leave = setTimeout(() => setPhase("leaving"), 1700);
+    const leave = setTimeout(() => setPhase("leaving"), 2400);
     const done = setTimeout(() => {
       window.sessionStorage.setItem(SESSION_KEY, "1");
       setPhase("hidden");
-    }, 2450);
+    }, 3300);
     return () => {
       clearTimeout(leave);
       clearTimeout(done);
@@ -64,7 +64,7 @@ export function IntroSplash() {
           選
         </span>
         <span className="intro-mono absolute -bottom-3 font-mono text-[9px] uppercase tracking-[0.5em] text-white/40">
-          SENNARI
+          せん
         </span>
       </div>
 

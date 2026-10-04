@@ -10,6 +10,7 @@ import {
   ReserveButton,
   SystemStatusBadge,
 } from "@/components/systems/SystemPrimitives";
+import { SystemMontage } from "@/components/systems/SystemMontage";
 import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
 import { Button } from "@/components/ui/button";
 
@@ -120,25 +121,9 @@ function SystemPage() {
           </div>
 
           <div className="relative border-t border-border lg:border-l lg:border-t-0">
-            {lead ? (
-              <div className="product-plate flex h-full min-h-72 items-center justify-center">
-                {lead.imageUrl ? (
-                  <ProductImage
-                    src={lead.imageUrl}
-                    alt={lead.imageAlt ?? lead.namePt}
-                    className="h-full w-full object-contain p-12"
-                  />
-                ) : (
-                  <ProductMonogram
-                    brand={lead.brand}
-                    label={lead.namePt}
-                    className="flex h-full w-full items-center justify-center"
-                  />
-                )}
-              </div>
-            ) : null}
+            <SystemMontage system={system} max={4} className="min-h-72" />
             {lead && (
-              <p className="border-t border-border px-5 py-3 text-xs leading-5 text-muted-foreground">
+              <p className="border-t border-border bg-card px-5 py-3 text-xs leading-5 text-muted-foreground">
                 {lead.brand} {lead.model} — componente âncora deste system, selecionado e
                 configurado pela REJENDARI.
               </p>

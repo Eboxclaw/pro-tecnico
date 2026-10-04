@@ -10,6 +10,7 @@ import {
   ReserveButton,
   SystemStatusBadge,
 } from "@/components/systems/SystemPrimitives";
+import { SystemMontage } from "@/components/systems/SystemMontage";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -104,8 +105,8 @@ export function FeaturedDropCard({ system }: { system: RejendariSystem }) {
       </div>
 
       <div className="relative border-t border-white/12 lg:border-l lg:border-t-0">
-        <SystemPlate system={system} className="h-full min-h-72" />
-        <p className="pointer-events-none absolute bottom-4 left-5 font-mono text-[9px] uppercase tracking-[0.14em] text-black/45">
+        <SystemMontage system={system} dark className="min-h-72" />
+        <p className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-5 pb-3 pt-8 font-mono text-[9px] uppercase tracking-[0.14em] text-white/75">
           ANEX 397 · selected and configured by REJENDARI
         </p>
       </div>
