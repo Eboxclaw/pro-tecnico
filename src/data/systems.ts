@@ -104,12 +104,12 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     name: "397 LOCK SYSTEM",
     jp: "ロックシステム",
     taglinePt:
-      "ANEX 397 + holder mecânico + ecossistema de impacto curado. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
+      "ANEX 397 + bits Diamond Ryujin PH2/PH1 + bit-lock + extensor de impacto. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
     status: "reserving",
     targetPriceEur: { min: 89, max: 99 },
     targetMoq: 100,
     seedDemand: { likes: 214, favorites: 96, reservations: 64, units: 89, momentum: 92 },
-    capabilitiesPt: ["72T · 25 N·m", "Impact ecosystem", "Holder mecânico"],
+    capabilitiesPt: ["72T · 25 N·m", "Diamond Ryujin PH2", "Lock + Reach"],
     imageRefId: "anex-397-d",
     leadRefId: "anex-397-d",
     modules: [
@@ -125,35 +125,51 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         ],
       },
       {
-        role: "LOCK",
-        title: "Mechanical bit-lock",
-        pieces: [],
-        pendingPt: [
-          "Holder mecânico com trava de bit — seleção de componente em curso com fabricantes homologados. Entra na composição quando a amostra passar o teste de retenção.",
-        ],
-      },
-      {
         role: "IMPACT",
-        title: "Curated impact bits",
+        title: "Diamond Ryujin PH2",
         impactReady: true,
         pieces: [
           {
-            refId: "anex-ryujin-artm5-01",
+            refId: "anex-adrs-2065",
             whyPt:
-              "PH2 Ryujin em três comprimentos (65/85/110 mm): o perfil que mais se gasta, coberto de origem.",
+              "Diamond Ryujin slim PH2×65: partículas de diamante retêm o parafuso sem íman — inox, latão, alumínio e plástico — com zona torsional para impacto.",
           },
           {
-            refId: "anex-art-14m-2-65",
-            qty: 1,
+            refId: "anex-adsk-2065",
             whyPt:
-              "Caixa de reposição com 10 bits PH2×65: quem aperta em série não compra bits, compra ritmo.",
+              "Diamond Saikou PH2×65: a haste escalonada de 3,8 mm chega ao ponto de aperto estreito onde o bit cilíndrico não passa.",
+          },
+        ],
+        pendingPt: [
+          "PH1 Diamond — perfil prioritário em negociação com a ANEX. Entra no drop assim que a referência impact-ready for confirmada; não inventamos compatibilidade.",
+        ],
+      },
+      {
+        role: "LOCK",
+        title: "Bit-lock de impacto",
+        pieces: [],
+        pendingPt: [
+          "O bit-lock final pode ser o Wera Rapidaptor 899/4/1 (anel de retenção, troca a uma mão), uma versão ANEX ou outro equivalente super-class certificado para impacto e torsion. Só entra quando a amostra passar o teste de retenção sob impacto.",
+        ],
+      },
+      {
+        role: "REACH",
+        title: "Bit extender",
+        impactReady: true,
+        pieces: [
+          {
+            refId: "anex-aeh-100",
+            whyPt:
+              "Extensor de bits de 100 mm especificado para 18 V/40 V: o impacto chega ao fundo do perfil sem mudar de máquina.",
           },
         ],
       },
     ],
     perfectMatches: [
-      { targetId: "ph-work-pack", reasonPt: "Reposição PH2 sem duplicar o que já vem no system." },
-      { targetId: "reach-module", reasonPt: "Chegar ao fundo de perfis sem mudar de máquina." },
+      {
+        targetId: "ph-work-pack",
+        reasonPt: "A reposição PH2 Black para o trabalho que não exige diamante.",
+      },
       { targetId: "torx-complete", reasonPt: "Completar os perfis Torx com um módulo dedicado." },
       { targetId: "drive-system", reasonPt: "Subir para sockets 3/8″ quando o trabalho cresce." },
     ],
@@ -549,7 +565,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         title: "Mechanical bit-lock",
         pieces: [],
         pendingPt: [
-          "Seleção de componente em curso: estamos a testar holders mecânicos com o punho 397-H e bits de impacto Ryujin. Entra em drop quando a amostra passar o teste de retenção.",
+          "Seleção em curso: o candidato pode ser o Wera Rapidaptor 899/4/1, uma versão ANEX ou outro equivalente super-class certificado para impacto e torsion. Entra em drop quando a amostra passar o teste de retenção sob impacto.",
         ],
       },
     ],

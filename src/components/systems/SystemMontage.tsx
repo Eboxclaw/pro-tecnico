@@ -11,21 +11,28 @@ type MontageCell =
  * Montagem de sistema: uma única imagem composta apenas por peças REAIS do
  * system — cada célula com a sua etiqueta de função. Componentes em sourcing
  * aparecem como slot tracejado; nunca uma foto que o copy não suporte.
+ *
+ * Peças entram breadth-first (uma por módulo antes de repetir módulo) para a
+ * montagem mostrar os pilares do system e não duas peças do mesmo módulo.
  */
 function montageCells(system: RejendariSystem, max: number): MontageCell[] {
+  const pendingModule = system.modules.find(
+    (module) => module.pendingPt?.length && module.pieces.length === 0,
+  );
+  const pieceModules = system.modules.filter((module) => module.pieces.length > 0);
   const cells: MontageCell[] = [];
-  for (const module of system.modules) {
-    for (const piece of module.pieces) {
-      if (cells.length >= max) break;
-      cells.push({ kind: "piece", role: module.role, refId: piece.refId });
+  const capacity = pendingModule ? max - 1 : max;
+
+  for (let round = 0; round < pieceModules.length && cells.length < capacity; round++) {
+    for (const module of pieceModules) {
+      if (cells.length >= capacity) break;
+      const piece = module.pieces[round];
+      if (piece) cells.push({ kind: "piece", role: module.role, refId: piece.refId });
     }
-    if (cells.length >= max) break;
   }
-  if (cells.length < max) {
-    const pending = system.modules.find(
-      (module) => module.pendingPt?.length && module.pieces.length === 0,
-    );
-    if (pending) cells.push({ kind: "pending", role: pending.role });
+
+  if (pendingModule && cells.length < max) {
+    cells.push({ kind: "pending", role: pendingModule.role });
   }
   return cells;
 }
