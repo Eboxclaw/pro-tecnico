@@ -15,19 +15,13 @@ const SFX = [
     play: playIntroYooo,
     name: "Intro · yooo oooo bonk",
     file: "public/sounds/intro-yooo.mp3 (o teu mp3)",
-    where: "Abertura do site: primeiro clique após o splash.",
+    where: "Só durante o loading (3s): primeiro clique após o splash.",
   },
   {
     play: playRatchet,
     name: "Catraca",
     file: "sintetizado",
-    where: "Clique no ♡ like de um system.",
-  },
-  {
-    play: playTing,
-    name: "Ting",
-    file: "sintetizado",
-    where: "Clique no ★ favorito + ligar o som no rodapé.",
+    where: "Clique no ♡ like e no ★ favorito.",
   },
   {
     play: playThock,
@@ -38,7 +32,7 @@ const SFX = [
   {
     play: playFail,
     name: "Fail (faahaha)",
-    file: "sintetizado",
+    file: "public/sounds/fail-faaah.mp3 (o teu mp3)",
     where: "Página 404, erros e produto esgotado.",
   },
 ] as const;

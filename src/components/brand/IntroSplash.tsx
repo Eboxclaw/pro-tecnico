@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { armIntroSound, playIntroYooo } from "@/lib/sounds";
+import { armIntroSound, disarmIntroSound, playIntroYooo } from "@/lib/sounds";
 
 /**
  * Cortina de abertura REJENDARI: uma vez por sessão, salta com um clique e
@@ -18,6 +18,7 @@ export function IntroSplash() {
 
   useEffect(() => {
     if (phase === "playing") armIntroSound();
+    if (phase === "hidden") disarmIntroSound();
   }, [phase]);
 
   useEffect(() => {
@@ -26,11 +27,11 @@ export function IntroSplash() {
     const leave = setTimeout(() => {
       playIntroYooo();
       setPhase("leaving");
-    }, 2400);
+    }, 3000);
     const done = setTimeout(() => {
       window.sessionStorage.setItem(SESSION_KEY, "1");
       setPhase("hidden");
-    }, 3300);
+    }, 3900);
     return () => {
       clearTimeout(leave);
       clearTimeout(done);

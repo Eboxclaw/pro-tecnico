@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { Heart, Lock, Star } from "lucide-react";
 import { toast } from "sonner";
-import { playRatchet, playTing, playThock } from "@/lib/sounds";
+import { playRatchet, playThock } from "@/lib/sounds";
 import {
   SYSTEM_STATUS_LABEL,
   RESERVE_PROFESSIONS,
@@ -171,7 +171,7 @@ export function LikeFavoriteButtons({
       <button
         type="button"
         onClick={() => {
-          playTing();
+          playRatchet();
           favorite.mutate();
         }}
         disabled={favorite.isPending}

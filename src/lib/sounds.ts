@@ -126,26 +126,6 @@ export function playRatchet() {
   });
 }
 
-/** Ting metálico: a estrela ★ a assentar no system. */
-export function playTing() {
-  logNamed("ting");
-  void withAudio((context, when) => {
-    for (const [freq, peak] of [
-      [1320, 0.3],
-      [1985, 0.12],
-    ] as const) {
-      const osc = context.createOscillator();
-      const gain = context.createGain();
-      osc.type = "triangle";
-      osc.frequency.value = freq;
-      env(gain, peak, 0.5, when);
-      osc.connect(gain).connect(context.destination);
-      osc.start(when);
-      osc.stop(when + 0.55);
-    }
-  });
-}
-
 /** Thock de martelo: a reserva a ficar cravada na bancada. */
 export function playThock() {
   logNamed("thock");
@@ -172,28 +152,59 @@ export function playThock() {
   });
 }
 
-/** Faahaha: o fail simpático para esgotado, erros e páginas perdidas. */
+/** Faahaha real: public/sounds/fail-faaah.mp3 (o teu ficheiro); sintetizado só como recurso. */
+const FAIL_FILE = "/sounds/fail-faaah.mp3";
+let failBufferCache: AudioBuffer | null = null;
+
+async function failBuffer(context: AudioContext): Promise<AudioBuffer | null> {
+  if (failBufferCache) return failBufferCache;
+  try {
+    const res = await fetch(FAIL_FILE);
+    if (!res.ok) return null;
+    failBufferCache = await context.decodeAudioData(await res.arrayBuffer());
+    return failBufferCache;
+  } catch {
+    return null;
+  }
+}
+
 export function playFail() {
   logNamed("fail");
-  void withAudio((context, when) => {
-    for (const [start, freq, length] of [
-      [0, 233, 0.26],
-      [0.3, 174, 0.44],
-    ] as const) {
-      const osc = context.createOscillator();
-      const filter = context.createBiquadFilter();
-      const gain = context.createGain();
-      osc.type = "sawtooth";
-      osc.frequency.setValueAtTime(freq, when + start);
-      osc.frequency.linearRampToValueAtTime(freq * 0.88, when + start + length);
-      filter.type = "lowpass";
-      filter.frequency.value = 900;
-      env(gain, 0.2, length, when + start);
-      osc.connect(filter).connect(gain).connect(context.destination);
-      osc.start(when + start);
-      osc.stop(when + start + length + 0.05);
+  void withAudio(async (context, when) => {
+    const buffer = await failBuffer(context);
+    if (!buffer) {
+      logNamed("fail:sintetizado");
+      synthFail(context, when);
+      return;
     }
+    const source = context.createBufferSource();
+    const gain = context.createGain();
+    gain.gain.value = 0.55;
+    source.buffer = buffer;
+    source.connect(gain).connect(context.destination);
+    source.start(when);
+    logNamed("fail:mp3");
   });
+}
+
+function synthFail(context: AudioContext, when: number) {
+  for (const [start, freq, length] of [
+    [0, 233, 0.26],
+    [0.3, 174, 0.44],
+  ] as const) {
+    const osc = context.createOscillator();
+    const filter = context.createBiquadFilter();
+    const gain = context.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(freq, when + start);
+    osc.frequency.linearRampToValueAtTime(freq * 0.88, when + start + length);
+    filter.type = "lowpass";
+    filter.frequency.value = 900;
+    env(gain, 0.2, length, when + start);
+    osc.connect(filter).connect(gain).connect(context.destination);
+    osc.start(when + start);
+    osc.stop(when + start + length + 0.05);
+  }
 }
 
 /**
@@ -207,6 +218,11 @@ let introFired = false;
 export function armIntroSound() {
   if (introFired) return;
   introArmed = true;
+}
+
+/** O yooo pertence só ao loading: passado o splash, o som desarma. */
+export function disarmIntroSound() {
+  introArmed = false;
 }
 
 function fireArmedIntro() {

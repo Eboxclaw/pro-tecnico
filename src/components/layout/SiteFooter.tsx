@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
-import { soundEnabled, setSoundEnabled, playTing } from "@/lib/sounds";
+import { soundEnabled, setSoundEnabled, playRatchet } from "@/lib/sounds";
 import { useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
@@ -155,7 +155,7 @@ export function SiteFooter() {
               const next = !som;
               setSom(next);
               setSoundEnabled(next);
-              if (next) playTing();
+              if (next) playRatchet();
             }}
             className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
             aria-pressed={som}
