@@ -8,7 +8,10 @@ export function BitKitRail() {
     ...referencesForFocus("adapters"),
     ...referencesForFocus("insulated"),
     ...referencesForFocus("torque"),
-  ].filter((tool, index, list) => tool.imageUrl && list.findIndex((entry) => entry.id === tool.id) === index);
+  ].filter(
+    (tool, index, list) =>
+      tool.imageUrl && list.findIndex((entry) => entry.id === tool.id) === index,
+  );
 
   const repeated = [...tools, ...tools];
 
@@ -22,7 +25,8 @@ export function BitKitRail() {
           </h2>
         </div>
         <p className="max-w-xl text-sm leading-6 text-black/58">
-          Bits ultra-curtos, dual-side 1000 V, conversão 3/8″ ↔ 1/4″, adapters de socket e controlo de torque. São estas peças que permitem reduzir ferramentas duplicadas no kit.
+          Bits ultra-curtos, dual-side 1000 V, conversão 3/8″ ↔ 1/4″, adapters de socket e controlo
+          de torque. São estas peças que permitem reduzir ferramentas duplicadas no kit.
         </p>
       </div>
 
@@ -44,10 +48,18 @@ export function BitKitRail() {
                 />
               </div>
               <div className="flex min-w-0 flex-col p-4">
-                <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-[#b54530]">{tool.brand}</p>
-                <p className="mt-1 font-display text-base font-semibold leading-tight">{tool.model}</p>
-                <p className="mt-2 line-clamp-2 text-[11px] leading-4 text-black/55">{tool.namePt}</p>
-                <p className="mt-auto pt-3 font-mono text-[8px] uppercase tracking-[0.1em] text-black/42">{tool.specPt}</p>
+                <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-[#b54530]">
+                  {tool.brand}
+                </p>
+                <p className="mt-1 font-display text-base font-semibold leading-tight">
+                  {tool.model}
+                </p>
+                <p className="mt-2 line-clamp-2 text-[11px] leading-4 text-black/55">
+                  {tool.namePt}
+                </p>
+                <p className="mt-auto pt-3 font-mono text-[8px] uppercase tracking-[0.1em] text-black/42">
+                  {tool.specPt}
+                </p>
               </div>
             </Link>
           ))}

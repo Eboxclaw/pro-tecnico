@@ -15,15 +15,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     badge: "Diamond",
     notePt: "Perfil slim com zona torsional para absorver os choques do aparafusamento.",
     specPt: "PH2 × 65 mm · hex. 6,35 mm · sem íman · 18 V / 40 V",
-    evidencePt: "Segundo a ANEX, as partículas de diamante ajudam a reter parafusos que não aderem a um íman, incluindo inox, latão, alumínio e plástico. Dados oficiais: JAN 4962485405014, preço de tabela 760 ienes, pack de 1 bit.",
+    evidencePt:
+      "Segundo a ANEX, as partículas de diamante ajudam a reter parafusos que não aderem a um íman, incluindo inox, latão, alumínio e plástico. Dados oficiais: JAN 4962485405014, preço de tabela 760 ienes, pack de 1 bit.",
     limitationsPt:
       "Selecionar o perfil e o encaixe corretos. A retenção depende do contacto com a cabeça do parafuso; não é um bit isolado.",
     manufacturedIn: "Japão",
     catalogViewerPage: 11,
-    storyPt: "O aperto em série castiga a ponta antes de castigar a máquina: este bit slim absorve o choque na zona torsional e aguenta o dia inteiro de PH2 sem alargar a cabeça do parafuso.",
+    storyPt:
+      "O aperto em série castiga a ponta antes de castigar a máquina: este bit slim absorve o choque na zona torsional e aguenta o dia inteiro de PH2 sem alargar a cabeça do parafuso.",
     referenceUrl: "https://www.anextool.co.jp/item/adrs-2065/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ADRS-2065_1.jpg",
-    imageAlt: "ANEX ADRS-2065 — bit Diamond Ryujin Slim",
+    imageAlt: "ANEX ADRS-2065, bit Diamond Ryujin Slim",
     imageSourceLabel: "Imagem do fabricante ANEX",
     compareGroup: "impact-bits",
     featured: true,
@@ -41,15 +43,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     badge: "Diamond",
     notePt: "Haste escalonada de 3,8 mm para pontos de aperto estreitos.",
     specPt: "PH2 × 65 mm · hex. 6,35 mm · sem íman · 18 V / 40 V",
-    evidencePt: "Segundo a ANEX, as partículas de diamante ajudam a reter parafusos que não aderem a um íman, incluindo inox, latão, alumínio e plástico. Dados oficiais: JAN 4962485433239, preço de tabela 760 ienes, pack de 1 bit.",
+    evidencePt:
+      "Segundo a ANEX, as partículas de diamante ajudam a reter parafusos que não aderem a um íman, incluindo inox, latão, alumínio e plástico. Dados oficiais: JAN 4962485433239, preço de tabela 760 ienes, pack de 1 bit.",
     limitationsPt:
       "Selecionar o perfil e o encaixe corretos. A retenção depende do contacto com a cabeça do parafuso; não é um bit isolado.",
     manufacturedIn: "Japão",
     catalogViewerPage: 23,
-    storyPt: "A haste escalonada de 3,8 mm entra onde um bit cilíndrico não passa: a diferença entre apertar na hora ou desmontar meio conjunto para chegar ao parafuso.",
+    storyPt:
+      "A haste escalonada de 3,8 mm entra onde um bit cilíndrico não passa: a diferença entre apertar na hora ou desmontar meio conjunto para chegar ao parafuso.",
     referenceUrl: "https://www.anextool.co.jp/item/adsk-2065/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ADSK-2065_1.jpg",
-    imageAlt: "ANEX ADSK-2065 — bit Diamond Saikou",
+    imageAlt: "ANEX ADSK-2065, bit Diamond Saikou",
     imageSourceLabel: "Imagem do fabricante ANEX",
     compareGroup: "impact-bits",
     featured: true,
@@ -126,9 +130,9 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
       "Três extratores para parafusos de M2,5 a M8 com a cruz danificada. O conjunto inclui peças de substituição e óleo de corte para inox.",
     storyPt:
       "Uma cabeça danificada não precisa de terminar o trabalho. A série ANH combina perfuração e extração, com elementos de desgaste substituíveis.",
-    specPt: "M2,5–M8 · 3 bits de 65 mm · hex. 6,35 mm",
+    specPt: "M2,5-M8 · 3 bits de 65 mm · hex. 6,35 mm",
     kitContents: [
-      "Bits para M2,5–3, M3,5–5 e M6–8",
+      "Bits para M2,5-3, M3,5-5 e M6-8",
       "Óleo de corte para inox",
       "Brocas de substituição de 1,5 / 2 / 3 mm",
       "Elementos de extração de substituição n.º 1 e n.º 2",
@@ -161,7 +165,7 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
       "Para pequenos parafusos de cruz +0 danificados, de M1 a M2,6, em óculos, relógios e equipamentos. Inclui punho de precisão e bit extrator.",
     storyPt:
       "Na bancada, a solução também pode ser pequena: lâmina substituível, punho manual e uma aplicação bem definida.",
-    specPt: "+0 · M1–M2,6 · haste hex. 6,35 mm",
+    specPt: "+0 · M1-M2,6 · haste hex. 6,35 mm",
     kitContents: ["Bit extrator de parafusos de precisão", "Punho manual de precisão"],
     evidencePt:
       "A ANEX indica fabrico no Japão e lâmina HSS substituível. O modelo AK-23N-0 é o bit de substituição; AK-23N-EX é a lâmina de substituição.",
@@ -186,14 +190,26 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Conjuntos de bits · coloridos",
     badge: "Cores por medida",
-    notePt: "Nove bits de 65 mm identificados pela cor da ponta — Phillips, dupla −5/−6, escalonado e hexagonais H3–H6 — com extensão de 100 mm incluída: o conjunto de entrada que dispensa procurar a medida.",
-    specPt: "9 bits × 65 mm · +1/+2/+3 · escalonado · −5×−6 · H3–H6 · extensão 100 mm",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485402815, preço de tabela 3.100 ienes, bits em aço cromo-molibdénio-vanádio com íman, extensão e porta-bits TPE incluídos, fabrico no Japão.",
-    limitationsPt: "Bits convencionais para aparafusadora: a ANEX não apresenta especificação de impacto nem isolação para este conjunto. Confirmar o encaixe hexagonal de 6,35 mm.",
-    kitContents: ["Bit +1×65", "Bit +2×65", "Bit +3×65", "Bit escalonado +2×65", "Bit duplo −5×−6×65", "Bits hexagonais H3 / H4 / H5 / H6 × 65", "Extensão de bits 100 mm"],
+    notePt:
+      "Nove bits de 65 mm identificados pela cor da ponta, Phillips, dupla −5/−6, escalonado e hexagonais H3-H6, com extensão de 100 mm incluída: o conjunto de entrada que dispensa procurar a medida.",
+    specPt: "9 bits × 65 mm · +1/+2/+3 · escalonado · −5×−6 · H3-H6 · extensão 100 mm",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485402815, preço de tabela 3.100 ienes, bits em aço cromo-molibdénio-vanádio com íman, extensão e porta-bits TPE incluídos, fabrico no Japão.",
+    limitationsPt:
+      "Bits convencionais para aparafusadora: a ANEX não apresenta especificação de impacto nem isolação para este conjunto. Confirmar o encaixe hexagonal de 6,35 mm.",
+    kitContents: [
+      "Bit +1×65",
+      "Bit +2×65",
+      "Bit +3×65",
+      "Bit escalonado +2×65",
+      "Bit duplo −5×−6×65",
+      "Bits hexagonais H3 / H4 / H5 / H6 × 65",
+      "Extensão de bits 100 mm",
+    ],
     manufacturedIn: "Japão",
     catalogViewerPage: 22,
-    storyPt: "Cada medida tem a sua cor: a escolha deixa de ser leitura de gravações minúsculas e passa a ser reconhecimento instantâneo — o conjunto com que se monta um posto de trabalho.",
+    storyPt:
+      "Cada medida tem a sua cor: a escolha deixa de ser leitura de gravações minúsculas e passa a ser reconhecimento instantâneo, o conjunto com que se monta um posto de trabalho.",
     referenceUrl: "https://www.anextool.co.jp/item/acmh9-e/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ACMH9-E_a01.jpg",
     imageAlt: "Conjunto ANEX ACMH9-E com nove bits coloridos e extensão de 100 mm",
@@ -211,13 +227,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Bits impacto · Ryujin",
     badge: "Reposição",
-    notePt: "Caixa de dez bits +2×65 com íman e zona torsional: o formato de reposição para quem gasta este perfil em série, em vez de acumular packs pequenos.",
+    notePt:
+      "Caixa de dez bits +2×65 com íman e zona torsional: o formato de reposição para quem gasta este perfil em série, em vez de acumular packs pequenos.",
     specPt: "10 bits +2 × 65 mm · hex. 6,35 mm · com íman · até 40 V (18 V também)",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485396213, preço de tabela 2.800 ienes, aço cromo-molibdénio-vanádio, compatibilidade 40 V (18 V também), fabrico no Japão.",
-    limitationsPt: "Perfil único +2: serve de reposição, não substitui um sortimento por comprimentos. Confirmar o limite de voltagem indicado para a máquina; bit não isolado.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485396213, preço de tabela 2.800 ienes, aço cromo-molibdénio-vanádio, compatibilidade 40 V (18 V também), fabrico no Japão.",
+    limitationsPt:
+      "Perfil único +2: serve de reposição, não substitui um sortimento por comprimentos. Confirmar o limite de voltagem indicado para a máquina; bit não isolado.",
     manufacturedIn: "Japão",
     catalogViewerPage: 13,
-    storyPt: "Quem aperta PH2 o dia todo não compra bits, compra ritmo: a caixa de dez mantém o fluxo sem paragens de reposição e sem pontas gastas a passar ao lado.",
+    storyPt:
+      "Quem aperta PH2 o dia todo não compra bits, compra ritmo: a caixa de dez mantém o fluxo sem paragens de reposição e sem pontas gastas a passar ao lado.",
     referenceUrl: "https://www.anextool.co.jp/item/art-14m-2-65/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ART-14M-2-65-1.jpg",
     imageAlt: "Caixa ANEX ART-14M com dez bits Ryujin +2×65",
@@ -235,13 +255,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Bits impacto · dupla função",
     badge: "2 perfis num bit",
-    notePt: "Dois perfis Phillips (+2 e +3) no mesmo bit de dupla ponta: menos trocas de bit na bancada e menos volume na caixa.",
+    notePt:
+      "Dois perfis Phillips (+2 e +3) no mesmo bit de dupla ponta: menos trocas de bit na bancada e menos volume na caixa.",
     specPt: "+2 / +3 × 65 mm · hex. 6,35 mm · com íman · até 40 V (18 V também)",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485398934, preço de tabela 780 ienes, aço cromo-molibdénio-vanádio com zona torsional, pack de 2 bits, fabrico no Japão.",
-    limitationsPt: "Dupla ponta: escolher a extremidade correta antes de aparafusar. Confirmar o encaixe hexagonal de 6,35 mm; bit não isolado.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485398934, preço de tabela 780 ienes, aço cromo-molibdénio-vanádio com zona torsional, pack de 2 bits, fabrico no Japão.",
+    limitationsPt:
+      "Dupla ponta: escolher a extremidade correta antes de aparafusar. Confirmar o encaixe hexagonal de 6,35 mm; bit não isolado.",
     manufacturedIn: "Japão",
     catalogViewerPage: 11,
-    storyPt: "Dois perfis na mesma haste: metade das trocas na bancada e nenhuma altura em que o +3 ficou no outro casaco.",
+    storyPt:
+      "Dois perfis na mesma haste: metade das trocas na bancada e nenhuma altura em que o +3 ficou no outro casaco.",
     referenceUrl: "https://www.anextool.co.jp/item/arpm-2365/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ARPM-2365-1.jpg",
     imageAlt: "Pack ANEX ARPM-2365 com bits Ryujin combinados +2 e +3",
@@ -259,13 +283,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Bits impacto · perfil quadrado",
     badge: "Quadrado ■2",
-    notePt: "Perfil quadrado em aço Ryujin com zona torsional e ponta única que não morde a ferragem: para os parafusos de cabeça quadrada de estruturas de madeira, pisos de contraplacado e ferrolhos de amarração.",
+    notePt:
+      "Perfil quadrado em aço Ryujin com zona torsional e ponta única que não morde a ferragem: para os parafusos de cabeça quadrada de estruturas de madeira, pisos de contraplacado e ferrolhos de amarração.",
     specPt: "■2 × 65 mm · ponta única · 2 peças · hex. 6,35 mm · com íman · 18 V (40 V também)",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485364519, preço de tabela 810 ienes, aço cromo-molibdénio-vanádio, utilização indicada em parafusos quadrados de construção 2×4, piso de contraplacado, placas ALC e ferragens de amarração.",
-    limitationsPt: "Perfil único ■2: confirmar que a cabeça do parafuso é quadrada antes de aplicar binário. A ANEX especifica 18 V com compatibilidade 40 V; bit não isolado.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485364519, preço de tabela 810 ienes, aço cromo-molibdénio-vanádio, utilização indicada em parafusos quadrados de construção 2×4, piso de contraplacado, placas ALC e ferragens de amarração.",
+    limitationsPt:
+      "Perfil único ■2: confirmar que a cabeça do parafuso é quadrada antes de aplicar binário. A ANEX especifica 18 V com compatibilidade 40 V; bit não isolado.",
     manufacturedIn: "Japão",
     catalogViewerPage: 13,
-    storyPt: "O parafuso de cabeça quadrada de estrutura não perdoa pontas genéricas: a ponta única desenhada para o perfil morde sem destruir — e o jogo de duas deixa uma na mala e outra na máquina.",
+    storyPt:
+      "O parafuso de cabeça quadrada de estrutura não perdoa pontas genéricas: a ponta única desenhada para o perfil morde sem destruir, e o jogo de duas deixa uma na mala e outra na máquina.",
     referenceUrl: "https://www.anextool.co.jp/item/ars-2065/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ARS-2065-1-1.jpg",
     imageAlt: "Pack ANEX ARS-2065 com dois bits quadrados Ryujin ■2×65",
@@ -283,13 +311,18 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Porta-bits · cinto",
     badge: "Soltar com uma mão",
-    notePt: "Três porta-bits ultraleves de policarbonato em cores diferentes com mosquetão para o cinto: trocar de ponta ou soquete com uma mão, sem procurar no fundo da caixa.",
-    specPt: "3 porta-bits (verde, amarelo, vermelho) + mosquetão · 6,35 mm · 33,5 g · fixação 500 g",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485273422, preço de tabela 2.100 ienes, corpo em policarbonato de alta resistência com zonas de carga reforçadas em aço ao carbono, fabrico no Japão.",
-    limitationsPt: "Acessório de transporte: não é um mandílio nem aumenta o binário. Aceita apenas hastes hexagonais de 6,35 mm; o mosquetão não é um equipamento de suspensão de carga.",
+    notePt:
+      "Três porta-bits ultraleves de policarbonato em cores diferentes com mosquetão para o cinto: trocar de ponta ou soquete com uma mão, sem procurar no fundo da caixa.",
+    specPt:
+      "3 porta-bits (verde, amarelo, vermelho) + mosquetão · 6,35 mm · 33,5 g · fixação 500 g",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485273422, preço de tabela 2.100 ienes, corpo em policarbonato de alta resistência com zonas de carga reforçadas em aço ao carbono, fabrico no Japão.",
+    limitationsPt:
+      "Acessório de transporte: não é um mandílio nem aumenta o binário. Aceita apenas hastes hexagonais de 6,35 mm; o mosquetão não é um equipamento de suspensão de carga.",
     manufacturedIn: "Japão",
     catalogViewerPage: 30,
-    storyPt: "O porta-bits que vive no cinto resolve o problema real do fim da manhã: saber onde está a ponta certa com uma mão ocupada a segurar a peça.",
+    storyPt:
+      "O porta-bits que vive no cinto resolve o problema real do fim da manhã: saber onde está a ponta certa com uma mão ocupada a segurar a peça.",
     referenceUrl: "https://www.anextool.co.jp/item/aqh-s1/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AQH-S1_a02.jpg",
     imageAlt: "Conjunto ANEX AQH-S1 com três Quick Holders coloridos e mosquetão",
@@ -307,13 +340,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Porta-bits · organização",
     badge: "10 bits",
-    notePt: "Suporte flexível em TPE para dez bits de 6,35 mm com clip de cinto: os bits deixam de andar soltos no fundo da caixa.",
+    notePt:
+      "Suporte flexível em TPE para dez bits de 6,35 mm com clip de cinto: os bits deixam de andar soltos no fundo da caixa.",
     specPt: "10 bits · hastes hex. 6,35 mm · TPE · clip de cinto · 10 g",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485273552, preço de tabela 300 ienes, material TPE, fabrico no Japão.",
-    limitationsPt: "Só organiza e transporta: não segura a haste na máquina nem dispensa o mandílio. Bits vendidos separadamente.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485273552, preço de tabela 300 ienes, material TPE, fabrico no Japão.",
+    limitationsPt:
+      "Só organiza e transporta: não segura a haste na máquina nem dispensa o mandílio. Bits vendidos separadamente.",
     manufacturedIn: "Japão",
     catalogViewerPage: 31,
-    storyPt: "Dez bits no clip deixam de ser dez bits no fundo da caixa: a ferramenta pequena que evita comprar três vezes o mesmo.",
+    storyPt:
+      "Dez bits no clip deixam de ser dez bits no fundo da caixa: a ferramenta pequena que evita comprar três vezes o mesmo.",
     referenceUrl: "https://www.anextool.co.jp/item/abh-10/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ABH-10_1.jpg",
     imageAlt: "Organizador ANEX ABH-10 para dez bits com clip de cinto",
@@ -331,13 +368,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Porta-bits · extensão",
     badge: "+100 mm",
-    notePt: "Extensão de 100 mm para bits e brocas de haste hexagonal 6,35 mm: chegar ao fundo de perfis e cantos sem mudar de máquina.",
+    notePt:
+      "Extensão de 100 mm para bits e brocas de haste hexagonal 6,35 mm: chegar ao fundo de perfis e cantos sem mudar de máquina.",
     specPt: "100 mm · hex. 6,35 mm · hastes ≥33 mm · veio ≤14,5 mm · 18 V (40 V também)",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485273330, preço de tabela 1.000 ienes, corpo em aço de liga com capa de PP reforçada com aço ao carbono, fabrico no Japão.",
-    limitationsPt: "A ANEX especifica 18 V com compatibilidade 40 V; confirmar o encaixe da máquina. Requer hastes de comprimento total igual ou superior a 33 mm para retenção correta.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485273330, preço de tabela 1.000 ienes, corpo em aço de liga com capa de PP reforçada com aço ao carbono, fabrico no Japão.",
+    limitationsPt:
+      "A ANEX especifica 18 V com compatibilidade 40 V; confirmar o encaixe da máquina. Requer hastes de comprimento total igual ou superior a 33 mm para retenção correta.",
     manufacturedIn: "Japão",
     catalogViewerPage: 32,
-    storyPt: "Quando o parafuso está a 100 mm de distância dentro do perfil, não é a máquina que se muda — é o acesso que se estende.",
+    storyPt:
+      "Quando o parafuso está a 100 mm de distância dentro do perfil, não é a máquina que se muda, é o acesso que se estende.",
     referenceUrl: "https://www.anextool.co.jp/item/aeh-100/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AEH-100_1.jpg",
     imageAlt: "Extensão de bits ANEX AEH-100 de 100 mm",
@@ -355,12 +396,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Porta-bits · retenção",
     badge: "Neo · ~500 g",
-    notePt: "Anel de neodímio que desliza sobre o bit e segura o parafuso na ponta (cerca de 500 g) em trabalho em altura; quando já não é preciso, corre para trás ao longo do veio.",
-    specPt: "Anel para hastes hex. 6,35 mm com 65 mm ou mais · retenção ~500 g · inclui bit duplo +2×65",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485278311, preço de tabela 980 ienes, corpo em liga de alumínio com íman de neodímio e bit em aço cromo-molibdénio-vanádio.",
-    limitationsPt: "Requer bits com comprimento total de 65 mm ou mais. Não substitui sempre um bit com íman integrado; confirmar a retenção antes de trabalhar suspenso.",
+    notePt:
+      "Anel de neodímio que desliza sobre o bit e segura o parafuso na ponta (cerca de 500 g) em trabalho em altura; quando já não é preciso, corre para trás ao longo do veio.",
+    specPt:
+      "Anel para hastes hex. 6,35 mm com 65 mm ou mais · retenção ~500 g · inclui bit duplo +2×65",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485278311, preço de tabela 980 ienes, corpo em liga de alumínio com íman de neodímio e bit em aço cromo-molibdénio-vanádio.",
+    limitationsPt:
+      "Requer bits com comprimento total de 65 mm ou mais. Não substitui sempre um bit com íman integrado; confirmar a retenção antes de trabalhar suspenso.",
     catalogViewerPage: 28,
-    storyPt: "Trabalhar em altura com parafusos pequenos é um problema de gravidade: o anel de neodímio segura o parafuso na ponta e devolve a mão livre.",
+    storyPt:
+      "Trabalhar em altura com parafusos pequenos é um problema de gravidade: o anel de neodímio segura o parafuso na ponta e devolve a mão livre.",
     referenceUrl: "https://www.anextool.co.jp/item/amb-635/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AMB-635_2.jpg",
     imageAlt: "Neji-catch magnético ANEX AMB-635 com bit duplo +2×65",
@@ -378,13 +424,17 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Porta-bits · profundidade",
     badge: "Pladur",
-    notePt: "Anel magnético com cobertura em resina que trava o parafuso a cerca de 0,5 mm da superfície do gesso cartonado e o segura até ao aperto: menos placas rebuçadas rasgadas e menos reparação.",
+    notePt:
+      "Anel magnético com cobertura em resina que trava o parafuso a cerca de 0,5 mm da superfície do gesso cartonado e o segura até ao aperto: menos placas rebuçadas rasgadas e menos reparação.",
     specPt: "hex. 6,35 mm · hastes ≥65 mm · paragem a ~0,5 mm · retenção ~500 g · bit +2×65",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485278120, preço de tabela 1.550 ienes, íman de neodímio com cobertura em resina na ponta para não danificar a placa, fabrico no Japão.",
-    limitationsPt: "Desenhado para gesso cartonado: a profundidade de paragem não é regulável. Confirmar o tipo de parafuso e de placa antes de produzir em série.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485278120, preço de tabela 1.550 ienes, íman de neodímio com cobertura em resina na ponta para não danificar a placa, fabrico no Japão.",
+    limitationsPt:
+      "Desenhado para gesso cartonado: a profundidade de paragem não é regulável. Confirmar o tipo de parafuso e de placa antes de produzir em série.",
     manufacturedIn: "Japão",
     catalogViewerPage: 28,
-    storyPt: "A placa de gesso não se danifica no corte, danifica-se no aperto: o anel trava o parafuso a meio milímetro da superfície e deixa o acabamento certo acontecer.",
+    storyPt:
+      "A placa de gesso não se danifica no corte, danifica-se no aperto: o anel trava o parafuso a meio milímetro da superfície e deixa o acabamento certo acontecer.",
     referenceUrl: "https://www.anextool.co.jp/item/abs-2065/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ABS-2065_1-1.jpg",
     imageAlt: "Catch & stop ANEX ABS-2065 para gesso cartonado com bit duplo +2×65",
@@ -402,16 +452,20 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Catraca offset · cabeça 21 mm",
     badge: "Cabeça baixa",
-    notePt: "A variante de cabeça baixa da família offset: a mesma cabeça de 21 mm e bits de 19 mm, com o ângulo inclinado para parafusos por baixo de superfícies. 16 dentes, bits +2/−6 incluídos.",
-    storyPt: "Quando o parafuso está por baixo do perfil e não ao lado, a cabeça baixa é a que mantém o movimento de catraca sem levantar a peça.",
+    notePt:
+      "A variante de cabeça baixa da família offset: a mesma cabeça de 21 mm e bits de 19 mm, com o ângulo inclinado para parafusos por baixo de superfícies. 16 dentes, bits +2/−6 incluídos.",
+    storyPt:
+      "Quando o parafuso está por baixo do perfil e não ao lado, a cabeça baixa é a que mantém o movimento de catraca sem levantar a peça.",
     specPt: "16 dentes · cabeça 21 mm · bits 19 mm · 73 g",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485204143, cabeça 21 mm, bits ultra-curtos +2/−6 incluídos, 16 dentes.",
-    limitationsPt: "Ferramenta manual para espaços estreitos; não utilizar com aparafusadoras de impacto.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485204143, cabeça 21 mm, bits ultra-curtos +2/−6 incluídos, 16 dentes.",
+    limitationsPt:
+      "Ferramenta manual para espaços estreitos; não utilizar com aparafusadoras de impacto.",
     kitContents: ["Bit ultra-curto +2 × 19 mm", "Bit ultra-curto −6 × 19 mm"],
     catalogViewerPage: 60,
     referenceUrl: "https://www.anextool.co.jp/item/436/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/436_2-1.jpg",
-    imageAlt: "ANEX 436 — roquete offset de cabeça baixa com bits ultra-curtos",
+    imageAlt: "ANEX 436, roquete offset de cabeça baixa com bits ultra-curtos",
     imageSourceLabel: "Imagem oficial ANEX",
     compareGroup: "ratchet-driver",
   },
@@ -426,11 +480,15 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     task: "fastening",
     categoryPt: "Rompe-parafusos · cabeça destruída",
     badge: "ワニドラ",
-    notePt: "Ponta especial que agarra parafusos danificados e novos: a martelada no friso faz a ponta morder a cabeça destruída. Punho oval com nervuras para força máxima, friso percutível e íman.",
-    storyPt: "O jacaré da ANEX (ワニドラ): quando a cabeça já não tem cruz, morre-se o parafuso em vez de o girar — cinco vezes mais fácil de soltar do que o antecessor 3960, segundo o fabricante.",
+    notePt:
+      "Ponta especial que agarra parafusos danificados e novos: a martelada no friso faz a ponta morder a cabeça destruída. Punho oval com nervuras para força máxima, friso percutível e íman.",
+    storyPt:
+      "O jacaré da ANEX (ワニドラ): quando a cabeça já não tem cruz, morre-se o parafuso em vez de o girar, cinco vezes mais fácil de soltar do que o antecessor 3960, segundo o fabricante.",
     specPt: "+2×100 mm · friso percutível · íman · Cr-Mo-V",
-    evidencePt: "Dados oficiais ANEX: JAN 4962485243432, ¥900 tabela, comparação com nº 3960 declarada pelo fabricante; imagem oficial 3980-2-100_3.jpg.",
-    limitationsPt: "Não utilizar em parafusos com tratamento térmico. Se a cabeça estiver muito destruída, combinar com o líquido anti-deslizante nº 40 da ANEX.",
+    evidencePt:
+      "Dados oficiais ANEX: JAN 4962485243432, ¥900 tabela, comparação com nº 3960 declarada pelo fabricante; imagem oficial 3980-2-100_3.jpg.",
+    limitationsPt:
+      "Não utilizar em parafusos com tratamento térmico. Se a cabeça estiver muito destruída, combinar com o líquido anti-deslizante nº 40 da ANEX.",
     manufacturedIn: "Japão",
     catalogViewerPage: 45,
     referenceUrl: "https://www.anextool.co.jp/item/3980-2-100/",
@@ -439,5 +497,5 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
     imageSourceLabel: "Imagem oficial ANEX",
     compareGroup: "extractor",
     featured: true,
-  }
+  },
 ];

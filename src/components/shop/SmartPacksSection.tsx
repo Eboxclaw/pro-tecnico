@@ -21,21 +21,40 @@ function PackCard({ pack }: { pack: SmartPack }) {
     return tool ? [{ tool, quantity: piece.quantity, whyPt: piece.whyPt }] : [];
   });
   return (
-    <article className="smart-pack-card flex flex-col border border-border bg-card" data-signature={pack.trade === "Assinatura REJENDARI" || undefined}>
+    <article
+      className="smart-pack-card flex flex-col border border-border bg-card"
+      data-signature={pack.trade === "Assinatura REJENDARI" || undefined}
+    >
       <header className="border-b border-border bg-surface p-5">
         <p className="jp-label text-primary">{pack.tier}</p>
-        <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.03em]">{pack.title}</h3>
+        <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.03em]">
+          {pack.title}
+        </h3>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{pack.dayPt}</p>
       </header>
       <ul className="flex-1 divide-y divide-border">
         {pieces.map(({ tool, quantity, whyPt }) => (
           <li key={tool.id} className="flex items-start gap-4 p-4">
-            <Link to="/referencia/$id" params={{ id: tool.id }} className="shrink-0" aria-label={`${tool.brand} ${tool.model}`}>
+            <Link
+              to="/referencia/$id"
+              params={{ id: tool.id }}
+              className="shrink-0"
+              aria-label={`${tool.brand} ${tool.model}`}
+            >
               <span className="product-plate block h-16 w-16 overflow-hidden border border-border">
                 {tool.imageUrl ? (
-                  <ProductImage src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-1" loading="lazy" />
+                  <ProductImage
+                    src={tool.imageUrl}
+                    alt={tool.imageAlt ?? tool.namePt}
+                    className="h-full w-full object-contain p-1"
+                    loading="lazy"
+                  />
                 ) : (
-                  <ProductMonogram brand={tool.brand} label={tool.model} className="h-full w-full" />
+                  <ProductMonogram
+                    brand={tool.brand}
+                    label={tool.model}
+                    className="h-full w-full"
+                  />
                 )}
               </span>
             </Link>
@@ -58,12 +77,20 @@ function PackCard({ pack }: { pack: SmartPack }) {
       </ul>
       <footer className="space-y-3 border-t border-border p-5">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">Não inclui</p>
-          <p className="mt-1 text-xs leading-5 text-muted-foreground">{pack.notIncludedPt.join(" · ")}</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+            Não inclui
+          </p>
+          <p className="mt-1 text-xs leading-5 text-muted-foreground">
+            {pack.notIncludedPt.join(" · ")}
+          </p>
         </div>
-        <p className="border-l-2 border-primary/40 pl-3 text-xs leading-5 text-muted-foreground">{pack.limitationsPt}</p>
+        <p className="border-l-2 border-primary/40 pl-3 text-xs leading-5 text-muted-foreground">
+          {pack.limitationsPt}
+        </p>
         <Button className="w-full rounded-none" asChild>
-          <Link to="/b2b" search={{ pack: pack.id }}>Pedir este pack no B2B</Link>
+          <Link to="/b2b" search={{ pack: pack.id }}>
+            Pedir este pack no B2B
+          </Link>
         </Button>
       </footer>
     </article>
@@ -87,9 +114,10 @@ export function SmartPacksSection() {
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-white/58">
-            Cada pack REJENDARI é uma mala pensada para um dia real de trabalho: as peças escolhem-se umas pelas outras.
-            Os níveis existem só quando a diferença é funcional — nunca para encher grelha. É proposta editorial: o pedido
-            segue para o B2B com a composição preenchida, sem SKU inventado.
+            Cada pack REJENDARI é uma mala pensada para um dia real de trabalho: as peças
+            escolhem-se umas pelas outras. Os níveis existem só quando a diferença é funcional,
+            nunca para encher grelha. É proposta editorial: o pedido segue para o B2B com a
+            composição preenchida, sem SKU inventado.
           </p>
         </div>
 
@@ -109,9 +137,11 @@ export function SmartPacksSection() {
           <div key={trade} className="mt-14">
             <h3 className="font-display text-2xl font-semibold tracking-[-0.03em]">{trade}</h3>
             <div className="mt-6 grid gap-4 lg:grid-cols-3">
-              {[...packs].sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier)).map((pack) => (
-                <PackCard key={pack.id} pack={pack} />
-              ))}
+              {[...packs]
+                .sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier))
+                .map((pack) => (
+                  <PackCard key={pack.id} pack={pack} />
+                ))}
             </div>
           </div>
         ))}

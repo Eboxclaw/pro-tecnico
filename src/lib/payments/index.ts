@@ -3,7 +3,7 @@
  *
  * Um método só fica ativo quando o provedor correspondente tem chaves
  * configuradas (env). Sem chaves, o método aparece como "em breve" e nada
- * parte — o mesmo padrão de degradação do Supabase.
+ * parte, o mesmo padrão de degradação do Supabase.
  *
  * Stripe cobre cartões (Visa/Mastercard), Apple Pay, Google Pay e PayPal.
  * O MB WAY chega via ifthenpay e a crypto via Coinbase Commerce (fase P3).

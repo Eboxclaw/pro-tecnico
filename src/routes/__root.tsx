@@ -77,11 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: "REJENDARI — O melhor para cada regime de trabalho" },
-      { name: "description", content: "Ferramenta profissional japonesa e europeia escolhida por regime de trabalho: impacto, torsion, 1000 V, eletrónica e veículos elétricos." },
+      { title: "REJENDARI · O melhor para cada regime de trabalho" },
+      {
+        name: "description",
+        content:
+          "Ferramenta profissional japonesa e europeia escolhida por regime de trabalho: impacto, torsion, 1000 V, eletrónica e veículos elétricos.",
+      },
       { name: "author", content: "REJENDARI" },
-      { property: "og:title", content: "REJENDARI — O melhor para cada regime de trabalho" },
-      { property: "og:description", content: "Japão e Europa no mesmo critério técnico, com curadoria em Portugal." },
+      { property: "og:title", content: "REJENDARI · O melhor para cada regime de trabalho" },
+      {
+        property: "og:description",
+        content: "Japão e Europa no mesmo critério técnico, com curadoria em Portugal.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

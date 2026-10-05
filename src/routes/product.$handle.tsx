@@ -14,8 +14,11 @@ import { Badge } from "@/components/ui/badge";
 export const Route = createFileRoute("/product/$handle")({
   head: () => ({
     meta: [
-      { title: "Produto — REJENDARI" },
-      { name: "description", content: "Ficha de produto profissional com dados técnicos, variantes, origem e garantia." },
+      { title: "Produto, REJENDARI" },
+      {
+        name: "description",
+        content: "Ficha de produto profissional com dados técnicos, variantes, origem e garantia.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -36,7 +39,12 @@ function ProductPage() {
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const { data: product, isLoading, isError, refetch } = useQuery({
+  const {
+    data: product,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
     queryKey: ["product", handle],
     queryFn: () => fetchProductByHandle(handle),
   });
@@ -54,7 +62,16 @@ function ProductPage() {
     );
   }
 
-  if (isError) return <div className="mx-auto max-w-xl px-6 py-24 text-center"><h1 className="font-display text-3xl">Não foi possível carregar o produto.</h1><p className="mt-4 text-muted-foreground">Verifica a ligação e tenta novamente.</p><Button className="mt-6" onClick={() => void refetch()}>Tentar novamente</Button></div>;
+  if (isError)
+    return (
+      <div className="mx-auto max-w-xl px-6 py-24 text-center">
+        <h1 className="font-display text-3xl">Não foi possível carregar o produto.</h1>
+        <p className="mt-4 text-muted-foreground">Verifica a ligação e tenta novamente.</p>
+        <Button className="mt-6" onClick={() => void refetch()}>
+          Tentar novamente
+        </Button>
+      </div>
+    );
 
   if (!product) {
     return (
@@ -177,7 +194,9 @@ function ProductPage() {
                 Ícone
               </Badge>
             )}
-            {selected && !selected.availableForSale && <Badge variant="secondary">{t("common.outOfStock")}</Badge>}
+            {selected && !selected.availableForSale && (
+              <Badge variant="secondary">{t("common.outOfStock")}</Badge>
+            )}
           </div>
 
           <h1 className="mt-5 max-w-xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl">
@@ -188,14 +207,18 @@ function ProductPage() {
             {formatPrice(price.amount, price.currencyCode)}
           </p>
 
-          <p className="mt-6 max-w-xl whitespace-pre-line text-sm leading-7 text-muted-foreground">{node.description}</p>
+          <p className="mt-6 max-w-xl whitespace-pre-line text-sm leading-7 text-muted-foreground">
+            {node.description}
+          </p>
 
           <div className="signal-rule mt-8 border-y border-border py-6">
             <div className="flex items-start gap-4">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="jp-label text-primary">選定理由 · {t("product.whySelected")}</p>
-                <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">{t("product.whySelectedText")}</p>
+                <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">
+                  {t("product.whySelectedText")}
+                </p>
               </div>
             </div>
           </div>
@@ -236,17 +259,18 @@ function ProductPage() {
             <div className="border-b border-border px-5 py-4">
               <p className="jp-label text-muted-foreground">仕様 · {t("product.specs")}</p>
               <p className="mt-2 text-[11px] leading-5 text-muted-foreground">
-                Medidas apresentadas em sistema métrico/SI sempre que aplicável. Encaixes normalizados, como drive 1/4″, 3/8″ ou 1/2″, mantêm a medida técnica original.
+                Medidas apresentadas em sistema métrico/SI sempre que aplicável. Encaixes
+                normalizados, como drive 1/4″, 3/8″ ou 1/2″, mantêm a medida técnica original.
               </p>
             </div>
             <dl className="divide-y divide-border font-mono text-[11px]">
               {[
-                [t("product.vendor"), node.vendor || "—"],
-                [t("product.sku"), sku || "—"],
-                [t("product.ean"), ean || "—"],
-                ["Aplicação", task || node.productType || "—"],
-                ["Material", material || "—"],
-                ["Norma", standard || "—"],
+                [t("product.vendor"), node.vendor || "-"],
+                [t("product.sku"), sku || "-"],
+                [t("product.ean"), ean || "-"],
+                ["Aplicação", task || node.productType || "-"],
+                ["Material", material || "-"],
+                ["Norma", standard || "-"],
                 ["País de fabrico", madeIn || "Informação a confirmar"],
                 [t("product.warranty"), t("product.warrantyValue")],
               ].map(([label, value]) => (

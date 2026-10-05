@@ -2,7 +2,12 @@ import { AnexSignatureStage } from "@/components/brand/AnexSignatureStage";
 import { AnexDuoHero } from "@/components/shop/AnexDuoHero";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
-import { ANEX_CATALOG_URL, ANEX_CHAPTERS, ANEX_ACCESSORY_IDS, parseAnexSearch } from "@/data/anex-editorial";
+import {
+  ANEX_CATALOG_URL,
+  ANEX_CHAPTERS,
+  ANEX_ACCESSORY_IDS,
+  parseAnexSearch,
+} from "@/data/anex-editorial";
 import { referenceById, referencesForBrand } from "@/data/curated-tool-references";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 
@@ -10,13 +15,13 @@ export const Route = createFileRoute("/anex")({
   validateSearch: parseAnexSearch,
   head: () => ({
     meta: [
-      { title: "ANEX — A preferência da casa | REJENDARI" },
+      { title: "ANEX, A preferência da casa | REJENDARI" },
       {
         name: "description",
         content:
           "A seleção independente ANEX da REJENDARI: roquetes Quick Ball 72, bits Ryujin, adaptadores offset e extração de parafusos. Aplicações, limites e fontes de fabricante.",
       },
-      { property: "og:title", content: "ANEX, escolhida ao detalhe — REJENDARI" },
+      { property: "og:title", content: "ANEX, escolhida ao detalhe, REJENDARI" },
       {
         property: "og:description",
         content:
@@ -67,10 +72,12 @@ function AnexPage() {
         <p className="anex-kicker">由来 · A ORIGEM</p>
         <div className="anex-heritage-grid">
           <div className="anex-heritage-quote">
-            <blockquote lang="ja">「より良いハンドツールづくりを通じて社会の発展に貢献します。」</blockquote>
+            <blockquote lang="ja">
+              「より良いハンドツールづくりを通じて社会の発展に貢献します。」
+            </blockquote>
             <p>
-              "Através da fabricação de melhores ferramentas manuais, contribuímos para o desenvolvimento da
-              sociedade."
+              "Através da fabricação de melhores ferramentas manuais, contribuímos para o
+              desenvolvimento da sociedade."
             </p>
             <p className="anex-heritage-source">
               Filosofia oficial ·{" "}
@@ -90,7 +97,7 @@ function AnexPage() {
             </li>
             <li>
               <span>1984</span>
-              <p>Primeiro de uma série contínua de Good Design Awards — 40 edições seguidas.</p>
+              <p>Primeiro de uma série contínua de Good Design Awards, 40 edições seguidas.</p>
             </li>
             <li>
               <span>2022</span>
@@ -100,8 +107,8 @@ function AnexPage() {
           <div className="anex-heritage-provenance">
             <p className="anex-heritage-jp">三条市 NIIGATA · 日本</p>
             <p>
-              Fábrica própria com maquinação, tratamento térmico, moldação e montagem integradas — 75 anos de
-              ferramentas centradas na chave de parafusos.
+              Fábrica própria com maquinação, tratamento térmico, moldação e montagem integradas, 75
+              anos de ferramentas centradas na chave de parafusos.
             </p>
             <p className="anex-heritage-bridge">
               Feito em Sanjo. <em>Escolhido em Portugal.</em>
@@ -177,7 +184,10 @@ function AnexPage() {
           aria-atomic="true"
           className="mb-8 grid gap-5 border-b border-border pb-8 lg:grid-cols-2"
         >
-          <div><p className="anex-kicker text-primary">{chapter.japanese} / ANEX</p><h3 className="mt-4 font-display text-3xl tracking-tight">{chapter.label}</h3></div>
+          <div>
+            <p className="anex-kicker text-primary">{chapter.japanese} / ANEX</p>
+            <h3 className="mt-4 font-display text-3xl tracking-tight">{chapter.label}</h3>
+          </div>
           <div>
             <p className="text-sm leading-7 text-muted-foreground">{chapter.talePt}</p>
             <a
@@ -201,9 +211,16 @@ function AnexPage() {
       <section className="anex-accessories" aria-labelledby="anex-accessories-title">
         <p className="anex-kicker">小物 / ACESSÓRIOS COM UMA FUNÇÃO</p>
         <h2 id="anex-accessories-title">O detalhe que completa o trabalho.</h2>
-        <p>Transportar, organizar, alcançar ou reter. Cinco respostas diferentes; escolhe pela aplicação e confirma a compatibilidade na ficha.</p>
+        <p>
+          Transportar, organizar, alcançar ou reter. Cinco respostas diferentes; escolhe pela
+          aplicação e confirma a compatibilidade na ficha.
+        </p>
         <div className="anex-accessory-rail">
-          {ANEX_ACCESSORY_IDS.map(referenceById).filter((tool) => tool !== undefined).map((tool) => <ReferenceProductCard key={tool.id} tool={tool} />)}
+          {ANEX_ACCESSORY_IDS.map(referenceById)
+            .filter((tool) => tool !== undefined)
+            .map((tool) => (
+              <ReferenceProductCard key={tool.id} tool={tool} />
+            ))}
         </div>
       </section>
 

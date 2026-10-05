@@ -65,13 +65,13 @@ export const Route = createFileRoute("/shop")({
   validateSearch: parseCatalogSearch,
   head: () => ({
     meta: [
-      { title: "Loja de ferramenta profissional — REJENDARI" },
+      { title: "Loja de ferramenta profissional, REJENDARI" },
       {
         name: "description",
         content:
           "Ferramenta profissional japonesa e europeia organizada por regime de trabalho: bits e impacto, 1000 V isolado, grip, sockets, eletrónica, veículos elétricos e máquinas 18V+.",
       },
-      { property: "og:title", content: "Loja — REJENDARI" },
+      { property: "og:title", content: "Loja, REJENDARI" },
       {
         property: "og:description",
         content:
@@ -496,7 +496,7 @@ function ShopPage() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="selection">Seleção REJENDARI</SelectItem>
-              <SelectItem value="name">Nome: A–Z</SelectItem>
+              <SelectItem value="name">Nome: A-Z</SelectItem>
             </SelectContent>
           </Select>
           {hasFilters && (

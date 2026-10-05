@@ -79,11 +79,7 @@ export function ArtisanHero() {
           <span>PT / curadoria</span>
           <span>PRO / dados claros</span>
         </span>
-        <Link
-          to="/referencia/$id"
-          params={{ id: "anex-397-d" }}
-          className="artisan-photo-credit"
-        >
+        <Link to="/referencia/$id" params={{ id: "anex-397-d" }} className="artisan-photo-credit">
           PREFERÊNCIA DA CASA / ANEX 397-D <ArrowUpRight size={13} aria-hidden="true" />
         </Link>
       </div>

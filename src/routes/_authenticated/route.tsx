@@ -25,6 +25,9 @@ function AuthGate() {
     return () => sub.subscription.unsubscribe();
   }, [navigate]);
 
-  if (!ready) return <div className="mx-auto max-w-4xl px-4 py-20 font-mono text-sm text-muted-foreground">…</div>;
+  if (!ready)
+    return (
+      <div className="mx-auto max-w-4xl px-4 py-20 font-mono text-sm text-muted-foreground">…</div>
+    );
   return <Outlet />;
 }

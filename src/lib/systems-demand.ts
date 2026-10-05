@@ -7,7 +7,7 @@ import type { RejendariSystem, ReserveProfession } from "@/data/systems";
 /**
  * Motor de procura dos systems: likes (anónimo, um por visitante),
  * favoritos e reservas (com conta). Tudo degrada gracefully quando o
- * Supabase não está configurado — a loja continua navegável.
+ * Supabase não está configurado, a loja continua navegável.
  */
 
 const VISITOR_KEY = "rejendari:visitor-id";
@@ -47,7 +47,7 @@ export type SystemDemand = {
   units: number;
 };
 
-/** Contagens reais por system_id — vazias quando o serviço não está configurado. */
+/** Contagens reais por system_id, vazias quando o serviço não está configurado. */
 export function useSystemDemand() {
   return useQuery({
     queryKey: ["systems-demand"],
@@ -80,8 +80,9 @@ export function mergedDemand(system: RejendariSystem, real?: SystemDemand) {
   };
 }
 
-/** IDs de systems que este visitante já gostou — fonte do estado do ♡. */
+/** IDs de systems que este visitante já gostou, fonte do estado do ♡. */
 export function useLikedSystems() {
+  const queryClient = useQueryClient();
   const [likedIds, setLikedIds] = useState<string[]>(() => likedSystemIds());
 
   useEffect(() => {
@@ -98,13 +99,21 @@ export function useLikedSystems() {
       if (isSupabaseConfigured()) {
         // porta de entrada única: RPC valida o id e impõe o máx. diário
         // por visitante (INSERT direto está revocado na base de dados)
-        void supabase.rpc("like_system", {
-          p_system_id: system.id,
-          p_visitor_id: visitorId(),
-        });
+        void supabase
+          .rpc("like_system", {
+            p_system_id: system.id,
+            p_visitor_id: visitorId(),
+          })
+          .then(() => {
+            // o contador do ♡ sobe logo, sem esperar pela cache
+            void queryClient.invalidateQueries({ queryKey: ["systems-demand"] });
+          })
+          .catch(() => {
+            // estado otimista mantém-se; a contagem real corrige na próxima visita
+          });
       }
     },
-    [likedIds],
+    [likedIds, queryClient],
   );
 
   return { likedIds, like };
@@ -128,7 +137,7 @@ export function useMyFavorites() {
   });
 }
 
-/** Alterna ★. Visitante sem conta é convidado a entrar — o chamador trata do redirect. */
+/** Alterna ★. Visitante sem conta é convidado a entrar, o chamador trata do redirect. */
 export function useFavoriteToggle(
   system: RejendariSystem,
   opts: { onAuthRequired?: () => void } = {},
@@ -261,14 +270,14 @@ export function useReserveSystem(
       void queryClient.invalidateQueries({ queryKey: ["systems-demand"] });
       void queryClient.invalidateQueries({ queryKey: ["account"] });
       toast.success(
-        `Reserva registada — ${system.name}. €0 agora; preço final confirmado antes de qualquer pagamento.`,
+        `Reserva registada, ${system.name}. €0 agora; preço final confirmado antes de qualquer pagamento.`,
       );
     },
     onError: (error: Error) => toast.error(error.message || "Não foi possível registar a reserva."),
   });
 }
 
-/** Utilizador autenticado (ou null) — para decidir entre ação e redirect para /auth. */
+/** Utilizador autenticado (ou null), para decidir entre ação e redirect para /auth. */
 export async function currentUserOrNull() {
   if (!isSupabaseConfigured()) return null;
   const { data } = await supabase.auth.getUser();

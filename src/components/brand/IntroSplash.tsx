@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 /**
  * Cortina de abertura REJENDARI: uma vez por sessão, salta com um clique e
  * desaparece por completo para quem prefere movimento reduzido.
- * A página por baixo já está renderizada — a cortina só acenta a entrada.
+ * A página por baixo já está renderizada, a cortina só acenta a entrada.
  */
 const SESSION_KEY = "rejendari:intro-vista";
 

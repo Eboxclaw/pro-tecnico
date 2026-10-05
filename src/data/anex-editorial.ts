@@ -4,11 +4,12 @@ export const ANEX_CHAPTERS = [
   {
     id: "access",
     japanese: "到達",
-    talePt: "O parafuso está à vista. A máquina não cabe. Antes de aumentar a força, muda o acesso: deslocar o ponto de aperto ou baixar o perfil pode resolver o obstáculo. Confirma o encaixe e o limite de binário de cada adaptador.",
+    talePt:
+      "O parafuso está à vista. A máquina não cabe. Antes de aumentar a força, muda o acesso: deslocar o ponto de aperto ou baixar o perfil pode resolver o obstáculo. Confirma o encaixe e o limite de binário de cada adaptador.",
     label: "Chegar onde falta espaço",
     short: "Acesso",
     page: 38,
-    printed: "36–40",
+    printed: "36-40",
     description:
       "Adaptadores offset e ferramentas de perfil baixo para obstáculos que não se resolvem com mais força.",
     ids: ["anex-aoa-17s1", "anex-6102-t", "anex-6103-f", "anex-436"],
@@ -16,11 +17,12 @@ export const ANEX_CHAPTERS = [
   {
     id: "ratchet",
     japanese: "回転",
-    talePt: "Há trabalhos em que o movimento disponível é mais pequeno do que a ferramenta. Um roquete permite avançar sem reposicionar continuamente a mão. Escolhe pelo espaço, pelo punho e pelo comprimento de bit admitido.",
+    talePt:
+      "Há trabalhos em que o movimento disponível é mais pequeno do que a ferramenta. Um roquete permite avançar sem reposicionar continuamente a mão. Escolhe pelo espaço, pelo punho e pelo comprimento de bit admitido.",
     label: "Apertar com movimento curto",
     short: "Roquetes",
     page: 57,
-    printed: "55–58",
+    printed: "55-58",
     description:
       "Quick Ball 72, MiniSta72 e roquetes compactos: escolhe pelo espaço, pelo punho e pelos bits que precisas.",
     ids: ["anex-397-d", "anex-397-h", "anex-431", "anex-307-s1", "anex-525-10b", "anex-370"],
@@ -28,11 +30,12 @@ export const ANEX_CHAPTERS = [
   {
     id: "bits",
     japanese: "龍靭",
-    talePt: "Tudo passa por uma pequena superfície de contacto. Diamond procura aderência sem íman; Ryujin oferece formatos e comprimentos para diferentes acessos. Perfil, encaixe e máquina permitida continuam a decidir a escolha.",
+    talePt:
+      "Tudo passa por uma pequena superfície de contacto. Diamond procura aderência sem íman; Ryujin oferece formatos e comprimentos para diferentes acessos. Perfil, encaixe e máquina permitida continuam a decidir a escolha.",
     label: "Escolher a ponta certa",
     short: "Bits",
     page: 10,
-    printed: "8–13",
+    printed: "8-13",
     description:
       "A família Ryujin merece uma escolha por perfil, comprimento e encaixe. O nome da série não substitui a compatibilidade.",
     ids: ["anex-adrs-2065", "anex-adsk-2065", "anex-ryujin-artm5-01", "anex-abrs5-01"],
@@ -40,7 +43,8 @@ export const ANEX_CHAPTERS = [
   {
     id: "insulated",
     japanese: "絶縁",
-    talePt: "Num quadro, a escolha exige mais do que chegar ao parafuso. Os AZM introduzem isolamento no próprio bit, com aplicações e limites definidos pela ANEX. A classificação do bit não transforma o punho ou a máquina num conjunto certificado.",
+    talePt:
+      "Num quadro, a escolha exige mais do que chegar ao parafuso. Os AZM introduzem isolamento no próprio bit, com aplicações e limites definidos pela ANEX. A classificação do bit não transforma o punho ou a máquina num conjunto certificado.",
     label: "Isolamento com limites claros",
     short: "AZM 1000 V",
     page: 26,
@@ -52,7 +56,8 @@ export const ANEX_CHAPTERS = [
   {
     id: "torque",
     japanese: "締付",
-    talePt: "O último aperto merece tanto cuidado como o primeiro. Um adaptador de binário definido ajuda a controlar uma operação repetida. O valor correto é o prescrito pelo equipamento, não uma conclusão tirada apenas do diâmetro do parafuso.",
+    talePt:
+      "O último aperto merece tanto cuidado como o primeiro. Um adaptador de binário definido ajuda a controlar uma operação repetida. O valor correto é o prescrito pelo equipamento, não uma conclusão tirada apenas do diâmetro do parafuso.",
     label: "Definir o limite de aperto",
     short: "Binário",
     page: 26,
@@ -64,11 +69,12 @@ export const ANEX_CHAPTERS = [
   {
     id: "extract",
     japanese: "修復",
-    talePt: "Uma cabeça danificada muda o próximo passo. Em vez de insistir, escolhe um método de extração adequado à dimensão e ao material. Precisão manual e perfuração são soluções diferentes, com exclusões que importa conhecer.",
+    talePt:
+      "Uma cabeça danificada muda o próximo passo. Em vez de insistir, escolhe um método de extração adequado à dimensão e ao material. Precisão manual e perfuração são soluções diferentes, com exclusões que importa conhecer.",
     label: "Recuperar um parafuso danificado",
     short: "Extração",
     page: 44,
-    printed: "42–47",
+    printed: "42-47",
     description:
       "Da precisão manual à extração por perfuração: o tamanho e o material do parafuso decidem o método.",
     ids: ["anex-3610-n", "anex-anh-s3", "anex-1902", "anex-3980-2-100"],
@@ -113,4 +119,10 @@ export const ANEX_SIGNATURE_SOLUTIONS = [
   },
 ] as const;
 
-export const ANEX_ACCESSORY_IDS = ["anex-aqh-s1", "anex-abh-10", "anex-aeh-100", "anex-amb-635", "anex-abs-2065"] as const;
+export const ANEX_ACCESSORY_IDS = [
+  "anex-aqh-s1",
+  "anex-abh-10",
+  "anex-aeh-100",
+  "anex-amb-635",
+  "anex-abs-2065",
+] as const;

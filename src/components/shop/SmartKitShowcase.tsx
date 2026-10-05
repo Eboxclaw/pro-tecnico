@@ -34,7 +34,9 @@ export function SmartKitShowcase() {
             Menos peças. Mais funções por ferramenta.
           </h2>
           <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
-            Nos kits REJENDARI não queremos repetir cinco cabos para cinco tarefas. Damos prioridade a roquetes, bits intercambiáveis e sistemas compactos que aumentam cobertura sem aumentar volume.
+            Nos kits REJENDARI não queremos repetir cinco cabos para cinco tarefas. Damos prioridade
+            a roquetes, bits intercambiáveis e sistemas compactos que aumentam cobertura sem
+            aumentar volume.
           </p>
         </div>
 
@@ -51,16 +53,26 @@ export function SmartKitShowcase() {
               >
                 <div className="product-plate product-ground relative aspect-square overflow-hidden">
                   {tool.imageUrl ? (
-                    <ProductImage src={tool.imageUrl} alt={tool.imageAlt ?? tool.namePt} className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-105" />
+                    <ProductImage
+                      src={tool.imageUrl}
+                      alt={tool.imageAlt ?? tool.namePt}
+                      className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
+                    />
                   ) : (
-                    <div className="flex h-full items-center justify-center font-display text-3xl text-black/15">{tool.brand}</div>
+                    <div className="flex h-full items-center justify-center font-display text-3xl text-black/15">
+                      {tool.brand}
+                    </div>
                   )}
-                  <span className="absolute left-3 top-3 bg-[#1b1917] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white">0{index + 1}</span>
+                  <span className="absolute left-3 top-3 bg-[#1b1917] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white">
+                    0{index + 1}
+                  </span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <p className="jp-label text-primary">{item.label}</p>
                   <h3 className="mt-2 font-display text-2xl font-semibold">{item.title}</h3>
-                  <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">{tool.brand} · {tool.model}</p>
+                  <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {tool.brand} · {tool.model}
+                  </p>
                   <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.text}</p>
                   <span className="mt-auto inline-flex items-center pt-5 text-xs font-medium text-primary">
                     Explorar sistema

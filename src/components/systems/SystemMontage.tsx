@@ -9,7 +9,7 @@ type MontageCell =
 
 /**
  * Montagem de sistema: uma única imagem composta apenas por peças REAIS do
- * system — cada célula com a sua etiqueta de função. Componentes em sourcing
+ * system, cada célula com a sua etiqueta de função. Componentes em sourcing
  * aparecem como slot tracejado; nunca uma foto que o copy não suporte.
  *
  * Peças entram breadth-first (uma por módulo antes de repetir módulo) para a

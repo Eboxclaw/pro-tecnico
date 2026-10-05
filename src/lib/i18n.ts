@@ -41,7 +41,7 @@ const pt = {
     badge: "Curadoria Japão + Europa",
     title: "O melhor para cada regime de trabalho",
     subtitle:
-      "Ferramenta escolhida por regime de trabalho — impacto, torsion, precisão, retenção, acesso estreito e 1000 V — com referências oficiais, medidas úteis e comparações claras.",
+      "Ferramenta escolhida por regime de trabalho, impacto, torsion, precisão, retenção, acesso estreito e 1000 V, com referências oficiais, medidas úteis e comparações claras.",
     ctaShop: "Comprar ferramentas",
     ctaPacks: "Ver kits profissionais",
     packsTitle: "Kits por profissão",
@@ -185,7 +185,7 @@ const pt = {
     checkEmailTitle: "Confirma o teu email",
     checkEmailBody:
       "Enviamos um link de confirmação. Depois de confirmares, entra para ativar pontos e convites.",
-    checkEmailCta: "Já confirmei — entrar",
+    checkEmailCta: "Já confirmei, entrar",
     accountReady: "Conta criada. Bem-vindo.",
   },
   account: {
@@ -201,7 +201,7 @@ const pt = {
     badge: "Abertura em breve",
     title: "REJENDARI abre em breve",
     subtitle:
-      "Estamos a preparar uma curadoria de ferramenta profissional — Japão e Europa no mesmo critério — para Portugal. Deixa o email para saberes quando o catálogo abrir.",
+      "Estamos a preparar uma curadoria de ferramenta profissional, Japão e Europa no mesmo critério, para Portugal. Deixa o email para saberes quando o catálogo abrir.",
     codeLabel: "Código de acesso",
     enter: "Entrar",
     wrongCode: "Código incorreto.",
@@ -258,7 +258,7 @@ const en: Dict = {
     checkoutNote: "Secure checkout with server-side price validation.",
   },
   home: {
-    badge: "Store in the works — opening soon",
+    badge: "Store in the works, opening soon",
     title: "Professional tools chosen for the job",
     subtitle:
       "Japanese precision for European professionals. ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA and OLFA enter a short, technical and verified selection.",
@@ -272,7 +272,7 @@ const en: Dict = {
     japanLabel: "Japanese selection",
     japanTitle: "Precise tools. No noise.",
     japanText:
-      "Driving, impact, precision, cutting, fastening and maintenance — organised by the real task, not marketing.",
+      "Driving, impact, precision, cutting, fastening and maintenance, organised by the real task, not marketing.",
     originNote:
       "Japanese brand and country of manufacture are verified separately for every product.",
     pointsTitle: "Points & weekly draws",
@@ -280,15 +280,15 @@ const en: Dict = {
       "Buy, register and take part: points redeemable for a guaranteed discount and a weekly draw with free entry. The scratch card reveals an already-assigned prize.",
     pointsCta: "How it works",
     value1Title: "Technical selection",
-    value1Text: "A short catalog, verified products, full specs — EAN, VDE, measurements.",
+    value1Text: "A short catalog, verified products, full specs, EAN, VDE, measurements.",
     value2Title: "Packs by trade",
     value2Text: "HVAC, electrician, maintenance, solar and plumbing, ready to work.",
     value3Title: "Points that mean discount",
-    value3Text: "A loyalty program with guaranteed value — never left to chance.",
+    value3Text: "A loyalty program with guaranteed value, never left to chance.",
   },
   shop: {
     title: "Shop",
-    subtitle: "Professional catalog — filter by brand, category and price.",
+    subtitle: "Professional catalog, filter by brand, category and price.",
     empty: "No products yet",
     emptyHint: "The catalog opens soon. Meanwhile, tell us which tools you want first.",
     noResults: "No products match the filters.",
@@ -320,22 +320,22 @@ const en: Dict = {
     compactDesc: "The balance between coverage and transport.",
     pro: "Pro",
     proDesc: "Full coverage for demanding daily work.",
-    soon: "In preparation — opens with the catalog",
+    soon: "In preparation, opens with the catalog",
     cta: "Notify me",
   },
   points: {
     title: "Points & weekly draws",
-    subtitle: "Loyalty program — guaranteed value, free entry into the weekly draw.",
+    subtitle: "Loyalty program, guaranteed value, free entry into the weekly draw.",
     howTitle: "How to earn points",
     how1: "50 points when you create an account",
     how2: "1 point per €1 spent",
     how3: "Points for reviews and shares",
-    how4: "Points redeemable for discounts — always guaranteed value",
+    how4: "Points redeemable for discounts, always guaranteed value",
     raffleTitle: "Draw of the week",
     rafflePrize: "Prize",
     raffleEnter: "Enter this week",
     raffleEntered: "You're in this week. Good luck!",
-    raffleSignIn: "Sign in to enter — entry is free.",
+    raffleSignIn: "Sign in to enter, entry is free.",
     raffleFree:
       "Free entry: all you need is an account and to opt in for the week. A purchase is never required.",
     winners: "Previous winners",
@@ -386,7 +386,7 @@ const en: Dict = {
     password: "Password",
     signIn: "Sign in",
     signUp: "Create account",
-    needAccount: "No account? Create one — you get 50 points.",
+    needAccount: "No account? Create one, you get 50 points.",
     haveAccount: "Already registered? Sign in.",
     google: "Continue with Google",
     googleUnavailable: "Google is unavailable right now.",
@@ -401,7 +401,7 @@ const en: Dict = {
     checkEmailTitle: "Confirm your email",
     checkEmailBody:
       "We sent a confirmation link. After confirming, sign in to activate points and referrals.",
-    checkEmailCta: "I've confirmed — sign in",
+    checkEmailCta: "I've confirmed, sign in",
     accountReady: "Account created. Welcome.",
   },
   account: {
@@ -423,7 +423,7 @@ const en: Dict = {
     wrongCode: "Wrong code.",
     emailPlaceholder: "your@email.com",
     notifyMe: "Notify me",
-    notifySuccess: "Noted — we'll tell you at opening.",
+    notifySuccess: "Noted, we'll tell you at opening.",
     notifyError: "Check the email and try again.",
     langLabel: "Language",
   },
@@ -472,7 +472,7 @@ const es: Dict = {
     checkoutNote: "Pago seguro con validación de precios en el servidor.",
   },
   home: {
-    badge: "Tienda en construcción — próxima apertura",
+    badge: "Tienda en construcción, próxima apertura",
     title: "Herramienta profesional elegida para el trabajo",
     subtitle:
       "Precisión japonesa para profesionales europeos. ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA y OLFA entran en una selección técnica, corta y verificada.",
@@ -487,7 +487,7 @@ const es: Dict = {
     japanLabel: "Selección japonesa",
     japanTitle: "Herramienta precisa. Sin ruido.",
     japanText:
-      "Atornillado, impacto, precisión, corte, apriete y mantenimiento — organizados por la tarea real, no por el marketing.",
+      "Atornillado, impacto, precisión, corte, apriete y mantenimiento, organizados por la tarea real, no por el marketing.",
     originNote:
       "La marca japonesa y el país de fabricación se verifican por separado en cada producto.",
     pointsTitle: "Puntos y sorteos semanales",
@@ -496,15 +496,15 @@ const es: Dict = {
     pointsCta: "Cómo funciona",
     value1Title: "Selección técnica",
     value1Text:
-      "Catálogo corto, productos verificados y especificaciones completas — EAN, VDE, medidas.",
+      "Catálogo corto, productos verificados y especificaciones completas, EAN, VDE, medidas.",
     value2Title: "Packs por oficio",
     value2Text: "HVAC, electricista, mantenimiento, solar y fontanería, listos para trabajar.",
     value3Title: "Puntos que valen descuento",
-    value3Text: "Programa de fidelización con valor siempre garantizado — nunca a la suerte.",
+    value3Text: "Programa de fidelización con valor siempre garantizado, nunca a la suerte.",
   },
   shop: {
     title: "Tienda",
-    subtitle: "Catálogo profesional — filtra por marca, categoría y precio.",
+    subtitle: "Catálogo profesional, filtra por marca, categoría y precio.",
     empty: "Aún no hay productos",
     emptyHint:
       "El catálogo abre pronto. Mientras tanto, dinos qué herramientas quieres ver primero.",
@@ -537,23 +537,23 @@ const es: Dict = {
     compactDesc: "Equilibrio entre cobertura y transporte.",
     pro: "Pro",
     proDesc: "Cobertura completa para el trabajo diario exigente.",
-    soon: "En preparación — abre con el catálogo",
+    soon: "En preparación, abre con el catálogo",
     cta: "Avisadme",
   },
   points: {
     title: "Puntos y sorteos semanales",
     subtitle:
-      "Programa de fidelización — valor siempre garantizado, entrada gratuita al sorteo semanal.",
+      "Programa de fidelización, valor siempre garantizado, entrada gratuita al sorteo semanal.",
     howTitle: "Cómo ganar puntos",
     how1: "50 puntos al crear la cuenta",
     how2: "1 punto por cada 1 € de compra",
     how3: "Puntos por reseñas y compartir",
-    how4: "Puntos canjeables por descuentos — valor siempre garantizado",
+    how4: "Puntos canjeables por descuentos, valor siempre garantizado",
     raffleTitle: "Sorteo de la semana",
     rafflePrize: "Premio",
     raffleEnter: "Participar esta semana",
     raffleEntered: "Ya estás inscrito esta semana. ¡Buena suerte!",
-    raffleSignIn: "Entra en tu cuenta para participar — la inscripción es gratuita.",
+    raffleSignIn: "Entra en tu cuenta para participar, la inscripción es gratuita.",
     raffleFree:
       "Participación gratuita: solo necesitas cuenta e inscribirte en la semana. Comprar nunca es obligatorio.",
     winners: "Ganadores anteriores",
@@ -603,7 +603,7 @@ const es: Dict = {
     password: "Contraseña",
     signIn: "Entrar",
     signUp: "Crear cuenta",
-    needAccount: "¿Sin cuenta? Créala aquí — ganas 50 puntos.",
+    needAccount: "¿Sin cuenta? Créala aquí, ganas 50 puntos.",
     haveAccount: "¿Ya tienes cuenta? Entra.",
     google: "Continuar con Google",
     googleUnavailable: "Google no disponible ahora mismo.",
@@ -618,7 +618,7 @@ const es: Dict = {
     checkEmailTitle: "Confirma tu email",
     checkEmailBody:
       "Te enviamos un enlace de confirmación. Después de confirmar, entra para activar puntos e invitaciones.",
-    checkEmailCta: "Ya confirmé — entrar",
+    checkEmailCta: "Ya confirmé, entrar",
     accountReady: "Cuenta creada. Bienvenido.",
   },
   account: {
@@ -640,7 +640,7 @@ const es: Dict = {
     wrongCode: "Código incorrecto.",
     emailPlaceholder: "tu@email.com",
     notifyMe: "Avisarme",
-    notifySuccess: "Anotado — te avisamos en la apertura.",
+    notifySuccess: "Anotado, te avisamos en la apertura.",
     notifyError: "Revisa el email e inténtalo de nuevo.",
     langLabel: "Idioma",
   },

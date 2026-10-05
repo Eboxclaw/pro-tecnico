@@ -13,15 +13,15 @@ import { featuredSystem } from "@/data/systems";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "REJENDARI — Ferramentas excecionais. Sistemas mais inteligentes." },
+      { title: "REJENDARI · Ferramentas excecionais. Sistemas mais inteligentes." },
       {
         name: "description",
         content:
-          "A REJENDARI encontra ferramentas excecionais, testa compatibilidades e cria sistemas mais inteligentes. Curadoria técnica em Portugal — do impacto ao 1000 V.",
+          "A REJENDARI encontra ferramentas excecionais, testa compatibilidades e cria sistemas mais inteligentes. Curadoria técnica em Portugal, do impacto ao 1000 V.",
       },
       {
         property: "og:title",
-        content: "REJENDARI — Ferramentas excecionais. Sistemas mais inteligentes.",
+        content: "REJENDARI · Ferramentas excecionais. Sistemas mais inteligentes.",
       },
       {
         property: "og:description",
@@ -67,7 +67,7 @@ const SYMBOLS = [
   {
     kanji: "選",
     title: "Descoberta & seleção",
-    text: "Não agregamos catálogos. Encontramos ferramentas excecionais — aço especificado, ergonomia provada, origem declarada — e deixamos as restantes de fora.",
+    text: "Não agregamos catálogos. Encontramos ferramentas excecionais, aço especificado, ergonomia provada, origem declarada, e deixamos as restantes de fora.",
   },
   {
     kanji: "組",
@@ -87,7 +87,7 @@ const HOUSE_RULES = [
   ["MENOS DUPLICAÇÃO", "Se a resposta for “aumenta o número de peças”, não entra."],
 ] as const;
 
-/** Peças ANEX que abrem a seleção individual — a escola fundadora. */
+/** Peças ANEX que abrem a seleção individual, a escola fundadora. */
 const ANEX_PICKS = [
   "anex-397-d",
   "anex-ryujin-artm5-01",
@@ -143,7 +143,7 @@ function Index() {
             <span className="text-[#dfbba4]"> Criamos sistemas mais inteligentes.</span>
           </p>
           <p className="hero-rise hero-rise-3 mt-5 max-w-xl text-sm leading-7 text-white/55">
-            Não fabricamos. Não colamos autocolantes. Descobrimos, escolhemos, combinamos — e a
+            Não fabricamos. Não colamos autocolantes. Descobrimos, escolhemos, combinamos, e a
             procura da comunidade decide o que entra em produção.
           </p>
 
@@ -338,7 +338,7 @@ function Index() {
               </h2>
               <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground">
                 A ANEX é o alicerce da seleção: o Quick Ball 72 no punho, os bits Ryujin em Cr-Mo-V
-                fabricados no Japão, o aperto offset que chega onde os outros não chegam. 一貫生産 —
+                fabricados no Japão, o aperto offset que chega onde os outros não chegam. 一貫生産 -
                 do aço ao fio, na mesma casa. É aqui que o sistema REJENDARI começa.
               </p>
               <div className="mt-7 flex flex-wrap gap-2">

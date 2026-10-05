@@ -51,7 +51,7 @@ function targetPriceRow(system: RejendariSystem, dark = false) {
   );
 }
 
-/** Card grande do featured drop — banda escura, status RESERVATIONS OPEN. */
+/** Card grande do featured drop, banda escura, status RESERVATIONS OPEN. */
 export function FeaturedDropCard({ system }: { system: RejendariSystem }) {
   const { data: demandBySystem } = useSystemDemand();
   const demand = mergedDemand(system, demandBySystem?.[system.id]);
@@ -114,7 +114,7 @@ export function FeaturedDropCard({ system }: { system: RejendariSystem }) {
   );
 }
 
-/** Card de system (kind: system) — grade clara com 2–3 capacidades e CTA. */
+/** Card de system (kind: system), grade clara com 2-3 capacidades e CTA. */
 export function SystemCard({ system }: { system: RejendariSystem }) {
   const { data: demandBySystem } = useSystemDemand();
   const demand = mergedDemand(system, demandBySystem?.[system.id]);
@@ -173,7 +173,7 @@ export function SystemCard({ system }: { system: RejendariSystem }) {
   );
 }
 
-/** Card de módulo (kind: module) — mais compacto, selo IMPACT READY quando aplicável. */
+/** Card de módulo (kind: module), mais compacto, selo IMPACT READY quando aplicável. */
 export function ModuleCard({ system }: { system: RejendariSystem }) {
   const { data: demandBySystem } = useSystemDemand();
   const demand = mergedDemand(system, demandBySystem?.[system.id]);
@@ -228,7 +228,7 @@ export function ModuleCard({ system }: { system: RejendariSystem }) {
   );
 }
 
-/** Card LAB — combinação em estudo; o CTA é o ♡ ("Quero que isto exista"). */
+/** Card LAB, combinação em estudo; o CTA é o ♡ ("Quero que isto exista"). */
 export function LabCard({ system }: { system: RejendariSystem }) {
   return (
     <div className="group flex flex-col border border-dashed border-border bg-card p-5 transition-colors hover:border-primary/40">

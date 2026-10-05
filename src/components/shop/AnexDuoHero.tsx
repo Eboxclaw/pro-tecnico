@@ -25,9 +25,15 @@ export function AnexDuoHero() {
             className="h-full w-full object-contain p-6 mix-blend-multiply transition-transform duration-500 group-hover:-rotate-2 motion-reduce:transition-none"
           />
           <span className="anex-duo-tag">
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">397-D</span>
-            <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">Quick Ball 72</span>
-            <span className="mt-1 block text-[10px] leading-4 text-black/55">72 dentes. Um gesto contínuo.</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">
+              397-D
+            </span>
+            <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">
+              Quick Ball 72
+            </span>
+            <span className="mt-1 block text-[10px] leading-4 text-black/55">
+              72 dentes. Um gesto contínuo.
+            </span>
           </span>
         </Link>
         <Link
@@ -41,9 +47,15 @@ export function AnexDuoHero() {
             className="h-full w-full object-contain p-3 mix-blend-multiply transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
           />
           <span className="anex-duo-tag">
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">AOA-17S1</span>
-            <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">Offset 17 mm</span>
-            <span className="mt-1 block text-[10px] leading-4 text-black/55">O cotovelo além do obstáculo.</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">
+              AOA-17S1
+            </span>
+            <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">
+              Offset 17 mm
+            </span>
+            <span className="mt-1 block text-[10px] leading-4 text-black/55">
+              O cotovelo além do obstáculo.
+            </span>
           </span>
         </Link>
       </div>
@@ -62,15 +74,24 @@ export function AnexDuoHero() {
         </p>
         <p className="anex-kicker mt-5">三条市 NIIGATA · DESDE 1949</p>
         <div className="anex-duo-actions">
-          <Link to="/referencia/$id" params={{ id: quickBall.id }} className="artisan-link artisan-link-solid">
+          <Link
+            to="/referencia/$id"
+            params={{ id: quickBall.id }}
+            className="artisan-link artisan-link-solid"
+          >
             Ver a Quick Ball 397 <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
-          <Link to="/referencia/$id" params={{ id: offset.id }} className="artisan-link artisan-link-ghost">
+          <Link
+            to="/referencia/$id"
+            params={{ id: offset.id }}
+            className="artisan-link artisan-link-ghost"
+          >
             Ver a AOA-17 <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
         </div>
         <span className="mt-6 block text-xs leading-5 text-white/65">
-          Escolha editorial independente da REJENDARI. Consulta limites e compatibilidade em cada ficha.
+          Escolha editorial independente da REJENDARI. Consulta limites e compatibilidade em cada
+          ficha.
         </span>
       </div>
     </section>

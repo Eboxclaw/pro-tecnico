@@ -199,7 +199,8 @@ export function LegendaryProductStage({
     const onPointerLeave = () => {
       pointerRef.current = { x: 0.5, y: 0.5 };
       if (imageRef.current) {
-        imageRef.current.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0)";
+        imageRef.current.style.transform =
+          "perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0)";
       }
     };
 
@@ -243,7 +244,10 @@ export function LegendaryProductStage({
             loading="eager"
           />
         ) : (
-          <div className="hatch h-52 w-52 rounded-full border border-white/10 opacity-60" aria-hidden="true" />
+          <div
+            className="hatch h-52 w-52 rounded-full border border-white/10 opacity-60"
+            aria-hidden="true"
+          />
         )}
       </div>
       <span className="measure-line measure-line-x" aria-hidden="true" />

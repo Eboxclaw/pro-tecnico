@@ -5,7 +5,10 @@ type LogoProps = {
   showTagline?: boolean;
 };
 
-export function RejendariMark({ className = "", inverted = false }: Pick<LogoProps, "className" | "inverted">) {
+export function RejendariMark({
+  className = "",
+  inverted = false,
+}: Pick<LogoProps, "className" | "inverted">) {
   const field = inverted ? "#f5f0e5" : "#1b1917";
   const letter = inverted ? "#1b1917" : "#f5f0e5";
 
@@ -48,7 +51,9 @@ export function RejendariLogo({
           <span className="mt-0.5 h-1.5 w-1.5 shrink-0 bg-[#b54530]" aria-hidden="true" />
         </div>
         {showTagline && (
-          <div className={`mt-1.5 flex items-center gap-2 whitespace-nowrap font-mono text-[6.5px] uppercase tracking-[0.16em] ${mutedClass}`}>
+          <div
+            className={`mt-1.5 flex items-center gap-2 whitespace-nowrap font-mono text-[6.5px] uppercase tracking-[0.16em] ${mutedClass}`}
+          >
             <span className="font-sans text-[8px] tracking-[0.07em]">選定工具</span>
             <span aria-hidden="true">/</span>
             <span>japan first</span>

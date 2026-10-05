@@ -13,7 +13,7 @@ function monogramOf(brand?: string | undefined, fallback?: string | undefined) {
 
 /**
  * Prato editorial quando não há fotografia: monograma da marca dimensionado
- * pelo próprio prato (container query) — parece intencional, não partido.
+ * pelo próprio prato (container query), parece intencional, não partido.
  */
 export function ProductMonogram({
   brand,
@@ -27,13 +27,19 @@ export function ProductMonogram({
   return (
     <div
       role="img"
-      aria-label={`${label || brand || "Produto"} — representação editorial da marca`}
+      aria-label={`${label || brand || "Produto"}, representação editorial da marca`}
       className={`product-plate relative flex flex-col items-center justify-center overflow-hidden ${className}`}
     >
-      <span aria-hidden className="font-display text-[38cqi] font-semibold leading-none tracking-[-0.06em] text-[#29272014]">
+      <span
+        aria-hidden
+        className="font-display text-[38cqi] font-semibold leading-none tracking-[-0.06em] text-[#29272014]"
+      >
         {monogramOf(brand, label)}
       </span>
-      <span aria-hidden className="absolute bottom-[6%] font-mono text-[max(7px,3.2cqi)] uppercase tracking-[0.14em] text-[#625c5399]">
+      <span
+        aria-hidden
+        className="absolute bottom-[6%] font-mono text-[max(7px,3.2cqi)] uppercase tracking-[0.14em] text-[#625c5399]"
+      >
         {brand ?? label ?? "REJENDARI"}
       </span>
     </div>
@@ -56,7 +62,7 @@ export function ProductImage({
     return (
       <div
         role="img"
-        aria-label={`${alt || brand || "Produto"} — fotografia indisponível`}
+        aria-label={`${alt || brand || "Produto"}, fotografia indisponível`}
         className={`product-plate flex flex-col items-center justify-center gap-3 p-5 text-center text-[#625c53] ${className}`}
       >
         <ImageOff className="h-6 w-6" aria-hidden="true" />

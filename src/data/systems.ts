@@ -1,7 +1,7 @@
 import { referenceById, type CuratedToolReference } from "@/data/curated-tool-references";
 
 /**
- * Curated Tool Systems — o produto REJENDARI.
+ * Curated Tool Systems, o produto REJENDARI.
  *
  * O catálogo de systems vive em código (transparente, versionado e auditável);
  * a procura real (likes, favoritos, reservas) vive no Supabase
@@ -12,7 +12,7 @@ import { referenceById, type CuratedToolReference } from "@/data/curated-tool-re
  *
  * Regra editorial: uma peça só entra se resolve um problema adicional
  * ("Que problema adicional esta peça resolve?"). Todas as peças apontam para
- * referências reais do catálogo — nada de compatibilidade inventada.
+ * referências reais do catálogo, nada de compatibilidade inventada.
  */
 
 export type SystemStatus = "available" | "reserving" | "negotiating" | "lab" | "sold_through";
@@ -30,7 +30,7 @@ export type ModuleRole =
   "MANUAL" | "LOCK" | "IMPACT" | "REACH" | "FASTENERS" | "DRIVE" | "CONTROL" | "REPAIR";
 
 export type SystemPiece = {
-  /** id em CURATED_TOOL_REFERENCES — validado por tests/systems.test.mjs */
+  /** id em CURATED_TOOL_REFERENCES, validado por tests/systems.test.mjs */
   refId: string;
   qty?: number;
   whyPt: string;
@@ -40,7 +40,7 @@ export type SystemModule = {
   role: ModuleRole;
   title: string;
   pieces: SystemPiece[];
-  /** Componentes ainda em sourcing — nunca inventar referência. */
+  /** Componentes ainda em sourcing, nunca inventar referência. */
   pendingPt?: string[];
   /** Selo IMPACT READY: só quando tecnicamente documentado. */
   impactReady?: boolean;
@@ -56,7 +56,7 @@ export type SeedDemand = {
   favorites: number;
   reservations: number;
   units: number;
-  /** Peso editorial 0–100 para "Fastest Growing". */
+  /** Peso editorial 0-100 para "Fastest Growing". */
   momentum: number;
 };
 
@@ -68,11 +68,11 @@ export type RejendariSystem = {
   jp: string;
   taglinePt: string;
   status: SystemStatus;
-  /** Preço-alvo durante a negociação — nunca um preço final disfarçado. */
+  /** Preço-alvo durante a negociação, nunca um preço final disfarçado. */
   targetPriceEur?: { min: number; max: number };
   targetMoq?: number;
   seedDemand: SeedDemand;
-  /** 2–3 capacidades principais para o card (nada de parede de texto). */
+  /** 2-3 capacidades principais para o card (nada de parede de texto). */
   capabilitiesPt: string[];
   /** Referência usada como visual do card (product-plate). */
   imageRefId?: string;
@@ -109,7 +109,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     targetPriceEur: { min: 89, max: 99 },
     targetMoq: 100,
     seedDemand: { likes: 214, favorites: 96, reservations: 64, units: 89, momentum: 92 },
-    capabilitiesPt: ["72T · 25 N·m", "PH2 65–110 mm · 5 bits", "Locked by Rapidaptor"],
+    capabilitiesPt: ["72T · 25 N·m", "PH2 65-110 mm · 5 bits", "Locked by Rapidaptor"],
     imageRefId: "anex-397-d",
     leadRefId: "anex-397-d",
     modules: [
@@ -131,7 +131,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           {
             refId: "wera-889-4-1-k",
             whyPt:
-              "É o lock que dá o nome ao system: o Rapidaptor 889/4/1 K trava o bit ao 397 por pressão, com manga de rotação livre — punho, lock, bits e extensor passam a trabalhar como uma só peça, com troca a uma mão. Para impacto contínuo, a variante certificada da Wera está em avaliação.",
+              "É o lock que dá o nome ao system: o Rapidaptor 889/4/1 K trava o bit ao 397 por pressão, com manga de rotação livre, punho, lock, bits e extensor passam a trabalhar como uma só peça, com troca a uma mão. Para impacto contínuo, a variante certificada da Wera está em avaliação.",
           },
         ],
       },
@@ -149,7 +149,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           {
             refId: "anex-adrs-2065",
             whyPt:
-              "Diamond Ryujin slim PH2×65: partículas de diamante retêm o parafuso sem íman — inox, latão, alumínio e plástico — com zona torsional para impacto.",
+              "Diamond Ryujin slim PH2×65: partículas de diamante retêm o parafuso sem íman, inox, latão, alumínio e plástico, com zona torsional para impacto.",
           },
           {
             refId: "anex-adsk-2065",
@@ -158,7 +158,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           },
         ],
         pendingPt: [
-          "PH1 — perfil prioritário em negociação com a ANEX. Entra no drop assim que a referência impact-ready for confirmada; não inventamos compatibilidade.",
+          "PH1, perfil prioritário em negociação com a ANEX. Entra no drop assim que a referência impact-ready for confirmada; não inventamos compatibilidade.",
         ],
       },
       {
@@ -189,7 +189,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     name: "REJENDARI 397 SYSTEM",
     jp: "397システム",
     taglinePt:
-      "O sistema completo à volta do ANEX 397: manual, impacto, perfis e alcance — cada módulo adicionado porque desbloqueia trabalho novo.",
+      "O sistema completo à volta do ANEX 397: manual, impacto, perfis e alcance, cada módulo adicionado porque desbloqueia trabalho novo.",
     status: "reserving",
     targetPriceEur: { min: 119, max: 149 },
     targetMoq: 100,
@@ -216,7 +216,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         pieces: [
           {
             refId: "anex-ryujin-artm5-01",
-            whyPt: "PH2 Black Ryujin em 65/85/110 mm — o consumível principal do sistema.",
+            whyPt: "PH2 Black Ryujin em 65/85/110 mm, o consumível principal do sistema.",
           },
           {
             refId: "anex-arpm-2365",
@@ -230,11 +230,11 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         pieces: [
           {
             refId: "vessel-tx11",
-            whyPt: "A gama Torx T8H–T40H reunida num único estojo de baixo perfil.",
+            whyPt: "A gama Torx T8H-T40H reunida num único estojo de baixo perfil.",
           },
           {
             refId: "vessel-tdbs22",
-            whyPt: "Hex H2.5–H6 em bits ultra-curtos de 18 mm: allen sem espalhar chaves.",
+            whyPt: "Hex H2.5-H6 em bits ultra-curtos de 18 mm: allen sem espalhar chaves.",
           },
         ],
       },
@@ -253,7 +253,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         role: "LOCK",
         title: "Mechanical bit-lock",
         pieces: [],
-        pendingPt: ["Holder mecânico em sourcing — o mesmo componente do 397 LOCK SYSTEM."],
+        pendingPt: ["Holder mecânico em sourcing, o mesmo componente do 397 LOCK SYSTEM."],
       },
     ],
     perfectMatches: [
@@ -280,7 +280,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     targetPriceEur: { min: 159, max: 189 },
     targetMoq: 60,
     seedDemand: { likes: 167, favorites: 74, reservations: 38, units: 52, momentum: 61 },
-    capabilitiesPt: ["Zyklop Speed · 72T", "Sockets 8–19 mm", "Ponte 3/8″ → 1/4″"],
+    capabilitiesPt: ["Zyklop Speed · 72T", "Sockets 8-19 mm", "Ponte 3/8″ → 1/4″"],
     imageRefId: "wera-8100-sb-6",
     leadRefId: "wera-8100-sb-6",
     modules: [
@@ -325,7 +325,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
       {
         targetId: "397-system",
         reasonPt:
-          "A camada de precisão que o drive não substitui — sobe de sistema sem recomprar bits.",
+          "A camada de precisão que o drive não substitui, sobe de sistema sem recomprar bits.",
       },
       { targetId: "ph-work-pack", reasonPt: "Os mesmos bits servem a ponte 3/8″ → 1/4″." },
       {
@@ -343,13 +343,13 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
       "Em estudo: porta-porcas magnéticos, extensões wobble e PH2 de impacto para condutas, chapa e equipamento de climatização.",
     status: "lab",
     seedDemand: { likes: 89, favorites: 31, reservations: 0, units: 0, momentum: 47 },
-    capabilitiesPt: ["Porta-porcas 7–13 mm", "Wobble 3/8″", "PH2 impacto"],
+    capabilitiesPt: ["Porta-porcas 7-13 mm", "Wobble 3/8″", "PH2 impacto"],
     imageRefId: "porta-porcas-magneticos-1-4",
     leadRefId: "porta-porcas-magneticos-1-4",
     modules: [
       {
         role: "FASTENERS",
-        title: "Porta-porcas 7–13 mm",
+        title: "Porta-porcas 7-13 mm",
         pieces: [
           {
             refId: "porta-porcas-magneticos-1-4",
@@ -394,7 +394,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
       "Em estudo: acesso difícil, extração de precisão e hex ultra-curto para bancada, eletrónica e equipamento compacto.",
     status: "lab",
     seedDemand: { likes: 74, favorites: 28, reservations: 0, units: 0, momentum: 35 },
-    capabilitiesPt: ["Acesso difícil", "Extração M1–M2,6", "Hex H2.5–H6"],
+    capabilitiesPt: ["Acesso difícil", "Extração M1-M2,6", "Hex H2.5-H6"],
     imageRefId: "anex-6102-t",
     leadRefId: "anex-6102-t",
     modules: [
@@ -414,7 +414,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         pieces: [
           {
             refId: "vessel-tdbs22",
-            whyPt: "H2.5–H6 em 18 mm: allen dentro de cavidades.",
+            whyPt: "H2.5-H6 em 18 mm: allen dentro de cavidades.",
           },
         ],
       },
@@ -472,7 +472,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           },
         ],
         pendingPt: [
-          "PH1 de impacto — perfil prioritário em negociação com a ANEX. Entra no pack assim que a referência impact-ready for confirmada.",
+          "PH1 de impacto, perfil prioritário em negociação com a ANEX. Entra no pack assim que a referência impact-ready for confirmada.",
         ],
       },
     ],
@@ -490,27 +490,27 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     kind: "module",
     name: "TORX COMPLETE",
     jp: "トルクス完全版",
-    taglinePt: "A gama Torx como um módulo único — não como T20 avulsos espalhados pela mala.",
+    taglinePt: "A gama Torx como um módulo único, não como T20 avulsos espalhados pela mala.",
     status: "negotiating",
     targetPriceEur: { min: 25, max: 35 },
     targetMoq: 80,
     seedDemand: { likes: 118, favorites: 52, reservations: 34, units: 41, momentum: 58 },
-    capabilitiesPt: ["T8H–T40H", "Módulo único", "Low-profile"],
+    capabilitiesPt: ["T8H-T40H", "Módulo único", "Low-profile"],
     imageRefId: "vessel-tx11",
     leadRefId: "vessel-tx11",
     modules: [
       {
         role: "FASTENERS",
-        title: "Torx T8H–T40H",
+        title: "Torx T8H-T40H",
         pieces: [
           {
             refId: "vessel-tx11",
             whyPt:
-              "Cobre a gama Torx de segurança num único estojo de baixo perfil — a versão atual do módulo.",
+              "Cobre a gama Torx de segurança num único estojo de baixo perfil, a versão atual do módulo.",
           },
         ],
         pendingPt: [
-          "A montar com referências de impacto assim que o fabricante confirmar a gama T10–T40 em bits de 25 mm. Sem compatibilidade inventada: o selo IMPACT READY só entra quando estiver documentado.",
+          "A montar com referências de impacto assim que o fabricante confirmar a gama T10-T40 em bits de 25 mm. Sem compatibilidade inventada: o selo IMPACT READY só entra quando estiver documentado.",
         ],
       },
     ],
@@ -529,13 +529,13 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     targetPriceEur: { min: 19, max: 29 },
     targetMoq: 80,
     seedDemand: { likes: 97, favorites: 41, reservations: 27, units: 33, momentum: 44 },
-    capabilitiesPt: ["H2.5–H8", "Bits ultra-curtos", "Offset manual"],
+    capabilitiesPt: ["H2.5-H8", "Bits ultra-curtos", "Offset manual"],
     imageRefId: "vessel-tdbs22",
     leadRefId: "vessel-tdbs22",
     modules: [
       {
         role: "FASTENERS",
-        title: "Hex H2.5–H8",
+        title: "Hex H2.5-H8",
         pieces: [
           {
             refId: "vessel-tdbs22",
@@ -543,10 +543,10 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           },
           {
             refId: "anex-6103-f",
-            whyPt: "As offset H2.5–H5 resolvem o allen fundo que nenhum bit alcança.",
+            whyPt: "As offset H2.5-H5 resolvem o allen fundo que nenhum bit alcança.",
           },
         ],
-        pendingPt: ["H10 e versão impact-ready da gama completa — em validação com fabricantes."],
+        pendingPt: ["H10 e versão impact-ready da gama completa, em validação com fabricantes."],
       },
     ],
     perfectMatches: [
@@ -576,7 +576,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
           {
             refId: "wera-889-4-1-k",
             whyPt:
-              "Rapidaptor 889/4/1 K, a geração atual: bit engata por pressão, manga roda livre, troca a uma mão — o bit-lock que funciona com o punho 397.",
+              "Rapidaptor 889/4/1 K, a geração atual: bit engata por pressão, manga roda livre, troca a uma mão, o bit-lock que funciona com o punho 397.",
           },
         ],
         pendingPt: [
@@ -727,7 +727,7 @@ export function isReservable(system: RejendariSystem): boolean {
 
 export function targetPriceLabel(system: RejendariSystem): string | null {
   if (!system.targetPriceEur) return null;
-  return `€${system.targetPriceEur.min}–${system.targetPriceEur.max}`;
+  return `€${system.targetPriceEur.min}-${system.targetPriceEur.max}`;
 }
 
 /** Estatística de drop: estado confirmado quando as unidades atingem o MOQ. */
@@ -742,7 +742,7 @@ export type CommunityDemand = {
   almostUnlocked: RejendariSystem[];
 };
 
-/** Procura da comunidade — seed + reservas reais, ordenações editoriais. */
+/** Procura da comunidade, seed + reservas reais, ordenações editoriais. */
 export function communityDemand(
   realUnitsBySystem: Record<string, number> = {},
   limit = 3,

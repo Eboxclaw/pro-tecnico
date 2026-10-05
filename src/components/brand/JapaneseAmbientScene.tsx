@@ -15,7 +15,11 @@ export function JapaneseAmbientScene({ className = "" }: { className?: string })
       if (disposed || !root) return;
 
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "low-power" });
+      const renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true,
+        powerPreference: "low-power",
+      });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
       renderer.setClearColor(0x000000, 0);
       renderer.domElement.setAttribute("aria-hidden", "true");
@@ -158,5 +162,11 @@ export function JapaneseAmbientScene({ className = "" }: { className?: string })
     };
   }, []);
 
-  return <div ref={rootRef} className={`absolute inset-0 overflow-hidden ${className}`} aria-hidden="true" />;
+  return (
+    <div
+      ref={rootRef}
+      className={`absolute inset-0 overflow-hidden ${className}`}
+      aria-hidden="true"
+    />
+  );
 }

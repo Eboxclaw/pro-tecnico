@@ -29,13 +29,13 @@ export const Route = createFileRoute("/b2b")({
   }),
   head: () => ({
     meta: [
-      { title: "Conta profissional (B2B) — REJENDARI" },
+      { title: "Conta profissional (B2B), REJENDARI" },
       {
         name: "description",
         content:
           "Pedido de conta profissional REJENDARI: preços por volume, orçamentos e apoio técnico para empresas.",
       },
-      { property: "og:title", content: "Conta profissional (B2B) — REJENDARI" },
+      { property: "og:title", content: "Conta profissional (B2B), REJENDARI" },
       {
         property: "og:description",
         content: "Conta dedicada, preços por volume e apoio técnico para empresas e profissionais.",
@@ -64,7 +64,7 @@ function prefillComposition(pieces: Array<{ id: string; quantity: number; whyPt:
     .map((piece) => {
       const tool = referenceById(piece.id);
       return tool
-        ? `- ${tool.brand} ${tool.model}${piece.quantity > 1 ? ` × ${piece.quantity}` : ""} — ${piece.whyPt}`
+        ? `- ${tool.brand} ${tool.model}${piece.quantity > 1 ? ` × ${piece.quantity}` : ""}, ${piece.whyPt}`
         : null;
     })
     .filter(Boolean)
@@ -104,7 +104,7 @@ function B2BPage({
     vat_number: "",
     trade: "",
     message: tool
-      ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model} — ${tool.namePt}.\nQuantidade: \nAplicação: `
+      ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model}, ${tool.namePt}.\nQuantidade: \nAplicação: `
       : kitId
         ? kitPrefill(kitId)
         : packId

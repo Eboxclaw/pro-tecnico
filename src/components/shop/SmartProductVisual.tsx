@@ -63,8 +63,14 @@ export function SmartProductVisual({
     >
       <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
       <div className="smart-product-grid absolute inset-0 opacity-70" aria-hidden="true" />
-      <div className="smart-product-orbit absolute left-[12%] top-[12%] h-[58%] w-[58%] rounded-full border border-black/[0.07]" aria-hidden="true" />
-      <div className="smart-product-orbit absolute bottom-[8%] right-[7%] h-[34%] w-[34%] rounded-full border border-primary/10" aria-hidden="true" />
+      <div
+        className="smart-product-orbit absolute left-[12%] top-[12%] h-[58%] w-[58%] rounded-full border border-black/[0.07]"
+        aria-hidden="true"
+      />
+      <div
+        className="smart-product-orbit absolute bottom-[8%] right-[7%] h-[34%] w-[34%] rounded-full border border-primary/10"
+        aria-hidden="true"
+      />
 
       <div className="absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-3 p-3.5 sm:p-4">
         <span className="border border-black/10 bg-white/88 px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.16em] text-black/62 shadow-sm backdrop-blur">
@@ -97,9 +103,15 @@ export function SmartProductVisual({
       ) : (
         <div className="micro-grid relative z-[3] flex h-full min-h-[260px] w-full flex-col items-center justify-center p-8 text-center">
           <span className="jp-label text-primary">{tool.japanese}</span>
-          <span className="mt-4 font-display text-4xl font-semibold tracking-[-0.06em] text-black/16">{tool.brand}</span>
-          <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-black/42">{tool.model}</span>
-          <span className="mt-3 text-xs text-black/55">{imageFailed ? "Fotografia indisponível" : "Fotografia em preparação"}</span>
+          <span className="mt-4 font-display text-4xl font-semibold tracking-[-0.06em] text-black/16">
+            {tool.brand}
+          </span>
+          <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-black/42">
+            {tool.model}
+          </span>
+          <span className="mt-3 text-xs text-black/55">
+            {imageFailed ? "Fotografia indisponível" : "Fotografia em preparação"}
+          </span>
           {imageFailed && <ImageOff className="mt-5 h-5 w-5 text-black/25" />}
         </div>
       )}

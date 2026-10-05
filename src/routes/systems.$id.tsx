@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/systems/$id")({
   head: () => ({
     meta: [
-      { title: "System — REJENDARI" },
+      { title: "System, REJENDARI" },
       {
         name: "description",
         content: "Composição, módulos, fabricantes e procura de um curated system REJENDARI.",
@@ -102,7 +102,7 @@ function SystemPage() {
                 <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
                   Target price
                 </p>
-                <p className="mt-2 font-display text-2xl font-semibold">{price ?? "—"}</p>
+                <p className="mt-2 font-display text-2xl font-semibold">{price ?? "-"}</p>
               </div>
             </div>
 
@@ -124,8 +124,8 @@ function SystemPage() {
             <SystemMontage system={system} max={4} className="min-h-72" />
             {lead && (
               <p className="border-t border-border bg-card px-5 py-3 text-xs leading-5 text-muted-foreground">
-                {lead.brand} {lead.model} — componente âncora deste system, selecionado e
-                configurado pela REJENDARI.
+                {lead.brand} {lead.model}, componente âncora deste system, selecionado e configurado
+                pela REJENDARI.
               </p>
             )}
           </div>
@@ -233,7 +233,7 @@ function SystemPage() {
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-white/60">
                   Nunca alteramos gravações, logos ou referências do fabricante. A REJENDARI
-                  adiciona seleção, configuração e embalagem — nada mais.
+                  adiciona seleção, configuração e embalagem, nada mais.
                 </p>
               </div>
               <dl className="divide-y divide-border bg-card">

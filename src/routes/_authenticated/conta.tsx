@@ -14,9 +14,9 @@ import { ToolGlyph } from "@/components/brand/ToolGlyph";
 export const Route = createFileRoute("/_authenticated/conta")({
   head: () => ({
     meta: [
-      { title: "A minha conta — REJENDARI" },
+      { title: "A minha conta, REJENDARI" },
       { name: "description", content: "Conta REJENDARI: pontos, convites, sorteios e encomendas." },
-      { property: "og:title", content: "A minha conta — REJENDARI" },
+      { property: "og:title", content: "A minha conta, REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
@@ -162,7 +162,7 @@ function AccountPage() {
               <p className="tech-label">{t("account.points")}</p>
             </div>
             <p className="mt-5 font-display text-5xl font-semibold tracking-[-0.06em]">
-              {data?.profile?.points ?? "—"}
+              {data?.profile?.points ?? "-"}
             </p>
           </div>
 
@@ -172,7 +172,7 @@ function AccountPage() {
               <p className="jp-label">紹介 · Convites</p>
             </div>
             <p className="mt-5 font-display text-5xl font-semibold tracking-[-0.06em]">
-              {data?.referrals.length ?? "—"}
+              {data?.referrals.length ?? "-"}
             </p>
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
               {referralPoints} pontos ganhos
@@ -182,7 +182,7 @@ function AccountPage() {
           <div className="bg-card p-6">
             <p className="tech-label text-muted-foreground">{t("account.entries")}</p>
             <p className="mt-5 font-display text-5xl font-semibold tracking-[-0.06em]">
-              {data?.entries.length ?? "—"}
+              {data?.entries.length ?? "-"}
             </p>
           </div>
 

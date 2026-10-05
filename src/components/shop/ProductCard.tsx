@@ -31,7 +31,11 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
   const isLegendary = normalizedTags.some((tag) => ["legendary", "flagship", "icon"].includes(tag));
   const originTag = node.tags.find((tag) => tag.toLowerCase().startsWith("made-in:"));
   const taskTag = node.tags.find((tag) => tag.toLowerCase().startsWith("task:"));
-  const task = taskTag?.replace(/^task:/i, "").trim().toLowerCase() ?? "";
+  const task =
+    taskTag
+      ?.replace(/^task:/i, "")
+      .trim()
+      .toLowerCase() ?? "";
   const japaneseTask = JP_TASK[task] ?? "選定工具";
 
   const handleAdd = async () => {
@@ -77,7 +81,9 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
           />
         ) : (
           <div className="micro-grid flex h-full w-full items-end p-5">
-            <span className="font-display text-5xl font-semibold tracking-[-0.08em] text-black/[0.08]">道具</span>
+            <span className="font-display text-5xl font-semibold tracking-[-0.08em] text-black/[0.08]">
+              道具
+            </span>
           </div>
         )}
 
@@ -96,7 +102,9 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         <h3 className="mt-3 font-display text-lg font-semibold leading-[1.2] tracking-[-0.02em]">
           {node.title}
         </h3>
-        <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-muted-foreground">{node.description}</p>
+        <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-muted-foreground">
+          {node.description}
+        </p>
 
         <div className="mb-6 mt-4 flex min-h-5 items-center gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
           <span>{task || "Uso profissional"}</span>
@@ -116,7 +124,11 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
             aria-label={t("common.addToCart")}
             className="relative z-20 h-11 w-11 rounded-none p-0"
           >
-            {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
+            {isLoading ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Plus className="h-4 w-4" />
+            )}
           </Button>
         </div>
       </div>

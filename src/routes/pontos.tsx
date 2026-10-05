@@ -14,13 +14,17 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Route = createFileRoute("/pontos")({
   head: () => ({
     meta: [
-      { title: "Pontos e vantagens — REJENDARI" },
+      { title: "Pontos e vantagens, REJENDARI" },
       {
         name: "description",
-        content: "Pontos REJENDARI, convites, vantagens e sorteios elegíveis reunidos numa só conta.",
+        content:
+          "Pontos REJENDARI, convites, vantagens e sorteios elegíveis reunidos numa só conta.",
       },
-      { property: "og:title", content: "Pontos e vantagens — REJENDARI" },
-      { property: "og:description", content: "Acumula pontos e acompanha as vantagens disponíveis na tua conta REJENDARI." },
+      { property: "og:title", content: "Pontos e vantagens, REJENDARI" },
+      {
+        property: "og:description",
+        content: "Acumula pontos e acompanha as vantagens disponíveis na tua conta REJENDARI.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -43,6 +47,8 @@ function PointsPage() {
   const [entering, setEntering] = useState(false);
   const [myEntries, setMyEntries] = useState<string[]>([]);
   const [referralCode, setReferralCode] = useState("");
+  const [pointsBalance, setPointsBalance] = useState<number | null>(null);
+  const [customerCode, setCustomerCode] = useState("");
   const [referrals, setReferrals] = useState<ReferralRow[]>([]);
   const [copied, setCopied] = useState(false);
 
@@ -60,7 +66,11 @@ function PointsPage() {
 
       const [entries, profile, referralRows] = await Promise.all([
         supabase.from("raffle_entries").select("raffle_id").eq("user_id", uid),
-        supabase.from("profiles").select("referral_code").eq("id", uid).maybeSingle(),
+        supabase
+          .from("profiles")
+          .select("referral_code,points,customer_code")
+          .eq("id", uid)
+          .maybeSingle(),
         supabase
           .from("referrals")
           .select("id,status,referrer_points,referred_points,created_at")
@@ -70,6 +80,8 @@ function PointsPage() {
 
       setMyEntries((entries.data ?? []).map((entry) => entry.raffle_id));
       setReferralCode(profile.data?.referral_code ?? "");
+      setPointsBalance(profile.data?.points ?? null);
+      setCustomerCode(profile.data?.customer_code ?? "");
       setReferrals((referralRows.data ?? []) as ReferralRow[]);
     });
   }, []);
@@ -132,7 +144,29 @@ function PointsPage() {
             <br />
             <span className="text-primary">num só lugar.</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">{t("points.subtitle")}</p>
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">
+            {t("points.subtitle")}
+          </p>
+          {userId && (pointsBalance !== null || customerCode) && (
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              {pointsBalance !== null && (
+                <span className="border border-primary/35 bg-primary/[0.06] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-primary">
+                  Saldo {pointsBalance} pontos
+                </span>
+              )}
+              {customerCode && (
+                <span className="border border-border bg-card px-3 py-1.5 font-mono text-[10px] tracking-[0.2em]">
+                  {customerCode}
+                </span>
+              )}
+              <Link
+                to="/conta"
+                className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-primary"
+              >
+                Ver conta →
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -143,14 +177,18 @@ function PointsPage() {
               <ToolGlyph name="reward" className="h-8 w-8" />
               <span className="jp-label">ポイント · Pontos</span>
             </div>
-            <h2 className="mt-6 font-display text-3xl font-semibold tracking-[-0.045em]">{t("points.howTitle")}</h2>
+            <h2 className="mt-6 font-display text-3xl font-semibold tracking-[-0.045em]">
+              {t("points.howTitle")}
+            </h2>
             <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
-              {[t("points.how1"), t("points.how2"), t("points.how3"), t("points.how4")].map((line, index) => (
-                <li key={line} className="grid grid-cols-[28px_1fr] gap-3">
-                  <span className="font-mono text-[10px] text-primary">0{index + 1}</span>
-                  <span>{line}</span>
-                </li>
-              ))}
+              {[t("points.how1"), t("points.how2"), t("points.how3"), t("points.how4")].map(
+                (line, index) => (
+                  <li key={line} className="grid grid-cols-[28px_1fr] gap-3">
+                    <span className="font-mono text-[10px] text-primary">0{index + 1}</span>
+                    <span>{line}</span>
+                  </li>
+                ),
+              )}
             </ul>
           </article>
 
@@ -163,8 +201,9 @@ function PointsPage() {
               Partilha o teu link e acompanha os convites.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
-              Quando existirem campanhas de convite ativas, partilha o teu link pessoal. As condições e os pontos disponíveis
-              ficam visíveis na campanha e os pontos ganhos aparecem na tua conta.
+              Quando existirem campanhas de convite ativas, partilha o teu link pessoal. As
+              condições e os pontos disponíveis ficam visíveis na campanha e os pontos ganhos
+              aparecem na tua conta.
             </p>
 
             {userId && referralCode ? (
@@ -173,7 +212,11 @@ function PointsPage() {
                 <p className="mt-3 break-all font-mono text-xs text-foreground">{referralLink}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Button variant="secondary" size="sm" onClick={copyReferral}>
-                    {copied ? <Check className="mr-2 h-4 w-4" /> : <Copy className="mr-2 h-4 w-4" />}
+                    {copied ? (
+                      <Check className="mr-2 h-4 w-4" />
+                    ) : (
+                      <Copy className="mr-2 h-4 w-4" />
+                    )}
                     {copied ? "Copiado" : "Copiar"}
                   </Button>
                   <Button variant="outline" size="sm" onClick={shareReferral}>
@@ -184,11 +227,15 @@ function PointsPage() {
                 <div className="mt-5 grid grid-cols-2 gap-px bg-border">
                   <div className="bg-surface p-4">
                     <p className="font-display text-2xl font-semibold">{referrals.length}</p>
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Convites</p>
+                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                      Convites
+                    </p>
                   </div>
                   <div className="bg-surface p-4">
                     <p className="font-display text-2xl font-semibold">{earnedFromReferrals}</p>
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Pontos ganhos</p>
+                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                      Pontos ganhos
+                    </p>
                   </div>
                 </div>
               </div>
@@ -211,21 +258,37 @@ function PointsPage() {
               <Skeleton className="h-7 w-2/3" />
               <Skeleton className="h-4 w-1/3" />
             </div>
-          ) : isError ? (<div role="alert" className="border border-border p-6"><p>Não foi possível consultar as campanhas.</p><Button className="mt-4" variant="outline" onClick={() => void refetch()}>Tentar novamente</Button></div>) : !openRaffle ? (
+          ) : isError ? (
+            <div role="alert" className="border border-border p-6">
+              <p>Não foi possível consultar as campanhas.</p>
+              <Button className="mt-4" variant="outline" onClick={() => void refetch()}>
+                Tentar novamente
+              </Button>
+            </div>
+          ) : !openRaffle ? (
             <p className="mt-4 text-sm text-muted-foreground">{t("points.noWinners")}</p>
           ) : (
             <div className="mt-5 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
-                <h2 className="font-display text-3xl font-semibold tracking-[-0.04em]">{openRaffle.title}</h2>
+                <h2 className="font-display text-3xl font-semibold tracking-[-0.04em]">
+                  {openRaffle.title}
+                </h2>
                 <p className="mt-3 text-sm text-muted-foreground">
                   {t("points.rafflePrize")}:{" "}
                   <span className="font-semibold text-foreground">{openRaffle.prize}</span>
-                  {openRaffle.prize_brand ? ` — ${openRaffle.prize_brand}` : ""}
+                  {openRaffle.prize_brand ? ` · ${openRaffle.prize_brand}` : ""}
                 </p>
-                <p className="mt-4 max-w-xl text-xs leading-5 text-muted-foreground">{t("points.raffleFree")}</p>
+                <p className="mt-4 max-w-xl text-xs leading-5 text-muted-foreground">
+                  {t("points.raffleFree")}
+                </p>
               </div>
               {userId ? (
-                <Button onClick={enter} disabled={entering || entered} size="lg" className="rounded-none">
+                <Button
+                  onClick={enter}
+                  disabled={entering || entered}
+                  size="lg"
+                  className="rounded-none"
+                >
                   <Users className="mr-2 h-4 w-4" />
                   {entered ? t("points.raffleEntered") : t("points.raffleEnter")}
                 </Button>
@@ -257,10 +320,15 @@ function PointsPage() {
             ) : (
               <ul className="mt-4 space-y-3">
                 {winners.map((winner) => (
-                  <li key={winner.id} className="border-b border-border pb-3 font-mono text-xs last:border-b-0">
+                  <li
+                    key={winner.id}
+                    className="border-b border-border pb-3 font-mono text-xs last:border-b-0"
+                  >
                     <div className="flex flex-wrap justify-between gap-3">
-                      <span>{winner.title} — {winner.prize}</span>
-                      <span className="text-muted-foreground">{winner.winner_label ?? "—"}</span>
+                      <span>
+                        {winner.title} · {winner.prize}
+                      </span>
+                      <span className="text-muted-foreground">{winner.winner_label ?? "-"}</span>
                     </div>
                   </li>
                 ))}

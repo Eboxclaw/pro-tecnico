@@ -14,13 +14,13 @@ export const Route = createFileRoute("/marcas")({
   }),
   head: () => ({
     meta: [
-      { title: "Marcas de ferramenta profissional — REJENDARI" },
+      { title: "Marcas de ferramenta profissional, REJENDARI" },
       {
         name: "description",
         content:
           "Histórias, especialidades e referências selecionadas: ANEX, MAKITA, VESSEL, Wera, Knipex, Bahco, TAJIMA e OLFA.",
       },
-      { property: "og:title", content: "Marcas — REJENDARI" },
+      { property: "og:title", content: "Marcas, REJENDARI" },
       {
         property: "og:description",
         content:

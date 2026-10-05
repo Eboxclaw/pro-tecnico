@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
-/** Só caminhos internos — evita redirects abertos para o exterior. */
+/** Só caminhos internos, evita redirects abertos para o exterior. */
 function safeRedirect(value: unknown): string | undefined {
   if (typeof value !== "string") return undefined;
   if (!value.startsWith("/") || value.startsWith("//")) return undefined;
@@ -26,12 +26,12 @@ export const Route = createFileRoute("/auth")({
   }),
   head: () => ({
     meta: [
-      { title: "Conta — REJENDARI" },
+      { title: "Conta, REJENDARI" },
       {
         name: "description",
         content: "Entra ou cria uma conta REJENDARI para encomendas, pontos e convites.",
       },
-      { property: "og:title", content: "Conta — REJENDARI" },
+      { property: "og:title", content: "Conta, REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
@@ -85,7 +85,7 @@ function AuthPage() {
     return t("auth.error");
   };
 
-  /** Passo 1: pede o código — cria conta nova se o email ainda não existir. */
+  /** Passo 1: pede o código, cria conta nova se o email ainda não existir. */
   async function requestCode(event: React.FormEvent) {
     event.preventDefault();
     if (!supabaseReady) {
@@ -194,8 +194,8 @@ function AuthPage() {
           </h2>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             {step === "email"
-              ? "Entra com Google ou recebe um código de seis dígitos no email — sem password."
-              : `Enviámos um código de seis dígitos para ${email}. Vale pouco tempo — escreve-o aqui.`}
+              ? "Entra com Google ou recebe um código de seis dígitos no email, sem password."
+              : `Enviámos um código de seis dígitos para ${email}. Vale pouco tempo, escreve-o aqui.`}
           </p>
 
           {referralCode && step === "email" && (
@@ -295,7 +295,7 @@ function AuthPage() {
               </div>
 
               <p className="mt-6 border border-border bg-background px-4 py-3 text-xs leading-5 text-muted-foreground">
-                Se o email trouxer um link em vez de código, abre o link — entra na mesma.
+                Se o email trouxer um link em vez de código, abre o link, entra na mesma.
               </p>
             </>
           )}

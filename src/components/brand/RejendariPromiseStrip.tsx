@@ -30,8 +30,12 @@ export function RejendariPromiseStrip() {
       <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
         <div className="flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d65a41]">REJENDARI STANDARD · 選定基準</p>
-            <h2 className="mt-3 font-display text-2xl font-semibold tracking-[-0.045em] sm:text-3xl">Curadoria que se consegue verificar.</h2>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d65a41]">
+              REJENDARI STANDARD · 選定基準
+            </p>
+            <h2 className="mt-3 font-display text-2xl font-semibold tracking-[-0.045em] sm:text-3xl">
+              Curadoria que se consegue verificar.
+            </h2>
           </div>
           <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/38">
             {CURATED_TOOL_REFERENCES.length} referências selecionadas · Japan-first · Portugal-ready

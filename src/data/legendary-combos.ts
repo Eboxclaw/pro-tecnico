@@ -1,5 +1,5 @@
 /**
- * Legendary Combos — combinações editoriais que cruzam marcas quando a
+ * Legendary Combos, combinações editoriais que cruzam marcas quando a
  * mistura supera a marca isolada. Não são conjuntos fechados à venda:
  * cada peça liga à ficha da referência curada.
  */
@@ -23,7 +23,7 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     name: "Zyklop Speed",
     jp: "速さ · velocidade",
     work: "Montagem · mecânica",
-    desc: "O kit Zyklop Speed 3/8″ de 29 peças — catraca de 72 dentes, sockets 8–19 mm, adaptador de bits — e a 838 RA-R M para o aperto manual.",
+    desc: "O kit Zyklop Speed 3/8″ de 29 peças, catraca de 72 dentes, sockets 8-19 mm, adaptador de bits, e a 838 RA-R M para o aperto manual.",
     ids: ["wera-8100-sb-6", "wera-838-ra-r-m"],
   },
   {
@@ -100,7 +100,7 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     name: "EV High-Voltage",
     jp: "電気自動車 · VE",
     work: "Veículos elétricos",
-    desc: "Bits AZM isolados 1000 V (máquinas até 7,2 V, segundo o fabricante) e a chave slim isolada para o lado de tensão; os adaptadores ATA fazem o aperto calibrado fora de tensão — cada peça no sítio certo.",
+    desc: "Bits AZM isolados 1000 V (máquinas até 7,2 V, segundo o fabricante) e a chave slim isolada para o lado de tensão; os adaptadores ATA fazem o aperto calibrado fora de tensão, cada peça no sítio certo.",
     ids: ["anex-azm-2698", "anex-7920", "anex-ata-s1"],
   },
 ];

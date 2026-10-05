@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
-/** Estado do system — EN como marca (RESERVING, LAB…), estilo mono industrial. */
+/** Estado do system, EN como marca (RESERVING, LAB…), estilo mono industrial. */
 export function SystemStatusBadge({
   status,
   className,
@@ -100,7 +100,7 @@ function dropUnlockedSafe(units: number, moq: number) {
   return moq > 0 && units >= moq;
 }
 
-/** Selo IMPACT READY — só usado quando a compatibilidade está documentada. */
+/** Selo IMPACT READY, só usado quando a compatibilidade está documentada. */
 export function ImpactReadySeal({ dark = false }: { dark?: boolean }) {
   return (
     <span
@@ -232,7 +232,7 @@ export function ReserveDialog({
               {system.name}
             </DialogTitle>
             <DialogDescription className="mt-2 text-sm leading-6 text-muted-foreground">
-              Reserva gratuita — €0 agora, sem cartão. Preço final confirmado antes de qualquer
+              Reserva gratuita, €0 agora, sem cartão. Preço final confirmado antes de qualquer
               pagamento. Quando o drop atingir a procura necessária, tens prioridade durante 48
               horas.
             </DialogDescription>
@@ -276,7 +276,7 @@ export function ReserveDialog({
               />
             </div>
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-              Unidades por reserva: 1–50. Este número vale mais do que um clique — orienta a
+              Unidades por reserva: 1-50. Este número vale mais do que um clique, orienta a
               negociação com o fabricante.
             </p>
           </div>
@@ -356,7 +356,7 @@ export function ReserveDialog({
             size="lg"
           >
             <Lock className="mr-2 h-4 w-4" />
-            {reserve.isPending ? "A registar…" : "Confirmar reserva — €0"}
+            {reserve.isPending ? "A registar…" : "Confirmar reserva, €0"}
           </Button>
         </div>
       </DialogContent>
@@ -366,7 +366,7 @@ export function ReserveDialog({
 
 type ReserveProfessionLogic = (typeof RESERVE_PROFESSIONS)[number] | "";
 
-/** CTA de reserva — abre o diálogo; desativado com explicação fora dos estados reserváveis. */
+/** CTA de reserva, abre o diálogo; desativado com explicação fora dos estados reserváveis. */
 export function ReserveButton({
   system,
   dark = false,
@@ -392,7 +392,7 @@ export function ReserveButton({
           className,
         )}
       >
-        {system.status === "lab" ? "Em estudo — sem reserva" : "Reservas fechadas"}
+        {system.status === "lab" ? "Em estudo, sem reserva" : "Reservas fechadas"}
       </Button>
     );
   }

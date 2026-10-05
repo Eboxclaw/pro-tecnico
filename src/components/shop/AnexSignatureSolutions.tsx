@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { ANEX_SIGNATURE_SOLUTIONS } from "@/data/anex-editorial";
 
 /**
- * Índice tipográfico das cinco soluções ANEX — sem imagens de produto:
+ * Índice tipográfico das cinco soluções ANEX, sem imagens de produto:
  * o banner do topo já apresenta os objetos; esta banda é o mapa das soluções.
  */
 const SOLUTION_GLYPHS = ["ダイヤ", "龍靭", "球", "絶縁", "偏"] as const;

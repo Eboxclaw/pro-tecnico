@@ -16,15 +16,10 @@ import {
 } from "@/components/ui/sheet";
 import { Minus, Plus, Trash2, Loader2, ShoppingCart } from "lucide-react";
 
-export function CartDrawer({
-  trigger,
-}: {
-  trigger: React.ReactElement;
-}) {
+export function CartDrawer({ trigger }: { trigger: React.ReactElement }) {
   const t = useT();
   const navigate = useNavigate();
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } =
-    useCartStore();
+  const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } = useCartStore();
 
   useEffect(() => {
     if (items.length > 0) syncCart();
@@ -70,7 +65,10 @@ export function CartDrawer({
           <>
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4">
               {items.map((item) => (
-                <div key={item.variantId} className="flex gap-3 rounded-md border border-border p-2">
+                <div
+                  key={item.variantId}
+                  className="flex gap-3 rounded-md border border-border p-2"
+                >
                   <div className="product-plate h-16 w-16 flex-shrink-0 overflow-hidden rounded-sm">
                     {item.product.node.images?.edges?.[0]?.node && (
                       <ProductImage
@@ -139,13 +137,12 @@ export function CartDrawer({
                 {isLoading || isSyncing ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                  <>
-                    
-                    {t("common.checkout")}
-                  </>
+                  <>{t("common.checkout")}</>
                 )}
               </Button>
-              <p className="text-center text-xs text-muted-foreground">{t("common.checkoutNote")}</p>
+              <p className="text-center text-xs text-muted-foreground">
+                {t("common.checkoutNote")}
+              </p>
             </div>
           </>
         )}

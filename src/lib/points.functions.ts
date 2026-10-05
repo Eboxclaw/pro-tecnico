@@ -18,7 +18,9 @@ function createPublicClient() {
   const url = process.env["SUPABASE_URL"];
   const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
   if (!url || !key) return null;
-  return createClient(url, key, { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } });
+  return createClient(url, key, {
+    auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+  });
 }
 
 export const getPublicRaffles = createServerFn({ method: "GET" }).handler(
@@ -40,6 +42,9 @@ export const getPublicRaffles = createServerFn({ method: "GET" }).handler(
       .order("week_start", { ascending: false })
       .limit(8);
 
-    return { open: (open?.[0] as PublicRaffle) ?? null, winners: (winners as PublicRaffle[]) ?? [] };
+    return {
+      open: (open?.[0] as PublicRaffle) ?? null,
+      winners: (winners as PublicRaffle[]) ?? [],
+    };
   },
 );

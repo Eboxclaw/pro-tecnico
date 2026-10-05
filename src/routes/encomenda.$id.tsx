@@ -6,10 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/encomenda/$id")({
   head: () => ({
-    meta: [
-      { title: "Encomenda — REJENDARI" },
-      { name: "robots", content: "noindex" },
-    ],
+    meta: [{ title: "Encomenda, REJENDARI" }, { name: "robots", content: "noindex" }],
   }),
   component: OrderPage,
 });
@@ -52,7 +49,9 @@ function OrderPage() {
   if (missing) {
     return (
       <div className="mx-auto max-w-[720px] px-4 py-20">
-        <h1 className="font-display text-3xl font-semibold tracking-[-0.04em]">Encomenda não encontrada.</h1>
+        <h1 className="font-display text-3xl font-semibold tracking-[-0.04em]">
+          Encomenda não encontrada.
+        </h1>
         <p className="mt-3 text-sm text-muted-foreground">Verifica o link ou volta à loja.</p>
         <Button className="mt-8 rounded-none" asChild>
           <Link to="/shop">Ir para a loja</Link>
@@ -94,11 +93,13 @@ function OrderPage() {
           <li key={index} className="flex items-center justify-between gap-4 py-3 text-sm">
             <span>
               {item.product_title}
-              {item.variant_title ? ` — ${item.variant_title}` : ""}
+              {item.variant_title ? `, ${item.variant_title}` : ""}
               <span className="ml-2 text-muted-foreground">× {item.quantity}</span>
             </span>
             <span className="font-semibold">
-              {new Intl.NumberFormat("pt-PT", { style: "currency", currency }).format(item.line_total)}
+              {new Intl.NumberFormat("pt-PT", { style: "currency", currency }).format(
+                item.line_total,
+              )}
             </span>
           </li>
         ))}
@@ -106,14 +107,16 @@ function OrderPage() {
       <div className="mt-4 flex items-center justify-between">
         <span className="font-semibold">Total</span>
         <span className="font-display text-2xl font-bold">
-          {new Intl.NumberFormat("pt-PT", { style: "currency", currency }).format(order.total_amount)}
+          {new Intl.NumberFormat("pt-PT", { style: "currency", currency }).format(
+            order.total_amount,
+          )}
         </span>
       </div>
 
       {view.tone === "pending" && (
         <p className="mt-6 border border-border bg-surface p-4 text-sm leading-6 text-muted-foreground">
-          Esta página atualiza sozinha enquanto o pagamento é confirmado pelo provedor. Não feches se já
-          concluiste o pagamento.
+          Esta página atualiza sozinha enquanto o pagamento é confirmado pelo provedor. Não feches
+          se já concluiste o pagamento.
         </p>
       )}
       <Button variant="outline" className="mt-8 rounded-none" asChild>

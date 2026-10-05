@@ -7,7 +7,7 @@ import { getRequest } from "@tanstack/react-start/server";
  * Princípios:
  * - O preço é SEMPRE recalculado no servidor contra a Storefront API da
  *   Shopify (fonte autoritativa). O cliente só envia variantes e quantidades.
- * - A Stripe é chamada por REST (fetch) — sem SDK, compatível com o runtime
+ * - A Stripe é chamada por REST (fetch), sem SDK, compatível com o runtime
  *   cloudflare do deploy.
  * - As encomendas são escritas com a service_role key; nenhum utilizador
  *   escreve diretamente na tabela.
@@ -65,15 +65,21 @@ type StorefrontVariant = {
   product: { handle: string; title: string; featuredImage: { url: string } | null };
 };
 
-async function storefontRequest<T>(query: string, variables: Record<string, unknown>): Promise<T | null> {
-  const response = await fetch(`https://${SHOPIFY_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Shopify-Storefront-Access-Token": SHOPIFY_STOREFRONT_TOKEN,
+async function storefontRequest<T>(
+  query: string,
+  variables: Record<string, unknown>,
+): Promise<T | null> {
+  const response = await fetch(
+    `https://${SHOPIFY_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Storefront-Access-Token": SHOPIFY_STOREFRONT_TOKEN,
+      },
+      body: JSON.stringify({ query, variables }),
     },
-    body: JSON.stringify({ query, variables }),
-  });
+  );
   if (!response.ok) return null;
   const json = (await response.json()) as { data?: T };
   return json.data ?? null;
@@ -135,7 +141,10 @@ export const createStripeCheckout = createServerFn({ method: "POST" })
         variantId: item.variantId,
         quantity: Math.max(1, Math.min(99, Math.floor(Number(item.quantity) || 1))),
       }));
-    const email = typeof value?.email === "string" && value!.email!.includes("@") ? value!.email!.trim().slice(0, 160) : undefined;
+    const email =
+      typeof value?.email === "string" && value!.email!.includes("@")
+        ? value!.email!.trim().slice(0, 160)
+        : undefined;
     return { items: cleaned.slice(0, 40), email };
   })
   .handler(async ({ data }): Promise<CreateCheckoutResult> => {
@@ -144,9 +153,12 @@ export const createStripeCheckout = createServerFn({ method: "POST" })
     if (data.items.length === 0) return { error: "empty_cart" };
 
     // 1) Preços autoritativos: revalidar variantes na Storefront.
-    const storefront = await storefontRequest<{ nodes: Array<StorefrontVariant | null> }>(VARIANT_PRICE_QUERY, {
-      ids: data.items.map((item) => item.variantId),
-    });
+    const storefront = await storefontRequest<{ nodes: Array<StorefrontVariant | null> }>(
+      VARIANT_PRICE_QUERY,
+      {
+        ids: data.items.map((item) => item.variantId),
+      },
+    );
     if (!storefront) return { error: "shopify_unavailable" };
 
     const byId = new Map<string, ValidatedItem>();
@@ -170,9 +182,12 @@ export const createStripeCheckout = createServerFn({ method: "POST" })
     for (const item of data.items) {
       const variant = byId.get(item.variantId);
       if (!variant) return { error: "invalid_items", detail: item.variantId };
-      if (!variant.available) return { error: "invalid_items", detail: `${variant.product_title} sem stock` };
-      if (variant.unit_price <= 0 || !variant.product_title) return { error: "invalid_items", detail: "variante inválida" };
-      if (currency && variant.currency !== currency) return { error: "invalid_items", detail: "moedas mistas no carrinho" };
+      if (!variant.available)
+        return { error: "invalid_items", detail: `${variant.product_title} sem stock` };
+      if (variant.unit_price <= 0 || !variant.product_title)
+        return { error: "invalid_items", detail: "variante inválida" };
+      if (currency && variant.currency !== currency)
+        return { error: "invalid_items", detail: "moedas mistas no carrinho" };
       currency = variant.currency;
       validated.push({
         ...variant,
@@ -193,7 +208,14 @@ export const createStripeCheckout = createServerFn({ method: "POST" })
       const admin = await supabaseAdmin();
       const { data: order, error: orderError } = await admin
         .from("orders")
-        .insert({ user_id: userId, email, status: "requires_payment", provider: "stripe", total_amount: total, total_currency: currency })
+        .insert({
+          user_id: userId,
+          email,
+          status: "requires_payment",
+          provider: "stripe",
+          total_amount: total,
+          total_currency: currency,
+        })
         .select("id")
         .single();
       if (orderError || !order) throw orderError ?? new Error("order insert failed");
@@ -251,7 +273,12 @@ export type OrderView = {
   total_amount: number;
   total_currency: string;
   created_at: string;
-  items: Array<{ product_title: string; variant_title: string | null; quantity: number; line_total: number }>;
+  items: Array<{
+    product_title: string;
+    variant_title: string | null;
+    quantity: number;
+    line_total: number;
+  }>;
 };
 
 export const getOrder = createServerFn({ method: "GET" })
@@ -266,7 +293,9 @@ export const getOrder = createServerFn({ method: "GET" })
       const admin = await supabaseAdmin();
       const { data: order, error } = await admin
         .from("orders")
-        .select("id,status,provider,total_amount,total_currency,created_at,order_items(product_title,variant_title,quantity,line_total)")
+        .select(
+          "id,status,provider,total_amount,total_currency,created_at,order_items(product_title,variant_title,quantity,line_total)",
+        )
         .eq("id", data.orderId)
         .maybeSingle();
       if (error || !order) return { error: "not_found" };

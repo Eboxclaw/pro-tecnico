@@ -90,7 +90,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     compareGroup: "impact-bits",
     officialCode: "ARTS-2065",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ARTS-2065-1.jpg",
-    imageAlt: "ANEX ARTS-2065 — bits Ryujin slim dupla ponta +2×65",
+    imageAlt: "ANEX ARTS-2065, bits Ryujin slim dupla ponta +2×65",
     imageSourceLabel: "Imagem oficial ANEX",
     limitationsPt:
       "Confirmar o perfil +2 e o encaixe hexagonal de 6,35 mm da máquina. Bit não isolado; para trabalho elétrico usar a linha AZM 1000 V.",
@@ -125,15 +125,15 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     brand: "WERA",
     brandSlug: "WERA",
     model: "Porta-porcas 1/4″",
-    namePt: "Porta-porcas magnéticos 7–13 mm",
+    namePt: "Porta-porcas magnéticos 7-13 mm",
     japanese: "ナットドライバー",
     task: "fastening",
     categoryPt: "Porta-porcas · AVAC / chapa",
     notePt:
-      "Identificado como Wera 869/4 M Set A SB (05073495001): 8 porta-porcas magnéticos de 50 mm — métricos 7, 8, 10, 12 e 13 mm mais 1/4″, 5/16″ e 3/8″ — com veio hexagonal 1/4″ (DIN ISO 1173-F 6.3) para porta-bits, em bolsa de cinto. Correção da ficha: o encaixe é hexagonal 1/4″, não quadrado.",
-    badge: "7–13 mm",
+      "Identificado como Wera 869/4 M Set A SB (05073495001): 8 porta-porcas magnéticos de 50 mm, métricos 7, 8, 10, 12 e 13 mm mais 1/4″, 5/16″ e 3/8″, com veio hexagonal 1/4″ (DIN ISO 1173-F 6.3) para porta-bits, em bolsa de cinto. Correção da ficha: o encaixe é hexagonal 1/4″, não quadrado.",
+    badge: "7-13 mm",
     referenceUrl: "https://www.wera.de/en/tools/869-4-m-set-a-sb",
-    specPt: "1/4″ · 7–13 mm · retenção magnética",
+    specPt: "1/4″ · 7-13 mm · retenção magnética",
     evidencePt:
       "Disponíveis em Cr-V ou Cr-Mo conforme o fabricante; o íman mantém a porca na ponta em montagem suspensa.",
     storyPt:
@@ -141,7 +141,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     compareGroup: "bit-holders",
     officialCode: "05073495001",
     imageUrl: "https://www.wera.de/prodimg/832x832/869_4_m_set_a_sb_sis.webp",
-    imageAlt: "Wera 869/4 M Set A SB — 8 porta-porcas magnéticos 7–13 mm em bolsa de cinto",
+    imageAlt: "Wera 869/4 M Set A SB, 8 porta-porcas magnéticos 7-13 mm em bolsa de cinto",
     imageSourceLabel: "Imagem oficial Wera",
   },
   {
@@ -159,15 +159,15 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.wiha.com/",
     specPt: "Cabo SoftFinish slimVario electric · lâminas slimBits 6,0 mm · 1.000 V AC",
     evidencePt:
-      "Página oficial Wiha: chave SoftFinish® slimVario® electric para lâminas slimBits 6,0 mm — um só cabo para vários perfis sem chaves separadas; fabricada segundo IEC 60900, para parafusar em partes sob tensão até 1.000 V AC; n.º de encomenda 34577, EAN 4010995345778.",
+      "Página oficial Wiha: chave SoftFinish® slimVario® electric para lâminas slimBits 6,0 mm, um só cabo para vários perfis sem chaves separadas; fabricada segundo IEC 60900, para parafusar em partes sob tensão até 1.000 V AC; n.º de encomenda 34577, EAN 4010995345778.",
     storyPt:
-      "A diferença comercial importa: os slimBits não são bits 1/4″ normais — são um sistema isolado de 6 mm concebido para slimVario, speedE! e TorqueVario-S.",
+      "A diferença comercial importa: os slimBits não são bits 1/4″ normais, são um sistema isolado de 6 mm concebido para slimVario, speedE! e TorqueVario-S.",
     featured: true,
     imageUrl:
       "https://wiha.com/media/6b/53/d3/1729155710/283100_slimVario_Griff.webp?ts=1767089959",
     officialCode: "34577",
     limitationsPt:
-      "As lâminas slimBits de 6 mm só funcionam em cabos slimVario®, speedE® ou TorqueVario®-S electric — não são bits 1/4″ comuns (nota oficial da página do adaptador 43139).",
+      "As lâminas slimBits de 6 mm só funcionam em cabos slimVario®, speedE® ou TorqueVario®-S electric, não são bits 1/4″ comuns (nota oficial da página do adaptador 43139).",
     imageAlt: "Cabo Wiha SoftFinish slimVario electric 34577 para lâminas slimBits de 6 mm",
     imageSourceLabel: "Imagem do fabricante Wiha",
   },
@@ -228,7 +228,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     featured: true,
     imageUrl:
       "https://images.knipex.com/square_md/product-api-assets/fd89784/981cd1d6-c214-45b7-b2f6-3e9030cbc1a4.png",
-    imageAlt: "KNIPEX 74 06 200 — alicate de corte diagonal VDE de alta alavanca",
+    imageAlt: "KNIPEX 74 06 200, alicate de corte diagonal VDE de alta alavanca",
     imageSourceLabel: "Imagem oficial KNIPEX",
   },
   {
@@ -255,7 +255,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     featured: true,
     imageUrl:
       "https://images.knipex.com/square_md/product-api-assets/fd89784/4fd37c0b-ebe1-4c97-8dc7-38e311046f61.png",
-    imageAlt: "KNIPEX Cobra 87 01 250 — alicate de tubo auto-bloqueante",
+    imageAlt: "KNIPEX Cobra 87 01 250, alicate de tubo auto-bloqueante",
     imageSourceLabel: "Imagem oficial KNIPEX",
   },
   {
@@ -281,7 +281,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     compareGroup: "adjustable-wrench",
     imageUrl:
       "https://images.knipex.com/square_md/product-api-assets/fd89784/74bebd81-12e3-4855-940d-c5ceff8742f7.png",
-    imageAlt: "KNIPEX Pliers Wrench 86 03 250 — mordentes paralelos até 52 mm",
+    imageAlt: "KNIPEX Pliers Wrench 86 03 250, mordentes paralelos até 52 mm",
     imageSourceLabel: "Imagem oficial KNIPEX",
   },
   {
@@ -361,7 +361,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     compareGroup: "ratchet-driver",
     officialCode: "05051494001",
     imageUrl: "https://www.wera.de/prodimg/832x832/838_ra-r_l.webp",
-    imageAlt: "Wera 838 RA-R L — porta-bits com roquete Kraftform",
+    imageAlt: "Wera 838 RA-R L, porta-bits com roquete Kraftform",
     imageSourceLabel: "Imagem oficial Wera",
     limitationsPt:
       "Porta-bits manual 1/4″: não utilizar em aparafusadoras elétricas nem em impacto.",
@@ -388,7 +388,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     compareGroup: "ratchet-driver",
     officialCode: "05051493001",
     imageUrl: "https://www.wera.de/prodimg/832x832/838_ra-r_m.webp",
-    imageAlt: "Wera 838 RA-R M — cabo porta-bits compacto com roquete",
+    imageAlt: "Wera 838 RA-R M, cabo porta-bits compacto com roquete",
     imageSourceLabel: "Imagem oficial Wera",
     limitationsPt:
       "Porta-bits manual 1/4″: não utilizar em aparafusadoras elétricas nem em impacto.",
@@ -414,7 +414,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageUrl: "https://kokenusa.com/cdn/shop/products/3756Z__40118.1604351505.jpg?v=1770306828",
     limitationsPt:
       "Canal regional oficial KO-KEN USA (kokenusa.com); a página japonesa do fabricante não estava acessível no momento da verificação.",
-    imageAlt: "KO-KEN 3756Z — quick spinner 3/8″ da série Z-EAL",
+    imageAlt: "KO-KEN 3756Z, quick spinner 3/8″ da série Z-EAL",
     imageSourceLabel: "Imagem oficial KO-KEN USA",
   },
   {
@@ -432,11 +432,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Ball Grip",
     referenceUrl: "https://www.vessel.co.jp/english/product/result?s_jancode=230W&c=no",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/230W.jpg",
-    imageAlt: "VESSEL 230W — Ball Grip com bit substituível H6,35 e haste tang-through",
+    imageAlt: "VESSEL 230W, Ball Grip com bit substituível H6,35 e haste tang-through",
     imageSourceLabel: "Imagem oficial VESSEL",
     specPt: "H6,35 · tang-through · pancada tolerada",
     evidencePt:
-      "Bit substituível e construção tang-through que permite golpear a extremidade — o produto de demonstração perfeito.",
+      "Bit substituível e construção tang-through que permite golpear a extremidade, o produto de demonstração perfeito.",
     storyPt:
       "É o nosso produto de demonstração favorito: ergonomia japonesa Ball Grip com o universo inteiro de bits 1/4″.",
   },
@@ -457,7 +457,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Há parafusos que só existem se a chave for curta: a stubby que continua a aceitar bits trocáveis quando já nada mais cabe.",
     referenceUrl: "https://www.vessel.co.jp/english/product/result?s_jancode=270BW&c=no",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/270BW.jpg",
-    imageAlt: "VESSEL 270BW — Ball Grip stubby para bits de 6,35 mm",
+    imageAlt: "VESSEL 270BW, Ball Grip stubby para bits de 6,35 mm",
     imageSourceLabel: "Imagem oficial VESSEL",
     specPt: "H6,35 · corpo curto · acesso apertado",
     evidencePt: "Stubby H6,35 da família Ball Grip, para trabalho junto ao plano.",
@@ -476,7 +476,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "A segunda metade do sistema: mandril convencional, brushless e percussão para perfuração onde a impacto não chega. Versão sem baterias nem carregador.",
     badge: "Seleção LXT 18 V",
     storyPt:
-      "O parafuso pesado resolve-se à impacto; o furo preciso pede percussão controlada — esta é a máquina do meio: compacta, brushless, com a bateria de sempre.",
+      "O parafuso pesado resolve-se à impacto; o furo preciso pede percussão controlada, esta é a máquina do meio: compacta, brushless, com a bateria de sempre.",
     referenceUrl: "https://www.makita.pt/product/dhp489z.html",
     specPt: "18 V · brushless · 73 N·m (duro)",
     evidencePt:
@@ -508,7 +508,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "https://www.makita.sk/produkty/211_akumulator/prklepov-skrutkovae/prklepov-skrutkovace-18v/10718_dhp492z-akumulatorovy-priklepovy-vrtaci-skrutkovac-s-priklepom",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/301_machines/3011_a_GS1/30120_JPG_zoom/DHP492Z_C2L0.jpg",
-    imageAlt: "Makita DHP492Z — Berbequim com percussão LXT 18 V",
+    imageAlt: "Makita DHP492Z, Berbequim com percussão LXT 18 V",
     imageSourceLabel: "Imagem do fabricante Makita",
     specPt: "18 V · 130/65 N·m (duro/macio) · bucha 13 mm",
     evidencePt:
@@ -534,7 +534,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.co.nz/products/model/DTD173Z",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/301_machines/3011_a_GS1/30120_JPG_zoom/DTD173Z_C2L0.jpg",
-    imageAlt: "Makita DTD173Z — Aparafusadora de impacto LXT 18 V",
+    imageAlt: "Makita DTD173Z, Aparafusadora de impacto LXT 18 V",
     imageSourceLabel: "Imagem do fabricante Makita",
     specPt: "18 V · 180 N·m · hexagonal 1/4″",
     evidencePt:
@@ -561,7 +561,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "https://www.makita.sk/produkty/231_akumulator/brusky-uhlove-priame/brusky-uhlove-priame-18v/1261_dgd800z-akumulatorova-priama-bruska",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/301_machines/3011_a_GS1/30120_JPG_zoom/DGD800Z_C2L0.jpg",
-    imageAlt: "Makita DGD800Z — Retificadora reta LXT 18 V",
+    imageAlt: "Makita DGD800Z, Retificadora reta LXT 18 V",
     imageSourceLabel: "Imagem do fabricante Makita",
     specPt: "18 V · retificação reta",
     evidencePt:
@@ -587,7 +587,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.com.br/catalogoFDetalhes.asp?codParamD=205",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/301_machines/3011_a_GS1/30120_JPG_zoom/DGA519Z_C2L0.jpg",
-    imageAlt: "Makita DGA519Z — Rebarbadora X-LOCK LXT 18 V",
+    imageAlt: "Makita DGA519Z, Rebarbadora X-LOCK LXT 18 V",
     imageSourceLabel: "Imagem do fabricante Makita",
     specPt: "18 V · disco 125 mm · X-LOCK",
     evidencePt:
@@ -609,10 +609,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "DHP492 e DTD173 numa base comum LXT 18 V. A composição do conjunto está documentada pela Makita Portugal.",
     badge: "Conjunto LXT",
     storyPt:
-      "O par habitual em obra: furo e parafuso na mesma bateria — quem entra no LXT começa aqui porque cobre o dia antes de precisar da terceira máquina.",
+      "O par habitual em obra: furo e parafuso na mesma bateria, quem entra no LXT começa aqui porque cobre o dia antes de precisar da terceira máquina.",
     referenceUrl: "https://www.makita.pt/product/dlx2549tj.html",
     imageUrl: "https://www.makita.sk/userfiles/products/zoom/DLX2549TJ.jpg",
-    imageAlt: "Makita DLX2549TJ — Conjunto LXT · perfuração e impacto",
+    imageAlt: "Makita DLX2549TJ, Conjunto LXT · perfuração e impacto",
     imageSourceLabel: "Imagem do fabricante Makita",
     specPt: "18 V · 2 máquinas · 2 × 5,0 Ah",
     evidencePt:
@@ -643,7 +643,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl:
       "https://www.makita.sk/produkty/265_akumulator/sady-naradia/sady-naradia-18v/10508_dlx2431tj-sada-akumulatoroveho-naradia",
     imageUrl: "https://www.makita.sk/userfiles/products/zoom/DLX2431TJ.jpg",
-    imageAlt: "Makita DLX2431TJ — Conjunto LXT · perfuração e desbaste",
+    imageAlt: "Makita DLX2431TJ, Conjunto LXT · perfuração e desbaste",
     imageSourceLabel: "Imagem do fabricante Makita",
     specPt: "18 V · 2 máquinas · 3 × 5,0 Ah",
     evidencePt:
@@ -670,11 +670,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Rebarbadora, berbequim com percussão e martelo SDS-Plus na plataforma 18 V. Composição do catálogo Makita Eslováquia; confirmar versão e fornecimento para Portugal.",
     badge: "Conjunto LXT",
     storyPt:
-      "Três máquinas, uma bateria: o conjunto que transforma uma mala numa oficina de obra — desde que se confirme a versão exata ao comprar.",
+      "Três máquinas, uma bateria: o conjunto que transforma uma mala numa oficina de obra, desde que se confirme a versão exata ao comprar.",
     referenceUrl:
       "https://www.makita.sk/produkty/265_akumulator/sady-naradia/sady-naradia-18v/10821_dlx3221tj-sada-akumulatoroveho-naradia",
     imageUrl: "https://www.makita.sk/userfiles/products/zoom/DLX3221TJ.jpg",
-    imageAlt: "Makita DLX3221TJ — Conjunto LXT · obra e instalação",
+    imageAlt: "Makita DLX3221TJ, Conjunto LXT · obra e instalação",
     imageSourceLabel: "Imagem do fabricante Makita",
     specPt: "18 V · 3 máquinas · 2 × 5,0 Ah",
     evidencePt:
@@ -703,10 +703,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Destaque REJENDARI",
     referenceUrl: "https://www.anextool.co.jp/item/aoa-17s1/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AOA-17S1_2.jpg",
-    imageAlt: "ANEX AOA-17S1 — adaptador offset 17 mm com sockets H8–H21",
+    imageAlt: "ANEX AOA-17S1, adaptador offset 17 mm com sockets H8-H21",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt: "A ANEX especifica H8 a H21 mm no conjunto e torque máximo de 230 N·m.",
-    specPt: "17 mm · 230 N·m · H8–H21",
+    specPt: "17 mm · 230 N·m · H8-H21",
     featured: true,
     storyPt:
       "Uma ferramenta escolhida porque resolve um problema real de trabalho sem depender de um conjunto maior do que o necessário.",
@@ -732,7 +732,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Documentada pela Makita Portugal e pronta para o posto: a impacto de 180 N·m que já provou o LXT em Portugal.",
     referenceUrl: "https://www.makita.pt/data/sr/productinfo/generated/dtd172rtj_3.pdf",
-    imageAlt: "Makita DTD172RTJ — aparafusadora de impacto LXT 18 V (conjunto RTJ)",
+    imageAlt: "Makita DTD172RTJ, aparafusadora de impacto LXT 18 V (conjunto RTJ)",
     evidencePt:
       "A ficha portuguesa indica 18 V, 180 N·m, encaixe hexagonal 1/4″ e 114 mm de comprimento.",
     specPt: "18 V · 180 N·m · 1/4″ · 114 mm",
@@ -755,7 +755,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "O elétrico faz a viagem, a mão faz a chegada: 1.200 rpm para avançar e o punho Ball Grip para sentir o aperto final.",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/148519",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/220USBS1.jpg",
-    imageAlt: "VESSEL 220USB-S1 — aparafusadora elétrica Ball Grip de alta velocidade",
+    imageAlt: "VESSEL 220USB-S1, aparafusadora elétrica Ball Grip de alta velocidade",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "A VESSEL anuncia 1.200 rpm sem carga, 0,4 N·m em modo elétrico e bits hexagonais de 6,35 mm.",
@@ -779,7 +779,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Cortar material espesso não é questão de força, é de lâmina e alavanca: os 25 mm com grip largo transformam o corte difícil num corte normal.",
     referenceUrl: "https://www.olfa.co.jp/en/products/370.html",
     imageUrl: "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586830258XH-1_1-1.jpg",
-    imageAlt: "OLFA XH-1 — cutter extra heavy-duty de 25 mm da série X-design",
+    imageAlt: "OLFA XH-1, cutter extra heavy-duty de 25 mm da série X-design",
     imageSourceLabel: "Imagem oficial OLFA",
     evidencePt:
       "A OLFA classifica o XH-1 como extra heavy-duty da série X-design ComfortGrip, com punho em elastómero e polipropileno reforçado resistente a ácidos e acetona; a página oficial de lâminas extra heavy-duty confirma a lâmina de 25 mm com 0,7 mm de espessura.",
@@ -803,7 +803,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "O cutter europeu de 25 mm com bloqueio automático: a lâmina não recua quando o corte pede força.",
     referenceUrl: "https://tajima.ch/product/dc660/?lang=en",
     imageUrl: "https://tajima.ch/wp-content/uploads/2018/06/DC660-600x500.jpg",
-    imageAlt: "TAJIMA DC660W-EUR — cutter de 25 mm com Auto-Blade-Lock",
+    imageAlt: "TAJIMA DC660W-EUR, cutter de 25 mm com Auto-Blade-Lock",
     imageSourceLabel: "Imagem TAJIMA Europe",
     evidencePt:
       "A TAJIMA Europe identifica esta referência como DC660W-EUR, com lâmina de 25 mm, Auto-Blade-Lock e manga de lâmina endurecida.",
@@ -828,7 +828,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Movimento leve de 72 dentes em cabeça compacta: o roquete que entra no canto do motor e volta a sair sem desculpas.",
     referenceUrl: "https://www.koken-tool.co.jp/en/z-eal.html",
-    imageAlt: "KO-KEN 3725Z — roquete Z-Series 3/8″ de 72 dentes",
+    imageAlt: "KO-KEN 3725Z, roquete Z-Series 3/8″ de 72 dentes",
     evidencePt:
       "A Z-Series usa roquete de 72 dentes e a Ko-ken destaca a compactação e o baixo esforço de rotação.",
     specPt: "Drive 3/8″ · 178 mm · 72 dentes",
@@ -852,9 +852,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Três chaves offset extremamente finas para parafusos em zonas onde um punho normal simplesmente não cabe.",
     badge: "Acesso difícil",
     storyPt:
-      "O punho normal não cabe — e isso não é negociação: estas offset finas resolvem o aperto que se faz com as pontas dos dedos.",
+      "O punho normal não cabe, e isso não é negociação: estas offset finas resolvem o aperto que se faz com as pontas dos dedos.",
     referenceUrl: "https://www.anextool.co.jp/item/6102-t/",
-    imageAlt: "ANEX 6102-T — conjunto de 3 chaves offset finas",
+    imageAlt: "ANEX 6102-T, conjunto de 3 chaves offset finas",
     evidencePt: "A ANEX indica cabeça de 10 mm nas versões +1, +2 e -6 e peso do conjunto de 88 g.",
     specPt: "Cabeça 10 mm · 88 g",
   },
@@ -864,7 +864,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     brandSlug: "ANEX",
     model: "6103-F",
     officialCode: "6103-F",
-    namePt: "Slim Offset Hex · conjunto H2.5–H5",
+    namePt: "Slim Offset Hex · conjunto H2.5-H5",
     japanese: "オフセット六角",
     task: "electronics",
     categoryPt: "Hex · acesso difícil",
@@ -875,7 +875,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.anextool.co.jp/item/6103-f/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/6103-F_a02.jpg",
     imageSourceLabel: "Imagem oficial ANEX",
-    imageAlt: "ANEX 6103-F — conjunto de 4 chaves hex offset H2,5–H5",
+    imageAlt: "ANEX 6103-F, conjunto de 4 chaves hex offset H2,5-H5",
     evidencePt: "O conjunto inclui H2.5, H3, H4 e H5 com cabeça de 10 mm.",
     specPt: "H2.5 · H3 · H4 · H5",
   },
@@ -894,11 +894,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Kit oficial",
     referenceUrl: "https://www.anextool.co.jp/item/525-10b/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/525-10B_2-1.jpg",
-    imageAlt: "ANEX 525-10B — mini roquete de 52 dentes com 10 bits",
+    imageAlt: "ANEX 525-10B, mini roquete de 52 dentes com 10 bits",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX inclui −6, +1/+2/+3 e HEX H2,5/H3/H4/H5/H6/H8. O roquete tem 52 dentes e cabeça ultra-fina de 20 mm.",
-    specPt: "52 dentes · 10 bits · HEX 2,5–8 mm · 95 g",
+    specPt: "52 dentes · 10 bits · HEX 2,5-8 mm · 95 g",
     storyPt:
       "É uma seleção pronta que já reduz a mala: um único mini-roquete cobre Phillips, fenda e seis hex métricos em bits muito curtos.",
     compareGroup: "ratchet-driver",
@@ -920,7 +920,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Rente à parede ou dentro da caixa, o que falta é arco de rotação: 52 dentes transformam dois milímetros de vaivém em aperto a sério.",
     referenceUrl: "https://www.anextool.co.jp/item/525/",
-    imageAlt: "ANEX 525 — mini roquete de bits de 52 dentes",
+    imageAlt: "ANEX 525, mini roquete de bits de 52 dentes",
     evidencePt: "A ANEX especifica 52 dentes, cabeça de 20 mm e bits hexagonais de 6,35 mm.",
     specPt: "52 dentes · cabeça 20 mm · 6,35 mm",
   },
@@ -938,11 +938,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Chave isolada de haste fina para quadros e equipamento elétrico com pouco espaço à volta do parafuso.",
     badge: "Eletricidade",
     storyPt:
-      "No quadro cheio, o problema não é a tensão — é o espaço: a haste fina isolada chega ao parafuso escondido sem tocar no que não deve.",
+      "No quadro cheio, o problema não é a tensão, é o espaço: a haste fina isolada chega ao parafuso escondido sem tocar no que não deve.",
     referenceUrl: "https://www.anextool.co.jp/item/7920-2-100/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/7920-2-100_a02.jpg",
     imageSourceLabel: "Imagem oficial ANEX",
-    imageAlt: "ANEX 7920 — chave isolada slim +2 × 100 mm, 1000 V",
+    imageAlt: "ANEX 7920, chave isolada slim +2 × 100 mm, 1000 V",
     evidencePt:
       "A ANEX indica resistência dielétrica de 1000 V e ensaio de 10.000 V durante 10 segundos.",
     specPt: "+2 × 100 mm · 1000 V",
@@ -962,7 +962,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Impacto",
     referenceUrl: "https://www.anextool.co.jp/item/abrs5-2065/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ABRS5-2065-1.jpg",
-    imageAlt: "ANEX ABRS5-2065 — 5 bits Black Ryujin slim +2×65 para impacto",
+    imageAlt: "ANEX ABRS5-2065, 5 bits Black Ryujin slim +2×65 para impacto",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX indica HRC62.5, haste hexagonal 6,35 mm, compatibilidade 18 V / 40 V e fabrico no Japão.",
@@ -990,7 +990,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Smart handle",
     referenceUrl: "https://www.anextool.co.jp/item/370/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/370_a02.jpg",
-    imageAlt: "ANEX 370 — roquete em T com bits guardados no punho",
+    imageAlt: "ANEX 370, roquete em T com bits guardados no punho",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX especifica encaixe hexagonal 6,35 mm, 10 dentes, bits combinados +/− e peso de 165 g.",
@@ -1014,11 +1014,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Smart kit",
     referenceUrl: "https://www.anextool.co.jp/item/307-s1/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/307-S1_1.jpg",
-    imageAlt: "ANEX 307-S1 — kit MiniSta72 com roquete de 72 dentes e 28 perfis",
+    imageAlt: "ANEX 307-S1, kit MiniSta72 com roquete de 72 dentes e 28 perfis",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX declara 72 dentes, 28 tamanhos de parafuso cobertos, sockets H5 a H13 e fabrico no Japão.",
-    specPt: "72 dentes · 28 perfis · H5–H13",
+    specPt: "72 dentes · 28 perfis · H5-H13",
     storyPt:
       "Este é exatamente o tipo de conjunto que queremos: menos cabos e chaves duplicadas, mais cobertura útil através de um único mecanismo compacto.",
   },
@@ -1037,7 +1037,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "72 dentes",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/247025",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD6816MG_d.jpg",
-    imageAlt: "VESSEL TD-6816MG — punho ratchet com 16 bits",
+    imageAlt: "VESSEL TD-6816MG, punho ratchet com 16 bits",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "VESSEL especifica 72 dentes, passo de 5°, 177 mm e 16 tipos de bit em encaixe 6,35 mm.",
@@ -1061,7 +1061,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Bits compactos",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/251447",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TDBS23_d1.jpg",
-    imageAlt: "VESSEL TD-BS23 — conjunto de 10 bits ultra-curtos PH/SL/HEX de 18 mm",
+    imageAlt: "VESSEL TD-BS23, conjunto de 10 bits ultra-curtos PH/SL/HEX de 18 mm",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "O conjunto inclui PH1/2/3, SL4/6 e HEX 2,5/3/4/5/6 em bits de 18 mm.",
     specPt: "10 peças · 18 mm · PH/SL/HEX",
@@ -1082,7 +1082,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "36 bits",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/125498",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/9836_02.jpg",
-    imageAlt: "VESSEL 9836 — estojo de precisão com 36 bits",
+    imageAlt: "VESSEL 9836, estojo de precisão com 36 bits",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL lista 36 bits, haste H4, 94 mm de comprimento e punho de liga de alumínio.",
     specPt: "36 bits · H4 · 94 mm",
@@ -1105,7 +1105,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Bits variados",
     referenceUrl: "https://www.anextool.co.jp/item/abrs5-01/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ABRS5-01-1.jpg",
-    imageAlt: "ANEX ABRS5-01 — 5 bits Black Ryujin slim +2 (65/85/110 mm)",
+    imageAlt: "ANEX ABRS5-01, 5 bits Black Ryujin slim +2 (65/85/110 mm)",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "O conjunto inclui +2×65 (1), +2×85 (2) e +2×110 (2), haste 6,35 mm e compatibilidade 18 V / 40 V.",
@@ -1132,7 +1132,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Bits 18 mm",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/251445",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TDBS21_d1.jpg",
-    imageAlt: "VESSEL TD-BS21 — conjunto de 5 bits ultra-curtos PH e fenda de 18 mm",
+    imageAlt: "VESSEL TD-BS21, conjunto de 5 bits ultra-curtos PH e fenda de 18 mm",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL lista PH1/2/3 e SL4/6, todos com 18 mm.",
     specPt: "5 peças · 18 mm · PH1/2/3 · SL4/6",
@@ -1154,7 +1154,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "HEX métrico",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/251446",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TDBS22_d1.jpg",
-    imageAlt: "VESSEL TD-BS22 — conjunto de 5 bits hex ultra-curtos de 18 mm",
+    imageAlt: "VESSEL TD-BS22, conjunto de 5 bits hex ultra-curtos de 18 mm",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL inclui H2,5, H3, H4, H5 e H6 em bits de 18 mm.",
     specPt: "H2,5 / 3 / 4 / 5 / 6 · 18 mm",
@@ -1176,10 +1176,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Torx",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/252021",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TX11_d.jpg",
-    imageAlt: "VESSEL TX-11 — ratchet de placa Torx",
+    imageAlt: "VESSEL TX-11, ratchet de placa Torx",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL lista PH2, SL6 e Torx T8H a T40H em bits de 25,4 mm, com encaixe 6,35 mm.",
-    specPt: "10 bits · T8H–T40H · 6,35 mm",
+    specPt: "10 bits · T8H-T40H · 6,35 mm",
     storyPt:
       "Um kit específico para parafusos Torx de segurança evita comprar um conjunto generalista enorme só para ter os perfis que realmente aparecem em manutenção.",
   },
@@ -1199,7 +1199,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "ANEX icon",
     referenceUrl: "https://www.anextool.co.jp/item/397-d/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/397-D_3-1.jpg",
-    imageAlt: "ANEX 397-D — roquete Quick Ball 72 com punho Ball Grip",
+    imageAlt: "ANEX 397-D, roquete Quick Ball 72 com punho Ball Grip",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "A ANEX especifica 72 dentes, torque máximo de 25 N·m, haste hexagonal 6,35 mm e utilização de bits com 65 mm ou mais.",
@@ -1223,7 +1223,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Handle only",
     referenceUrl: "https://www.anextool.co.jp/item/397-h/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/397-H_2.jpg",
-    imageAlt: "ANEX 397-H — punho roquete Quick Ball 72 (sem bits)",
+    imageAlt: "ANEX 397-H, punho roquete Quick Ball 72 (sem bits)",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt: "A ANEX especifica 72 dentes, 25 N·m de torque máximo e peso de 96 g.",
     specPt: "72 dentes · 25 N·m · 96 g",
@@ -1250,7 +1250,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     limitationsPt:
       "A ANEX recomenda aparafusadoras até 7,2 V. A indicação de 1000 V refere-se ao bit; não certifica o conjunto com um punho Quick Ball 397, um AOA-17 ou outra máquina.",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AZM-2698_1.jpg",
-    imageAlt: "ANEX AZM-2698 — bit isolado de dupla ponta +2/−6 × 98 mm, 1000 V",
+    imageAlt: "ANEX AZM-2698, bit isolado de dupla ponta +2/−6 × 98 mm, 1000 V",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX indica +2/−6 × 98 mm, ensaio dielétrico a 10.000 V, resistência nominal de 1000 V, haste 6,35 mm e fabrico no Japão. Dados oficiais: JAN 4962485432065, preço de tabela 1.300 ienes.",
@@ -1277,7 +1277,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     limitationsPt:
       "A ANEX recomenda aparafusadoras até 7,2 V. A indicação de 1000 V refere-se ao bit; não certifica o conjunto com um punho Quick Ball 397, um AOA-17 ou outra máquina.",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AZM-1598_a02.jpg",
-    imageAlt: "ANEX AZM-1598 — bit isolado de dupla ponta +1/−5 × 98 mm, 1000 V",
+    imageAlt: "ANEX AZM-1598, bit isolado de dupla ponta +1/−5 × 98 mm, 1000 V",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "A ANEX especifica +1/−5 × 98 mm, 1000 V, ensaio dielétrico de 10.000 V e haste 6,35 mm. Dados oficiais: JAN 4962485432089, preço de tabela 1.300 ienes.",
@@ -1300,7 +1300,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Conversão",
     referenceUrl: "https://www.anextool.co.jp/item/1902-ba2/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/1902-BA2_2.jpg",
-    imageAlt: "ANEX 1902-BA2 — adaptador de 3/8″ para bits hex. 6,35 mm",
+    imageAlt: "ANEX 1902-BA2, adaptador de 3/8″ para bits hex. 6,35 mm",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "A ANEX especifica quadrado 9,5 mm (3/8″) para haste hexagonal 6,35 mm e peso de 28 g.",
@@ -1323,7 +1323,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Adapter",
     referenceUrl: "https://www.anextool.co.jp/item/asad-3e/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ASAD-3E_2.jpg",
-    imageAlt: "ANEX ASAD-3E — adaptador de soquete 3/8″ com bit substituível",
+    imageAlt: "ANEX ASAD-3E, adaptador de soquete 3/8″ com bit substituível",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX especifica drive 9,52 mm (3/8″), haste 6,35 mm, comprimento total 68 mm e compatibilidade com impacto 18 V / 40 V.",
@@ -1346,7 +1346,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Kit oficial",
     referenceUrl: "https://www.anextool.co.jp/item/1902/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/1902_2-1.jpg",
-    imageAlt: "ANEX 1902 — kit de impacto manual com drive 3/8″",
+    imageAlt: "ANEX 1902, kit de impacto manual com drive 3/8″",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "O conjunto inclui corpo 3/8″, holders hex 6,35/8 mm e seis bits; o próprio drive também aceita sockets 3/8″.",
@@ -1369,7 +1369,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Ball ratchet",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/125345",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/22002100.jpg",
-    imageAlt: "VESSEL 2200 PH2×100 — Ball Ratchet com roquete de 36 dentes",
+    imageAlt: "VESSEL 2200 PH2×100, Ball Ratchet com roquete de 36 dentes",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "A VESSEL especifica roquete de 36 dentes, PH2, haste de 100 mm e comprimento total de 200 mm.",
@@ -1392,11 +1392,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Torx",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/247024",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD6808TX_d.jpg",
-    imageAlt: "VESSEL TD-6808TX — kit ratchet com bits Torx",
+    imageAlt: "VESSEL TD-6808TX, kit ratchet com bits Torx",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "VESSEL especifica 72 dentes, 5°, 177 mm e PH2/PH3 mais T10H, T15H, T20H, T25H, T30H e T40H.",
-    specPt: "72 dentes · 5° · PH2/3 · T10H–T40H",
+    specPt: "72 dentes · 5° · PH2/3 · T10H-T40H",
     storyPt:
       "Um conjunto focado em mecânica e manutenção onde os Torx de segurança aparecem realmente, sem encher o punho de perfis pouco usados.",
     compareGroup: "ratchet-driver",
@@ -1416,10 +1416,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "HEX métrico",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/247023",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD6808MG_d.jpg",
-    imageAlt: "VESSEL TD-6808MG — kit ratchet com bits HEX métricos",
+    imageAlt: "VESSEL TD-6808MG, kit ratchet com bits HEX métricos",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL lista PH1/2/3, fenda 6 e HEX 2,5/3/4/5 mm com 72 dentes e 5°.",
-    specPt: "72 dentes · PH/SL · HEX 2,5–5 mm",
+    specPt: "72 dentes · PH/SL · HEX 2,5-5 mm",
     storyPt:
       "É provavelmente a versão mais alinhada com manutenção geral em Portugal, porque junta perfis de parafuso comuns a hex métricos no próprio punho.",
     compareGroup: "ratchet-driver",
@@ -1438,10 +1438,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Kit oficial",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/250070",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD70_d.jpg",
-    imageAlt: "VESSEL TD-70 — kit ratchet de placa baixa",
+    imageAlt: "VESSEL TD-70, kit ratchet de placa baixa",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL inclui PH1/2/3, SL4/6 e HEX 2,5/3/4/5/6 mm em bits de 25,4 mm.",
-    specPt: "10 bits · PH/SL · HEX 2,5–6 mm",
+    specPt: "10 bits · PH/SL · HEX 2,5-6 mm",
     storyPt:
       "Um dos melhores exemplos de pacote pronto da marca: baixa altura e perfis realmente úteis sem duplicar um estojo inteiro.",
   },
@@ -1460,7 +1460,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Sockets",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/250072",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD72_d.jpg",
-    imageAlt: "VESSEL TD-72 — ratchet de placa com sockets",
+    imageAlt: "VESSEL TD-72, ratchet de placa com sockets",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "VESSEL inclui sockets 5,5 / 7 / 8 / 10 mm, PH2, holder e drive quadrado 6,35 mm quando o speed ring é removido.",
@@ -1482,7 +1482,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "T-handle",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/250080",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD80_d.jpg",
-    imageAlt: "VESSEL TD-80 — kit ratchet em T",
+    imageAlt: "VESSEL TD-80, kit ratchet em T",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL especifica corpo de 78 mm, encaixe 6,35 mm e bits PH1/2/3 e SL3/4/6.",
     specPt: "T-handle 78 mm · 6,35 mm · PH/SL",
@@ -1504,7 +1504,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "VDE",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/125845",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/20021001.jpg",
-    imageAlt: "VESSEL 200 PH2×100 — Ball Grip isolada VDE para trabalho elétrico",
+    imageAlt: "VESSEL 200 PH2×100, Ball Grip isolada VDE para trabalho elétrico",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "A VESSEL declara aprovação nos sete testes IEC 60900 exigidos para certificação VDE.",
@@ -1527,7 +1527,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "VDE",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/125822",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/9602100.jpg",
-    imageAlt: "VESSEL 960 PH2×100 — MEGADORA isolada VDE de dupla camada",
+    imageAlt: "VESSEL 960 PH2×100, MEGADORA isolada VDE de dupla camada",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "VESSEL indica conformidade com os sete testes IEC 60900 para VDE e isolamento de dupla camada.",
@@ -1542,7 +1542,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     brandSlug: "ANEX",
     model: "ATA-S1",
     officialCode: "ATA-S1",
-    namePt: "Torque Adapter Set · M3–M6",
+    namePt: "Torque Adapter Set · M3-M6",
     japanese: "トルクアダプターセット",
     task: "precision",
     categoryPt: "Torque control · quadros elétricos",
@@ -1551,16 +1551,16 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Torque kit",
     referenceUrl: "https://www.anextool.co.jp/item/ata-s1/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ATA-S1_2.jpg",
-    imageAlt: "ANEX ATA-S1 — conjunto de adaptadores de binário M3–M6 com punho Quick Ball 72",
+    imageAlt: "ANEX ATA-S1, conjunto de adaptadores de binário M3-M6 com punho Quick Ball 72",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX define 0,7 / 1,1 / 1,4 / 2,6 / 4,6 N·m para M3 a M6, inclui Quick Ball 72 e bits +2/+3 ×65, com haste 6,35 mm.",
-    specPt: "M3–M6 · 0,7–4,6 N·m · 6,35 mm",
+    specPt: "M3-M6 · 0,7-4,6 N·m · 6,35 mm",
     storyPt:
       "É um exemplo forte de conjunto inteligente já resolvido pelo fabricante: o mesmo punho Quick Ball 72 trabalha com cinco limites de torque e evita levar várias chaves dedicadas.",
     compareGroup: "torque-adapter",
     limitationsPt:
-      "Não utilizar os adaptadores com impacto. A ANEX recomenda máquinas até 7,2 V e 250 rpm. Confirmar o binário exigido pelo equipamento; M3–M6 não significa compatibilidade universal.",
+      "Não utilizar os adaptadores com impacto. A ANEX recomenda máquinas até 7,2 V e 250 rpm. Confirmar o binário exigido pelo equipamento; M3-M6 não significa compatibilidade universal.",
     catalogViewerPage: 26,
   },
   {
@@ -1578,7 +1578,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Interchangeable",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/233072",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/220W3.jpg",
-    imageAlt: "VESSEL 220W-3 — conjunto Ball Grip com 3 bits reversíveis de 110 mm",
+    imageAlt: "VESSEL 220W-3, conjunto Ball Grip com 3 bits reversíveis de 110 mm",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL inclui PH1/PH3, SL6/PH2 e PZ2/PZ3 em bits de 110 mm, com encaixe H6,35 mm.",
     specPt: "3 bits · 110 mm · PH/SL/PZ · H6,35",
@@ -1601,7 +1601,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Adapter",
     referenceUrl: "https://www.anextool.co.jp/item/asad-4e/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ASAD-4E_2.jpg",
-    imageAlt: "ANEX ASAD-4E — adaptador de soquete 1/2″ com bit substituível",
+    imageAlt: "ANEX ASAD-4E, adaptador de soquete 1/2″ com bit substituível",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX especifica drive 12,7 mm (1/2″), haste 6,35 mm, 72 mm com bit, articulação 15° e compatibilidade 18 V / 40 V.",
@@ -1624,7 +1624,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Adapter",
     referenceUrl: "https://www.anextool.co.jp/item/ak20ad-635/",
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AK20AD-635_2.jpg",
-    imageAlt: "ANEX AK20AD-635 — adaptador de soquete 1/4″ de 65 mm",
+    imageAlt: "ANEX AK20AD-635, adaptador de soquete 1/4″ de 65 mm",
     imageSourceLabel: "Imagem oficial ANEX",
     evidencePt:
       "ANEX especifica drive quadrado 6,35 mm (1/4″), comprimento 65 mm, haste hexagonal 6,35 mm e 53 g.",
@@ -1647,7 +1647,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "2 em 1",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/233071",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/220W62.jpg",
-    imageAlt: "VESSEL 220W-62 — Ball Grip com bit reversível PH2/SL6 de 110 mm",
+    imageAlt: "VESSEL 220W-62, Ball Grip com bit reversível PH2/SL6 de 110 mm",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt: "VESSEL especifica bit PH2/SL6 ×110 mm, haste H6,35 e código oficial 233071.",
     specPt: "PH2 / SL6 · 110 mm · H6,35",
@@ -1668,7 +1668,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Kit oficial",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/247030",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD2100_d.jpg",
-    imageAlt: "VESSEL TD-2100 — kit DualTone com pontas trocáveis",
+    imageAlt: "VESSEL TD-2100, kit DualTone com pontas trocáveis",
     imageSourceLabel: "Imagem oficial VESSEL",
     evidencePt:
       "VESSEL inclui PH1, PH2, SL4 e SL6, todos com 120 mm, punho de 100 mm e bolsa de armazenamento.",
@@ -1695,7 +1695,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Para quem já trabalha em LXT, o corpo é o caminho certo: a mesma máquina sem voltar a comprar as baterias que já estão na mala.",
     referenceUrl: "https://www.makita.pt/data/sr/productinfo/generated/dtd172z_3.pdf",
-    imageAlt: "Makita DTD172Z — aparafusadora de impacto LXT 18 V (corpo simples)",
+    imageAlt: "Makita DTD172Z, aparafusadora de impacto LXT 18 V (corpo simples)",
     evidencePt:
       "A Makita Portugal indica 180 N·m, 1/4″ hex, 114 mm de comprimento e 1,5 kg com bateria.",
     specPt: "18 V · 180 N·m · 1/4″",
@@ -1714,11 +1714,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     notePt: "Ball Grip elétrica mais orientada a força, com USB-C e aperto final manual.",
     badge: "Ball Grip II",
     storyPt:
-      "A segunda geração troca velocidade por força: 3 N·m assistidos e o gesto manual de sempre — e carrega na porta USB-C que já está na bancada.",
+      "A segunda geração troca velocidade por força: 3 N·m assistidos e o gesto manual de sempre, e carrega na porta USB-C que já está na bancada.",
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/148507",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/220USBC1EB.jpg",
     imageSourceLabel: "Imagem oficial VESSEL",
-    imageAlt: "VESSEL 220USBC-1EB — aparafusadora elétrica Ball Grip II com USB-C",
+    imageAlt: "VESSEL 220USBC-1EB, aparafusadora elétrica Ball Grip II com USB-C",
     evidencePt: "A VESSEL indica 280 rpm, 3,0 N·m elétricos, 12 N·m de resistência manual e 170 g.",
     specPt: "3,0 N·m · 12 N·m manual · 170 g",
   },
@@ -1740,7 +1740,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/125831",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/900RT7P_d1.jpg",
     imageSourceLabel: "Imagem oficial VESSEL",
-    imageAlt: "VESSEL 900RT-7P — Megadora ratchet de 72 dentes, 7 bits",
+    imageAlt: "VESSEL 900RT-7P, Megadora ratchet de 72 dentes, 7 bits",
     evidencePt: "A VESSEL especifica engrenagem de 72 dentes com passo de 5° e sete bits.",
     specPt: "72 dentes · 5° · 7 bits",
   },
@@ -1762,7 +1762,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/125499",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/MR36_d1.jpg",
     imageSourceLabel: "Imagem oficial VESSEL",
-    imageAlt: "VESSEL MR36 — mini ratchet de precisão",
+    imageAlt: "VESSEL MR36, mini ratchet de precisão",
     evidencePt: "A VESSEL especifica 52 dentes, 88 mm de comprimento e 36 bits de precisão.",
     specPt: "52 dentes · 88 mm · 36 bits",
   },
@@ -1783,7 +1783,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.vessel.co.jp/english/product/screwdriver/251427",
     imageUrl: "https://www.vessel.co.jp/userfiles/handtools/TD24_d1.jpg",
     imageSourceLabel: "Imagem oficial VESSEL",
-    imageAlt: "VESSEL TD-24 — mini ratchet de precisão",
+    imageAlt: "VESSEL TD-24, mini ratchet de precisão",
     evidencePt: "A VESSEL indica 60 dentes, movimento de 6°, 91 mm de comprimento e bits de 18 mm.",
     specPt: "60 dentes · 91 mm · 5 bits",
   },
@@ -1806,7 +1806,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "O cutter que desaparece no bolso e resolve embalagem, cinta e acabamento: a ponta metálica abre caixas sem gastar a lâmina.",
     referenceUrl: "https://www.olfa.co.jp/en/products/374.html",
-    imageAlt: "OLFA L-5 — cutter heavy-duty de 18 mm com ponta metálica",
+    imageAlt: "OLFA L-5, cutter heavy-duty de 18 mm com ponta metálica",
     specPt: "Lâmina 18 mm",
     evidencePt:
       "A OLFA classifica o L-5 na série X-design ComfortGrip heavy-duty, com punho em elastómero e polipropileno reforçado com fibra de vidro (resistente a ácidos e acetona) e ponta metálica integrada para aplicações múltiplas.",
@@ -1829,7 +1829,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Alumínio fundido e canal endurecido: o cutter que se compra uma vez e acompanha a mala durante anos.",
     referenceUrl: "https://www.olfa.co.jp/en/products/451.html",
-    imageAlt: "OLFA MXP-L — cutter premium de 18 mm com canal da lâmina endurecido",
+    imageAlt: "OLFA MXP-L, cutter premium de 18 mm com canal da lâmina endurecido",
     specPt: "Lâmina 18 mm · canal cromado endurecido",
     evidencePt:
       'A página oficial descreve o punho X-design sólido de 18 mm com canal da lâmina cromado e endurecido e rodeta de bloqueio metálica de uma peça com acabamento acetinado. O material "alumínio fundido" da ficha atual não consta na página oficial em inglês; a redação grounded substitui-o.',
@@ -1851,7 +1851,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Cinco posições de lâmina para dosar a profundidade: o corte certo no autocolante sem ir abaixo do verniz.",
     referenceUrl: "https://www.olfa.co.jp/en/products/693.html",
-    imageAlt: "OLFA UTC-1 — utility knife com 5 posições de lâmina",
+    imageAlt: "OLFA UTC-1, utility knife com 5 posições de lâmina",
     specPt: "5 posições de lâmina · auto-lock",
     evidencePt:
       "A OLFA descreve o UTC-1 como utility knife com lâmina retrátil de cinco posições e auto-lock, troca de lâmina sem ferramentas, blocagem anti-oscilação da lâmina durante o corte e uso destro ou canhoto.",
@@ -1871,9 +1871,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     notePt: "Raspador largo em inox para tinta, ferrugem, autocolantes, vidro e limpeza técnica.",
     badge: "Scraper",
     storyPt:
-      "O que sobra depois da obra — cola, tinta, autocolante — sai com 60 mm de inox: mais plano e mais rápido do que qualquer espátula.",
+      "O que sobra depois da obra, cola, tinta, autocolante, sai com 60 mm de inox: mais plano e mais rápido do que qualquer espátula.",
     referenceUrl: "https://www.olfa.co.jp/en/products/558.html",
-    imageAlt: "OLFA SCR-L — raspador em aço inox de 60 mm",
+    imageAlt: "OLFA SCR-L, raspador em aço inox de 60 mm",
     specPt: "Lâmina 60 mm · inox",
     evidencePt:
       "A OLFA descreve o SCR-L como scraper de 60 mm de largura em aço inoxidável, com sistema de descarte de lâmina. A ficha atual indicava 59 mm; a página oficial indica 60 mm.",
@@ -1896,10 +1896,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "O Z-Series de 15 peças é o sistema fechado feito certo: roquete, sockets e acessórios dimensionados em conjunto, sem peças de enchimento.",
     referenceUrl: "https://www.koken-tool.co.jp/en/panflets/KOKEN202309EN.pdf",
-    imageAlt: "KO-KEN 3285ZA — jogo de sockets Z-Series 3/8″, 15 peças",
+    imageAlt: "KO-KEN 3285ZA, jogo de sockets Z-Series 3/8″, 15 peças",
     evidencePt:
       "O catálogo Z-Series lista 15 peças, sockets métricos de 5,5 a 22 mm, roquete 3725Z e acessórios.",
-    specPt: "Drive 3/8″ · 15 peças · 5,5–22 mm",
+    specPt: "Drive 3/8″ · 15 peças · 5,5-22 mm",
   },
   {
     id: "koken-3441mz",
@@ -1921,9 +1921,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Porca redonda, cabeça arredondada, acesso inclinado: o universal grip segura o que o socket comum deixa cair.",
     referenceUrl: "https://www.koken-tool.co.jp/en/panflets/KOKEN202310EN_1.pdf",
-    imageAlt: "KO-KEN 3441MZ — universal nut grip socket 3/8″",
+    imageAlt: "KO-KEN 3441MZ, universal nut grip socket 3/8″",
     evidencePt: "A linha 3441MZ inclui medidas métricas de 8 a 17 mm em drive 3/8″.",
-    specPt: "Drive 3/8″ · 8–17 mm",
+    specPt: "Drive 3/8″ · 8-17 mm",
   },
 
   {
@@ -1941,7 +1941,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Nepros",
     referenceUrl: "https://ktc.jp/nepros/nbr390a/",
     imageUrl: "https://ktc.jp/nepros/nbr390a/images/nbr390a.jpg",
-    imageAlt: "Nepros NBR390A — roquete 3/8″ premium de 90 dentes",
+    imageAlt: "Nepros NBR390A, roquete 3/8″ premium de 90 dentes",
     imageSourceLabel: "Imagem oficial KTC / Nepros",
     evidencePt:
       "KTC especifica drive 9,5 mm (3/8″), 90 dentes, avanço de 4°, 180 mm de comprimento e 245 g.",
@@ -1965,11 +1965,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "ZERO",
     referenceUrl: "https://www.toptools.co.jp/tools/wrenches-0001_4/",
     imageUrl: "https://www.toptools.co.jp/wp-content/uploads/kintone_files/specs/4/HM-32_W001.jpg",
-    imageAlt: "TOP KOGYO HM-32 — Hyper Monkey ZERO ajustável 200 mm",
+    imageAlt: "TOP KOGYO HM-32, Hyper Monkey ZERO ajustável 200 mm",
     imageSourceLabel: "Imagem oficial TOP KOGYO",
     evidencePt:
-      "A TOP especifica 0–32 mm de abertura, 216 mm de comprimento, 255 g e construção em Cr-V. A marca destaca o worm dividido para reduzir folga e manter a abertura paralela.",
-    specPt: "216 mm · abertura 0–32 mm · 255 g",
+      "A TOP especifica 0-32 mm de abertura, 216 mm de comprimento, 255 g e construção em Cr-V. A marca destaca o worm dividido para reduzir folga e manter a abertura paralela.",
+    specPt: "216 mm · abertura 0-32 mm · 255 g",
     storyPt:
       "Uma chave inglesa que tenta resolver o problema clássico da folga no mordente. O HM-32 é um tamanho muito útil para manutenção geral sem saltar diretamente para um corpo de 300 mm.",
     compareGroup: "adjustable-wrench",
@@ -1989,10 +1989,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "ZERO",
     referenceUrl: "https://www.toptools.co.jp/tools/wrenches-0001_4/",
     imageUrl: "https://www.toptools.co.jp/wp-content/uploads/kintone_files/specs/4/HM-38_W001.jpg",
-    imageAlt: "TOP KOGYO HM-38 — Hyper Monkey ZERO ajustável 300 mm",
+    imageAlt: "TOP KOGYO HM-38, Hyper Monkey ZERO ajustável 300 mm",
     imageSourceLabel: "Imagem oficial TOP KOGYO",
-    evidencePt: "A TOP especifica 0–38 mm de abertura, 263 mm de comprimento, 410 g e Cr-V.",
-    specPt: "263 mm · abertura 0–38 mm · 410 g",
+    evidencePt: "A TOP especifica 0-38 mm de abertura, 263 mm de comprimento, 410 g e Cr-V.",
+    specPt: "263 mm · abertura 0-38 mm · 410 g",
     storyPt:
       "A opção maior da mesma filosofia ZERO: continua compacta para a abertura disponível, mas aproxima-se mais do tipo de capacidade procurada em AVAC e canalização.",
     compareGroup: "adjustable-wrench",
@@ -2012,7 +2012,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "King TTC",
     referenceUrl: "https://www.tsunoda-japan.com/EN/itempage/PL-150.html",
     imageUrl: "https://www.tsunoda-japan.com/img/products/pl200.jpg",
-    imageAlt: "TSUNODA King TTC PL-200 — alicate universal slip joint de 200 mm",
+    imageAlt: "TSUNODA King TTC PL-200, alicate universal slip joint de 200 mm",
     imageSourceLabel: "Imagem oficial TSUNODA",
     evidencePt:
       "A TSUNODA especifica 203 mm, 270 g, abertura máxima de 25 mm e capacidade de corte de 2,6 mm em ferro macio e ferro recozido.",
@@ -2038,11 +2038,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Resin jaw",
     referenceUrl: "https://www.tsunoda-japan.com/EN/itempage/WP-250SC.html",
     imageUrl: "https://www.tsunoda-japan.com/img/products/wp250sc.jpg",
-    imageAlt: "TSUNODA WP-250SC — alicate bomba de água de 250 mm com mordentes em resina",
+    imageAlt: "TSUNODA WP-250SC, alicate bomba de água de 250 mm com mordentes em resina",
     imageSourceLabel: "Imagem oficial TSUNODA",
     evidencePt:
-      "A TSUNODA especifica 250 mm, 305 g, cinco posições, gama de aperto 7–50 mm e corte de ferro macio Ø2,6 mm. Esta referência específica é fabricada na Tailândia.",
-    specPt: "250 mm · 5 posições · 7–50 mm · 305 g",
+      "A TSUNODA especifica 250 mm, 305 g, cinco posições, gama de aperto 7-50 mm e corte de ferro macio Ø2,6 mm. Esta referência específica é fabricada na Tailândia.",
+    specPt: "250 mm · 5 posições · 7-50 mm · 305 g",
     storyPt:
       "Para AVAC, torneiras, cromados e uniões delicadas, os mordentes em resina dão-lhe uma função diferente de um alicate bomba de água convencional.",
     compareGroup: "water-pump-pliers",
@@ -2065,10 +2065,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Alicate de bomba de água com articulação box-joint, mordente assimétrico de três pontos e capacidade para tubo entre 6 e 52 mm.",
     badge: "Box joint",
     referenceUrl: "https://www.tsunoda-japan.com/EN/itempage/KT-606.html",
-    imageAlt: "TSUNODA King TTC KT-606 — alicate bomba de água box joint de 250 mm",
+    imageAlt: "TSUNODA King TTC KT-606, alicate bomba de água box joint de 250 mm",
     evidencePt:
-      "A TSUNODA especifica 249 mm, 340 g, tubo Ø6–52 mm, abertura máxima 38 mm e corte de ferro macio Ø2,6 mm.",
-    specPt: "249 mm · tubo Ø6–52 mm · 340 g",
+      "A TSUNODA especifica 249 mm, 340 g, tubo Ø6-52 mm, abertura máxima 38 mm e corte de ferro macio Ø2,6 mm.",
+    specPt: "249 mm · tubo Ø6-52 mm · 340 g",
     storyPt:
       "É a alternativa metálica e mais tradicional ao WP-250SC: box joint para reduzir folga e mordente de três pontos para segurar tubo com força.",
     compareGroup: "water-pump-pliers",
@@ -2089,7 +2089,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "ZERO BLACK",
     referenceUrl: "https://www.fujiya-kk.com/en/products_fujiya/3300n/",
     imageUrl: "https://www.fujiya-kk.com/wp-content/uploads/2025/07/3300N-200-1.jpg",
-    imageAlt: "FUJIYA 3300N-200 — alicate de alta alavancagem Zero Black de 200 mm",
+    imageAlt: "FUJIYA 3300N-200, alicate de alta alavancagem Zero Black de 200 mm",
     imageSourceLabel: "Imagem oficial FUJIYA",
     evidencePt:
       "A FUJIYA especifica 200 mm, 270 g, fio de aço Ø3,4 mm, cobre Ø4,0 mm, piano Ø1,5 mm e VVF Ø2,0 mm × 3 condutores.",
@@ -2112,7 +2112,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Cable",
     referenceUrl: "https://www.fujiya-kk.com/en/products_fujiya/6050-n/",
     imageUrl: "https://www.fujiya-kk.com/wp-content/uploads/2025/07/4952520030950.jpg",
-    imageAlt: "FUJIYA 6050-200 — alicate de corte de cabo de 209 mm",
+    imageAlt: "FUJIYA 6050-200, alicate de corte de cabo de 209 mm",
     imageSourceLabel: "Imagem oficial FUJIYA",
     evidencePt:
       "FUJIYA especifica 209 mm, 321 g, VA/VVF Ø2,6 mm × 3, IV 22 mm², aço Ø2,0 mm e piano Ø0,8 mm.",
@@ -2134,10 +2134,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Alicate profissional de corte para instalação elétrica, com foco em durabilidade e precisão de lâmina.",
     badge: "Bestseller documentado",
     storyPt:
-      "O corte diagonal que se usa o dia todo sem pensar nele — que é o melhor elogio a um alicate de instalação.",
+      "O corte diagonal que se usa o dia todo sem pensar nele, que é o melhor elogio a um alicate de instalação.",
     referenceUrl: "https://www.fujiya-kk.com/en/products_fujiya/770-n/",
     imageUrl: "https://www.fujiya-kk.com/wp-content/uploads/2025/07/770-200.jpg",
-    imageAlt: "FUJIYA 770-200 — alicate de corte diagonal de 200 mm",
+    imageAlt: "FUJIYA 770-200, alicate de corte diagonal de 200 mm",
     imageSourceLabel: "Imagem oficial FUJIYA",
     evidencePt:
       "A própria Fujiya identifica o 770-200 como bestseller na categoria de strong nippers.",
@@ -2159,7 +2159,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.engineertools-jp.com/product-page/pds-02-screw-removal-tool-kit",
     imageUrl:
       "https://static.wixstatic.com/media/104650_7cf1e1c5b1e04237bc2080591374376d~mv2.jpg/v1/fill/w_720%2Ch_720%2Cal_c%2Cq_85%2Cenc_avif%2Cquality_auto/104650_7cf1e1c5b1e04237bc2080591374376d~mv2.jpg",
-    imageAlt: "ENGINEER PDS-02 — kit de extração de parafusos com 10 peças",
+    imageAlt: "ENGINEER PDS-02, kit de extração de parafusos com 10 peças",
     imageSourceLabel: "Imagem oficial ENGINEER",
     evidencePt:
       "ENGINEER lista 10 itens: PZ-58, PZ-59, PZ-60, DBZ-50B, DBZ-51, DBZ-52, DBZ-53, DBZ-54, DBZ-56 e porta-bits.",
@@ -2183,11 +2183,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "O parafuso destruído não se força, agarra-se: serrilhado vertical e horizontal, HRC60, e a cabeça sai inteira.",
     referenceUrl: "https://www.engineertools-jp.com/product-page/pz-58-screw-removal-pliers-gt",
     specPt:
-      "Cabeças φ3–9,5 mm · dureza HRC60±2 · 160 mm · 130 g · cutter lateral Cu φ3,2 / aço φ2,6 mm",
+      "Cabeças φ3-9,5 mm · dureza HRC60±2 · 160 mm · 130 g · cutter lateral Cu φ3,2 / aço φ2,6 mm",
     evidencePt:
       "Página oficial ENGINEER: mandíbulas com serrilhado vertical e horizontal que agarram a cabeça sem escorregar, pontas finas para zonas confinadas, mola de abertura, cutter lateral integrado; corpo em aço ao carbono, punhos TPR, 160 mm e 130 g.",
     imageUrl: "https://static.wixstatic.com/media/104650_a75d7b4163614d3abcccfed64b02fbe7~mv2.jpg",
-    imageAlt: "ENGINEER PZ-58 Neji-Saurus GT — alicate de extração de parafusos danificados",
+    imageAlt: "ENGINEER PZ-58 Neji-Saurus GT, alicate de extração de parafusos danificados",
     imageSourceLabel: "Imagem oficial ENGINEER",
   },
   {
@@ -2209,7 +2209,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     evidencePt:
       "Página oficial HOZAN: stripper dedicado a cabos VVF e EM-EEF com calibres de descarnar para 1,6 mm × 3 e 2,0 mm × 3 condutores.",
     imageUrl: "https://www.hozan.co.jp/E/images/catalog/Crimpers/P-958.jpg",
-    imageAlt: "HOZAN P-958 — descarnador de fios VVF / EM-EEF",
+    imageAlt: "HOZAN P-958, descarnador de fios VVF / EM-EEF",
     imageSourceLabel: "Imagem oficial HOZAN",
   },
   {
@@ -2229,9 +2229,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "G-LESS",
     referenceUrl:
       "https://www.lobtex.co.jp/english/products/tabid/153/pdid/E-UMXG/catid/82/Default.aspx",
-    imageAlt: "LOBSTER UM24XG — chave ajustável híbrida de 150 mm (foto da série UM-XG)",
-    evidencePt: "A LOBTEX especifica 150 mm, 90 g, abertura 6–24 mm e parafusos/porcas até M16.",
-    specPt: "150 mm · 6–24 mm · 90 g · M16",
+    imageAlt: "LOBSTER UM24XG, chave ajustável híbrida de 150 mm (foto da série UM-XG)",
+    evidencePt: "A LOBTEX especifica 150 mm, 90 g, abertura 6-24 mm e parafusos/porcas até M16.",
+    specPt: "150 mm · 6-24 mm · 90 g · M16",
     storyPt:
       "Uma chave inglesa de bolso que oferece uma abertura muito grande para o tamanho do corpo. Retirámos a antiga imagem GIF de baixa qualidade em vez de a ampliar artificialmente.",
     compareGroup: "adjustable-wrench",
@@ -2252,9 +2252,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "G-LESS",
     referenceUrl:
       "https://www.lobtex.co.jp/english/products/tabid/153/pdid/E-UMXG/catid/82/Default.aspx",
-    imageAlt: "LOBSTER UM30XG — chave ajustável híbrida de 200 mm",
-    evidencePt: "A LOBTEX especifica 200 mm, 170 g, abertura 8–30 mm e porcas até M20.",
-    specPt: "200 mm · 8–30 mm · 170 g · M20",
+    imageAlt: "LOBSTER UM30XG, chave ajustável híbrida de 200 mm",
+    evidencePt: "A LOBTEX especifica 200 mm, 170 g, abertura 8-30 mm e porcas até M20.",
+    specPt: "200 mm · 8-30 mm · 170 g · M20",
     storyPt:
       "É o meio-termo lógico entre uma pequena chave de serviço e uma ajustável para uniões maiores.",
     compareGroup: "adjustable-wrench",
@@ -2276,9 +2276,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "G-LESS",
     referenceUrl:
       "https://www.lobtex.co.jp/english/products/tabid/153/pdid/E-UMXG/catid/82/Default.aspx",
-    imageAlt: "LOBSTER UM36XG — chave ajustável híbrida de 245 mm (foto da série UM-XG)",
-    evidencePt: "A LOBTEX especifica 245 mm, 300 g, abertura 8–36 mm e porcas até M24.",
-    specPt: "245 mm · 8–36 mm · 300 g · M24",
+    imageAlt: "LOBSTER UM36XG, chave ajustável híbrida de 245 mm (foto da série UM-XG)",
+    evidencePt: "A LOBTEX especifica 245 mm, 300 g, abertura 8-36 mm e porcas até M24.",
+    specPt: "245 mm · 8-36 mm · 300 g · M24",
     storyPt:
       "É a variante que mais se aproxima da capacidade normalmente procurada em AVAC, bombas de calor e canalização sem saltar para uma chave muito pesada.",
     compareGroup: "adjustable-wrench",
@@ -2298,11 +2298,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "27 peças",
     referenceUrl: "https://www.tonetool.co.jp/product/detail.php?no=BRFS27",
     imageUrl: "https://www.tonetool.co.jp/product/file.php?s=16021&t=l",
-    imageAlt: "TONE BRFS27 — kit roquete de bits, 27 peças",
+    imageAlt: "TONE BRFS27, kit roquete de bits, 27 peças",
     imageSourceLabel: "Imagem oficial TONE",
     evidencePt:
-      "TONE lista 27 peças, entrada de bit 6,35 mm, 520 g e bits PH, SL, HEX 2–8 mm e Torx T6H–T40H.",
-    specPt: "27 peças · 6,35 mm · HEX 2–8 · T6H–T40H",
+      "TONE lista 27 peças, entrada de bit 6,35 mm, 520 g e bits PH, SL, HEX 2-8 mm e Torx T6H-T40H.",
+    specPt: "27 peças · 6,35 mm · HEX 2-8 · T6H-T40H",
     storyPt:
       "Este set já faz o que procuramos num kit inteligente: o mesmo mecanismo muda de forma e cobre uma gama larga de perfis sem multiplicar punhos.",
     compareGroup: "ratchet-driver",
@@ -2322,11 +2322,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Ball ratchet",
     referenceUrl: "https://www.tonetool.co.jp/product/detail.php?no=RDBS11",
     imageUrl: "https://www.tonetool.co.jp/product/file.php?s=19514&t=l",
-    imageAlt: "TONE RDBS11 — ball ratchet com 11 peças",
+    imageAlt: "TONE RDBS11, ball ratchet com 11 peças",
     imageSourceLabel: "Imagem oficial TONE",
     evidencePt:
       "TONE lista 12 peças, 790 g, cinco hastes de chave e bits PH2, SL6 e HEX 2/3/4/5 mm em caixa metálica.",
-    specPt: "12 peças · 5 hastes · HEX 2–5 mm",
+    specPt: "12 peças · 5 hastes · HEX 2-5 mm",
     storyPt:
       "É outra interpretação do Ball Ratchet: em vez de depender apenas de bits curtos, combina hastes slim substituíveis com bits guardados no conjunto.",
     compareGroup: "ratchet-driver",
@@ -2349,9 +2349,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     storyPt:
       "Mecânica leve em 3/8″: sockets de 5,5 a 24 mm no estojo que cabe no banco e cobre a manutenção do dia.",
     referenceUrl: "https://www.tonetool.co.jp/product/detail.php?no=CX3172",
-    imageAlt: "TONE CX3172 — jogo de sockets 3/8″, 24 peças",
+    imageAlt: "TONE CX3172, jogo de sockets 3/8″, 24 peças",
     evidencePt: "A TONE lista 24 peças, drive 9,5 mm (3/8″) e sockets métricos de 5,5 a 24 mm.",
-    specPt: "Drive 3/8″ · 24 peças · 5,5–24 mm",
+    specPt: "Drive 3/8″ · 24 peças · 5,5-24 mm",
   },
   {
     id: "wera-8100-sb-6",
@@ -2368,15 +2368,15 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Catraca Zyklop Speed 8000 B de 72 dentes com manga de rotação livre, nove sockets 3/8″, duas extensões, adaptador de bits e 17 bits de 50 mm.",
     storyPt:
       "O volante de inércia da Zyklop Speed gira como um berbequim manual; o adaptador 3/8″ fecha o circuito com os bits, e os sockets cobrem o aperto métrico do dia a dia.",
-    specPt: "3/8″ · 72 dentes · sockets 8–19 mm · 29 peças",
+    specPt: "3/8″ · 72 dentes · sockets 8-19 mm · 29 peças",
     evidencePt:
       "Conteúdo confirmado na página oficial Wera: catraca 8000 B, 9 sockets 8790 HMB, extensões 8794 LB/B, adaptador 8784 B1 e 17 bits.",
     kitContents: [
       "Catraca Zyklop Speed 8000 B 3/8″ · 72 dentes",
-      "9 sockets 8790 HMB 3/8″ · 8–19 mm",
+      "9 sockets 8790 HMB 3/8″ · 8-19 mm",
       "Extensão 8794 LB 200 mm + wobble 76 mm",
       "Adaptador de bits 8784 B1 3/8″",
-      "17 bits 50 mm · PH/PZ 1–3, TX 20–40, fenda 4–8",
+      "17 bits 50 mm · PH/PZ 1-3, TX 20-40, fenda 4-8",
     ],
     referenceUrl:
       "https://www.wera.de/en/tools/8100-sb-6-zyklop-speed-ratchet-set-3-8-drive-metric",
@@ -2384,7 +2384,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     compareGroup: "sockets",
     featured: true,
     imageUrl: "https://www.wera.de/prodimg/832x832/8100_sb_6.webp",
-    imageAlt: "Wera 8100 SB 6 — kit Zyklop Speed 3/8″ de 29 peças",
+    imageAlt: "Wera 8100 SB 6, kit Zyklop Speed 3/8″ de 29 peças",
   },
   {
     id: "wiha-47169",
@@ -2412,7 +2412,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageUrl:
       "https://wiha.com/media/c0/6b/a2/1772785249/47169_srcrewdriver_ratchet_03.webp?ts=1776407741",
     limitationsPt:
-      "Sem indicação de isolamento na página oficial — não é a variante electric; para partes sob tensão usar o sistema slimVario 1000 V. Encaixa bits 1/4″ padrão, não as lâminas slimBits de 6 mm.",
+      "Sem indicação de isolamento na página oficial, não é a variante electric; para partes sob tensão usar o sistema slimVario 1000 V. Encaixa bits 1/4″ padrão, não as lâminas slimBits de 6 mm.",
     imageAlt:
       "Chave de bits com catraca Wiha SoftFinish 47169, 72 dentes, com porta-bits magnético 1/4″",
   },
@@ -2433,7 +2433,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     evidencePt:
       "Página oficial Wiha: chave com porta-bits SoftFinish® CentroFix mecanicamente bloqueável; n.º de encomenda 40331, EAN 4010995403317; dimensões 149 × 36 × 36 mm.",
     storyPt:
-      "O bit travado ao centro transforma o porta-bits numa lâmina sólida: zero excentricidade, todo o binário — a resposta ao porta-bits que abana.",
+      "O bit travado ao centro transforma o porta-bits numa lâmina sólida: zero excentricidade, todo o binário, a resposta ao porta-bits que abana.",
     referenceUrl:
       "https://wiha.com/tools/bits/wiha-bit-holders-and-adapters/bit-holder-with-handle/wiha-softfinish-handle/screwdriver-with-softfinish-centrofix-bit-holder-mechanically-lockable/40331",
     imageSourceLabel: "Imagem do fabricante Wiha",
@@ -2482,7 +2482,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     brandSlug: "BAHCO",
     model: "S138",
     officialCode: "S138",
-    namePt: "Jogo sockets + chaves + bits 1/4″–1/2″",
+    namePt: "Jogo sockets + chaves + bits 1/4″-1/2″",
     japanese: "ソケットセット",
     task: "sockets",
     categoryPt: "Sockets · chaves · bits",
@@ -2514,7 +2514,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     categoryPt: "Sistema 1000 V · adaptador",
     badge: "VDE · 1/4″",
     notePt:
-      "Liga inserts de porta-porcas isolados aos cabos slimVario® e speedE®, com fixação por esfera para troca rápida — aperto de parafusos hexagonais mantendo a cadeia VDE.",
+      "Liga inserts de porta-porcas isolados aos cabos slimVario® e speedE®, com fixação por esfera para troca rápida, aperto de parafusos hexagonais mantendo a cadeia VDE.",
     specPt: "Encaixe 1/4″ · fixação por esfera · 1.000 V AC · IEC 60900",
     evidencePt:
       "Página oficial Wiha: adaptador para combinar cabos speedE® e slimVario® com inserts de porta-porcas; montagem com esfera de fixação para troca rápida; ensaiado individualmente segundo IEC 60900 até 1.000 V AC; nota oficial: as lâminas slimBits de 6 mm só funcionam em speedE®, slimVario® ou TorqueVario®-S electric; EAN 4010995431396.",
@@ -2536,27 +2536,27 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     brandSlug: "KNIPEX",
     model: "13 96 200",
     officialCode: "13 96 200",
-    namePt: "Alicate de instalação elétrica — seis funções, 1000 V",
+    namePt: "Alicate de instalação elétrica, seis funções, 1000 V",
     japanese: "六役ペンチ",
     task: "grip",
     categoryPt: "1000 V · instalação elétrica",
     badge: "VDE 1000 V",
     notePt:
-      "Seis funções num único alicate VDE: cortar cabo até Ø15 mm, descarnar condutores, rebarbar, dobrar, agarrar e crimpar terminais 0,5–2,5 mm². O alicate que dispensa meio saco de ferramentas no quadro.",
+      "Seis funções num único alicate VDE: cortar cabo até Ø15 mm, descarnar condutores, rebarbar, dobrar, agarrar e crimpar terminais 0,5-2,5 mm². O alicate que dispensa meio saco de ferramentas no quadro.",
     storyPt:
       "A resposta KNIPEX ao eletricista que só tem uma mão livre: cortar, descarnar e crimpar com a mesma ferramenta isolada, sem trocar de alicate a cada passo.",
     specPt:
-      "200 mm · VDE 1000 V (IEC 60900) · cabo Cu até Ø15 mm / 50 mm² · descarnar 0,75–2,5 mm² · crimpe 0,5–2,5 mm²",
+      "200 mm · VDE 1000 V (IEC 60900) · cabo Cu até Ø15 mm / 50 mm² · descarnar 0,75-2,5 mm² · crimpe 0,5-2,5 mm²",
     evidencePt:
-      "Página oficial KNIPEX: artigo 13 96 200, EAN 4003773075110, 276 g, seis funções combinadas, corta cabo de cobre multitrançado até Ø15 mm (50 mm²), descarna 0,75–1,5 e 2,5 mm², crimpa terminais 0,5–2,5 mm², VDE testado segundo DIN EN 60900/IEC 60900.",
+      "Página oficial KNIPEX: artigo 13 96 200, EAN 4003773075110, 276 g, seis funções combinadas, corta cabo de cobre multitrançado até Ø15 mm (50 mm²), descarna 0,75-1,5 e 2,5 mm², crimpa terminais 0,5-2,5 mm², VDE testado segundo DIN EN 60900/IEC 60900.",
     limitationsPt:
-      "A classificação VDE aplica-se ao alicate, não ao método de trabalho: manter os procedimentos de desligação e validação de ausência de tensão. O crimpador destina-se a terminais 0,5–2,5 mm² — não substitui alicate de crimpe com binário controlado.",
+      "A classificação VDE aplica-se ao alicate, não ao método de trabalho: manter os procedimentos de desligação e validação de ausência de tensão. O crimpador destina-se a terminais 0,5-2,5 mm², não substitui alicate de crimpe com binário controlado.",
     manufacturedIn: "Alemanha",
     referenceUrl:
       "https://www.knipex.com/products/combination-and-multifunctional-pliers/pliers-for-electrical-installation/pliers-electrical-installation/1396200",
     imageUrl:
       "https://images.knipex.com/square_md/product-api-assets/fd89784/6837396d-2558-4472-a021-338bd68b212a.png",
-    imageAlt: "KNIPEX 13 96 200 — alicate de instalação elétrica VDE 1000 V",
+    imageAlt: "KNIPEX 13 96 200, alicate de instalação elétrica VDE 1000 V",
     imageSourceLabel: "Imagem oficial KNIPEX",
     compareGroup: "vde-pliers",
   },
@@ -2573,7 +2573,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     badge: "Hybrid",
     notePt:
       "A bomba de água híbrida LOBSTER: apoio em três pontos e dentes de perfil deformado, com seis posições em passos desiguais que seguem os diâmetros normalizados de tubo.",
-    specPt: "227 mm · 0–43 mm · 6 posições · 280 g · tubo até Ø50 mm",
+    specPt: "227 mm · 0-43 mm · 6 posições · 280 g · tubo até Ø50 mm",
     evidencePt:
       "A LOBTEX especifica o UU4150: 280 g, 227 mm, seis posições, porcas até M27 (42 mm) e tubo até Ø50 mm, com estrutura de apoio de três pontos e perfil de dentes deformado. A fotografia oficial mostra «UU 4150 MADE IN JAPAN».",
     limitationsPt: "Grip não isolado: a LOBTEX proíbe o uso em partes sob tensão.",
@@ -2583,7 +2583,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl:
       "https://www.lobtex.co.jp/english/products/tabid/153/pdid/E-UU/catid/83/Default.aspx",
     imageUrl: "https://www.lobtex.co.jp/Portals/0/db/HAND-TOOLS/PIPE%20TOOLS/WP/UU4150.jpg",
-    imageAlt: "LOBSTER UU4150 — alicate bomba de água híbrido de 227 mm",
+    imageAlt: "LOBSTER UU4150, alicate bomba de água híbrido de 227 mm",
     imageSourceLabel: "Imagem oficial LOBTEX",
     compareGroup: "water-pump-pliers",
   },
@@ -2609,7 +2609,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "No desbloqueio de cargas a mão cansa e a pressa manda: a lâmina recolhe sozinha quando o punho abre e o corte deixa de ser risco.",
     referenceUrl: "https://www.olfa.co.jp/en/products/531.html",
     imageUrl: "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/210B_SK-10-1.jpg",
-    imageAlt: "OLFA SK-10 — cutter de segurança auto-retrátil",
+    imageAlt: "OLFA SK-10, cutter de segurança auto-retrátil",
     imageSourceLabel: "Imagem oficial OLFA",
   },
   {
@@ -2622,10 +2622,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     japanese: "コンパスカッター",
     task: "cutting",
     categoryPt: "Corte · círculos",
-    badge: "Círculos 1,6–22 cm",
+    badge: "Círculos 1,6-22 cm",
     notePt:
       "Compasso de corte com ratchet para recortar círculos em junta, película e material leve; protecção da ponta e arrumação da lâmina no corpo fazem dele a ferramenta de recorte a sério da gaveta de corte.",
-    specPt: "Círculos 1,6–22 cm · ratchet · 11 × COB-1",
+    specPt: "Círculos 1,6-22 cm · ratchet · 11 × COB-1",
     evidencePt:
       "A OLFA indica círculos de 1,6 a 22 cm de diâmetro (4 a 22 cm com a base anti-furo incluída), ratchet que corta apenas no sentido horário e 11 lâminas COB-1 incluídas.",
     limitationsPt:
@@ -2635,7 +2635,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.olfa.co.jp/en/products/716.html",
     imageUrl:
       "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/eddc8e82a7fb56e0a26511d0d4afb38a.jpg",
-    imageAlt: "OLFA CMP-1/DX — compasso de corte com ratchet para círculos",
+    imageAlt: "OLFA CMP-1/DX, compasso de corte com ratchet para círculos",
     imageSourceLabel: "Imagem oficial OLFA",
   },
   {
@@ -2660,7 +2660,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "A lâmina a 30° ataca por baixo do material: o corte de precisão faz-se puxando devagar, não empurrando.",
     referenceUrl: "https://www.olfa.co.jp/en/products/465.html",
     imageUrl: "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/14956558751_0001-3-1.jpg",
-    imageAlt: "OLFA SAC-1 — cutter de precisão com lâmina a 30°",
+    imageAlt: "OLFA SAC-1, cutter de precisão com lâmina a 30°",
     imageSourceLabel: "Imagem oficial OLFA",
   },
   {
@@ -2685,7 +2685,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Traçar metro a metro com linha fina é perder a régua: a linha de 2,8 mm deixa marca que se lê a três metros e recolhe a dupla velocidade.",
     referenceUrl: "https://tajima.ch/product/chalk-rite-dura-iii/?lang=en",
     imageUrl: "https://tajima.ch/wp-content/uploads/2022/04/CR604S-D1.jpg",
-    imageAlt: "TAJIMA Chalk-Rite Dura III CR604S — traçador de giz de 45 m",
+    imageAlt: "TAJIMA Chalk-Rite Dura III CR604S, traçador de giz de 45 m",
     imageSourceLabel: "Imagem TAJIMA Europe",
   },
   {
@@ -2705,12 +2705,12 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     evidencePt:
       "A TAJIMA Europe especifica a Hi-Lock como fita premium Classe 1 com gancho ultra-duro temperado, clips de cinto em aço mola e saída de 2,4 m horizontal / 3,8 m vertical na versão 5 m × 25 mm (EAN 4975364121110); existe a variante 3 m × 16 mm (L16-30E1-EUR).",
     limitationsPt:
-      "Duas variantes na mesma página (5 m × 25 mm e 3 m × 16 mm) — confirmar a referência encomendada.",
+      "Duas variantes na mesma página (5 m × 25 mm e 3 m × 16 mm), confirmar a referência encomendada.",
     storyPt:
-      "Medir é a primeira operação do dia: fita Classe 1 com gancho triplo rebitado e 2,4 m de extensão livre — a fita que se usa sozinha.",
+      "Medir é a primeira operação do dia: fita Classe 1 com gancho triplo rebitado e 2,4 m de extensão livre, a fita que se usa sozinha.",
     referenceUrl: "https://tajima.ch/product/hi-lock-class-1/?lang=en",
     imageUrl: "https://tajima.ch/wp-content/uploads/2018/06/HI-LOCK-CLASS-1-25m.jpg",
-    imageAlt: "TAJIMA Hi-Lock Classe 1 — fita métrica de 5 m × 25 mm",
+    imageAlt: "TAJIMA Hi-Lock Classe 1, fita métrica de 5 m × 25 mm",
     imageSourceLabel: "Imagem TAJIMA Europe",
   },
   {
@@ -2725,7 +2725,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     categoryPt: "Marcação · prumo",
     badge: "Prumo 300 g",
     notePt:
-      "Prumo de 300 g com linha auto-retrátil: engata-se no topo, deixa-se cair o bob estabilizado e recolhe-se o fio num gesto — alinhamento vertical rápido em obra e montagens.",
+      "Prumo de 300 g com linha auto-retrátil: engata-se no topo, deixa-se cair o bob estabilizado e recolhe-se o fio num gesto, alinhamento vertical rápido em obra e montagens.",
     specPt: "Bob 300 g · linha auto-retrátil",
     evidencePt:
       "A TAJIMA Europe descreve o Plumb-Rite 300 como ferramenta tudo-em-um de alinhamento à prumo com linha auto-retrátil e bob Quick Stabilizing de 300 g (PZB300Y/D1, EAN 4975364055064).",
@@ -2735,7 +2735,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "O prumo engata no topo, cai estabilizado e recolhe num gesto: alinhar deixa de ser uma pessoa a segurar o fio.",
     referenceUrl: "https://tajima.ch/product/plump-rite-300/?lang=en",
     imageUrl: "https://tajima.ch/wp-content/uploads/2018/07/PZB-300.jpg",
-    imageAlt: "TAJIMA Plumb-Rite 300 — prumo auto-retrátil com bob de 300 g",
+    imageAlt: "TAJIMA Plumb-Rite 300, prumo auto-retrátil com bob de 300 g",
     imageSourceLabel: "Imagem TAJIMA Europe",
   },
   {
@@ -2760,7 +2760,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "A ponta em agulha perfura a placa sem broca e os dentes largos comem o gesso: a abertura para a caixa faz-se em segundos, do lado certo da parede.",
     referenceUrl: "https://tajima.ch/product/jab-saw/?lang=en",
     imageUrl: "https://tajima.ch/wp-content/uploads/2020/04/jab-saw-1.jpg",
-    imageAlt: "TAJIMA N-G165JS-K1 — serrote de ponta para gesso cartonado",
+    imageAlt: "TAJIMA N-G165JS-K1, serrote de ponta para gesso cartonado",
     imageSourceLabel: "Imagem TAJIMA Europe",
   },
   {
@@ -2776,16 +2776,16 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     notePt:
       "O 837 i RA integra catraca de 40 dentes (retorno 9°) num cabo Kraftform isolado, com lâminas VDE de 157 mm e segundo porta-lâminas 817 VDE: o vaivém rápido com certificação de ferramenta completa.",
     storyPt:
-      "A pergunta 'existe roquete para trabalho sob tensão?' tem resposta oficial: este. A catraca vive dentro do cabo isolado e o conjunto é ensaiado peça a peça — a velocidade do vaivém sem abrir mão da certificação.",
+      "A pergunta 'existe roquete para trabalho sob tensão?' tem resposta oficial: este. A catraca vive dentro do cabo isolado e o conjunto é ensaiado peça a peça, a velocidade do vaivém sem abrir mão da certificação.",
     specPt: "40 dentes · retorno 9° · lâminas VDE 157 mm · 17 peças · 1000 V (IEC 60900)",
     evidencePt:
-      "Página oficial Wera: artigo 05006618001, 17 peças — cabo 837 i RA porta-lâminas com catraca (40 dentes, retorno 9°) + 817 VDE; lâminas VDE de 157 mm com função spinner, ensaio individual em banho de água a 10.000 V segundo IEC 60900 para trabalho a 1.000 V; marcação GS, anti-rolloff e estojo de pano compatível Wera 2go.",
+      "Página oficial Wera: artigo 05006618001, 17 peças, cabo 837 i RA porta-lâminas com catraca (40 dentes, retorno 9°) + 817 VDE; lâminas VDE de 157 mm com função spinner, ensaio individual em banho de água a 10.000 V segundo IEC 60900 para trabalho a 1.000 V; marcação GS, anti-rolloff e estojo de pano compatível Wera 2go.",
     limitationsPt:
       "Certificação válida para a ferramenta completa tal como fornecida. Um bit isolado montado num porta-bits comum não constitui ferramenta certificada para trabalho sob tensão: a EN/IEC 60900 aplica-se ao conjunto ensaiado e marcado.",
     badge: "VDE 1000 V",
     referenceUrl: "https://www.wera.de/en/tools/kraftform-kompakt-vde-17-ra-1",
     imageUrl: "https://www.wera.de/prodimg/832x832/kraftform_kompakt_vde_17_ra_1.webp",
-    imageAlt: "Wera Kraftform Kompakt VDE 17 RA 1 — roquete isolado 1000 V com lâminas 157 mm",
+    imageAlt: "Wera Kraftform Kompakt VDE 17 RA 1, roquete isolado 1000 V com lâminas 157 mm",
     imageSourceLabel: "Imagem oficial Wera",
     compareGroup: "ratchet-driver",
     manufacturedIn: "Alemanha",
@@ -2811,7 +2811,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.pt/product/bl1850b.html",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/301_machines/3011_a_GS1/30120_JPG_zoom/BL1850B_C2L0.jpg",
-    imageAlt: "Makita BL1850B — bateria LXT 18 V 5,0 Ah",
+    imageAlt: "Makita BL1850B, bateria LXT 18 V 5,0 Ah",
     imageSourceLabel: "Imagem oficial Makita",
     compareGroup: "lxt-battery",
   },
@@ -2835,7 +2835,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.pt/product/d-30477.html",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/304_accessories_GS1/30410_JPG_zoom/D-30477_C2L0.jpg",
-    imageAlt: "Makita D-30477 — estojo de brocas multimaterial",
+    imageAlt: "Makita D-30477, estojo de brocas multimaterial",
     imageSourceLabel: "Imagem oficial Makita",
     compareGroup: "drill-sets",
   },
@@ -2860,7 +2860,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.pt/product/d-78352.html",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/304_accessories_GS1/30410_JPG_zoom/D-78352_C1C0.jpg",
-    imageAlt: "Makita D-78352 — brocas de metal HSS-GS 19 peças",
+    imageAlt: "Makita D-78352, brocas de metal HSS-GS 19 peças",
     imageSourceLabel: "Imagem oficial Makita",
     compareGroup: "drill-sets",
   },
@@ -2884,7 +2884,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.pt/product/d-73483.html",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/304_accessories_GS1/30410_JPG_zoom/D-73483_C1C0.jpg",
-    imageAlt: "Makita D-73483 — set de brocas 12 peças",
+    imageAlt: "Makita D-73483, set de brocas 12 peças",
     imageSourceLabel: "Imagem oficial Makita",
     compareGroup: "drill-sets",
   },
@@ -2909,7 +2909,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.pt/product/b-62000.html",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/304_accessories_GS1/30410_JPG_zoom/B-62000_C1C0.jpg",
-    imageAlt: "Makita B-62000 — pontas Impact Gold 11 peças",
+    imageAlt: "Makita B-62000, pontas Impact Gold 11 peças",
     imageSourceLabel: "Imagem oficial Makita",
     compareGroup: "impact-bits",
   },
@@ -2934,7 +2934,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.makita.pt/product/b-64674.html",
     imageUrl:
       "https://fi.makitamedia.com/images/3_Makita/304_accessories_GS1/30410_JPG_zoom/B-64674_C8R0.jpg",
-    imageAlt: "Makita B-64674 — brocas e cinzéis SDS-PLUS",
+    imageAlt: "Makita B-64674, brocas e cinzéis SDS-PLUS",
     imageSourceLabel: "Imagem oficial Makita",
     compareGroup: "drill-sets",
   },
@@ -2958,7 +2958,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Página oficial Wera: artigo 05003590001, 8784 B1 Zyklop bit adaptor 3/8″, 1/4″ x 3/8″ x 44 mm, para bits DIN ISO 1173-C 6.3 / E 6.3.",
     referenceUrl: "https://www.wera.de/en/tools/8784-b1-zyklop-bit-adaptor-3-8",
     imageUrl: "https://www.wera.de/prodimg/832x832/8784_b1.webp",
-    imageAlt: "Wera 8784 B1 — adaptador Zyklop 3/8 para 1/4",
+    imageAlt: "Wera 8784 B1, adaptador Zyklop 3/8 para 1/4",
     imageSourceLabel: "Imagem oficial Wera",
     compareGroup: "3-8-ratchet",
     limitationsPt:
@@ -2984,7 +2984,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Página oficial Wera: artigo 05003584001, 8794 B Zyklop wobble extension 3/8″ x 76 mm.",
     referenceUrl: "https://www.wera.de/en/tools/8794-b-zyklop-wobble-extension-3-8",
     imageUrl: "https://www.wera.de/prodimg/832x832/8794_b.webp",
-    imageAlt: "Wera 8794 B — extensão wobble 3/8 76 mm",
+    imageAlt: "Wera 8794 B, extensão wobble 3/8 76 mm",
     imageSourceLabel: "Imagem oficial Wera",
     compareGroup: "3-8-ratchet",
   },
@@ -3001,14 +3001,14 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     notePt:
       "O Rapidaptor clássico em inox: anel de retenção e íman permanente, troca de bit com uma mão.",
     storyPt:
-      "O porta-bits que deu nome à fixação rápida: um clique para largar, um toque para agarrar — há décadas o padrão.",
+      "O porta-bits que deu nome à fixação rápida: um clique para largar, um toque para agarrar, há décadas o padrão.",
     badge: "Rapidaptor",
     specPt: "1/4″ hex · bits DIN ISO 1173-C 6,3 · anel + íman · inox",
     evidencePt:
       "Página oficial Wera: artigo 05347100001, 899/4/1 SB universal bit holder com anel de retenção, íman permanente e manga em aço inoxidável.",
     referenceUrl: "https://www.wera.de/en/tools/899-4-1-sb-universal-bit-holder",
     imageUrl: "https://www.wera.de/prodimg/832x832/899_4_1_sb_sis.webp",
-    imageAlt: "Wera 899/4/1 SB — Rapidaptor universal em inox",
+    imageAlt: "Wera 899/4/1 SB, Rapidaptor universal em inox",
     imageSourceLabel: "Imagem oficial Wera",
     compareGroup: "bit-holders",
     limitationsPt:
@@ -3027,7 +3027,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     notePt:
       "O Rapidaptor da geração atual: o bit engata por pressão, sem accionar a manga; a manga roda livre para guiar a máquina e a remoção faz-se empurrando o bit para a frente.",
     storyPt:
-      "É a evolução do 899 inox: mesmo clique rápido, menos peso no veio e o bit entra num movimento — o porta-bits universal que acompanha a máquina do dia inteiro.",
+      "É a evolução do 899 inox: mesmo clique rápido, menos peso no veio e o bit entra num movimento, o porta-bits universal que acompanha a máquina do dia inteiro.",
     badge: "Rapidaptor",
     specPt: "1/4″ hex × 50 mm · Ø15 mm · magnético · manga de rotação livre · 26 g",
     evidencePt:
@@ -3035,11 +3035,11 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl:
       "https://hybris-media.wera.de/download/pdfgenerator-datasheets/en/05052502001.pdf",
     imageUrl: "https://www.wera.de/prodimg/832x832/889_4_1_k.webp",
-    imageAlt: "Wera 889/4/1 K — Rapidaptor universal 1/4″ × 50 mm",
+    imageAlt: "Wera 889/4/1 K, Rapidaptor universal 1/4″ × 50 mm",
     imageSourceLabel: "Imagem oficial Wera",
     compareGroup: "bit-holders",
     limitationsPt:
-      "Porta-bits manual 1/4″: a variante certificada para impacto é artigo próprio — confirmar o binário máximo antes de uso com impacto.",
+      "Porta-bits manual 1/4″: a variante certificada para impacto é artigo próprio, confirmar o binário máximo antes de uso com impacto.",
   },
 ];
 

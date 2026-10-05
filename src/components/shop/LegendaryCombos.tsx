@@ -25,7 +25,7 @@ export function LegendaryCombos() {
           </div>
           <p className="max-w-2xl text-sm leading-7 text-white/58">
             Mais vendável do que "kit Wera" ou "kit Knipex": cada combo cruza Japão, Alemanha e
-            Suécia quando a mistura supera a marca isolada. São seleções editoriais — a
+            Suécia quando a mistura supera a marca isolada. São seleções editoriais, a
             disponibilidade de cada peça confirma-se no pedido.
           </p>
         </div>

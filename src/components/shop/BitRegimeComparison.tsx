@@ -29,7 +29,9 @@ const REGIME_FOOTNOTES = [
 ];
 
 export function BitRegimeComparison() {
-  const tools = IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(Boolean);
+  const tools = IDS.map((id) => CURATED_TOOL_REFERENCES.find((tool) => tool.id === id)).filter(
+    Boolean,
+  );
 
   return (
     <section className="section-reveal border-b border-border bg-surface/35">
@@ -42,41 +44,55 @@ export function BitRegimeComparison() {
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-            Não vendemos todos os bits de todas as marcas: vendemos o bit certo para impacto, aderência em inox,
-            montagem geral e 1000 V — e depois os holders, adaptadores e máquinas que os transformam num sistema.
-            A família Ryujin da ANEX é o fio condutor.
+            Não vendemos todos os bits de todas as marcas: vendemos o bit certo para impacto,
+            aderência em inox, montagem geral e 1000 V, e depois os holders, adaptadores e máquinas
+            que os transformam num sistema. A família Ryujin da ANEX é o fio condutor.
           </p>
         </div>
 
         <div className="mt-10 grid gap-4 border border-border bg-background p-4 sm:grid-cols-2 lg:grid-cols-4 lg:p-5">
-          {tools.map((tool, index) => tool && (
-            <article key={tool.id} className="group flex h-full flex-col border border-border bg-card p-4">
-              <div className="flex items-baseline justify-between">
-                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-primary">{tool.brand}</span>
-                <span className="font-mono text-[9px] text-muted-foreground">0{index + 1}</span>
-              </div>
-              <h3 className="mt-3 font-display text-lg font-semibold leading-tight tracking-[-0.03em]">{tool.model}</h3>
-              <p className="mt-1 text-xs text-muted-foreground">{tool.namePt}</p>
-              {tool.specPt && (
-                <p className="mt-4 border-t border-border pt-3 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">
-                  {tool.specPt}
-                </p>
-              )}
-              <p className="mt-3 flex-1 text-xs leading-5 text-muted-foreground">{tool.notePt}</p>
-              <Button size="sm" variant="outline" className="mt-5 w-fit rounded-none" asChild>
-                <Link to="/referencia/$id" params={{ id: tool.id }}>
-                  Ver referência
-                  <ArrowRight className="ml-2 h-3.5 w-3.5" />
-                </Link>
-              </Button>
-            </article>
-          ))}
+          {tools.map(
+            (tool, index) =>
+              tool && (
+                <article
+                  key={tool.id}
+                  className="group flex h-full flex-col border border-border bg-card p-4"
+                >
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-primary">
+                      {tool.brand}
+                    </span>
+                    <span className="font-mono text-[9px] text-muted-foreground">0{index + 1}</span>
+                  </div>
+                  <h3 className="mt-3 font-display text-lg font-semibold leading-tight tracking-[-0.03em]">
+                    {tool.model}
+                  </h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{tool.namePt}</p>
+                  {tool.specPt && (
+                    <p className="mt-4 border-t border-border pt-3 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">
+                      {tool.specPt}
+                    </p>
+                  )}
+                  <p className="mt-3 flex-1 text-xs leading-5 text-muted-foreground">
+                    {tool.notePt}
+                  </p>
+                  <Button size="sm" variant="outline" className="mt-5 w-fit rounded-none" asChild>
+                    <Link to="/referencia/$id" params={{ id: tool.id }}>
+                      Ver referência
+                      <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                    </Link>
+                  </Button>
+                </article>
+              ),
+          )}
         </div>
 
         <div className="mt-4 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {REGIME_FOOTNOTES.map((item) => (
             <div key={item.ref} className="bg-background p-5">
-              <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">{item.ref}</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
+                {item.ref}
+              </p>
               <p className="mt-2 text-sm font-medium">{item.regime}</p>
               <p className="mt-2 text-xs leading-5 text-muted-foreground">{item.note}</p>
             </div>

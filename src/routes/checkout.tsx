@@ -14,10 +14,7 @@ import { ProductImage } from "@/components/shop/ProductImage";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
-    meta: [
-      { title: "Checkout — REJENDARI" },
-      { name: "robots", content: "noindex" },
-    ],
+    meta: [{ title: "Checkout, REJENDARI" }, { name: "robots", content: "noindex" }],
   }),
   component: CheckoutPage,
 });
@@ -38,7 +35,10 @@ function CheckoutPage() {
   const total = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const currency = items[0]?.price.currencyCode ?? "EUR";
   const publishable = isStripeConfigured();
-  const stripeSelectable = selected !== null && methods.find((m) => m.id === selected)?.provider === "stripe" && publishable;
+  const stripeSelectable =
+    selected !== null &&
+    methods.find((m) => m.id === selected)?.provider === "stripe" &&
+    publishable;
 
   // Arranca o Stripe.js apenas quando há intenção + método Stripe ativo.
   useEffect(() => {
@@ -52,7 +52,10 @@ function CheckoutPage() {
       setElements(
         instance.elements({
           clientSecret: intent.clientSecret,
-          appearance: { theme: "stripe", variables: { colorPrimary: "#913d29", borderRadius: "0px" } },
+          appearance: {
+            theme: "stripe",
+            variables: { colorPrimary: "#913d29", borderRadius: "0px" },
+          },
         }),
       );
     })();
@@ -63,7 +66,8 @@ function CheckoutPage() {
 
   // Monta o Payment Element uma vez.
   useEffect(() => {
-    if (!elements || !elementHostRef.current || elementHostRef.current.childElementCount > 0) return;
+    if (!elements || !elementHostRef.current || elementHostRef.current.childElementCount > 0)
+      return;
     const paymentElement = elements.create("payment");
     paymentElement.mount(elementHostRef.current);
   }, [elements]);
@@ -81,7 +85,8 @@ function CheckoutPage() {
     if ("error" in result) {
       const detail = "detail" in result ? result.detail : "";
       const messages: Record<string, string> = {
-        not_configured: "Pagamentos ainda em preparação. Usa o pedido profissional enquanto ativamos o cartão.",
+        not_configured:
+          "Pagamentos ainda em preparação. Usa o pedido profissional enquanto ativamos o cartão.",
         empty_cart: "O carrinho está vazio.",
         invalid_items: `Não foi possível validar um artigo${detail ? ` (${detail})` : ""}. Atualiza o carrinho.`,
         shopify_unavailable: "O catálogo de preços não respondeu. Tenta novamente.",
@@ -119,10 +124,16 @@ function CheckoutPage() {
     return (
       <div className="mx-auto max-w-[720px] px-4 py-20">
         <p className="jp-label text-primary">決済 · checkout</p>
-        <h1 className="mt-4 font-display text-4xl font-semibold tracking-[-0.05em]">O carrinho está vazio.</h1>
-        <p className="mt-3 text-sm text-muted-foreground">Escolhe uma referência publicada na loja e volta para finalizar.</p>
+        <h1 className="mt-4 font-display text-4xl font-semibold tracking-[-0.05em]">
+          O carrinho está vazio.
+        </h1>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Escolhe uma referência publicada na loja e volta para finalizar.
+        </p>
         <Button className="mt-8 rounded-none" asChild>
-          <Link to="/shop">Ir para a loja <ArrowRight className="ml-2 h-4 w-4" /></Link>
+          <Link to="/shop">
+            Ir para a loja <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </Button>
       </div>
     );
@@ -132,7 +143,9 @@ function CheckoutPage() {
     <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
       <div>
         <p className="jp-label text-primary">決済 · checkout</p>
-        <h1 className="mt-4 font-display text-4xl font-semibold tracking-[-0.055em]">Finalizar compra</h1>
+        <h1 className="mt-4 font-display text-4xl font-semibold tracking-[-0.055em]">
+          Finalizar compra
+        </h1>
 
         {!publishable && (
           <div className="mt-6 border border-primary/40 bg-primary/5 p-5">
@@ -141,9 +154,9 @@ function CheckoutPage() {
               Pagamentos em preparação
             </p>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              O checkout com cartão, Apple Pay, Google Pay e PayPal ativa assim que as chaves de pagamento
-              estiverem configuradas. MB WAY e crypto seguem-se. Entretanto, o pedido profissional B2B já
-              funciona com composição de packs.
+              O checkout com cartão, Apple Pay, Google Pay e PayPal ativa assim que as chaves de
+              pagamento estiverem configuradas. MB WAY e crypto seguem-se. Entretanto, o pedido
+              profissional B2B já funciona com composição de packs.
             </p>
             <Button variant="outline" className="mt-4 rounded-none" asChild>
               <Link to="/b2b">Pedido profissional</Link>
@@ -191,7 +204,10 @@ function CheckoutPage() {
                           {method.enabled() ? method.notePt : "Em breve"}
                         </span>
                       </span>
-                      <CreditCard className={`h-4 w-4 ${active ? "text-primary" : "text-muted-foreground"}`} aria-hidden />
+                      <CreditCard
+                        className={`h-4 w-4 ${active ? "text-primary" : "text-muted-foreground"}`}
+                        aria-hidden
+                      />
                     </button>
                   );
                 })}
@@ -217,7 +233,12 @@ function CheckoutPage() {
               Pagamento seguro via Stripe
             </p>
             <div ref={elementHostRef} className="mt-4" />
-            <Button className="mt-5 w-full rounded-none" size="lg" disabled={!stripe || busy} onClick={confirmPayment}>
+            <Button
+              className="mt-5 w-full rounded-none"
+              size="lg"
+              disabled={!stripe || busy}
+              onClick={confirmPayment}
+            >
               {busy ? "A confirmar…" : `Pagar ${formatPrice(total, currency)}`}
             </Button>
           </div>
@@ -240,13 +261,18 @@ function CheckoutPage() {
                 ) : null}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-medium">{item.product.node.title}</span>
+                <span className="block truncate text-sm font-medium">
+                  {item.product.node.title}
+                </span>
                 <span className="block text-xs text-muted-foreground">
                   {item.variantTitle ? `${item.variantTitle} · ` : ""}× {item.quantity}
                 </span>
               </span>
               <span className="text-sm font-semibold">
-                {formatPrice(parseFloat(item.price.amount) * item.quantity, item.price.currencyCode)}
+                {formatPrice(
+                  parseFloat(item.price.amount) * item.quantity,
+                  item.price.currencyCode,
+                )}
               </span>
             </li>
           ))}
@@ -256,7 +282,8 @@ function CheckoutPage() {
           <span className="font-display text-2xl font-bold">{formatPrice(total, currency)}</span>
         </div>
         <p className="mt-3 text-xs leading-5 text-muted-foreground">
-          O valor final é recalculado no servidor contra o catálogo antes do pagamento. Métodos ativos:{" "}
+          O valor final é recalculado no servidor contra o catálogo antes do pagamento. Métodos
+          ativos:{" "}
           {activeMethods.length ? activeMethods.map((m) => m.label).join(" · ") : "em preparação"}.
         </p>
       </aside>

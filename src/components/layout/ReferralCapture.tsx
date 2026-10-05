@@ -32,7 +32,11 @@ export function ReferralCapture() {
     // guardamos o código para uma sessão futura e mantemos a loja navegável.
     if (!isSupabaseConfigured()) return;
 
-    const claim = () => { void claimStoredReferral().catch(() => { /* Keep the code for a later session when the network recovers. */ }); };
+    const claim = () => {
+      void claimStoredReferral().catch(() => {
+        /* Keep the code for a later session when the network recovers. */
+      });
+    };
     claim();
 
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -43,7 +47,10 @@ export function ReferralCapture() {
       }
     });
 
-    return () => { clearTimeout(timer); subscription.subscription.unsubscribe(); };
+    return () => {
+      clearTimeout(timer);
+      subscription.subscription.unsubscribe();
+    };
   }, []);
 
   return null;

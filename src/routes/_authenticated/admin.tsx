@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
-    meta: [{ title: "Demand dashboard — REJENDARI" }, { name: "robots", content: "noindex" }],
+    meta: [{ title: "Demand dashboard, REJENDARI" }, { name: "robots", content: "noindex" }],
   }),
   component: AdminPage,
 });
@@ -64,7 +64,7 @@ function AdminPage() {
       > = {};
       for (const row of data ?? []) {
         map[row.id] = {
-          email: row.email ?? "—",
+          email: row.email ?? "-",
           customer_code: row.customer_code,
           region: row.region,
         };
@@ -148,7 +148,7 @@ function AdminPage() {
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
             Contadores = procura registada (seed) + interações online reais. As reservas recentes
-            mostram os pedidos individuais com quantidade e profissão — é isto que alimenta a
+            mostram os pedidos individuais com quantidade e profissão, é isto que alimenta a
             negociação de MOQ.
           </p>
         </div>
@@ -215,7 +215,7 @@ function AdminPage() {
                         />
                       ) : (
                         <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                          —
+                          -
                         </span>
                       )}
                       {system.targetMoq && isReservable(system) ? (
@@ -267,12 +267,12 @@ function AdminPage() {
                             </p>
                           ) : null}
                         </td>
-                        <td className="px-4 py-2.5 text-xs">{customer?.region ?? "—"}</td>
+                        <td className="px-4 py-2.5 text-xs">{customer?.region ?? "-"}</td>
                         <td className="px-4 py-2.5 text-xs">{reservation.system_id}</td>
                         <td className="px-4 py-2.5 text-right font-mono text-xs">
                           {reservation.quantity}
                         </td>
-                        <td className="px-4 py-2.5 text-xs">{reservation.profession ?? "—"}</td>
+                        <td className="px-4 py-2.5 text-xs">{reservation.profession ?? "-"}</td>
                         <td className="px-4 py-2.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
                           {reservation.status}
                         </td>
@@ -317,7 +317,7 @@ function AdminPage() {
         <section className="mt-6 border border-border bg-card">
           <div className="border-b border-border p-5">
             <p className="tech-label text-muted-foreground">
-              Clientes ({customersQuery.data?.length ?? 0}) — histórico de compras, pontos e
+              Clientes ({customersQuery.data?.length ?? 0}), histórico de compras, pontos e
               atividade
             </p>
           </div>
@@ -340,11 +340,11 @@ function AdminPage() {
                 {(customersQuery.data ?? []).map((customer) => (
                   <tr key={customer.user_id}>
                     <td className="px-4 py-2.5 font-mono text-xs tracking-[0.1em] text-primary">
-                      {customer.customer_code ?? "—"}
+                      {customer.customer_code ?? "-"}
                     </td>
-                    <td className="px-4 py-2.5 text-xs">{customer.email ?? "—"}</td>
-                    <td className="px-4 py-2.5 text-xs">{customer.region ?? "—"}</td>
-                    <td className="px-4 py-2.5 font-mono text-xs">{customer.postal_code ?? "—"}</td>
+                    <td className="px-4 py-2.5 text-xs">{customer.email ?? "-"}</td>
+                    <td className="px-4 py-2.5 text-xs">{customer.region ?? "-"}</td>
+                    <td className="px-4 py-2.5 font-mono text-xs">{customer.postal_code ?? "-"}</td>
                     <td className="px-4 py-2.5 text-right font-mono text-xs">{customer.points}</td>
                     <td className="px-4 py-2.5 text-right font-mono text-xs">
                       {customer.orders_count}

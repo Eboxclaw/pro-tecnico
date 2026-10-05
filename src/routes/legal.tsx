@@ -4,12 +4,12 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/legal")({
   head: () => ({
     meta: [
-      { title: "Informação legal — REJENDARI" },
+      { title: "Informação legal, REJENDARI" },
       {
         name: "description",
         content: "Termos, privacidade, devoluções, garantia e regulamento do sorteio da REJENDARI.",
       },
-      { property: "og:title", content: "Informação legal — REJENDARI" },
+      { property: "og:title", content: "Informação legal, REJENDARI" },
       {
         property: "og:description",
         content: "Termos, privacidade, devoluções, garantia e regulamento do sorteio.",
@@ -45,7 +45,7 @@ const CONTENT = {
   ],
   payments: [
     "O checkout REJENDARI recalcula sempre o valor da encomenda no servidor contra o catálogo antes de qualquer pagamento; o total apresentado é o total cobrado.",
-    "Métodos previstos: cartões Visa e Mastercard, Apple Pay, Google Pay e PayPal processados pela Stripe; MB WAY via ifthenpay; pagamentos em criptomoeda via Coinbase Commerce. Cada método ativa apenas quando o respetivo processador está configurado — a página de checkout indica os métodos disponíveis em cada momento.",
+    "Métodos previstos: cartões Visa e Mastercard, Apple Pay, Google Pay e PayPal processados pela Stripe; MB WAY via ifthenpay; pagamentos em criptomoeda via Coinbase Commerce. Cada método ativa apenas quando o respetivo processador está configurado, a página de checkout indica os métodos disponíveis em cada momento.",
     "O processamento do pagamento é feito pelos prestadores referidos, que tratam os dados de pagamento nos termos das suas condições; a REJENDARI não guarda dados completos de cartão. As condições de devolução e de exercício de direitos associadas a cada método são publicadas com as condições de venda antes da abertura comercial.",
   ],
 };

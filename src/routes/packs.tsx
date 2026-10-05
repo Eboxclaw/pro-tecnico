@@ -20,13 +20,13 @@ import {
 export const Route = createFileRoute("/packs")({
   head: () => ({
     meta: [
-      { title: "Curated tool systems, reservas e procura da comunidade — REJENDARI" },
+      { title: "Curated tool systems, reservas e procura da comunidade, REJENDARI" },
       {
         name: "description",
         content:
-          "Systems curados à volta das melhores ferramentas — ANEX 397, Wera Zyklop — com reservas sem pagar, target price aberto e procura da comunidade a decidir os próximos drops.",
+          "Systems curados à volta das melhores ferramentas, ANEX 397, Wera Zyklop, com reservas sem pagar, target price aberto e procura da comunidade a decidir os próximos drops.",
       },
-      { property: "og:title", content: "Curated tool systems — REJENDARI" },
+      { property: "og:title", content: "Curated tool systems, REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -149,7 +149,7 @@ function PacksPage() {
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
               Cada system resolve um nível de trabalho. O investimento anterior continua útil quando
-              adicionas o módulo seguinte — sem recomprar o que já tens.
+              adicionas o módulo seguinte, sem recomprar o que já tens.
             </p>
           </div>
 
@@ -173,7 +173,7 @@ function PacksPage() {
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              Módulos funcionais — PH, Torx, Hex, Lock, Reach — só entram se resolverem um problema
+              Módulos funcionais, PH, Torx, Hex, Lock, Reach, só entram se resolverem um problema
               novo. Impacto antes de bits standard, sempre que existir opção documentada.
             </p>
           </div>
@@ -183,7 +183,7 @@ function PacksPage() {
               AÇO E TÊMPERA · A PREFERÊNCIA REJENDARI
             </p>
             <p className="mt-2 max-w-4xl text-xs leading-5 text-muted-foreground">
-              Bits de impacto e torsão em S2 ou S5 — ou Cr-Mo-V equivalente — com HRC equilibrado:
+              Bits de impacto e torsão em S2 ou S5, ou Cr-Mo-V equivalente, com HRC equilibrado:
               dureza com tenacidade, nunca o número maior. Escolhemos pela combinação de liga,
               tratamento térmico e método de corte, documentada pelo fabricante.
             </p>
@@ -209,7 +209,7 @@ function PacksPage() {
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              O que vês no Lab não está à venda nem em reserva. Diz-nos que queres que exista — os
+              O que vês no Lab não está à venda nem em reserva. Diz-nos que queres que exista, os
               likes do Lab orientam o que negociamos a seguir.
             </p>
           </div>
