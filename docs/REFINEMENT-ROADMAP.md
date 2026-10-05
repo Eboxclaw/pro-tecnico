@@ -64,6 +64,15 @@ verificados com correções aplicadas (a correção liga sempre à evidência).
 - Entrar por email: SMTP incluído do Supabase tem limite de 2-4 emails/hora —
   para produção ligar SMTP próprio (Resend, 100/dia grátis) e garantir o
   template OTP com {{ .Token }}.
+- Milwaukee é o holder oficial de impacto (SHOCKWAVE Locking 73/152/305);
+  Wera fica reduzido à família Zyklop 3/8″ (8100, 8784, 8794).
+- Packs de bits ordenados por perfil (PH2 duplo, Torx T15-T30, fendas duplo)
+  com dupla ponta preferida; PH1 impacto e PH2+PH1 num só bit em sourcing.
+- Ryobi (RID18X 300 N·m) registado como opção futura de máquinas: exige
+  promover a marca a vitrina.
+- Sons de página (faaah em 404/erros/esgotado) desligados por decisão — o
+  código fica em sounds.ts para voltar quando quiseres. Só fica o loop
+  ambiente com a pill de pause/play e mute.
 - Investigação de bundles combinados de outras lojas (conjuntos fechados de marca única
   tipo DLX/Wera-Knipex): as malas REJENDARI ganham por cross-brand + cross-bit.
 - Sons de oficina: Web Audio sintetizado (bonk de abertura, catraca no like, ting no

@@ -16,7 +16,7 @@ import { REJENDARI_KITS } from "@/data/kits";
 import { SMART_PACKS } from "@/data/smart-packs";
 import { LEGENDARY_COMBOS } from "@/data/legendary-combos";
 
-const KEPT = ["ANEX", "MAKITA", "VESSEL", "WERA", "KNIPEX", "BAHCO", "TAJIMA", "OLFA"];
+const KEPT = ["ANEX", "MAKITA", "VESSEL", "WERA", "KNIPEX", "BAHCO", "TAJIMA", "OLFA", "MILWAUKEE"];
 
 test("vitrina: exatamente as oito marcas mantidas, nada escondido na navegação", () => {
   assert.deepEqual([...SHOWCASED_BRANDS].sort(), [...KEPT].sort());

@@ -21,9 +21,9 @@ const MALA_IDS = [
 ];
 
 test('there are the five base kits plus six profession malas, unique ids, valid formats', () => {
-  assert.equal(REJENDARI_KITS.length, 11);
+  assert.equal(REJENDARI_KITS.length, 14);
   const ids = REJENDARI_KITS.map(kit => kit.id);
-  assert.equal(new Set(ids).size, 11, 'kit ids must be unique');
+  assert.equal(new Set(ids).size, 14, 'kit ids must be unique');
   for (const expected of [...BASE_KIT_IDS, ...MALA_IDS]) {
     assert.ok(ids.includes(expected), `missing kit ${expected}`);
   }
@@ -55,7 +55,9 @@ test('the mala de máquinas brings 2 batteries 5Ah or more plus a charger', () =
 test('every kit piece resolves to a curated reference with a rationale', () => {
   const ids = new Set(CURATED_TOOL_REFERENCES.map(tool => tool.id));
   for (const kit of REJENDARI_KITS) {
-    assert.ok(kit.pieces.length >= 6, `${kit.id} too thin`);
+    // packs de bits ordenados são pequenos por desenho: 3 peças chegam
+    const minPieces = kit.id.startsWith("pack-") ? 3 : 6;
+    assert.ok(kit.pieces.length >= minPieces, `${kit.id} too thin (mín ${minPieces})`);
     for (const piece of kit.pieces) {
       assert.ok(ids.has(piece.id), `${kit.id} references missing tool ${piece.id}`);
       assert.ok(piece.quantity >= 1 && piece.whyPt.length > 10, `${kit.id}/${piece.id} quantity or rationale invalid`);

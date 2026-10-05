@@ -118,7 +118,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         title: "Bit-lock · Rapidaptor",
         pieces: [
           {
-            refId: "wera-889-4-1-k",
+            refId: "milwaukee-shockwave-lock-73",
             whyPt:
               "É o lock que dá o nome ao system: o Rapidaptor 889/4/1 K trava o bit ao 397 por pressão, com manga de rotação livre, punho, lock, bits e extensor passam a trabalhar como uma só peça, com troca a uma mão. Para impacto contínuo, a variante certificada da Wera está em avaliação.",
           },
@@ -559,7 +559,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         title: "Bit-lock · Rapidaptor",
         pieces: [
           {
-            refId: "wera-889-4-1-k",
+            refId: "milwaukee-shockwave-lock-73",
             whyPt:
               "Rapidaptor 889/4/1 K, a geração atual: bit engata por pressão, manga roda livre, troca a uma mão, o bit-lock que funciona com o punho 397.",
           },

@@ -340,60 +340,6 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Imagem da família ERGO™ abertura larga: chave gravada 9029. Medidas do 9033 na ficha.",
   },
   {
-    id: "wera-838-ra-r-l",
-    brand: "WERA",
-    brandSlug: "WERA",
-    model: "838 RA-R L",
-    namePt: "Chave longa 1/4″ com roquete e Rapidaptor",
-    japanese: "ラチェットドライバ",
-    task: "fastening",
-    categoryPt: "Ratchet driver · versão longa",
-    notePt:
-      "Cabo Kraftform longo, roquete e porta-bits Rapidaptor integrado: a chave de manutenção para AVAC e montagem contínua.",
-    badge: "838 RA-R L",
-    storyPt:
-      "O vaivém longo do 838 RA-R L: roquete de dentição fina e Rapidaptor num corpo de 140 mm para o aperto contínuo em AVAC.",
-    referenceUrl:
-      "https://www.wera.de/en/tools/838-ra-r-l-bitholding-screwdriver-with-ratchet-functionality-1-4",
-    specPt: "1/4″ × 140 mm · Rapidaptor · roquete de dentição fina integrado",
-    evidencePt:
-      "Página oficial Wera: artigo 05051494001, 1/4″ × 140 mm, roquete integrado no cabo Kraftform com Rapidaptor para bits 1/4″ (DIN ISO 1173-C).",
-    compareGroup: "ratchet-driver",
-    officialCode: "05051494001",
-    imageUrl: "https://www.wera.de/prodimg/832x832/838_ra-r_l.webp",
-    imageAlt: "Wera 838 RA-R L, porta-bits com roquete Kraftform",
-    imageSourceLabel: "Imagem oficial Wera",
-    limitationsPt:
-      "Porta-bits manual 1/4″: não utilizar em aparafusadoras elétricas nem em impacto.",
-  },
-  {
-    id: "wera-838-ra-r-m",
-    brand: "WERA",
-    brandSlug: "WERA",
-    model: "838 RA-R M",
-    namePt: "Chave compacta 1/4″ com roquete e Rapidaptor",
-    japanese: "ラチェットドライバ",
-    task: "fastening",
-    categoryPt: "Ratchet driver · versão compacta",
-    notePt:
-      "A versão compacta do 838 RA-R: o mesmo roquete e Rapidaptor num corpo curto para trabalho em gaveta e painel.",
-    badge: "838 RA-R M",
-    storyPt:
-      "A versão de 123,5 mm troca alcance por controlo: o mesmo mecanismo para trabalhar dentro de gavetas e painéis.",
-    referenceUrl:
-      "https://www.wera.de/en/tools/838-ra-r-m-bit-holding-handle-with-ratchet-functionality-1-4",
-    specPt: "1/4″ × 123,5 mm · Rapidaptor · corpo compacto",
-    evidencePt:
-      "Página oficial Wera: artigo 05051493001, 1/4″ × 123,5 mm, Rapidaptor com libertação rápida para bits 1/4″ (DIN ISO 1173-C), EAN 4013288229748.",
-    compareGroup: "ratchet-driver",
-    officialCode: "05051493001",
-    imageUrl: "https://www.wera.de/prodimg/832x832/838_ra-r_m.webp",
-    imageAlt: "Wera 838 RA-R M, cabo porta-bits compacto com roquete",
-    imageSourceLabel: "Imagem oficial Wera",
-    limitationsPt:
-      "Porta-bits manual 1/4″: não utilizar em aparafusadoras elétricas nem em impacto.",
-  },
-  {
     id: "koken-3756z",
     brand: "KO-KEN",
     brandSlug: "KO-KEN",
@@ -2764,34 +2710,6 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageSourceLabel: "Imagem TAJIMA Europe",
   },
   {
-    id: "wera-kompakt-vde-17-ra-1",
-    brand: "WERA",
-    brandSlug: "WERA",
-    model: "Kraftform Kompakt VDE 17 RA 1",
-    officialCode: "05006618001",
-    namePt: "Roquete porta-lâminas VDE 1000 V · 17 peças",
-    japanese: "絶縁ラチェット",
-    task: "fastening",
-    categoryPt: "1000 V · roquete com catraca",
-    notePt:
-      "O 837 i RA integra catraca de 40 dentes (retorno 9°) num cabo Kraftform isolado, com lâminas VDE de 157 mm e segundo porta-lâminas 817 VDE: o vaivém rápido com certificação de ferramenta completa.",
-    storyPt:
-      "A pergunta 'existe roquete para trabalho sob tensão?' tem resposta oficial: este. A catraca vive dentro do cabo isolado e o conjunto é ensaiado peça a peça, a velocidade do vaivém sem abrir mão da certificação.",
-    specPt: "40 dentes · retorno 9° · lâminas VDE 157 mm · 17 peças · 1000 V (IEC 60900)",
-    evidencePt:
-      "Página oficial Wera: artigo 05006618001, 17 peças, cabo 837 i RA porta-lâminas com catraca (40 dentes, retorno 9°) + 817 VDE; lâminas VDE de 157 mm com função spinner, ensaio individual em banho de água a 10.000 V segundo IEC 60900 para trabalho a 1.000 V; marcação GS, anti-rolloff e estojo de pano compatível Wera 2go.",
-    limitationsPt:
-      "Certificação válida para a ferramenta completa tal como fornecida. Um bit isolado montado num porta-bits comum não constitui ferramenta certificada para trabalho sob tensão: a EN/IEC 60900 aplica-se ao conjunto ensaiado e marcado.",
-    badge: "VDE 1000 V",
-    referenceUrl: "https://www.wera.de/en/tools/kraftform-kompakt-vde-17-ra-1",
-    imageUrl: "https://www.wera.de/prodimg/832x832/kraftform_kompakt_vde_17_ra_1.webp",
-    imageAlt: "Wera Kraftform Kompakt VDE 17 RA 1, roquete isolado 1000 V com lâminas 157 mm",
-    imageSourceLabel: "Imagem oficial Wera",
-    compareGroup: "ratchet-driver",
-    manufacturedIn: "Alemanha",
-    featured: true,
-  },
-  {
     id: "makita-bl1850b",
     brand: "MAKITA",
     brandSlug: "MAKITA",
@@ -2987,59 +2905,6 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "Wera 8794 B, extensão wobble 3/8 76 mm",
     imageSourceLabel: "Imagem oficial Wera",
     compareGroup: "3-8-ratchet",
-  },
-  {
-    id: "wera-899-4-1-sb",
-    brand: "WERA",
-    brandSlug: "WERA",
-    model: "899/4/1 SB",
-    officialCode: "05347100001",
-    namePt: "Rapidaptor universal · porta-bits inox",
-    japanese: "ラピダプター",
-    task: "fastening",
-    categoryPt: "Porta-bits · Rapidaptor",
-    notePt:
-      "O Rapidaptor clássico em inox: anel de retenção e íman permanente, troca de bit com uma mão.",
-    storyPt:
-      "O porta-bits que deu nome à fixação rápida: um clique para largar, um toque para agarrar, há décadas o padrão.",
-    badge: "Rapidaptor",
-    specPt: "1/4″ hex · bits DIN ISO 1173-C 6,3 · anel + íman · inox",
-    evidencePt:
-      "Página oficial Wera: artigo 05347100001, 899/4/1 SB universal bit holder com anel de retenção, íman permanente e manga em aço inoxidável.",
-    referenceUrl: "https://www.wera.de/en/tools/899-4-1-sb-universal-bit-holder",
-    imageUrl: "https://www.wera.de/prodimg/832x832/899_4_1_sb_sis.webp",
-    imageAlt: "Wera 899/4/1 SB, Rapidaptor universal em inox",
-    imageSourceLabel: "Imagem oficial Wera",
-    compareGroup: "bit-holders",
-    limitationsPt:
-      "Porta-bits manual 1/4″: não é a variante certificada para impacto nem isolada 1000 V.",
-  },
-  {
-    id: "wera-889-4-1-k",
-    brand: "WERA",
-    brandSlug: "WERA",
-    model: "889/4/1 K",
-    officialCode: "05052502001",
-    namePt: "Rapidaptor universal · porta-bits 50 mm",
-    japanese: "ラピダプター",
-    task: "fastening",
-    categoryPt: "Porta-bits · Rapidaptor",
-    notePt:
-      "O Rapidaptor da geração atual: o bit engata por pressão, sem accionar a manga; a manga roda livre para guiar a máquina e a remoção faz-se empurrando o bit para a frente.",
-    storyPt:
-      "É a evolução do 899 inox: mesmo clique rápido, menos peso no veio e o bit entra num movimento, o porta-bits universal que acompanha a máquina do dia inteiro.",
-    badge: "Rapidaptor",
-    specPt: "1/4″ hex × 50 mm · Ø15 mm · magnético · manga de rotação livre · 26 g",
-    evidencePt:
-      "Dados oficiais Wera (folha de dados do artigo 05052502001): 889/4/1 K Rapidaptor universal 1/4″ × 50 mm, retenção magnética para bits DIN ISO 1173-C 6,3 (hex 6,35) e E 6,3, engate press-in sem accionar a manga, manga de rotação livre, 26 g. Substitui a geração 899/4/1 inox como porta-bits universal da linha.",
-    referenceUrl:
-      "https://hybris-media.wera.de/download/pdfgenerator-datasheets/en/05052502001.pdf",
-    imageUrl: "https://www.wera.de/prodimg/832x832/889_4_1_k.webp",
-    imageAlt: "Wera 889/4/1 K, Rapidaptor universal 1/4″ × 50 mm",
-    imageSourceLabel: "Imagem oficial Wera",
-    compareGroup: "bit-holders",
-    limitationsPt:
-      "Porta-bits manual 1/4″: a variante certificada para impacto é artigo próprio, confirmar o binário máximo antes de uso com impacto.",
   },
   {
     id: "makita-dhr243z",
@@ -3290,27 +3155,67 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     compareGroup: "bit-holders",
   },
   {
-    id: "wera-889-4-1",
-    brand: "WERA",
-    brandSlug: "WERA",
-    model: "889/4/1",
-    officialCode: "05022840001",
-    namePt: "Rapidaptor universal · porta-bits 75 mm",
-    japanese: "ラピダプター",
+    id: "milwaukee-shockwave-lock-73",
+    brand: "MILWAUKEE",
+    brandSlug: "MILWAUKEE",
+    model: "4932459398",
+    officialCode: "4932459398",
+    namePt: "SHOCKWAVE Impact Locking · porta-bits 73 mm",
+    japanese: "ロックホルダー",
     task: "fastening",
-    categoryPt: "Porta-bits · Rapidaptor",
+    categoryPt: "Porta-bits · impacto · lock",
+    badge: "SHOCKWAVE",
     notePt:
-      "O Rapidaptor de 75 mm: a base manual do sistema, com engate rápido e manga de rotação livre para guiar a mão.",
-    badge: "Rapidaptor",
-    specPt: "1/4″ hex × 75 mm · engate rápido · manga de rotação livre",
+      "O lock oficial da mala 397: o anel de retenção trava o bit à máquina sem folgas, desenhado para o regime SHOCKWAVE de impacto.",
+    specPt: "1/4″ hex · 73 mm · anel de retenção · impacto",
     storyPt:
-      "Setenta e cinco milímetros de alavanca entre a mão e o parafuso: o Rapidaptor de 75 mm é o base manual do sistema quando o trabalho é longo e o acesso não é estreito.",
+      "O lock que trava o bit ao 397 e à impacto: entra e fica, sai com um toque. É a peça que dá o nome ao drop e o holder oficial de impacto da casa.",
     evidencePt:
-      "Página oficial Wera: 889/4/1 Rapidaptor universal bit holder 75 mm (artigo 05022840001), engate rápido para bits 1/4″ DIN ISO 1173, manga de rotação livre para guiado.",
-    referenceUrl: "https://www.wera.de/en/tools/889-4-1-rapidaptor-universal-bit-holder",
-    imageUrl: "https://www.wera.de/prodimg/832x832/889_4_1.webp",
-    imageAlt: "Wera 889/4/1 — Rapidaptor universal 75 mm",
-    imageSourceLabel: "Imagem oficial Wera",
+      "Tabela oficial Milwaukee Portugal: SHOCKWAVE Impact Locking bit holder 73 mm, ref. 4932459398, PVP de tabela 11,40 € + IVA (14,02 € com IVA 23%).",
+    referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
+    compareGroup: "bit-holders",
+    featured: true,
+  },
+  {
+    id: "milwaukee-shockwave-lock-152",
+    brand: "MILWAUKEE",
+    brandSlug: "MILWAUKEE",
+    model: "4932471824",
+    officialCode: "4932471824",
+    namePt: "SHOCKWAVE Impact Locking · porta-bits 152 mm",
+    japanese: "ロングホルダー",
+    task: "fastening",
+    categoryPt: "Porta-bits · impacto · alcance",
+    badge: "152 mm",
+    notePt:
+      "O holder de impacto para HVAC e alcance médio: 152 mm com retenção lock e absorção SHOCKWAVE.",
+    specPt: "1/4″ hex · 152 mm · anel de retenção · impacto",
+    storyPt:
+      "O que falta é alcance com retenção: 152 mm para condutas, suportes e fundos de painel, no regime SHOCKWAVE.",
+    evidencePt:
+      "Tabela oficial Milwaukee Portugal: SHOCKWAVE Impact Locking bit holder 152 mm, ref. 4932471824, PVP de tabela 15,60 € + IVA (19,19 € com IVA 23%).",
+    referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
+    compareGroup: "bit-holders",
+  },
+  {
+    id: "milwaukee-shockwave-lock-305",
+    brand: "MILWAUKEE",
+    brandSlug: "MILWAUKEE",
+    model: "4932471825",
+    officialCode: "4932471825",
+    namePt: "SHOCKWAVE Impact Locking · porta-bits 305 mm",
+    japanese: "ロングホルダー",
+    task: "fastening",
+    categoryPt: "Porta-bits · impacto · alcance longo",
+    badge: "305 mm",
+    notePt:
+      "Alcance longo com lock: 305 mm para trabalhos profundos onde nem as extensões chegam ao bit travado.",
+    specPt: "1/4″ hex · 305 mm · anel de retenção · impacto",
+    storyPt:
+      "O fim da linha de alcance: trezentos e cinco milímetros com o bit travado até à ponta. Colunas, cavidades e tectos falsos resolvem-se sem desmontagem.",
+    evidencePt:
+      "Tabela oficial Milwaukee Portugal: SHOCKWAVE Impact Locking bit holder 305 mm, ref. 4932471825, PVP de tabela 21,60 € + IVA (26,57 € com IVA 23%).",
+    referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
     compareGroup: "bit-holders",
   },
 ];
@@ -3338,6 +3243,7 @@ export const SHOWCASED_BRANDS = [
   "BAHCO",
   "TAJIMA",
   "OLFA",
+  "MILWAUKEE",
 ] as const;
 
 export type ShowcasedBrand = (typeof SHOWCASED_BRANDS)[number];
@@ -3383,9 +3289,6 @@ export const QUICK_FOCUS = [
       "vessel-td24",
       "tone-brfs27",
       "tone-rdbs11",
-      "wera-838-ra-r-l",
-      "wera-838-ra-r-m",
-      "wera-kompakt-vde-17-ra-1",
     ],
   },
   {
@@ -3433,7 +3336,6 @@ export const QUICK_FOCUS = [
       "wiha-slimbits-set",
       "knipex-74-06-200",
       "knipex-13-96-200",
-      "wera-kompakt-vde-17-ra-1",
     ],
   },
   { id: "diamond", label: "Bits Diamante", jp: "ダイヤモンド", ids: ["anex-adrs-2065"] },
@@ -3441,7 +3343,7 @@ export const QUICK_FOCUS = [
     id: "vde",
     label: "VDE documentado",
     jp: "検証",
-    ids: ["knipex-74-06-200", "knipex-13-96-200", "wera-kompakt-vde-17-ra-1"],
+    ids: ["knipex-74-06-200", "knipex-13-96-200", "anex-azm-2100", "anex-azm-2150"],
   },
   {
     id: "adapters",
@@ -3459,7 +3361,6 @@ export const QUICK_FOCUS = [
       "anex-aqh-s1",
       "anex-aeh-100",
       "wera-8784-b1",
-      "wera-899-4-1-sb",
     ],
   },
   {

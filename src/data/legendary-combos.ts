@@ -24,7 +24,7 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     jp: "速さ · velocidade",
     work: "Montagem · mecânica",
     desc: "O kit Zyklop Speed 3/8″ de 29 peças, catraca de 72 dentes, sockets 8-19 mm, adaptador de bits, e a 838 RA-R M para o aperto manual.",
-    ids: ["wera-8100-sb-6", "wera-838-ra-r-m"],
+    ids: ["wera-8100-sb-6", "anex-431"],
   },
   {
     name: "Japanese Impact",
@@ -44,8 +44,8 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     name: "Ratchet Driver",
     jp: "ラチェット · roquete",
     work: "Manutenção · AVAC",
-    desc: "A 838 RA-R L de movimento curto, o Gandora 431 com bits guardados no punho e bits longos para acesso através de painéis.",
-    ids: ["wera-838-ra-r-l", "anex-431", "vessel-tdbs23"],
+    desc: "O T-Handle 370 de aperto firme, o Gandora 431 com bits guardados no punho e bits ultra-curtos para acesso rente.",
+    ids: ["anex-370", "anex-431", "vessel-tdbs23"],
   },
   {
     name: "Pocket Mechanic",
@@ -72,8 +72,8 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     name: "Slim Electrician",
     jp: "スリム · slim",
     work: "Quadros · bornes fundos",
-    desc: "O roquete VDE com dezassete lâminas ensaiadas a 10 kV, a chave slim isolada ANEX para bornes fundos e o bit +1/−5 para o parafuso pequeno: o sistema slim do quadro cheio.",
-    ids: ["wera-kompakt-vde-17-ra-1", "anex-7920", "anex-azm-1598"],
+    desc: "A MEGADORA isolada 1000 V para o aperto direto, a chave slim isolada ANEX para bornes fundos e o bit +1/−5 para o parafuso pequeno: o sistema slim do quadro cheio.",
+    ids: ["vessel-960-ph2-100", "anex-7920", "anex-azm-1598"],
   },
   {
     name: "HVAC Grip",

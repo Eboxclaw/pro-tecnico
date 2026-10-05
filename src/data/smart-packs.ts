@@ -131,9 +131,9 @@ export const SMART_PACKS: SmartPack[] = [
           "Mordentes paralelos até 52 mm: agarra fittings cromados como uma chave fixa, sem marcar.",
       },
       {
-        id: "wera-838-ra-r-m",
+        id: "vessel-2200-ph2-100",
         quantity: 1,
-        whyPt: "Roquete 838 RA-R com Rapidaptor para o aperto fino onde a impacto não pode chegar.",
+        whyPt: "Ball Ratchet PH2 de 36 dentes para o aperto fino onde a impacto não pode chegar.",
       },
       {
         id: "tajima-l25-50e1-eur",
@@ -161,9 +161,9 @@ export const SMART_PACKS: SmartPack[] = [
       "Dia de montagem em série: perfis, painéis, PH2 e PH3 alternados. O que interessa é o vaivém, roquete curto, dois perfis na mesma haste e corte de abertura seguro.",
     pieces: [
       {
-        id: "wera-838-ra-r-m",
+        id: "vessel-td24",
         quantity: 1,
-        whyPt: "Roquete compacto com Rapidaptor: troca de bit a uma mão, corpo curto para painéis.",
+        whyPt: "Mini roquete de 60 dentes, corpo curto: troca rápida e vaivém dentro de painéis.",
       },
       {
         id: "anex-arpm-2365",
@@ -216,9 +216,9 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "Anel neji-catch: o parafuso fica na ponta e a mão livre continua livre.",
       },
       {
-        id: "wera-838-ra-r-m",
+        id: "vessel-2200-ph2-100",
         quantity: 1,
-        whyPt: "O aperto final fino continua manual e a uma mão.",
+        whyPt: "O aperto final fino continua manual e a uma mão, com o Ball Grip a sentir o aperto.",
       },
     ],
     notIncludedPt: ["Bateria e carregador", "Adaptadores de acesso", "Binário definido"],
@@ -317,9 +317,9 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "Ajustável ERGO com mandíbula reversível: 218 mm que substituem a chave de tubo.",
       },
       {
-        id: "wera-838-ra-r-l",
+        id: "bahco-9031p",
         quantity: 1,
-        whyPt: "A versão longa do 838 RA-R: alcança através de painéis sem tirar a mão do aperto.",
+        whyPt: "Ajustável ERGO para as porcas que o socket não agarra: aperto firme sem marcar.",
       },
       {
         id: "knipex-cobra-250",
@@ -486,10 +486,9 @@ export const SMART_PACKS: SmartPack[] = [
           "Kit Zyklop Speed 3/8″ de 29 peças (art. 05004046001): catraca, sockets 8-19 mm e adaptador, o lado sockets do sistema.",
       },
       {
-        id: "wera-838-ra-r-m",
+        id: "makita-dhr243z",
         quantity: 1,
-        whyPt:
-          "838 RA-R M com Rapidaptor: fixação de bit com duplo travamento e roquete de dentição fina, a peça de arte do sistema.",
+        whyPt: "Rotativa SDS-Plus DHR243Z para furar e partir + o Zyklop para o aperto a socket: a oficina completa.",
       },
       {
         id: "anex-397-d",
@@ -502,7 +501,7 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "Bit AZM 1000 V ensaiado a 10 kV: o bit isolado para o lado elétrico.",
       },
       {
-        id: "wera-kompakt-vde-17-ra-1",
+        id: "vessel-960-ph2-100",
         quantity: 1,
         whyPt:
           "Roquete VDE 837 i RA (40 dentes) com lâminas 157 mm ensaiadas a 10 kV: trabalho sob tensão com ferramenta completa certificada, a via legal.",
@@ -522,7 +521,7 @@ export const SMART_PACKS: SmartPack[] = [
       "Do quadro ao borne: bit AZM 1000 V ensaiado a 10 kV, chave slim isolada ANEX, o roquete VDE certificado como ferramenta completa e o corte de alta alavanca VDE. Cada peça isolada é peça isolada, sem atalhos.",
     pieces: [
       {
-        id: "wera-kompakt-vde-17-ra-1",
+        id: "vessel-960-ph2-100",
         quantity: 1,
         whyPt:
           "Roquete 837 i RA VDE com lâminas 157 mm: ensaio individual a 10.000 V (IEC 60900), o vaivém rápido com certificação de conjunto.",

@@ -99,16 +99,10 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "Quick Ball 72: 72 dentes e 25 N·m, o movimento contínuo que define a casa.",
       },
       {
-        id: "wera-838-ra-r-m",
+        id: "vessel-td6816mg",
         quantity: 1,
         whyPt:
-          "838 RA-R M (123,5 mm): Rapidaptor com duplo travamento, o vaivém a uma mão dentro de painéis.",
-      },
-      {
-        id: "wera-838-ra-r-l",
-        quantity: 1,
-        whyPt:
-          "838 RA-R L (140 mm): a versão longa alcança através de painéis sem tirar a mão do aperto.",
+          "Roquete de 72 dentes com 16 bits integrados: o vaivém a uma mão dentro de painéis, sem caixa aberta.",
       },
       {
         id: "anex-525",
@@ -126,6 +120,18 @@ export const REJENDARI_KITS: RejendariKit[] = [
         quantity: 1,
         whyPt:
           "Gandora Neji-Pita: dois bits guardados no corpo, a chave de bolso que não precisa de porta-bits.",
+      },
+      {
+        id: "vessel-230w",
+        quantity: 1,
+        whyPt:
+          "Ball Grip tang-through: o parafuso clássico japonês com retenção na haste.",
+      },
+      {
+        id: "vessel-tdbs23",
+        quantity: 1,
+        whyPt:
+          "Dez bits ultra-curtos PH/SL/HEX: o aperto rente sem abrir a caixa de bits.",
       },
     ],
     notIncludedPt: ["Sockets", "Bits em quantidade", "Binário calibrado"],
@@ -167,9 +173,9 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "Cabeça de 20 mm e 52 dentes: o aperto rente a paredes e caixas.",
       },
       {
-        id: "wera-838-ra-r-l",
+        id: "anex-aeh-100",
         quantity: 1,
-        whyPt: "Acesso longo: alcança através de painéis e condutas com Rapidaptor a uma mão.",
+        whyPt: "Acesso longo: 100 mm de extensão para alcançar através de painéis e condutas.",
       },
       {
         id: "olfa-scr-l",
@@ -202,13 +208,17 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "Cada peça isolada é uma ferramenta completa certificada IEC 60900, ensaiada a 10 kV e marcada. Sem atalhos: bit isolado em porta-bits comum não é ferramenta certificada.",
     dayPt:
-      "Do quadro ao borne, a regra é uma só: sob tensão, só ferramenta completa certificada. O roquete porta-lâminas VDE da Wera traz dezassete lâminas de 157 mm ensaiadas individualmente; o alicate de instalação de seis funções descarna, crimpa e corta cabo até 50 mm² com a mesma certificação; o corte de alta alavanca VDE parte fio piano de 2,5 mm. No aperto fino, a slim isolada ANEX chega a bornes fundos; os bits AZM 1000 V servem a vizinhança de tensão e máquinas até 7,2 V, pela regra, não ao lado dela.",
+      "Do quadro ao borne, a regra é uma só: sob tensão, só ferramenta completa certificada. O alicate de instalação de seis funções descarna, crimpa e corta cabo até 50 mm² com a mesma certificação; o corte de alta alavanca VDE parte fio piano de 2,5 mm. No aperto fino, a slim isolada ANEX chega a bornes fundos; os bits AZM 1000 V servem a vizinhança de tensão e máquinas até 7,2 V, pela regra, não ao lado dela.",
     pieces: [
-      {
-        id: "wera-kompakt-vde-17-ra-1",
+            {
+        id: "anex-azm-2100",
         quantity: 1,
-        whyPt:
-          "Roquete 837 i RA com 17 lâminas VDE de 157 mm, ensaio individual a 10.000 V: o vaivém certificado.",
+        whyPt: "Bit isolado PH2×100: o alcance VDE em comprimento isolado, não em extensão normal.",
+      },
+      {
+        id: "anex-azm-2150",
+        quantity: 1,
+        whyPt: "E o PH2×150 para os disjuntores do fundo do quadro: 1000 V com ensaio de 10 kV.",
       },
       {
         id: "knipex-13-96-200",
@@ -319,9 +329,9 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "A base de tudo: 72 dentes, 25 N·m e o punho que define a casa.",
       },
       {
-        id: "wera-889-4-1-k",
+        id: "milwaukee-shockwave-lock-73",
         quantity: 1,
-        whyPt: "O lock que dá o nome ao system: bit travado por pressão, troca a uma mão.",
+        whyPt: "O lock oficial da casa: SHOCKWAVE Impact Locking de 73 mm a travar o bit, 14,02 EUR com IVA em Portugal.",
       },
       {
         id: "anex-adrs-2065",
@@ -576,12 +586,17 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "Esta mala é só para VDE: cada peça isolada é ferramenta completa certificada IEC 60900. O que não é isolado não entra, porque bit isolado em porta-bits comum não é certificado.",
     dayPt:
-      "Do quadro ao borne: o roquete porta-lâminas VDE da Wera com dezassete lâminas ensaiadas, o instalador de seis funções que descarna e crimpa, o corte de alta alavanca para fio piano, a MEGADORA isolada para o aperto direto e a slim isolada ANEX para o borne fundo. Os bits AZM cobrem a vizinhança de tensão em máquinas até 7,2 V, pela regra e não ao lado dela. Quando o desligamento está confirmado, as máquinas Makita juntam-se pela mala de máquinas.",
+      "Do quadro ao borne: o instalador de seis funções que descarna e crimpa, o corte de alta alavanca para fio piano, a MEGADORA isolada para o aperto direto e a slim isolada ANEX para o borne fundo. Os bits AZM cobrem a vizinhança de tensão em máquinas até 7,2 V, pela regra e não ao lado dela. Quando o desligamento está confirmado, as máquinas Makita juntam-se pela mala de máquinas.",
     pieces: [
       {
-        id: "wera-kompakt-vde-17-ra-1",
+        id: "anex-azm-2100",
         quantity: 1,
-        whyPt: "Roquete VDE com 17 lâminas de 157 mm ensaiadas a 10 kV: o vaivém certificado.",
+        whyPt: "Bit isolado PH2×100, ensaio a 10 kV: o alcance VDE em comprimento isolado.",
+      },
+      {
+        id: "anex-azm-2150",
+        quantity: 1,
+        whyPt: "E o PH2×150 para os disjuntores do fundo: comprimento isolado em vez de extensão normal.",
       },
       {
         id: "knipex-13-96-200",
@@ -676,9 +691,9 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "Wanidora para a cabeça que já não tem cruz: morde e roda.",
       },
       {
-        id: "wera-838-ra-r-m",
+        id: "vessel-td24",
         quantity: 1,
-        whyPt: "Roquete compacto com Rapidaptor: o vaivém rápido dentro de painéis.",
+        whyPt: "Mini roquete fino de 60 dentes: o vaivém rápido dentro de painéis.",
       },
     ],
     notIncludedPt: [
@@ -687,6 +702,80 @@ export const REJENDARI_KITS: RejendariKit[] = [
     ],
     limitationsPt:
       "Mecânica geral até sockets de 19 mm: porcas grandes e binário controlado pedem o drive 3/8″ dedicado. Bits não isolados nem para impacto de 1/2″.",
+  },
+  // ── Packs de bits ordenados (dupla ponta preferida) ──────────
+  {
+    id: "pack-ph2-duplo",
+    format: "kit",
+    trade: "Bits & aparafusamento",
+    jp: "二本立て · pack PH2 duplo",
+    tier: "Pro",
+    title: "Pack PH2 duplo ×65: dois perfis no mesmo bit",
+    conceptPt:
+      "PH2 com dupla função em cada bit: +2/+3 Ryujin, reversível PH2/fenda VESSEL e a caixa de dez para reposição. PH2+PH1 num só bit está em sourcing.",
+    dayPt:
+      "O dia de PH2 sem trocar de estojo: a caixa de dez PH2×65 repõe o consumível sozinho, o duplo +2/+3 Ryujin alterna perfis na mesma haste e a reversível PH2/fenda VESSEL cobre o parafuso misto. Dupla ponta preferida: menos trocas, menos bits na mala.",
+    pieces: [
+      { id: "anex-art-14m-2-65", quantity: 1, whyPt: "Dez PH2×65 Black Ryujin: a reposição do perfil que se gasta primeiro." },
+      { id: "anex-arpm-2365", quantity: 1, whyPt: "Bit duplo +2/+3 Ryujin: dois perfis na mesma haste, impacto 18 V/40 V." },
+      { id: "vessel-220w-62", quantity: 1, whyPt: "Reversível PH2/fenda VESSEL: o parafuso misto resolve-se sem mudar de bit." },
+      { id: "anex-adrs-2065", quantity: 1, whyPt: "Diamond Ryujin slim PH2×65 para o aperto que escorrega ao íman." },
+      { id: "anex-abrs5-2065", quantity: 1, whyPt: "Cinco Black Ryujin slim +2×65: a reposição do perfil slim." },
+      { id: "anex-ryujin-slim", quantity: 1, whyPt: "A dupla ponta slim entra no furo embutido onde o bit normal fica pelo caminho." },
+    ],
+    notIncludedPt: [
+      "PH1 impacto (em sourcing com a ANEX)",
+      "PH2+PH1 num só bit (em negociação)",
+      "Extensões (ver a mala 397)",
+    ],
+    limitationsPt:
+      "Bits de impacto 18 V/40 V; PH1 dedicado ainda não existe na linha impact-ready da ANEX.",
+  },
+  {
+    id: "pack-torx-ordenado",
+    format: "kit",
+    trade: "Bits & aparafusamento",
+    jp: "トルクス · pack torx",
+    tier: "Pro",
+    title: "Pack Torx ordenado: T15, T20, T25 e T30 sempre na ordem",
+    conceptPt:
+      "A gama Torx do dia a dia ordenada num único estojo de baixo perfil: T15, T20, T25 e T30 convivem com a gama completa T8H-T40H.",
+    dayPt:
+      "O Torx não perdoa bit torto: o estojo VESSEL traz a gama T8H-T40H ordenada em baixo perfil, com roquete próprio para apertar sem abrir a caixa à frente do cliente. Os T15, T20, T25 e T30 ficam no sítio, sempre na mesma ordem.",
+    pieces: [
+      { id: "vessel-tx11", quantity: 1, whyPt: "Estojo de baixo perfil com a gama Torx de segurança T8H-T40H ordenada." },
+      { id: "vessel-td6808tx", quantity: 1, whyPt: "Roquete Torx TR de 72 dentes com os bits mais usados: aperto sem abrir o estojo." },
+      { id: "anex-art-14m-2-65", quantity: 1, whyPt: "A reposição PH2×65 que acompanha qualquer trabalho Torx na mesma máquina." },
+    ],
+    notIncludedPt: [
+      "Bits Torx de impacto dedicados (em sourcing)",
+      "Torx tamper-proof para eletrónica (ver a mala de precisão)",
+    ],
+    limitationsPt:
+      "O estojo TX-11 e o roquete TR são de aperto manual: para impacto, confirmar a classe do bit junto do fabricante.",
+  },
+  {
+    id: "pack-fendas-duplo",
+    format: "kit",
+    trade: "Bits & aparafusamento",
+    jp: "マイナス · pack fendas",
+    tier: "Pro",
+    title: "Pack fendas com dupla ponta: −6 ao lado do +2",
+    conceptPt:
+      "Fendas e PH2 na mesma haste: o bit isolado duplo +2/−6 e as ultra-curtas VESSEL cobrem o parafuso de fenda sem abrir a mala de chaves.",
+    dayPt:
+      "O parafuso de fenda ainda vive em torneiras, quadros antigos e eletrodomésticos: o bit duplo +2/−6 faz os dois lados na mesma haste, as ultra-curtas VESSEL chegam ao fundo e o reversível PH2/fenda fecha o trabalho.",
+    pieces: [
+      { id: "anex-azm-2698", quantity: 1, whyPt: "Bit duplo isolado +2/−6×98: os dois lados da fenda comum e do PH2 num bit só." },
+      { id: "vessel-tdbs21", quantity: 1, whyPt: "Cinco bits ultra-curtos PH/SL de 18 mm: fenda e cruz rente ao painel." },
+      { id: "vessel-220w-3", quantity: 1, whyPt: "Três bits combi 110 mm PH/SL/PZ para os parafusos longos do dia." },
+    ],
+    notIncludedPt: [
+      "Fendas de impacto dedicadas (em sourcing)",
+      "Chaves de fenda com punho (ver os Ball Grip VESSEL)",
+    ],
+    limitationsPt:
+      "O bit AZM é isolado 1000 V com máquinas até 7,2 V; as ultra-curtas não são classe de impacto.",
   },
 ];
 

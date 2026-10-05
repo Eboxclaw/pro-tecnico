@@ -7,7 +7,6 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
-import { playFail } from "@/lib/sounds";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 
 import appCss from "../styles.css?url";
@@ -41,7 +40,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
-    playFail();
   }, [error]);
 
   return (

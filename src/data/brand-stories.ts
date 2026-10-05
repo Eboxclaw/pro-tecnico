@@ -245,6 +245,19 @@ const ALL_BRAND_STORIES: BrandStory[] = [
     sourceUrl: "https://www.bahco.com/",
     sourceLabel: "Bahco · site oficial",
   },
+  {
+    slug: "MILWAUKEE",
+    name: "MILWAUKEE",
+    jp: "衝撃ホルダー",
+    specialty: "Holders de impacto SHOCKWAVE · lock",
+    headline: "O bit travado à máquina até dizer basta.",
+    story:
+      "Na seleção REJENDARI, a Milwaukee entra pelos holders SHOCKWAVE Impact Locking: anel de retenção que trava o bit sem folgas, gamas de 73 a 305 mm para impacto real. São os locks oficiais da mala 397 e das malas de profissão.",
+    whyPt:
+      "Escolhidos pela retenção e pela robustez em impacto contínuo. Esta seleção é independente; não existe parceria ou representação oficial da Milwaukee.",
+    sourceUrl: "https://www.milwaukeetool.eu/pt-pt/",
+    sourceLabel: "Milwaukee · tabela oficial Portugal",
+  },
 ];
 
 /** Só as marcas em vitrina navegam; as histórias de reserva continuam guardadas. */

@@ -1,7 +1,7 @@
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { ArrowLeft, Loader2, PackageSearch, ShieldCheck, Sparkles } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
@@ -10,7 +10,6 @@ import { LegendaryProductStage } from "@/components/brand/LegendaryProductStage"
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
-import { playFail } from "@/lib/sounds";
 
 export const Route = createFileRoute("/product/$handle")({
   head: () => ({
@@ -40,7 +39,6 @@ function ProductPage() {
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const failedStock = useRef(false);
   const {
     data: product,
     isLoading,
@@ -50,17 +48,6 @@ function ProductPage() {
     queryKey: ["product", handle],
     queryFn: () => fetchProductByHandle(handle),
   });
-
-  const stock = product?.variants?.edges?.find(
-    (edge: { node: { id: string } }) =>
-      edge.node.id === (selectedVariantId ?? product?.variants?.edges?.[0]?.node.id),
-  )?.node;
-  useEffect(() => {
-    if (stock && !stock.availableForSale && !failedStock.current) {
-      failedStock.current = true;
-      playFail();
-    }
-  }, [stock]);
 
   if (isLoading) {
     return (
