@@ -1,7 +1,7 @@
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Loader2, PackageSearch, ShieldCheck, Sparkles } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
@@ -39,6 +39,17 @@ function ProductPage() {
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const failedStock = useRef(false);
+  const stock = product?.variants?.edges?.find(
+    (edge: { node: { id: string } }) =>
+      edge.node.id === (selectedVariantId ?? product?.variants?.edges?.[0]?.node.id),
+  )?.node;
+  useEffect(() => {
+    if (stock && !stock.availableForSale && !failedStock.current) {
+      failedStock.current = true;
+      playFail();
+    }
+  }, [stock]);
   const {
     data: product,
     isLoading,

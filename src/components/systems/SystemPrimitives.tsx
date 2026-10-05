@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { Heart, Lock, Star } from "lucide-react";
 import { toast } from "sonner";
+import { playRatchet, playTing, playThock } from "@/lib/sounds";
 import {
   SYSTEM_STATUS_LABEL,
   RESERVE_PROFESSIONS,
@@ -148,7 +149,14 @@ export function LikeFavoriteButtons({
     <div className={cn("flex items-center gap-2", className)}>
       <button
         type="button"
-        onClick={() => (liked ? toast.info("Já mostraste interesse neste system.") : like(system))}
+        onClick={() => {
+          if (liked) {
+            toast.info("Já mostraste interesse neste system.");
+            return;
+          }
+          playRatchet();
+          like(system);
+        }}
         aria-pressed={liked}
         className={cn(
           "inline-flex items-center gap-1.5 border px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors",
@@ -162,7 +170,10 @@ export function LikeFavoriteButtons({
       </button>
       <button
         type="button"
-        onClick={() => favorite.mutate()}
+        onClick={() => {
+          playTing();
+          favorite.mutate();
+        }}
         disabled={favorite.isPending}
         aria-pressed={favorited}
         className={cn(
@@ -216,7 +227,10 @@ export function ReserveDialog({
       },
       {
         onSuccess: (reserved) => {
-          if (reserved) onOpenChange(false);
+          if (reserved) {
+            playThock();
+            onOpenChange(false);
+          }
         },
       },
     );

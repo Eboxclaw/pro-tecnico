@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { RejendariSeal } from "@/components/brand/RejendariSeal";
 
 const FORMAT_MARK: Record<RejendariKit["format"], { glyph: string; label: string }> = {
+  mala: { glyph: "鞄", label: "mala de trabalho" },
   kit: { glyph: "組", label: "kit de sistema" },
   caixa: { glyph: "箱", label: "caixa de ofício" },
 };
@@ -101,6 +102,7 @@ function KitCard({ kit, index, compact }: { kit: RejendariKit; index: number; co
 }
 
 export function KitsShowcase() {
+  const malas = REJENDARI_KITS.filter((kit) => kit.format === "mala");
   const kits = REJENDARI_KITS.filter((kit) => kit.format === "kit");
   const caixas = REJENDARI_KITS.filter((kit) => kit.format === "caixa");
   return (
@@ -111,7 +113,7 @@ export function KitsShowcase() {
           <div>
             <p className="jp-label text-primary">最初のキット · os primeiros kits REJENDARI</p>
             <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
-              Cinco composições.
+              Onze composições.
               <br />
               <span className="text-primary">Nada que não ganhe o seu lugar.</span>
             </h2>
@@ -120,14 +122,27 @@ export function KitsShowcase() {
             A inspiração vem de duas escolas: a produção integrada da ANEX em Sanjō, 一貫生産, cada
             bit do aço ao fio nas mesmas mãos, e a escola "Tool Rebel" da Wera, que provou que uma
             caixa pequena bem pensada é um milagre de espaço. Dois kits dominam uma família até ao
-            fim; três caixas cobrem o dia de um ofício. Cada peça já tem ficha própria: o pedido
-            segue para o B2B com a composição preenchida, sem SKU inventado.
+            fim; seis malas cobrem profissões, três caixas cobrem o dia de um ofício. Cross bit
+            utilization: cada bit serve o 397, a impacto e a Zyklop. Cada peça já tem ficha própria:
+            o pedido segue para o B2B com a composição preenchida, sem SKU inventado.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-2">
-          {kits.map((kit, index) => (
+        <h3 className="mt-10 font-display text-2xl font-semibold tracking-[-0.03em]">
+          Malas de trabalho
+        </h3>
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          {malas.map((kit, index) => (
             <KitCard key={kit.id} kit={kit} index={index} />
+          ))}
+        </div>
+
+        <h3 className="mt-14 font-display text-2xl font-semibold tracking-[-0.03em]">
+          Kits de sistema
+        </h3>
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          {kits.map((kit, index) => (
+            <KitCard key={kit.id} kit={kit} index={malas.length + index} />
           ))}
         </div>
 
@@ -136,7 +151,7 @@ export function KitsShowcase() {
         </h3>
         <div className="mt-6 grid gap-4 lg:grid-cols-3">
           {caixas.map((kit, index) => (
-            <KitCard key={kit.id} kit={kit} index={kits.length + index} compact />
+            <KitCard key={kit.id} kit={kit} index={malas.length + kits.length + index} compact />
           ))}
         </div>
 

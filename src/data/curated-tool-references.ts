@@ -3041,6 +3041,112 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     limitationsPt:
       "Porta-bits manual 1/4″: a variante certificada para impacto é artigo próprio, confirmar o binário máximo antes de uso com impacto.",
   },
+  {
+    id: "makita-dhr243z",
+    brand: "MAKITA",
+    brandSlug: "MAKITA",
+    model: "DHR243Z",
+    officialCode: "DHR243Z",
+    namePt: "Rotativa SDS-Plus LXT 18 V · fura e parte",
+    japanese: "ハンマードリル",
+    task: "power",
+    categoryPt: "SDS-Plus · 24 mm · 3 funções",
+    notePt:
+      "Fura, percussiona e cinzela: a rotativa média e leve da linha LXT para parede, betão e abertura de rasgos sem levar máquina de obra.",
+    badge: "Brushless",
+    specPt: "18 V · SDS-Plus · betão 24 mm · 2,0 J · 3 modos · corpo Z",
+    storyPt:
+      "Fura e parte na mala: 24 mm de betão, cinzelar e furar ao simples em três modos, num corpo compacto de 353 mm. É a média que fica no ombro o dia inteiro.",
+    evidencePt:
+      "Dados oficiais Makita: DHR243Z rotativa combinada SDS-Plus LXT 18 V brushless, betão até 24 mm, energia de impacto 2,0 J, 0-4700 bpm, três modos de funcionamento (rotação+percussão, só percussão, só rotação), corpo sem baterias.",
+    referenceUrl: "https://makitatools.com/products/details/DHR243Z",
+    compareGroup: "rotativas",
+    featured: true,
+  },
+  {
+    id: "makita-dc18rc",
+    brand: "MAKITA",
+    brandSlug: "MAKITA",
+    model: "DC18RC",
+    officialCode: "DC18RC",
+    namePt: "Carregador rápido LXT 14,4-18 V",
+    japanese: "充電器",
+    task: "power",
+    categoryPt: "Carregamento · LXT",
+    notePt:
+      "O carregador rápido da plataforma LXT: comunica com a bateria para otimizar corrente e temperatura, com ventoinha ativa.",
+    badge: "Rapid Optimum",
+    specPt: "14,4-18 V LXT · carga rápida · ventoinha · comunicador CPU",
+    storyPt:
+      "Duas baterias de 5,0 Ah só fazem sentido com carga rápida entre elas: o DC18RC gerencia cada célula e arrefece a bateria enquanto trabalhas com a outra.",
+    evidencePt:
+      "Dados oficiais Makita: DC18RC Rapid Optimum Charger para baterias LXT 14,4-18 V, carga rápida com comunicação CPU-bateria e ventoinha de arrefecimento ativa.",
+    referenceUrl: "https://makitatools.com/products/details/DC18RC",
+    compareGroup: "carregadores",
+  },
+  {
+    id: "wera-joker-8-imperial",
+    brand: "WERA",
+    brandSlug: "WERA",
+    model: "6000 Joker 8 Imperial Set 1",
+    officialCode: "05020012001",
+    namePt: "Joker Imperial · 8 chaves combinadas 5/16″-3/4″",
+    japanese: "レンチ",
+    task: "sockets",
+    categoryPt: "AVAC · chaves imperiais",
+    notePt:
+      "Chaves combinadas com catraca de 80 dentes e boca aberta pivotante de 7,5°: as medidas imperiais do trabalho de frigorífico e bombas de calor, de 5/16″ a 3/4″.",
+    badge: "AVAC",
+    specPt: "8 medidas · 5/16″ a 3/4″ · catraca 80 dentes · retorno 30° · bolsa",
+    storyPt:
+      "O frigorífico vive em polegadas: 3/8, 1/2, 5/8 e 3/4 nas porcas de abanico. O Joker cobre a gama com o mecanismo de retenção que segura a porca e o retorno curto que trabalha em espaço apertado. A de 1/4″ existe avulsa para quem precisa dela.",
+    evidencePt:
+      "Dados oficiais Wera: 6000 Joker 8 Imperial Set 1, artigo 05020012001, oito chaves combinadas imperiais de 5/16″ a 3/4″ em bolsa, catraca de 80 dentes com retorno de 30°, batente integrado e boca aberta pivotante de 7,5°.",
+    referenceUrl: "https://www.wera.de/en/tools/wera-specials/joker",
+    compareGroup: "chaves-combinadas",
+  },
+  {
+    id: "bahco-325-hacksaw",
+    brand: "BAHCO",
+    brandSlug: "BAHCO",
+    model: "325",
+    officialCode: "325",
+    namePt: "Serrote de ferro ERGO 300 mm",
+    japanese: "ノコギリ",
+    task: "cutting",
+    categoryPt: "Corte · serrote de ferro",
+    notePt:
+      "Arco de alumínio com lâmina centrada e montagem a 55° para corte rente: canalização, calha técnica e perfil metálico saem limpos.",
+    badge: "Sandflex",
+    specPt: "Lâmina 300 mm · Sandflex bi-metal 24 TPI · montagem 55° · frame alumínio",
+    storyPt:
+      "O serrote de ferro da mala: tensão alta para corte reto e a lâmina Sandflex bi-metal que não parte à pressão. A montagem a 55° chega ao tubo rente à parede.",
+    evidencePt:
+      "Dados oficiais Bahco: serrote de mão profissional ERGO SKU 325, frame de alumínio 300 mm com lâmina centrada Sandflex bi-metal 24 TPI, tensionamento rápido e montagem de lâmina a 55° para corte rente.",
+    referenceUrl: "https://www.bahco.com",
+    compareGroup: "serras",
+  },
+  {
+    id: "tajima-optima-level",
+    brand: "TAJIMA",
+    brandSlug: "TAJIMA",
+    model: "Optima Level 130",
+    officialCode: "OPT130B",
+    namePt: "Nível de alumínio Optima 130",
+    japanese: "水平器",
+    task: "precision",
+    categoryPt: "Medição · nível",
+    notePt:
+      "Nível de alumínio com furos vertical/horizontal/45°, marcações luminosas e superfícies em V para perfil: o nível que vive na mala, não na obra.",
+    badge: "Optima",
+    specPt: "Alumínio · 3 furos · marcadores luminosos · superfícies em V",
+    storyPt:
+      "Curto para a mala, certo para o dia: o Optima leva buracos em V para perfil e marcações que se leem no sítio escuro. Medir direito é a primeira operação de qualquer instalação.",
+    evidencePt:
+      "Dados oficiais TAJIMA (TJM Design): nível Optima Level 130 em alumínio, furos horizontal/vertical/45°, placas luminosas e superfícies de medição em V, linha Optima em azul (OPT130B).",
+    referenceUrl: "https://www.tajima-tool.com",
+    compareGroup: "medicao",
+  },
 ];
 
 export const REFERENCE_QUEUE = [

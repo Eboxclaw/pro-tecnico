@@ -284,7 +284,7 @@ function Index() {
                 <span className="mr-3 font-mono">03</span>職人キット · kits de assinatura
               </p>
               <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
-                Dois sistemas, três caixas de ofício.
+                Seis malas de profissão, dois kits e três caixas.
               </h2>
             </div>
             <Button variant="outline" asChild className="rounded-none">
@@ -304,7 +304,7 @@ function Index() {
               >
                 <span className="flex items-center justify-between">
                   <span className="font-display text-3xl text-primary" aria-hidden>
-                    {kit.format === "kit" ? "組" : "箱"}
+                    {kit.format === "mala" ? "鞄" : kit.format === "kit" ? "組" : "箱"}
                   </span>
                   <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
                     {kit.jp.split(" · ")[0]}

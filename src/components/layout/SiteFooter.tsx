@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
+import { soundEnabled, setSoundEnabled, playTing } from "@/lib/sounds";
+import { useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
 
 const JAPANESE_BRANDS = ["ANEX", "VESSEL", "MAKITA", "TAJIMA", "OLFA", "WERA", "KNIPEX", "BAHCO"];
@@ -7,6 +10,7 @@ const JAPANESE_BRANDS = ["ANEX", "VESSEL", "MAKITA", "TAJIMA", "OLFA", "WERA", "
 export function SiteFooter() {
   const t = useT();
   const year = new Date().getFullYear();
+  const [som, setSom] = useState(soundEnabled());
 
   return (
     <footer className="border-t border-border bg-[#1b1917]">
@@ -138,6 +142,27 @@ export function SiteFooter() {
             © {year} REJENDARI · {t("footer.rights")}
           </p>
           <p>{t("footer.contactNote")}</p>
+        </div>
+      </div>
+      <div className="border-t border-border/70">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 sm:px-6">
+          <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/35">
+            sons de oficina sintetizados · volume baixo
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              const next = !som;
+              setSom(next);
+              setSoundEnabled(next);
+              if (next) playTing();
+            }}
+            className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
+            aria-pressed={som}
+          >
+            {som ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
+            som {som ? "ligado" : "desligado"}
+          </button>
         </div>
       </div>
     </footer>
