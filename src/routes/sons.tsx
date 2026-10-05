@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { playFail, playIntroYooo, playRatchet, playThock, playTing } from "@/lib/sounds";
+import { playFail, playIntroYooo, playRatchet, playThock, toggleAmbient } from "@/lib/sounds";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/sons")({
@@ -34,6 +34,12 @@ const SFX = [
     name: "Fail (faahaha)",
     file: "public/sounds/fail-faaah.mp3 (o teu mp3)",
     where: "Página 404, erros e produto esgotado.",
+  },
+  {
+    play: toggleAmbient,
+    name: "Ambiente (loop)",
+    file: "public/sounds/ambiente-loop.mp3 (o teu tema do Suno)",
+    where: "Loop contínuo de volume baixo para acompanhar as compras.",
   },
 ] as const;
 

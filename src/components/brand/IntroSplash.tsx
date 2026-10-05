@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { armIntroSound, disarmIntroSound } from "@/lib/sounds";
+import { armIntroSound, disarmIntroSound, playIntroYooo } from "@/lib/sounds";
 
 /**
  * Cortina de abertura REJENDARI: uma vez por sessão, salta com um clique e
@@ -22,6 +22,9 @@ export function IntroSplash() {
     if (phase === "playing") {
       window.sessionStorage.setItem(SESSION_KEY, "1");
       armIntroSound();
+      // tentativa imediata de autoplay: funciona quando o tab já tem ativação
+      // (2.º load em diante); no 1.º load absoluto o fallback é o clique armado
+      playIntroYooo();
     }
     if (phase === "leaving" || phase === "hidden") disarmIntroSound();
   }, [phase]);

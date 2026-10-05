@@ -1,2 +1,13 @@
-Cola aqui o teu mp3 do myinstants com o nome intro-yooo.mp3 (ou myinstants.mp3)
-e a abertura do site passa a usar o som real em vez da versão sintetizada.
+COLOCA AQUI OS TEUS FICHEIROS DE SOM:
+
+1. intro-yooo.mp3  -> o "yooo oooo bonk" da abertura (já colocado)
+2. fail-faaah.mp3  -> o faaah de erros/esgotado (já colocado)
+3. ambiente-loop.mp3 -> instrumental em loop para acompanhar as compras
+
+PROMPT PARA O SUNO (suno.com):
+Japanese ambient lo-fi for a premium tool shop: soft koto and shamisen
+phrases, distant taiko pulse, warm tape hiss, minimal, calm, instrumental,
+no drum drop, seamless loop, 90 bpm, 60-120 seconds.
+
+Marca "Instrumental" no Suno e escolhe a duração mais curta. Depois de
+gerar, descarrega o mp3 e renomeia para ambiente-loop.mp3 nesta pasta.

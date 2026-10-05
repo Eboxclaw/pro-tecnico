@@ -1,6 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
-import { soundEnabled, setSoundEnabled, playRatchet } from "@/lib/sounds";
+import {
+  soundEnabled,
+  setSoundEnabled,
+  playRatchet,
+  ambientEnabled,
+  toggleAmbient,
+} from "@/lib/sounds";
+import { Music } from "lucide-react";
 import { useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
@@ -11,6 +18,7 @@ export function SiteFooter() {
   const t = useT();
   const year = new Date().getFullYear();
   const [som, setSom] = useState(soundEnabled());
+  const [ambiente, setAmbiente] = useState(ambientEnabled());
 
   return (
     <footer className="border-t border-border bg-[#1b1917]">
@@ -162,6 +170,15 @@ export function SiteFooter() {
           >
             {som ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
             som {som ? "ligado" : "desligado"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setAmbiente(toggleAmbient())}
+            className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
+            aria-pressed={ambiente}
+          >
+            <Music className="h-3.5 w-3.5" />
+            ambiente {ambiente ? "ligado" : "desligado"}
           </button>
           <Link
             to="/sons"

@@ -247,3 +247,78 @@ if (typeof window !== "undefined") {
   window.addEventListener("pointerdown", unlock, { capture: true });
   window.addEventListener("keydown", unlock, { capture: true });
 }
+
+/**
+ * Ambiente instrumental em loop (o teu tema do Suno): coloca o ficheiro em
+ * public/sounds/ambiente-loop.mp3 e ele toca em volume muito baixo enquanto
+ * as compras acontecem. Toggle independente no rodapé.
+ */
+const AMBIENT_FILE = "/sounds/ambiente-loop.mp3";
+const AMBIENT_KEY = "rejendari:ambiente";
+let ambientEl: HTMLAudioElement | null = null;
+
+export function ambientEnabled(): boolean {
+  try {
+    return localStorage.getItem(AMBIENT_KEY) !== "off";
+  } catch {
+    return true;
+  }
+}
+
+export function setAmbientEnabled(on: boolean) {
+  try {
+    localStorage.setItem(AMBIENT_KEY, on ? "on" : "off");
+  } catch {
+    // storage indisponível
+  }
+}
+
+function ambientElement(): HTMLAudioElement {
+  if (!ambientEl) {
+    ambientEl = new Audio(AMBIENT_FILE);
+    ambientEl.loop = true;
+    ambientEl.volume = 0.12;
+    ambientEl.preload = "none";
+  }
+  return ambientEl;
+}
+
+/** Toca o ambiente (se ligado e o ficheiro existir). Devolve true se começou. */
+export async function startAmbient(): Promise<boolean> {
+  if (!soundEnabled() || !ambientEnabled()) return false;
+  const el = ambientElement();
+  try {
+    await el.play();
+    return true;
+  } catch {
+    // ficheiro ausente ou autoplay bloqueado: silencioso
+    return false;
+  }
+}
+
+export function stopAmbient() {
+  ambientElement().pause();
+}
+
+/** Reinicia o ambiente a partir de um gesto (toggle do rodapé). */
+export function toggleAmbient(): boolean {
+  const next = !ambientEnabled();
+  setAmbientEnabled(next);
+  if (next) {
+    void startAmbient();
+  } else {
+    stopAmbient();
+  }
+  return next;
+}
+
+/** O ambiente arranca no primeiro gesto, se estiver ligado. */
+if (typeof window !== "undefined") {
+  const startAmbientOnGesture = () => {
+    void startAmbient();
+    window.removeEventListener("pointerdown", startAmbientOnGesture, true);
+    window.removeEventListener("keydown", startAmbientOnGesture, true);
+  };
+  window.addEventListener("pointerdown", startAmbientOnGesture, { capture: true });
+  window.addEventListener("keydown", startAmbientOnGesture, { capture: true });
+}
