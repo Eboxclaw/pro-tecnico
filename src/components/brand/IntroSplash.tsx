@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { armIntroSound, disarmIntroSound, playIntroYooo } from "@/lib/sounds";
+import { startAmbient } from "@/lib/sounds";
 
 /**
  * Cortina de abertura REJENDARI: uma vez por sessão, salta com um clique e
  * desaparece por completo para quem prefere movimento reduzido.
  * A página por baixo já está renderizada, a cortina só acenta a entrada.
+ * É aqui que o loop ambiente arranca — o som de fundo do site.
  */
 const SESSION_KEY = "rejendari:intro-vista";
 
@@ -18,15 +19,12 @@ export function IntroSplash() {
 
   useEffect(() => {
     // a chave grava-se logo à entrada: navegar ou recarregar durante o loading
-    // não repete o som nem o splash
+    // não repete o splash
     if (phase === "playing") {
       window.sessionStorage.setItem(SESSION_KEY, "1");
-      armIntroSound();
-      // tentativa imediata de autoplay: funciona quando o tab já tem ativação
-      // (2.º load em diante); no 1.º load absoluto o fallback é o clique armado
-      playIntroYooo();
+      // o loop ambiente arranca com o loading (no 1.º load espera pelo clique)
+      void startAmbient();
     }
-    if (phase === "leaving" || phase === "hidden") disarmIntroSound();
   }, [phase]);
 
   useEffect(() => {
@@ -86,7 +84,7 @@ export function IntroSplash() {
         JAPAN FIRST · PORTUGAL READY
       </p>
       <p className="mt-6 font-mono text-[9px] uppercase tracking-[0.24em] text-[#dfbba4]/80">
-        clica em qualquer lado para entrar com som
+        clica em qualquer lado para entrar com som de fundo
       </p>
 
       <span

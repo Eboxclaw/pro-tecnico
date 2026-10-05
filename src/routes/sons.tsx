@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { playFail, playIntroYooo, playRatchet, playThock, toggleAmbient } from "@/lib/sounds";
+import { playFail, startAmbient, toggleAmbient } from "@/lib/sounds";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/sons")({
@@ -12,34 +12,16 @@ export const Route = createFileRoute("/sons")({
 
 const SFX = [
   {
-    play: playIntroYooo,
-    name: "Intro · yooo oooo bonk",
-    file: "public/sounds/intro-yooo.mp3 (o teu mp3)",
-    where: "Só durante o loading (3s): primeiro clique após o splash.",
-  },
-  {
-    play: playRatchet,
-    name: "Catraca",
-    file: "sintetizado",
-    where: "Clique no ♡ like e no ★ favorito.",
-  },
-  {
-    play: playThock,
-    name: "Thock (kick)",
-    file: "sintetizado",
-    where: "Reserva confirmada com sucesso.",
+    play: startAmbient,
+    name: "Ambiente (loop)",
+    file: "public/sounds/ambiente-loop.mp3 (Wrench Locking)",
+    where: "Arranca com o loading e acompanha as compras em loop contínuo.",
   },
   {
     play: playFail,
     name: "Fail (faahaha)",
     file: "public/sounds/fail-faaah.mp3 (o teu mp3)",
     where: "Página 404, erros e produto esgotado.",
-  },
-  {
-    play: toggleAmbient,
-    name: "Ambiente (loop)",
-    file: "public/sounds/ambiente-loop.mp3 (o teu tema do Suno)",
-    where: "Loop contínuo de volume baixo para acompanhar as compras.",
   },
 ] as const;
 
@@ -54,7 +36,7 @@ function SonsPage() {
       </h1>
       <p className="mt-3 text-sm leading-6 text-muted-foreground">
         Toca cada efeito isoladamente e diz-nos quais não queres. O volume é intencionalmente baixo;
-        o intro usa o teu mp3 de public/sounds/intro-yooo.mp3.
+        o ambiente usa o teu tema de public/sounds/ambiente-loop.mp3.
         {last && (
           <span className="ml-1 font-mono text-[10px] uppercase tracking-[0.13em] text-primary">
             último: {last}

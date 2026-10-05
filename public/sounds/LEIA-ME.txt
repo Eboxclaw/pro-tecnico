@@ -1,13 +1,8 @@
-COLOCA AQUI OS TEUS FICHEIROS DE SOM:
+SONS DO SITE (em uso):
 
-1. intro-yooo.mp3  -> o "yooo oooo bonk" da abertura (já colocado)
-2. fail-faaah.mp3  -> o faaah de erros/esgotado (já colocado)
-3. ambiente-loop.mp3 -> instrumental em loop para acompanhar as compras
+1. ambiente-loop.mp3 -> loop de fundo "Wrench Locking": arranca com o
+   loading e acompanha as compras (12% de volume, loop contínuo)
+2. fail-faaah.mp3    -> o faaah em erros 404/boundary e produto esgotado
 
-PROMPT PARA O SUNO (suno.com):
-Japanese ambient lo-fi for a premium tool shop: soft koto and shamisen
-phrases, distant taiko pulse, warm tape hiss, minimal, calm, instrumental,
-no drum drop, seamless loop, 90 bpm, 60-120 seconds.
-
-Marca "Instrumental" no Suno e escolhe a duração mais curta. Depois de
-gerar, descarrega o mp3 e renomeia para ambiente-loop.mp3 nesta pasta.
+Não há outros sons: likes, favoritos e reservas ficaram silenciosos.
+Para trocar o loop, substitui ambiente-loop.mp3 por outro mp3.

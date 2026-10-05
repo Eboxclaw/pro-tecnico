@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { Heart, Lock, Star } from "lucide-react";
 import { toast } from "sonner";
-import { playRatchet, playThock } from "@/lib/sounds";
 import {
   SYSTEM_STATUS_LABEL,
   RESERVE_PROFESSIONS,
@@ -154,7 +153,6 @@ export function LikeFavoriteButtons({
             toast.info("Já mostraste interesse neste system.");
             return;
           }
-          playRatchet();
           like(system);
         }}
         aria-pressed={liked}
@@ -170,10 +168,7 @@ export function LikeFavoriteButtons({
       </button>
       <button
         type="button"
-        onClick={() => {
-          playRatchet();
-          favorite.mutate();
-        }}
+        onClick={() => favorite.mutate()}
         disabled={favorite.isPending}
         aria-pressed={favorited}
         className={cn(
@@ -227,10 +222,7 @@ export function ReserveDialog({
       },
       {
         onSuccess: (reserved) => {
-          if (reserved) {
-            playThock();
-            onOpenChange(false);
-          }
+          if (reserved) onOpenChange(false);
         },
       },
     );

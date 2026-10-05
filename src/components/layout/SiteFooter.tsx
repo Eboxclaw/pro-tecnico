@@ -1,12 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
-import {
-  soundEnabled,
-  setSoundEnabled,
-  playRatchet,
-  ambientEnabled,
-  toggleAmbient,
-} from "@/lib/sounds";
+import { soundEnabled, setSoundEnabled, ambientEnabled, toggleAmbient } from "@/lib/sounds";
 import { Music } from "lucide-react";
 import { useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
@@ -163,7 +157,7 @@ export function SiteFooter() {
               const next = !som;
               setSom(next);
               setSoundEnabled(next);
-              if (next) playRatchet();
+              if (next) void toggleAmbient();
             }}
             className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
             aria-pressed={som}
