@@ -163,6 +163,12 @@ export function SiteFooter() {
             {som ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
             som {som ? "ligado" : "desligado"}
           </button>
+          <Link
+            to="/sons"
+            className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
+          >
+            testar sons
+          </Link>
         </div>
       </div>
     </footer>

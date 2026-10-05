@@ -83,6 +83,9 @@ export function IntroSplash() {
       <p className="intro-sub mt-4 font-mono text-[9px] uppercase tracking-[0.42em] text-white/45">
         JAPAN FIRST · PORTUGAL READY
       </p>
+      <p className="mt-6 font-mono text-[9px] uppercase tracking-[0.24em] text-[#dfbba4]/80">
+        clica em qualquer lado para entrar com som
+      </p>
 
       <span
         className="intro-line intro-line--bottom mt-8 h-px w-40 origin-right bg-white/20"

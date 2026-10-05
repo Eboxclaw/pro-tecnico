@@ -70,66 +70,6 @@ function noiseBuffer(context: AudioContext, seconds: number) {
   return buffer;
 }
 
-function bonkAt(context: AudioContext, when: number, peak = 0.65) {
-  const osc = context.createOscillator();
-  const gain = context.createGain();
-  osc.type = "sine";
-  osc.frequency.setValueAtTime(210, when);
-  osc.frequency.exponentialRampToValueAtTime(92, when + 0.16);
-  env(gain, peak, 0.3, when);
-  osc.connect(gain).connect(context.destination);
-  osc.start(when);
-  osc.stop(when + 0.32);
-
-  const thump = context.createBufferSource();
-  const filter = context.createBiquadFilter();
-  const thumpGain = context.createGain();
-  thump.buffer = noiseBuffer(context, 0.08);
-  filter.type = "lowpass";
-  filter.frequency.value = 420;
-  env(thumpGain, peak * 0.56, 0.09, when);
-  thump.connect(filter).connect(thumpGain).connect(context.destination);
-  thump.start(when);
-}
-
-/** O "yooo" vocal: nota com vibrato que sobe. */
-function yoooAt(
-  context: AudioContext,
-  when: number,
-  from: number,
-  to: number,
-  seconds: number,
-  peak = 0.3,
-) {
-  const osc = context.createOscillator();
-  const osc2 = context.createOscillator();
-  const filter = context.createBiquadFilter();
-  const gain = context.createGain();
-  osc.type = "sine";
-  osc2.type = "sine";
-  osc.frequency.setValueAtTime(from, when);
-  osc.frequency.linearRampToValueAtTime(to, when + seconds);
-  osc2.frequency.setValueAtTime(from * 2, when);
-  osc2.frequency.linearRampToValueAtTime(to * 2, when + seconds);
-  const vib = context.createOscillator();
-  const vibGain = context.createGain();
-  vib.frequency.value = 6.5;
-  vibGain.gain.value = from * 0.012;
-  vib.connect(vibGain).connect(osc.frequency);
-  filter.type = "lowpass";
-  filter.frequency.value = 2400;
-  env(gain, peak, seconds, when);
-  osc.connect(filter);
-  osc2.connect(filter);
-  filter.connect(gain).connect(context.destination);
-  osc.start(when);
-  osc2.start(when);
-  vib.start(when);
-  osc.stop(when + seconds + 0.05);
-  osc2.stop(when + seconds + 0.05);
-  vib.stop(when + seconds + 0.05);
-}
-
 let introBufferCache: AudioBuffer | null = null;
 
 async function introBuffer(context: AudioContext): Promise<AudioBuffer | null> {
@@ -147,26 +87,22 @@ async function introBuffer(context: AudioContext): Promise<AudioBuffer | null> {
   return null;
 }
 
-/** O "yooo oooo bonk" japonês na abertura. Usa o teu mp3 se existir em public/sounds/. */
+/** O "yooo oooo bonk" japonês na abertura: o teu mp3, só ele. */
 export function playIntroYooo() {
   logNamed("intro");
   void withAudio(async (context, when) => {
     const buffer = await introBuffer(context);
-    if (buffer) {
-      const source = context.createBufferSource();
-      const gain = context.createGain();
-      gain.gain.value = 0.5;
-      source.buffer = buffer;
-      source.connect(gain).connect(context.destination);
-      source.start(when);
-      logNamed("intro:mp3");
+    if (!buffer) {
+      logNamed("intro:sem-ficheiro");
       return;
     }
-    // sintetizado: "yooo" sobe, "ooo" responde, BONK assenta
-    yoooAt(context, when, 392, 554, 0.34);
-    yoooAt(context, when + 0.42, 330, 494, 0.3);
-    bonkAt(context, when + 0.78);
-    logNamed("intro:synth");
+    const source = context.createBufferSource();
+    const gain = context.createGain();
+    gain.gain.value = 0.6;
+    source.buffer = buffer;
+    source.connect(gain).connect(context.destination);
+    source.start(when);
+    logNamed("intro:mp3");
   });
 }
 
