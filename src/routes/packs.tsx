@@ -79,10 +79,15 @@ function PacksPage() {
   const { data: demandBySystem } = useSystemDemand();
 
   const realUnitsBySystem: Record<string, number> = {};
+  const realLikesBySystem: Record<string, number> = {};
   for (const [systemId, demand] of Object.entries(demandBySystem ?? {})) {
     realUnitsBySystem[systemId] = demand.units;
+    realLikesBySystem[systemId] = demand.likes;
   }
-  const community = communityDemand(realUnitsBySystem);
+  const comunidadeTemDados =
+    Object.values(realUnitsBySystem).some((units) => units > 0) ||
+    Object.values(realLikesBySystem).some((likes) => likes > 0);
+  const community = communityDemand(realUnitsBySystem, realLikesBySystem);
 
   return (
     <div>
@@ -121,7 +126,7 @@ function PacksPage() {
           <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
             <div className="flex flex-col gap-3 pb-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="jp-label text-[#dfbba4]">注目のドロップ · featured drop</p>
+                <p className="jp-label text-[#c7c2ec]">注目のドロップ · featured drop</p>
                 <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
                   O primeiro drop está em reservas.
                 </h2>
@@ -224,52 +229,52 @@ function PacksPage() {
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="paper-panel mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
-          <div className="flex flex-col gap-4 pb-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="jp-label text-primary">
-                <span className="font-mono">04</span> · 需要 · community demand
+      {comunidadeTemDados && (
+        <section className="border-b border-border">
+          <div className="paper-panel mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+            <div className="flex flex-col gap-4 pb-6 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="jp-label text-primary">
+                  <span className="font-mono">04</span> · 需要 · community demand
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+                  A procura decide o próximo drop.
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-muted-foreground">
+                Reservas e likes reais de utilizadores registados. É assim que escolhemos o que
+                negociar com os fabricantes.
               </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-                A procura decide o próximo drop.
-              </h2>
             </div>
-            <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              Reservas e likes reais, somados à procura registada antes do contador online. É assim
-              que escolhemos o que negociar com os fabricantes.
-            </p>
-          </div>
 
-          <div className="grid gap-4 lg:grid-cols-3">
-            <CommunityDemandList
-              title="Most Wanted"
-              jp="一番人気"
-              systems={community.mostWanted}
-              realUnitsBySystem={realUnitsBySystem}
-              metric={(system) =>
-                `${system.seedDemand.units + (realUnitsBySystem[system.id] ?? 0)} unidades`
-              }
-            />
-            <CommunityDemandList
-              title="Fastest Growing"
-              jp="急成長"
-              systems={community.fastestGrowing}
-              realUnitsBySystem={realUnitsBySystem}
-              metric={(system) => `índice ${system.seedDemand.momentum}`}
-            />
-            <CommunityDemandList
-              title="Almost Unlocked"
-              jp="もうすぐ"
-              systems={community.almostUnlocked}
-              realUnitsBySystem={realUnitsBySystem}
-              metric={(system) =>
-                `${Math.min(100, Math.round(((system.seedDemand.units + (realUnitsBySystem[system.id] ?? 0)) / (system.targetMoq ?? 1)) * 100))}% do MOQ`
-              }
-            />
+            <div className="grid gap-4 lg:grid-cols-3">
+              <CommunityDemandList
+                title="Most Wanted"
+                jp="一番人気"
+                systems={community.mostWanted}
+                realUnitsBySystem={realUnitsBySystem}
+                metric={(system) => `${realUnitsBySystem[system.id] ?? 0} unidades`}
+              />
+              <CommunityDemandList
+                title="Fastest Growing"
+                jp="急成長"
+                systems={community.fastestGrowing}
+                realUnitsBySystem={realUnitsBySystem}
+                metric={(system) => `${realLikesBySystem[system.id] ?? 0} likes`}
+              />
+              <CommunityDemandList
+                title="Almost Unlocked"
+                jp="もうすぐ"
+                systems={community.almostUnlocked}
+                realUnitsBySystem={realUnitsBySystem}
+                metric={(system) =>
+                  `${Math.min(100, Math.round(((realUnitsBySystem[system.id] ?? 0) / (system.targetMoq ?? 1)) * 100))}% do MOQ`
+                }
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="border-b border-border bg-surface/45">
         <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
@@ -361,7 +366,7 @@ function PacksPage() {
         <div className="paper-panel grid gap-7 p-7 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <div className="flex items-center gap-3">
-              <ShieldCheck className="h-5 w-5 text-[#b54530]" />
+              <ShieldCheck className="h-5 w-5 text-[#6f5fd0]" />
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
                 相談 · kit à medida
               </p>

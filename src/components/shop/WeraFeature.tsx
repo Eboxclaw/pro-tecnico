@@ -24,7 +24,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
           <Link
             to="/shop"
             search={{ brand: "WERA" }}
-            className="inline-flex items-center gap-3 text-xs font-semibold text-[#d65a41]"
+            className="inline-flex items-center gap-3 text-xs font-semibold text-[#7a6ff0]"
           >
             Ver o sistema Wera <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
@@ -41,7 +41,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
       <div className="relative mx-auto grid max-w-[1440px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:items-center lg:py-24">
         <RejendariSeal className="absolute -top-3 right-6 z-10 hidden h-20 w-20 opacity-80 lg:grid" />
         <div>
-          <p className="jp-label text-[#d65a41]">ドイツ品質 · a gama alemã</p>
+          <p className="jp-label text-[#7a6ff0]">ドイツ品質 · a gama alemã</p>
           <h2
             id="wera-feature-title"
             className="mt-4 font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl"
@@ -65,7 +65,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
                   key={id}
                   to="/referencia/$id"
                   params={{ id }}
-                  className="group flex items-center gap-3 border border-white/15 px-4 py-3 transition-colors hover:border-[#d65a41]"
+                  className="group flex items-center gap-3 border border-white/15 px-4 py-3 transition-colors hover:border-[#7a6ff0]"
                 >
                   <span className="product-plate h-12 w-12 overflow-hidden">
                     {tool.imageUrl ? (
@@ -94,7 +94,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
           <Link
             to="/shop"
             search={{ brand: "WERA" }}
-            className="mt-8 inline-flex items-center gap-3 border border-[#d65a41] px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#d65a41]"
+            className="mt-8 inline-flex items-center gap-3 border border-[#7a6ff0] px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#7a6ff0]"
           >
             Ver o sistema Wera <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
@@ -118,7 +118,7 @@ export function WeraFeature({ compact = false }: { compact?: boolean }) {
           ) : null}
           <div className="flex items-end justify-between gap-4 border-t border-white/12 pt-5">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#d65a41]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#7a6ff0]">
                 8100 SB 6 · ZYKLOP SPEED 3/8″
               </p>
               <p className="mt-2 text-sm text-white/70">

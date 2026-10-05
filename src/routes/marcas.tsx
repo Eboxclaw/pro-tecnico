@@ -101,14 +101,14 @@ function BrandsPage() {
             <div className="relative">
               <div className="flex items-center justify-between gap-5">
                 <div>
-                  <p className="jp-label text-[#b54530]">
+                  <p className="jp-label text-[#6f5fd0]">
                     {selected.jp} · {selected.specialty}
                   </p>
                   <h2 className="mt-4 font-display text-5xl font-semibold tracking-[-0.06em] text-[#1b1917] sm:text-6xl">
                     {selected.name}
                   </h2>
                 </div>
-                <ShieldCheck className="h-6 w-6 text-[#b54530]" />
+                <ShieldCheck className="h-6 w-6 text-[#6f5fd0]" />
               </div>
               {products[0] && (
                 <Link
@@ -134,7 +134,7 @@ function BrandsPage() {
                 {selected.headline}
               </h3>
               <p className="mt-6 max-w-2xl text-sm leading-7 text-black/65">{selected.story}</p>
-              <p className="mt-5 max-w-2xl border-l border-[#b54530]/55 pl-4 text-sm leading-7 text-black/58">
+              <p className="mt-5 max-w-2xl border-l border-[#6f5fd0]/55 pl-4 text-sm leading-7 text-black/58">
                 {selected.whyPt}
               </p>
 
@@ -143,7 +143,7 @@ function BrandsPage() {
                   href={selected.sourceUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-7 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-black/52 hover:text-[#b54530]"
+                  className="mt-7 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-black/52 hover:text-[#6f5fd0]"
                 >
                   {selected.sourceLabel ?? "Fonte da marca"}
                   <ExternalLink className="h-3.5 w-3.5" />

@@ -349,7 +349,7 @@ function ShopPage() {
             onClick={() => {
               setFocus("all");
             }}
-            className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === "all" ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
+            className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === "all" ? "border-[#7a6ff0] bg-[#7a6ff0] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
           >
             Tudo
           </button>
@@ -359,7 +359,7 @@ function ShopPage() {
               key={item.id}
               aria-pressed={focus === item.id}
               onClick={() => setFocus(focus === item.id ? "all" : item.id)}
-              className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === item.id ? "border-[#d65a41] bg-[#d65a41] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
+              className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === item.id ? "border-[#7a6ff0] bg-[#7a6ff0] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
             >
               {item.label}{" "}
               <span aria-label="referências editoriais">

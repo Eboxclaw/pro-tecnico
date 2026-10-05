@@ -6,9 +6,9 @@ import { referenceById, type CuratedToolReference } from "@/data/curated-tool-re
  * O catálogo de systems vive em código (transparente, versionado e auditável);
  * a procura real (likes, favoritos, reservas) vive no Supabase
  * (ver supabase/migrations …_rejendari_systems_demand.sql) e soma-se aos
- * valores `seedDemand` abaixo, que representam a procura registada antes do
- * contador online existir. Não são stock nem promessa de preço: os estados e
- * os target prices existem para validar procura antes de comprar inventário.
+ * Os contadores do site mostram apenas procura real (likes, favoritos e
+ * reservas de utilizadores autenticados). Sem números inflados: se ainda não
+ * há procura, o site diz "sê o primeiro".
  *
  * Regra editorial: uma peça só entra se resolve um problema adicional
  * ("Que problema adicional esta peça resolve?"). Todas as peças apontam para
@@ -51,15 +51,6 @@ export type PerfectMatch = {
   reasonPt: string;
 };
 
-export type SeedDemand = {
-  likes: number;
-  favorites: number;
-  reservations: number;
-  units: number;
-  /** Peso editorial 0-100 para "Fastest Growing". */
-  momentum: number;
-};
-
 export type RejendariSystem = {
   id: string;
   kind: "system" | "module";
@@ -71,7 +62,6 @@ export type RejendariSystem = {
   /** Preço-alvo durante a negociação, nunca um preço final disfarçado. */
   targetPriceEur?: { min: number; max: number };
   targetMoq?: number;
-  seedDemand: SeedDemand;
   /** 2-3 capacidades principais para o card (nada de parede de texto). */
   capabilitiesPt: string[];
   /** Referência usada como visual do card (product-plate). */
@@ -108,7 +98,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "reserving",
     targetPriceEur: { min: 89, max: 99 },
     targetMoq: 100,
-    seedDemand: { likes: 214, favorites: 96, reservations: 64, units: 89, momentum: 92 },
     capabilitiesPt: ["72T · 25 N·m", "PH2 65-110 mm · 5 bits", "Locked by Rapidaptor"],
     imageRefId: "anex-397-d",
     leadRefId: "anex-397-d",
@@ -138,13 +127,13 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
 
       {
         role: "IMPACT",
-        title: "Bits PH2 · 65 a 110 mm",
+        title: "Bits PH2 · 65 mm",
         impactReady: true,
         pieces: [
           {
-            refId: "anex-ryujin-artm5-01",
+            refId: "anex-art-14m-2-65",
             whyPt:
-              "Pack de 5 bits Ryujin PH2 em 65/85/110 mm: todos os alcances cobertos num só pack, Cr-Mo-V made in Japan, especificado para 18 V e 40 V.",
+              "A reposição de dez PH2×65: um comprimento chega para o dia; o alcance vem das extensões, não de mais bits.",
           },
           {
             refId: "anex-adrs-2065",
@@ -163,13 +152,18 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
       },
       {
         role: "REACH",
-        title: "Bit extender",
+        title: "Extensões",
         impactReady: true,
         pieces: [
           {
             refId: "anex-aeh-100",
             whyPt:
               "Extensor de bits de 100 mm especificado para 18 V/40 V: o impacto chega ao fundo do perfil sem mudar de máquina.",
+          },
+          {
+            refId: "anex-alhp-100",
+            whyPt:
+              "O heavy-duty que aceita bits, socket bits e serras de coroa, com veio substituível: impacto 40 V/18 V sem poupar o material.",
           },
         ],
       },
@@ -193,7 +187,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "reserving",
     targetPriceEur: { min: 119, max: 149 },
     targetMoq: 100,
-    seedDemand: { likes: 318, favorites: 142, reservations: 81, units: 94, momentum: 88 },
     capabilitiesPt: ["ANEX 397 · 72T", "Bits impacto Ryujin", "Torx + Hex + Reach"],
     imageRefId: "anex-397-d",
     leadRefId: "anex-397-d",
@@ -215,8 +208,9 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         impactReady: true,
         pieces: [
           {
-            refId: "anex-ryujin-artm5-01",
-            whyPt: "PH2 Black Ryujin em 65/85/110 mm, o consumível principal do sistema.",
+            refId: "anex-art-14m-2-65",
+            whyPt:
+              "PH2×65 em caixa de dez: um comprimento chega, o alcance vem da extensão 100 mm.",
           },
           {
             refId: "anex-arpm-2365",
@@ -279,7 +273,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "negotiating",
     targetPriceEur: { min: 159, max: 189 },
     targetMoq: 60,
-    seedDemand: { likes: 167, favorites: 74, reservations: 38, units: 52, momentum: 61 },
     capabilitiesPt: ["Zyklop Speed · 72T", "Sockets 8-19 mm", "Ponte 3/8″ → 1/4″"],
     imageRefId: "wera-8100-sb-6",
     leadRefId: "wera-8100-sb-6",
@@ -342,7 +335,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     taglinePt:
       "Em estudo: porta-porcas magnéticos, extensões wobble e PH2 de impacto para condutas, chapa e equipamento de climatização.",
     status: "lab",
-    seedDemand: { likes: 89, favorites: 31, reservations: 0, units: 0, momentum: 47 },
     capabilitiesPt: ["Porta-porcas 7-13 mm", "Wobble 3/8″", "PH2 impacto"],
     imageRefId: "porta-porcas-magneticos-1-4",
     leadRefId: "porta-porcas-magneticos-1-4",
@@ -374,8 +366,9 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         impactReady: true,
         pieces: [
           {
-            refId: "anex-ryujin-artm5-01",
-            whyPt: "Chapa e suportes comem PH2: o perfil coberto pela linha Ryujin.",
+            refId: "anex-art-14m-2-65",
+            whyPt:
+              "Chapa e suportes comem PH2×65: a caixa de dez cobre o perfil pela linha Ryujin.",
           },
         ],
       },
@@ -393,7 +386,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     taglinePt:
       "Em estudo: acesso difícil, extração de precisão e hex ultra-curto para bancada, eletrónica e equipamento compacto.",
     status: "lab",
-    seedDemand: { likes: 74, favorites: 28, reservations: 0, units: 0, momentum: 35 },
     capabilitiesPt: ["Acesso difícil", "Extração M1-M2,6", "Hex H2.5-H6"],
     imageRefId: "anex-6102-t",
     leadRefId: "anex-6102-t",
@@ -444,7 +436,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "reserving",
     targetPriceEur: { min: 29, max: 39 },
     targetMoq: 150,
-    seedDemand: { likes: 240, favorites: 183, reservations: 91, units: 147, momentum: 95 },
     capabilitiesPt: ["PH2 · 65 mm", "Impact Cr-Mo-V", "Reposição ×10"],
     imageRefId: "anex-art-14m-2-65",
     leadRefId: "anex-art-14m-2-65",
@@ -459,10 +450,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
             whyPt: "A caixa de 10 é a unidade de reposição de quem aperta PH2 o dia todo.",
           },
           {
-            refId: "anex-ryujin-artm5-01",
-            whyPt: "65/85/110 mm cobrem chapa, perfil fundo e acesso intermédio.",
-          },
-          {
             refId: "anex-ryujin-slim",
             whyPt: "A dupla ponta slim entra no furo embutido onde o bit normal fica pelo caminho.",
           },
@@ -473,6 +460,7 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         ],
         pendingPt: [
           "PH1 de impacto, perfil prioritário em negociação com a ANEX. Entra no pack assim que a referência impact-ready for confirmada.",
+          "Alcance: extensões AEH de 100/150 mm à parte, em vez de bits de 85/110 mm.",
         ],
       },
     ],
@@ -494,7 +482,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "negotiating",
     targetPriceEur: { min: 25, max: 35 },
     targetMoq: 80,
-    seedDemand: { likes: 118, favorites: 52, reservations: 34, units: 41, momentum: 58 },
     capabilitiesPt: ["T8H-T40H", "Módulo único", "Low-profile"],
     imageRefId: "vessel-tx11",
     leadRefId: "vessel-tx11",
@@ -528,7 +515,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "negotiating",
     targetPriceEur: { min: 19, max: 29 },
     targetMoq: 80,
-    seedDemand: { likes: 97, favorites: 41, reservations: 27, units: 33, momentum: 44 },
     capabilitiesPt: ["H2.5-H8", "Bits ultra-curtos", "Offset manual"],
     imageRefId: "vessel-tdbs22",
     leadRefId: "vessel-tdbs22",
@@ -564,7 +550,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "negotiating",
     targetPriceEur: { min: 15, max: 25 },
     targetMoq: 100,
-    seedDemand: { likes: 156, favorites: 63, reservations: 44, units: 58, momentum: 72 },
     capabilitiesPt: ["Trava mecânica", "Bits 1/4″", "Compatível 397"],
     imageRefId: "anex-397-h",
     leadRefId: "anex-397-h",
@@ -599,7 +584,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "reserving",
     targetPriceEur: { min: 19, max: 29 },
     targetMoq: 120,
-    seedDemand: { likes: 102, favorites: 44, reservations: 31, units: 39, momentum: 51 },
     capabilitiesPt: ["+100 mm", "Impact ready", "Neji-catch"],
     imageRefId: "anex-aeh-100",
     leadRefId: "anex-aeh-100",
@@ -635,7 +619,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     status: "reserving",
     targetPriceEur: { min: 17, max: 24 },
     targetMoq: 100,
-    seedDemand: { likes: 88, favorites: 36, reservations: 22, units: 27, momentum: 40 },
     capabilitiesPt: ["Stop ~0,5 mm", "PH2 ×65", "Pladur"],
     imageRefId: "anex-abs-2065",
     leadRefId: "anex-abs-2065",
@@ -673,7 +656,6 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     taglinePt:
       "Em estudo: o caminho Black → Diamond para quem aperta em inox, latão, alumínio e plástico.",
     status: "lab",
-    seedDemand: { likes: 66, favorites: 24, reservations: 0, units: 0, momentum: 29 },
     capabilitiesPt: ["Diamond Ryujin", "Sem íman", "Anti cam-out"],
     imageRefId: "anex-adrs-2065",
     leadRefId: "anex-adrs-2065",
@@ -730,10 +712,10 @@ export function targetPriceLabel(system: RejendariSystem): string | null {
   return `€${system.targetPriceEur.min}-${system.targetPriceEur.max}`;
 }
 
-/** Estatística de drop: estado confirmado quando as unidades atingem o MOQ. */
+/** Estatística de drop: estado confirmado quando as unidades reais atingem o MOQ. */
 export function dropUnlocked(system: RejendariSystem, realUnits = 0): boolean {
   if (!system.targetMoq) return false;
-  return system.seedDemand.units + realUnits >= system.targetMoq;
+  return realUnits >= system.targetMoq;
 }
 
 export type CommunityDemand = {
@@ -742,23 +724,27 @@ export type CommunityDemand = {
   almostUnlocked: RejendariSystem[];
 };
 
-/** Procura da comunidade, seed + reservas reais, ordenações editoriais. */
+/** Procura da comunidade: dados 100% reais. Sem dados reais, as listas vêm vazias
+ * e a UI mostra o estado "sê o primeiro" — nunca números inflados. */
 export function communityDemand(
   realUnitsBySystem: Record<string, number> = {},
+  realLikesBySystem: Record<string, number> = {},
   limit = 3,
 ): CommunityDemand {
   const reservable = REJENDARI_SYSTEMS.filter(isReservable);
-  const unitsOf = (system: RejendariSystem) =>
-    system.seedDemand.units + (realUnitsBySystem[system.id] ?? 0);
+  const unitsOf = (system: RejendariSystem) => realUnitsBySystem[system.id] ?? 0;
+  const likesOf = (system: RejendariSystem) => realLikesBySystem[system.id] ?? 0;
 
-  const mostWanted = [...reservable].sort((a, b) => unitsOf(b) - unitsOf(a)).slice(0, limit);
+  const withDemand = reservable.filter((system) => unitsOf(system) > 0 || likesOf(system) > 0);
 
-  const fastestGrowing = [...reservable]
-    .sort((a, b) => b.seedDemand.momentum - a.seedDemand.momentum)
-    .slice(0, limit);
+  const mostWanted = [...withDemand].sort((a, b) => unitsOf(b) - unitsOf(a)).slice(0, limit);
+
+  const fastestGrowing = [...withDemand].sort((a, b) => likesOf(b) - likesOf(a)).slice(0, limit);
 
   const almostUnlocked = reservable
-    .filter((system) => system.targetMoq && unitsOf(system) < system.targetMoq)
+    .filter(
+      (system) => system.targetMoq && unitsOf(system) > 0 && unitsOf(system) < system.targetMoq,
+    )
     .sort((a, b) => {
       const ra = unitsOf(a) / (a.targetMoq ?? 1);
       const rb = unitsOf(b) / (b.targetMoq ?? 1);

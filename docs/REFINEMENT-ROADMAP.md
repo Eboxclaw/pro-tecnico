@@ -51,6 +51,19 @@ verificados com correções aplicadas (a correção liga sempre à evidência).
 - Malas por profissão: cross bit utilization (cada bit serve 397, impacto e Zyklop) e
   contagem mínima; peças sem marca em vitrina (busca polos, fita isoladora, escadote,
   martelo) entram como EM SOURCING, nunca como referência falsa.
+- Bits: só impacto e diamond-impact, em ~65 mm; o alcance vem das extensões
+  (AEH-100/150, ALHP-100/300), não de comprimentos 85/110. Três cadeias separadas:
+  NORMAL (Zyklop → 8784 → Rapidaptor → bits), IMPACTO (máquina → holder → bits) e
+  VDE (ferramenta completa isolada → bits AZM; nunca acessórios normais no meio).
+- Porta-bits VDE dedicado (ANEX/VESSEL): não existe no catálogo — pesquisa futura
+  para um sistema VDE japonês modular.
+- Contadores do site: só procura real de contas (likes/favoritos/reservas).
+  Like e favorito exigem login; sem dados, o site mostra "sê o primeiro".
+- Reservas capturam preço justo (€) e motivo: alimenta o admin (mín/média/máx por
+  system) e a negociação com o fabricante.
+- Entrar por email: SMTP incluído do Supabase tem limite de 2-4 emails/hora —
+  para produção ligar SMTP próprio (Resend, 100/dia grátis) e garantir o
+  template OTP com {{ .Token }}.
 - Investigação de bundles combinados de outras lojas (conjuntos fechados de marca única
   tipo DLX/Wera-Knipex): as malas REJENDARI ganham por cross-brand + cross-bit.
 - Sons de oficina: Web Audio sintetizado (bonk de abertura, catraca no like, ting no

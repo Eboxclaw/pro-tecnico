@@ -62,13 +62,13 @@
   --card-foreground: oklch(0.205 0.012 65);
   --popover: oklch(0.985 0.008 82);
   --popover-foreground: oklch(0.205 0.012 65);
-  --primary: oklch(0.535 0.155 36);
+  --primary: oklch(0.55 0.14 300);
   --primary-foreground: oklch(0.985 0.008 82);
   --secondary: oklch(0.875 0.015 82);
   --secondary-foreground: oklch(0.225 0.012 65);
   --muted: oklch(0.89 0.012 82);
   --muted-foreground: oklch(0.48 0.014 65);
-  --accent: oklch(0.535 0.155 36);
+  --accent: oklch(0.55 0.14 300);
   --accent-foreground: oklch(0.985 0.008 82);
   --destructive: oklch(0.56 0.19 25);
   --destructive-foreground: oklch(0.98 0.008 82);
@@ -76,20 +76,20 @@
   --success-foreground: oklch(0.98 0.008 82);
   --border: oklch(0.855 0.009 75);
   --input: oklch(0.66 0.012 75);
-  --ring: oklch(0.61 0.19 36);
-  --chart-1: oklch(0.61 0.19 36);
+  --ring: oklch(0.64 0.16 300);
+  --chart-1: oklch(0.64 0.16 300);
   --chart-2: oklch(0.41 0.03 235);
   --chart-3: oklch(0.53 0.12 145);
   --chart-4: oklch(0.67 0.11 88);
   --chart-5: oklch(0.48 0.09 300);
   --sidebar: oklch(0.89 0.013 82);
   --sidebar-foreground: oklch(0.205 0.012 65);
-  --sidebar-primary: oklch(0.61 0.19 36);
+  --sidebar-primary: oklch(0.64 0.16 300);
   --sidebar-primary-foreground: oklch(0.985 0.008 82);
   --sidebar-accent: oklch(0.855 0.016 82);
   --sidebar-accent-foreground: oklch(0.205 0.012 65);
   --sidebar-border: oklch(0.75 0.018 75);
-  --sidebar-ring: oklch(0.61 0.19 36);
+  --sidebar-ring: oklch(0.64 0.16 300);
   --paper: oklch(0.968 0.01 82);
   --paper-ink: oklch(0.205 0.012 65);
   --charcoal: oklch(0.205 0.012 65);
@@ -105,13 +105,13 @@
   --card-foreground: oklch(0.965 0.007 80);
   --popover: oklch(0.185 0.009 255);
   --popover-foreground: oklch(0.965 0.007 80);
-  --primary: oklch(0.665 0.205 38);
-  --primary-foreground: oklch(0.985 0.008 80);
+  --primary: oklch(0.64 0.16 300);
+  --primary-foreground: oklch(0.985 0.008 300);
   --secondary: oklch(0.235 0.012 255);
   --secondary-foreground: oklch(0.95 0.006 80);
   --muted: oklch(0.225 0.009 255);
   --muted-foreground: oklch(0.69 0.015 80);
-  --accent: oklch(0.665 0.205 38);
+  --accent: oklch(0.64 0.16 300);
   --accent-foreground: oklch(0.985 0.008 80);
   --destructive: oklch(0.6 0.21 25);
   --destructive-foreground: oklch(0.98 0.003 264);
@@ -119,10 +119,10 @@
   --success-foreground: oklch(0.16 0.008 264);
   --border: oklch(0.30 0.012 255);
   --input: oklch(0.30 0.012 255);
-  --ring: oklch(0.665 0.205 38);
+  --ring: oklch(0.64 0.16 300);
   --sidebar: oklch(0.16 0.009 255);
   --sidebar-foreground: oklch(0.965 0.007 80);
-  --sidebar-primary: oklch(0.665 0.205 38);
+  --sidebar-primary: oklch(0.64 0.16 300);
   --sidebar-primary-foreground: oklch(0.985 0.008 80);
   --sidebar-accent: oklch(0.235 0.012 255);
   --sidebar-accent-foreground: oklch(0.95 0.006 80);
@@ -801,14 +801,14 @@
 .artisan-eyebrow { display: flex; align-items: center; gap: 14px; font: 9px var(--font-mono); letter-spacing: .19em; color: #e0dfd6; }
 .artisan-eyebrow span { width: 26px; height: 1px; background: #c58262; }
 .artisan-hero h1 { margin-top: 36px; font-family: var(--font-display); font-size: clamp(3.5rem, 7.2vw, 7rem); font-weight: 400; letter-spacing: -.065em; line-height: .99; }
-.artisan-hero h1 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; color: #dfbba4; letter-spacing: -.06em; }
+.artisan-hero h1 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; color: #c7c2ec; letter-spacing: -.06em; }
 .artisan-hero-description { margin-top: 32px; font-size: 15px; line-height: 1.8; color: #e0e0d8; }
-.artisan-hero-motto { margin-top: 18px; padding-left: 16px; border-left: 2px solid #dfbba4; font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .18em; color: #cfc9ba; }
+.artisan-hero-motto { margin-top: 18px; padding-left: 16px; border-left: 2px solid #c7c2ec; font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .18em; color: #cfc9ba; }
 .artisan-hero-actions { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 36px; }
 .artisan-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; padding: 17px 22px; border: 1px solid #ffffff60; font-size: 12px; transition: background .2s, color .2s; }
 .artisan-link:hover { background: #ffffff18; }
 .artisan-link-solid { background: #f2eee5; border-color: #f2eee5; color: #20251f; }
-.artisan-link-solid:hover { background: #dfbba4; color: #20251f; }
+.artisan-link-solid:hover { background: #c7c2ec; color: #20251f; }
 .artisan-hero-foot { display: flex; justify-content: space-between; gap: 24px; padding: 22px 5.5%; border-top: 1px solid #ffffff25; font: 9px var(--font-mono); letter-spacing: .1em; }
 .artisan-photo-credit { display: flex; align-items: center; gap: 10px; color: #d6d7ce; }
 .artisan-introduction { max-width: 1440px; margin: auto; padding: 96px 5.5%; display: grid; grid-template-columns: .6fr 1.3fr 1fr; gap: 48px; align-items: start; }
@@ -968,7 +968,7 @@ html, body { overflow-x: clip; }
 /* Marca d'água 選 nos packs de assinatura */
 .smart-pack-card { position: relative; overflow: hidden; }
 .smart-pack-card > header { position: relative; }
-.smart-pack-card[data-signature="true"] > header::after { content: "選"; position: absolute; right: 10px; top: 2px; font-size: 84px; line-height: 1; color: #d65a4110; pointer-events: none; }
+.smart-pack-card[data-signature="true"] > header::after { content: "選"; position: absolute; right: 10px; top: 2px; font-size: 84px; line-height: 1; color: #7a6ff010; pointer-events: none; }
 
 /* ── Palco topo: 397 + bits Diamond (sprint 8) ────────────────── */
 .artisan-hero-stage { position: absolute; z-index: 1; top: 50%; right: 4%; transform: translateY(-50%); width: min(38%, 460px); display: grid; place-items: center; }
@@ -991,7 +991,7 @@ html, body { overflow-x: clip; }
   --ink-950: #1b1917;       /* o único preto de banda */
   --ink-900: #23211d;       /* cartão sobre banda escura */
   --ink-rule: rgba(250, 248, 242, 0.14);
-  --primary-bright: #d65a41;
+  --primary-bright: #7a6ff0;
   --plate: #eee8dc;         /* o único prato de imagem */
   --shadow-1: 0 10px 28px rgba(35, 30, 25, 0.1);
   --shadow-2: 0 18px 48px rgba(35, 30, 25, 0.16);
@@ -999,7 +999,7 @@ html, body { overflow-x: clip; }
 
 /* Variante fantasma do link artisan — usada em produção, agora definida. */
 .artisan-link-ghost { display: inline-flex; align-items: center; border: 1px solid rgba(250,248,242,.28); padding: 15px 22px; font-size: 14px; font-weight: 600; color: #faf8f2; transition: border-color .25s ease, background .25s ease; }
-.artisan-link-ghost:hover { border-color: #d65a41; background: #d65a4114; }
+.artisan-link-ghost:hover { border-color: #7a6ff0; background: #7a6ff014; }
 
 /* ── Sprint 10 · o prato único: multiply em claro, photo-print em escuro ── */
 /* Um prato (--plate) para toda a imagem de produto. O multiply derrete o fundo

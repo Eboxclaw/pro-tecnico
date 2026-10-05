@@ -3147,6 +3147,172 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.tajima-tool.com",
     compareGroup: "medicao",
   },
+  {
+    id: "anex-azm-2100",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "AZM-2100",
+    officialCode: "AZM-2100",
+    namePt: "Bit isolado PH2×100 · 1000 V",
+    japanese: "絶縁ビット",
+    task: "precision",
+    categoryPt: "1000 V · PH2 longo",
+    notePt:
+      "O PH2 isolado de 100 mm: alcance extra sob certificação para quadros fundos, com ponta magnética e blindagem em policarbonato.",
+    badge: "1000 V",
+    specPt: "PH2 × 100 mm · 1000 V · ensaio 10 kV · hex. 6,35 mm · magnético",
+    storyPt:
+      "Quando o borne está no fundo do quadro, os 100 mm isolados chegam onde a chave curta desiste: certificação IEC completa com o alcance que o trabalho pede.",
+    evidencePt:
+      "Dados oficiais ANEX: AZM-2100 bit isolado +2×100 mm, 1000 V com ensaio dielétrico de 10.000 V, aço cromo-molibdénio-vanádio, seção isolada em policarbonato, haste hexagonal 6,35 mm magnética, 30 g, fabrico no Japão, JAN 4962485432034. Recomendado aparafusadora até 7,2 V.",
+    referenceUrl: "https://www.anextool.co.jp/item/azm-2100/",
+    limitationsPt:
+      "Não é bit de impacto. A ANEX recomenda aparafusadoras até 7,2 V; a indicação 1000 V refere-se ao bit, não ao conjunto com máquina.",
+    manufacturedIn: "Japão",
+    compareGroup: "vde-bits",
+  },
+  {
+    id: "anex-azm-2150",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "AZM-2150",
+    officialCode: "AZM-2150",
+    namePt: "Bit isolado PH2×150 · 1000 V",
+    japanese: "絶縁ビット",
+    task: "precision",
+    categoryPt: "1000 V · PH2 longo",
+    notePt:
+      "O PH2 isolado de 150 mm: o alcance VDE por comprimento isolado, em vez de extensões normais que quebrariam a cadeia de certificação.",
+    badge: "1000 V",
+    specPt: "PH2 × 150 mm · 1000 V · hex. 6,35 mm",
+    storyPt:
+      "A regra da casa no lado elétrico: o alcance VDE compra-se em comprimento isolado, nunca em extensão normal. Os 150 mm chegam aos disjuntores do fundo do quadro.",
+    evidencePt:
+      "ANEX AZM-2150: bit isolado +2×150 mm, 1000 V, fabrico no Japão. Confirmado nas listagens oficiais e de revendedores especializados (supremehandtools.co.uk: AZM-2150 +2×150 mm com blindagem isolante).",
+    referenceUrl: "https://www.anextool.co.jp/item/azm-2150/",
+    limitationsPt:
+      "Não é bit de impacto; confirmar a máquina máxima junto do fabricante antes de uso com aparafusadora.",
+    manufacturedIn: "Japão",
+    compareGroup: "vde-bits",
+  },
+  {
+    id: "anex-aeh-150",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "AEH-150",
+    officialCode: "AEH-150",
+    namePt: "Extensão de bits 150 mm",
+    japanese: "エクステンションホルダー 150mm",
+    task: "fastening",
+    categoryPt: "Porta-bits · extensão",
+    badge: "+150 mm",
+    notePt:
+      "A extensão média da família: 150 mm para perfis fundos e montagens onde os 100 mm ficam curtos, com as mesmas especificações 18 V/40 V.",
+    specPt: "150 mm · hex. 6,35 mm · 18 V (40 V também)",
+    storyPt:
+      "Entre os 100 mm e os 300 mm há o meio-termo que resolve a maioria: 150 mm de alcance com retenção correta, sem mudar de máquina.",
+    evidencePt:
+      "Página oficial ANEX: AEH-150 extensão 150 mm, hexagonal 6,35 mm, especificada para 18 V com compatibilidade 40 V.",
+    referenceUrl: "https://www.anextool.co.jp/item/aeh-150/",
+    limitationsPt:
+      "A ANEX especifica 18 V com compatibilidade 40 V; requer hastes de comprimento total igual ou superior a 33 mm para retenção correta.",
+    manufacturedIn: "Japão",
+    compareGroup: "bit-holders",
+  },
+  {
+    id: "anex-alhp-100",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "ALHP-100",
+    officialCode: "ALHP-100",
+    namePt: "Porta-bits heavy-duty 100 mm · 40/18 V",
+    japanese: "強靭ロングビットホルダー",
+    task: "fastening",
+    categoryPt: "Porta-bits · heavy-duty",
+    badge: "Heavy-duty",
+    notePt:
+      "O porta-bits pesado da ANEX: aceita bits, socket bits, serras de coroa e brocas, com veio substituível se um bit partir lá dentro. Especificado para impacto 40 V/18 V.",
+    specPt: "100 mm · hex. 6,35 mm · impacto 40/18 V · veio substituível · inclui bit +2×65",
+    storyPt:
+      "O ALHP é o holder que aguenta o regime: impacto em bit, em socket e em serra de coroa, com o veio que se troca quando o trabalho o castiga. É o alcance pesado da mala.",
+    evidencePt:
+      "Página oficial ANEX: ALHP-100 porta-bits longo heavy-duty 100 mm, 40 V (18 V também), bit lateral ≥33 mm e haste ≥53 mm, veio substituível, aceita bits 6,35 mm, socket bits, serras de coroa e brocas, corpo em aço carbono/liga, inclui bit duplo +2×65, JAN 4962485278564.",
+    referenceUrl: "https://www.anextool.co.jp/item/alhp-100/",
+    limitationsPt:
+      "Confirmar o binário da máquina antes de uso prolongado em impacto; o veio substituível existe precisamente para o desgaste de impacto.",
+    manufacturedIn: "Japão",
+    compareGroup: "bit-holders",
+    featured: true,
+  },
+  {
+    id: "anex-alhp-300",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "ALHP-300",
+    officialCode: "ALHP-300",
+    namePt: "Porta-bits heavy-duty 300 mm · 40/18 V",
+    japanese: "強靭ロングビットホルダー",
+    task: "fastening",
+    categoryPt: "Porta-bits · heavy-duty",
+    badge: "Alcance 300 mm",
+    notePt:
+      "O alcance extremo da série heavy-duty: 300 mm para trabalhos profundos, com a mesma robustez de impacto e veio substituível.",
+    specPt: "300 mm · hex. 6,35 mm · impacto 40/18 V · veio substituível",
+    storyPt:
+      "Trezentos milímetros de alcance com impacto: colunas, structures e tectos falsos deixam de exigir desmontagem. O fim da linha de alcance da mala.",
+    evidencePt:
+      "Série oficial ANEX ALHP (página do ALHP-100): variantes 100 mm, 150 mm e 300 mm, especificadas para 40 V/18 V, uso em impacto, com veio substituível.",
+    referenceUrl: "https://www.anextool.co.jp/item/alhp-300/",
+    limitationsPt:
+      "Comprimentos longos ampliam o binário perdido em ângulo: trabalhar com a máquina alinhada sempre que possível.",
+    manufacturedIn: "Japão",
+    compareGroup: "bit-holders",
+  },
+  {
+    id: "vessel-ibhbm-150",
+    brand: "VESSEL",
+    brandSlug: "VESSEL",
+    model: "IBHBM150P1",
+    officialCode: "IBHBM150P1",
+    namePt: "Impact Ball Torsion Holder · 150 mm",
+    japanese: "インパクトボールホルダー",
+    task: "fastening",
+    categoryPt: "Porta-bits · impacto",
+    badge: "Impacto",
+    notePt:
+      "Porta-bits de impacto com absorção de choque: anel C + íman forte seguram o bit, o mecanismo ball torsion protege o bit e a máquina no regime de impacto.",
+    specPt: "150 mm · hex. 6,35 mm · impacto · anel C + íman · absorção de choque",
+    storyPt:
+      "O holder que desmultiplica o impacto: a bola absorve o choque, o bit dura mais e a máquina sofre menos. Cento e cinquenta milímetros de alcance com retenção dupla.",
+    evidencePt:
+      "VESSEL IBHBM150P1 Impact Ball Torsion Bit Holder: 150 mm no total, engaste hexagonal 1/4″ para impacto 18 V, retenção por anel C e força magnética, design de absorção de choque para proteger bit e máquina, fabrico no Japão (especificação de revendedores especializados e listagens de produto).",
+    referenceUrl: "https://www.vessel.co.jp",
+    compareGroup: "bit-holders",
+  },
+  {
+    id: "wera-889-4-1",
+    brand: "WERA",
+    brandSlug: "WERA",
+    model: "889/4/1",
+    officialCode: "05022840001",
+    namePt: "Rapidaptor universal · porta-bits 75 mm",
+    japanese: "ラピダプター",
+    task: "fastening",
+    categoryPt: "Porta-bits · Rapidaptor",
+    notePt:
+      "O Rapidaptor de 75 mm: a base manual do sistema, com engate rápido e manga de rotação livre para guiar a mão.",
+    badge: "Rapidaptor",
+    specPt: "1/4″ hex × 75 mm · engate rápido · manga de rotação livre",
+    storyPt:
+      "Setenta e cinco milímetros de alavanca entre a mão e o parafuso: o Rapidaptor de 75 mm é o base manual do sistema quando o trabalho é longo e o acesso não é estreito.",
+    evidencePt:
+      "Página oficial Wera: 889/4/1 Rapidaptor universal bit holder 75 mm (artigo 05022840001), engate rápido para bits 1/4″ DIN ISO 1173, manga de rotação livre para guiado.",
+    referenceUrl: "https://www.wera.de/en/tools/889-4-1-rapidaptor-universal-bit-holder",
+    imageUrl: "https://www.wera.de/prodimg/832x832/889_4_1.webp",
+    imageAlt: "Wera 889/4/1 — Rapidaptor universal 75 mm",
+    imageSourceLabel: "Imagem oficial Wera",
+    compareGroup: "bit-holders",
+  },
 ];
 
 export const REFERENCE_QUEUE = [

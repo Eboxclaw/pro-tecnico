@@ -27,7 +27,7 @@ const catalogIds = new Set(CURATED_TOOL_REFERENCES.map((tool) => tool.id));
 const systemIds = new Set(REJENDARI_SYSTEMS.map((system) => system.id));
 
 test("systems: ids únicos, kind e status válidos", () => {
-  assert.ok(REJENDARI_SYSTEMS.length >= 10, "o catálogo seed tem systems e módulos suficientes");
+  assert.ok(REJENDARI_SYSTEMS.length >= 10, "o catálogo tem systems e módulos suficientes");
   const ids = REJENDARI_SYSTEMS.map((system) => system.id);
   assert.equal(new Set(ids).size, ids.length, "ids de system repetidos");
 
@@ -39,7 +39,7 @@ test("systems: ids únicos, kind e status válidos", () => {
     assert.ok(system.taglinePt.length > 20, `${system.id}: tagline demasiado curta`);
     assert.ok(
       system.capabilitiesPt.length >= 2 && system.capabilitiesPt.length <= 3,
-      `${system.id}: cards levam 2–3 capacidades, não uma parede de texto`,
+      `${system.id}: cards levam 2-3 capacidades, não uma parede de texto`,
     );
     assert.ok(
       Array.isArray(system.modules) && system.modules.length > 0,
@@ -99,11 +99,6 @@ test("systems: featured drop existe e está em reservas com MOQ e target price",
   assert.equal(featured.status, "reserving");
   assert.ok(featured.targetMoq && featured.targetMoq >= 50, "featured drop sem MOQ realista");
   assert.ok(featured.targetPriceEur && featured.targetPriceEur.min < featured.targetPriceEur.max);
-  // 64/100 do documento direcional: reservas abaixo do MOQ, drop ainda não confirmado
-  assert.ok(
-    featured.seedDemand.units < featured.targetMoq,
-    "seed do featured não pode já estar desbloqueado",
-  );
 });
 
 test("systems: lab não vende, reservável só em reserving/negotiating", () => {
@@ -111,8 +106,6 @@ test("systems: lab não vende, reservável só em reserving/negotiating", () => 
     if (system.status === "lab") {
       assert.equal(system.targetPriceEur, undefined, `${system.id}: lab não tem preço`);
       assert.equal(system.targetMoq, undefined, `${system.id}: lab não tem MOQ`);
-      assert.equal(system.seedDemand.reservations, 0, `${system.id}: lab não tem reservas seed`);
-      assert.equal(system.seedDemand.units, 0, `${system.id}: lab não tem unidades seed`);
       assert.equal(isReservable(system), false, `${system.id}: lab não é reservável`);
     }
     if (system.status === "reserving" || system.status === "negotiating") {
@@ -127,33 +120,16 @@ test("systems: lab não vende, reservável só em reserving/negotiating", () => 
   assert.ok(labSystems().length >= 2, "o Lab precisa de pelo menos duas combinações em estudo");
 });
 
-test("systems: procura seed coerente (unidades abaixo do MOQ em reservas abertas)", () => {
+test("systems: sem números seed — os contadores exibidos são só procura real", () => {
   for (const system of REJENDARI_SYSTEMS) {
-    const { likes, favorites, reservations, units, momentum } = system.seedDemand;
-    for (const [field, value] of Object.entries({
-      likes,
-      favorites,
-      reservations,
-      units,
-      momentum,
-    })) {
-      assert.ok(
-        Number.isInteger(value) && value >= 0,
-        `${system.id}: seedDemand.${field} inválido`,
-      );
-    }
-    assert.ok(momentum <= 100, `${system.id}: momentum é um índice 0–100`);
-    assert.ok(
-      favorites >= reservations,
-      `${system.id}: favoritos < reservas não faz sentido no seed`,
+    assert.equal(
+      system.seedDemand,
+      undefined,
+      `${system.id}: seedDemand foi removido; contadores são só reais`,
     );
-    if (system.targetMoq && system.status !== "available") {
-      assert.ok(
-        units < system.targetMoq,
-        `${system.id}: unidades seed (${units}) ≥ MOQ (${system.targetMoq}) mostraria DROP CONFIRMED com status aberto`,
-      );
-    }
   }
+  // sem interações reais, o que se exibe é zero em tudo
+  assert.ok(REJENDARI_SYSTEMS.length > 0);
 });
 
 test("systems: perfect matches apontam para systems existentes", () => {
@@ -169,22 +145,24 @@ test("systems: perfect matches apontam para systems existentes", () => {
   }
 });
 
-test("systems: helpers e procura da comunidade", () => {
+test("systems: helpers e procura da comunidade (dados 100% reais)", () => {
   assert.ok(systemsOfKind("system").length >= 4, "faltam systems");
   assert.ok(systemsOfKind("module").length >= 5, "faltam módulos");
   assert.ok(systemById("397-system"), "397-system é o flagship template");
   assert.ok(systemById("desconhecido") === undefined);
 
-  const community = communityDemand();
-  assert.equal(community.mostWanted.length, 3);
-  assert.equal(community.fastestGrowing.length, 3);
-  assert.ok(community.almostUnlocked.length > 0);
+  // sem procura real: listas vazias — a UI mostra o estado "sê o primeiro"
+  const vazia = communityDemand();
+  assert.equal(vazia.mostWanted.length, 0);
+  assert.equal(vazia.fastestGrowing.length, 0);
+  assert.equal(vazia.almostUnlocked.length, 0);
 
-  // Procura real soma-se ao seed na ordenação
-  const withReal = communityDemand({ "ph-work-pack": 5 });
-  assert.equal(
-    withReal.mostWanted[0].id,
-    "ph-work-pack",
-    "reservas reais devem subir o system no ranking",
+  // com procura real: ordenação por unidades e likes reais
+  const comReal = communityDemand(
+    { "ph-work-pack": 40, "397-lock-system": 10 },
+    { "397-lock-system": 30 },
   );
+  assert.equal(comReal.mostWanted[0].id, "ph-work-pack");
+  assert.equal(comReal.fastestGrowing[0].id, "397-lock-system");
+  assert.equal(comReal.almostUnlocked[0].id, "ph-work-pack");
 });

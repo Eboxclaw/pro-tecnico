@@ -175,7 +175,7 @@ function ReferencePage() {
         <section className="paper-panel border-y border-black/10">
           <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.7fr_1.3fr] lg:py-16">
             <div>
-              <p className="jp-label text-[#b54530]">
+              <p className="jp-label text-[#6f5fd0]">
                 {brand.jp} · {brand.name}
               </p>
               <h2 className="mt-3 font-display text-3xl font-semibold leading-[1] tracking-[-0.05em]">
@@ -187,7 +187,7 @@ function ReferencePage() {
               <Link
                 to="/marcas"
                 search={{ brand: tool.brandSlug }}
-                className="mt-5 inline-flex items-center text-xs font-medium text-[#b54530]"
+                className="mt-5 inline-flex items-center text-xs font-medium text-[#6f5fd0]"
               >
                 Conhecer a marca e todos os produtos
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />

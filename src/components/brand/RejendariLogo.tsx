@@ -19,8 +19,8 @@ export function RejendariMark({
         d="M18 47V17h15.2c8.1 0 13.2 4.1 13.2 10.6 0 4.8-2.8 8.3-7.5 9.8L47 47h-8.7l-7.1-8.8H26V47h-8Zm8-23.8v8.5h6.4c3.8 0 5.9-1.5 5.9-4.3 0-2.8-2.1-4.2-5.9-4.2H26Z"
         fill={letter}
       />
-      <rect x="44" y="12" width="8" height="8" fill="#b54530" />
-      <rect x="12" y="51" width="19" height="2" fill="#b54530" opacity=".92" />
+      <rect x="44" y="12" width="8" height="8" fill="#6f5fd0" />
+      <rect x="12" y="51" width="19" height="2" fill="#6f5fd0" opacity=".92" />
     </svg>
   );
 }
@@ -48,7 +48,7 @@ export function RejendariLogo({
           >
             REJENDARI
           </span>
-          <span className="mt-0.5 h-1.5 w-1.5 shrink-0 bg-[#b54530]" aria-hidden="true" />
+          <span className="mt-0.5 h-1.5 w-1.5 shrink-0 bg-[#6f5fd0]" aria-hidden="true" />
         </div>
         {showTagline && (
           <div

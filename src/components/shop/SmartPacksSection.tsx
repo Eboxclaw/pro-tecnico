@@ -105,7 +105,7 @@ export function SmartPacksSection() {
         <RejendariSeal className="absolute -top-2 right-6 z-10 hidden h-20 w-20 opacity-80 lg:grid" />
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
-            <p className="jp-label text-[#d65a41]">
+            <p className="jp-label text-[#7a6ff0]">
               <PackageCheck className="mr-2 inline h-3.5 w-3.5" />
               一日の仕事 · packs para o dia de trabalho
             </p>
@@ -124,7 +124,7 @@ export function SmartPacksSection() {
         <ol className="mt-10 grid gap-px border border-white/12 bg-white/12 sm:grid-cols-2 lg:grid-cols-4">
           {JOURNEY.map((step, index) => (
             <li key={step.label} className="bg-[#23211d] p-5">
-              <p className="jp-label text-[#d65a41]">{step.jp}</p>
+              <p className="jp-label text-[#7a6ff0]">{step.jp}</p>
               <p className="mt-2 text-sm font-medium">
                 {index + 1}. {step.label}
               </p>

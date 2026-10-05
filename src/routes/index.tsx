@@ -132,7 +132,7 @@ function Index() {
         </span>
 
         <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-4 pb-24 pt-32 sm:px-6 lg:px-10">
-          <p className="hero-rise hero-rise-1 jp-label text-[#dfbba4]">
+          <p className="hero-rise hero-rise-1 jp-label text-[#c7c2ec]">
             選定工具 · curated tool systems
           </p>
           <h1 className="hero-rise hero-rise-2 mt-6 max-w-5xl font-display text-6xl font-semibold leading-[0.9] tracking-[-0.06em] text-white sm:text-8xl">
@@ -140,7 +140,7 @@ function Index() {
           </h1>
           <p className="hero-rise hero-rise-3 mt-6 max-w-2xl font-display text-2xl font-semibold leading-[1.1] tracking-[-0.04em] text-white/90 sm:text-3xl">
             Encontramos ferramentas excecionais.
-            <span className="text-[#dfbba4]"> Criamos sistemas mais inteligentes.</span>
+            <span className="text-[#c7c2ec]"> Criamos sistemas mais inteligentes.</span>
           </p>
           <p className="hero-rise hero-rise-3 mt-5 max-w-xl text-sm leading-7 text-white/55">
             Não fabricamos. Não colamos autocolantes. Descobrimos, escolhemos, combinamos, e a
@@ -153,7 +153,7 @@ function Index() {
                 <span className="absolute right-3 top-3 font-mono text-[9px] text-white/25">
                   0{index + 1}
                 </span>
-                <span className="font-display text-3xl text-[#dfbba4]">{step.kanji}</span>
+                <span className="font-display text-3xl text-[#c7c2ec]">{step.kanji}</span>
                 <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-white/40">
                   {step.jp}
                 </p>
@@ -167,7 +167,7 @@ function Index() {
             <Button
               asChild
               size="lg"
-              className="rounded-none bg-white text-[#1b1917] hover:bg-[#dfbba4]"
+              className="rounded-none bg-white text-[#1b1917] hover:bg-[#c7c2ec]"
             >
               <a href="#systems">
                 Ver os systems
@@ -178,7 +178,7 @@ function Index() {
               asChild
               size="lg"
               variant="outline"
-              className="rounded-none border-white/25 bg-transparent text-white hover:border-[#dfbba4] hover:bg-transparent hover:text-[#dfbba4]"
+              className="rounded-none border-white/25 bg-transparent text-white hover:border-[#c7c2ec] hover:bg-transparent hover:text-[#c7c2ec]"
             >
               <a href="#anex">Começar pela ANEX</a>
             </Button>
@@ -192,7 +192,7 @@ function Index() {
           <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-white/30">
             scroll
           </span>
-          <span className="hero-scroll-hint block h-10 w-px bg-[#dfbba4]/60" />
+          <span className="hero-scroll-hint block h-10 w-px bg-[#c7c2ec]/60" />
         </div>
       </section>
 
@@ -235,7 +235,7 @@ function Index() {
                 key={rule}
                 className="bg-[#1b1917] p-5 font-mono text-[9px] uppercase leading-5 tracking-[0.15em] text-white/60"
               >
-                <span className="mb-2 block text-[#dfbba4]">{rule}</span>
+                <span className="mb-2 block text-[#c7c2ec]">{rule}</span>
                 {note}
               </p>
             ))}
@@ -249,7 +249,7 @@ function Index() {
           <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
             <div className="flex flex-col gap-3 pb-8 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="jp-label text-[#dfbba4]">
+                <p className="jp-label text-[#c7c2ec]">
                   <span className="mr-3 font-mono">02</span>注目のドロップ · featured drop
                 </p>
                 <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -265,7 +265,7 @@ function Index() {
             <div className="mt-6 flex justify-end">
               <Link
                 to="/packs"
-                className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-[#dfbba4]"
+                className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-[#c7c2ec]"
               >
                 Todos os systems e módulos
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -485,7 +485,7 @@ function Index() {
         <div className="paper-panel grid gap-7 p-7 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <div className="flex items-center gap-3">
-              <ShieldCheck className="h-5 w-5 text-[#b54530]" />
+              <ShieldCheck className="h-5 w-5 text-[#6f5fd0]" />
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
                 相談 · kit à medida
               </p>

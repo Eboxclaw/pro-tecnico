@@ -63,11 +63,11 @@ export function IntroSplash() {
         選り抜きの道具を、より賢く。
       </span>
 
-      <p className="intro-line h-px w-24 origin-left bg-[#dfbba4]/70" aria-hidden="true" />
+      <p className="intro-line h-px w-24 origin-left bg-[#c7c2ec]/70" aria-hidden="true" />
 
       <div className="intro-mark relative mt-8 grid place-items-center">
         <span
-          className="intro-kanji font-display text-7xl font-semibold text-[#dfbba4] sm:text-8xl"
+          className="intro-kanji font-display text-7xl font-semibold text-[#c7c2ec] sm:text-8xl"
           aria-hidden="true"
         >
           選
@@ -83,7 +83,7 @@ export function IntroSplash() {
       <p className="intro-sub mt-4 font-mono text-[9px] uppercase tracking-[0.42em] text-white/45">
         JAPAN FIRST · PORTUGAL READY
       </p>
-      <p className="mt-6 font-mono text-[9px] uppercase tracking-[0.24em] text-[#dfbba4]/80">
+      <p className="mt-6 font-mono text-[9px] uppercase tracking-[0.24em] text-[#c7c2ec]/80">
         clica em qualquer lado para entrar com som de fundo
       </p>
 

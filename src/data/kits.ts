@@ -33,13 +33,13 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "Um sistema, uma escola: o mesmo perfil PH2 em três comprimentos, consumíveis à altura do impacto e o offset que aperta onde a máquina não cabe.",
     dayPt:
-      "O dia de bits é o dia mais repetido do ofício: o PH2 entra e sai vinte vezes antes do almoço. Este kit reúne a resposta ANEX de ponta a ponta, bits feitos na mesma casa de Sanjō, do aço ao fio: o conjunto Ryujin de cinco PH2 em 65, 85 e 110 mm cobre qualquer profundidade; os Black Ryujin +2 aguentam o regime da impacto 18 V; o Diamond slim reduz o atrito no aperto longo; e o sistema de cinto, Quick Holders e neji-catch, mantém a ponta certa na mão e o parafuso preso à ponta. Quando o corpo da máquina bloqueia o caminho, o offset AOA-17 aperta por ela.",
+      "O dia de bits é o dia mais repetido do ofício: o PH2 entra e sai vinte vezes antes do almoço. Este kit reúne a resposta ANEX de ponta a ponta, bits feitos na mesma casa de Sanjō, do aço ao fio: a caixa Black Ryujin de dez PH2×65 cobre o perfil e a extensão de 150 mm cobre a profundidade; os Diamond aguentam o aperto longo sem escorregar; o Diamond slim reduz o atrito no aperto longo; e o sistema de cinto, Quick Holders e neji-catch, mantém a ponta certa na mão e o parafuso preso à ponta. Quando o corpo da máquina bloqueia o caminho, o offset AOA-17 aperta por ela.",
     pieces: [
       {
-        id: "anex-ryujin-artm5-01",
+        id: "anex-aeh-150",
         quantity: 1,
         whyPt:
-          "Cinco PH2 em 65/85/110 mm, Cr-Mo-V made in Japan: o mesmo perfil a qualquer profundidade, para 18 V e 40 V.",
+          "Extensão de 150 mm para 18 V/40 V: o alcance dos 110 mm sem levar bits que não se usam.",
       },
       {
         id: "anex-abrs5-2065",
@@ -322,11 +322,6 @@ export const REJENDARI_KITS: RejendariKit[] = [
         id: "wera-889-4-1-k",
         quantity: 1,
         whyPt: "O lock que dá o nome ao system: bit travado por pressão, troca a uma mão.",
-      },
-      {
-        id: "anex-ryujin-artm5-01",
-        quantity: 1,
-        whyPt: "PH2 em 65/85/110 mm: todos os alcances num só pack de cinco.",
       },
       {
         id: "anex-adrs-2065",

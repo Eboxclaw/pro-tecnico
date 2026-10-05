@@ -10,10 +10,11 @@ import {
   type RejendariSystem,
 } from "@/data/systems";
 import {
+  likeSystemAuthenticated,
   mergedDemand,
   useFavoriteToggle,
-  useLikedSystems,
   useMyFavorites,
+  useMyLikes,
   useReserveSystem,
   useSystemDemand,
 } from "@/lib/systems-demand";
@@ -78,7 +79,7 @@ export function DemandProgress({
         <div
           className={cn(
             "h-full transition-[width] duration-700",
-            dropUnlockedSafe(units, moq) ? "bg-[#dfbba4]" : "bg-primary",
+            dropUnlockedSafe(units, moq) ? "bg-[#c7c2ec]" : "bg-primary",
           )}
           style={{ width: `${pct}%` }}
         />
@@ -106,7 +107,7 @@ export function ImpactReadySeal({ dark = false }: { dark?: boolean }) {
     <span
       className={cn(
         "inline-flex items-center gap-1.5 border px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]",
-        dark ? "border-[#dfbba4]/50 text-[#dfbba4]" : "border-primary/35 text-primary",
+        dark ? "border-[#c7c2ec]/50 text-[#c7c2ec]" : "border-primary/35 text-primary",
       )}
     >
       IMPACT READY
@@ -122,7 +123,7 @@ function useAuthRedirect() {
   };
 }
 
-/** ♡ like (anónimo, um por visitante) · ★ favorito (requer conta). */
+/** ♡ like e ★ favorito: ambos exigem conta — contadores só com dados reais. */
 export function LikeFavoriteButtons({
   system,
   dark = false,
@@ -132,13 +133,17 @@ export function LikeFavoriteButtons({
   dark?: boolean;
   className?: string;
 }) {
-  const { likedIds, like } = useLikedSystems();
+  const { data: likes = [] } = useMyLikes();
   const { data: favorites = [] } = useMyFavorites();
   const { data: demandBySystem } = useSystemDemand();
   const demand = mergedDemand(system, demandBySystem?.[system.id]);
   const favorite = useFavoriteToggle(system, { onAuthRequired: useAuthRedirect() });
-  const liked = likedIds.includes(system.id);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const liked = likes.includes(system.id);
   const favorited = favorites.includes(system.id);
+
+  const goAuth = () => navigate({ to: "/auth", search: { redirect: location.href } });
 
   const base = dark
     ? "border-white/20 text-white/70 hover:border-white/45 hover:text-white"
@@ -153,13 +158,17 @@ export function LikeFavoriteButtons({
             toast.info("Já mostraste interesse neste system.");
             return;
           }
-          like(system);
+          void likeSystemAuthenticated(system.id)
+            .then(({ needsAuth }) => {
+              if (needsAuth) goAuth();
+            })
+            .catch((error: Error) => toast.error(error.message));
         }}
         aria-pressed={liked}
         className={cn(
           "inline-flex items-center gap-1.5 border px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors",
           base,
-          liked && (dark ? "border-[#dfbba4]/60 text-[#dfbba4]" : "border-primary/50 text-primary"),
+          liked && (dark ? "border-[#c7c2ec]/60 text-[#c7c2ec]" : "border-primary/50 text-primary"),
         )}
         title="Gosto desta ideia"
       >
@@ -175,7 +184,7 @@ export function LikeFavoriteButtons({
           "inline-flex items-center gap-1.5 border px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors",
           base,
           favorited &&
-            (dark ? "border-[#dfbba4]/60 text-[#dfbba4]" : "border-primary/50 text-primary"),
+            (dark ? "border-[#c7c2ec]/60 text-[#c7c2ec]" : "border-primary/50 text-primary"),
         )}
         title="Guardar e acompanhar (requer conta)"
       >
@@ -203,6 +212,8 @@ export function ReserveDialog({
   const [profession, setProfession] = useState<ReserveProfessionLogic>("");
   const [region, setRegion] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const [fairPrice, setFairPrice] = useState("");
+  const [reason, setReason] = useState("");
   const reserve = useReserveSystem(system, { onAuthRequired: useAuthRedirect() });
   const price = targetPriceLabel(system);
 
@@ -219,6 +230,8 @@ export function ReserveDialog({
         profession: profession || null,
         region: region.trim() || null,
         postalCode: postalCode.trim() || null,
+        fairPrice: fairPrice.trim() ? Number(fairPrice.replace(",", ".")) : null,
+        reason: reason.trim() || null,
       },
       {
         onSuccess: (reserved) => {
@@ -343,6 +356,48 @@ export function ReserveDialog({
               />
             </div>
           </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <Label
+                htmlFor="reserve-fair-price"
+                className="font-mono text-[10px] uppercase tracking-[0.14em]"
+              >
+                Preço justo <span className="text-muted-foreground">(opcional)</span>
+              </Label>
+              <Input
+                id="reserve-fair-price"
+                value={fairPrice}
+                onChange={(event) => setFairPrice(event.target.value)}
+                inputMode="decimal"
+                maxLength={8}
+                placeholder="€ 0-1000"
+                className="mt-2 rounded-none bg-background"
+              />
+              <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.11em] text-muted-foreground">
+                Quanto pagarias por este pacote?
+              </p>
+            </div>
+            <div>
+              <Label
+                htmlFor="reserve-reason"
+                className="font-mono text-[10px] uppercase tracking-[0.14em]"
+              >
+                Porque o queres <span className="text-muted-foreground">(opcional)</span>
+              </Label>
+              <Input
+                id="reserve-reason"
+                value={reason}
+                onChange={(event) => setReason(event.target.value)}
+                maxLength={280}
+                placeholder="ex.: montagem de quadros em obra"
+                className="mt-2 rounded-none bg-background"
+              />
+              <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.11em] text-muted-foreground">
+                Orienta o preço final e a negociação.
+              </p>
+            </div>
+          </div>
           <p className="font-mono text-[9px] uppercase leading-4 tracking-[0.12em] text-muted-foreground">
             Região e código postal servem só para estimar procura por zona. NIF e dados de faturação
             ficam para o pagamento, tratados pelo provider.
@@ -411,7 +466,7 @@ export function ReserveButton({
         className={cn(
           "rounded-none",
           dark
-            ? "bg-white text-[#1b1917] hover:bg-[#dfbba4]"
+            ? "bg-white text-[#1b1917] hover:bg-[#c7c2ec]"
             : "bg-black text-white hover:bg-black/85",
           className,
         )}

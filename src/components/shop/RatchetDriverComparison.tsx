@@ -16,7 +16,7 @@ export function RatchetDriverComparison() {
       <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
-            <p className="jp-label text-[#d65a41]">比較 · comparar antes de comprar</p>
+            <p className="jp-label text-[#7a6ff0]">比較 · comparar antes de comprar</p>
             <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
               Três formas japonesas de fazer um ratchet screwdriver.
             </h2>
@@ -49,7 +49,7 @@ export function RatchetDriverComparison() {
                     ) : null}
                   </div>
                   <div className="mt-5">
-                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#d65a41]">
+                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#7a6ff0]">
                       {tool.brand}
                     </p>
                     <h3 className="mt-2 font-display text-2xl font-semibold">{tool.model}</h3>
@@ -89,21 +89,21 @@ export function RatchetDriverComparison() {
 
         <div className="mt-6 grid gap-px border border-white/12 bg-white/12 sm:grid-cols-3">
           <div className="bg-[#23211d] p-5">
-            <p className="jp-label text-[#d65a41]">ANEX 397-D</p>
+            <p className="jp-label text-[#7a6ff0]">ANEX 397-D</p>
             <p className="mt-2 text-sm font-medium">Quick Ball 72</p>
             <p className="mt-2 text-xs leading-5 text-white/52">
               72 dentes, 25 N·m e formato Ball Grip para avanço rápido e aperto final forte.
             </p>
           </div>
           <div className="bg-[#23211d] p-5">
-            <p className="jp-label text-[#d65a41]">VESSEL TD-6816MG</p>
+            <p className="jp-label text-[#7a6ff0]">VESSEL TD-6816MG</p>
             <p className="mt-2 text-sm font-medium">Punho clássico + 16 bits</p>
             <p className="mt-2 text-xs leading-5 text-white/52">
               72 dentes, 5° e cobertura PH, SL, HEX e Torx tamper-resistant.
             </p>
           </div>
           <div className="bg-[#23211d] p-5">
-            <p className="jp-label text-[#d65a41]">ANEX 431</p>
+            <p className="jp-label text-[#7a6ff0]">ANEX 431</p>
             <p className="mt-2 text-sm font-medium">Bits guardados no corpo</p>
             <p className="mt-2 text-xs leading-5 text-white/52">
               Roquete de vaivém com 10 dentes e bits Neji-Pita (+2/−6) guardados no próprio punho.

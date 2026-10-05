@@ -1,4 +1,3 @@
-import { ProductImage } from "@/components/shop/ProductImage";
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
@@ -11,9 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
+import { ProductImage } from "@/components/shop/ProductImage";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 
-/** Só caminhos internos, evita redirects abertos para o exterior. */
+/** Só caminhos internos — evita redirects abertos para o exterior. */
 function safeRedirect(value: unknown): string | undefined {
   if (typeof value !== "string") return undefined;
   if (!value.startsWith("/") || value.startsWith("//")) return undefined;
@@ -26,12 +26,12 @@ export const Route = createFileRoute("/auth")({
   }),
   head: () => ({
     meta: [
-      { title: "Conta, REJENDARI" },
+      { title: "Conta — REJENDARI" },
       {
         name: "description",
         content: "Entra ou cria uma conta REJENDARI para encomendas, pontos e convites.",
       },
-      { property: "og:title", content: "Conta, REJENDARI" },
+      { property: "og:title", content: "Conta — REJENDARI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
@@ -40,6 +40,7 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
+const CODE_LENGTH = 6;
 const CODE_RESEND_SECONDS = 45;
 
 function AuthPage() {
@@ -49,12 +50,14 @@ function AuthPage() {
   const destination = redirect ?? "/conta";
   const [step, setStep] = useState<"email" | "code">("email");
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
+  const [digits, setDigits] = useState<string[]>(Array(CODE_LENGTH).fill(""));
+  const boxes = useRef<Array<HTMLInputElement | null>>([]);
   const [busy, setBusy] = useState(false);
   const [resentIn, setResentIn] = useState(0);
   const resendTimer = useRef<number | undefined>(undefined);
   const supabaseReady = isSupabaseConfigured();
   const referralCode = getRememberedReferralCode();
+  const code = digits.join("");
 
   useEffect(() => {
     return () => window.clearInterval(resendTimer.current);
@@ -74,7 +77,6 @@ function AuthPage() {
     }, 1000);
   };
 
-  /** Traduz os erros da Supabase sem expor detalhes técnicos. */
   const errorText = (message: string) => {
     const m = message.toLowerCase();
     if (m.includes("rate limit") || m.includes("too many")) return t("auth.errorRateLimited");
@@ -85,9 +87,9 @@ function AuthPage() {
     return t("auth.error");
   };
 
-  /** Passo 1: pede o código, cria conta nova se o email ainda não existir. */
-  async function requestCode(event: React.FormEvent) {
-    event.preventDefault();
+  /** Passo 1: pede o código — cria conta nova se o email ainda não existir. */
+  async function requestCode(event?: React.FormEvent) {
+    event?.preventDefault();
     if (!supabaseReady) {
       toast.error("Serviço de conta indisponível. Tenta mais tarde.");
       return;
@@ -105,19 +107,20 @@ function AuthPage() {
       toast.error(errorText(error.message));
       return;
     }
+    setDigits(Array(CODE_LENGTH).fill(""));
     setStep("code");
     startResendCooldown();
     toast.success(`Código enviado para ${email}.`);
   }
 
   /** Passo 2: confirma o código de 6 dígitos. */
-  async function confirmCode(event: React.FormEvent) {
-    event.preventDefault();
-    if (!supabaseReady) return;
+  async function confirmCode(event?: React.FormEvent) {
+    event?.preventDefault();
+    if (!supabaseReady || code.length < CODE_LENGTH) return;
     setBusy(true);
     const { error } = await supabase.auth.verifyOtp({
       email,
-      token: code.replace(/\s/g, ""),
+      token: code,
       type: "email",
     });
     setBusy(false);
@@ -128,6 +131,28 @@ function AuthPage() {
     toast.success(t("auth.accountReady"));
     router.history.push(destination);
   }
+
+  /** Escreve/cola nos separadores: só dígitos, auto-avanço e auto-confirmação. */
+  const setDigit = (index: number, raw: string) => {
+    const clean = raw.replace(/\D/g, "");
+    if (!clean) {
+      setDigits((prev) => prev.map((d, i) => (i === index ? "" : d)));
+      return;
+    }
+    setDigits((prev) => {
+      const next = [...prev];
+      for (let i = 0; i < clean.length && index + i < CODE_LENGTH; i++) {
+        next[index + i] = clean[i];
+      }
+      const filled = next.join("");
+      if (filled.length === CODE_LENGTH && !filled.includes("")) {
+        void confirmCode();
+      }
+      return next;
+    });
+    const nextBox = boxes.current[Math.min(index + clean.length, CODE_LENGTH - 1)];
+    nextBox?.focus();
+  };
 
   async function google() {
     if (!supabaseReady) {
@@ -189,12 +214,17 @@ function AuthPage() {
           <p className="jp-label text-primary">
             {step === "email" ? "ログイン · entrar" : "確認 · código de acesso"}
           </p>
+          {step === "code" && (
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+              passo 2 de 2
+            </p>
+          )}
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.05em]">
             {step === "email" ? t("auth.title") : "Escreve o código"}
           </h2>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             {step === "email"
-              ? "Entra com Google ou recebe um código de seis dígitos no email, sem password."
+              ? "Entra com Google ou recebe um código de seis dígitos no email — sem password."
               : `Enviámos um código de seis dígitos para ${email}. Vale pouco tempo, escreve-o aqui.`}
           </p>
 
@@ -252,21 +282,43 @@ function AuthPage() {
             <>
               <form onSubmit={confirmCode} className="mt-8 space-y-5">
                 <div>
-                  <Label htmlFor="code">Código de 6 dígitos</Label>
-                  <Input
-                    id="code"
-                    inputMode="numeric"
-                    autoComplete="one-time-code"
-                    autoFocus
-                    required
-                    minLength={6}
-                    value={code}
-                    onChange={(event) => setCode(event.target.value)}
-                    placeholder="000000"
-                    className="mt-2 rounded-none bg-background text-center font-mono text-2xl tracking-[0.6em]"
-                  />
+                  <Label htmlFor="otp-0">Código de 6 dígitos</Label>
+                  <div className="mt-2 flex gap-2">
+                    {digits.map((digit, index) => (
+                      <Input
+                        key={index}
+                        ref={(el) => {
+                          boxes.current[index] = el;
+                        }}
+                        id={index === 0 ? "otp-0" : `otp-${index}`}
+                        inputMode="numeric"
+                        autoComplete={index === 0 ? "one-time-code" : "off"}
+                        autoFocus={index === 0}
+                        maxLength={1}
+                        required
+                        value={digit}
+                        onChange={(event) => setDigit(index, event.target.value)}
+                        onKeyDown={(event) => {
+                          if (event.key === "Backspace" && !digits[index] && index > 0) {
+                            boxes.current[index - 1]?.focus();
+                          }
+                        }}
+                        onPaste={(event) => {
+                          event.preventDefault();
+                          setDigit(0, event.clipboardData.getData("text"));
+                        }}
+                        aria-label={`Dígito ${index + 1}`}
+                        className="h-14 rounded-none bg-background text-center font-mono text-2xl"
+                      />
+                    ))}
+                  </div>
                 </div>
-                <Button type="submit" className="w-full rounded-none" size="lg" disabled={busy}>
+                <Button
+                  type="submit"
+                  className="w-full rounded-none"
+                  size="lg"
+                  disabled={busy || code.length < CODE_LENGTH}
+                >
                   {busy ? "A confirmar…" : "Entrar"}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -277,7 +329,7 @@ function AuthPage() {
                   type="button"
                   onClick={() => {
                     setStep("email");
-                    setCode("");
+                    setDigits(Array(CODE_LENGTH).fill(""));
                   }}
                   className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
@@ -286,7 +338,7 @@ function AuthPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={requestCode}
+                  onClick={() => requestCode()}
                   disabled={resentIn > 0 || busy}
                   className="font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:text-primary disabled:opacity-50"
                 >
@@ -295,7 +347,8 @@ function AuthPage() {
               </div>
 
               <p className="mt-6 border border-border bg-background px-4 py-3 text-xs leading-5 text-muted-foreground">
-                Se o email trouxer um link em vez de código, abre o link, entra na mesma.
+                Não chegou nada? Espera um minuto: os emails podem demorar ou cair no spam. Se o
+                email trouxer um link em vez de código, abre o link, entra na mesma.
               </p>
             </>
           )}
