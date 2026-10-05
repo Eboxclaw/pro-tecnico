@@ -67,7 +67,7 @@ export function SystemMontage({
               )}
             >
               <span
-                className={cn("font-display text-3xl", dark ? "text-white/25" : "text-black/25")}
+                className={cn("font-display text-3xl", dark ? "text-white/25" : "text-foreground/25")}
               >
                 {cell.role === "LOCK" ? "錠" : "？"}
               </span>

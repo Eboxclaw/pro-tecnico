@@ -25,13 +25,13 @@ export function AnexDuoHero() {
             className="h-full w-full object-contain p-6 mix-blend-multiply transition-transform duration-500 group-hover:-rotate-2 motion-reduce:transition-none"
           />
           <span className="anex-duo-tag">
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
               397-D
             </span>
             <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">
               Quick Ball 72
             </span>
-            <span className="mt-1 block text-[10px] leading-4 text-black/55">
+            <span className="mt-1 block text-[10px] leading-4 text-foreground/65">
               72 dentes. Um gesto contínuo.
             </span>
           </span>
@@ -47,13 +47,13 @@ export function AnexDuoHero() {
             className="h-full w-full object-contain p-3 mix-blend-multiply transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
           />
           <span className="anex-duo-tag">
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-black/45">
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
               AOA-17S1
             </span>
             <span className="mt-1 block font-display text-sm font-semibold text-[#1b1917]">
               Offset 17 mm
             </span>
-            <span className="mt-1 block text-[10px] leading-4 text-black/55">
+            <span className="mt-1 block text-[10px] leading-4 text-foreground/65">
               O cotovelo além do obstáculo.
             </span>
           </span>

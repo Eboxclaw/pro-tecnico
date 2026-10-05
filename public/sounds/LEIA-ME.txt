@@ -1,8 +1,0 @@
-SONS DO SITE (em uso):
-
-1. ambiente-loop.mp3 -> loop de fundo "Wrench Locking": arranca com o
-   loading e acompanha as compras (12% de volume, loop contínuo)
-2. fail-faaah.mp3    -> o faaah em erros 404/boundary e produto esgotado
-
-Não há outros sons: likes, favoritos e reservas ficaram silenciosos.
-Para trocar o loop, substitui ambiente-loop.mp3 por outro mp3.

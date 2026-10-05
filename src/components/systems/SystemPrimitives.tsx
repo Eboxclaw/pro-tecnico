@@ -41,9 +41,9 @@ export function SystemStatusBadge({
   const styles: Record<RejendariSystem["status"], string> = {
     available: "bg-[#1b1917] text-white",
     reserving: "bg-primary text-white",
-    negotiating: "bg-black/12 text-foreground",
+    negotiating: "bg-white/10 text-foreground",
     lab: "border border-dashed border-border text-muted-foreground",
-    sold_through: "bg-black/12 text-muted-foreground",
+    sold_through: "bg-white/10 text-muted-foreground",
   };
   return (
     <span

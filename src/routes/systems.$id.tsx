@@ -335,10 +335,10 @@ function SystemPage() {
           <div className="flex items-start gap-4">
             <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-[#a87c1f]" />
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                 best component wins
               </p>
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-black/65">
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-foreground/75">
                 Este system não é “tudo de uma marca”. O ANEX 397 está aqui porque é a ferramenta
                 certa; os bits Ryujin porque queremos o aço; a Wera Zyklop porque queremos aquele
                 roquete. Outro fabricante entra apenas quando resolve claramente melhor outra

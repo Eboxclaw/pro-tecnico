@@ -24,7 +24,7 @@ export function BitKitRail() {
             As peças pequenas que fazem uma ferramenta trabalhar como três.
           </h2>
         </div>
-        <p className="max-w-xl text-sm leading-6 text-black/58">
+        <p className="max-w-xl text-sm leading-6 text-foreground/70">
           Bits ultra-curtos, dual-side 1000 V, conversão 3/8″ ↔ 1/4″, adapters de socket e controlo
           de torque. São estas peças que permitem reduzir ferramentas duplicadas no kit.
         </p>
@@ -54,10 +54,10 @@ export function BitKitRail() {
                 <p className="mt-1 font-display text-base font-semibold leading-tight">
                   {tool.model}
                 </p>
-                <p className="mt-2 line-clamp-2 text-[11px] leading-4 text-black/55">
+                <p className="mt-2 line-clamp-2 text-[11px] leading-4 text-foreground/65">
                   {tool.namePt}
                 </p>
-                <p className="mt-auto pt-3 font-mono text-[8px] uppercase tracking-[0.1em] text-black/42">
+                <p className="mt-auto pt-3 font-mono text-[8px] uppercase tracking-[0.1em] text-foreground/42">
                   {tool.specPt}
                 </p>
               </div>

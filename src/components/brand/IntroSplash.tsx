@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { startAmbient } from "@/lib/sounds";
 
 /**
  * Cortina de abertura REJENDARI: uma vez por sessão, salta com um clique e
@@ -22,8 +21,6 @@ export function IntroSplash() {
     // não repete o splash
     if (phase === "playing") {
       window.sessionStorage.setItem(SESSION_KEY, "1");
-      // o loop ambiente arranca com o loading (no 1.º load espera pelo clique)
-      void startAmbient();
     }
   }, [phase]);
 
@@ -84,7 +81,7 @@ export function IntroSplash() {
         JAPAN FIRST · PORTUGAL READY
       </p>
       <p className="mt-6 font-mono text-[9px] uppercase tracking-[0.24em] text-[#e3c27c]/80">
-        clica em qualquer lado para entrar com som de fundo
+        clica em qualquer lado para entrar
       </p>
 
       <span

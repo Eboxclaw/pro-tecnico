@@ -29,7 +29,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
           variant={compact ? "secondary" : "outline"}
           className={
             compact
-              ? "h-8 rounded-none border border-black/10 bg-white/88 px-2.5 text-[10px] text-black shadow-sm backdrop-blur hover:bg-white"
+              ? "h-8 rounded-none border border-black/10 bg-white/88 px-2.5 text-[10px] text-foreground shadow-sm backdrop-blur hover:bg-white"
               : "rounded-none"
           }
         >
@@ -38,7 +38,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-h-[92vh] w-[min(96vw,980px)] max-w-[980px] gap-0 overflow-y-auto rounded-none border-black/15 bg-[#f5f0e5] p-0 text-[#1b1917] shadow-[0_28px_90px_rgba(31,26,21,0.32)]">
+      <DialogContent className="max-h-[92vh] w-[min(96vw,980px)] max-w-[980px] gap-0 overflow-y-auto rounded-none border-white/15 bg-card p-0 text-[#1b1917] shadow-[0_28px_90px_rgba(31,26,21,0.32)]">
         <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
           <SmartProductVisual
             tool={tool}
@@ -53,14 +53,14 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
               <DialogTitle className="mt-3 font-display text-3xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-4xl">
                 {tool.namePt}
               </DialogTitle>
-              <DialogDescription className="mt-4 text-sm leading-6 text-black/58">
+              <DialogDescription className="mt-4 text-sm leading-6 text-foreground/70">
                 {tool.storyPt ?? tool.notePt}
               </DialogDescription>
             </div>
 
             {tool.specPt && (
               <div className="mt-6 border-y border-black/10 py-4">
-                <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-black/65">
+                <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-foreground/75">
                   {tool.specPt}
                 </p>
               </div>
@@ -69,13 +69,13 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
             {tool.evidencePt && (
               <div className="mt-5 flex gap-3 border border-black/10 bg-white/55 p-4">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#a87c1f]" />
-                <p className="text-xs leading-5 text-black/52">{tool.evidencePt}</p>
+                <p className="text-xs leading-5 text-foreground/52">{tool.evidencePt}</p>
               </div>
             )}
 
             {similar.length > 0 && (
               <div className="mt-6">
-                <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-black/40">
+                <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-muted-foreground/80">
                   Comparar também
                 </p>
                 <div className="mt-3 divide-y divide-black/10 border-y border-black/10">
@@ -90,7 +90,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
                         <span className="block font-medium">
                           {item.brand} · {item.model}
                         </span>
-                        <span className="mt-0.5 block text-[10px] text-black/45">
+                        <span className="mt-0.5 block text-[10px] text-muted-foreground">
                           {item.namePt}
                         </span>
                       </span>
@@ -110,7 +110,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
               </Button>
               <Button
                 variant="outline"
-                className="rounded-none border-black/15 bg-transparent"
+                className="rounded-none border-white/15 bg-transparent"
                 asChild
               >
                 <a href={tool.referenceUrl} target="_blank" rel="noreferrer">

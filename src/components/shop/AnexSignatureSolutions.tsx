@@ -11,11 +11,11 @@ const SOLUTION_GLYPHS = ["ダイヤ", "龍靭", "球", "絶縁", "偏"] as const
 export function AnexSignatureSolutions() {
   return (
     <section
-      className="border-y border-black/10 bg-[#f5f1e9] px-4 py-14 text-[#252521] sm:px-6 lg:py-20"
+      className="border-y border-white/10 bg-card px-4 py-14 text-foreground sm:px-6 lg:py-20"
       aria-label="Cinco soluções principais ANEX"
     >
       <div className="mx-auto max-w-[1392px]">
-        <p className="anex-kicker text-[#913d29]">ANEX / OS ESSENCIAIS DA NOSSA SELEÇÃO</p>
+        <p className="anex-kicker text-primary">ANEX / OS ESSENCIAIS DA NOSSA SELEÇÃO</p>
         <div className="mb-9 mt-4 flex flex-wrap items-end justify-between gap-5">
           <h2 className="font-display text-3xl tracking-tight sm:text-5xl">
             Cinco formas de fazer melhor.
@@ -24,15 +24,15 @@ export function AnexSignatureSolutions() {
             Contacto, alcance, movimento, isolamento e acesso. Cada solução tem o seu lugar.
           </p>
         </div>
-        <div className="grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-px overflow-hidden border border-black/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-5">
           {ANEX_SIGNATURE_SOLUTIONS.map((solution, index) => (
             <Link
               key={solution.id}
               to="/referencia/$id"
               params={{ id: solution.id }}
-              className="group flex flex-col bg-[#faf8f3] p-6 transition-colors hover:bg-white focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#913d29] motion-reduce:transition-none"
+              className="group flex flex-col bg-card p-6 transition-colors hover:bg-surface focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary motion-reduce:transition-none"
             >
-              <span className="jp-label text-[#913d29]">{SOLUTION_GLYPHS[index] ?? "解"}</span>
+              <span className="jp-label text-primary">{SOLUTION_GLYPHS[index] ?? "解"}</span>
               <span className="mt-6 font-display text-5xl font-semibold tracking-[-0.05em] text-[#25252114]">
                 0{index + 1}
               </span>

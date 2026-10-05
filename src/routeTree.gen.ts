@@ -20,7 +20,6 @@ import { Route as MarcasRouteImport } from './routes/marcas'
 import { Route as PacksRouteImport } from './routes/packs'
 import { Route as PontosRouteImport } from './routes/pontos'
 import { Route as ShopRouteImport } from './routes/shop'
-import { Route as SonsRouteImport } from './routes/sons'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedContaRouteImport } from './routes/_authenticated/conta'
 import { Route as EncomendaIdRouteImport } from './routes/encomenda.$id'
@@ -82,11 +81,6 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SonsRoute = SonsRouteImport.update({
-  id: '/sons',
-  path: '/sons',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -129,7 +123,6 @@ export interface FileRoutesByFullPath {
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
-  '/sons': typeof SonsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/conta': typeof AuthenticatedContaRoute
   '/encomenda/$id': typeof EncomendaIdRoute
@@ -148,7 +141,6 @@ export interface FileRoutesByTo {
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
-  '/sons': typeof SonsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/conta': typeof AuthenticatedContaRoute
   '/encomenda/$id': typeof EncomendaIdRoute
@@ -169,7 +161,6 @@ export interface FileRoutesById {
   '/packs': typeof PacksRoute
   '/pontos': typeof PontosRoute
   '/shop': typeof ShopRoute
-  '/sons': typeof SonsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/conta': typeof AuthenticatedContaRoute
   '/encomenda/$id': typeof EncomendaIdRoute
@@ -190,7 +181,6 @@ export interface FileRouteTypes {
     | '/packs'
     | '/pontos'
     | '/shop'
-    | '/sons'
     | '/admin'
     | '/conta'
     | '/encomenda/$id'
@@ -209,7 +199,6 @@ export interface FileRouteTypes {
     | '/packs'
     | '/pontos'
     | '/shop'
-    | '/sons'
     | '/admin'
     | '/conta'
     | '/encomenda/$id'
@@ -229,7 +218,6 @@ export interface FileRouteTypes {
     | '/packs'
     | '/pontos'
     | '/shop'
-    | '/sons'
     | '/_authenticated/admin'
     | '/_authenticated/conta'
     | '/encomenda/$id'
@@ -250,7 +238,6 @@ export interface RootRouteChildren {
   PacksRoute: typeof PacksRoute
   PontosRoute: typeof PontosRoute
   ShopRoute: typeof ShopRoute
-  SonsRoute: typeof SonsRoute
   EncomendaIdRoute: typeof EncomendaIdRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ReferenciaIdRoute: typeof ReferenciaIdRoute
@@ -336,13 +323,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sons': {
-      id: '/sons'
-      path: '/sons'
-      fullPath: '/sons'
-      preLoaderRoute: typeof SonsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -413,7 +393,6 @@ const rootRouteChildren: RootRouteChildren = {
   PacksRoute: PacksRoute,
   PontosRoute: PontosRoute,
   ShopRoute: ShopRoute,
-  SonsRoute: SonsRoute,
   EncomendaIdRoute: EncomendaIdRoute,
   ProductHandleRoute: ProductHandleRoute,
   ReferenciaIdRoute: ReferenciaIdRoute,

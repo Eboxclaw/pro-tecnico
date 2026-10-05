@@ -59,7 +59,7 @@ export function SmartKitShowcase() {
                       className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="flex h-full items-center justify-center font-display text-3xl text-black/15">
+                    <div className="flex h-full items-center justify-center font-display text-3xl text-foreground/15">
                       {tool.brand}
                     </div>
                   )}

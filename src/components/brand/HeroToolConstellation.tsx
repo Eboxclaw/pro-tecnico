@@ -15,17 +15,17 @@ export function HeroToolConstellation() {
   );
 
   return (
-    <div className="hero-tool-constellation relative min-h-[480px] overflow-hidden border border-black/15 bg-[var(--paper)] lg:min-h-[610px]">
+    <div className="hero-tool-constellation relative min-h-[480px] overflow-hidden border border-white/15 bg-[var(--paper)] lg:min-h-[610px]">
       <JapaneseAmbientScene className="opacity-85" />
       <div className="washi-noise absolute inset-0 opacity-55" aria-hidden="true" />
       <div className="absolute left-5 top-5 z-20">
         <p className="jp-label text-primary">注目の工具 · referências em destaque</p>
-        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-black/42">
+        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-foreground/42">
           ANEX · AZM · OLFA · MAKITA, SELEÇÃO DA CASA
         </p>
       </div>
 
-      <div className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 writing-vertical font-display text-[11px] tracking-[0.22em] text-black/28 md:block">
+      <div className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 writing-vertical font-display text-[11px] tracking-[0.22em] text-foreground/28 md:block">
         厳選工具 · 選定 · 実用品
       </div>
 
@@ -52,22 +52,22 @@ export function HeroToolConstellation() {
                   <span className="mt-3 font-display text-xl font-semibold text-[#1b1917]">
                     {tool.brand}
                   </span>
-                  <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-black/45">
+                  <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
                     {tool.model}
                   </span>
                 </div>
               )}
               <div className="absolute inset-x-0 bottom-0 translate-y-[calc(100%-2.2rem)] border-t border-black/10 bg-[rgba(247,243,234,0.96)] p-3 transition-transform duration-300 group-hover:translate-y-0">
                 <div className="flex items-center justify-between gap-3">
-                  <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-black/50">
+                  <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
                     {tool.brand}
                   </span>
-                  <span className="font-display text-[10px] text-black/42">{tool.japanese}</span>
+                  <span className="font-display text-[10px] text-foreground/42">{tool.japanese}</span>
                 </div>
                 <p className="mt-1 font-display text-sm font-semibold leading-tight text-[#1b1917]">
                   {tool.model}
                 </p>
-                <p className="mt-2 text-[10px] leading-4 text-black/55">{tool.categoryPt}</p>
+                <p className="mt-2 text-[10px] leading-4 text-foreground/65">{tool.categoryPt}</p>
               </div>
             </div>
           </a>
@@ -78,7 +78,7 @@ export function HeroToolConstellation() {
         <p className="font-display text-sm font-semibold text-[#1b1917]">
           Ferramentas reais. Escolhidas para o trabalho.
         </p>
-        <p className="mt-1 max-w-xs text-[10px] leading-4 text-black/48">
+        <p className="mt-1 max-w-xs text-[10px] leading-4 text-foreground/48">
           Passa o rato pelas referências: aperto de impacto, 1000 V, grip e acesso, cinco sistemas
           escolhidos pelo trabalho.
         </p>

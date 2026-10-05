@@ -32,7 +32,7 @@ export function RejendariLogo({
   showTagline = true,
 }: LogoProps) {
   const inkClass = inverted ? "text-[#f5f0e5]" : "text-[#1b1917]";
-  const mutedClass = inverted ? "text-white/48" : "text-black/46";
+  const mutedClass = inverted ? "text-white/48" : "text-foreground/46";
 
   if (compact) {
     return <RejendariMark inverted={inverted} className={`h-10 w-10 ${className}`} />;

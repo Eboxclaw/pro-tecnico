@@ -154,7 +154,7 @@ function ProductPage() {
               ) : (
                 <div className="hatch h-64 w-64 border border-black/10" />
               )}
-              <span className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-[0.13em] text-black/40">
+              <span className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground/80">
                 Detalhe da referência
               </span>
             </div>

@@ -8,7 +8,7 @@ export function RejendariSeal({ className = "" }: { className?: string }) {
       <div className="relative text-center">
         <p className="font-mono text-[7px] uppercase tracking-[0.24em] text-primary">REJENDARI</p>
         <p className="mt-1 font-display text-lg font-bold tracking-[-0.06em]">SELECT</p>
-        <p className="mt-1 font-sans text-[9px] font-semibold tracking-[0.08em] text-black/48">
+        <p className="mt-1 font-sans text-[9px] font-semibold tracking-[0.08em] text-foreground/48">
           選定工具
         </p>
       </div>

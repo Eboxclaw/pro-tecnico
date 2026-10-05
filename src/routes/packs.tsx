@@ -367,7 +367,7 @@ function PacksPage() {
           <div>
             <div className="flex items-center gap-3">
               <ShieldCheck className="h-5 w-5 text-[#a87c1f]" />
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                 相談 · kit à medida
               </p>
             </div>
@@ -376,7 +376,7 @@ function PacksPage() {
             </h2>
           </div>
           <div>
-            <p className="text-sm leading-7 text-black/65">
+            <p className="text-sm leading-7 text-foreground/75">
               Para empresa, equipa ou profissional, podemos construir uma seleção à volta das
               ferramentas existentes. A regra é evitar redundância: um bom roquete multi-bit, um
               sistema de sockets coerente e ferramentas de acesso específicas antes de encher a mala

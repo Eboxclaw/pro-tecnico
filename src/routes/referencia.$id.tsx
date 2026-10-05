@@ -63,7 +63,7 @@ function ReferencePage() {
             </p>
           )}
           <div className="absolute left-5 top-16 z-30 border border-black/10 bg-white/88 px-3 py-2 backdrop-blur">
-            <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-black/55">
+            <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-foreground/65">
               {tool.imageSourceLabel ?? "Referência oficial"}
             </p>
           </div>
@@ -183,7 +183,7 @@ function ReferencePage() {
               </h2>
             </div>
             <div>
-              <p className="text-sm leading-7 text-black/62">{brand.story}</p>
+              <p className="text-sm leading-7 text-foreground/75">{brand.story}</p>
               <Link
                 to="/marcas"
                 search={{ brand: tool.brandSlug }}

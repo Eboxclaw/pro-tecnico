@@ -122,7 +122,7 @@ function BrandsPage() {
                     alt={`${products[0].brand} ${products[0].model}`}
                     className="aspect-[16/10] w-full object-contain p-8"
                   />
-                  <p className="px-4 pb-4 text-xs text-black/60">
+                  <p className="px-4 pb-4 text-xs text-foreground/70">
                     {products[0].model} · conhecer a referência
                     {products[0].imageCaption && (
                       <span className="mt-2 block">{products[0].imageCaption}</span>
@@ -133,8 +133,8 @@ function BrandsPage() {
               <h3 className="mt-10 max-w-2xl font-display text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-[#1b1917]">
                 {selected.headline}
               </h3>
-              <p className="mt-6 max-w-2xl text-sm leading-7 text-black/65">{selected.story}</p>
-              <p className="mt-5 max-w-2xl border-l border-[#a87c1f]/55 pl-4 text-sm leading-7 text-black/58">
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-foreground/75">{selected.story}</p>
+              <p className="mt-5 max-w-2xl border-l border-[#a87c1f]/55 pl-4 text-sm leading-7 text-foreground/70">
                 {selected.whyPt}
               </p>
 
@@ -143,7 +143,7 @@ function BrandsPage() {
                   href={selected.sourceUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-7 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-black/52 hover:text-[#a87c1f]"
+                  className="mt-7 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground/52 hover:text-[#a87c1f]"
                 >
                   {selected.sourceLabel ?? "Fonte da marca"}
                   <ExternalLink className="h-3.5 w-3.5" />

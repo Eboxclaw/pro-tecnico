@@ -73,10 +73,10 @@ export function SmartProductVisual({
       />
 
       <div className="absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-3 p-3.5 sm:p-4">
-        <span className="border border-black/10 bg-white/88 px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.16em] text-black/62 shadow-sm backdrop-blur">
+        <span className="border border-black/10 bg-white/88 px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.16em] text-foreground/75 shadow-sm backdrop-blur">
           {tool.badge}
         </span>
-        <span className="font-display text-[11px] font-semibold tracking-[0.06em] text-black/40">
+        <span className="font-display text-[11px] font-semibold tracking-[0.06em] text-muted-foreground/80">
           {tool.japanese}
         </span>
       </div>
@@ -103,26 +103,26 @@ export function SmartProductVisual({
       ) : (
         <div className="micro-grid relative z-[3] flex h-full min-h-[260px] w-full flex-col items-center justify-center p-8 text-center">
           <span className="jp-label text-primary">{tool.japanese}</span>
-          <span className="mt-4 font-display text-4xl font-semibold tracking-[-0.06em] text-black/16">
+          <span className="mt-4 font-display text-4xl font-semibold tracking-[-0.06em] text-foreground/16">
             {tool.brand}
           </span>
-          <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-black/42">
+          <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/42">
             {tool.model}
           </span>
-          <span className="mt-3 text-xs text-black/55">
+          <span className="mt-3 text-xs text-foreground/65">
             {imageFailed ? "Fotografia indisponível" : "Fotografia em preparação"}
           </span>
-          {imageFailed && <ImageOff className="mt-5 h-5 w-5 text-black/25" />}
+          {imageFailed && <ImageOff className="mt-5 h-5 w-5 text-foreground/25" />}
         </div>
       )}
 
-      <div className="pointer-events-none absolute inset-x-[16%] bottom-[9%] z-[2] h-8 rounded-[50%] bg-black/12 blur-xl" />
-      <div className="absolute bottom-3 left-3 z-20 flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.13em] text-black/45">
+      <div className="pointer-events-none absolute inset-x-[16%] bottom-[9%] z-[2] h-8 rounded-[50%] bg-white/10 blur-xl" />
+      <div className="absolute bottom-3 left-3 z-20 flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.13em] text-muted-foreground">
         <ScanLine className="h-3 w-3 text-primary" />
         <span>REF {tool.officialCode ?? tool.model}</span>
       </div>
       {tool.specPt && (
-        <span className="absolute bottom-3 right-3 z-20 max-w-[48%] truncate border border-black/10 bg-white/72 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-black/48 backdrop-blur">
+        <span className="absolute bottom-3 right-3 z-20 max-w-[48%] truncate border border-black/10 bg-white/72 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-foreground/48 backdrop-blur">
           {tool.specPt}
         </span>
       )}

@@ -199,7 +199,7 @@ function Index() {
       {/* ── 01 · SIMBOLOGIA ───────────────────────────────────── */}
       <section className="section-reveal paper-panel">
         <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
-          <div className="flex flex-col gap-4 border-b border-black/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-4 border-b border-white/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="jp-label text-primary">
                 <span className="mr-3 font-mono">01</span>基準 · o que a marca significa
@@ -211,25 +211,25 @@ function Index() {
             <RejendariSeal className="hidden lg:grid" />
           </div>
 
-          <div className="mt-10 grid gap-px border border-black/15 bg-black/15 lg:grid-cols-3">
+          <div className="mt-10 grid gap-px border border-white/15 bg-white/10 lg:grid-cols-3">
             {SYMBOLS.map((symbol, index) => (
-              <article key={symbol.kanji} className="relative bg-[#f3eee2] p-7 sm:p-9">
+              <article key={symbol.kanji} className="relative bg-card p-7 sm:p-9">
                 <span
-                  className="pointer-events-none absolute -right-2 -top-6 select-none font-display text-[7rem] font-semibold leading-none text-black/[0.06]"
+                  className="pointer-events-none absolute -right-2 -top-6 select-none font-display text-[7rem] font-semibold leading-none text-foreground/[0.06]"
                   aria-hidden="true"
                 >
                   {symbol.kanji}
                 </span>
-                <span className="font-mono text-[10px] text-black/40">0{index + 1}</span>
+                <span className="font-mono text-[10px] text-muted-foreground/80">0{index + 1}</span>
                 <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-0.03em]">
                   {symbol.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-black/62">{symbol.text}</p>
+                <p className="mt-4 text-sm leading-7 text-foreground/75">{symbol.text}</p>
               </article>
             ))}
           </div>
 
-          <div className="mt-px grid gap-px border border-black/15 bg-black/15 sm:grid-cols-3">
+          <div className="mt-px grid gap-px border border-white/15 bg-white/10 sm:grid-cols-3">
             {HOUSE_RULES.map(([rule, note]) => (
               <p
                 key={rule}
@@ -486,7 +486,7 @@ function Index() {
           <div>
             <div className="flex items-center gap-3">
               <ShieldCheck className="h-5 w-5 text-[#a87c1f]" />
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                 相談 · kit à medida
               </p>
             </div>
@@ -495,7 +495,7 @@ function Index() {
             </h2>
           </div>
           <div>
-            <p className="text-sm leading-7 text-black/65">
+            <p className="text-sm leading-7 text-foreground/75">
               Para empresa, equipa ou profissional, construímos uma seleção à volta das ferramentas
               existentes. A regra é evitar redundância: um bom roquete multi-bit, um sistema de
               sockets coerente e ferramentas de acesso específicas antes de encher a mala com

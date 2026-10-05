@@ -66,7 +66,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
             Ícone
           </span>
         )}
-        <span className="absolute right-3 top-3 z-10 font-display text-[11px] font-semibold tracking-[0.06em] text-black/45">
+        <span className="absolute right-3 top-3 z-10 font-display text-[11px] font-semibold tracking-[0.06em] text-muted-foreground">
           {japaneseTask}
         </span>
 
@@ -81,13 +81,13 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
           />
         ) : (
           <div className="micro-grid flex h-full w-full items-end p-5">
-            <span className="font-display text-5xl font-semibold tracking-[-0.08em] text-black/[0.08]">
+            <span className="font-display text-5xl font-semibold tracking-[-0.08em] text-foreground/[0.08]">
               道具
             </span>
           </div>
         )}
 
-        <div className="absolute inset-x-4 bottom-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.14em] text-black/43">
+        <div className="absolute inset-x-4 bottom-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.14em] text-foreground/43">
           <span>{originTag ? originTag.replace(/^made-in:/i, "") : "Origem na ficha"}</span>
           <span>RJD / SELEÇÃO</span>
         </div>

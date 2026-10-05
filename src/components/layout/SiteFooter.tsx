@@ -1,9 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
-import { soundEnabled, setSoundEnabled, ambientEnabled, toggleAmbient } from "@/lib/sounds";
-import { Music } from "lucide-react";
-import { useState } from "react";
-import { Volume2, VolumeX } from "lucide-react";
 import { RejendariLogo } from "@/components/brand/RejendariLogo";
 
 const JAPANESE_BRANDS = ["ANEX", "VESSEL", "MAKITA", "TAJIMA", "OLFA", "WERA", "KNIPEX", "BAHCO"];
@@ -11,8 +7,6 @@ const JAPANESE_BRANDS = ["ANEX", "VESSEL", "MAKITA", "TAJIMA", "OLFA", "WERA", "
 export function SiteFooter() {
   const t = useT();
   const year = new Date().getFullYear();
-  const [som, setSom] = useState(soundEnabled());
-  const [ambiente, setAmbiente] = useState(ambientEnabled());
 
   return (
     <footer className="border-t border-border bg-[#1b1917]">
@@ -149,36 +143,13 @@ export function SiteFooter() {
       <div className="border-t border-border/70">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 sm:px-6">
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/35">
-            sons de oficina sintetizados · volume baixo
+            REJENDARI · ferramentas originais, combinações nossas
           </p>
-          <button
-            type="button"
-            onClick={() => {
-              const next = !som;
-              setSom(next);
-              setSoundEnabled(next);
-              if (next) void toggleAmbient();
-            }}
-            className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
-            aria-pressed={som}
-          >
-            {som ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
-            som {som ? "ligado" : "desligado"}
-          </button>
-          <button
-            type="button"
-            onClick={() => setAmbiente(toggleAmbient())}
-            className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
-            aria-pressed={ambiente}
-          >
-            <Music className="h-3.5 w-3.5" />
-            ambiente {ambiente ? "ligado" : "desligado"}
-          </button>
           <Link
-            to="/sons"
+            to="/pontos"
             className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
           >
-            testar sons
+            pontos e vantagens
           </Link>
         </div>
       </div>
