@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { playBonk } from "@/lib/sounds";
+import { armIntroSound, playIntroYooo } from "@/lib/sounds";
 
 /**
  * Cortina de abertura REJENDARI: uma vez por sessão, salta com um clique e
@@ -17,10 +17,14 @@ export function IntroSplash() {
   });
 
   useEffect(() => {
+    if (phase === "playing") armIntroSound();
+  }, [phase]);
+
+  useEffect(() => {
     if (phase === "hidden") return;
     document.documentElement.style.overflow = "hidden";
     const leave = setTimeout(() => {
-      playBonk();
+      playIntroYooo();
       setPhase("leaving");
     }, 2400);
     const done = setTimeout(() => {
@@ -37,7 +41,7 @@ export function IntroSplash() {
   if (phase === "hidden") return null;
 
   const skip = () => {
-    playBonk();
+    playIntroYooo();
     window.sessionStorage.setItem(SESSION_KEY, "1");
     setPhase("hidden");
     document.documentElement.style.overflow = "";

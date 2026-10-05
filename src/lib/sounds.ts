@@ -1,12 +1,15 @@
 /**
- * Sons da casa: sintetizados na hora com Web Audio. Zero ficheiros, zero peso.
- * Fofos e discretos: volume baixo, curtos, só em momentos com significado
- * (abertura, like, favorito, reserva confirmada, erros).
- * O contexto desbloqueia no primeiro gesto do utilizador (política de autoplay).
+ * Sons da casa: o "yooo oooo bonk" japonês na abertura (sintetizado, ou o teu
+ * mp3 real se colocares o ficheiro em public/sounds/intro-yooo.mp3) e efeitos
+ * de oficina sintetizados para os momentos com significado.
+ *
+ * Tudo passa por withAudio: cria o AudioContext, espera o resume() e só depois
+ * renderiza — nenhum som se perde no primeiro clique (política de autoplay).
  * Preferência guardada em localStorage; toggle no rodapé.
  */
 
 const PREF_KEY = "rejendari:som";
+const INTRO_FILE_VARIANTS = ["/sounds/intro-yooo.mp3", "/sounds/myinstants.mp3"];
 
 export function soundEnabled(): boolean {
   try {
@@ -26,28 +29,27 @@ export function setSoundEnabled(on: boolean) {
 
 let ctx: AudioContext | null = null;
 
-function audio(): AudioContext | null {
-  if (typeof window === "undefined" || !soundEnabled()) return null;
+async function withAudio(render: (context: AudioContext, when: number) => void) {
+  if (typeof window === "undefined" || !soundEnabled()) return;
   if (!ctx) {
     const AC =
       window.AudioContext ??
       (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-    if (!AC) return null;
+    if (!AC) return;
     ctx = new AC();
   }
-  if (ctx.state === "suspended") void ctx.resume();
-  return ctx.state === "running" ? ctx : null;
+  try {
+    if (ctx.state === "suspended") await ctx.resume();
+  } catch {
+    return;
+  }
+  if (ctx.state !== "running") return;
+  render(ctx, ctx.currentTime + 0.02);
 }
 
-/** Desbloqueia o áudio no primeiro gesto (política de autoplay dos browsers). */
-if (typeof window !== "undefined") {
-  const unlock = () => {
-    audio();
-    window.removeEventListener("pointerdown", unlock, true);
-    window.removeEventListener("keydown", unlock, true);
-  };
-  window.addEventListener("pointerdown", unlock, { capture: true });
-  window.addEventListener("keydown", unlock, { capture: true });
+function logNamed(name: string) {
+  const w = window as unknown as { __rejendariSounds?: string[] };
+  w.__rejendariSounds = [...(w.__rejendariSounds ?? []), name].slice(-12);
 }
 
 function env(gain: GainNode, peak: number, seconds: number, when: number) {
@@ -68,20 +70,16 @@ function noiseBuffer(context: AudioContext, seconds: number) {
   return buffer;
 }
 
-/** Bonk quente de abertura: o kanji 選 a assentar na bancada. */
-export function playBonk() {
-  const context = audio();
-  if (!context) return;
-  const t = context.currentTime;
+function bonkAt(context: AudioContext, when: number, peak = 0.65) {
   const osc = context.createOscillator();
   const gain = context.createGain();
   osc.type = "sine";
-  osc.frequency.setValueAtTime(210, t);
-  osc.frequency.exponentialRampToValueAtTime(92, t + 0.16);
-  env(gain, 0.5, 0.3, t);
+  osc.frequency.setValueAtTime(210, when);
+  osc.frequency.exponentialRampToValueAtTime(92, when + 0.16);
+  env(gain, peak, 0.3, when);
   osc.connect(gain).connect(context.destination);
-  osc.start(t);
-  osc.stop(t + 0.32);
+  osc.start(when);
+  osc.stop(when + 0.32);
 
   const thump = context.createBufferSource();
   const filter = context.createBiquadFilter();
@@ -89,97 +87,205 @@ export function playBonk() {
   thump.buffer = noiseBuffer(context, 0.08);
   filter.type = "lowpass";
   filter.frequency.value = 420;
-  env(thumpGain, 0.28, 0.09, t);
+  env(thumpGain, peak * 0.56, 0.09, when);
   thump.connect(filter).connect(thumpGain).connect(context.destination);
-  thump.start(t);
+  thump.start(when);
+}
+
+/** O "yooo" vocal: nota com vibrato que sobe. */
+function yoooAt(
+  context: AudioContext,
+  when: number,
+  from: number,
+  to: number,
+  seconds: number,
+  peak = 0.3,
+) {
+  const osc = context.createOscillator();
+  const osc2 = context.createOscillator();
+  const filter = context.createBiquadFilter();
+  const gain = context.createGain();
+  osc.type = "sine";
+  osc2.type = "sine";
+  osc.frequency.setValueAtTime(from, when);
+  osc.frequency.linearRampToValueAtTime(to, when + seconds);
+  osc2.frequency.setValueAtTime(from * 2, when);
+  osc2.frequency.linearRampToValueAtTime(to * 2, when + seconds);
+  const vib = context.createOscillator();
+  const vibGain = context.createGain();
+  vib.frequency.value = 6.5;
+  vibGain.gain.value = from * 0.012;
+  vib.connect(vibGain).connect(osc.frequency);
+  filter.type = "lowpass";
+  filter.frequency.value = 2400;
+  env(gain, peak, seconds, when);
+  osc.connect(filter);
+  osc2.connect(filter);
+  filter.connect(gain).connect(context.destination);
+  osc.start(when);
+  osc2.start(when);
+  vib.start(when);
+  osc.stop(when + seconds + 0.05);
+  osc2.stop(when + seconds + 0.05);
+  vib.stop(when + seconds + 0.05);
+}
+
+let introBufferCache: AudioBuffer | null = null;
+
+async function introBuffer(context: AudioContext): Promise<AudioBuffer | null> {
+  if (introBufferCache) return introBufferCache;
+  for (const url of INTRO_FILE_VARIANTS) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      introBufferCache = await context.decodeAudioData(await res.arrayBuffer());
+      return introBufferCache;
+    } catch {
+      // ficheiro ausente: segue para a versão sintetizada
+    }
+  }
+  return null;
+}
+
+/** O "yooo oooo bonk" japonês na abertura. Usa o teu mp3 se existir em public/sounds/. */
+export function playIntroYooo() {
+  logNamed("intro");
+  void withAudio(async (context, when) => {
+    const buffer = await introBuffer(context);
+    if (buffer) {
+      const source = context.createBufferSource();
+      const gain = context.createGain();
+      gain.gain.value = 0.5;
+      source.buffer = buffer;
+      source.connect(gain).connect(context.destination);
+      source.start(when);
+      logNamed("intro:mp3");
+      return;
+    }
+    // sintetizado: "yooo" sobe, "ooo" responde, BONK assenta
+    yoooAt(context, when, 392, 554, 0.34);
+    yoooAt(context, when + 0.42, 330, 494, 0.3);
+    bonkAt(context, when + 0.78);
+    logNamed("intro:synth");
+  });
 }
 
 /** Catraca: três cliques curtos de engrenagem a trabalhar. */
 export function playRatchet() {
-  const context = audio();
-  if (!context) return;
-  const t = context.currentTime;
-  for (let i = 0; i < 3; i++) {
-    const when = t + i * 0.048;
-    const click = context.createBufferSource();
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    click.buffer = noiseBuffer(context, 0.02);
-    filter.type = "bandpass";
-    filter.frequency.value = 3300;
-    filter.Q.value = 6;
-    env(gain, 0.32, 0.025, when);
-    click.connect(filter).connect(gain).connect(context.destination);
-    click.start(when);
-  }
+  logNamed("ratchet");
+  void withAudio((context, when) => {
+    for (let i = 0; i < 3; i++) {
+      const clickWhen = when + i * 0.048;
+      const click = context.createBufferSource();
+      const filter = context.createBiquadFilter();
+      const gain = context.createGain();
+      click.buffer = noiseBuffer(context, 0.02);
+      filter.type = "bandpass";
+      filter.frequency.value = 3300;
+      filter.Q.value = 6;
+      env(gain, 0.42, 0.025, clickWhen);
+      click.connect(filter).connect(gain).connect(context.destination);
+      click.start(clickWhen);
+    }
+  });
 }
 
 /** Ting metálico: a estrela ★ a assentar no system. */
 export function playTing() {
-  const context = audio();
-  if (!context) return;
-  const t = context.currentTime;
-  for (const [freq, peak] of [
-    [1320, 0.22],
-    [1985, 0.09],
-  ] as const) {
-    const osc = context.createOscillator();
-    const gain = context.createGain();
-    osc.type = "triangle";
-    osc.frequency.value = freq;
-    env(gain, peak, 0.5, t);
-    osc.connect(gain).connect(context.destination);
-    osc.start(t);
-    osc.stop(t + 0.55);
-  }
+  logNamed("ting");
+  void withAudio((context, when) => {
+    for (const [freq, peak] of [
+      [1320, 0.3],
+      [1985, 0.12],
+    ] as const) {
+      const osc = context.createOscillator();
+      const gain = context.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = freq;
+      env(gain, peak, 0.5, when);
+      osc.connect(gain).connect(context.destination);
+      osc.start(when);
+      osc.stop(when + 0.55);
+    }
+  });
 }
 
 /** Thock de martelo: a reserva a ficar cravada na bancada. */
 export function playThock() {
-  const context = audio();
-  if (!context) return;
-  const t = context.currentTime;
-  const osc = context.createOscillator();
-  const gain = context.createGain();
-  osc.type = "sine";
-  osc.frequency.setValueAtTime(150, t);
-  osc.frequency.exponentialRampToValueAtTime(72, t + 0.11);
-  env(gain, 0.55, 0.16, t);
-  osc.connect(gain).connect(context.destination);
-  osc.start(t);
-  osc.stop(t + 0.18);
+  logNamed("thock");
+  void withAudio((context, when) => {
+    const osc = context.createOscillator();
+    const gain = context.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(150, when);
+    osc.frequency.exponentialRampToValueAtTime(72, when + 0.11);
+    env(gain, 0.65, 0.16, when);
+    osc.connect(gain).connect(context.destination);
+    osc.start(when);
+    osc.stop(when + 0.18);
 
-  const strike = context.createBufferSource();
-  const filter = context.createBiquadFilter();
-  const strikeGain = context.createGain();
-  strike.buffer = noiseBuffer(context, 0.05);
-  filter.type = "lowpass";
-  filter.frequency.value = 1100;
-  env(strikeGain, 0.3, 0.05, t);
-  strike.connect(filter).connect(strikeGain).connect(context.destination);
-  strike.start(t);
+    const strike = context.createBufferSource();
+    const filter = context.createBiquadFilter();
+    const strikeGain = context.createGain();
+    strike.buffer = noiseBuffer(context, 0.05);
+    filter.type = "lowpass";
+    filter.frequency.value = 1100;
+    env(strikeGain, 0.36, 0.05, when);
+    strike.connect(filter).connect(strikeGain).connect(context.destination);
+    strike.start(when);
+  });
 }
 
 /** Faahaha: o fail simpático para esgotado, erros e páginas perdidas. */
 export function playFail() {
-  const context = audio();
-  if (!context) return;
-  const t = context.currentTime;
-  for (const [start, freq, length] of [
-    [0, 233, 0.26],
-    [0.3, 174, 0.44],
-  ] as const) {
-    const osc = context.createOscillator();
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    osc.type = "sawtooth";
-    osc.frequency.setValueAtTime(freq, t + start);
-    osc.frequency.linearRampToValueAtTime(freq * 0.88, t + start + length);
-    filter.type = "lowpass";
-    filter.frequency.value = 900;
-    env(gain, 0.16, length, t + start);
-    osc.connect(filter).connect(gain).connect(context.destination);
-    osc.start(t + start);
-    osc.stop(t + start + length + 0.05);
-  }
+  logNamed("fail");
+  void withAudio((context, when) => {
+    for (const [start, freq, length] of [
+      [0, 233, 0.26],
+      [0.3, 174, 0.44],
+    ] as const) {
+      const osc = context.createOscillator();
+      const filter = context.createBiquadFilter();
+      const gain = context.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(freq, when + start);
+      osc.frequency.linearRampToValueAtTime(freq * 0.88, when + start + length);
+      filter.type = "lowpass";
+      filter.frequency.value = 900;
+      env(gain, 0.2, length, when + start);
+      osc.connect(filter).connect(gain).connect(context.destination);
+      osc.start(when + start);
+      osc.stop(when + start + length + 0.05);
+    }
+  });
+}
+
+/**
+ * A abertura com som: o primeiro gesto em qualquer lado toca o "yooo oooo bonk".
+ * O splash arma a bandeira; browsers bloqueiam áudio sem gesto, e este caminho
+ * garante que o som pedido toca dentro do próprio gesto.
+ */
+let introArmed = false;
+let introFired = false;
+
+export function armIntroSound() {
+  if (introFired) return;
+  introArmed = true;
+}
+
+function fireArmedIntro() {
+  if (!introArmed || introFired) return;
+  introArmed = false;
+  introFired = true;
+  playIntroYooo();
+}
+
+if (typeof window !== "undefined") {
+  const unlock = () => {
+    fireArmedIntro();
+    window.removeEventListener("pointerdown", unlock, true);
+    window.removeEventListener("keydown", unlock, true);
+  };
+  window.addEventListener("pointerdown", unlock, { capture: true });
+  window.addEventListener("keydown", unlock, { capture: true });
 }

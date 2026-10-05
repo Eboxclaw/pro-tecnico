@@ -10,6 +10,7 @@ import { LegendaryProductStage } from "@/components/brand/LegendaryProductStage"
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
+import { playFail } from "@/lib/sounds";
 
 export const Route = createFileRoute("/product/$handle")({
   head: () => ({
@@ -40,6 +41,16 @@ function ProductPage() {
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const failedStock = useRef(false);
+  const {
+    data: product,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
+    queryKey: ["product", handle],
+    queryFn: () => fetchProductByHandle(handle),
+  });
+
   const stock = product?.variants?.edges?.find(
     (edge: { node: { id: string } }) =>
       edge.node.id === (selectedVariantId ?? product?.variants?.edges?.[0]?.node.id),
@@ -50,15 +61,6 @@ function ProductPage() {
       playFail();
     }
   }, [stock]);
-  const {
-    data: product,
-    isLoading,
-    isError,
-    refetch,
-  } = useQuery({
-    queryKey: ["product", handle],
-    queryFn: () => fetchProductByHandle(handle),
-  });
 
   if (isLoading) {
     return (
