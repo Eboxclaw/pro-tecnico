@@ -81,12 +81,27 @@ function ambientElement(): HTMLAudioElement {
   return ambientEl;
 }
 
-/** Toca o ambiente (se ligado e o ficheiro existir). Devolve true se começou. */
+/**
+ * Toca o ambiente (se ligado e o ficheiro existir). Nunca duplica: se já está
+ * a tocar é no-op, e avisa os outros tabs (BroadcastChannel) para pausarem os
+ * deles — o loop soa uma só vez, num só tab.
+ */
+function notifyAmbient() {
+  try {
+    window.dispatchEvent(new Event("rejendari:ambient-changed"));
+  } catch {
+    // sem janela: nada a notificar
+  }
+}
+
 export async function startAmbient(): Promise<boolean> {
   if (!ambientEnabled()) return false;
   const el = ambientElement();
+  if (!el.paused) return true;
   try {
     await el.play();
+    emitAmbientStart();
+    notifyAmbient();
     return true;
   } catch {
     // autoplay bloqueado no 1.º load: arranca no primeiro gesto
@@ -96,6 +111,61 @@ export async function startAmbient(): Promise<boolean> {
 
 export function stopAmbient() {
   ambientElement().pause();
+  notifyAmbient();
+}
+
+export function pauseAmbient() {
+  ambientElement().pause();
+  notifyAmbient();
+}
+
+export function ambientPlaying(): boolean {
+  const el = ambientEl;
+  return !!el && !el.paused && el.currentTime > 0;
+}
+
+/** Retoma o ambiente após um gesto (usado pelos controlos de UI). */
+export function resumeAmbient(): boolean {
+  setAmbientEnabled(true);
+  const el = ambientElement();
+  if (!el.paused) return true;
+  void el
+    .play()
+    .then(emitAmbientStart)
+    .catch(() => {});
+  return true;
+}
+
+function emitAmbientStart() {
+  try {
+    getAmbientChannel().postMessage({ type: "ambient-start" });
+  } catch {
+    // canal indisponível: segue sem coordenação entre tabs
+  }
+}
+
+let ambientChannel: BroadcastChannel | null = null;
+
+function getAmbientChannel(): BroadcastChannel {
+  if (!ambientChannel) {
+    ambientChannel = new BroadcastChannel("rejendari-som");
+    ambientChannel.onmessage = (event) => {
+      if (event.data?.type === "ambient-start") ambientEl?.pause();
+    };
+  }
+  return ambientChannel;
+}
+
+/** Silencia tudo: pausa o ambiente e desliga os efeitos. */
+export function muteAll() {
+  setSoundEnabled(false);
+  stopAmbient();
+}
+
+/** Liga tudo: retoma o ambiente e reativa os efeitos. */
+export function unmuteAll() {
+  setSoundEnabled(true);
+  void startAmbient();
 }
 
 /** Liga/desliga o ambiente a partir de um gesto (toggle do rodapé). */
