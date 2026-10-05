@@ -19,7 +19,7 @@ export function SectionHeader({
   tone?: "light" | "dark";
   action?: ReactNode;
 }) {
-  const accent = tone === "dark" ? "text-[#7a6ff0]" : "text-primary";
+  const accent = tone === "dark" ? "text-[#d4a53f]" : "text-primary";
   const body = tone === "dark" ? "text-white/58" : "text-muted-foreground";
   return (
     <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">

@@ -61,7 +61,7 @@ export function FeaturedDropCard({ system }: { system: RejendariSystem }) {
     <div className="group grid border border-white/12 bg-[#23211d] lg:grid-cols-[1.15fr_0.85fr]">
       <div className="flex flex-col justify-center p-7 sm:p-10">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="bg-[#c7c2ec] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[#1b1917]">
+          <span className="bg-[#e3c27c] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[#1b1917]">
             {unlocked ? "DROP CONFIRMED" : "RESERVATIONS OPEN"}
           </span>
           <SystemStatusBadge status={system.status} />
@@ -78,7 +78,7 @@ export function FeaturedDropCard({ system }: { system: RejendariSystem }) {
         <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.13em] text-white/70">
           {system.capabilitiesPt.map((capability) => (
             <li key={capability} className="flex items-center gap-2">
-              <span className="inline-block h-1 w-1 bg-[#c7c2ec]" aria-hidden="true" />
+              <span className="inline-block h-1 w-1 bg-[#e3c27c]" aria-hidden="true" />
               {capability}
             </li>
           ))}

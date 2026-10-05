@@ -18,7 +18,7 @@ export function LegendaryCombos() {
       <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
-            <p className="jp-label text-[#7a6ff0]">伝説の組み合わせ · legendary combos</p>
+            <p className="jp-label text-[#d4a53f]">伝説の組み合わせ · legendary combos</p>
             <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
               Combos que juntam fabricantes quando a combinação fica melhor.
             </h2>
@@ -42,7 +42,7 @@ export function LegendaryCombos() {
               >
                 <div className="flex items-start justify-between gap-4 border-b border-white/10 p-5">
                   <div>
-                    <p className="jp-label text-[#7a6ff0]">{combo.jp}</p>
+                    <p className="jp-label text-[#d4a53f]">{combo.jp}</p>
                     <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em]">
                       {combo.name}
                     </h3>
@@ -82,14 +82,14 @@ export function LegendaryCombos() {
                             )}
                           </div>
                           <div className="min-w-0">
-                            <p className="font-mono text-[8px] uppercase tracking-[0.13em] text-[#7a6ff0]">
+                            <p className="font-mono text-[8px] uppercase tracking-[0.13em] text-[#d4a53f]">
                               {tool.brand} · {tool.model}
                             </p>
                             <p className="mt-0.5 truncate text-sm leading-5 text-white/85">
                               {tool.namePt}
                             </p>
                           </div>
-                          <ArrowRight className="h-4 w-4 text-white/35 transition-transform group-hover:translate-x-1 group-hover:text-[#7a6ff0]" />
+                          <ArrowRight className="h-4 w-4 text-white/35 transition-transform group-hover:translate-x-1 group-hover:text-[#d4a53f]" />
                         </Link>
                       ),
                   )}

@@ -258,11 +258,40 @@ const ALL_BRAND_STORIES: BrandStory[] = [
     sourceUrl: "https://www.milwaukeetool.eu/pt-pt/",
     sourceLabel: "Milwaukee · tabela oficial Portugal",
   },
+  {
+    slug: "FUJIYA",
+    name: "FUJIYA",
+    jp: "黒金",
+    specialty: "Alicates premium Kurokin · corte · eletricidade",
+    headline: "O Kurokin é a resposta da Fujiya ao ofício como ambição.",
+    story:
+      "A Fujiya criou a linha Kurokin, 黑金 ou preto-dourado, para dignificar o trabalho do profissional: alicates de alta alavanca com junta excêntrica, acabamento Black Gold e fabrico artesanal japonês. Na seleção REJENDARI, os 3300N e os 6050 cobrem o corte e o grip com a fineza que a marca exige.",
+    whyPt:
+      "Escolhida pela junta excêntrica que corta com metade do esforço e pelo acabamento que tratam o alicate como ferramenta de profissional. Esta seleção é independente; não existe parceria ou representação oficial da Fujiya.",
+    sourceUrl: "https://www.fujiya-kk.com",
+    sourceLabel: "Fujiya · site oficial",
+  },
+  {
+    slug: "KLEIN",
+    name: "KLEIN TOOLS",
+    jp: "アメリカンプライヤー",
+    specialty: "Eletricista · corte lateral · descarnadores",
+    headline: "O americano do eletricista: 1857 e a contar.",
+    story:
+      "A Klein Tools é o eletricista americano em forma de ferramenta: os Journeyman Kurve com 46% mais força de corte, os descarnadores 11055 com corte limpo de cobre e punhos que assentam à mão. Na seleção REJENDARI, os Klein entram como referência de corte lateral e preparação de fio.",
+    whyPt:
+      "Escolhida pela têmpera por indução que corta fio de aço sem perder o fio e pela durabilidade de décadas comprovada em obra. Esta seleção é independente; não existe parceria ou representação oficial da Klein Tools.",
+    sourceUrl: "https://www.kleintools.com",
+    sourceLabel: "Klein Tools · site oficial",
+  },
 ];
 
 /** Só as marcas em vitrina navegam; as histórias de reserva continuam guardadas. */
-export const BRAND_STORIES: BrandStory[] = ALL_BRAND_STORIES.filter((brand) =>
-  (SHOWCASED_BRANDS as readonly string[]).includes(brand.slug),
+export const BRAND_STORIES: BrandStory[] = ALL_BRAND_STORIES.filter(
+  (brand) =>
+    (SHOWCASED_BRANDS as readonly string[]).includes(brand.slug) &&
+    // Wera sai como marca: os produtos Zyklop ficam, a página de marca não
+    brand.slug !== "WERA",
 );
 
 export const BRAND_STORY_MAP = Object.fromEntries(

@@ -218,7 +218,8 @@ export const SMART_PACKS: SmartPack[] = [
       {
         id: "vessel-2200-ph2-100",
         quantity: 1,
-        whyPt: "O aperto final fino continua manual e a uma mão, com o Ball Grip a sentir o aperto.",
+        whyPt:
+          "O aperto final fino continua manual e a uma mão, com o Ball Grip a sentir o aperto.",
       },
     ],
     notIncludedPt: ["Bateria e carregador", "Adaptadores de acesso", "Binário definido"],
@@ -488,7 +489,8 @@ export const SMART_PACKS: SmartPack[] = [
       {
         id: "makita-dhr243z",
         quantity: 1,
-        whyPt: "Rotativa SDS-Plus DHR243Z para furar e partir + o Zyklop para o aperto a socket: a oficina completa.",
+        whyPt:
+          "Rotativa SDS-Plus DHR243Z para furar e partir + o Zyklop para o aperto a socket: a oficina completa.",
       },
       {
         id: "anex-397-d",

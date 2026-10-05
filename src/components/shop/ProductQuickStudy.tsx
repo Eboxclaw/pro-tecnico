@@ -47,7 +47,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
 
           <div className="p-6 sm:p-8">
             <div className="pr-8">
-              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#6f5fd0]">
+              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#a87c1f]">
                 {tool.brand} · REF {tool.officialCode ?? tool.model}
               </p>
               <DialogTitle className="mt-3 font-display text-3xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-4xl">
@@ -68,7 +68,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
 
             {tool.evidencePt && (
               <div className="mt-5 flex gap-3 border border-black/10 bg-white/55 p-4">
-                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#6f5fd0]" />
+                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#a87c1f]" />
                 <p className="text-xs leading-5 text-black/52">{tool.evidencePt}</p>
               </div>
             )}
@@ -84,7 +84,7 @@ export function ProductQuickStudy({ tool, compact = false }: ProductQuickStudyPr
                       key={item.id}
                       to="/referencia/$id"
                       params={{ id: item.id }}
-                      className="flex items-center justify-between gap-4 py-3 text-xs transition-colors hover:text-[#6f5fd0]"
+                      className="flex items-center justify-between gap-4 py-3 text-xs transition-colors hover:text-[#a87c1f]"
                     >
                       <span>
                         <span className="block font-medium">

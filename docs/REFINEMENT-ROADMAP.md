@@ -66,6 +66,13 @@ verificados com correções aplicadas (a correção liga sempre à evidência).
   template OTP com {{ .Token }}.
 - Milwaukee é o holder oficial de impacto (SHOCKWAVE Locking 73/152/305);
   Wera fica reduzido à família Zyklop 3/8″ (8100, 8784, 8794).
+- Vitrina de 11 marcas: ANEX, VESSEL, FUJIYA (linha Kurokin, prioridade alta),
+  OLFA, TAJIMA, MAKITA, MILWAUKEE, KLEIN (Journeyman/Kurve), KNIPEX, BAHCO e
+  WERA só com produtos Zyklop 3/8″ (sem página de marca).
+- Paleta oficial: preto obsidiana #1b1917 + pérola #eee8dc + dourado kitsuruki
+  (#d4a53f/#a87c1f, dourado suave #e3c27c). Fim do laranja/terracota e do íris.
+- Pesquisa futura: porta-bits e roquetes VDE da ANEX/VESSEL para um sistema
+  VDE japonês modular; Ryobi RID18X como opção futura de máquinas.
 - Packs de bits ordenados por perfil (PH2 duplo, Torx T15-T30, fendas duplo)
   com dupla ponta preferida; PH1 impacto e PH2+PH1 num só bit em sourcing.
 - Ryobi (RID18X 300 N·m) registado como opção futura de máquinas: exige

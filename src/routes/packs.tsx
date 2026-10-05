@@ -126,7 +126,7 @@ function PacksPage() {
           <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
             <div className="flex flex-col gap-3 pb-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="jp-label text-[#c7c2ec]">注目のドロップ · featured drop</p>
+                <p className="jp-label text-[#e3c27c]">注目のドロップ · featured drop</p>
                 <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
                   O primeiro drop está em reservas.
                 </h2>
@@ -366,7 +366,7 @@ function PacksPage() {
         <div className="paper-panel grid gap-7 p-7 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <div className="flex items-center gap-3">
-              <ShieldCheck className="h-5 w-5 text-[#6f5fd0]" />
+              <ShieldCheck className="h-5 w-5 text-[#a87c1f]" />
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
                 相談 · kit à medida
               </p>

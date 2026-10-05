@@ -57,7 +57,7 @@ export function SoundControls() {
         type="button"
         onClick={toggleAmbientPlay}
         aria-label={aTocar ? "Pausar ambiente" : "Tocar ambiente"}
-        className="grid h-8 w-8 place-items-center text-[#c7c2ec] transition-colors hover:text-white"
+        className="grid h-8 w-8 place-items-center text-[#e3c27c] transition-colors hover:text-white"
         title={aTocar ? "Pausar música ambiente" : "Tocar música ambiente"}
       >
         {aTocar ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}

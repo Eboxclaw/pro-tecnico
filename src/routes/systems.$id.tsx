@@ -227,7 +227,7 @@ function SystemPage() {
           <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
             <div className="grid gap-px border border-border bg-border lg:grid-cols-[0.9fr_1.1fr]">
               <div className="bg-[#1b1917] p-7 sm:p-9">
-                <p className="jp-label text-[#c7c2ec]">透明性 · fabricante sempre transparente</p>
+                <p className="jp-label text-[#e3c27c]">透明性 · fabricante sempre transparente</p>
                 <h2 className="mt-4 font-display text-3xl font-semibold leading-[1] tracking-[-0.05em] text-white">
                   Original dentro. Curadoria nossa.
                 </h2>
@@ -333,7 +333,7 @@ function SystemPage() {
       <section>
         <div className="paper-panel mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
           <div className="flex items-start gap-4">
-            <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-[#6f5fd0]" />
+            <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-[#a87c1f]" />
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">
                 best component wins

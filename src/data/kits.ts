@@ -124,14 +124,12 @@ export const REJENDARI_KITS: RejendariKit[] = [
       {
         id: "vessel-230w",
         quantity: 1,
-        whyPt:
-          "Ball Grip tang-through: o parafuso clássico japonês com retenção na haste.",
+        whyPt: "Ball Grip tang-through: o parafuso clássico japonês com retenção na haste.",
       },
       {
         id: "vessel-tdbs23",
         quantity: 1,
-        whyPt:
-          "Dez bits ultra-curtos PH/SL/HEX: o aperto rente sem abrir a caixa de bits.",
+        whyPt: "Dez bits ultra-curtos PH/SL/HEX: o aperto rente sem abrir a caixa de bits.",
       },
     ],
     notIncludedPt: ["Sockets", "Bits em quantidade", "Binário calibrado"],
@@ -210,7 +208,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     dayPt:
       "Do quadro ao borne, a regra é uma só: sob tensão, só ferramenta completa certificada. O alicate de instalação de seis funções descarna, crimpa e corta cabo até 50 mm² com a mesma certificação; o corte de alta alavanca VDE parte fio piano de 2,5 mm. No aperto fino, a slim isolada ANEX chega a bornes fundos; os bits AZM 1000 V servem a vizinhança de tensão e máquinas até 7,2 V, pela regra, não ao lado dela.",
     pieces: [
-            {
+      {
         id: "anex-azm-2100",
         quantity: 1,
         whyPt: "Bit isolado PH2×100: o alcance VDE em comprimento isolado, não em extensão normal.",
@@ -331,7 +329,8 @@ export const REJENDARI_KITS: RejendariKit[] = [
       {
         id: "milwaukee-shockwave-lock-73",
         quantity: 1,
-        whyPt: "O lock oficial da casa: SHOCKWAVE Impact Locking de 73 mm a travar o bit, 14,02 EUR com IVA em Portugal.",
+        whyPt:
+          "O lock oficial da casa: SHOCKWAVE Impact Locking de 73 mm a travar o bit, 14,02 EUR com IVA em Portugal.",
       },
       {
         id: "anex-adrs-2065",
@@ -596,7 +595,8 @@ export const REJENDARI_KITS: RejendariKit[] = [
       {
         id: "anex-azm-2150",
         quantity: 1,
-        whyPt: "E o PH2×150 para os disjuntores do fundo: comprimento isolado em vez de extensão normal.",
+        whyPt:
+          "E o PH2×150 para os disjuntores do fundo: comprimento isolado em vez de extensão normal.",
       },
       {
         id: "knipex-13-96-200",
@@ -716,12 +716,36 @@ export const REJENDARI_KITS: RejendariKit[] = [
     dayPt:
       "O dia de PH2 sem trocar de estojo: a caixa de dez PH2×65 repõe o consumível sozinho, o duplo +2/+3 Ryujin alterna perfis na mesma haste e a reversível PH2/fenda VESSEL cobre o parafuso misto. Dupla ponta preferida: menos trocas, menos bits na mala.",
     pieces: [
-      { id: "anex-art-14m-2-65", quantity: 1, whyPt: "Dez PH2×65 Black Ryujin: a reposição do perfil que se gasta primeiro." },
-      { id: "anex-arpm-2365", quantity: 1, whyPt: "Bit duplo +2/+3 Ryujin: dois perfis na mesma haste, impacto 18 V/40 V." },
-      { id: "vessel-220w-62", quantity: 1, whyPt: "Reversível PH2/fenda VESSEL: o parafuso misto resolve-se sem mudar de bit." },
-      { id: "anex-adrs-2065", quantity: 1, whyPt: "Diamond Ryujin slim PH2×65 para o aperto que escorrega ao íman." },
-      { id: "anex-abrs5-2065", quantity: 1, whyPt: "Cinco Black Ryujin slim +2×65: a reposição do perfil slim." },
-      { id: "anex-ryujin-slim", quantity: 1, whyPt: "A dupla ponta slim entra no furo embutido onde o bit normal fica pelo caminho." },
+      {
+        id: "anex-art-14m-2-65",
+        quantity: 1,
+        whyPt: "Dez PH2×65 Black Ryujin: a reposição do perfil que se gasta primeiro.",
+      },
+      {
+        id: "anex-arpm-2365",
+        quantity: 1,
+        whyPt: "Bit duplo +2/+3 Ryujin: dois perfis na mesma haste, impacto 18 V/40 V.",
+      },
+      {
+        id: "vessel-220w-62",
+        quantity: 1,
+        whyPt: "Reversível PH2/fenda VESSEL: o parafuso misto resolve-se sem mudar de bit.",
+      },
+      {
+        id: "anex-adrs-2065",
+        quantity: 1,
+        whyPt: "Diamond Ryujin slim PH2×65 para o aperto que escorrega ao íman.",
+      },
+      {
+        id: "anex-abrs5-2065",
+        quantity: 1,
+        whyPt: "Cinco Black Ryujin slim +2×65: a reposição do perfil slim.",
+      },
+      {
+        id: "anex-ryujin-slim",
+        quantity: 1,
+        whyPt: "A dupla ponta slim entra no furo embutido onde o bit normal fica pelo caminho.",
+      },
     ],
     notIncludedPt: [
       "PH1 impacto (em sourcing com a ANEX)",
@@ -743,9 +767,21 @@ export const REJENDARI_KITS: RejendariKit[] = [
     dayPt:
       "O Torx não perdoa bit torto: o estojo VESSEL traz a gama T8H-T40H ordenada em baixo perfil, com roquete próprio para apertar sem abrir a caixa à frente do cliente. Os T15, T20, T25 e T30 ficam no sítio, sempre na mesma ordem.",
     pieces: [
-      { id: "vessel-tx11", quantity: 1, whyPt: "Estojo de baixo perfil com a gama Torx de segurança T8H-T40H ordenada." },
-      { id: "vessel-td6808tx", quantity: 1, whyPt: "Roquete Torx TR de 72 dentes com os bits mais usados: aperto sem abrir o estojo." },
-      { id: "anex-art-14m-2-65", quantity: 1, whyPt: "A reposição PH2×65 que acompanha qualquer trabalho Torx na mesma máquina." },
+      {
+        id: "vessel-tx11",
+        quantity: 1,
+        whyPt: "Estojo de baixo perfil com a gama Torx de segurança T8H-T40H ordenada.",
+      },
+      {
+        id: "vessel-td6808tx",
+        quantity: 1,
+        whyPt: "Roquete Torx TR de 72 dentes com os bits mais usados: aperto sem abrir o estojo.",
+      },
+      {
+        id: "anex-art-14m-2-65",
+        quantity: 1,
+        whyPt: "A reposição PH2×65 que acompanha qualquer trabalho Torx na mesma máquina.",
+      },
     ],
     notIncludedPt: [
       "Bits Torx de impacto dedicados (em sourcing)",
@@ -766,9 +802,21 @@ export const REJENDARI_KITS: RejendariKit[] = [
     dayPt:
       "O parafuso de fenda ainda vive em torneiras, quadros antigos e eletrodomésticos: o bit duplo +2/−6 faz os dois lados na mesma haste, as ultra-curtas VESSEL chegam ao fundo e o reversível PH2/fenda fecha o trabalho.",
     pieces: [
-      { id: "anex-azm-2698", quantity: 1, whyPt: "Bit duplo isolado +2/−6×98: os dois lados da fenda comum e do PH2 num bit só." },
-      { id: "vessel-tdbs21", quantity: 1, whyPt: "Cinco bits ultra-curtos PH/SL de 18 mm: fenda e cruz rente ao painel." },
-      { id: "vessel-220w-3", quantity: 1, whyPt: "Três bits combi 110 mm PH/SL/PZ para os parafusos longos do dia." },
+      {
+        id: "anex-azm-2698",
+        quantity: 1,
+        whyPt: "Bit duplo isolado +2/−6×98: os dois lados da fenda comum e do PH2 num bit só.",
+      },
+      {
+        id: "vessel-tdbs21",
+        quantity: 1,
+        whyPt: "Cinco bits ultra-curtos PH/SL de 18 mm: fenda e cruz rente ao painel.",
+      },
+      {
+        id: "vessel-220w-3",
+        quantity: 1,
+        whyPt: "Três bits combi 110 mm PH/SL/PZ para os parafusos longos do dia.",
+      },
     ],
     notIncludedPt: [
       "Fendas de impacto dedicadas (em sourcing)",

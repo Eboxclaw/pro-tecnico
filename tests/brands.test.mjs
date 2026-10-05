@@ -16,9 +16,21 @@ import { REJENDARI_KITS } from "@/data/kits";
 import { SMART_PACKS } from "@/data/smart-packs";
 import { LEGENDARY_COMBOS } from "@/data/legendary-combos";
 
-const KEPT = ["ANEX", "MAKITA", "VESSEL", "WERA", "KNIPEX", "BAHCO", "TAJIMA", "OLFA", "MILWAUKEE"];
+const KEPT = [
+  "ANEX",
+  "MAKITA",
+  "VESSEL",
+  "WERA",
+  "KNIPEX",
+  "BAHCO",
+  "TAJIMA",
+  "OLFA",
+  "FUJIYA",
+  "KLEIN",
+  "MILWAUKEE",
+];
 
-test("vitrina: exatamente as oito marcas mantidas, nada escondido na navegação", () => {
+test("vitrina: exatamente as marcas mantidas, nada escondido na navegação", () => {
   assert.deepEqual([...SHOWCASED_BRANDS].sort(), [...KEPT].sort());
   assert.deepEqual([...QUICK_BRANDS].sort(), [...KEPT].sort());
   const hidden = [
@@ -28,7 +40,6 @@ test("vitrina: exatamente as oito marcas mantidas, nada escondido na navegação
     "ENGINEER",
     "LOBSTER",
     "TSUNODA",
-    "FUJIYA",
     "TOP",
     "HOZAN",
     "NEPROS",
@@ -91,7 +102,10 @@ test("vitrina: composições (kits, packs, combos) sem marcas escondidas", () =>
   }
 });
 
-test("vitrina: histórias de marca cobrem exatamente as oito mantidas", () => {
+test("vitrina: histórias de marca cobrem as marcas com página própria", () => {
   const slugs = BRAND_STORIES.map((brand) => brand.slug);
-  assert.deepEqual([...new Set(slugs)].sort(), [...KEPT].sort());
+  // Wera sai como marca: os produtos Zyklop ficam, a página de marca não
+  assert.ok(!slugs.includes("WERA"), "Wera devia sair da navegação de marcas");
+  const esperado = [...KEPT].filter((b) => b !== "WERA").sort();
+  assert.deepEqual([...new Set(slugs)].sort(), esperado);
 });

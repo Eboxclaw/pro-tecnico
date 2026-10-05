@@ -19,7 +19,7 @@ export function BitKitRail() {
     <section className="section-reveal overflow-hidden border-y border-border bg-[#ede7db] text-[#1b1917]">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-5 px-4 pb-5 pt-12 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="jp-label text-[#6f5fd0]">小物こそ重要 · bits, isolação & adapters</p>
+          <p className="jp-label text-[#a87c1f]">小物こそ重要 · bits, isolação & adapters</p>
           <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">
             As peças pequenas que fazem uma ferramenta trabalhar como três.
           </h2>
@@ -37,7 +37,7 @@ export function BitKitRail() {
               key={`${tool.id}-${index}`}
               to="/referencia/$id"
               params={{ id: tool.id }}
-              className="group grid w-[300px] shrink-0 grid-cols-[112px_1fr] overflow-hidden border border-black/10 bg-[#f8f4eb] transition-all duration-300 hover:-translate-y-1 hover:border-[#6f5fd0]/50 hover:shadow-[0_18px_45px_rgba(45,37,29,0.14)] sm:w-[360px] sm:grid-cols-[136px_1fr]"
+              className="group grid w-[300px] shrink-0 grid-cols-[112px_1fr] overflow-hidden border border-black/10 bg-[#f8f4eb] transition-all duration-300 hover:-translate-y-1 hover:border-[#a87c1f]/50 hover:shadow-[0_18px_45px_rgba(45,37,29,0.14)] sm:w-[360px] sm:grid-cols-[136px_1fr]"
             >
               <div className="product-plate relative aspect-square overflow-hidden">
                 <ProductImage
@@ -48,7 +48,7 @@ export function BitKitRail() {
                 />
               </div>
               <div className="flex min-w-0 flex-col p-4">
-                <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-[#6f5fd0]">
+                <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-[#a87c1f]">
                   {tool.brand}
                 </p>
                 <p className="mt-1 font-display text-base font-semibold leading-tight">

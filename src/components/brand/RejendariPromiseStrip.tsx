@@ -30,7 +30,7 @@ export function RejendariPromiseStrip() {
       <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
         <div className="flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#7a6ff0]">
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4a53f]">
               REJENDARI STANDARD · 選定基準
             </p>
             <h2 className="mt-3 font-display text-2xl font-semibold tracking-[-0.045em] sm:text-3xl">
@@ -46,7 +46,7 @@ export function RejendariPromiseStrip() {
             const Icon = item.icon;
             return (
               <div key={item.title} className="bg-[#1b1917] p-5">
-                <Icon className="h-5 w-5 text-[#7a6ff0]" />
+                <Icon className="h-5 w-5 text-[#d4a53f]" />
                 <h3 className="mt-4 font-display text-lg font-semibold">{item.title}</h3>
                 <p className="mt-2 text-xs leading-5 text-white/48">{item.text}</p>
               </div>

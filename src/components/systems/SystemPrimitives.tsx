@@ -79,7 +79,7 @@ export function DemandProgress({
         <div
           className={cn(
             "h-full transition-[width] duration-700",
-            dropUnlockedSafe(units, moq) ? "bg-[#c7c2ec]" : "bg-primary",
+            dropUnlockedSafe(units, moq) ? "bg-[#e3c27c]" : "bg-primary",
           )}
           style={{ width: `${pct}%` }}
         />
@@ -107,7 +107,7 @@ export function ImpactReadySeal({ dark = false }: { dark?: boolean }) {
     <span
       className={cn(
         "inline-flex items-center gap-1.5 border px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]",
-        dark ? "border-[#c7c2ec]/50 text-[#c7c2ec]" : "border-primary/35 text-primary",
+        dark ? "border-[#e3c27c]/50 text-[#e3c27c]" : "border-primary/35 text-primary",
       )}
     >
       IMPACT READY
@@ -168,7 +168,7 @@ export function LikeFavoriteButtons({
         className={cn(
           "inline-flex items-center gap-1.5 border px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors",
           base,
-          liked && (dark ? "border-[#c7c2ec]/60 text-[#c7c2ec]" : "border-primary/50 text-primary"),
+          liked && (dark ? "border-[#e3c27c]/60 text-[#e3c27c]" : "border-primary/50 text-primary"),
         )}
         title="Gosto desta ideia"
       >
@@ -184,7 +184,7 @@ export function LikeFavoriteButtons({
           "inline-flex items-center gap-1.5 border px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors",
           base,
           favorited &&
-            (dark ? "border-[#c7c2ec]/60 text-[#c7c2ec]" : "border-primary/50 text-primary"),
+            (dark ? "border-[#e3c27c]/60 text-[#e3c27c]" : "border-primary/50 text-primary"),
         )}
         title="Guardar e acompanhar (requer conta)"
       >
@@ -466,7 +466,7 @@ export function ReserveButton({
         className={cn(
           "rounded-none",
           dark
-            ? "bg-white text-[#1b1917] hover:bg-[#c7c2ec]"
+            ? "bg-white text-[#1b1917] hover:bg-[#e3c27c]"
             : "bg-black text-white hover:bg-black/85",
           className,
         )}

@@ -3218,6 +3218,72 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
     compareGroup: "bit-holders",
   },
+  {
+    id: "fujiya-3000n-225bg",
+    brand: "FUJIYA",
+    brandSlug: "FUJIYA",
+    model: "3000N-225BG",
+    officialCode: "3000N-225BG",
+    namePt: "Kurokin · alicate de alta alavanca 225 mm",
+    japanese: "黒金",
+    task: "grip",
+    categoryPt: "Alicates · Kurokin · alta alavanca",
+    badge: "Kurokin",
+    notePt:
+      "A linha premium Kurokin da Fujiya: junta excêntrica de alta alavanca para cortar com menos força, acabamento Black Gold e argola de amarração para trabalho em altura.",
+    specPt: "225 mm · junta excêntrica · acabamento Black Gold · argola · 340 g",
+    storyPt:
+      "O Kurokin é a resposta da Fujiya à falta de mão de obra qualificada: função e design para o ofício ser ambição. Corte de fio piano com metade do esforço, feito à mão no Japão.",
+    evidencePt:
+      "Fujiya Co. (fujiya-kk.com): 3000N-225BG high-leverage lineman's pliers 225 mm, junta excêntrica, acabamento Black Gold com argola de amarração, ~340 g, fabrico artesanal japonês para trabalho elétrico.",
+    referenceUrl: "https://www.fujiya-kk.com",
+    manufacturedIn: "Japão",
+    compareGroup: "grip",
+    featured: true,
+  },
+  {
+    id: "klein-j213-9ne",
+    brand: "KLEIN",
+    brandSlug: "KLEIN",
+    model: "J213-9NE",
+    officialCode: "J213-9NE",
+    namePt: "Journeyman Kurve · corte lateral 9,5″",
+    japanese: "アメリカンプライヤー",
+    task: "cutting",
+    categoryPt: "Alicates · corte lateral",
+    badge: "Journeyman",
+    notePt:
+      "O side-cutter de referência nos EUA: alta alavanca com 46% mais força de corte, cames temperadas por indução que cortam fio de aço e punhos Kurve que assentam à mão.",
+    specPt: "9,5″ · aço com têmpera por indução · hot-riveted · punhos Kurve",
+    storyPt:
+      "O americano do eletricista: o Klein Journeyman é o corte lateral que sobrevive a décadas de obra. A Klein faz desde 1857 e os Journeyman são a resposta ao alicate que não afrouxa com o tempo.",
+    evidencePt:
+      "Klein Tools: J213-9NE Journeyman Kurve high-leverage side-cutting pliers 9,5″, aço carbono com cames de corte temperadas por indução (corta wire rope), junta hot-riveted sem balanço, punhos bimaterial Kurve. Fabricado nos EUA.",
+    referenceUrl: "https://www.kleintools.com",
+    compareGroup: "corte",
+    featured: true,
+  },
+  {
+    id: "klein-11055",
+    brand: "KLEIN",
+    brandSlug: "KLEIN",
+    model: "11055",
+    officialCode: "11055",
+    namePt: "Klein-Kurve · descarnador e cortador de fio",
+    japanese: "ワイヤーストリッパー",
+    task: "precision",
+    categoryPt: "Eletricidade · descarnador",
+    badge: "Klein-Kurve",
+    notePt:
+      "Descarna e corta fio de cobre sólido 8-18 AWG e torcido 10-20 AWG com corte limpo, e o bico serrado dobra e molda o fio.",
+    specPt: "8-18 AWG sólido · 10-20 AWG torcido · bico serrado · punhos Kurve",
+    storyPt:
+      "O descarnador que o eletricista americano não larga: corte limpo sem tocar no cobre e um bico que dobra o fio no mesmo gesto.",
+    evidencePt:
+      "Klein Tools 11055: descarnador/cortador Klein-Kurve para cobre sólido 8-18 AWG e torcido 10-20 AWG, corte limpo de cobre com bico serrado para dobrar e moldar fio.",
+    referenceUrl: "https://www.kleintools.com",
+    compareGroup: "eletricidade",
+  },
 ];
 
 export const REFERENCE_QUEUE = [
@@ -3236,14 +3302,16 @@ export const REFERENCE_QUEUE = [
  */
 export const SHOWCASED_BRANDS = [
   "ANEX",
-  "MAKITA",
   "VESSEL",
+  "FUJIYA",
   "WERA",
+  "OLFA",
+  "TAJIMA",
+  "MAKITA",
+  "MILWAUKEE",
+  "KLEIN",
   "KNIPEX",
   "BAHCO",
-  "TAJIMA",
-  "OLFA",
-  "MILWAUKEE",
 ] as const;
 
 export type ShowcasedBrand = (typeof SHOWCASED_BRANDS)[number];
