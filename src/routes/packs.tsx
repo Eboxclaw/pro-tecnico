@@ -136,6 +136,8 @@ function PacksPage() {
         </section>
       )}
 
+      <KitsShowcase />
+
       <section id="systems" className="scroll-mt-28 border-b border-border">
         <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
           <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
@@ -268,8 +270,6 @@ function PacksPage() {
           </div>
         </div>
       </section>
-
-      <KitsShowcase />
 
       <section className="border-b border-border bg-surface/45">
         <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { armIntroSound, disarmIntroSound, playIntroYooo } from "@/lib/sounds";
+import { armIntroSound, disarmIntroSound } from "@/lib/sounds";
 
 /**
  * Cortina de abertura REJENDARI: uma vez por sessão, salta com um clique e
@@ -17,21 +17,20 @@ export function IntroSplash() {
   });
 
   useEffect(() => {
-    if (phase === "playing") armIntroSound();
-    if (phase === "hidden") disarmIntroSound();
+    // a chave grava-se logo à entrada: navegar ou recarregar durante o loading
+    // não repete o som nem o splash
+    if (phase === "playing") {
+      window.sessionStorage.setItem(SESSION_KEY, "1");
+      armIntroSound();
+    }
+    if (phase === "leaving" || phase === "hidden") disarmIntroSound();
   }, [phase]);
 
   useEffect(() => {
     if (phase === "hidden") return;
     document.documentElement.style.overflow = "hidden";
-    const leave = setTimeout(() => {
-      playIntroYooo();
-      setPhase("leaving");
-    }, 3000);
-    const done = setTimeout(() => {
-      window.sessionStorage.setItem(SESSION_KEY, "1");
-      setPhase("hidden");
-    }, 3900);
+    const leave = setTimeout(() => setPhase("leaving"), 3000);
+    const done = setTimeout(() => setPhase("hidden"), 3900);
     return () => {
       clearTimeout(leave);
       clearTimeout(done);
@@ -42,7 +41,6 @@ export function IntroSplash() {
   if (phase === "hidden") return null;
 
   const skip = () => {
-    playIntroYooo();
     window.sessionStorage.setItem(SESSION_KEY, "1");
     setPhase("hidden");
     document.documentElement.style.overflow = "";

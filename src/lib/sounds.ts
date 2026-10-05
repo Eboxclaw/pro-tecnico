@@ -168,7 +168,13 @@ async function failBuffer(context: AudioContext): Promise<AudioBuffer | null> {
   }
 }
 
+let lastFailAt = 0;
+
 export function playFail() {
+  // cooldown: evita o fail a acumular em navegação seguida
+  const now = Date.now();
+  if (now - lastFailAt < 6000) return;
+  lastFailAt = now;
   logNamed("fail");
   void withAudio(async (context, when) => {
     const buffer = await failBuffer(context);
