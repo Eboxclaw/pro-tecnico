@@ -63,6 +63,15 @@ test("the 397 Lock builder carries lock-first, Ryujin-only, ratchets and adapter
   const roqueteIds = impact.slots.find((slot) => slot.id === "roquete").options.map((o) => o.refId);
   assert.ok(roqueteIds.includes("anex-436"), "offset ratchet presente");
   assert.ok(roqueteIds.includes("anex-397-d"), "bit ratchet presente");
+  // adaptadores: os dois sentidos Zyklop + a fêmea porta-soquete em impacto
+  const adaptadorIds = impact.slots
+    .find((slot) => slot.id === "adaptador")
+    .options.map((option) => option.refId);
+  assert.deepEqual(
+    adaptadorIds,
+    ["wera-8784-b1", "wera-8784-a1", "milwaukee-shockwave-adaptor-set-3pc"],
+    "redução 3/8→1/4, o irmão 1/4″ e a fêmea SHOCKWAVE 3-em-1",
+  );
 });
 
 test("every slot option resolves to a curated reference", () => {

@@ -3990,6 +3990,55 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "https://www.knipex-tools.com/products/insulated-tools/pipe-wrenches-and-water-pump-pliers/jaw-protectors-pliers-wrench/8606250US",
     compareGroup: "grip",
   },
+  {
+    id: "wera-8784-a1",
+    brand: "WERA",
+    brandSlug: "WERA",
+    model: "8784 A1",
+    officialCode: "8784 A1",
+    namePt: "8784 A1 Zyklop Bit Adaptor · fêmea quadrado 1/4″ → porta-bits",
+    japanese: "ビットアダプター",
+    task: "sockets",
+    categoryPt: "Adaptador inteligente · 1/4″",
+    badge: "Zyklop",
+    notePt:
+      "O irmão 1/4″ do 8784 B1: fêmea quadrado 1/4″ com mosquetão quick-release que aceita o porta-bits de bits — o sistema Zyklop nos dois tamanhos de drive.",
+    specPt: "fêmea quadrado 1/4″ → porta-bits 1/4″ · quick-release · sistema Zyklop",
+    storyPt:
+      "Com o 8784 B1 (3/8″) e o A1 (1/4″), qualquer Zyklop drive aceita os bits da casa: o roquete de sockets torna-se roquete de bits num encaixe. A lógica adaptar-e-estender, em vez de segunda chave.",
+    evidencePt:
+      "Wera: 8784 A1 Zyklop Bit Adaptor 1/4″, fêmea quadrado com quick-release para porta-bits (página oficial wera.de verificada). Imagem oficial wera.de verificada.",
+    referenceUrl: "https://www.wera.de/en/tools/8784-a1-zyklop-bit-adaptor-1-4",
+    compareGroup: "adapters",
+    imageUrl: "https://www.wera.de/prodimg/218x218/8784_a1.webp",
+    imageAlt: "Wera 8784 A1, adaptador Zyklop fêmea 1/4 para porta-bits",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
+  {
+    id: "milwaukee-shockwave-adaptor-set-3pc",
+    brand: "MILWAUKEE",
+    brandSlug: "MILWAUKEE",
+    model: "4932479228",
+    officialCode: "4932479228",
+    namePt: "SHOCKWAVE Impact Adaptor Set · fêmea porta-soquete 3 peças",
+    japanese: "ソケットアダプターセット",
+    task: "sockets",
+    categoryPt: "Adaptador impacto · fêmea 3-em-1",
+    badge: "SHOCKWAVE",
+    notePt:
+      "A fêmea porta-soquete em impacto: o hex 1/4″ do 397 ou do lock transforma-se em quadrado 1/4″, 3/8″ ou 1/2″ — três adaptadores num set, até 226 N·m com íman na ponta.",
+    specPt: "macho hex 1/4″ → fêmea quadrado 1/4″, 3/8″ e 1/2″ · impacto · máx. 226 N·m · íman",
+    storyPt:
+      "O adaptador inteligente que fecha o sistema: o lock 73 segura o set, o set transforma o 397 em accionador de soquetes 1/4″, 3/8″ e 1/2″. Porta-soquete de verdade, classe SHOCKWAVE, sem inventar chave nova.",
+    evidencePt:
+      "Milwaukee: SHOCKWAVE™ Impact Duty socket adaptors, set 3 pc — 1× 1/4″Hex→1/4″SQ, 1× 1/4″Hex→3/8″SQ, 1× 1/4″Hex→1/2″SQ, ref. 4932479228 (JSON-LD oficial milwaukeetool.eu). Imagem oficial do CDN Milwaukee (S3) verificada.",
+    referenceUrl:
+      "https://www.milwaukeetool.eu/en-eu/shockwave-impact-duty-socket-adaptors-hex-reception/",
+    compareGroup: "adapters",
+    imageUrl: "https://milwaukee-media-images.s3.amazonaws.com/hi/4932479228--Hero_1.jpg",
+    imageAlt: "Milwaukee SHOCKWAVE, set de 3 adaptadores fêmea de impacto",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
 ];
 
 export const REFERENCE_QUEUE = [

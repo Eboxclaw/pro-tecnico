@@ -116,9 +116,13 @@ export const MODULAR_PACKS: ModularPack[] = [
         id: "adaptador",
         rolePt: "Os adaptadores inteligentes",
         jp: "変換",
-        options: [{ refId: "wera-8784-b1" }],
+        options: [
+          { refId: "wera-8784-b1" },
+          { refId: "wera-8784-a1" },
+          { refId: "milwaukee-shockwave-adaptor-set-3pc" },
+        ],
         notePt:
-          "O adaptador 3/8″→1/4″ já vem no nosso kit Zyklop 3/8 (um deles) — compra avulsa só se ainda não tiveres a mala 397. Ele é que leva os bits do 397 ao sistema de sockets: o mesmo bit trabalha no lock e na Zyklop. O inverso 1/4→3/8 e a fêmea porta-soquete (quadrado para porta-bits) seguem EM SOURCING: só entram com ref oficial homologada.",
+          "Para um lado: a redução 3/8″→1/4″ (8784 B1) já vem no nosso kit Zyklop 3/8 — avulsa só fora da mala; o 8784 A1 faz o mesmo no quadrado 1/4″. Para o outro: o set SHOCKWAVE é a fêmea porta-soquete em impacto — o hex 1/4″ do 397 ou do lock vira quadrado 1/4″, 3/8″ ou 1/2″ (até 226 N·m, íman). O mesmo bit trabalha no lock, na Zyklop e nos sockets: adaptar e estender, nunca segunda chave. Nota verificada: Wera não faz hex→quadrado; ANEX e VESSEL não têm adaptador direto.",
       },
     ],
     pairsWithPt:
