@@ -47,14 +47,14 @@ export const MODULAR_PACKS: ModularPack[] = [
     id: "mod-impacto",
     trade: "Monta o teu · 397 Lock",
     jp: "組む · 397 lock",
-    title: "Monta o teu 397 Lock REJENDARI: lock, ponteiras, extensão, roquete e adaptador",
+    title: "Monta o teu 397 Lock REJENDARI: é sempre 397, cada coisa no seu tópico",
     conceptPt:
-      "O construtor do sistema 397 Lock: o porta-bits de preferência LOCK (SHOCKWAVE 73/152/305), ponteiras só Black e Diamond Ryujin ou SHOCKWAVE, extensões por marca nos três níveis (curta 100, média 150, longa 300), o roquete de bits ou offset à escolha, e os adaptadores inteligentes 3/8↔1/4 que fazem tudo trabalhar com tudo.",
+      "O construtor do sistema 397 Lock: o porta-bits lock escolhe-se pequeno, médio ou grande — impacto, VDE, precision ou isolado — as ponteiras por categoria com o pack múltiplo e o pack PH2 em qualidade S ou S+, a extensão nos três níveis, o roquete de bits ou offset, e o adaptador que já vem com o kit Zyklop 3/8.",
     formulaPartsPt: ["porta-bits lock", "ponteiras", "extensão", "roquete", "adaptador"],
     slots: [
       {
         id: "lock",
-        rolePt: "O porta-bits (de preferência lock)",
+        rolePt: "O porta-bits lock: pequeno · médio · grande",
         jp: "ロック",
         options: [
           { refId: "milwaukee-shockwave-lock-73" },
@@ -62,20 +62,22 @@ export const MODULAR_PACKS: ModularPack[] = [
           { refId: "milwaukee-shockwave-lock-305" },
         ],
         notePt:
-          "Porta-bits com anel de retenção LOCK — o bit trava e não cai: 73 mm para o dia a dia, 152 e 305 mm para fundo de perfil e cantos profundos. Não há porta-bits lock equivalente em ANEX ou VESSEL (EM SOURCING): os SHOCKWAVE são a categoria.",
+          "Categoria IMPACTO, um dos lock bits da marca disponível: pequeno 73 mm, médio 152 mm, grande 305 mm — o anel trava o bit em impacto. Nas outras categorias não há lock holder disponível: VDE/isolado e precision seguem EM SOURCING (no lado elétrico, o porta-bits isolado com roquete 837 i RA vive no builder VDE).",
       },
       {
         id: "ponteiras",
-        rolePt: "As ponteiras (impacto primeiro)",
+        rolePt: "As ponteiras: impacto, VDE ou isoladas · pack múltiplo ou PH2",
         jp: "先端",
         options: [
+          { refId: "anex-525-28b" },
           { refId: "anex-abrs5-2065" },
-          { refId: "anex-adrs-2065" },
           { refId: "anex-abrs5-01" },
+          { refId: "anex-adrs-2065" },
           { refId: "milwaukee-shockwave-ph2-50" },
+          { refId: "anex-azm-2698" },
         ],
         notePt:
-          "Política da casa: só ponteiras de classe de impacto e só as linhas aprovadas — Black Ryujin (Cr-Mo-V), Diamond Ryujin (o aperto que escorrega) e a SHOCKWAVE Milwaukee (Wear Guard Tip). Ryujin standard não entra. A VESSEL não tem bits de impacto de máquina: a série C50/C51 é impacto manual a martelo, outro produto.",
+          "Pack múltiplo: o 525-28B cobre PH, Torx, hex e soquetes num estojo. Pack PH2 qualidade S: Black Ryujin slim ×5 e o assorted 65/85/110; qualidade S+: Diamond Ryujin, o aperto que não escorrega. Impacto Milwaukee: SHOCKWAVE com Wear Guard Tip. VDE/isoladas: o AZM duplo +2/−6 isolado 1000 V — as restantes AZM vivem no builder VDE. Ryujin standard nunca entra.",
       },
       {
         id: "extensao",
@@ -110,7 +112,7 @@ export const MODULAR_PACKS: ModularPack[] = [
         jp: "変換",
         options: [{ refId: "wera-8784-b1" }],
         notePt:
-          "A redução 3/8″→1/4″ leva os bits do 397 ao sistema de sockets — o mesmo bit trabalha no lock e na Zyklop. O inverso 1/4→3/8 e a fêmea porta-soquete (quadrado para porta-bits) seguem EM SOURCING: só entram com ref oficial homologada.",
+          "O adaptador 3/8″→1/4″ já vem no nosso kit Zyklop 3/8 (um deles) — compra avulsa só se ainda não tiveres a mala 397. Ele é que leva os bits do 397 ao sistema de sockets: o mesmo bit trabalha no lock e na Zyklop. O inverso 1/4→3/8 e a fêmea porta-soquete (quadrado para porta-bits) seguem EM SOURCING: só entram com ref oficial homologada.",
       },
     ],
     pairsWithPt:

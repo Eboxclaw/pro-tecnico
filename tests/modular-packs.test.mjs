@@ -21,16 +21,21 @@ test("the 397 Lock builder carries lock-first, Ryujin-only, ratchets and adapter
     assert.ok(slotIds.includes(expected), `397 Lock builder missing slot ${expected}`);
   }
   assert.equal(impact.slots[0].id, "lock", "lock comes first");
-  // ponteiras: só Black/Diamond Ryujin e SHOCKWAVE — standard fora
+  // ponteiras: pack múltiplo, PH2 S (Black) e S+ (Diamond), SHOCKWAVE, VDE isolada;
+  // Ryujin standard (prata) nunca entra
   const ponteiraIds = impact.slots
     .find((slot) => slot.id === "ponteiras")
     .options.map((option) => option.refId);
   for (const refId of ponteiraIds) {
     assert.ok(
-      /abrs5|adrs|shockwave/.test(refId),
-      `${refId} fora da política (só Black/Diamond Ryujin e SHOCKWAVE)`,
+      !/art-14m|arpm|artm5|ryujin-slim/.test(refId),
+      `${refId} fora da política (Ryujin standard banido)`,
     );
   }
+  assert.ok(ponteiraIds.some((id) => /abrs5/.test(id)), "pack PH2 S (Black Ryujin) presente");
+  assert.ok(ponteiraIds.some((id) => /adrs/.test(id)), "pack PH2 S+ (Diamond) presente");
+  assert.ok(ponteiraIds.some((id) => id === "anex-525-28b"), "pack múltiplo presente");
+  assert.ok(ponteiraIds.some((id) => /azm/.test(id)), "ponteira VDE/isolada presente");
   // extensão nos três níveis
   const extensaoIds = impact.slots
     .find((slot) => slot.id === "extensao")
