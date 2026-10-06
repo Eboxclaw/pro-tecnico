@@ -540,6 +540,12 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "Corte de alta alavanca VDE: fio piano de 2,5 mm isolado a sério.",
       },
       {
+        id: "knipex-8726250-cobra-vde",
+        quantity: 1,
+        whyPt:
+          "Cobra VDE 1000 V (IEC 60900): o grip auto-bloqueante certificado que pode tocar o quadro — porcas até 46 mm, tubos até Ø50 mm.",
+      },
+      {
         id: "vessel-960-ph2-100",
         quantity: 1,
         whyPt: "MEGADORA Insulated PH2: o aperto direto sob certificação, sem porta-bits.",
@@ -786,8 +792,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
       {
         id: "knipex-13-96-200",
         quantity: 1,
-        whyPt:
-          "Instalador de seis funções 1000 V: descarna, crimpa e corta cabo até Ø15 mm.",
+        whyPt: "Instalador de seis funções 1000 V: descarna, crimpa e corta cabo até Ø15 mm.",
       },
       {
         id: "anex-azm-1598",

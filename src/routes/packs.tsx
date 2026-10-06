@@ -96,9 +96,9 @@ function PacksPage() {
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <p className="jp-label text-primary">システム · curated tool systems</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
-            BUILD LESS.
+            DO MORE
             <br />
-            <span className="text-primary">DO MORE.</span>
+            <span className="text-primary">WITH LESS.</span>
           </h1>
           <p className="mt-5 max-w-2xl font-display text-2xl font-semibold tracking-[-0.04em]">
             Menos peças repetidas. Mais trabalho resolvido.

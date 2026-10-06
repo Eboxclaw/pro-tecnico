@@ -110,10 +110,15 @@ export const MODULAR_PACKS: ModularPack[] = [
         jp: "キー",
         options: [
           { refId: "wera-8100-sb-6" },
+          { refId: "wera-8000a-zyklop-14" },
           { refId: "anex-397-d" },
           { refId: "vessel-td6816mg" },
           { refId: "anex-525" },
+          { refId: "klein-32305" },
+          { refId: "bahco-808050p" },
         ],
+        notePt:
+          "Três escolas de vaivém: Zyklop 3/8″ e 1/4″ para sockets, os roquetes japoneses para bits, e os roquetes de fendas americano (Klein 15-em-1) e sueco (Bahco pistola) para a variedade de perfis.",
       },
       {
         id: "conversor",
@@ -152,9 +157,14 @@ export const MODULAR_PACKS: ModularPack[] = [
         id: "ajustavel",
         rolePt: "A ajustável",
         jp: "レンチ",
-        options: [{ refId: "bahco-9031p" }, { refId: "bahco-9033" }],
+        options: [
+          { refId: "bahco-9031p" },
+          { refId: "bahco-9033" },
+          { refId: "fujiya-fls-32-bg" },
+          { refId: "fujiya-fgl-38-bg" },
+        ],
         notePt:
-          "9031P até 39 mm (1¼″); 9033 extra-larga até 46 mm para uniões antigas acima de 1″.",
+          "9031P até 39 mm (1¼″); 9033 extra-larga até 46 mm. A escola japonesa: a Kurokin Light Short de 139 mm para o bolso e a Gear 3-em-1 que substitui ajustável + roquete 17 mm + bocas fixas 10/13.",
       },
       {
         id: "grip",
@@ -177,7 +187,7 @@ export const MODULAR_PACKS: ModularPack[] = [
     title: "O VDE à medida: ponteiras e chaves 1000 V, com ou sem roquete",
     conceptPt:
       "Cada peça isolada é uma ferramenta completa certificada IEC 60900: escolhe-se a ponteira AZM pelo perfil e pelo comprimento isolado, a chave completa pelo aperto e o alicate de corte sempre VDE. O comprimento isolado substitui a extensão — a extensão isolada 1000 V segue em sourcing.",
-    formulaPartsPt: ["ponteira VDE", "chave VDE", "corte VDE"],
+    formulaPartsPt: ["ponteira VDE", "chave VDE", "corte VDE", "grip VDE"],
     slots: [
       {
         id: "ponteira",
@@ -198,7 +208,10 @@ export const MODULAR_PACKS: ModularPack[] = [
           { refId: "vessel-960-ph2-100" },
           { refId: "vessel-200-ph2-100" },
           { refId: "anex-7920" },
+          { refId: "klein-32310ins" },
         ],
+        notePt:
+          "A escola europeia (MEGADORA, Ball Grip, slim ANEX) contra a americana: o set isolado Klein auto-lock com dez posições, certificado 1000 V ASTM F1505.",
       },
       {
         id: "corte",
@@ -206,11 +219,19 @@ export const MODULAR_PACKS: ModularPack[] = [
         jp: "カット",
         options: [{ refId: "knipex-74-06-200" }, { refId: "knipex-13-96-200" }],
       },
+      {
+        id: "grip",
+        rolePt: "O grip isolado",
+        jp: "グリップ",
+        options: [{ refId: "knipex-8726250-cobra-vde" }],
+        notePt:
+          "A Cobra certificada 1000 V (IEC 60900): o grip auto-bloqueante que pode tocar o quadro — 24 posições, porcas até 46 mm, tubos até Ø50 mm.",
+      },
     ],
     pairsWithPt:
       "Com o desligamento confirmado, a mala de máquinas Makita entra pela mala eletricidade VDE.",
     limitationsPt:
-      'Não há roquete VDE certificado no catálogo (EM SOURCING): por isso "sem roquete" é a opção honesta, e bits AZM em porta-bits comum não são ferramenta certificada sob tensão. Tensão confirmada a zero antes de qualquer intervenção — o isolamento 1000 V não dispensa o procedimento.',
+      'Não há roquete VDE certificado no catálogo (EM SOURCING): por isso "sem roquete" é a opção honesta, e bits AZM em porta-bits comum não são ferramenta certificada sob tensão. Sockets isolados não existem na Milwaukee nem na Klein — o isolamento de sockets segue EM SOURCING. Kurokin não certifica VDE: a linha fica de fora deste pack. Tensão confirmada a zero antes de qualquer intervenção — o isolamento 1000 V não dispensa o procedimento.',
   },
 ];
 
