@@ -45,16 +45,16 @@ export type ModularPack = {
 export const MODULAR_PACKS: ModularPack[] = [
   {
     id: "mod-impacto",
-    trade: "Impacto & aparafusamento",
-    jp: "モジュラー · impacto modular",
-    title: "O pack modular de impacto: lock, alcance e ponteiras à carta",
+    trade: "Monta o teu · 397 Lock",
+    jp: "組む · 397 lock",
+    title: "Monta o teu 397 Lock REJENDARI: lock, ponteiras, extensão, roquete e adaptador",
     conceptPt:
-      "Em vez do conjunto fechado de chaves repetidas em vários tamanhos, três blocos: o lock Milwaukee em 73, 152 ou 305 mm, a extensão que dá o alcance e o jogo de ponteiras misto ou dedicado — cada bloco escolhido à sua marca, sem pagar por peça que já tem.",
-    formulaPartsPt: ["lock", "extensão", "ponteiras"],
+      "O construtor do sistema 397 Lock: o porta-bits de preferência LOCK (SHOCKWAVE 73/152/305), ponteiras só Black e Diamond Ryujin ou SHOCKWAVE, extensões por marca nos três níveis (curta 100, média 150, longa 300), o roquete de bits ou offset à escolha, e os adaptadores inteligentes 3/8↔1/4 que fazem tudo trabalhar com tudo.",
+    formulaPartsPt: ["porta-bits lock", "ponteiras", "extensão", "roquete", "adaptador"],
     slots: [
       {
         id: "lock",
-        rolePt: "O lock oficial",
+        rolePt: "O porta-bits (de preferência lock)",
         jp: "ロック",
         options: [
           { refId: "milwaukee-shockwave-lock-73" },
@@ -62,22 +62,11 @@ export const MODULAR_PACKS: ModularPack[] = [
           { refId: "milwaukee-shockwave-lock-305" },
         ],
         notePt:
-          "O anel de retenção segura a ponteira em impacto: 73 mm para o dia a dia, 152 e 305 mm para fundo de perfil e cantos profundos.",
-      },
-      {
-        id: "extensao",
-        rolePt: "O alcance",
-        jp: "ヘッド",
-        options: [
-          { refId: "anex-alhp-100" },
-          { refId: "anex-aeh-100" },
-          { refId: "anex-aeh-150" },
-          { refId: "anex-alhp-300" },
-        ],
+          "Porta-bits com anel de retenção LOCK — o bit trava e não cai: 73 mm para o dia a dia, 152 e 305 mm para fundo de perfil e cantos profundos. Não há porta-bits lock equivalente em ANEX ou VESSEL (EM SOURCING): os SHOCKWAVE são a categoria.",
       },
       {
         id: "ponteiras",
-        rolePt: "As ponteiras (misto ou dedicado)",
+        rolePt: "As ponteiras (impacto primeiro)",
         jp: "先端",
         options: [
           { refId: "anex-abrs5-2065" },
@@ -88,58 +77,46 @@ export const MODULAR_PACKS: ModularPack[] = [
         notePt:
           "Política da casa: só ponteiras de classe de impacto e só as linhas aprovadas — Black Ryujin (Cr-Mo-V), Diamond Ryujin (o aperto que escorrega) e a SHOCKWAVE Milwaukee (Wear Guard Tip). Ryujin standard não entra. A VESSEL não tem bits de impacto de máquina: a série C50/C51 é impacto manual a martelo, outro produto.",
       },
-    ],
-    pairsWithPt:
-      "Acrescenta a mala de máquinas Makita e dispensa extensões de impacto dedicadas: os bits são add-on, não repetição.",
-    limitationsPt:
-      "Os bits de 6,35 mm não são isolados 1000 V nem servem para aperto com binário controlado — para isso existe chave dinamométrica. E o lock resolve a retenção da ponteira em impacto, não é chave de impacto 1/2″: percussão de cruceta é máquina dedicada.",
-  },
-  {
-    id: "mod-roquete",
-    trade: "Roquetes & aperto",
-    jp: "ラチェット · roquete modular",
-    title: "O roquete à medida com conversor 3/8″ ↔ 1/4″",
-    conceptPt:
-      "A chave escolhe-se à marca: Zyklop para sockets, Quick Ball para bits, TD6816MG para levar 16 perfis no punho, 525 para trabalhar rente a paredes e caixas. O conversor 3/8″→1/4″ faz os bits do 397 trabalharem no sistema Wera — um roquete substitui a gaveta de chaves de curto.",
-    formulaPartsPt: ["chave", "conversor", "ponteiras"],
-    slots: [
       {
-        id: "chave",
-        rolePt: "A chave do vaivém",
-        jp: "キー",
+        id: "extensao",
+        rolePt: "As extensões: curta 100 · média 150 · longa 300",
+        jp: "ヘッド",
         options: [
-          { refId: "wera-8100-sb-6" },
-          { refId: "wera-8000a-zyklop-14" },
+          { refId: "anex-alhp-100" },
+          { refId: "anex-aeh-150" },
+          { refId: "anex-alhp-300" },
+        ],
+        notePt:
+          "Extensões por marca e categoria, nos mesmos três níveis dos locks: impacto hoje pela linha ANEX (ALHP heavy-duty 100 e 300, AEH média 150). Categoria VDE isolado não existe em nenhuma marca (EM SOURCING) — no lado elétrico, o isolamento é o comprimento do próprio bit AZM. Outras marcas de extensão de impacto: EM SOURCING até homologação.",
+      },
+      {
+        id: "roquete",
+        rolePt: "O roquete (de bits ou offset)",
+        jp: "ラチェット",
+        options: [
           { refId: "anex-397-d" },
-          { refId: "vessel-td6816mg" },
           { refId: "anex-525" },
           { refId: "klein-32305" },
           { refId: "bahco-808050p" },
+          { refId: "anex-436" },
+          { refId: "anex-aoa-17s1" },
         ],
         notePt:
-          "Três escolas de vaivém: Zyklop 3/8″ e 1/4″ para sockets, os roquetes japoneses para bits, e os roquetes de fendas americano (Klein 15-em-1) e sueco (Bahco pistola) para a variedade de perfis.",
+          "Roquete de bits: o Quick Ball 72 é o movimento da casa, o Compact 52 entra rente a paredes, o Klein 15-em-1 e o Bahco pistola cobrem a variedade americana e sueca. Roquete offset: o 436 de cabeça baixa aperta por baixo de superfícies e o AOA-17 com sockets H8-H21 chega aos 230 N·m onde a máquina não cabe.",
       },
       {
-        id: "conversor",
-        rolePt: "O conversor",
+        id: "adaptador",
+        rolePt: "Os adaptadores inteligentes",
         jp: "変換",
         options: [{ refId: "wera-8784-b1" }],
         notePt:
-          "O inverso 1/4→3/8 segue em sourcing com a Wera; por agora o conversor leva os bits ao sistema 3/8″.",
-      },
-      {
-        id: "ponteiras",
-        rolePt: "As ponteiras",
-        jp: "先端",
-        options: [{ refId: "anex-525-9t" }, { refId: "vessel-tx11" }, { refId: "vessel-tdbs21" }],
-        notePt:
-          "O misto ANEX 525-9T (PH2 + Torx T8-T40 num pack) contra os dedicados VESSEL: o estojo Torx ordenado ou as ultra-curtas rente ao painel.",
+          "A redução 3/8″→1/4″ leva os bits do 397 ao sistema de sockets — o mesmo bit trabalha no lock e na Zyklop. O inverso 1/4→3/8 e a fêmea porta-soquete (quadrado para porta-bits) seguem EM SOURCING: só entram com ref oficial homologada.",
       },
     ],
     pairsWithPt:
-      "Com o pack modular de impacto forma o sistema completo: roquete, conversor, lock, extensão e ponteiras.",
+      "Acrescenta a mala de máquinas Makita e dispensa extensões de impacto dedicadas: os bits são add-on, não repetição. Os perfis manuais (Torx, hex, fenda) ficam cobertos pelo kit misto ANEX 525.",
     limitationsPt:
-      "Aperto manual apenas: nenhum destes roquetes dá binário calibrado nem aguenta percussão — para impacto existe o pack modular de impacto.",
+      "Os bits de 6,35 mm não são isolados 1000 V nem servem para aperto com binário controlado — para isso existe o builder VDE e a chave dinamométrica. O lock resolve a retenção da ponteira em impacto, não é chave de impacto 1/2″: percussão de cruceta é máquina dedicada.",
   },
   {
     id: "mod-canalizacao",
