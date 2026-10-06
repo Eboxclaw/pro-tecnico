@@ -32,15 +32,33 @@ test("the 397 Lock builder carries lock-first, Ryujin-only, ratchets and adapter
       `${refId} fora da política (Ryujin standard banido)`,
     );
   }
-  assert.ok(ponteiraIds.some((id) => /abrs5/.test(id)), "pack PH2 S (Black Ryujin) presente");
-  assert.ok(ponteiraIds.some((id) => /adrs/.test(id)), "pack PH2 S+ (Diamond) presente");
-  assert.ok(ponteiraIds.some((id) => id === "anex-525-28b"), "pack múltiplo presente");
-  assert.ok(ponteiraIds.some((id) => /azm/.test(id)), "ponteira VDE/isolada presente");
-  // extensão nos três níveis
+  assert.ok(
+    ponteiraIds.some((id) => /abrs5/.test(id)),
+    "pack PH2 S (Black Ryujin) presente",
+  );
+  assert.ok(
+    ponteiraIds.some((id) => /adrs/.test(id)),
+    "pack PH2 S+ (Diamond) presente",
+  );
+  assert.ok(
+    ponteiraIds.some((id) => id === "anex-525-28b"),
+    "pack múltiplo presente",
+  );
+  assert.ok(
+    ponteiraIds.some((id) => /azm/.test(id)),
+    "ponteira VDE/isolada presente",
+  );
+  // extensão: conjuntos por marca nos três níveis (ANEX, VESSEL, Klein)
   const extensaoIds = impact.slots
     .find((slot) => slot.id === "extensao")
     .options.map((option) => option.refId);
-  assert.equal(extensaoIds.length, 3, "curta 100 · média 150 · longa 300");
+  assert.equal(extensaoIds.length, 9, "3 marcas × 3 níveis (curta 100 · média 150 · longa 300)");
+  for (const brand of ["anex-alhp", "vessel-exh", "klein-31", "klein-32791"]) {
+    assert.ok(
+      extensaoIds.some((id) => id.startsWith(brand)),
+      `conjunto ${brand} presente nas extensões`,
+    );
+  }
   // roquete tem de incluir um offset e um roquete de bits
   const roqueteIds = impact.slots.find((slot) => slot.id === "roquete").options.map((o) => o.refId);
   assert.ok(roqueteIds.includes("anex-436"), "offset ratchet presente");

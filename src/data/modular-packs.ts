@@ -81,15 +81,21 @@ export const MODULAR_PACKS: ModularPack[] = [
       },
       {
         id: "extensao",
-        rolePt: "As extensões: curta 100 · média 150 · longa 300",
+        rolePt: "As extensões: conjuntos por marca — curta 100 · média 150 · longa 300",
         jp: "ヘッド",
         options: [
           { refId: "anex-alhp-100" },
-          { refId: "anex-aeh-150" },
+          { refId: "anex-alhp-150" },
           { refId: "anex-alhp-300" },
+          { refId: "vessel-exh-100" },
+          { refId: "vessel-exh-150" },
+          { refId: "vessel-dxh-350" },
+          { refId: "klein-32791" },
+          { refId: "klein-31088" },
+          { refId: "klein-31089" },
         ],
         notePt:
-          "Extensões por marca e categoria, nos mesmos três níveis dos locks: impacto hoje pela linha ANEX (ALHP heavy-duty 100 e 300, AEH média 150). Categoria VDE isolado não existe em nenhuma marca (EM SOURCING) — no lado elétrico, o isolamento é o comprimento do próprio bit AZM. Outras marcas de extensão de impacto: EM SOURCING até homologação.",
+          "Categoria IMPACTO, três conjuntos completos: ANEX ALHP heavy-duty (100/150/300, uma só linha), VESSEL Slim Long compatível 40 V (EXH 100/150, DXH 350 no nível grande) e Klein Dual-Lock (4″/6″/12″ com retenção nas duas pontas). Milwaukee não faz extensão não-locking — a extensão deles é a própria linha lock 73/152/305, no slot de cima. Categoria VDE/isolado: não existe em nenhuma marca (EM SOURCING) — no lado elétrico, o isolamento é o comprimento do próprio bit AZM.",
       },
       {
         id: "roquete",
@@ -201,9 +207,12 @@ export const MODULAR_PACKS: ModularPack[] = [
         id: "grip",
         rolePt: "O grip isolado",
         jp: "グリップ",
-        options: [{ refId: "knipex-8726250-cobra-vde" }],
+        options: [
+          { refId: "knipex-8726250-cobra-vde" },
+          { refId: "knipex-8606250-pliers-wrench-vde" },
+        ],
         notePt:
-          "A Cobra certificada 1000 V (IEC 60900): o grip auto-bloqueante que pode tocar o quadro — 24 posições, porcas até 46 mm, tubos até Ø50 mm.",
+          "O conjunto Knipex VDE completo: a Cobra isolada (IEC 60900) para o redondo e o Pliers Wrench isolado para apertar fittings cromados como chave fixa — com o corte VDE do slot acima, o quarteto certificado fecha.",
       },
     ],
     pairsWithPt:

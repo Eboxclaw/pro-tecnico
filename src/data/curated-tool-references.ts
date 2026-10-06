@@ -3796,6 +3796,200 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "Klein 32604INS, chave isolada auto-lock 4-em-1",
     imageSourceLabel: "Imagem oficial do fabricante",
   },
+  {
+    id: "anex-alhp-150",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "ALHP-150",
+    officialCode: "ALHP-150",
+    namePt: "ALHP-150 · porta-bits heavy-duty 150 mm",
+    japanese: "強靭ロングビットホルダー",
+    task: "fastening",
+    categoryPt: "Extensão impacto · média 150",
+    badge: "150 mm",
+    notePt:
+      "O nível médio da linha heavy-duty ANEX: 150 mm para 40 V/18 V com a mesma construção dos ALHP 100 e 300 — o conjunto fica coeso numa só linha.",
+    specPt: "1/4″ hex · 150 mm · 40 V/18 V · heavy-duty",
+    storyPt:
+      "Com o ALHP-150, o conjunto ANEX fecha os três níveis na mesma linha heavy-duty: curta 100, média 150, longa 300. Impacto primeiro, o alcance vem da extensão.",
+    evidencePt:
+      "ANEX: 強靭ロングビットホルダー ALHP-150, 150 mm, linha heavy-duty para impacto 40 V/18 V. Imagem oficial anextool.co.jp verificada.",
+    referenceUrl: "https://www.anextool.co.jp/item/alhp-150/",
+    compareGroup: "extensoes",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ALHP-150_1-1-768x769.jpg",
+    imageAlt: "ANEX ALHP-150, porta-bits heavy-duty de 150 mm",
+    imageSourceLabel: "Imagem oficial ANEX",
+  },
+  {
+    id: "vessel-exh-100",
+    brand: "VESSEL",
+    brandSlug: "VESSEL",
+    model: "EXH-100",
+    officialCode: "EXH-100",
+    namePt: "EXH-100 Slim Long · porta-bits 100 mm",
+    japanese: "スリムロングビットホルダー",
+    task: "fastening",
+    categoryPt: "Extensão impacto · curta 100",
+    badge: "Slim 40 V",
+    notePt:
+      "A linha nova Slim Long da VESSEL: canhão de Ø13 mm que entra onde os holders grossos não cabem, especificada para impacto 40 V.",
+    specPt: "1/4″ hex · 100 mm · Ø13 mm · impacto 40 V",
+    storyPt:
+      "O nível curta do conjunto VESSEL: slim para o acesso apertado, alta para o impacto — a escola japonesa a responder ao mesmo problema dos ALHP.",
+    evidencePt:
+      "VESSEL: スリムロングビットホルダー EXH-100, 100 mm, canhão slim Ø13 mm, compatível com impacto 40 V (lançamento oficial). Imagem oficial vessel.co.jp verificada.",
+    referenceUrl: "https://www.vessel.co.jp/product/timbering_holder/486786/",
+    compareGroup: "extensoes",
+    imageUrl: "https://www.vessel.co.jp/userfiles/bitsocketdrill/EXH100_d1.jpg",
+    imageAlt: "VESSEL EXH-100, porta-bits slim longo de 100 mm",
+    imageSourceLabel: "Imagem oficial VESSEL",
+  },
+  {
+    id: "vessel-exh-150",
+    brand: "VESSEL",
+    brandSlug: "VESSEL",
+    model: "EXH-150",
+    officialCode: "EXH-150",
+    namePt: "EXH-150 Slim Long · porta-bits 150 mm",
+    japanese: "スリムロングビットホルダー",
+    task: "fastening",
+    categoryPt: "Extensão impacto · média 150",
+    badge: "Slim 40 V",
+    notePt:
+      "O nível médio da linha Slim Long: 150 mm com o canhão de Ø13 mm para fundo de perfil em impacto 40 V.",
+    specPt: "1/4″ hex · 150 mm · Ø13 mm · impacto 40 V",
+    storyPt:
+      "Fundo de perfil em espaço apertado: o médio do conjunto VESSEL mantém o canhão slim e a especificação 40 V.",
+    evidencePt:
+      "VESSEL: スリムロングビットホルダー EXH-150, 150 mm, canhão slim Ø13 mm, impacto 40 V. Imagem oficial vessel.co.jp verificada.",
+    referenceUrl: "https://www.vessel.co.jp/product/timbering_holder/486787/",
+    compareGroup: "extensoes",
+    imageUrl: "https://www.vessel.co.jp/userfiles/bitsocketdrill/EXH150_d1.jpg",
+    imageAlt: "VESSEL EXH-150, porta-bits slim longo de 150 mm",
+    imageSourceLabel: "Imagem oficial VESSEL",
+  },
+  {
+    id: "vessel-dxh-350",
+    brand: "VESSEL",
+    brandSlug: "VESSEL",
+    model: "DXH-350",
+    officialCode: "DXH-350",
+    namePt: "EXH-350 DX Slim Long · porta-bits 350 mm",
+    japanese: "スリムロングビットホルダーDX",
+    task: "fastening",
+    categoryPt: "Extensão impacto · longa 350",
+    badge: "DX",
+    notePt:
+      "O nível longa do conjunto VESSEL: 350 mm na versão DX reforçada — acima dos 300 mm, para cantos que nenhum bit médio alcança.",
+    specPt: "1/4″ hex · 350 mm · versão DX · impacto",
+    storyPt:
+      "Quando os 300 mm ficam curtos: o DX de 350 mm é o longa do conjunto VESSEL, com a rigidez reforçada da série DX para não vibrar em impacto.",
+    evidencePt:
+      "VESSEL: スリムロングビットホルダーDX DXH-350, 350 mm, série DX reforçada. Imagem oficial vessel.co.jp verificada.",
+    referenceUrl: "https://www.vessel.co.jp/product/timbering_holder/486791/",
+    compareGroup: "extensoes",
+    imageUrl: "https://www.vessel.co.jp/userfiles/bitsocketdrill/DXH350_d1.jpg",
+    imageAlt: "VESSEL DXH-350, porta-bits slim longo DX de 350 mm",
+    imageSourceLabel: "Imagem oficial VESSEL",
+  },
+  {
+    id: "klein-32791",
+    brand: "KLEIN",
+    brandSlug: "KLEIN",
+    model: "32791",
+    officialCode: "32791",
+    namePt: "Pro Impact Power Bit Extension · 4″ (100 mm)",
+    japanese: "エクステンション",
+    task: "fastening",
+    categoryPt: "Extensão impacto · curta 100",
+    badge: "Impacto",
+    notePt:
+      "O nível curta do conjunto Klein: aço S2 para impacto com núcleo magnético que segura o bit na extensão.",
+    specPt: "1/4″ hex · 4″ (101,6 mm) · aço S2 · núcleo magnético · impacto",
+    storyPt:
+      "A escola americana do conjunto: a 4″ Pro Impact é a curta que vive na máquina, com o íman a segurar o bit entre percussões.",
+    evidencePt:
+      "Klein Tools: Pro Impact Power Bit Extension 1/4-Inch Hex, 4″, ref. 32791, aço S2 com íman. Imagem oficial do CDN Klein verificada.",
+    referenceUrl:
+      "https://www.kleintools.com/catalog/power-drivers-bits/pro-impact-power-bit-extension-14-inch-hex",
+    compareGroup: "extensoes",
+    imageUrl: "https://media.kleintools.io/images/original/klein/32791.jpg",
+    imageAlt: "Klein 32791, extensão de impacto de 4 polegadas",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
+  {
+    id: "klein-31088",
+    brand: "KLEIN",
+    brandSlug: "KLEIN",
+    model: "31088",
+    officialCode: "31088",
+    namePt: "Dual-Lock Impact Extension · 6″ (152 mm)",
+    japanese: "デュアルロックエクステンション",
+    task: "fastening",
+    categoryPt: "Extensão impacto · média 150",
+    badge: "Dual-Lock",
+    notePt:
+      "O nível médio com dupla retenção: o Dual-Lock trava o bit nas duas pontas, 152 mm de alcance em impacto.",
+    specPt: "1/4″ hex · 6″ (152 mm) · Dual-Lock nas duas pontas · impacto",
+    storyPt:
+      "Dupla trava: o bit fica preso na extensão e a extensão fica presa no mandíflon — a resposta Klein ao bit que fica para trás no furo.",
+    evidencePt:
+      "Klein Tools: 6-Inch Dual-Lock Impact Extension, ref. 31088, retenção dupla em impacto. Imagem oficial do CDN Klein verificada.",
+    referenceUrl:
+      "https://www.kleintools.com/catalog/power-drivers-bits/6-inch-dual-lock-impact-extension",
+    compareGroup: "extensoes",
+    imageUrl: "https://media.kleintools.io/images/original/klein/31088.jpg",
+    imageAlt: "Klein 31088, extensão Dual-Lock de impacto de 6 polegadas",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
+  {
+    id: "klein-31089",
+    brand: "KLEIN",
+    brandSlug: "KLEIN",
+    model: "31089",
+    officialCode: "31089",
+    namePt: "Dual-Lock Impact Extension · 12″ (305 mm)",
+    japanese: "デュアルロックエクステンション",
+    task: "fastening",
+    categoryPt: "Extensão impacto · longa 300",
+    badge: "Dual-Lock",
+    notePt:
+      "O nível longa do conjunto Klein: 12″ (305 mm) com a mesma dupla retenção — cantos profundos sem perder o bit.",
+    specPt: "1/4″ hex · 12″ (305 mm) · Dual-Lock nas duas pontas · impacto",
+    storyPt:
+      "O grande do conjunto: doze polegadas com retenção nas duas pontas, para fundo de conduta e canto profundo em impacto.",
+    evidencePt:
+      "Klein Tools: 12-Inch Dual-Lock Impact Extension, ref. 31089, retenção dupla em impacto. Imagem oficial do CDN Klein verificada.",
+    referenceUrl:
+      "https://www.kleintools.com/catalog/power-drivers-bits/12-inch-dual-lock-impact-extension",
+    compareGroup: "extensoes",
+    imageUrl: "https://media.kleintools.io/images/original/klein/31089.jpg",
+    imageAlt: "Klein 31089, extensão Dual-Lock de impacto de 12 polegadas",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
+  {
+    id: "knipex-8606250-pliers-wrench-vde",
+    brand: "KNIPEX",
+    brandSlug: "KNIPEX",
+    model: "86 06 250",
+    officialCode: "86 06 250",
+    namePt: "Pliers Wrench VDE · alicate paralelo isolado 250 mm",
+    japanese: "絶縁プライヤーレンチ",
+    task: "grip",
+    categoryPt: "VDE · grip paralelo isolado",
+    badge: "VDE 1000 V",
+    notePt:
+      "O Pliers Wrench certificado 1000 V: mordentes paralelos que apertam fittings como chave fixa sem marcar, isolado segundo IEC 60900 — a peça que faltava ao conjunto Knipex VDE.",
+    specPt:
+      "250 mm · mordentes paralelos · IEC 60900/1000 V · punho isolado com proteção de mandíbula",
+    storyPt:
+      "O quarteto Knipex VDE fecha: Cobra VDE para o redondo, Pliers Wrench VDE para o fitting cromado, instalador 13-96 para descarnar e o 74-06 para o fio piano — tudo certificado no mesmo alicate.",
+    evidencePt:
+      "KNIPEX: Pliers Wrench 1000V Insulated 86 06 250, 250 mm, versão isolada do 86 05 250 (página oficial knipex-tools.com, linha Insulated Tools). Sem imagem oficial acessível (bloqueio do CDN): ficha com monograma.",
+    referenceUrl:
+      "https://www.knipex-tools.com/products/insulated-tools/pipe-wrenches-and-water-pump-pliers/jaw-protectors-pliers-wrench/8606250US",
+    compareGroup: "grip",
+  },
 ];
 
 export const REFERENCE_QUEUE = [
