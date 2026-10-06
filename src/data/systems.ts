@@ -131,9 +131,9 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         impactReady: true,
         pieces: [
           {
-            refId: "anex-art-14m-2-65",
+            refId: "anex-abrs5-2065",
             whyPt:
-              "A reposição de dez PH2×65: um comprimento chega para o dia; o alcance vem das extensões, não de mais bits.",
+              "A reposição Black Ryujin slim 5×65: um comprimento chega para o dia; o alcance vem das extensões, não de mais bits.",
           },
           {
             refId: "anex-adrs-2065",
@@ -208,13 +208,13 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         impactReady: true,
         pieces: [
           {
-            refId: "anex-art-14m-2-65",
+            refId: "anex-abrs5-2065",
             whyPt:
-              "PH2×65 em caixa de dez: um comprimento chega, o alcance vem da extensão 100 mm.",
+              "PH2×65 Black Ryujin em caixa de cinco: um comprimento chega, o alcance vem da extensão 100 mm.",
           },
           {
-            refId: "anex-arpm-2365",
-            whyPt: "Bit duplo +2/+3: metade das trocas na bancada.",
+            refId: "anex-adrs-2065",
+            whyPt: "Diamond Ryujin slim: o aperto de bancada sem escorregar.",
           },
         ],
       },
@@ -366,9 +366,8 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         impactReady: true,
         pieces: [
           {
-            refId: "anex-art-14m-2-65",
-            whyPt:
-              "Chapa e suportes comem PH2×65: a caixa de dez cobre o perfil pela linha Ryujin.",
+            refId: "anex-abrs5-2065",
+            whyPt: "Chapa e suportes comem PH2×65: a caixa Black Ryujin cobre o perfil.",
           },
         ],
       },
@@ -437,8 +436,8 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     targetPriceEur: { min: 29, max: 39 },
     targetMoq: 150,
     capabilitiesPt: ["PH2 · 65 mm", "Impact Cr-Mo-V", "Reposição ×10"],
-    imageRefId: "anex-art-14m-2-65",
-    leadRefId: "anex-art-14m-2-65",
+    imageRefId: "anex-abrs5-2065",
+    leadRefId: "anex-abrs5-2065",
     modules: [
       {
         role: "IMPACT",
@@ -446,16 +445,17 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
         impactReady: true,
         pieces: [
           {
-            refId: "anex-art-14m-2-65",
-            whyPt: "A caixa de 10 é a unidade de reposição de quem aperta PH2 o dia todo.",
+            refId: "anex-abrs5-2065",
+            whyPt: "A caixa Black Ryujin é a unidade de reposição de quem aperta PH2 o dia todo.",
           },
           {
-            refId: "anex-ryujin-slim",
-            whyPt: "A dupla ponta slim entra no furo embutido onde o bit normal fica pelo caminho.",
+            refId: "anex-adrs-2065",
+            whyPt:
+              "A ponta Diamond slim entra no furo embutido onde o bit normal fica pelo caminho.",
           },
           {
-            refId: "anex-arpm-2365",
-            whyPt: "+2/+3 no mesmo bit para bancada e montagem.",
+            refId: "milwaukee-shockwave-ph2-50",
+            whyPt: "SHOCKWAVE PH2×50: a alternativa Milwaukee para bancada e montagem.",
           },
         ],
         pendingPt: [
@@ -634,8 +634,8 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
               "O anel trava o parafuso a meio milímetro da superfície e segura-o até ao aperto.",
           },
           {
-            refId: "anex-art-14m-2-65",
-            whyPt: "A reposição PH2×65 que o pladur consome em série.",
+            refId: "anex-abrs5-2065",
+            whyPt: "A reposição Black Ryujin que o pladur consome em série.",
           },
         ],
       },

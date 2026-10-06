@@ -42,10 +42,10 @@ export const SMART_PACKS: SmartPack[] = [
           "Roquete plano de baixo perfil com 10 bits ordenados: o aperto pequeno com variedade, sem abrir caixa.",
       },
       {
-        id: "anex-art-14m-2-65",
+        id: "anex-abrs5-2065",
         quantity: 1,
         whyPt:
-          "Dez PH2 de reposição: o perfil que se gasta primeiro, em caixa e não em packs soltos.",
+          "Cinco Black Ryujin slim +2×65: o perfil que se gasta primeiro, em caixa e não em packs soltos.",
       },
       {
         id: "olfa-l5",
@@ -74,7 +74,8 @@ export const SMART_PACKS: SmartPack[] = [
       {
         id: "anex-307-s1",
         quantity: 1,
-        whyPt: "MiniSta72: vinte e oito perfis com holder magnético, o roquete de bits da casa em formato estojo.",
+        whyPt:
+          "MiniSta72: vinte e oito perfis com holder magnético, o roquete de bits da casa em formato estojo.",
       },
       {
         id: "wera-8100-sb-6",
@@ -167,9 +168,9 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "Mini roquete de 60 dentes, corpo curto: troca rápida e vaivém dentro de painéis.",
       },
       {
-        id: "anex-arpm-2365",
+        id: "vessel-220w-62",
         quantity: 1,
-        whyPt: "+2 e +3 na mesma haste: metade das trocas quando a montagem alterna perfis.",
+        whyPt: "PH2 e fenda na mesma haste: metade das trocas quando a montagem alterna perfis.",
       },
       {
         id: "anex-aqh-s1",
@@ -207,9 +208,9 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "Black Ryujin em Cr-Mo-V para 18 V/40 V: bits que não partem ao terceiro dia.",
       },
       {
-        id: "anex-ryujin-artm5-01",
+        id: "anex-525-9t",
         quantity: 1,
-        whyPt: "Três comprimentos de PH2: curto para rente, longo para fundo, tudo num jogo.",
+        whyPt: "O misto compacto PH2 + Torx T8-T40: a variedade de perfis da montagem num pack.",
       },
       {
         id: "anex-amb-635",
@@ -242,9 +243,9 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "A impacto de 180 N·m de referência, corpo para quem já tem LXT.",
       },
       {
-        id: "anex-ryujin-artm5-01",
+        id: "anex-525-28b",
         quantity: 1,
-        whyPt: "PH2 em 65/85/110 mm: o mesmo perfil em qualquer profundidade.",
+        whyPt: "O multi set 28: PH, Torx, hex e soquetes num estojo, com roquete 52 integrado.",
       },
       {
         id: "anex-aoa-17s1",
@@ -324,9 +325,9 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "O grip de tubo mantém-se, agora com a ajustável ao lado.",
       },
       {
-        id: "olfa-scr-l",
+        id: "olfa-l5",
         quantity: 1,
-        whyPt: "Raspador inox 60 mm: cola, restos e autocolantes saem antes da entrega.",
+        whyPt: "X-ato 18 mm: abre e corta no fecho da instalação.",
       },
       {
         id: "anex-525",
@@ -404,10 +405,10 @@ export const SMART_PACKS: SmartPack[] = [
         whyPt: "O roquete de 72 dentes com spinner: o movimento contínuo que define a casa.",
       },
       {
-        id: "anex-ryujin-artm5-01",
+        id: "anex-abrs5-2065",
         quantity: 1,
         whyPt:
-          "Cinco bits PH2 em 65/85/110 mm em Cr-Mo-V made in Japan: o mesmo perfil a qualquer profundidade, para 18 V e 40 V.",
+          "Cinco Black Ryujin slim 65 mm em Cr-Mo-V made in Japan: o consumível de impacto da casa, para 18 V e 40 V.",
       },
       {
         id: "anex-adrs-2065",
@@ -436,9 +437,9 @@ export const SMART_PACKS: SmartPack[] = [
     pieces: [
       { id: "anex-397-d", quantity: 1, whyPt: "O coração do pack mantém-se: Quick Ball 72." },
       {
-        id: "anex-ryujin-artm5-01",
+        id: "anex-abrs5-2065",
         quantity: 1,
-        whyPt: "E o jogo Ryujin 5×PH2 mantém-se, é o consumível que se usa.",
+        whyPt: "E o jogo Black Ryujin 5×PH2 mantém-se, é o consumível que se usa.",
       },
       {
         id: "anex-431",

@@ -80,14 +80,13 @@ export const MODULAR_PACKS: ModularPack[] = [
         rolePt: "As ponteiras (misto ou dedicado)",
         jp: "先端",
         options: [
-          { refId: "anex-art-14m-2-65" },
           { refId: "anex-abrs5-2065" },
           { refId: "anex-adrs-2065" },
-          { refId: "anex-arpm-2365" },
+          { refId: "anex-abrs5-01" },
           { refId: "milwaukee-shockwave-ph2-50" },
         ],
         notePt:
-          "Só ponteiras de classe de impacto, seja de que marca for: a escola ANEX (Black Ryujin 65 mm, Diamond, duplos) contra a Milwaukee (SHOCKWAVE 50 mm com Wear Guard Tip). A VESSEL não tem linha de bits de impacto de máquina no catálogo — a série C50/C51 é impacto manual a martelo, outro produto.",
+          "Política da casa: só ponteiras de classe de impacto e só as linhas aprovadas — Black Ryujin (Cr-Mo-V), Diamond Ryujin (o aperto que escorrega) e a SHOCKWAVE Milwaukee (Wear Guard Tip). Ryujin standard não entra. A VESSEL não tem bits de impacto de máquina: a série C50/C51 é impacto manual a martelo, outro produto.",
       },
     ],
     pairsWithPt:
@@ -132,11 +131,9 @@ export const MODULAR_PACKS: ModularPack[] = [
         id: "ponteiras",
         rolePt: "As ponteiras",
         jp: "先端",
-        options: [
-          { refId: "anex-art-14m-2-65" },
-          { refId: "vessel-tx11" },
-          { refId: "vessel-tdbs21" },
-        ],
+        options: [{ refId: "anex-525-9t" }, { refId: "vessel-tx11" }, { refId: "vessel-tdbs21" }],
+        notePt:
+          "O misto ANEX 525-9T (PH2 + Torx T8-T40 num pack) contra os dedicados VESSEL: o estojo Torx ordenado ou as ultra-curtas rente ao painel.",
       },
     ],
     pairsWithPt:
@@ -186,12 +183,12 @@ export const MODULAR_PACKS: ModularPack[] = [
     jp: "絶縁 · VDE modular",
     title: "O VDE à medida: ponteiras e chaves 1000 V, com ou sem roquete",
     conceptPt:
-      "Cada peça isolada é uma ferramenta completa certificada IEC 60900: escolhe-se a ponteira AZM pelo perfil e pelo comprimento isolado, a chave completa pelo aperto e o alicate de corte sempre VDE. O comprimento isolado substitui a extensão — a extensão isolada 1000 V segue em sourcing.",
-    formulaPartsPt: ["ponteira VDE", "chave VDE", "corte VDE", "grip VDE"],
+      "Cada peça isolada é uma ferramenta completa certificada IEC 60900: o bit isolado AZM trava no porta-bits isolado — manual ou com roquete — em vez de chaves simples; o corte e o grip são sempre VDE. O comprimento isolado substitui a extensão — a extensão isolada 1000 V segue EM SOURCING.",
+    formulaPartsPt: ["ponteira VDE", "porta-bits 1000 V", "corte VDE", "grip VDE"],
     slots: [
       {
         id: "ponteira",
-        rolePt: "A ponteira isolada",
+        rolePt: "A ponteira isolada (1000 V)",
         jp: "先端",
         options: [
           { refId: "anex-azm-2698" },
@@ -199,19 +196,21 @@ export const MODULAR_PACKS: ModularPack[] = [
           { refId: "anex-azm-2100" },
           { refId: "anex-azm-2150" },
         ],
+        notePt:
+          "Bits isolados 1000 V, ensaio a 10 kV: o comprimento isolado (100 e 150 mm) substitui a extensão, porque extensão isolada não existe no catálogo (EM SOURCING).",
       },
       {
         id: "chave",
-        rolePt: "A chave completa 1000 V",
-        jp: "キー",
+        rolePt: "O porta-bits isolado (manual ou roquete)",
+        jp: "ホルダー",
         options: [
-          { refId: "vessel-960-ph2-100" },
-          { refId: "vessel-200-ph2-100" },
-          { refId: "anex-7920" },
+          { refId: "wera-837i-ra-vde" },
+          { refId: "wera-817-vde" },
           { refId: "klein-32310ins" },
+          { refId: "klein-32604ins" },
         ],
         notePt:
-          "A escola europeia (MEGADORA, Ball Grip, slim ANEX) contra a americana: o set isolado Klein auto-lock com dez posições, certificado 1000 V ASTM F1505.",
+          "Sem chaves simples: sempre lógica porta-bits com bits isolados 6,35 mm — o roquete isolado Wera 837 i RA (IEC 60900), o manual 817 VDE, ou os auto-lock Klein com pontas isoladas de substituição (ASTM F1505). Chaves de lâmina fixa ficam na mala eletricidade VDE, fora deste builder.",
       },
       {
         id: "corte",

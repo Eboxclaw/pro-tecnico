@@ -31,9 +31,9 @@ export const REJENDARI_KITS: RejendariKit[] = [
     tier: "Pro",
     title: "O sistema de bits completo: perfil, impacto e acesso",
     conceptPt:
-      "Um sistema, uma escola: o mesmo perfil PH2 em três comprimentos, consumíveis à altura do impacto e o offset que aperta onde a máquina não cabe.",
+      "As duas linhas Ryujin aprovadas pela casa — Black para o impacto, Diamond para o escorregadio — a extensão que dá a profundidade e o offset que aperta onde a máquina não cabe.",
     dayPt:
-      "O dia de bits é o dia mais repetido do ofício: o PH2 entra e sai vinte vezes antes do almoço. Este kit reúne a resposta ANEX de ponta a ponta, bits feitos na mesma casa de Sanjō, do aço ao fio: a caixa Black Ryujin de dez PH2×65 cobre o perfil e a extensão de 150 mm cobre a profundidade; os Diamond aguentam o aperto longo sem escorregar; o Diamond slim reduz o atrito no aperto longo; e o sistema de cinto, Quick Holders e neji-catch, mantém a ponta certa na mão e o parafuso preso à ponta. Quando o corpo da máquina bloqueia o caminho, o offset AOA-17 aperta por ela.",
+      "O dia de bits é o dia mais repetido do ofício: o PH2 entra e sai vinte vezes antes do almoço. Este kit reúne a resposta ANEX nas duas linhas que a casa aceita: os Black Ryujin de 65 mm aguentam o impacto em Cr-Mo-V e a extensão de 150 mm cobre a profundidade sem bits compridos; os Diamond Ryujin seguram o aperto longo no inox e no latão sem escorregar; e o sistema de cinto, Quick Holders e neji-catch, mantém a ponta certa na mão e o parafuso preso à ponta. Quando o corpo da máquina bloqueia o caminho, o offset AOA-17 aperta por ela.",
     pieces: [
       {
         id: "anex-aeh-150",
@@ -46,12 +46,6 @@ export const REJENDARI_KITS: RejendariKit[] = [
         quantity: 1,
         whyPt:
           "Black Ryujin +2×65 em cinco peças: o consumível dimensionado para impacto que se gasta primeiro.",
-      },
-      {
-        id: "anex-art-14m-2-65",
-        quantity: 1,
-        whyPt:
-          "A caixa de reposição: dez +2×65 com íman para o dia em que o bit trava e o trabalho não pode parar.",
       },
       {
         id: "anex-adrs-2065",
@@ -82,61 +76,6 @@ export const REJENDARI_KITS: RejendariKit[] = [
       "Bits não isolados 1000 V nem para impacto de 1/2″. O offset AOA-17 é aperto manual; a binário declarado é do sistema, não da máquina. Adaptadores ATA são artigo próprio, fora deste kit.",
   },
   {
-    id: "kit-roquetes-pro",
-    format: "kit",
-    trade: "Roquetes & aperto",
-    jp: "ラチェット · roquetes",
-    tier: "Pro",
-    title: "Seis roquetes, seis classes de acesso",
-    conceptPt:
-      "O vaivém é a ferramenta mais usada do dia, aqui está um para cada classe: swing completo, acesso curto, acesso longo, cabeça de 20 mm, cabeça baixa para por baixo de superfícies e a chave que leva os bits dentro dela.",
-    dayPt:
-      "Quem aperta parafusos com um roquete só acaba por forçar todos. Este kit junta as escolas que respeitamos: a japonesa do Quick Ball 72, setenta e dois dentes num arco curto, o vaivém contínuo que define a casa, e o roquete VESSEL de 72 dentes com dezasseis bits integrados que fecha a variedade de cabeças sem abrir caixa. O Compact 52 da ANEX entra onde nenhuma cabeça maior entra; o Offset 436 aperta o parafuso que está por baixo do perfil com a cabeça baixa; e o Gandora 431 fecha o dia: dez dentes, dois bits no corpo, a chave que se leva sem porta-bits.",
-    pieces: [
-      {
-        id: "anex-397-d",
-        quantity: 1,
-        whyPt: "Quick Ball 72: 72 dentes e 25 N·m, o movimento contínuo que define a casa.",
-      },
-      {
-        id: "vessel-td6816mg",
-        quantity: 1,
-        whyPt:
-          "Roquete de 72 dentes com 16 bits integrados: o vaivém a uma mão dentro de painéis, sem caixa aberta.",
-      },
-      {
-        id: "anex-525",
-        quantity: 1,
-        whyPt: "Compact Bit Ratchet 52: cabeça de 20 mm para o aperto rente a paredes e caixas.",
-      },
-      {
-        id: "anex-436",
-        quantity: 1,
-        whyPt:
-          "Offset de cabeça baixa (21 mm, 16 dentes): o aperto por baixo de superfícies onde nenhum roquete reto entra.",
-      },
-      {
-        id: "anex-431",
-        quantity: 1,
-        whyPt:
-          "Gandora Neji-Pita: dois bits guardados no corpo, a chave de bolso que não precisa de porta-bits.",
-      },
-      {
-        id: "vessel-230w",
-        quantity: 1,
-        whyPt: "Ball Grip tang-through: o parafuso clássico japonês com retenção na haste.",
-      },
-      {
-        id: "vessel-tdbs23",
-        quantity: 1,
-        whyPt: "Dez bits ultra-curtos PH/SL/HEX: o aperto rente sem abrir a caixa de bits.",
-      },
-    ],
-    notIncludedPt: ["Sockets", "Bits em quantidade", "Binário calibrado"],
-    limitationsPt:
-      "Roquetes de bits 6,35 mm não substituem binário calibrado nem impacto. O Gandora é manutenção leve (10 dentes) e o Offset é aperto manual: para aperto pesado, Quick Ball ou um sistema 3/8″.",
-  },
-  {
     id: "kit-caixa-avac",
     format: "caixa",
     trade: "AVAC & instalação",
@@ -146,7 +85,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "Grip que agarra tubo sem marcar, ajustável com mandíbula reversível, roquete fino para painel e o acabamento que o cliente vê, num sítio só.",
     dayPt:
-      "O dia de AVAC alterna tubo, chapa e painel: o Cobra agarra a união redonda sem escorregar, a ajustável ERGO substitui a chave de tubo com a mandíbula reversível e os mordentes paralelos da Pliers Wrench apertam fittings cromados como uma chave fixa, sem marca. Para o aperto rente a parede, o Compact 52; para alcançar através de condutas, a extensão AEH-100. O prumo auto-retrátil alinha sozinho, a fita Classe 1 decide o corte e o raspador inox entrega o equipamento limpo.",
+      "O dia de AVAC alterna tubo, chapa e painel: o Cobra agarra a união redonda sem escorregar, a ajustável ERGO substitui a chave de tubo com a mandíbula reversível e os mordentes paralelos da Pliers Wrench apertam fittings cromados como uma chave fixa, sem marca. Para o aperto rente a parede, o Compact 52; para alcançar através de condutas, a extensão AEH-100. O prumo auto-retrátil alinha sozinho, a fita Classe 1 decide o corte e o X-ato abre embalagens, corta junta e protege a entrega.",
     pieces: [
       {
         id: "knipex-cobra-250",
@@ -174,11 +113,6 @@ export const REJENDARI_KITS: RejendariKit[] = [
         id: "anex-aeh-100",
         quantity: 1,
         whyPt: "Acesso longo: 100 mm de extensão para alcançar através de painéis e condutas.",
-      },
-      {
-        id: "olfa-scr-l",
-        quantity: 1,
-        whyPt: "Raspador inox 60 mm: cola, restos e autocolantes saem antes da entrega.",
       },
       {
         id: "tajima-pzb300",
@@ -255,7 +189,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "A mala base de toda a casa: o 397 com o lock SHOCKWAVE Milwaukee, o pack PH2×65 com reposição, a Zyklop 3/8 com redução para 1/4″ e o aperto de mão que falta ao dia de qualquer profissão.",
     dayPt:
-      "A mala abre no punho do 397: o bit entra pelo lock Milwaukee SHOCKWAVE e fica travado. Quando o aperto cresce, a redução 8784 leva o mesmo bit à Zyklop 3/8″ e os sockets entram sem trocar de linguagem. O Cobra segura o redondo, a Pliers Wrench aperta sem marcar, o instalador 13-96 descarna e corta, a fita TAJIMA mede, o X-ato OLFA abre e o serrote Bahco corta calha e ferro. O nível Optima e a reposição de dez PH2 fecham o dia sem visitas à loja. Martelo, busca polos e fita isoladora entram por EM SOURCING assim que a marca estiver homologada.",
+      "A mala abre no punho do 397: o bit entra pelo lock Milwaukee SHOCKWAVE e fica travado. Quando o aperto cresce, a redução 8784 leva o mesmo bit à Zyklop 3/8″ e os sockets entram sem trocar de linguagem. O Cobra segura o redondo, a Pliers Wrench aperta sem marcar, o instalador 13-96 descarna e corta, a fita TAJIMA mede, o X-ato OLFA abre e o serrote Bahco corta calha e ferro. O nível Optima e as reposições Black e Diamond Ryujin fecham o dia sem visitas à loja. Martelo, busca polos e fita isoladora entram por EM SOURCING assim que a marca estiver homologada.",
     pieces: [
       {
         id: "anex-397-d",
@@ -269,14 +203,15 @@ export const REJENDARI_KITS: RejendariKit[] = [
           "O lock oficial da casa: SHOCKWAVE Impact Locking de 73 mm a travar o bit, 14,02 EUR com IVA em Portugal.",
       },
       {
-        id: "anex-adrs-2065",
+        id: "anex-abrs5-2065",
         quantity: 1,
-        whyPt: "Diamond slim para inox, latão e plástico: retenção sem íman.",
+        whyPt:
+          "Black Ryujin slim +2×65 em cinco peças: a reposição do perfil que se gasta primeiro — a linha Black que a casa aceita.",
       },
       {
-        id: "anex-art-14m-2-65",
+        id: "anex-adrs-2065",
         quantity: 1,
-        whyPt: "A caixa de reposição com dez PH2×65: o consumível que não pode faltar.",
+        whyPt: "Diamond Ryujin slim para inox, latão e plástico: retenção sem íman.",
       },
       {
         id: "anex-aeh-100",
@@ -404,7 +339,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "Chaves imperiais com catraca, porta-porcas magnéticos e o wobble que trabalha em ângulo: a camada AVAC por cima da mala 397, com canalização incluída.",
     dayPt:
-      "O frigorífico vive em polegadas e a bomba de calor em espaço apertado: o Joker Imperial aperta 3/8 a 3/4 com retorno de 30°, os porta-porcas magnéticos seguram a porca até à última volta e o wobble 3/8″ chega ao terminal inclinado. A ajustável extra-larga abre acima de 1″ nas uniões antigas, a Cobra segura o redondo e o prumo auto-retrátil alinha o suporte sozinho. O raspador entrega o equipamento limpo à entrega.",
+      "O frigorífico vive em polegadas e a bomba de calor em espaço apertado: o Joker Imperial aperta 3/8 a 3/4 com retorno de 30°, os porta-porcas magnéticos seguram a porca até à última volta e o wobble 3/8″ chega ao terminal inclinado. A ajustável extra-larga abre acima de 1″ nas uniões antigas, a Cobra segura o redondo e o prumo auto-retrátil alinha o suporte sozinho. O X-ato abre e corta no fecho da obra.",
     pieces: [
       {
         id: "wera-joker-8-imperial",
@@ -443,9 +378,9 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "Prumo auto-retrátil: alinhar o suporte interior sem segunda pessoa.",
       },
       {
-        id: "olfa-scr-l",
+        id: "olfa-l5",
         quantity: 1,
-        whyPt: "Raspador inox 60 mm: adesivos e restos saem antes da entrega.",
+        whyPt: "X-ato 18 mm: abre embalagens, corta junta e proteção no fecho da obra.",
       },
     ],
     notIncludedPt: [
@@ -465,7 +400,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "A mala de canalização: chaves com abertura para uniões de 1″ e acima, o grip Knipex que segura redondo sem marcar e o resgate do parafuso morto, sem virar oficina. O duo básico do ofício vive no pack canalizador; esta mala acrescenta o resto.",
     dayPt:
-      "A canalização resolve-se com abertura e grip: a ajustável extra-larga abre acima de 1″/40 mm nas uniões antigas, a Pliers Wrench aperta fittings cromados como chave fixa e a Cobra segura o tubo. Quando o parafuso da flange está morto, o Wanidora morde-o e solta-o. Fita, X-ato e raspador fecham o dia; o serrote de ferro corta tubo e calha rente à parede.",
+      "A canalização resolve-se com abertura e grip: a ajustável extra-larga abre acima de 1″/40 mm nas uniões antigas, a Pliers Wrench aperta fittings cromados como chave fixa e a Cobra segura o tubo. Quando o parafuso da flange está morto, o Wanidora morde-o e solta-o. Fita e X-ato fecham o dia; o serrote de ferro corta tubo e calha rente à parede.",
     pieces: [
       {
         id: "bahco-9033",
@@ -640,92 +575,79 @@ export const REJENDARI_KITS: RejendariKit[] = [
     limitationsPt:
       "Mecânica geral até sockets de 19 mm: porcas grandes e binário controlado pedem o drive 3/8″ dedicado. Bits não isolados nem para impacto de 1/2″.",
   },
-  // ── Packs de bits ordenados (dupla ponta preferida) ──────────
+  // ── Packs de bits: o misto da casa + impacto só Black/Diamond ─
   {
-    id: "pack-ph2-duplo",
+    id: "pack-misto-anex",
     format: "kit",
     trade: "Bits & aparafusamento",
-    jp: "二本立て · pack PH2 duplo",
-    tier: "Pro",
-    title: "Pack PH2 duplo ×65: dois perfis no mesmo bit",
+    jp: "ミックス · kit misto",
+    tier: "Core",
+    title: "Kit misto ANEX: PH, Torx, hex e fenda num pack só",
     conceptPt:
-      "PH2 com dupla função em cada bit: +2/+3 Ryujin, reversível PH2/fenda VESSEL e a caixa de dez para reposição. PH2+PH1 num só bit está em sourcing.",
+      "A família Compact 52 em três tamanhos de misto: 28 bits (PH + Torx T6-T40 + hex + soquetes), o compacto PH2+Torx e o mini de dez — a gaveta de chaves pequenas substituída por um estojo.",
     dayPt:
-      "O dia de PH2 sem trocar de estojo: a caixa de dez PH2×65 repõe o consumível sozinho, o duplo +2/+3 Ryujin alterna perfis na mesma haste e a reversível PH2/fenda VESSEL cobre o parafuso misto. Dupla ponta preferida: menos trocas, menos bits na mala.",
+      "O dia de perfis variados sem abrir segundo estojo: o Multi Set 28 traz PH +1/+2/+3, os Torx T6-T40, hex, soquetes H5-H13, fenda e dois cabos (catraca 52 dentes e estrela) na mesma caixa de aço; o 9T leva o PH2 e os oito Torx mais usados no bolso; o 10B cobre PH, fenda e hex no mini. Roquete integrado: aperta à frente do cliente sem abrir a caixa.",
     pieces: [
       {
-        id: "anex-art-14m-2-65",
+        id: "anex-525-28b",
         quantity: 1,
-        whyPt: "Dez PH2×65 Black Ryujin: a reposição do perfil que se gasta primeiro.",
+        whyPt:
+          "Multi Set 28: PH + Torx T6-T40 + hex + soquetes num estojo de aço, com cabo catraca 52 dentes e porta-bits magnético.",
       },
       {
-        id: "anex-arpm-2365",
+        id: "anex-525-9t",
         quantity: 1,
-        whyPt: "Bit duplo +2/+3 Ryujin: dois perfis na mesma haste, impacto 18 V/40 V.",
+        whyPt: "O misto compacto: PH2 + Torx T8-T40 no estojo de bolso com cabo Compact 52.",
       },
       {
-        id: "vessel-220w-62",
+        id: "anex-525-10b",
         quantity: 1,
-        whyPt: "Reversível PH2/fenda VESSEL: o parafuso misto resolve-se sem mudar de bit.",
+        whyPt: "O mini de dez bits ultra-curtos PH/SL/HEX: o dia leve sem abrir o multi.",
+      },
+    ],
+    notIncludedPt: [
+      "Bits de impacto (ver o pack impacto Ryujin)",
+      "Bits isolados 1000 V (ver o pack VDE básico)",
+      "Sockets 3/8″ (ver a Zyklop da mala 397)",
+    ],
+    limitationsPt:
+      "Bits ultra-curtos de 19 mm para aperto manual com os cabos ANEX: não são classe de impacto nem isolados. Torx tamper-proof de eletrónica fica de fora.",
+  },
+  {
+    id: "pack-impacto-ryujin",
+    format: "kit",
+    trade: "Bits & aparafusamento",
+    jp: "黒龍靭 · impacto Ryujin",
+    tier: "Core",
+    title: "Pack impacto Ryujin: só Black, Diamond e SHOCKWAVE",
+    conceptPt:
+      "As duas linhas Ryujin que a casa aceita — Black para o impacto diário, Diamond para o aperto que escorrega — e a SHOCKWAVE Milwaukee como alternativa transatlântica. Nada mais entra.",
+    dayPt:
+      "O impacto com consumível à altura: os Black Ryujin slim de 65 mm em Cr-Mo-V aguentam o percussor 18 V/40 V, os Diamond seguram o inox e o latão sem escorregar, e os SHOCKWAVE de 50 mm com Wear Guard Tip são a resposta Milwaukee para quem prefere a escola americana. Impacto primeiro: o alcance vem da extensão, nunca do bit comprido.",
+    pieces: [
+      {
+        id: "anex-abrs5-2065",
+        quantity: 1,
+        whyPt: "Black Ryujin slim +2×65 ×5: o consumível de impacto que se gasta primeiro.",
       },
       {
         id: "anex-adrs-2065",
         quantity: 1,
-        whyPt: "Diamond Ryujin slim PH2×65 para o aperto que escorrega ao íman.",
+        whyPt: "Diamond Ryujin slim PH2×65: o aperto longo sem escorregar, revestido a diamante.",
       },
       {
-        id: "anex-abrs5-2065",
+        id: "milwaukee-shockwave-ph2-50",
         quantity: 1,
-        whyPt: "Cinco Black Ryujin slim +2×65: a reposição do perfil slim.",
-      },
-      {
-        id: "anex-ryujin-slim",
-        quantity: 1,
-        whyPt: "A dupla ponta slim entra no furo embutido onde o bit normal fica pelo caminho.",
+        whyPt: "SHOCKWAVE Impact Duty 2 PH2×50 ×10: a alternativa Milwaukee com Wear Guard Tip.",
       },
     ],
     notIncludedPt: [
+      "Bits Ryujin standard (fora da política da casa: só Black e Diamond)",
       "PH1 impacto (em sourcing com a ANEX)",
-      "PH2+PH1 num só bit (em negociação)",
-      "Extensões (ver a mala 397)",
+      "Extensões (ver os conjuntos de extensão do pack modular de impacto)",
     ],
     limitationsPt:
-      "Bits de impacto 18 V/40 V; PH1 dedicado ainda não existe na linha impact-ready da ANEX.",
-  },
-  {
-    id: "pack-torx-ordenado",
-    format: "kit",
-    trade: "Bits & aparafusamento",
-    jp: "トルクス · pack torx",
-    tier: "Pro",
-    title: "Pack Torx ordenado: T15, T20, T25 e T30 sempre na ordem",
-    conceptPt:
-      "A gama Torx do dia a dia ordenada num único estojo de baixo perfil: T15, T20, T25 e T30 convivem com a gama completa T8H-T40H.",
-    dayPt:
-      "O Torx não perdoa bit torto: o estojo VESSEL traz a gama T8H-T40H ordenada em baixo perfil, com roquete próprio para apertar sem abrir a caixa à frente do cliente. Os T15, T20, T25 e T30 ficam no sítio, sempre na mesma ordem.",
-    pieces: [
-      {
-        id: "vessel-tx11",
-        quantity: 1,
-        whyPt: "Estojo de baixo perfil com a gama Torx de segurança T8H-T40H ordenada.",
-      },
-      {
-        id: "vessel-td6808tx",
-        quantity: 1,
-        whyPt: "Roquete Torx TR de 72 dentes com os bits mais usados: aperto sem abrir o estojo.",
-      },
-      {
-        id: "anex-art-14m-2-65",
-        quantity: 1,
-        whyPt: "A reposição PH2×65 que acompanha qualquer trabalho Torx na mesma máquina.",
-      },
-    ],
-    notIncludedPt: [
-      "Bits Torx de impacto dedicados (em sourcing)",
-      "Torx tamper-proof para eletrónica (ver a mala de precisão)",
-    ],
-    limitationsPt:
-      "O estojo TX-11 e o roquete TR são de aperto manual: para impacto, confirmar a classe do bit junto do fabricante.",
+      "Bits de impacto 18 V/40 V; PH1 dedicado ainda não existe na linha impact-ready da ANEX. Bits de aperto manual ficam no kit misto.",
   },
   {
     id: "pack-fendas-duplo",
@@ -852,9 +774,9 @@ export const REJENDARI_KITS: RejendariKit[] = [
     tier: "Core",
     title: "Pack canalizador básico: grip, ajustável, medida e entrega",
     conceptPt:
-      "O quarteto de entrada do canalizador, de quatro marcas europeias: a Cobra KNIPEX para o redondo, a ajustável ERGO BAHCO para as porcas, a fita TAJIMA para medir antes do corte e o raspador OLFA para a entrega limpa.",
+      "O quarteto de entrada do canalizador, de quatro marcas europeias: a Cobra KNIPEX para o redondo, a ajustável ERGO BAHCO para as porcas, a fita TAJIMA para medir antes do corte e o X-ato OLFA para abrir, cortar e entregar.",
     dayPt:
-      "O dia de canalização de entrada: a Cobra agarra o tubo e a porca redonda sem marcar, a ajustável ERGO fecha as porcas de 1″ e 1¼″ com mandíbula reversível, a fita Classe 1 decide o corte e o raspador inox entrega o equipamento sem adesivos. Quatro peças, quatro marcas, zero redundância: quando o dia pede uniões acima de 40 mm, o resgate do parafuso morto e o corte rente, a mala canalização acrescenta o resto.",
+      "O dia de canalização de entrada: a Cobra agarra o tubo e a porca redonda sem marcar, a ajustável ERGO fecha as porcas de 1″ e 1¼″ com mandíbula reversível, a fita Classe 1 decide o corte e o X-ato extra robusto abre e corta até na entrega. Quatro peças, quatro marcas, zero redundância: quando o dia pede uniões acima de 40 mm, o resgate do parafuso morto e o corte rente, a mala canalização acrescenta o resto.",
     pieces: [
       {
         id: "knipex-cobra-250",
@@ -872,9 +794,10 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "Fita Classe 1 com saída de 2,4 m: a medida antes do corte não se discute.",
       },
       {
-        id: "olfa-scr-l",
+        id: "olfa-xh-1",
         quantity: 1,
-        whyPt: "Raspador inox 60 mm: adesivos e restos saem antes da entrega.",
+        whyPt:
+          "X-ato 25 mm extra robusto: embalagens, juntas e proteções, sempre melhor que o raspador.",
       },
     ],
     notIncludedPt: [

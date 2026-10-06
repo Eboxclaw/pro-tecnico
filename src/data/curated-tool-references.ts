@@ -3674,6 +3674,128 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "VESSEL Super Torsion bit set, 10 bits de máquina",
     imageSourceLabel: "Imagem oficial VESSEL",
   },
+  {
+    id: "anex-525-28b",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "525-28B",
+    officialCode: "525-28B",
+    namePt: "Compact Bit Ratchet 52 Multi Set · 28 bits PH/Torx/hex",
+    japanese: "コンパクトビットラチェット マルチセット",
+    task: "fastening",
+    categoryPt: "Kit misto · PH + Torx + hex num pack",
+    badge: "Misto 28",
+    notePt:
+      "O pack misto da casa: 28 bits ultra-curtos com PH +1/+2/+3, fenda −6, hex H2,5-H6, soquetes H5-H13 e Torx T6-T40 no mesmo estojo, com cabo catraca de 52 dentes, segundo cabo estrela e porta-bits magnético.",
+    specPt: "28 bits 19 mm · Torx T6-T40 · cabo 52 dentes + cabo estrela · caixa de aço",
+    storyPt:
+      "A lógica certa em vez de packs soltos: um único estojo ANEX cobre Phillips, Torx, hex, fenda e soquetes pequenos, com o roquete 52 a apertar sem abrir caixa. É o kit misto que substitui a gaveta de chaves pequenas.",
+    evidencePt:
+      "ANEX: コンパクトビット・ラチェット52 マルチセット 525-28B — 28 bits ultra-curto (PH, −6, hex, soquetes, Torx T6-T40) com cabo catraca 52 dentes e porta-bits magnético, caixa de aço. Imagem oficial anextool.co.jp verificada.",
+    referenceUrl: "https://www.anextool.co.jp/item/525-28b/",
+    compareGroup: "ratchet-driver",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/525-28B_2-1-300x300.jpg",
+    imageAlt: "ANEX 525-28B, kit misto de 28 bits com roquete Compact 52",
+    imageSourceLabel: "Imagem oficial ANEX",
+  },
+  {
+    id: "anex-525-9t",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "525-9T",
+    officialCode: "525-9T",
+    namePt: "Compact 52 · kit misto PH2 + Torx T8-T40",
+    japanese: "超短ヘクスローブビットセット",
+    task: "fastening",
+    categoryPt: "Kit misto · PH2 + Torx num pack",
+    badge: "Misto 9",
+    notePt:
+      "Nove bits ultra-curtos num pack só: PH +2 e a gama Torx T8/T10/T15/T20/T25/T27/T30/T40, com o cabo catraca Compact 52.",
+    specPt: "9 bits 19 mm · PH2 + Torx T8-T40 · cabo catraca 52 dentes",
+    storyPt:
+      "O misto compacto: o PH2 do dia e os oito Torx mais usados no mesmo estojo de bolso, com o vaivém de 52 dentes. Para quem não precisa dos 28 e quer o pack certo na mala.",
+    evidencePt:
+      "ANEX: コンパクトビット・ラチェット52 超短へクスローブビットセット 525-9T — PH +2 e Torx T8-T40 (9 bits ultra-curto) com cabo catraca. Imagem oficial anextool.co.jp verificada.",
+    referenceUrl: "https://www.anextool.co.jp/item/525-9t/",
+    compareGroup: "ratchet-driver",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/525-9T_2-1-300x300.jpg",
+    imageAlt: "ANEX 525-9T, kit misto PH2 e Torx com roquete Compact 52",
+    imageSourceLabel: "Imagem oficial ANEX",
+  },
+  {
+    id: "wera-837i-ra-vde",
+    brand: "WERA",
+    brandSlug: "WERA",
+    model: "05057490001",
+    officialCode: "05057490001",
+    namePt: "837 i RA Kraftform · porta-bits isolado com roquete 1000 V",
+    japanese: "絶縁ラチェットホルダー",
+    task: "fastening",
+    categoryPt: "VDE · porta-bits isolado com roquete",
+    badge: "VDE 1000 V",
+    notePt:
+      "O porta-bits isolado com função roquete: cabo Kraftform certificado IEC 60900/1000 V que aceita bits isolados 6,35 mm — o roquete VDE que faltava à cadeia 1000 V.",
+    specPt: "IEC 60900 · 1000 V · encaixe bits 6,35 mm isolados · 9 × 115 mm",
+    storyPt:
+      "A peça que muda a regra do lado elétrico: o bit isolado deixa de precisar de chave fixa — trava no porta-bits isolado e aperta com vaivém. Única família do catálogo com porta-bits VDE certificado.",
+    evidencePt:
+      "Wera: 837 i RA Kraftform blade-holding handle with ratchet functionality, 9 × 115 mm, ref. 05057490001, IEC 60900/1000 V, encaixe 6,35 mm. Imagem oficial wera.de verificada.",
+    referenceUrl:
+      "https://www.wera.de/en/tools/837-i-ra-kraftform-blade-holding-handle-with-ratchet-functionality/",
+    compareGroup: "vde",
+    imageUrl: "https://www.wera.de/prodimg/600x600/837_i_ra.webp",
+    imageAlt: "Wera 837 i RA, porta-bits isolado com roquete 1000 V",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
+  {
+    id: "wera-817-vde",
+    brand: "WERA",
+    brandSlug: "WERA",
+    model: "05003990001",
+    officialCode: "05003990001",
+    namePt: "817 VDE Kraftform · porta-bits isolado manual 1000 V",
+    japanese: "絶縁ビットホルダー",
+    task: "fastening",
+    categoryPt: "VDE · porta-bits isolado manual",
+    badge: "VDE 1000 V",
+    notePt:
+      "O porta-bits isolado manual: cabo Kraftform certificado IEC 60900/1000 V, 9 × 98 mm, aceita bits isolados 6,35 mm — o par simples do 837 i RA sem roquete.",
+    specPt: "IEC 60900 · 1000 V · bits 6,35 mm · 9 × 98 mm",
+    storyPt:
+      "A versão manual do porta-bits isolado: mais direto, mais fino no quadro cheio, mesma certificação. Os bits isolados da casa (AZM) encaixam e a regra mantém-se: sob tensão, conjunto isolado completo.",
+    evidencePt:
+      "Wera: 817 VDE Kraftform blade-holding handle, 9 × 98 mm, ref. 05003990001, IEC 60900/1000 V. Imagem oficial wera.de verificada (disponível a 208 px).",
+    referenceUrl: "https://www.wera.de/en/tools/817-vde-kraftform-blade-holding-handle/",
+    compareGroup: "vde",
+    imageUrl: "https://www.wera.de/prodimg/208x208/817_vde.webp",
+    imageAlt: "Wera 817 VDE, porta-bits isolado manual 1000 V",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
+  {
+    id: "klein-32604ins",
+    brand: "KLEIN",
+    brandSlug: "KLEIN",
+    model: "32604INS",
+    officialCode: "32604INS",
+    namePt: "4-in-1 Insulated Auto-Lock Screwdriver · 1000 V",
+    japanese: "絶縁オートロックドライバー",
+    task: "fastening",
+    categoryPt: "VDE · porta-bits auto-lock isolado",
+    badge: "1000 V",
+    notePt:
+      "O porta-bits isolado da escola americana: colar auto-lock que trava os bits isolados de ponta dupla 1/4″ (PH1/PH2, fenda, square), certificado 1000 V ASTM F1505.",
+    specPt: "1000 V · ASTM F1505 · 4 pontas · bits isolados de substituição 1/4″",
+    storyPt:
+      "A lógica porta-bits em isolamento: um punho, pontas isoladas que travam com meia volta e trocam em segundos. O americano do lado do 817 VDE alemão.",
+    evidencePt:
+      "Klein Tools: 4-in-1 Insulated Auto-Lock Screwdriver, ref. 32604INS — 1000 V ASTM F1505, colar auto-lock, bits isolados de ponta dupla 1/4″ de substituição (13157INSP). Imagem oficial do CDN Klein verificada.",
+    referenceUrl:
+      "https://www.kleintools.com/catalog/electricians-screwdrivers/4-1-insulated-auto-lock-screwdriver",
+    compareGroup: "vde",
+    imageUrl: "https://media.kleintools.io/images/original/klein/32604ins_c.jpg",
+    imageAlt: "Klein 32604INS, chave isolada auto-lock 4-em-1",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
 ];
 
 export const REFERENCE_QUEUE = [

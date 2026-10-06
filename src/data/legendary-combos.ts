@@ -31,14 +31,14 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     jp: "龍靭 · made in Japan",
     work: "Chapa · madeira · montagem",
     desc: "Bits Ryujin em Cr-Mo-V fabricados no Japão, especificados pela ANEX para máquinas de 18 V e 40 V.",
-    ids: ["makita-dtd172z", "anex-ryujin-artm5-01", "anex-ryujin-slim"],
+    ids: ["makita-dtd172z", "anex-abrs5-2065", "anex-adrs-2065"],
   },
   {
     name: "Ball Grip Hybrid",
     jp: "差替 · intercambiável",
     work: "Manual universal",
-    desc: "Ergonomia japonesa Ball Grip com tang-through a aceitar o universo inteiro de bits 1/4″, com Ryujin de série.",
-    ids: ["vessel-230w", "anex-ryujin-artm5-01", "anex-abrs5-2065"],
+    desc: "Ergonomia japonesa Ball Grip com tang-through a aceitar o universo inteiro de bits 1/4″, com Black e Diamond Ryujin de série.",
+    ids: ["vessel-230w", "anex-adrs-2065", "anex-abrs5-2065"],
   },
   {
     name: "Ratchet Driver",
@@ -65,8 +65,8 @@ export const LEGENDARY_COMBOS: LegendaryCombo[] = [
     name: "Drywall Finish",
     jp: "石膏ボード · pladur",
     work: "Pladur · acabamento",
-    desc: "Serrote de ponta para aberturas, raspador inox para juntas e o catch&stop ANEX que segura o parafuso de gesso: montar pladur sem parafuso no chão.",
-    ids: ["tajima-ng165js-k1", "olfa-scr-l", "anex-abs-2065"],
+    desc: "Serrote de ponta para aberturas, X-ato para juntas e o catch&stop ANEX que segura o parafuso de gesso: montar pladur sem parafuso no chão.",
+    ids: ["tajima-ng165js-k1", "olfa-l5", "anex-abs-2065"],
   },
   {
     name: "Slim Electrician",
