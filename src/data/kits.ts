@@ -91,7 +91,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "O vaivém é a ferramenta mais usada do dia, aqui está um para cada classe: swing completo, acesso curto, acesso longo, cabeça de 20 mm, cabeça baixa para por baixo de superfícies e a chave que leva os bits dentro dela.",
     dayPt:
-      "Quem aperta parafusos com um roquete só acaba por forçar todos. Este kit junta as duas escolas que respeitamos: a japonesa do Quick Ball 72, setenta e dois dentes num arco curto, o vaivém contínuo que define a casa, e a alemã da Wera 838 RA-R, curta e longa, com o Rapidaptor que troca bit a uma mão e trava em duplo. O Compact 52 da ANEX entra onde nenhuma cabeça maior entra; o Offset 436 aperta o parafuso que está por baixo do perfil com a cabeça baixa; e o Gandora 431 fecha o dia: dez dentes, dois bits no corpo, a chave que se leva sem porta-bits.",
+      "Quem aperta parafusos com um roquete só acaba por forçar todos. Este kit junta as escolas que respeitamos: a japonesa do Quick Ball 72, setenta e dois dentes num arco curto, o vaivém contínuo que define a casa, e o roquete VESSEL de 72 dentes com dezasseis bits integrados que fecha a variedade de cabeças sem abrir caixa. O Compact 52 da ANEX entra onde nenhuma cabeça maior entra; o Offset 436 aperta o parafuso que está por baixo do perfil com a cabeça baixa; e o Gandora 431 fecha o dia: dez dentes, dois bits no corpo, a chave que se leva sem porta-bits.",
     pieces: [
       {
         id: "anex-397-d",
@@ -146,7 +146,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "Grip que agarra tubo sem marcar, ajustável com mandíbula reversível, roquete fino para painel e o acabamento que o cliente vê, num sítio só.",
     dayPt:
-      "O dia de AVAC alterna tubo, chapa e painel: o Cobra agarra a união redonda sem escorregar, a ajustável ERGO substitui a chave de tubo com a mandíbula reversível e os mordentes paralelos da Pliers Wrench apertam fittings cromados como uma chave fixa, sem marca. Para o aperto rente a parede, o Compact 52; para alcançar através de condutas, a 838 RA-R longa. O prumo auto-retrátil alinha sozinho, a fita Classe 1 decide o corte e o raspador inox entrega o equipamento limpo.",
+      "O dia de AVAC alterna tubo, chapa e painel: o Cobra agarra a união redonda sem escorregar, a ajustável ERGO substitui a chave de tubo com a mandíbula reversível e os mordentes paralelos da Pliers Wrench apertam fittings cromados como uma chave fixa, sem marca. Para o aperto rente a parede, o Compact 52; para alcançar através de condutas, a extensão AEH-100. O prumo auto-retrátil alinha sozinho, a fita Classe 1 decide o corte e o raspador inox entrega o equipamento limpo.",
     pieces: [
       {
         id: "knipex-cobra-250",
@@ -317,9 +317,9 @@ export const REJENDARI_KITS: RejendariKit[] = [
     tier: "Pro",
     title: "A mala 397: lock, impacto e Zyklop num só movimento",
     conceptPt:
-      "A mala base de toda a casa: o 397 com bit-lock Rapidaptor, o pack PH2 de 65 a 110 mm, a Zyklop 3/8 com redução para 1/4″ e o aperto de mão que falta ao dia de qualquer profissão.",
+      "A mala base de toda a casa: o 397 com o lock SHOCKWAVE Milwaukee, o pack PH2×65 com reposição, a Zyklop 3/8 com redução para 1/4″ e o aperto de mão que falta ao dia de qualquer profissão.",
     dayPt:
-      "A mala abre no punho do 397: o bit entra pelo Rapidaptor e fica travado. Quando o aperto cresce, a redução 8784 leva o mesmo bit à Zyklop 3/8″ e os sockets entram sem trocar de linguagem. O Cobra segura o redondo, a Pliers Wrench aperta sem marcar, o instalador 13-96 descarna e corta, a fita TAJIMA mede, o X-ato OLFA abre e o serrote Bahco corta calha e ferro. O nível Optima e a reposição de dez PH2 fecham o dia sem visitas à loja. Martelo, busca polos e fita isoladora entram por EM SOURCING assim que a marca estiver homologada.",
+      "A mala abre no punho do 397: o bit entra pelo lock Milwaukee SHOCKWAVE e fica travado. Quando o aperto cresce, a redução 8784 leva o mesmo bit à Zyklop 3/8″ e os sockets entram sem trocar de linguagem. O Cobra segura o redondo, a Pliers Wrench aperta sem marcar, o instalador 13-96 descarna e corta, a fita TAJIMA mede, o X-ato OLFA abre e o serrote Bahco corta calha e ferro. O nível Optima e a reposição de dez PH2 fecham o dia sem visitas à loja. Martelo, busca polos e fita isoladora entram por EM SOURCING assim que a marca estiver homologada.",
     pieces: [
       {
         id: "anex-397-d",

@@ -94,11 +94,11 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     name: "397 LOCK SYSTEM",
     jp: "ロックシステム",
     taglinePt:
-      "ANEX 397 + pack de 5 bits PH2 (65/85/110 mm) + Diamond Ryujin + o bit-lock que dá o nome + extensor de impacto. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
+      "ANEX 397 + pack de 10 bits PH2×65 + Diamond Ryujin + o bit-lock SHOCKWAVE que dá o nome + extensor de impacto. O primeiro drop REJENDARI: reservas abertas, €0 para reservar.",
     status: "reserving",
     targetPriceEur: { min: 89, max: 99 },
     targetMoq: 100,
-    capabilitiesPt: ["72T · 25 N·m", "PH2 65-110 mm · 5 bits", "Locked by Rapidaptor"],
+    capabilitiesPt: ["72T · 25 N·m", "PH2×65 · impact + diamond", "Locked by Milwaukee"],
     imageRefId: "anex-397-d",
     leadRefId: "anex-397-d",
     modules: [
@@ -115,12 +115,12 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
       },
       {
         role: "LOCK",
-        title: "Bit-lock · Rapidaptor",
+        title: "Bit-lock · SHOCKWAVE",
         pieces: [
           {
             refId: "milwaukee-shockwave-lock-73",
             whyPt:
-              "É o lock que dá o nome ao system: o Rapidaptor 889/4/1 K trava o bit ao 397 por pressão, com manga de rotação livre, punho, lock, bits e extensor passam a trabalhar como uma só peça, com troca a uma mão. Para impacto contínuo, a variante certificada da Wera está em avaliação.",
+              "É o lock que dá o nome ao system: o SHOCKWAVE Impact Locking de 73 mm trava o bit ao 397 sem folgas, punho, lock, bits e extensor passam a trabalhar como uma só peça, com troca a uma mão. Tabela Milwaukee Portugal: 14,02 € com IVA.",
           },
         ],
       },
@@ -556,16 +556,16 @@ export const REJENDARI_SYSTEMS: RejendariSystem[] = [
     modules: [
       {
         role: "LOCK",
-        title: "Bit-lock · Rapidaptor",
+        title: "Bit-lock · SHOCKWAVE",
         pieces: [
           {
             refId: "milwaukee-shockwave-lock-73",
             whyPt:
-              "Rapidaptor 889/4/1 K, a geração atual: bit engata por pressão, manga roda livre, troca a uma mão, o bit-lock que funciona com o punho 397.",
+              "SHOCKWAVE Impact Locking 73 mm: bit engata por pressão com anel de retenção, o bit-lock que funciona com o punho 397.",
           },
         ],
         pendingPt: [
-          "Para impacto contínuo, a variante Rapidaptor certificada para impacto está em avaliação com a Wera. O selo IMPACT READY só entra quando estiver documentado.",
+          "Para impacto contínuo, a variante SHOCKWAVE certificada para impacto está em avaliação com a Milwaukee. O selo IMPACT READY só entra quando estiver documentado.",
         ],
       },
     ],

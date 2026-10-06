@@ -2927,6 +2927,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://makitatools.com/products/details/DHR243Z",
     compareGroup: "rotativas",
     featured: true,
+    imageUrl:
+      "https://fi.makitamedia.com/images/3_Makita/301_machines/3011_a_GS1/30120_JPG_zoom/DHR243Z_C2L0.jpg",
+    imageAlt: "Makita DHR243Z — rotativa SDS-Plus LXT 18 V",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "makita-dc18rc",
@@ -2948,6 +2952,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Dados oficiais Makita: DC18RC Rapid Optimum Charger para baterias LXT 14,4-18 V, carga rápida com comunicação CPU-bateria e ventoinha de arrefecimento ativa.",
     referenceUrl: "https://makitatools.com/products/details/DC18RC",
     compareGroup: "carregadores",
+    imageUrl:
+      "https://fi.makitamedia.com/images/3_Makita/301_machines/3011_a_GS1/30120_JPG_zoom/DC18RC_C2L0.jpg",
+    imageAlt: "Makita DC18RC — carregador rápido LXT",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "wera-joker-8-imperial",
@@ -2969,6 +2977,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Dados oficiais Wera: 6000 Joker 8 Imperial Set 1, artigo 05020012001, oito chaves combinadas imperiais de 5/16″ a 3/4″ em bolsa, catraca de 80 dentes com retorno de 30°, batente integrado e boca aberta pivotante de 7,5°.",
     referenceUrl: "https://www.wera.de/en/tools/wera-specials/joker",
     compareGroup: "chaves-combinadas",
+    imageUrl: "https://www.wera.de/prodimg/832x832/6000_joker_8_imperial_set_1.webp",
+    imageAlt: "Wera 6000 Joker 8 Imperial Set 1 — chaves combinadas",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "bahco-325-hacksaw",
@@ -3011,6 +3022,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Dados oficiais TAJIMA (TJM Design): nível Optima Level 130 em alumínio, furos horizontal/vertical/45°, placas luminosas e superfícies de medição em V, linha Optima em azul (OPT130B).",
     referenceUrl: "https://www.tajima-tool.com",
     compareGroup: "medicao",
+    imageUrl: "https://jpn-assets.tajimatool.co.jp/img/4975364162878.jpg",
+    imageAlt: "TAJIMA Optima Level 130",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "anex-azm-2100",
@@ -3035,6 +3049,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Não é bit de impacto. A ANEX recomenda aparafusadoras até 7,2 V; a indicação 1000 V refere-se ao bit, não ao conjunto com máquina.",
     manufacturedIn: "Japão",
     compareGroup: "vde-bits",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AZM-2100_a01.jpg",
+    imageAlt: "ANEX AZM-2100 — bit isolado PH2×100",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "anex-azm-2150",
@@ -3059,6 +3076,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Não é bit de impacto; confirmar a máquina máxima junto do fabricante antes de uso com aparafusadora.",
     manufacturedIn: "Japão",
     compareGroup: "vde-bits",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AZM-2150_a01.jpg",
+    imageAlt: "ANEX AZM-2150 — bit isolado PH2×150",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "anex-aeh-150",
@@ -3083,6 +3103,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "A ANEX especifica 18 V com compatibilidade 40 V; requer hastes de comprimento total igual ou superior a 33 mm para retenção correta.",
     manufacturedIn: "Japão",
     compareGroup: "bit-holders",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AEH-150_1.jpg",
+    imageAlt: "ANEX AEH-150 — extensão de bits 150 mm",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "anex-alhp-100",
@@ -3108,6 +3131,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     manufacturedIn: "Japão",
     compareGroup: "bit-holders",
     featured: true,
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ALHP-100_1-1.jpg",
+    imageAlt: "ANEX ALHP-100 — porta-bits heavy-duty 100 mm",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "anex-alhp-300",
@@ -3132,6 +3158,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Comprimentos longos ampliam o binário perdido em ângulo: trabalhar com a máquina alinhada sempre que possível.",
     manufacturedIn: "Japão",
     compareGroup: "bit-holders",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ALHP-300_2-1.jpg",
+    imageAlt: "ANEX ALHP-300 — porta-bits heavy-duty 300 mm",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "vessel-ibhbm-150",
@@ -3153,6 +3182,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "VESSEL IBHBM150P1 Impact Ball Torsion Bit Holder: 150 mm no total, engaste hexagonal 1/4″ para impacto 18 V, retenção por anel C e força magnética, design de absorção de choque para proteger bit e máquina, fabrico no Japão (especificação de revendedores especializados e listagens de produto).",
     referenceUrl: "https://www.vessel.co.jp",
     compareGroup: "bit-holders",
+    imageUrl: "https://vesseltoolsusa.com/userfiles/bitsocketdrill/IBHBM150.jpg",
+    imageAlt: "VESSEL IBHBM150P1 — Impact Ball Torsion Holder 150 mm",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "milwaukee-shockwave-lock-73",
@@ -3175,6 +3207,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
     compareGroup: "bit-holders",
     featured: true,
+    imageUrl: "https://milwaukee-media-images.s3.amazonaws.com/hi/4932459398--Hero_1.jpg",
+    imageAlt: "Milwaukee SHOCKWAVE Impact Locking 73 mm",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "milwaukee-shockwave-lock-152",
@@ -3196,6 +3231,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Tabela oficial Milwaukee Portugal: SHOCKWAVE Impact Locking bit holder 152 mm, ref. 4932471824, PVP de tabela 15,60 € + IVA (19,19 € com IVA 23%).",
     referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
     compareGroup: "bit-holders",
+    imageUrl: "https://milwaukee-media-images.s3.amazonaws.com/hi/4932471824--Hero_1.jpg",
+    imageAlt: "Milwaukee SHOCKWAVE Impact Locking 152 mm",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "milwaukee-shockwave-lock-305",
@@ -3217,6 +3255,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Tabela oficial Milwaukee Portugal: SHOCKWAVE Impact Locking bit holder 305 mm, ref. 4932471825, PVP de tabela 21,60 € + IVA (26,57 € com IVA 23%).",
     referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
     compareGroup: "bit-holders",
+    imageUrl: "https://milwaukee-media-images.s3.amazonaws.com/hi/4932471825--Hero_1.jpg",
+    imageAlt: "Milwaukee SHOCKWAVE Impact Locking 305 mm",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "fujiya-3000n-225bg",
@@ -3240,6 +3281,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     manufacturedIn: "Japão",
     compareGroup: "grip",
     featured: true,
+    imageUrl:
+      "https://kurokin-tools.com/cdn/shop/files/3000N-225BGs_c46d3215-0f82-41d0-8753-13d0fc694316.jpg",
+    imageAlt: "FUJIYA KUROKIN 3000N-225BG — high-leverage pliers",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "klein-j213-9ne",
@@ -3262,6 +3307,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     referenceUrl: "https://www.kleintools.com",
     compareGroup: "corte",
     featured: true,
+    imageUrl: "https://media.kleintools.io/images/original/klein/j2139ne_mb.jpg",
+    imageAlt: "Klein J213-9NE — Journeyman Kurve side-cutting pliers",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
     id: "klein-11055",
@@ -3283,6 +3331,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
       "Klein Tools 11055: descarnador/cortador Klein-Kurve para cobre sólido 8-18 AWG e torcido 10-20 AWG, corte limpo de cobre com bico serrado para dobrar e moldar fio.",
     referenceUrl: "https://www.kleintools.com",
     compareGroup: "eletricidade",
+    imageUrl: "https://media.kleintools.io/images/original/klein/11055ep_mb.jpg",
+    imageAlt: "Klein 11055 — Klein-Kurve wire stripper/cutter",
+    imageSourceLabel: "Imagem oficial do fabricante",
   },
 ];
 

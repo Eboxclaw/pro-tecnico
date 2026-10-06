@@ -62,7 +62,9 @@ export function HeroToolConstellation() {
                   <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
                     {tool.brand}
                   </span>
-                  <span className="font-display text-[10px] text-foreground/42">{tool.japanese}</span>
+                  <span className="font-display text-[10px] text-foreground/42">
+                    {tool.japanese}
+                  </span>
                 </div>
                 <p className="mt-1 font-display text-sm font-semibold leading-tight text-[#1b1917]">
                   {tool.model}

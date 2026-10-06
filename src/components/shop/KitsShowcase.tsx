@@ -209,10 +209,10 @@ export function KitsShowcase() {
           <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
             A inspiração vem da produção integrada da ANEX em Sanjō, 一貫生産, cada bit do aço ao
             fio nas mesmas mãos, e da escola alemã das caixas pequenas bem pensadas que são um
-            milagre de espaço. {malas} malas cobrem profissões,{" "}
-            {kitsCount} kits dominam uma família, {caixas} caixas cobrem o dia de um ofício. Cross
-            bit utilization: cada bit serve o 397, a impacto e a Zyklop. O pedido segue para o B2B
-            com a composição preenchida, sem SKU inventado.
+            milagre de espaço. {malas} malas cobrem profissões, {kitsCount} kits dominam uma
+            família, {caixas} caixas cobrem o dia de um ofício. Cross bit utilization: cada bit
+            serve o 397, a impacto e a Zyklop. O pedido segue para o B2B com a composição
+            preenchida, sem SKU inventado.
           </p>
         </div>
 

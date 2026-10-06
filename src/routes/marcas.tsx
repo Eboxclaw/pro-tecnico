@@ -133,7 +133,9 @@ function BrandsPage() {
               <h3 className="mt-10 max-w-2xl font-display text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-[#1b1917]">
                 {selected.headline}
               </h3>
-              <p className="mt-6 max-w-2xl text-sm leading-7 text-foreground/75">{selected.story}</p>
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-foreground/75">
+                {selected.story}
+              </p>
               <p className="mt-5 max-w-2xl border-l border-[#a87c1f]/55 pl-4 text-sm leading-7 text-foreground/70">
                 {selected.whyPt}
               </p>
