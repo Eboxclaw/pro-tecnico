@@ -286,12 +286,17 @@ const ALL_BRAND_STORIES: BrandStory[] = [
   },
 ];
 
-/** Só as marcas em vitrina navegam; as histórias de reserva continuam guardadas. */
+/**
+ * Só as marcas em vitrina navegam; as histórias de reserva continuam guardadas.
+ * Em caso de dupla entrada (ex.: duas histórias FUJIYA), vence a mais recente —
+ * a Kurokin, alinhada com a identidade atual da casa.
+ */
 export const BRAND_STORIES: BrandStory[] = ALL_BRAND_STORIES.filter(
-  (brand) =>
+  (brand, index, all) =>
     (SHOWCASED_BRANDS as readonly string[]).includes(brand.slug) &&
     // Wera sai como marca: os produtos Zyklop ficam, a página de marca não
-    brand.slug !== "WERA",
+    brand.slug !== "WERA" &&
+    all.map((candidate) => candidate.slug).lastIndexOf(brand.slug) === index,
 );
 
 export const BRAND_STORY_MAP = Object.fromEntries(

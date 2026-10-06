@@ -3,7 +3,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
 import { FeaturedDropCard } from "@/components/systems/SystemCards";
-import { RejendariSeal } from "@/components/brand/RejendariSeal";
 import { Button } from "@/components/ui/button";
 import { BRAND_STORIES } from "@/data/brand-stories";
 import { referenceById, SHOWCASED_BRANDS } from "@/data/curated-tool-references";
@@ -63,24 +62,6 @@ const PIPELINE = [
   },
 ];
 
-const SYMBOLS = [
-  {
-    kanji: "選",
-    title: "Descoberta & seleção",
-    text: "Não agregamos catálogos. Encontramos ferramentas excecionais, aço especificado, ergonomia provada, origem declarada, e deixamos as restantes de fora.",
-  },
-  {
-    kanji: "組",
-    title: "Compatibilidade & sistema",
-    text: "Testamos como as ferramentas trabalham juntas: o mesmo bit no roquete, na máquina e no impacto. Cada módulo entra porque desbloqueia trabalho novo.",
-  },
-  {
-    kanji: "仕事",
-    title: "Trabalho resolvido",
-    text: "O resultado mede-se no dia: menos peças repetidas, menos peso, mais cobertura. O investimento anterior continua útil quando o sistema cresce.",
-  },
-];
-
 const HOUSE_RULES = [
   ["BEST COMPONENT WINS", "Nem tudo de uma marca: cada peça entra porque é a certa."],
   ["SÓ IMPACTO DOCUMENTADO", "O selo IMPACT READY só aparece quando está tecnicamente provado."],
@@ -111,6 +92,32 @@ function Index() {
   const featured = featuredSystem();
   const anexPicks = ANEX_PICKS.map(referenceById).filter(Boolean);
   const schoolPicks = SCHOOL_PICKS.map(referenceById).filter(Boolean);
+  const kitFormats = [
+    {
+      glyph: "鞄",
+      label: "Malas de profissão",
+      note: "Uma profissão, uma mala completa.",
+      count: REJENDARI_KITS.filter((kit) => kit.format === "mala").length,
+    },
+    {
+      glyph: "組",
+      label: "Kits de sistema",
+      note: "Uma família dominada até ao fim.",
+      count: REJENDARI_KITS.filter((kit) => kit.format === "kit").length,
+    },
+    {
+      glyph: "箱",
+      label: "Caixas de ofício",
+      note: "O dia de um ofício, resolvido.",
+      count: REJENDARI_KITS.filter((kit) => kit.format === "caixa").length,
+    },
+    {
+      glyph: "換",
+      label: "Packs modulares",
+      note: "Escolhe a chave, o lock, as ponteiras.",
+      count: null,
+    },
+  ];
 
   return (
     <div>
@@ -196,61 +203,14 @@ function Index() {
         </div>
       </section>
 
-      {/* ── 01 · SIMBOLOGIA ───────────────────────────────────── */}
-      <section className="section-reveal paper-panel">
-        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
-          <div className="flex flex-col gap-4 border-b border-white/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="jp-label text-primary">
-                <span className="mr-3 font-mono">01</span>基準 · o que a marca significa
-              </p>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
-                Três ideias. Uma casa de seleção.
-              </h2>
-            </div>
-            <RejendariSeal className="hidden lg:grid" />
-          </div>
-
-          <div className="mt-10 grid gap-px border border-white/15 bg-white/10 lg:grid-cols-3">
-            {SYMBOLS.map((symbol, index) => (
-              <article key={symbol.kanji} className="relative bg-card p-7 sm:p-9">
-                <span
-                  className="pointer-events-none absolute -right-2 -top-6 select-none font-display text-[7rem] font-semibold leading-none text-foreground/[0.06]"
-                  aria-hidden="true"
-                >
-                  {symbol.kanji}
-                </span>
-                <span className="font-mono text-[10px] text-muted-foreground/80">0{index + 1}</span>
-                <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-0.03em]">
-                  {symbol.title}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-foreground/75">{symbol.text}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-px grid gap-px border border-white/15 bg-white/10 sm:grid-cols-3">
-            {HOUSE_RULES.map(([rule, note]) => (
-              <p
-                key={rule}
-                className="bg-[#1b1917] p-5 font-mono text-[9px] uppercase leading-5 tracking-[0.15em] text-white/60"
-              >
-                <span className="mb-2 block text-[#e3c27c]">{rule}</span>
-                {note}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 02 · O DROP EM RESERVAS ───────────────────────────── */}
+      {/* ── 01 · O DROP EM RESERVAS ───────────────────────────── */}
       {featured && (
         <section id="systems" className="section-reveal scroll-mt-24 bg-[#1b1917]">
           <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
             <div className="flex flex-col gap-3 pb-8 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="jp-label text-[#e3c27c]">
-                  <span className="mr-3 font-mono">02</span>注目のドロップ · featured drop
+                  <span className="mr-3 font-mono">01</span>注目のドロップ · featured drop
                 </p>
                 <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
                   O primeiro system está em reservas.
@@ -275,52 +235,54 @@ function Index() {
         </section>
       )}
 
-      {/* ── 03 · KITS 組 ──────────────────────────────────────── */}
+      {/* ── 02 · KITS · navegação, não duplicação ─────────────── */}
       <section className="section-reveal border-b border-border">
         <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="jp-label text-primary">
-                <span className="mr-3 font-mono">03</span>職人キット · kits de assinatura
+                <span className="mr-3 font-mono">02</span>職人キット · kits
               </p>
               <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
-                Seis malas de profissão, dois kits e três caixas.
+                {REJENDARI_KITS.length} composições, quatro portas de entrada.
               </h2>
             </div>
             <Button variant="outline" asChild className="rounded-none">
               <Link to="/packs">
-                Ver os kits
+                Ver tudo no /packs
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
 
-          <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
-            {REJENDARI_KITS.map((kit) => (
+          <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {kitFormats.map((format) => (
               <Link
-                key={kit.id}
+                key={format.label}
                 to="/packs"
                 className="category-tile group flex min-h-44 flex-col bg-card p-5"
               >
                 <span className="flex items-center justify-between">
                   <span className="font-display text-3xl text-primary" aria-hidden>
-                    {kit.format === "mala" ? "鞄" : kit.format === "kit" ? "組" : "箱"}
+                    {format.glyph}
                   </span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                    {kit.jp.split(" · ")[0]}
-                  </span>
+                  {format.count !== null && (
+                    <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                      {format.count} · pt
+                    </span>
+                  )}
                 </span>
-                <span className="mt-auto text-sm font-medium leading-5">{kit.trade}</span>
-                <span className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">
-                  {kit.title}
+                <span className="mt-auto font-display text-xl font-semibold tracking-[-0.03em] group-hover:text-primary">
+                  {format.label}
                 </span>
+                <span className="mt-1 text-xs leading-5 text-muted-foreground">{format.note}</span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 04 · PEÇAS INDIVIDUAIS · ANEX PRIMEIRO ────────────── */}
+      {/* ── 03 · PEÇAS INDIVIDUAIS · ANEX PRIMEIRO ────────────── */}
       <section
         id="anex"
         className="section-reveal scroll-mt-24 border-b border-border bg-surface/40"
@@ -329,7 +291,7 @@ function Index() {
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
             <div>
               <p className="jp-label text-primary">
-                <span className="mr-3 font-mono">04</span>原点 · começa pela ANEX
+                <span className="mr-3 font-mono">03</span>原点 · começa pela ANEX
               </p>
               <h2 className="mt-4 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
                 A escola de Sanjō.
@@ -344,7 +306,7 @@ function Index() {
               <div className="mt-7 flex flex-wrap gap-2">
                 <Button asChild className="rounded-none bg-black text-white hover:bg-black/85">
                   <Link to="/anex">
-                    A seleção ANEX
+                    O caderno ANEX
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -357,7 +319,7 @@ function Index() {
             </div>
 
             <div className="grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-3">
-              {anexPicks.slice(0, 6).map((tool) => (
+              {anexPicks.map((tool) => (
                 <Link
                   key={tool!.id}
                   to="/referencia/$id"
@@ -390,31 +352,37 @@ function Index() {
               ))}
             </div>
           </div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {anexPicks.slice(0, 3).map((tool) => (
-              <ReferenceProductCard key={tool!.id} tool={tool!} featured />
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ── 05 · AS OUTRAS ESCOLAS ────────────────────────────── */}
+      {/* ── 04 · AS OUTRAS ESCOLAS ────────────────────────────── */}
       <section className="section-reveal border-b border-border">
         <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
           <div className="flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="jp-label text-primary">
-                <span className="mr-3 font-mono">05</span>ブランド · as outras escolas
+                <span className="mr-3 font-mono">04</span>ブランド · as outras escolas
               </p>
               <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
-                Oito casas. Um só critério.
+                {BRAND_STORIES.length} casas. Um só critério.
               </h2>
             </div>
             <p className="max-w-md text-sm leading-6 text-muted-foreground">
               Best component wins: Wera para o roquete 3/8″, Knipex e Bahco para o grip, VESSEL para
               o Ball Grip, Makita para as máquinas, TAJIMA e OLFA para medida e corte.
             </p>
+          </div>
+
+          <div className="mt-px grid gap-px border border-border bg-border sm:grid-cols-3">
+            {HOUSE_RULES.map(([rule, note]) => (
+              <p
+                key={rule}
+                className="bg-[#1b1917] p-5 font-mono text-[9px] uppercase leading-5 tracking-[0.15em] text-white/60"
+              >
+                <span className="mb-2 block text-[#e3c27c]">{rule}</span>
+                {note}
+              </p>
+            ))}
           </div>
 
           <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
@@ -441,23 +409,6 @@ function Index() {
               <ReferenceProductCard key={tool!.id} tool={tool!} featured />
             ))}
           </div>
-
-          <div className="mt-8 flex flex-col gap-4 border border-border bg-background p-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="font-display text-xl font-semibold">
-                Procuras uma referência específica?
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Diz-nos a marca, o modelo ou o trabalho a fazer.
-              </p>
-            </div>
-            <Button asChild className="rounded-none">
-              <Link to="/b2b">
-                Pedir disponibilidade
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -480,7 +431,7 @@ function Index() {
         </div>
       </section>
 
-      {/* ── fecho · B2B + vantagens ───────────────────────────── */}
+      {/* ── fecho · à medida + B2B ────────────────────────────── */}
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
         <div className="paper-panel grid gap-7 p-7 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
@@ -496,20 +447,19 @@ function Index() {
           </div>
           <div>
             <p className="text-sm leading-7 text-foreground/75">
-              Para empresa, equipa ou profissional, construímos uma seleção à volta das ferramentas
-              existentes. A regra é evitar redundância: um bom roquete multi-bit, um sistema de
-              sockets coerente e ferramentas de acesso específicas antes de encher a mala com
-              duplicados.
+              No construtor modular, cada bloco escolhe-se à marca — chave, lock, ponteiras,
+              extensão — e o que já tens declara-se no próprio pack. Para empresa, equipa ou
+              profissional, completamos a composição sem duplicar o que já trabalha.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               <Button className="rounded-none bg-black text-white hover:bg-black/85" asChild>
-                <Link to="/b2b">
-                  Pedir proposta
+                <Link to="/packs">
+                  Abrir o construtor
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="outline" className="rounded-none" asChild>
-                <Link to="/pontos">Pontos e convites</Link>
+                <Link to="/b2b">Pedir proposta</Link>
               </Button>
             </div>
           </div>
