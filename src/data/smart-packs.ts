@@ -36,9 +36,10 @@ export const SMART_PACKS: SmartPack[] = [
       "O dia começa com um painel para abrir, um parafuso PH2 teimoso e uma medição que tem de ficar certa à primeira. Nada de motores, aperto pequeno, corte limpo e medida confiável.",
     pieces: [
       {
-        id: "anex-397-d",
+        id: "vessel-td70",
         quantity: 1,
-        whyPt: "Roquete de 72 dentes com bit incluído: o aperto pequeno com força de verdade.",
+        whyPt:
+          "Roquete plano de baixo perfil com 10 bits ordenados: o aperto pequeno com variedade, sem abrir caixa.",
       },
       {
         id: "anex-art-14m-2-65",
@@ -68,12 +69,12 @@ export const SMART_PACKS: SmartPack[] = [
     tier: "Core",
     title: "Sockets 3/8″ e grip num só estojo",
     dayPt:
-      "Manutenção de equipamento com parafusos e porcas de verdade: sockets métricos, um alicate que agarra redondo sem escorregar e o roquete que já conhecias do Compact.",
+      "Manutenção de equipamento com parafusos e porcas de verdade: sockets métricos, um alicate que agarra redondo sem escorregar e o MiniSta72 que cobre os perfis que o dia inventa.",
     pieces: [
       {
-        id: "anex-397-d",
+        id: "anex-307-s1",
         quantity: 1,
-        whyPt: "O roquete de bits para os parafusos, mantém-se de nível a nível.",
+        whyPt: "MiniSta72: vinte e oito perfis com holder magnético, o roquete de bits da casa em formato estojo.",
       },
       {
         id: "wera-8100-sb-6",
@@ -316,11 +317,6 @@ export const SMART_PACKS: SmartPack[] = [
         id: "bahco-9031p",
         quantity: 1,
         whyPt: "Ajustável ERGO com mandíbula reversível: 218 mm que substituem a chave de tubo.",
-      },
-      {
-        id: "bahco-9031p",
-        quantity: 1,
-        whyPt: "Ajustável ERGO para as porcas que o socket não agarra: aperto firme sem marcar.",
       },
       {
         id: "knipex-cobra-250",

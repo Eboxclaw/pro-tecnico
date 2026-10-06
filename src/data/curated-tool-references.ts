@@ -3212,6 +3212,30 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageSourceLabel: "Imagem oficial do fabricante",
   },
   {
+    id: "milwaukee-shockwave-ph2-50",
+    brand: "MILWAUKEE",
+    brandSlug: "MILWAUKEE",
+    model: "4932430906",
+    officialCode: "4932430906",
+    namePt: "SHOCKWAVE Impact Duty 2 · PH2×50 mm ×10",
+    japanese: "インパクトビット",
+    task: "fastening",
+    categoryPt: "Bits · impacto · PH2",
+    badge: "SHOCKWAVE",
+    notePt:
+      "O rival transatlântico dos Ryujin: Wear Guard Tip para aguentar o regime de impacto, dez PH2 de reposição em caixa curta.",
+    specPt: "1/4″ hex · 50 mm · PH2 · 10 peças · impacto",
+    storyPt:
+      "A resposta da Milwaukee ao mesmo problema que os bits ANEX resolvem: ponta tratada para não desgastar no percussor. Onde o Ryujin é o perfil japonês de 65 mm, o SHOCKWAVE vem em 50 mm — com o lock 73 da casa, o alcance acrescenta-se por extensão, não por bit comprido.",
+    evidencePt:
+      "Milwaukee: SHOCKWAVE Impact Duty™ 2 screwdriver bit PH2 50 mm, 10 peças em caixa (Tic-Tac), ref. 4932430906. Imagem oficial do CDN Milwaukee (S3) verificada.",
+    referenceUrl: "https://www.milwaukeetool.eu/pt-pt/",
+    compareGroup: "bits",
+    imageUrl: "https://milwaukee-media-images.s3.amazonaws.com/hi/4932430906--Hero_1.jpg",
+    imageAlt: "Milwaukee SHOCKWAVE Impact Duty 2, PH2 50 mm, 10 peças",
+    imageSourceLabel: "Imagem oficial do fabricante",
+  },
+  {
     id: "milwaukee-shockwave-lock-152",
     brand: "MILWAUKEE",
     brandSlug: "MILWAUKEE",

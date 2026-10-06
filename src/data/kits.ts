@@ -194,67 +194,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     ],
     notIncludedPt: ["Máquinas de perfuração", "Detector de tensão", "Manómetros e bomba de vácuo"],
     limitationsPt:
-      "Não inclui perfuração nem máquinas (ver o pack AVAC Pro). Trabalho elétrico no lado de tensão exige ferramentas isoladas certificadas, ver a Caixa Eletricista.",
-  },
-  {
-    id: "kit-caixa-eletricista",
-    format: "caixa",
-    trade: "Eletricidade",
-    jp: "電設 · caixa eletricista",
-    tier: "Pro",
-    title: "A cadeia 1000 V inteira, certificada peça a peça",
-    conceptPt:
-      "Cada peça isolada é uma ferramenta completa certificada IEC 60900, ensaiada a 10 kV e marcada. Sem atalhos: bit isolado em porta-bits comum não é ferramenta certificada.",
-    dayPt:
-      "Do quadro ao borne, a regra é uma só: sob tensão, só ferramenta completa certificada. O alicate de instalação de seis funções descarna, crimpa e corta cabo até 50 mm² com a mesma certificação; o corte de alta alavanca VDE parte fio piano de 2,5 mm. No aperto fino, a slim isolada ANEX chega a bornes fundos; os bits AZM 1000 V servem a vizinhança de tensão e máquinas até 7,2 V, pela regra, não ao lado dela.",
-    pieces: [
-      {
-        id: "anex-azm-2100",
-        quantity: 1,
-        whyPt: "Bit isolado PH2×100: o alcance VDE em comprimento isolado, não em extensão normal.",
-      },
-      {
-        id: "anex-azm-2150",
-        quantity: 1,
-        whyPt: "E o PH2×150 para os disjuntores do fundo do quadro: 1000 V com ensaio de 10 kV.",
-      },
-      {
-        id: "knipex-13-96-200",
-        quantity: 1,
-        whyPt:
-          "Seis funções em 200 mm: descarna 0,75-2,5 mm², crimpa e corta cabo Cu até Ø15 mm, 1000 V.",
-      },
-      {
-        id: "knipex-74-06-200",
-        quantity: 1,
-        whyPt: "Corte de alta alavanca VDE, arestas ~64 HRC: fio piano Ø2,5 mm isolado a sério.",
-      },
-      {
-        id: "anex-7920",
-        quantity: 1,
-        whyPt: "Chave slim isolada +2×100: haste fina para bornes fundos no quadro.",
-      },
-      {
-        id: "anex-azm-2698",
-        quantity: 1,
-        whyPt:
-          "Bit dupla ponta +2/−6 isolado 1000 V, ensaio dielétrico 10 kV: o consumível do lado elétrico.",
-      },
-      {
-        id: "anex-azm-1598",
-        quantity: 1,
-        whyPt: "E o +1/−5 para o parafuso pequeno: mesmo isolamento, perfil menor.",
-      },
-      {
-        id: "vessel-960-ph2-100",
-        quantity: 1,
-        whyPt:
-          "MEGADORA Insulated PH2×100: chave completa 1000 V para o aperto direto sob certificação.",
-      },
-    ],
-    notIncludedPt: ["Detector de tensão", "Luvas e EPI isolante", "Multímetro"],
-    limitationsPt:
-      "Bits AZM montados em porta-bits comum não constituem ferramenta certificada para trabalho sob tensão: para tensão, conjunto VDE completo. O trabalho sem tensão confirmada continua a ser a primeira regra.",
+      "Não inclui perfuração nem máquinas (ver o pack AVAC Pro). Trabalho elétrico no lado de tensão exige ferramentas isoladas certificadas, ver o pack VDE básico e a mala eletricidade VDE.",
   },
   {
     id: "kit-caixa-tecnico",
@@ -262,22 +202,17 @@ export const REJENDARI_KITS: RejendariKit[] = [
     trade: "Manutenção & serviço",
     jp: "整備 · caixa técnico",
     tier: "Pro",
-    title: "A caixa do serviço: sockets, bits e grip sem virar oficina",
+    title: "A caixa do serviço: sockets, perfis e grip sem virar oficina",
     conceptPt:
-      "O conjunto 3/8″ da Wera como espinha, o Quick Ball para os bits, o roquete de 16 perfis da VESSEL para a variedade e o grip que segura o resto. Nada duplicado.",
+      "O conjunto 3/8″ da Wera como espinha, o roquete de 16 perfis da VESSEL para a variedade e o grip que segura o resto. Nada duplicado com a mala 397: nem Quick Ball, nem caixa de reposição de bits.",
     dayPt:
-      "O técnico de serviço nunca sabe o que encontra à chegada: porca de 8 mm num lado, painel PH2 no outro, tubo no meio. A caixa organiza a resposta: o sistema Zyklop Speed 3/8″ cobre porcas de 8 a 19 mm com roquete de manga livre, sockets, extensões e adaptador dimensionados em conjunto; o Quick Ball 72 trata dos bits sem trocar de ferramenta; o roquete VESSEL de 16 perfis resolve a variedade de cabeças sem abrir caixa à frente do cliente; o Cobra segura o redondo. A caixa de dez PH2 repõe o consumível sozinho, e corte e medida fecham o dia.",
+      "O técnico de serviço nunca sabe o que encontra à chegada: porca de 8 mm num lado, painel PH2 no outro, tubo no meio. A caixa organiza a resposta sem repetir a mala 397: o sistema Zyklop Speed 3/8″ cobre porcas de 8 a 19 mm com roquete de manga livre, sockets e extensões dimensionados em conjunto; o roquete VESSEL de 16 perfis resolve a variedade de cabeças sem abrir caixa à frente do cliente; os Quick Holders levam os bits do dia no cinto e trocam a uma mão; o Cobra segura o redondo. Corte e medida fecham o dia.",
     pieces: [
       {
         id: "wera-8100-sb-6",
         quantity: 1,
         whyPt:
           "Zyklop Speed 3/8″ de 29 peças: roquete 72 dentes com manga de rotação livre, sockets 8-19 mm e extensões num sistema.",
-      },
-      {
-        id: "anex-397-d",
-        quantity: 1,
-        whyPt: "Quick Ball 72 para o lado dos bits: 72 dentes, 25 N·m.",
       },
       {
         id: "vessel-td6816mg",
@@ -291,9 +226,10 @@ export const REJENDARI_KITS: RejendariKit[] = [
         whyPt: "O grip de tubo e porca redonda que todo o técnico precisa uma vez por dia.",
       },
       {
-        id: "anex-art-14m-2-65",
+        id: "anex-aqh-s1",
         quantity: 1,
-        whyPt: "Dez PH2 +2×65 em caixa: o consumível que se repõe sozinho.",
+        whyPt:
+          "Três Quick Holders com mosquetão: os bits do dia no cinto, troca a uma mão, sem abrir caixa.",
       },
       { id: "olfa-l5", quantity: 1, whyPt: "Corte 18 mm para embalagens e proteções." },
       {
@@ -304,7 +240,7 @@ export const REJENDARI_KITS: RejendariKit[] = [
     ],
     notIncludedPt: ["Máquinas elétricas", "Ferramentas isoladas 1000 V", "Binário calibrado"],
     limitationsPt:
-      "Sockets até 19 mm e aperto manual: sem impacto nem binário calibrado. Não substitui as caixas de ofício (AVAC, eletricista) quando o trabalho é especializado.",
+      "Sockets até 19 mm e aperto manual: sem impacto nem binário calibrado. Não substitui as caixas de ofício (AVAC), o pack VDE básico ou as malas de profissão quando o trabalho é especializado.",
   },
   // ── Malas de trabalho por profissão ──────────────────────────
   // Cross bit utilization: cada bit serve o 397, a impacto e a Zyklop via
@@ -527,19 +463,14 @@ export const REJENDARI_KITS: RejendariKit[] = [
     tier: "Pro",
     title: "Aberturas grandes, grip forte e o resgate do parafuso morto",
     conceptPt:
-      "A mala de canalização: chaves com abertura para uniões de 1″ e acima, o médio para 1¼″, e o grip Knipex que segura redondo sem marcar, sem virar oficina.",
+      "A mala de canalização: chaves com abertura para uniões de 1″ e acima, o grip Knipex que segura redondo sem marcar e o resgate do parafuso morto, sem virar oficina. O duo básico do ofício vive no pack canalizador; esta mala acrescenta o resto.",
     dayPt:
-      "A canalização resolve-se com abertura e grip: a ajustável extra-larga abre acima de 1″/40 mm nas uniões antigas, a média fecha as de 1″ e 1¼″, a Pliers Wrench aperta fittings cromados como chave fixa e a Cobra segura o tubo. Quando o parafuso da flange está morto, o Wanidora morde-o e o impacto manual solta-o. Fita, X-ato e raspador fecham o dia; o serrote de ferro corta tubo e calha rente à parede.",
+      "A canalização resolve-se com abertura e grip: a ajustável extra-larga abre acima de 1″/40 mm nas uniões antigas, a Pliers Wrench aperta fittings cromados como chave fixa e a Cobra segura o tubo. Quando o parafuso da flange está morto, o Wanidora morde-o e solta-o. Fita, X-ato e raspador fecham o dia; o serrote de ferro corta tubo e calha rente à parede.",
     pieces: [
       {
         id: "bahco-9033",
         quantity: 1,
         whyPt: "Abertura extra larga até 46 mm: as uniões de 1″ e acima ficam cobertas.",
-      },
-      {
-        id: "bahco-9031p",
-        quantity: 1,
-        whyPt: "Média com mandíbula reversível até 39 mm: as porcas de 1″ e 1¼″ do dia.",
       },
       {
         id: "knipex-cobra-250",
@@ -824,6 +755,129 @@ export const REJENDARI_KITS: RejendariKit[] = [
     ],
     limitationsPt:
       "O bit AZM é isolado 1000 V com máquinas até 7,2 V; as ultra-curtas não são classe de impacto.",
+  },
+  // ── Packs básicos por ofício: marcas diversas, contagem mínima ──
+  // A regra da casa: uma ferramenta sistema chega onde era preciso uma chave
+  // para cada caso — o roquete com porta-bits e sockets 1/4 alcança o canto
+  // onde antes se punha uma chave de curto, e a chave de curto não existe
+  // aqui. Para escolher bloco a bloco, ver os packs modulares.
+  {
+    id: "pack-vde-basico",
+    format: "kit",
+    trade: "Eletricidade · VDE",
+    jp: "電設 · VDE básico",
+    tier: "Core",
+    title: "Pack VDE básico: a cadeia 1000 V de entrada",
+    conceptPt:
+      "Quatro peças isoladas de três escolas — ANEX, VESSEL e Knipex — para arrancar no quadro sem repetir a mala completa: chave slim, MEGADORA isolada, alicate instalador e o bit duplo pequeno.",
+    dayPt:
+      "O dia elétrico de entrada, tudo certificado IEC 60900: a slim isolada ANEX chega ao borne fundo, a MEGADORA VESSEL faz o aperto direto sob certificação, o instalador Knipex descarna e crimpa com a mesma marca de 1000 V, e o bit duplo AZM +1/−5 cobre o parafuso pequeno em máquinas até 7,2 V. Cada peça é ferramenta completa isolada: bit isolado em porta-bits comum não é certificado. Quando o volume de trabalho cresce, a mala eletricidade VDE acrescenta o 74-06, os AZM compridos e o Ball Grip de série.",
+    pieces: [
+      {
+        id: "anex-7920",
+        quantity: 1,
+        whyPt: "Chave slim isolada +2×100: bornes fundos no quadro cheio.",
+      },
+      {
+        id: "vessel-960-ph2-100",
+        quantity: 1,
+        whyPt: "MEGADORA Insulated PH2×100: aperto direto 1000 V, sem porta-bits.",
+      },
+      {
+        id: "knipex-13-96-200",
+        quantity: 1,
+        whyPt:
+          "Instalador de seis funções 1000 V: descarna, crimpa e corta cabo até Ø15 mm.",
+      },
+      {
+        id: "anex-azm-1598",
+        quantity: 1,
+        whyPt: "Bit duplo isolado +1/−5: o parafuso pequeno do lado elétrico, ensaio a 10 kV.",
+      },
+    ],
+    notIncludedPt: [
+      "Corte de alta alavanca VDE e bits AZM compridos (ver a mala eletricidade VDE)",
+      "Detector de tensão, luvas e EPI (fora do catálogo)",
+      "Máquinas acima de 7,2 V com bits AZM",
+    ],
+    limitationsPt:
+      "Bits AZM em porta-bits comum não são ferramenta certificada: sob tensão, cada peça isolada completa. Sem desligamento confirmado, nada se toca.",
+  },
+  {
+    id: "pack-roquete-basico",
+    format: "kit",
+    trade: "Roquetes & aperto",
+    jp: "ラチェット · roquete básico",
+    tier: "Core",
+    title: "Pack roquete básico: duas escolas, contagem mínima",
+    conceptPt:
+      "O par de entrada de duas escolas — ANEX e VESSEL: o roquete plano de baixo perfil com dez bits ordenados e o T-handle que aplica força firme onde o punho normal não chega. Sem repetir o que a mala 397 já traz.",
+    dayPt:
+      "O dia de aperto manual sem duplicar a mala 397: o roquete plano VESSEL traz dez bits PH, fenda e HEX ordenados com o perfil baixo que entra onde roquete nenhum entra; o T-handle 370 aplica mais binário no mesmo movimento e guarda os bits curtos no próprio corpo; as ultra-curtas de 18 mm fecham o aperto rente ao painel. Somos mais inteligentes que múltiplas ferramentas: um roquete com bits na mão substitui a gaveta de chaves de curto.",
+    pieces: [
+      {
+        id: "vessel-td70",
+        quantity: 1,
+        whyPt:
+          "Roquete plano de baixo perfil com 10 bits PH/SL/HEX ordenados: variedade e acesso num só.",
+      },
+      {
+        id: "anex-370",
+        quantity: 1,
+        whyPt: "T-handle roquete: mais força no mesmo movimento, bits curtos guardados no corpo.",
+      },
+      {
+        id: "vessel-tdbs21",
+        quantity: 1,
+        whyPt: "Cinco bits ultra-curtos PH/SL de 18 mm: o aperto rente ao painel.",
+      },
+    ],
+    notIncludedPt: [
+      "Quick Ball 72 e o sistema de lock (ver a mala 397)",
+      "Sockets e binário calibrado (ver a Zyklop da mala 397)",
+    ],
+    limitationsPt:
+      "Bits 6,35 mm de aperto manual, não classe de impacto. Para sockets e aperto pesado, ver a Zyklop 3/8″ da mala 397.",
+  },
+  {
+    id: "pack-canalizador-basico",
+    format: "kit",
+    trade: "Canalização",
+    jp: "配管 · pack canalizador",
+    tier: "Core",
+    title: "Pack canalizador básico: grip, ajustável, medida e entrega",
+    conceptPt:
+      "O quarteto de entrada do canalizador, de quatro marcas europeias: a Cobra KNIPEX para o redondo, a ajustável ERGO BAHCO para as porcas, a fita TAJIMA para medir antes do corte e o raspador OLFA para a entrega limpa.",
+    dayPt:
+      "O dia de canalização de entrada: a Cobra agarra o tubo e a porca redonda sem marcar, a ajustável ERGO fecha as porcas de 1″ e 1¼″ com mandíbula reversível, a fita Classe 1 decide o corte e o raspador inox entrega o equipamento sem adesivos. Quatro peças, quatro marcas, zero redundância: quando o dia pede uniões acima de 40 mm, o resgate do parafuso morto e o corte rente, a mala canalização acrescenta o resto.",
+    pieces: [
+      {
+        id: "knipex-cobra-250",
+        quantity: 1,
+        whyPt: "Agarra tubo e porca redonda auto-bloqueante: dentes ~61 HRC sem escorregar.",
+      },
+      {
+        id: "bahco-9031p",
+        quantity: 1,
+        whyPt: "Ajustável ERGO com mandíbula reversível até 39 mm: as porcas de 1″ e 1¼″ do dia.",
+      },
+      {
+        id: "tajima-l25-50e1-eur",
+        quantity: 1,
+        whyPt: "Fita Classe 1 com saída de 2,4 m: a medida antes do corte não se discute.",
+      },
+      {
+        id: "olfa-scr-l",
+        quantity: 1,
+        whyPt: "Raspador inox 60 mm: adesivos e restos saem antes da entrega.",
+      },
+    ],
+    notIncludedPt: [
+      "Ajustável extra-larga acima de 40 mm e Pliers Wrench (ver a mala canalização)",
+      "Máquinas (adiciona a mala de máquinas Makita)",
+    ],
+    limitationsPt:
+      "Abertura até 39 mm: para uniões acima disso, ver a ajustável extra-larga da mala canalização.",
   },
 ];
 

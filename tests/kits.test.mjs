@@ -7,9 +7,10 @@ const BASE_KIT_IDS = [
   'kit-bits-pro',
   'kit-roquetes-pro',
   'kit-caixa-avac',
-  'kit-caixa-eletricista',
   'kit-caixa-tecnico',
 ];
+
+const BASIC_PACK_IDS = ['pack-vde-basico', 'pack-roquete-basico', 'pack-canalizador-basico'];
 
 const MALA_IDS = [
   'mala-397',
@@ -20,21 +21,45 @@ const MALA_IDS = [
   'mala-manutencao',
 ];
 
-test('there are the five base kits plus six profession malas, unique ids, valid formats', () => {
-  assert.equal(REJENDARI_KITS.length, 14);
+test('base kits, profession malas and basic packs, unique ids, valid formats', () => {
+  assert.equal(REJENDARI_KITS.length, 16);
   const ids = REJENDARI_KITS.map(kit => kit.id);
-  assert.equal(new Set(ids).size, 14, 'kit ids must be unique');
-  for (const expected of [...BASE_KIT_IDS, ...MALA_IDS]) {
+  assert.equal(new Set(ids).size, 16, 'kit ids must be unique');
+  for (const expected of [...BASE_KIT_IDS, ...BASIC_PACK_IDS, ...MALA_IDS]) {
     assert.ok(ids.includes(expected), `missing kit ${expected}`);
   }
   for (const kit of REJENDARI_KITS) {
     assert.ok(['kit', 'caixa', 'mala'].includes(kit.format), `${kit.id} invalid format`);
-    assert.equal(kit.tier, 'Pro', `${kit.id} kits are flagship Pro`);
   }
-  // as malas estão todas presentes e identificadas como mala
   for (const id of MALA_IDS) {
     assert.equal(REJENDARI_KITS.find(kit => kit.id === id).format, 'mala', `${id} should be a mala`);
   }
+  // os packs básicos são entrada (Core); o resto é flagship Pro
+  for (const id of BASIC_PACK_IDS) {
+    assert.equal(REJENDARI_KITS.find(kit => kit.id === id).tier, 'Core', `${id} is an entry pack`);
+  }
+  for (const kit of REJENDARI_KITS.filter(kit => !BASIC_PACK_IDS.includes(kit.id))) {
+    assert.equal(kit.tier, 'Pro', `${kit.id} kits are flagship Pro`);
+  }
+});
+
+test('basic packs are trade entry points with diverse brands and no 397', () => {
+  const catalog = new Map(CURATED_TOOL_REFERENCES.map(tool => [tool.id, tool]));
+  for (const id of BASIC_PACK_IDS) {
+    const kit = REJENDARI_KITS.find(entry => entry.id === id);
+    assert.ok(kit.pieces.length >= 3 && kit.pieces.length <= 4, `${id} stays minimal`);
+    const brands = new Set(kit.pieces.map(piece => catalog.get(piece.id)?.brand));
+    assert.ok(brands.size >= 2, `${id} must mix brands (got ${[...brands].join(',')})`);
+    assert.ok(
+      !kit.pieces.some(piece => piece.id === 'anex-397-d'),
+      `${id} must not repeat the 397 (it lives in mala-397 and kit-roquetes-pro)`,
+    );
+  }
+  assert.equal(
+    new Set(REJENDARI_KITS.find(kit => kit.id === 'pack-vde-basico').pieces.map(p => catalog.get(p.id)?.brand)).size,
+    3,
+    'pack VDE básico junta ANEX, VESSEL e Knipex',
+  );
 });
 
 test('the mala de máquinas brings 2 batteries 5Ah or more plus a charger', () => {
@@ -55,8 +80,8 @@ test('the mala de máquinas brings 2 batteries 5Ah or more plus a charger', () =
 test('every kit piece resolves to a curated reference with a rationale', () => {
   const ids = new Set(CURATED_TOOL_REFERENCES.map(tool => tool.id));
   for (const kit of REJENDARI_KITS) {
-    // packs de bits ordenados são pequenos por desenho: 3 peças chegam
-    const minPieces = kit.id.startsWith("pack-") ? 3 : 6;
+    // packs (bits ordenados e básicos) são pequenos por desenho: 3 peças chegam
+    const minPieces = kit.id.startsWith('pack-') ? 3 : 6;
     assert.ok(kit.pieces.length >= minPieces, `${kit.id} too thin (mín ${minPieces})`);
     for (const piece of kit.pieces) {
       assert.ok(ids.has(piece.id), `${kit.id} references missing tool ${piece.id}`);
@@ -75,6 +100,39 @@ test('kits stay differentiated from each other and from smart packs', () => {
       assert.notEqual(compositions[i], compositions[j], `kits ${i} and ${j} duplicate composition`);
     }
   }
+});
+
+test('no single reference dominates the kit catalog (anti-repetition guard)', () => {
+  // consumíveis (bits, o 397 como porta-bits do dia) não se repetem em muitos
+  // kits — era a redundância que se sentia; ferramentas de grip podem ser a
+  // recomendação comum de vários ofícios, com um teto mais folgado.
+  const CONSUMABLES = new Set([
+    'anex-397-d',
+    'anex-art-14m-2-65',
+    'anex-adrs-2065',
+    'anex-abrs5-2065',
+    'anex-arpm-2365',
+    'anex-ryujin-slim',
+  ]);
+  const counts = new Map();
+  for (const kit of REJENDARI_KITS) {
+    for (const piece of kit.pieces) {
+      counts.set(piece.id, (counts.get(piece.id) ?? 0) + 1);
+    }
+  }
+  for (const [refId, count] of counts) {
+    const limit = CONSUMABLES.has(refId) ? 4 : 8;
+    assert.ok(count <= limit, `${refId} appears in ${count} kits (max ${limit})`);
+  }
+  // o ecossistema 397 vive na mala base e no kit de roquetes; nenhuma caixa o repete
+  assert.equal(counts.get('anex-397-d'), 2, '397-d only in mala-397 and kit-roquetes-pro');
+  // a VDE chain deixou de existir duas vezes: a caixa virou pack básico, degrau de
+  // entrada da MESMA cadeia (subset intencional da mala, nunca composição paralela)
+  const vdeMala = new Set(REJENDARI_KITS.find(kit => kit.id === 'mala-eletricidade-vde').pieces.map(p => p.id));
+  const packVde = REJENDARI_KITS.find(kit => kit.id === 'pack-vde-basico').pieces.map(p => p.id);
+  const shared = packVde.filter(id => vdeMala.has(id));
+  assert.ok(packVde.length <= 5, 'pack VDE básico mantém-se mínimo');
+  assert.ok(shared.length <= 4, `pack VDE básico partilha ${shared.length} peças com a mala: upgrade path da mesma cadeia, não kit paralelo`);
 });
 
 test('kit editorial names the pieces with brand and model (B2B prefill basis)', () => {

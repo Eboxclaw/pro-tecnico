@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Box } from "lucide-react";
-import { referenceById } from "@/data/curated-tool-references";
+import { referenceById, type CuratedToolReference } from "@/data/curated-tool-references";
 import { REJENDARI_KITS, type RejendariKit, type RejendariKitFormat } from "@/data/kits";
 import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { RejendariSeal } from "@/components/brand/RejendariSeal";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 const FORMAT_MARK: Record<RejendariKit["format"], { glyph: string; label: string }> = {
@@ -30,7 +30,57 @@ const FILTERS: Array<{ id: Filter; label: string }> = [
   { id: "caixa", label: "Caixas de ofício" },
 ];
 
-/** Card compacto: identidade + gancho; o detalhe completo abre em janela. */
+type ResolvedKitPiece = {
+  tool: CuratedToolReference;
+  quantity: number;
+  whyPt: string;
+};
+
+/** Peças da composição resolvidas contra o catálogo curado, pela ordem do kit. */
+function resolveKitPieces(kit: RejendariKit): ResolvedKitPiece[] {
+  return kit.pieces.flatMap((piece) => {
+    const tool = referenceById(piece.id);
+    return tool ? [{ tool, quantity: piece.quantity, whyPt: piece.whyPt }] : [];
+  });
+}
+
+/** Marcas distintas da composição — os chips que provam que não é mono-marca. */
+function kitBrands(pieces: ResolvedKitPiece[]): string[] {
+  return [...new Set(pieces.map(({ tool }) => tool.brand))].slice(0, 4);
+}
+
+/** Prato editorial de uma peça: fotografia quando existe, monograma quando não. */
+function KitPiecePlate({
+  piece,
+  className,
+  imageClassName,
+}: {
+  piece: ResolvedKitPiece;
+  className: string;
+  imageClassName: string;
+}) {
+  const { tool } = piece;
+  return (
+    <span className={cn("product-plate block overflow-hidden border border-border", className)}>
+      {tool.imageUrl ? (
+        <ProductImage
+          src={tool.imageUrl}
+          alt={tool.imageAlt ?? tool.namePt}
+          className={imageClassName}
+          loading="lazy"
+        />
+      ) : (
+        <ProductMonogram
+          brand={tool.brand}
+          label={tool.namePt}
+          className="flex h-full w-full items-center justify-center"
+        />
+      )}
+    </span>
+  );
+}
+
+/** Card compacto: herói fotográfico + leque de peças; o detalhe abre em janela. */
 function KitCompactCard({
   kit,
   index,
@@ -41,11 +91,17 @@ function KitCompactCard({
   onOpen: () => void;
 }) {
   const mark = FORMAT_MARK[kit.format];
+  const pieces = resolveKitPieces(kit);
+  const hero = pieces[0];
+  const fanPieces = [pieces[1], pieces[2]];
+  const brands = kitBrands(pieces);
+
   return (
     <button
       type="button"
       onClick={onOpen}
-      className="group flex min-h-52 flex-col border border-border bg-card p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_20px_50px_rgba(42,36,29,0.16)]"
+      style={{ "--kit-enter-delay": `${index * 60}ms` } as CSSProperties}
+      className="kit-card kit-card-enter group relative flex min-h-52 flex-col border border-border bg-card p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:rotate-x-2 hover:-rotate-y-2 hover:border-primary/60 hover:shadow-[0_20px_50px_rgba(42,36,29,0.16)]"
     >
       <div className="flex items-center justify-between gap-3">
         <p className="jp-label text-primary">
@@ -55,13 +111,52 @@ function KitCompactCard({
           {kit.jp}
         </p>
         <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-          0{index + 1}
+          {String(index + 1).padStart(2, "0")}
         </span>
       </div>
+
+      {hero && (
+        <div className="relative mt-4 h-28" aria-hidden="true">
+          {fanPieces.map(
+            (piece, fanIndex) =>
+              piece && (
+                <KitPiecePlate
+                  key={piece.tool.id}
+                  piece={piece}
+                  className={cn(
+                    "kit-fan absolute z-0 h-14 w-14 border-border/70",
+                    `kit-fan-${fanIndex + 1}`,
+                  )}
+                  imageClassName="h-full w-full object-contain p-1"
+                />
+              ),
+          )}
+          <KitPiecePlate
+            piece={hero}
+            className="absolute bottom-0 right-0 z-[1] h-28 w-24 shadow-[0_14px_32px_rgba(42,36,29,0.24)]"
+            imageClassName="h-full w-full object-contain p-2"
+          />
+        </div>
+      )}
+
       <h3 className="mt-3 font-display text-xl font-semibold leading-tight tracking-[-0.03em] group-hover:text-primary">
         {kit.title}
       </h3>
       <p className="mt-2 line-clamp-2 text-xs leading-5 text-muted-foreground">{kit.conceptPt}</p>
+
+      {brands.length > 0 && (
+        <p className="mt-3 flex flex-wrap gap-1.5">
+          {brands.map((brand) => (
+            <span
+              key={brand}
+              className="border border-border/80 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-foreground/80"
+            >
+              {brand}
+            </span>
+          ))}
+        </p>
+      )}
+
       <div className="mt-auto flex items-center justify-between gap-3 pt-4">
         <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
           {kit.pieces.length} peças · {mark.label}
@@ -88,27 +183,36 @@ function KitDetailDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const mark = FORMAT_MARK[kit.format];
-  const pieces = kit.pieces.flatMap((piece) => {
-    const tool = referenceById(piece.id);
-    return tool ? [{ tool, quantity: piece.quantity, whyPt: piece.whyPt }] : [];
-  });
+  const pieces = resolveKitPieces(kit);
+  const hero = pieces[0];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto rounded-none border-border bg-card p-0">
         <DialogHeader className="space-y-0 border-b border-border bg-surface p-6 text-left">
-          <p className="jp-label text-primary">
-            <span aria-hidden className="mr-2 font-display text-base">
-              {mark.glyph}
-            </span>
-            {kit.jp}
-          </p>
-          <DialogTitle className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.03em]">
-            {kit.title}
-          </DialogTitle>
-          <DialogDescription className="mt-2 text-sm leading-6 text-foreground/80">
-            {kit.conceptPt}
-          </DialogDescription>
+          <div className="flex items-start justify-between gap-5">
+            <div className="min-w-0 flex-1">
+              <p className="jp-label text-primary">
+                <span aria-hidden className="mr-2 font-display text-base">
+                  {mark.glyph}
+                </span>
+                {kit.jp}
+              </p>
+              <DialogTitle className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.03em]">
+                {kit.title}
+              </DialogTitle>
+              <DialogDescription className="mt-2 text-sm leading-6 text-foreground/80">
+                {kit.conceptPt}
+              </DialogDescription>
+            </div>
+            {hero && (
+              <KitPiecePlate
+                piece={hero}
+                className="h-28 w-24 shrink-0 shadow-[0_14px_32px_rgba(42,36,29,0.24)]"
+                imageClassName="h-full w-full object-contain p-2"
+              />
+            )}
+          </div>
         </DialogHeader>
 
         <div className="p-6">
@@ -201,7 +305,7 @@ export function KitsShowcase() {
           <div>
             <p className="jp-label text-primary">最初のキット · os primeiros kits REJENDARI</p>
             <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
-              Onze composições.
+              {REJENDARI_KITS.length} composições.
               <br />
               <span className="text-primary">Nada que não ganhe o seu lugar.</span>
             </h2>
@@ -211,8 +315,10 @@ export function KitsShowcase() {
             fio nas mesmas mãos, e da escola alemã das caixas pequenas bem pensadas que são um
             milagre de espaço. {malas} malas cobrem profissões, {kitsCount} kits dominam uma
             família, {caixas} caixas cobrem o dia de um ofício. Cross bit utilization: cada bit
-            serve o 397, a impacto e a Zyklop. O pedido segue para o B2B com a composição
-            preenchida, sem SKU inventado.
+            serve o 397, a impacto e a Zyklop — um roquete com porta-bits e sockets 1/4 chega ao
+            canto onde era preciso uma chave de curto, e a chave de curto não existe no catálogo.
+            Somos mais inteligentes que múltiplas ferramentas. O pedido segue para o B2B com a
+            composição preenchida, sem SKU inventado.
           </p>
         </div>
 
@@ -235,7 +341,7 @@ export function KitsShowcase() {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 [perspective:1200px] sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((kit, index) => (
             <KitCompactCard
               key={kit.id}

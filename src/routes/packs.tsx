@@ -6,6 +6,7 @@ import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
 import { LegendaryCombos } from "@/components/shop/LegendaryCombos";
 import { SmartPacksSection } from "@/components/shop/SmartPacksSection";
 import { KitsShowcase } from "@/components/shop/KitsShowcase";
+import { KitBuilder } from "@/components/shop/KitBuilder";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { communityDemand, featuredSystem, labSystems, systemsOfKind } from "@/data/systems";
 import { useSystemDemand } from "@/lib/systems-demand";
@@ -140,6 +141,8 @@ function PacksPage() {
           </div>
         </section>
       )}
+
+      <KitBuilder />
 
       <KitsShowcase />
 

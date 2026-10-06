@@ -1,6 +1,7 @@
 import { referenceById, CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { smartPackById } from "@/data/smart-packs";
 import { kitById } from "@/data/kits";
+import { modularPackById } from "@/data/modular-packs";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
@@ -16,7 +17,14 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/b2b")({
   validateSearch: (
     search: Record<string, unknown>,
-  ): { reference?: string | undefined; pack?: string | undefined; kit?: string | undefined } => ({
+  ): {
+    reference?: string | undefined;
+    pack?: string | undefined;
+    kit?: string | undefined;
+    mod?: string | undefined;
+    sel?: string | undefined;
+    owned?: string | undefined;
+  } => ({
     reference:
       typeof search["reference"] === "string" && referenceById(search["reference"])
         ? search["reference"]
@@ -26,6 +34,12 @@ export const Route = createFileRoute("/b2b")({
         ? search["pack"]
         : undefined,
     kit: typeof search["kit"] === "string" && kitById(search["kit"]) ? search["kit"] : undefined,
+    mod:
+      typeof search["mod"] === "string" && modularPackById(search["mod"])
+        ? search["mod"]
+        : undefined,
+    sel: typeof search["sel"] === "string" ? search["sel"] : undefined,
+    owned: typeof search["owned"] === "string" ? search["owned"] : undefined,
   }),
   head: () => ({
     meta: [
@@ -47,14 +61,28 @@ export const Route = createFileRoute("/b2b")({
   component: B2BRoute,
 });
 
+/** "lock:milwaukee-shockwave-lock-73,extensao:anex-aeh-100" → Record slot → refId. */
+function parseSel(raw?: string): Record<string, string> | undefined {
+  if (!raw) return undefined;
+  return Object.fromEntries(
+    raw
+      .split(",")
+      .map((pair) => pair.split(":"))
+      .filter((parts): parts is [string, string] => parts.length === 2 && !!parts[1]),
+  );
+}
+
 function B2BRoute() {
-  const { reference, pack, kit } = Route.useSearch();
+  const { reference, pack, kit, mod, sel, owned } = Route.useSearch();
   return (
     <B2BPage
-      key={kit ?? pack ?? reference ?? "general"}
+      key={mod ?? kit ?? pack ?? reference ?? "general"}
       reference={reference}
       packId={pack}
       kitId={kit}
+      modId={mod}
+      modSel={parseSel(sel)}
+      modOwned={owned?.split(",").filter(Boolean)}
     />
   );
 }
@@ -83,14 +111,44 @@ function kitPrefill(kitId: string) {
   return `Kit REJENDARI · ${kit.trade}\n"${kit.title}"\n\nComposição:\n${prefillComposition(kit.pieces)}\n\nQuantidade de kits: \nObservações: `;
 }
 
+/** Pré-preenchimento de um pack modular: escolhas, "já tenho" e o que falta. */
+function modularPrefill(
+  modId: string,
+  sel: Record<string, string> | undefined,
+  owned: string[] | undefined,
+) {
+  const pack = modularPackById(modId);
+  if (!pack) return "";
+  const ownedSet = new Set(owned ?? []);
+  const lines = pack.slots.map((slot) => {
+    if (ownedSet.has(slot.id)) return `- ${slot.rolePt}: JÁ TENHO (declarado pelo cliente)`;
+    const refId = sel?.[slot.id];
+    const tool = refId ? referenceById(refId) : undefined;
+    return tool
+      ? `- ${slot.rolePt}: ${tool.brand} ${tool.model} (${tool.namePt})`
+      : `- ${slot.rolePt}: por escolher (opções: ${slot.options
+          .map((option) => referenceById(option.refId))
+          .filter(Boolean)
+          .map((tool) => `${tool?.brand} ${tool?.model}`)
+          .join("; ")})`;
+  });
+  return `Pack modular REJENDARI · ${pack.trade}\n"${pack.title}"\nFórmula: ${pack.formulaPartsPt.join(" + ")} = ?\n\nComposição:\n${lines.join("\n")}\n\nQuantidade: \nObservações: `;
+}
+
 function B2BPage({
   reference,
   packId,
   kitId,
+  modId,
+  modSel,
+  modOwned,
 }: {
   reference?: string | undefined;
   packId?: string | undefined;
   kitId?: string | undefined;
+  modId?: string | undefined;
+  modSel?: Record<string, string> | undefined;
+  modOwned?: string[] | undefined;
 }) {
   const tool = reference ? referenceById(reference) : undefined;
   const t = useT();
@@ -105,11 +163,13 @@ function B2BPage({
     trade: "",
     message: tool
       ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model}, ${tool.namePt}.\nQuantidade: \nAplicação: `
-      : kitId
-        ? kitPrefill(kitId)
-        : packId
-          ? packPrefill(packId)
-          : "",
+      : modId
+        ? modularPrefill(modId, modSel, modOwned)
+        : kitId
+          ? kitPrefill(kitId)
+          : packId
+            ? packPrefill(packId)
+            : "",
   });
 
   const set =
