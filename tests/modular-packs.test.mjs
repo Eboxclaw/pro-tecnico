@@ -70,8 +70,20 @@ test("the 397 Lock builder carries lock-first, Ryujin-only, ratchets and adapter
   for (const refId of roqueteIds) {
     assert.ok(refId.startsWith("anex-"), `${refId} fora do pack ANEX (só roquetes/offsets ANEX)`);
   }
-  assert.ok(roqueteIds.includes("anex-395-d"), "quick ball 60 presente");
   assert.ok(roqueteIds.includes("anex-370"), "t-handle presente");
+  assert.ok(!roqueteIds.includes("anex-395-d"), "quick ball 60 fora dos packs (a pedido)");
+  // soquetes: 3/8 primeiro, adaptadores depois, com honestidade sobre o roscado
+  const soquetesSlot = impact.slots.find((slot) => slot.id === "soquetes");
+  assert.ok(soquetesSlot, "slot de soquetes presente no builder 397 Lock");
+  const soquetesGroups = [...new Set(soquetesSlot.options.map((option) => option.groupPt))];
+  assert.equal(soquetesGroups[0], "3/8 impacto", "soquetes 3/8 primeiro");
+  assert.ok(soquetesGroups.includes("KNECT pass-through"), "pass-through KNECT presente");
+  assert.ok(soquetesGroups.includes("Chave de tubo M4-M12"), "chave de tubo M4-M12 presente");
+  assert.ok(
+    soquetesSlot.notePt.includes("M12") &&
+      soquetesSlot.notePt.includes("não há M12 em pass-through"),
+    "nota honesta: M12 não existe em pass-through",
+  );
   // adaptadores: os dois sentidos Zyklop + a fêmea porta-soquete em impacto
   const adaptadorIds = impact.slots
     .find((slot) => slot.id === "adaptador")

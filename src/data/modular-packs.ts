@@ -52,7 +52,14 @@ export const MODULAR_PACKS: ModularPack[] = [
     title: "Monta o teu 397 Lock REJENDARI: é sempre 397, cada coisa no seu tópico",
     conceptPt:
       "O construtor do sistema 397 Lock: o porta-bits lock escolhe-se pequeno, médio ou grande — impacto, VDE, precision ou isolado — as ponteiras por categoria com o pack múltiplo e o pack PH2 em qualidade S ou S+, a extensão nos três níveis, o roquete de bits ou offset, e o adaptador que já vem com o kit Zyklop 3/8.",
-    formulaPartsPt: ["porta-bits lock", "ponteiras", "extensão", "roquete", "adaptador"],
+    formulaPartsPt: [
+      "porta-bits lock",
+      "ponteiras",
+      "extensão",
+      "roquete",
+      "soquetes",
+      "adaptador",
+    ],
     slots: [
       {
         id: "lock",
@@ -113,14 +120,37 @@ export const MODULAR_PACKS: ModularPack[] = [
         jp: "ラチェット",
         options: [
           { refId: "anex-397-d", groupPt: "Quick Ball" },
-          { refId: "anex-395-d", groupPt: "Quick Ball" },
           { refId: "anex-370", groupPt: "T-handle" },
           { refId: "anex-525", groupPt: "Compacto" },
           { refId: "anex-436", groupPt: "Offset" },
           { refId: "anex-aoa-17s1", groupPt: "Offset" },
         ],
         notePt:
-          "Só roquetes e offsets ANEX — as screwdrivers de outras marcas ficam na loja. Quick Ball: o 72 é o movimento da casa (25 N·m, com lock) e o 60 é o irmão suave — o grip em bola que se segura como pistola. T-handle 370: mais binário no mesmo gesto, com switch de lock. Compacto 52: rente a paredes e caixas. Offset: o 436 de cabeça baixa aperta por baixo de superfícies e o AOA-17 com sockets H8-H21 chega aos 230 N·m onde a máquina não cabe.",
+          "Só roquetes e offsets ANEX — as screwdrivers de outras marcas ficam na loja. Quick Ball 72: o movimento da casa, 25 N·m, com lock — o grip em bola que se segura como pistola. T-handle 370: mais binário no mesmo gesto, com switch de lock. Compacto 52: rente a paredes e caixas. Offset: o 436 de cabeça baixa aperta por baixo de superfícies e o AOA-17 com sockets H8-H21 chega aos 230 N·m onde a máquina não cabe.",
+      },
+      {
+        id: "soquetes",
+        rolePt: "Os soquetes: 3/8 primeiro, adaptadores depois",
+        jp: "ソケット",
+        options: [
+          { refId: "klein-33809m", groupPt: "3/8 impacto" },
+          { refId: "klein-65148hd", groupPt: "3/8 impacto" },
+          { refId: "klein-65109impctm", groupPt: "3/8 impacto" },
+          { refId: "klein-65400knect", groupPt: "KNECT pass-through" },
+          { refId: "klein-65302knect", groupPt: "KNECT pass-through" },
+          { refId: "klein-65408adp", groupPt: "KNECT pass-through" },
+          { refId: "klein-65301adp", groupPt: "KNECT pass-through" },
+          { refId: "klein-65431lp", groupPt: "KNECT pass-through" },
+          { refId: "klein-65619", groupPt: "Flip métrico" },
+          { refId: "klein-65626", groupPt: "Flip métrico" },
+          { refId: "bahco-s530t", groupPt: "Universal BAHCO" },
+          { refId: "vessel-a20zb55", groupPt: "Roscado M8-M12" },
+          { refId: "bahco-902t", groupPt: "Chave de tubo M4-M12" },
+          { refId: "anex-aoa-19s3", groupPt: "Chave de tubo M4-M12" },
+          { refId: "klein-65kadpm", groupPt: "Adaptadores KNECT" },
+        ],
+        notePt:
+          "Soquetes primeiro, adaptadores depois: o 3/8″ impacto (Grab-And-Go, o 44 peças deep+shallow, o deep-well) é a base. Pass-through KNECT para o varão roscado: o métrico do Essential 28 cobre até 17 mm — M8 (13 mm) e M10 (17 mm) — mas não há M12 em pass-through nem versão LONG nem sockets à peça: o M12 (19 mm) aperta-se no flip deep-well 65626 e o varão prepara-se com o bit de rebarbação VESSEL A20ZB55. Pass-through universal até 24 mm: o S530T Bahco com flex-head. Chave de tubo M4-M12: não existe conjunto único — combina-se o T-handle BAHCO (M4-M8) com o AOA-19S3 ANEX (M6-M12, incl. 17/19 mm).",
       },
       {
         id: "adaptador",

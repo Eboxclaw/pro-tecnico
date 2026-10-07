@@ -327,7 +327,13 @@ export function KitBuilder() {
               index={index}
               selectedRefId={selections[slot.id] ?? null}
               owned={owned[slot.id] ?? false}
-              onSelect={(refId) => setSelections((prev) => ({ ...prev, [slot.id]: refId }))}
+              onSelect={(refId) =>
+                setSelections((prev) => ({
+                  ...prev,
+                  // clicar de novo na opção selecionada deseleciona
+                  [slot.id]: prev[slot.id] === refId ? null : refId,
+                }))
+              }
               onToggleOwned={() => setOwned((prev) => ({ ...prev, [slot.id]: !prev[slot.id] }))}
             />
           ))}

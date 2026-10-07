@@ -736,18 +736,12 @@ export const REJENDARI_KITS: RejendariKit[] = [
     trade: "Roquetes & aperto",
     jp: "ラチェット · roquete básico",
     tier: "Core",
-    title: "Pack roquete básico: pistola, T-handle e o plano de baixo perfil",
+    title: "Pack roquete básico: T-handle e o plano de baixo perfil",
     conceptPt:
-      "Os três gestos de entrada de duas escolas — ANEX e VESSEL: o Quick Ball 60 que se segura como pistola, o T-handle que aplica força firme e o roquete plano de baixo perfil com dez bits ordenados. Sem repetir o que a mala 397 já traz.",
+      "Os gestos de entrada de duas escolas — ANEX e VESSEL: o T-handle que aplica força firme no mesmo movimento e o roquete plano de baixo perfil com dez bits ordenados. Sem repetir o que a mala 397 já traz.",
     dayPt:
-      "O dia de aperto manual sem duplicar a mala 397: o Quick Ball 60 faz o vaivém suave no grip em bola que se segura como pistola; o T-handle 370 aplica mais binário no mesmo movimento e guarda os bits curtos no próprio corpo; o roquete plano VESSEL traz dez bits PH, fenda e HEX ordenados com o perfil baixo que entra onde roquete nenhum entra. Somos mais inteligentes que múltiplas ferramentas: um roquete com bits na mão substitui a gaveta de chaves de curto.",
+      "O dia de aperto manual sem duplicar a mala 397: o T-handle 370 aplica mais binário no mesmo movimento e guarda os bits curtos no próprio corpo; o roquete plano VESSEL traz dez bits PH, fenda e HEX ordenados com o perfil baixo que entra onde roquete nenhum entra; as ultra-curtas de 18 mm fecham o aperto rente ao painel. Somos mais inteligentes que múltiplas ferramentas: um roquete com bits na mão substitui a gaveta de chaves de curto.",
     pieces: [
-      {
-        id: "anex-395-d",
-        quantity: 1,
-        whyPt:
-          "Quick Ball 60: o grip em bola que se segura como pistola — 60 dentes de vaivém suave, bit magnético incluído.",
-      },
       {
         id: "anex-370",
         quantity: 1,
