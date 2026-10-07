@@ -48,26 +48,30 @@ test("the 397 Lock builder carries lock-first, Ryujin-only, ratchets and adapter
     ponteiraIds.some((id) => /azm/.test(id)),
     "ponteira VDE/isolada presente",
   );
-  // extensão: conjuntos por marca nos três níveis (ANEX AEH, VESSEL, Klein)
-  const extensaoIds = impact.slots
-    .find((slot) => slot.id === "extensao")
-    .options.map((option) => option.refId);
-  assert.equal(extensaoIds.length, 9, "3 marcas × 3 níveis (curta 100 · média 150 · longa 300)");
-  for (const brand of ["anex-aeh", "vessel-exh", "klein-31", "klein-32791"]) {
-    assert.ok(
-      extensaoIds.some((id) => id.startsWith(brand)),
-      `conjunto ${brand} presente nas extensões`,
-    );
-  }
-  // ANEX nas extensões é a linha AEH (extensão de impacto), não o porta-bits ALHP
-  assert.ok(
-    !extensaoIds.some((id) => id.includes("alhp")),
-    "ALHP é porta-bits longo, não extensão — só AEH no slot",
+  // extensão: sub-tabs por grupo — AEH eco (100/200/300), ALHP impacto (100/150/300),
+  // VESSEL e Klein; medidas eco em 100/200/300 como pedido
+  const extensaoSlot = impact.slots.find((slot) => slot.id === "extensao");
+  const extensaoIds = extensaoSlot.options.map((option) => option.refId);
+  assert.equal(extensaoIds.length, 12, "4 grupos × 3 níveis");
+  const groups = [...new Set(extensaoSlot.options.map((option) => option.groupPt))];
+  assert.deepEqual(
+    groups,
+    ["AEH · eco", "ALHP · impacto", "VESSEL", "Klein"],
+    "sub-tabs por linha/marca",
   );
-  // roquete tem de incluir um offset e um roquete de bits
-  const roqueteIds = impact.slots.find((slot) => slot.id === "roquete").options.map((o) => o.refId);
+  for (const refId of ["anex-aeh-100", "anex-aeh-200", "anex-aeh-300"]) {
+    assert.ok(extensaoIds.includes(refId), `AEH eco trio inclui ${refId}`);
+  }
+  // roquete: pack ANEX, só roquetes ou offsets — sem screwdrivers de outras marcas
+  const roqueteSlot = impact.slots.find((slot) => slot.id === "roquete");
+  const roqueteIds = roqueteSlot.options.map((o) => o.refId);
   assert.ok(roqueteIds.includes("anex-436"), "offset ratchet presente");
   assert.ok(roqueteIds.includes("anex-397-d"), "bit ratchet presente");
+  for (const refId of roqueteIds) {
+    assert.ok(refId.startsWith("anex-"), `${refId} fora do pack ANEX (só roquetes/offsets ANEX)`);
+  }
+  assert.ok(roqueteIds.includes("anex-395-d"), "quick ball 60 presente");
+  assert.ok(roqueteIds.includes("anex-370"), "t-handle presente");
   // adaptadores: os dois sentidos Zyklop + a fêmea porta-soquete em impacto
   const adaptadorIds = impact.slots
     .find((slot) => slot.id === "adaptador")

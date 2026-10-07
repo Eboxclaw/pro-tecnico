@@ -14,6 +14,8 @@
 export type ModularSlotOption = {
   /** id em CURATED_TOOL_REFERENCES, validado por tests/modular-packs.test.mjs */
   refId: string;
+  /** Sub-tab dentro do slot: agrupa as opções por linha/marca (ex.: "AEH · eco"). */
+  groupPt?: string;
 };
 
 export type ModularSlot = {
@@ -69,54 +71,56 @@ export const MODULAR_PACKS: ModularPack[] = [
         rolePt: "As ponteiras: impacto, VDE ou isoladas · pack múltiplo ou PH2",
         jp: "先端",
         options: [
-          { refId: "anex-525-28b" },
-          { refId: "anex-abrs5-2065" },
-          { refId: "anex-abrs-14m-2-65" },
-          { refId: "anex-abrd5-2082" },
-          { refId: "anex-abrs5-01" },
-          { refId: "anex-adrs-2065" },
-          { refId: "anex-adrs-2085" },
-          { refId: "anex-adrs-1065" },
-          { refId: "milwaukee-shockwave-ph2-50" },
-          { refId: "anex-azm-2698" },
+          { refId: "anex-525-28b", groupPt: "Pack múltiplo" },
+          { refId: "anex-abr-14m-2-65", groupPt: "PH2 S · Black ×10" },
+          { refId: "anex-abrs-14m-2-65", groupPt: "PH2 S · Black ×10" },
+          { refId: "anex-abrs5-2065", groupPt: "PH2 S · Black ×10" },
+          { refId: "anex-abrd5-2082", groupPt: "PH2 S · Black ×10" },
+          { refId: "anex-adr-2065", groupPt: "S+ · Diamond 1×" },
+          { refId: "anex-adrs-2065", groupPt: "S+ · Diamond 1×" },
+          { refId: "anex-adrs-2085", groupPt: "S+ · Diamond 1×" },
+          { refId: "anex-adrs-1065", groupPt: "S+ · Diamond 1×" },
+          { refId: "milwaukee-shockwave-ph2-50", groupPt: "Impacto Milwaukee" },
+          { refId: "anex-azm-2698", groupPt: "VDE isolada" },
         ],
         notePt:
-          "Pack múltiplo: o 525-28B cobre PH, Torx, hex e soquetes num estojo. Pack PH2 qualidade S: Black Ryujin na caixa de dez, em ×5 slim, no perfil degrau ou no assorted 65/85/110. Qualidade S+: Diamond Ryujin em 65, 85 e o único PH1 da gama. Impacto Milwaukee: SHOCKWAVE com Wear Guard Tip. VDE/isoladas: o AZM duplo +2/−6 isolado 1000 V — as restantes AZM vivem no builder VDE. Ryujin standard nunca entra.",
+          "Pack múltiplo: o 525-28B cobre PH, Torx, hex e soquetes num estojo. PH2 qualidade S, caixa de dez na linha Black: Tough (ABR-14M, a ponta reforçada) ou Slim (ABRS-14M, para o acesso embutido), mais o ×5 slim e o perfil degrau. Qualidade S+, Diamond sempre em pack de 1 unidade: Tough, Slim 65, 85 mm e o único PH1 da gama. Impacto Milwaukee: SHOCKWAVE com Wear Guard Tip. VDE/isoladas: o AZM duplo +2/−6 isolado 1000 V — as restantes AZM vivem no builder VDE. Ryujin standard nunca entra.",
       },
       {
         id: "extensao",
-        rolePt: "As extensões: conjuntos por marca — curta 100 · média 150 · longa 300",
+        rolePt: "As extensões: eco ou impacto — 100 · 200 · 300",
         jp: "ヘッド",
         options: [
-          { refId: "anex-aeh-100" },
-          { refId: "anex-aeh-150" },
-          { refId: "anex-aeh-300" },
-          { refId: "vessel-exh-100" },
-          { refId: "vessel-exh-150" },
-          { refId: "vessel-dxh-350" },
-          { refId: "klein-32791" },
-          { refId: "klein-31088" },
-          { refId: "klein-31089" },
+          { refId: "anex-aeh-100", groupPt: "AEH · eco" },
+          { refId: "anex-aeh-200", groupPt: "AEH · eco" },
+          { refId: "anex-aeh-300", groupPt: "AEH · eco" },
+          { refId: "anex-alhp-100", groupPt: "ALHP · impacto" },
+          { refId: "anex-alhp-150", groupPt: "ALHP · impacto" },
+          { refId: "anex-alhp-300", groupPt: "ALHP · impacto" },
+          { refId: "vessel-exh-100", groupPt: "VESSEL" },
+          { refId: "vessel-exh-150", groupPt: "VESSEL" },
+          { refId: "vessel-dxh-350", groupPt: "VESSEL" },
+          { refId: "klein-32791", groupPt: "Klein" },
+          { refId: "klein-31088", groupPt: "Klein" },
+          { refId: "klein-31089", groupPt: "Klein" },
         ],
         notePt:
-          "Categoria IMPACTO, três conjuntos completos: ANEX **AEH** — a verdadeira extensão de impacto (capa anti-impacto, 18 V/40 V; o ALHP é porta-bits longo para parafusos no fundo de furos, outra categoria que fica no catálogo), VESSEL Slim Long compatível 40 V (EXH 100/150, DXH 350 no nível grande) e Klein Dual-Lock (4″/6″/12″ com retenção nas duas pontas). Milwaukee não faz extensão não-locking — a extensão deles é a própria linha lock 73/152/305, no slot de cima. Categoria VDE/isolado: não existe em nenhuma marca (EM SOURCING) — no lado elétrico, o isolamento é o comprimento do próprio bit AZM.",
+          "Duas linhas ANEX, cada uma no seu tópico: a AEH é a extensível eco (capa anti-impacto, 18 V/40 V) nos níveis 100/200/300; a ALHP é a extensível impacto heavy-duty (40 V, eixo substituível) em 100/150/300 — não há 200 na linha. VESSEL Slim Long compatível 40 V (EXH 100/150, DXH 350) e Klein Dual-Lock (4″/6″/12″) fecham os conjuntos por marca. Milwaukee não faz extensão não-locking — a extensão deles é a própria linha lock 73/152/305, no slot de cima. Categoria VDE/isolado: não existe em nenhuma marca (EM SOURCING) — no lado elétrico, o isolamento é o comprimento do próprio bit AZM.",
       },
       {
         id: "roquete",
-        rolePt: "O roquete (de bits ou offset)",
+        rolePt: "O roquete (de bits ou offset) — pack ANEX",
         jp: "ラチェット",
         options: [
-          { refId: "anex-397-d" },
-          { refId: "anex-395-d" },
-          { refId: "anex-525" },
-          { refId: "anex-370" },
-          { refId: "klein-32305" },
-          { refId: "bahco-808050p" },
-          { refId: "anex-436" },
-          { refId: "anex-aoa-17s1" },
+          { refId: "anex-397-d", groupPt: "Quick Ball" },
+          { refId: "anex-395-d", groupPt: "Quick Ball" },
+          { refId: "anex-370", groupPt: "T-handle" },
+          { refId: "anex-525", groupPt: "Compacto" },
+          { refId: "anex-436", groupPt: "Offset" },
+          { refId: "anex-aoa-17s1", groupPt: "Offset" },
         ],
         notePt:
-          "Roquete de bits: o Quick Ball 72 é o movimento da casa e o 395-D é o seu irmão suave — o grip em bola que se segura como pistola; o Compact 52 entra rente a paredes e o T-handle 370 aplica mais binário no mesmo gesto; o Klein 15-em-1 e o Bahco pistola cobrem a variedade americana e sueca. Roquete offset: o 436 de cabeça baixa aperta por baixo de superfícies e o AOA-17 com sockets H8-H21 chega aos 230 N·m onde a máquina não cabe.",
+          "Só roquetes e offsets ANEX — as screwdrivers de outras marcas ficam na loja. Quick Ball: o 72 é o movimento da casa (25 N·m, com lock) e o 60 é o irmão suave — o grip em bola que se segura como pistola. T-handle 370: mais binário no mesmo gesto, com switch de lock. Compacto 52: rente a paredes e caixas. Offset: o 436 de cabeça baixa aperta por baixo de superfícies e o AOA-17 com sockets H8-H21 chega aos 230 N·m onde a máquina não cabe.",
       },
       {
         id: "adaptador",

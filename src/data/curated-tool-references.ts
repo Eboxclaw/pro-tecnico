@@ -4183,6 +4183,78 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     imageAlt: "ANEX Diamond Ryujin slim PH1×65",
     imageSourceLabel: "Imagem oficial ANEX",
   },
+  {
+    id: "anex-aeh-200",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "AEH-200",
+    officialCode: "AEH-200",
+    namePt: "AEH-200 · extensível eco 200 mm",
+    japanese: "エクステンションホルダー",
+    task: "fastening",
+    categoryPt: "Extensão eco · média 200",
+    badge: "200 mm",
+    notePt:
+      "O médio da linha eco: 200 mm de alcance com a capa anti-impacto da família AEH, rated para aparafusadora 18 V/40 V.",
+    specPt: "1/4″ hex · 200 mm · bits ≥33 mm · capa anti-impacto · 18 V/40 V · Ø14,5 mm",
+    storyPt:
+      "O trio eco fecha em 100/200/300: o AEH é a extensão simples da casa — o alcance certo sem levar o heavy-duty para o trabalho do dia.",
+    evidencePt:
+      "ANEX: エクステンションホルダー AEH-200, 200 mm, 6,35 mm hex, made in Japan. Imagem oficial anextool.co.jp verificada.",
+    referenceUrl: "https://www.anextool.co.jp/item/aeh-200/",
+    compareGroup: "extensoes",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/AEH-200_1-768x768.jpg",
+    imageAlt: "ANEX AEH-200, extensão eco de 200 mm",
+    imageSourceLabel: "Imagem oficial ANEX",
+  },
+  {
+    id: "anex-abr-14m-2-65",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "ABR-14M-2-65",
+    officialCode: "ABR-14M-2-65",
+    namePt: "Black Ryujin Tough ×10 · caixa PH2×65",
+    japanese: "黒龍靭ビット タフ 10本組",
+    task: "fastening",
+    categoryPt: "Black Ryujin · caixa ×10 Tough",
+    badge: "Tough ×10",
+    notePt:
+      "A caixa de dez na versão Tough: ponta mais robusta que a Slim para o impacto pesado do dia inteiro — a alternativa ao ABRS-14M dentro da mesma linha Black.",
+    specPt: "10 peças · PH2×65 Tough · HRC 62,5 · impacto 40 V",
+    storyPt:
+      "Tough contra Slim nas duas caixas de dez: o ABR-14M é a ponta reforçada para quem parte bits, o ABRS-14M a slim para o acesso embutido. Mesma linha Black, dois temperamentos.",
+    evidencePt:
+      "ANEX: 黒龍靭ビット タフ 10本組 ABR-14M-2-65, 10 peças +2×65 Tough, 3 000 ienes tabela, made in Japan. Imagem oficial anextool.co.jp verificada.",
+    referenceUrl: "https://www.anextool.co.jp/item/abr-14m-2-65/",
+    compareGroup: "bits",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ABR-14M_1.jpg",
+    imageAlt: "ANEX Black Ryujin Tough, caixa de 10 bits PH2×65",
+    imageSourceLabel: "Imagem oficial ANEX",
+  },
+  {
+    id: "anex-adr-2065",
+    brand: "ANEX",
+    brandSlug: "ANEX",
+    model: "ADR-2065",
+    officialCode: "ADR-2065",
+    namePt: "Diamond Ryujin Tough · PH2×65",
+    japanese: "ダイヤモンド龍靭ビット タフ",
+    task: "fastening",
+    categoryPt: "Diamond Ryujin · Tough 65",
+    badge: "Tough",
+    notePt:
+      "O Diamond na versão Tough: partículas de diamante com a ponta reforçada — para o inox que escorrega e o impacto que parte a Slim. Pack de 1 unidade, como toda a linha Diamond.",
+    specPt: "1 peça · PH2×65 Tough · revestimento diamantado",
+    storyPt:
+      "Tough contra Slim também no diamante: o ADR-2065 aguenta o regime que partira o slim, com a mesma retenção diamantada no inox e no latão.",
+    evidencePt:
+      "ANEX: ダイヤモンド龍靭ビット タフ ADR-2065, 1 peça +2×65 Tough, partículas de diamante. Imagem oficial anextool.co.jp verificada.",
+    referenceUrl: "https://www.anextool.co.jp/item/adr-2065/",
+    compareGroup: "bits",
+    imageUrl: "https://www.anextool.co.jp/wp-content/uploads/ADR-2065_1.jpg",
+    imageAlt: "ANEX Diamond Ryujin Tough PH2×65",
+    imageSourceLabel: "Imagem oficial ANEX",
+  },
 ];
 
 export const REFERENCE_QUEUE = [

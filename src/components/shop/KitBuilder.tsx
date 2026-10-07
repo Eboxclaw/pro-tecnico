@@ -68,7 +68,61 @@ function SlotOptionChip({
   );
 }
 
-/** Um slot do pack: papel + jp + nota, toggle "já tenho" e as opções da casa. */
+/** Card de opção: foto em prato + marca/modelo + nome — para slots com sub-tabs. */
+function SlotOptionCard({
+  tool,
+  selected,
+  owned,
+  onSelect,
+}: {
+  tool: CuratedToolReference;
+  selected: boolean;
+  owned: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-pressed={selected}
+      disabled={owned}
+      className={cn(
+        "group flex min-w-40 flex-col border p-3 text-left transition-all duration-200",
+        FOCUS_RING,
+        selected
+          ? "border-primary bg-primary/10 shadow-[0_12px_30px_rgba(212,165,63,0.14)]"
+          : "border-border bg-card hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-[0_12px_30px_rgba(42,36,29,0.35)]",
+        owned && "cursor-not-allowed opacity-40",
+      )}
+    >
+      <span className="product-plate block h-24 w-full overflow-hidden border border-border">
+        {tool.imageUrl ? (
+          <ProductImage
+            src={tool.imageUrl}
+            alt={tool.imageAlt ?? tool.namePt}
+            className="h-full w-full object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <ProductMonogram
+            brand={tool.brand}
+            label={tool.namePt}
+            className="flex h-full w-full items-center justify-center"
+          />
+        )}
+      </span>
+      <span className="mt-2 block truncate font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
+        {tool.brand} {tool.model}
+      </span>
+      <span className="mt-0.5 line-clamp-2 text-xs leading-5 text-muted-foreground">
+        {tool.namePt}
+      </span>
+    </button>
+  );
+}
+
+/** Um slot do pack: papel + jp + nota, toggle "já tenho" e as opções da casa.
+ *  Slots com grupos (groupPt) renderizam sub-tabs; o grupo ativo mostra cards. */
 function ModularSlotRow({
   slot,
   index,
@@ -86,8 +140,12 @@ function ModularSlotRow({
 }) {
   const options = slot.options.flatMap((option) => {
     const tool = referenceById(option.refId);
-    return tool ? [{ tool }] : [];
+    return tool ? [{ tool, groupPt: option.groupPt }] : [];
   });
+  const groups = [...new Set(options.map(({ groupPt }) => groupPt ?? ""))].filter(Boolean);
+  const [activeGroup, setActiveGroup] = useState<string>(groups[0] ?? "");
+  const visible =
+    groups.length > 0 ? options.filter(({ groupPt }) => groupPt === activeGroup) : options;
 
   return (
     <li
@@ -122,17 +180,66 @@ function ModularSlotRow({
         <p className="mt-1.5 text-xs leading-5 text-muted-foreground">{slot.notePt}</p>
       )}
 
-      <div role="group" aria-label={`${slot.rolePt}: opções`} className="mt-4 flex flex-wrap gap-2">
-        {options.map(({ tool }) => (
-          <SlotOptionChip
-            key={tool.id}
-            tool={tool}
-            selected={selectedRefId === tool.id}
-            owned={owned}
-            onSelect={() => onSelect(tool.id)}
-          />
-        ))}
-      </div>
+      {groups.length > 0 && (
+        <div
+          role="tablist"
+          aria-label={`${slot.rolePt}: sub-tabs`}
+          className="mt-4 flex flex-wrap gap-1.5"
+        >
+          {groups.map((group) => (
+            <button
+              key={group}
+              type="button"
+              role="tab"
+              aria-selected={group === activeGroup}
+              onClick={() => setActiveGroup(group)}
+              className={cn(
+                "border px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] transition-colors duration-200",
+                FOCUS_RING,
+                group === activeGroup
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-transparent text-muted-foreground hover:border-primary/50 hover:text-foreground",
+              )}
+            >
+              {group}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {groups.length > 0 ? (
+        <div
+          role="tabpanel"
+          aria-label={activeGroup}
+          className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4"
+        >
+          {visible.map(({ tool }) => (
+            <SlotOptionCard
+              key={tool.id}
+              tool={tool}
+              selected={selectedRefId === tool.id}
+              owned={owned}
+              onSelect={() => onSelect(tool.id)}
+            />
+          ))}
+        </div>
+      ) : (
+        <div
+          role="group"
+          aria-label={`${slot.rolePt}: opções`}
+          className="mt-4 flex flex-wrap gap-2"
+        >
+          {visible.map(({ tool }) => (
+            <SlotOptionChip
+              key={tool.id}
+              tool={tool}
+              selected={selectedRefId === tool.id}
+              owned={owned}
+              onSelect={() => onSelect(tool.id)}
+            />
+          ))}
+        </div>
+      )}
 
       {owned && (
         <p className="mt-3 text-xs leading-5 text-muted-foreground">
