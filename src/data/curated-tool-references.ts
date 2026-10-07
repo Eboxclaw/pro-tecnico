@@ -35,6 +35,19 @@ export type CuratedToolReference = {
   storyPt?: string;
   compareGroup?: string;
   officialCode?: string;
+  /** Simbologia da casa — normas e certificação. "EN IEC 60900" basta para 1000 V
+   *  (híbrido incluído); ASTM F1505 é o equivalente americano aceito. */
+  normPt?: string;
+  /** Certificação/página oficial da marca com a marcação (short link válido). */
+  certificationUrl?: string;
+  /** Tipo de aço com dureza quando declarada (ex.: "Cr-Mo-V · HRC 62,5", "S2"). */
+  steelPt?: string;
+  /** Tratamento/revestimento (ex.: "têmpera por indução", "fosfato de manganês"). */
+  treatmentPt?: string;
+  /** Tipo de corte para cortadores (ex.: "fio piano Ø2,5 mm · VVF 2,0×3"). */
+  cutTypePt?: string;
+  /** Escala da casa 0-5: 0 = fora de gama, 5 = muito bom. */
+  qualityDots?: number;
 };
 
 export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
@@ -176,6 +189,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
     brand: "WIHA",
     brandSlug: "WIHA",
     model: "slimBits",
+    normPt: "EN IEC 60900 · 1000 V",
+    qualityDots: 4,
     namePt: "Jogo de lâminas slimBits 1000 V",
     japanese: "スリムビット",
     task: "precision",
@@ -206,6 +221,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "knipex-74-06-200",
+    normPt: "VDE · 1000 V",
+    steelPt: "arestas de corte ~64 HRC",
+    cutTypePt: "fio piano Ø2,5 mm",
+    qualityDots: 5,
     brand: "KNIPEX",
     brandSlug: "KNIPEX",
     model: "74 06 200 VDE",
@@ -636,6 +655,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-aoa-17s1",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AOA-17S1",
@@ -710,6 +730,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "olfa-xh-1",
+    cutTypePt: "corte 25 mm extra robusto",
+    qualityDots: 4,
     brand: "OLFA",
     brandSlug: "OLFA",
     model: "XH-1",
@@ -851,6 +873,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-525",
+    qualityDots: 4,
     imageUrl: "https://www.anextool.co.jp/wp-content/uploads/525_2-1.jpg",
     imageSourceLabel: "Imagem oficial ANEX",
     brand: "ANEX",
@@ -872,6 +895,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-7920",
+    normPt: "EN IEC 60900 · 1000 V · ensaio 10 kV",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "7920 +2×100",
@@ -895,6 +920,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-abrs5-2065",
+    steelPt: "Cr-Mo-V · HRC 62,5",
+    treatmentPt: "revestimento Black",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ABRS5-2065",
@@ -923,6 +951,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
 
   {
     id: "anex-370",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "370",
@@ -1038,6 +1067,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
 
   {
     id: "anex-abrs5-01",
+    steelPt: "Cr-Mo-V · HRC 62,5",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ABRS5-01",
@@ -1132,6 +1163,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
 
   {
     id: "anex-397-d",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "397-D",
@@ -1179,6 +1211,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-azm-2698",
+    normPt: "EN IEC 60900 · 1000 V · ensaio 10 kV",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AZM-2698",
@@ -1206,6 +1240,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-azm-1598",
+    normPt: "EN IEC 60900 · 1000 V · ensaio 10 kV",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AZM-1598",
@@ -1372,6 +1408,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "vessel-td70",
+    qualityDots: 4,
     brand: "VESSEL",
     brandSlug: "VESSEL",
     model: "TD-70",
@@ -1438,6 +1475,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "vessel-200-ph2-100",
+    normPt: "VDE · 1000 V",
+    qualityDots: 4,
     brand: "VESSEL",
     brandSlug: "VESSEL",
     model: "200 PH2×100",
@@ -1460,6 +1499,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "vessel-960-ph2-100",
+    normPt: "VDE · 1000 V",
+    qualityDots: 4,
     brand: "VESSEL",
     brandSlug: "VESSEL",
     model: "960 PH2×100",
@@ -1736,6 +1777,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
 
   {
     id: "olfa-l5",
+    cutTypePt: "corte 18 mm",
+    qualityDots: 4,
     imageUrl: "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586832370L-5_1.jpg",
     imageSourceLabel: "Imagem oficial OLFA",
     brand: "OLFA",
@@ -2301,6 +2344,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "wera-8100-sb-6",
+    qualityDots: 5,
     brand: "WERA",
     brandSlug: "WERA",
     model: "8100 SB 6",
@@ -2478,6 +2522,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "knipex-13-96-200",
+    normPt: "VDE · 1000 V",
+    cutTypePt: "descarna 0,75-2,5 mm² · cabo Cu Ø15 mm",
+    qualityDots: 5,
     brand: "KNIPEX",
     brandSlug: "KNIPEX",
     model: "13 96 200",
@@ -2858,6 +2905,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "wera-8784-b1",
+    qualityDots: 4,
     brand: "WERA",
     brandSlug: "WERA",
     model: "8784 B1",
@@ -3028,6 +3076,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-azm-2100",
+    normPt: "EN IEC 60900 · 1000 V · ensaio 10 kV",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AZM-2100",
@@ -3055,6 +3105,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-azm-2150",
+    normPt: "EN IEC 60900 · 1000 V · ensaio 10 kV",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AZM-2150",
@@ -3082,6 +3134,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-aeh-150",
+    treatmentPt: "capa anti-impacto",
+    qualityDots: 3,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AEH-150",
@@ -3109,6 +3163,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-alhp-100",
+    treatmentPt: "heavy-duty 40 V · eixo substituível",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ALHP-100",
@@ -3137,6 +3193,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-alhp-300",
+    treatmentPt: "heavy-duty 40 V · eixo substituível · pega c/ rolamento",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ALHP-300",
@@ -3188,6 +3246,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "milwaukee-shockwave-lock-73",
+    treatmentPt: "anel de retenção LOCK · tratamento SHOCKWAVE",
+    qualityDots: 5,
     brand: "MILWAUKEE",
     brandSlug: "MILWAUKEE",
     model: "4932459398",
@@ -3213,6 +3273,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "milwaukee-shockwave-ph2-50",
+    steelPt: "liga SHOCKWAVE tratada",
+    treatmentPt: "Wear Guard Tip",
+    qualityDots: 5,
     brand: "MILWAUKEE",
     brandSlug: "MILWAUKEE",
     model: "4932430906",
@@ -3237,6 +3300,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "milwaukee-shockwave-lock-152",
+    treatmentPt: "anel de retenção LOCK · tratamento SHOCKWAVE",
+    qualityDots: 5,
     brand: "MILWAUKEE",
     brandSlug: "MILWAUKEE",
     model: "4932471824",
@@ -3261,6 +3326,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "milwaukee-shockwave-lock-305",
+    treatmentPt: "anel de retenção LOCK · tratamento SHOCKWAVE",
+    qualityDots: 5,
     brand: "MILWAUKEE",
     brandSlug: "MILWAUKEE",
     model: "4932471825",
@@ -3312,6 +3379,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-j213-9ne",
+    steelPt: "aço carbono",
+    treatmentPt: "têmpera por indução",
+    cutTypePt: "fio de aço e wire rope",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "J213-9NE",
@@ -3361,6 +3432,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "fujiya-fgl-38-bg",
+    qualityDots: 5,
     brand: "FUJIYA",
     brandSlug: "FUJIYA",
     model: "FGL-38-BG",
@@ -3433,6 +3505,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "fujiya-760n-200bg",
+    steelPt: "excêntrico · lâmina fina endurecida",
+    cutTypePt: "ferro Ø4,0 · cobre Ø5,0 · VVF 2,0×3 · flare",
+    qualityDots: 5,
     brand: "FUJIYA",
     brandSlug: "FUJIYA",
     model: "760N-200BG",
@@ -3506,6 +3581,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-33809m",
+    steelPt: "Cr-Mo · impacto",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "33809M",
@@ -3530,6 +3607,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65431lp",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65431LP",
@@ -3554,6 +3632,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-32310ins",
+    normPt: "ASTM F1505 · 1000 V (equiv. EN IEC 60900)",
+    qualityDots: 5,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "32310INS",
@@ -3627,6 +3707,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "knipex-8726250-cobra-vde",
+    normPt: "EN IEC 60900 / DIN EN 60900 · 1000 V",
+    steelPt: "aço forjado · dentes ~61 HRC",
+    qualityDots: 5,
     brand: "KNIPEX",
     brandSlug: "KNIPEX",
     model: "87 26 250",
@@ -3652,6 +3735,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "vessel-super-torsion-rs",
+    treatmentPt: "estrutura TORSION",
+    qualityDots: 4,
     brand: "VESSEL",
     brandSlug: "VESSEL",
     model: "RS",
@@ -3724,6 +3809,10 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "wera-837i-ra-vde",
+    normPt: "EN IEC 60900 · 1000 V",
+    certificationUrl:
+      "https://www.wera.de/en/tools/837-i-ra-kraftform-blade-holding-handle-with-ratchet-functionality/",
+    qualityDots: 5,
     brand: "WERA",
     brandSlug: "WERA",
     model: "05057490001",
@@ -3749,6 +3838,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "wera-817-vde",
+    normPt: "EN IEC 60900 · 1000 V",
+    qualityDots: 4,
     brand: "WERA",
     brandSlug: "WERA",
     model: "05003990001",
@@ -3773,6 +3864,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-32604ins",
+    normPt: "ASTM F1505 · 1000 V (equiv. EN IEC 60900)",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "32604INS",
@@ -3798,6 +3891,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-alhp-150",
+    treatmentPt: "heavy-duty 40 V · eixo substituível",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ALHP-150",
@@ -3822,6 +3917,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "vessel-exh-100",
+    qualityDots: 4,
     brand: "VESSEL",
     brandSlug: "VESSEL",
     model: "EXH-100",
@@ -3846,6 +3942,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "vessel-exh-150",
+    qualityDots: 4,
     brand: "VESSEL",
     brandSlug: "VESSEL",
     model: "EXH-150",
@@ -3870,6 +3967,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "vessel-dxh-350",
+    qualityDots: 4,
     brand: "VESSEL",
     brandSlug: "VESSEL",
     model: "DXH-350",
@@ -3894,6 +3992,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-32791",
+    steelPt: "S2",
+    treatmentPt: "núcleo magnético",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "32791",
@@ -3919,6 +4020,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-31088",
+    treatmentPt: "Dual-Lock nas duas pontas",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "31088",
@@ -3944,6 +4047,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-31089",
+    treatmentPt: "Dual-Lock nas duas pontas",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "31089",
@@ -3969,6 +4074,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "knipex-8606250-pliers-wrench-vde",
+    normPt: "EN IEC 60900 / DIN EN 60900 · 1000 V",
+    qualityDots: 5,
     brand: "KNIPEX",
     brandSlug: "KNIPEX",
     model: "86 06 250",
@@ -3992,6 +4099,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "wera-8784-a1",
+    qualityDots: 4,
     brand: "WERA",
     brandSlug: "WERA",
     model: "8784 A1",
@@ -4016,6 +4124,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "milwaukee-shockwave-adaptor-set-3pc",
+    steelPt: "aço SHOCKWAVE tratado",
+    treatmentPt: "íman na ponta · máx. 226 N·m",
+    qualityDots: 5,
     brand: "MILWAUKEE",
     brandSlug: "MILWAUKEE",
     model: "4932479228",
@@ -4041,6 +4152,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-aeh-300",
+    treatmentPt: "capa anti-impacto",
+    qualityDots: 3,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AEH-300",
@@ -4089,6 +4202,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-abrs-14m-2-65",
+    steelPt: "Cr-Mo-V · HRC 62,5",
+    treatmentPt: "íman + revestimento Black",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ABRS-14M-2-65",
@@ -4113,6 +4229,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-abrd5-2082",
+    steelPt: "Cr-Mo-V · HRC 62,5",
+    treatmentPt: "perfil degrau anti-deslize",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ABRD5-2082",
@@ -4137,6 +4256,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-adrs-2085",
+    treatmentPt: "partículas de diamante",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ADRS-2085",
@@ -4161,6 +4282,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-adrs-1065",
+    treatmentPt: "partículas de diamante",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ADRS-1065",
@@ -4185,6 +4308,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-aeh-200",
+    treatmentPt: "capa anti-impacto",
+    qualityDots: 3,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AEH-200",
@@ -4209,6 +4334,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-abr-14m-2-65",
+    steelPt: "Cr-Mo-V · HRC 62,5",
+    treatmentPt: "Tough · ponta reforçada",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ABR-14M-2-65",
@@ -4233,6 +4361,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-adr-2065",
+    treatmentPt: "partículas de diamante + Tough",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ADR-2065",
@@ -4257,6 +4387,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65408adp",
+    steelPt: "CrMo/CrV",
+    treatmentPt: "fosfato de manganês",
+    qualityDots: 5,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65408ADP",
@@ -4282,6 +4415,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65301adp",
+    steelPt: "CrMo/CrV",
+    treatmentPt: "fosfato de manganês",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65301ADP",
@@ -4307,6 +4443,9 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65619",
+    steelPt: "Cr-Mo · impacto",
+    treatmentPt: "flip codificado por cor",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65619",
@@ -4332,6 +4471,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65400knect",
+    qualityDots: 5,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65400KNECT",
@@ -4358,6 +4498,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65302knect",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65302KNECT",
@@ -4383,6 +4524,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65kadpm",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65KADPM",
@@ -4407,6 +4549,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65148hd",
+    steelPt: "Cr-Mo · impacto",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65148HD",
@@ -4431,6 +4575,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65109impctm",
+    steelPt: "Cr-Mo · impacto",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65109IMPCTM",
@@ -4455,6 +4601,8 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "klein-65626",
+    steelPt: "Cr-Mo · impacto",
+    qualityDots: 4,
     brand: "KLEIN",
     brandSlug: "KLEIN",
     model: "65626",
@@ -4479,6 +4627,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "bahco-s530t",
+    qualityDots: 4,
     brand: "BAHCO",
     brandSlug: "BAHCO",
     model: "S530T",
@@ -4528,6 +4677,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "bahco-902t",
+    qualityDots: 3,
     brand: "BAHCO",
     brandSlug: "BAHCO",
     model: "902T",
@@ -4553,6 +4703,7 @@ export const CURATED_TOOL_REFERENCES: CuratedToolReference[] = [
   },
   {
     id: "anex-aoa-19s3",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AOA-19S3",

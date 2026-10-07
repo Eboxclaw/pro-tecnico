@@ -4,6 +4,8 @@ import type { CuratedToolReference } from "./curated-tool-references";
 export const ANEX_ADDITIONS: CuratedToolReference[] = [
   {
     id: "anex-adrs-2065",
+    treatmentPt: "partículas de diamante",
+    qualityDots: 5,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "ADRS-2065",
@@ -359,6 +361,8 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
   },
   {
     id: "anex-aeh-100",
+    treatmentPt: "capa anti-impacto",
+    qualityDots: 3,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "AEH-100",
@@ -443,6 +447,7 @@ export const ANEX_ADDITIONS: CuratedToolReference[] = [
   },
   {
     id: "anex-436",
+    qualityDots: 4,
     brand: "ANEX",
     brandSlug: "ANEX",
     model: "436",

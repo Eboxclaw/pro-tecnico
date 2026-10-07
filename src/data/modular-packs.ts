@@ -239,7 +239,7 @@ export const MODULAR_PACKS: ModularPack[] = [
           { refId: "klein-32604ins" },
         ],
         notePt:
-          "Sem chaves simples: sempre lógica porta-bits com bits isolados 6,35 mm — o roquete isolado Wera 837 i RA (IEC 60900), o manual 817 VDE, ou os auto-lock Klein com pontas isoladas de substituição (ASTM F1505). Chaves de lâmina fixa ficam na mala eletricidade VDE, fora deste builder.",
+          "Sem chaves simples: sempre lógica porta-bits com bits isolados 6,35 mm — o roquete isolado Wera 837 i RA (IEC 60900), o manual 817 VDE, ou os auto-lock Klein com pontas isoladas de substituição (ASTM F1505). Regra da casa: EN IEC 60900 basta para 1000 V (híbrido incluído); ASTM F1505 é o equivalente americano aceite; e o short link de certificação da marca conta como evidência. Chaves de lâmina fixa ficam na mala eletricidade VDE, fora deste builder.",
       },
       {
         id: "corte",

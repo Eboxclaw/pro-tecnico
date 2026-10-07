@@ -144,3 +144,22 @@ test("modularPackById resolves known ids and returns undefined for unknown ones"
   assert.equal(modularPackById("nao-existe"), undefined);
   assert.equal(modularPackById("kit-bits-pro"), undefined);
 });
+
+test("symbolism: quality dots stay in range and 1000 V claims carry a norm", async () => {
+  const { CURATED_TOOL_REFERENCES } = await import("../src/data/curated-tool-references.ts");
+  for (const tool of CURATED_TOOL_REFERENCES) {
+    if (tool.qualityDots !== undefined) {
+      assert.ok(
+        Number.isInteger(tool.qualityDots) && tool.qualityDots >= 0 && tool.qualityDots <= 5,
+        `${tool.id}: qualityDots fora da escala 0-5`,
+      );
+    }
+    const claims1000 = `${tool.notePt} ${tool.namePt}`.match(/1000 V|1000V/i);
+    if (claims1000) {
+      assert.ok(
+        tool.normPt && /60900|F1505|1000/i.test(tool.normPt),
+        `${tool.id} afirma 1000 V sem normPt com norma (IEC 60900/F1505)`,
+      );
+    }
+  }
+});

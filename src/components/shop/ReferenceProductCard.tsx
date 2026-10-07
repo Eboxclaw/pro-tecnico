@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { CuratedToolReference } from "@/data/curated-tool-references";
 import { SmartProductVisual } from "@/components/shop/SmartProductVisual";
 import { ProductQuickStudy } from "@/components/shop/ProductQuickStudy";
+import { ToolSymbols } from "@/components/shop/ToolSymbols";
 import { Button } from "@/components/ui/button";
 
 export function ReferenceProductCard({
@@ -42,6 +43,8 @@ export function ReferenceProductCard({
         <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
           {tool.categoryPt}
         </p>
+
+        <ToolSymbols tool={tool} className="mt-3" />
 
         <p className="mb-6 mt-4 text-sm leading-6 text-muted-foreground">
           {tool.storyPt ?? tool.notePt}

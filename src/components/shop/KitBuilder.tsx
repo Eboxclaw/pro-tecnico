@@ -4,6 +4,7 @@ import { Check, Send } from "lucide-react";
 import { referenceById, type CuratedToolReference } from "@/data/curated-tool-references";
 import { MODULAR_PACKS, type ModularPack, type ModularSlot } from "@/data/modular-packs";
 import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
+import { ToolSymbols } from "@/components/shop/ToolSymbols";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -117,6 +118,7 @@ function SlotOptionCard({
       <span className="mt-0.5 line-clamp-2 text-xs leading-5 text-muted-foreground">
         {tool.namePt}
       </span>
+      <ToolSymbols tool={tool} compact className="mt-1.5" />
     </button>
   );
 }
