@@ -48,17 +48,22 @@ test("the 397 Lock builder carries lock-first, Ryujin-only, ratchets and adapter
     ponteiraIds.some((id) => /azm/.test(id)),
     "ponteira VDE/isolada presente",
   );
-  // extensão: conjuntos por marca nos três níveis (ANEX, VESSEL, Klein)
+  // extensão: conjuntos por marca nos três níveis (ANEX AEH, VESSEL, Klein)
   const extensaoIds = impact.slots
     .find((slot) => slot.id === "extensao")
     .options.map((option) => option.refId);
   assert.equal(extensaoIds.length, 9, "3 marcas × 3 níveis (curta 100 · média 150 · longa 300)");
-  for (const brand of ["anex-alhp", "vessel-exh", "klein-31", "klein-32791"]) {
+  for (const brand of ["anex-aeh", "vessel-exh", "klein-31", "klein-32791"]) {
     assert.ok(
       extensaoIds.some((id) => id.startsWith(brand)),
       `conjunto ${brand} presente nas extensões`,
     );
   }
+  // ANEX nas extensões é a linha AEH (extensão de impacto), não o porta-bits ALHP
+  assert.ok(
+    !extensaoIds.some((id) => id.includes("alhp")),
+    "ALHP é porta-bits longo, não extensão — só AEH no slot",
+  );
   // roquete tem de incluir um offset e um roquete de bits
   const roqueteIds = impact.slots.find((slot) => slot.id === "roquete").options.map((o) => o.refId);
   assert.ok(roqueteIds.includes("anex-436"), "offset ratchet presente");

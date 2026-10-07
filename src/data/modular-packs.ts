@@ -71,22 +71,26 @@ export const MODULAR_PACKS: ModularPack[] = [
         options: [
           { refId: "anex-525-28b" },
           { refId: "anex-abrs5-2065" },
+          { refId: "anex-abrs-14m-2-65" },
+          { refId: "anex-abrd5-2082" },
           { refId: "anex-abrs5-01" },
           { refId: "anex-adrs-2065" },
+          { refId: "anex-adrs-2085" },
+          { refId: "anex-adrs-1065" },
           { refId: "milwaukee-shockwave-ph2-50" },
           { refId: "anex-azm-2698" },
         ],
         notePt:
-          "Pack múltiplo: o 525-28B cobre PH, Torx, hex e soquetes num estojo. Pack PH2 qualidade S: Black Ryujin slim ×5 e o assorted 65/85/110; qualidade S+: Diamond Ryujin, o aperto que não escorrega. Impacto Milwaukee: SHOCKWAVE com Wear Guard Tip. VDE/isoladas: o AZM duplo +2/−6 isolado 1000 V — as restantes AZM vivem no builder VDE. Ryujin standard nunca entra.",
+          "Pack múltiplo: o 525-28B cobre PH, Torx, hex e soquetes num estojo. Pack PH2 qualidade S: Black Ryujin na caixa de dez, em ×5 slim, no perfil degrau ou no assorted 65/85/110. Qualidade S+: Diamond Ryujin em 65, 85 e o único PH1 da gama. Impacto Milwaukee: SHOCKWAVE com Wear Guard Tip. VDE/isoladas: o AZM duplo +2/−6 isolado 1000 V — as restantes AZM vivem no builder VDE. Ryujin standard nunca entra.",
       },
       {
         id: "extensao",
         rolePt: "As extensões: conjuntos por marca — curta 100 · média 150 · longa 300",
         jp: "ヘッド",
         options: [
-          { refId: "anex-alhp-100" },
-          { refId: "anex-alhp-150" },
-          { refId: "anex-alhp-300" },
+          { refId: "anex-aeh-100" },
+          { refId: "anex-aeh-150" },
+          { refId: "anex-aeh-300" },
           { refId: "vessel-exh-100" },
           { refId: "vessel-exh-150" },
           { refId: "vessel-dxh-350" },
@@ -95,7 +99,7 @@ export const MODULAR_PACKS: ModularPack[] = [
           { refId: "klein-31089" },
         ],
         notePt:
-          "Categoria IMPACTO, três conjuntos completos: ANEX ALHP heavy-duty (100/150/300, uma só linha), VESSEL Slim Long compatível 40 V (EXH 100/150, DXH 350 no nível grande) e Klein Dual-Lock (4″/6″/12″ com retenção nas duas pontas). Milwaukee não faz extensão não-locking — a extensão deles é a própria linha lock 73/152/305, no slot de cima. Categoria VDE/isolado: não existe em nenhuma marca (EM SOURCING) — no lado elétrico, o isolamento é o comprimento do próprio bit AZM.",
+          "Categoria IMPACTO, três conjuntos completos: ANEX **AEH** — a verdadeira extensão de impacto (capa anti-impacto, 18 V/40 V; o ALHP é porta-bits longo para parafusos no fundo de furos, outra categoria que fica no catálogo), VESSEL Slim Long compatível 40 V (EXH 100/150, DXH 350 no nível grande) e Klein Dual-Lock (4″/6″/12″ com retenção nas duas pontas). Milwaukee não faz extensão não-locking — a extensão deles é a própria linha lock 73/152/305, no slot de cima. Categoria VDE/isolado: não existe em nenhuma marca (EM SOURCING) — no lado elétrico, o isolamento é o comprimento do próprio bit AZM.",
       },
       {
         id: "roquete",
@@ -103,14 +107,16 @@ export const MODULAR_PACKS: ModularPack[] = [
         jp: "ラチェット",
         options: [
           { refId: "anex-397-d" },
+          { refId: "anex-395-d" },
           { refId: "anex-525" },
+          { refId: "anex-370" },
           { refId: "klein-32305" },
           { refId: "bahco-808050p" },
           { refId: "anex-436" },
           { refId: "anex-aoa-17s1" },
         ],
         notePt:
-          "Roquete de bits: o Quick Ball 72 é o movimento da casa, o Compact 52 entra rente a paredes, o Klein 15-em-1 e o Bahco pistola cobrem a variedade americana e sueca. Roquete offset: o 436 de cabeça baixa aperta por baixo de superfícies e o AOA-17 com sockets H8-H21 chega aos 230 N·m onde a máquina não cabe.",
+          "Roquete de bits: o Quick Ball 72 é o movimento da casa e o 395-D é o seu irmão suave — o grip em bola que se segura como pistola; o Compact 52 entra rente a paredes e o T-handle 370 aplica mais binário no mesmo gesto; o Klein 15-em-1 e o Bahco pistola cobrem a variedade americana e sueca. Roquete offset: o 436 de cabeça baixa aperta por baixo de superfícies e o AOA-17 com sockets H8-H21 chega aos 230 N·m onde a máquina não cabe.",
       },
       {
         id: "adaptador",

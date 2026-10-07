@@ -42,10 +42,10 @@ export const REJENDARI_KITS: RejendariKit[] = [
           "Extensão de 150 mm para 18 V/40 V: o alcance dos 110 mm sem levar bits que não se usam.",
       },
       {
-        id: "anex-abrs5-2065",
+        id: "anex-abrs-14m-2-65",
         quantity: 1,
         whyPt:
-          "Black Ryujin +2×65 em cinco peças: o consumível dimensionado para impacto que se gasta primeiro.",
+          "Black Ryujin +2×65 em caixa de dez: a reposição a sério, na linha Black aprovada para impacto.",
       },
       {
         id: "anex-adrs-2065",
@@ -203,10 +203,10 @@ export const REJENDARI_KITS: RejendariKit[] = [
           "O lock oficial da casa: SHOCKWAVE Impact Locking de 73 mm a travar o bit, 14,02 EUR com IVA em Portugal.",
       },
       {
-        id: "anex-abrs5-2065",
+        id: "anex-abrs-14m-2-65",
         quantity: 1,
         whyPt:
-          "Black Ryujin slim +2×65 em cinco peças: a reposição do perfil que se gasta primeiro — a linha Black que a casa aceita.",
+          "Black Ryujin slim +2×65 em caixa de dez: a reposição do perfil que se gasta primeiro — a linha Black que a casa aceita.",
       },
       {
         id: "anex-adrs-2065",
@@ -623,12 +623,12 @@ export const REJENDARI_KITS: RejendariKit[] = [
     conceptPt:
       "As duas linhas Ryujin que a casa aceita — Black para o impacto diário, Diamond para o aperto que escorrega — e a SHOCKWAVE Milwaukee como alternativa transatlântica. Nada mais entra.",
     dayPt:
-      "O impacto com consumível à altura: os Black Ryujin slim de 65 mm em Cr-Mo-V aguentam o percussor 18 V/40 V, os Diamond seguram o inox e o latão sem escorregar, e os SHOCKWAVE de 50 mm com Wear Guard Tip são a resposta Milwaukee para quem prefere a escola americana. Impacto primeiro: o alcance vem da extensão, nunca do bit comprido.",
+      "O impacto com consumível à altura: os Black Ryujin slim de 65 mm em caixa de dez aguentam o percussor 18 V/40 V, os Diamond seguram o inox e o latão sem escorregar, e os SHOCKWAVE de 50 mm com Wear Guard Tip são a resposta Milwaukee para quem prefere a escola americana. Impacto primeiro: o alcance vem da extensão, nunca do bit comprido.",
     pieces: [
       {
-        id: "anex-abrs5-2065",
+        id: "anex-abrs-14m-2-65",
         quantity: 1,
-        whyPt: "Black Ryujin slim +2×65 ×5: o consumível de impacto que se gasta primeiro.",
+        whyPt: "Black Ryujin ×10 PH2×65: a reposição do consumível que se gasta primeiro.",
       },
       {
         id: "anex-adrs-2065",
@@ -736,22 +736,28 @@ export const REJENDARI_KITS: RejendariKit[] = [
     trade: "Roquetes & aperto",
     jp: "ラチェット · roquete básico",
     tier: "Core",
-    title: "Pack roquete básico: duas escolas, contagem mínima",
+    title: "Pack roquete básico: pistola, T-handle e o plano de baixo perfil",
     conceptPt:
-      "O par de entrada de duas escolas — ANEX e VESSEL: o roquete plano de baixo perfil com dez bits ordenados e o T-handle que aplica força firme onde o punho normal não chega. Sem repetir o que a mala 397 já traz.",
+      "Os três gestos de entrada de duas escolas — ANEX e VESSEL: o Quick Ball 60 que se segura como pistola, o T-handle que aplica força firme e o roquete plano de baixo perfil com dez bits ordenados. Sem repetir o que a mala 397 já traz.",
     dayPt:
-      "O dia de aperto manual sem duplicar a mala 397: o roquete plano VESSEL traz dez bits PH, fenda e HEX ordenados com o perfil baixo que entra onde roquete nenhum entra; o T-handle 370 aplica mais binário no mesmo movimento e guarda os bits curtos no próprio corpo; as ultra-curtas de 18 mm fecham o aperto rente ao painel. Somos mais inteligentes que múltiplas ferramentas: um roquete com bits na mão substitui a gaveta de chaves de curto.",
+      "O dia de aperto manual sem duplicar a mala 397: o Quick Ball 60 faz o vaivém suave no grip em bola que se segura como pistola; o T-handle 370 aplica mais binário no mesmo movimento e guarda os bits curtos no próprio corpo; o roquete plano VESSEL traz dez bits PH, fenda e HEX ordenados com o perfil baixo que entra onde roquete nenhum entra. Somos mais inteligentes que múltiplas ferramentas: um roquete com bits na mão substitui a gaveta de chaves de curto.",
     pieces: [
       {
-        id: "vessel-td70",
+        id: "anex-395-d",
         quantity: 1,
         whyPt:
-          "Roquete plano de baixo perfil com 10 bits PH/SL/HEX ordenados: variedade e acesso num só.",
+          "Quick Ball 60: o grip em bola que se segura como pistola — 60 dentes de vaivém suave, bit magnético incluído.",
       },
       {
         id: "anex-370",
         quantity: 1,
         whyPt: "T-handle roquete: mais força no mesmo movimento, bits curtos guardados no corpo.",
+      },
+      {
+        id: "vessel-td70",
+        quantity: 1,
+        whyPt:
+          "Roquete plano de baixo perfil com 10 bits PH/SL/HEX ordenados: variedade e acesso num só.",
       },
       {
         id: "vessel-tdbs21",
