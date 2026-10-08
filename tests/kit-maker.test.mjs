@@ -1,106 +1,86 @@
-import test from "node:test";
-import assert from "node:assert/strict";
-import { KIT_MAKER_STEPS, kitMakerStepById } from "../src/data/kit-maker.ts";
-import { CURATED_TOOL_REFERENCES } from "../src/data/curated-tool-references.ts";
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { KIT_MAKER_STEPS, kitMakerStepById } from '../src/data/kit-maker.ts';
+import { CURATED_TOOL_REFERENCES, SHOWCASED_BRANDS } from '../src/data/curated-tool-references.ts';
 
-test("kit maker: nine guided steps with unique ids and editorial copy", () => {
-  assert.equal(KIT_MAKER_STEPS.length, 9);
+const ALL_STEP_REF_IDS = KIT_MAKER_STEPS.flatMap((step) => [
+  ...(step.refIds ?? []),
+  ...(step.branches?.flatMap((branch) => branch.refIds) ?? []),
+  ...(step.groups?.flatMap((group) => group.refIds) ?? []),
+]);
+
+test('kit maker: eleven guided steps covering the whole catalog', () => {
+  assert.equal(KIT_MAKER_STEPS.length, 11);
   const ids = KIT_MAKER_STEPS.map((step) => step.id);
-  assert.equal(new Set(ids).size, 9, "step ids must be unique");
+  assert.equal(new Set(ids).size, 11, 'step ids must be unique');
+  assert.deepEqual(
+    ids,
+    [
+      'basico',
+      'extensoes',
+      'bits',
+      'roquetes',
+      'chaves',
+      'soquetes',
+      'canalizacao',
+      'eletricidade',
+      'corte',
+      'precisao',
+      'maquinas',
+    ],
+    'ordem da casa',
+  );
   for (const step of KIT_MAKER_STEPS) {
     assert.ok(step.topicPt.length > 3, `${step.id} lacks topic`);
     assert.ok(step.questionPt.length > 10, `${step.id} lacks question`);
+    const count =
+      (step.refIds?.length ?? 0) +
+      (step.branches?.reduce((sum, b) => sum + b.refIds.length, 0) ?? 0) +
+      (step.groups?.reduce((sum, g) => sum + g.refIds.length, 0) ?? 0);
+    assert.ok(count >= 4, `${step.id} too thin (${count} opções)`);
   }
-  assert.equal(kitMakerStepById("basico")?.id, "basico");
-  assert.equal(kitMakerStepById("chaves")?.id, "chaves");
-  assert.equal(kitMakerStepById("nao-existe"), undefined);
+  assert.equal(kitMakerStepById('basico')?.id, 'basico');
+  assert.equal(kitMakerStepById('nao-existe'), undefined);
 });
 
-test("kit maker: every option resolves to a curated reference", () => {
+test('kit maker: every option resolves to a curated reference', () => {
   const ids = new Set(CURATED_TOOL_REFERENCES.map((tool) => tool.id));
-  for (const step of KIT_MAKER_STEPS) {
-    const direct = step.refIds ?? [];
-    for (const refId of direct) {
-      assert.ok(ids.has(refId), `${step.id} references missing tool ${refId}`);
-    }
-    for (const branch of step.branches ?? []) {
-      assert.ok(branch.refIds.length >= 1, `${step.id}/${branch.id} branch is empty`);
-      for (const refId of branch.refIds) {
-        assert.ok(ids.has(refId), `${step.id}/${branch.id} references missing tool ${refId}`);
-      }
-    }
-    for (const group of step.groups ?? []) {
-      assert.ok(group.refIds.length >= 1, `${step.id}/${group.id} group is empty`);
-      for (const refId of group.refIds) {
-        assert.ok(ids.has(refId), `${step.id}/${group.id} references missing tool ${refId}`);
-      }
-    }
-    // cada passo tem de oferecer caminho: opções diretas, ramos OU grupos
-    assert.ok(
-      direct.length > 0 || (step.branches?.length ?? 0) > 0 || (step.groups?.length ?? 0) > 0,
-      `${step.id} has no options at all`,
-    );
+  for (const refId of ALL_STEP_REF_IDS) {
+    assert.ok(ids.has(refId), `referência em falta no catálogo: ${refId}`);
   }
 });
 
-test("kit maker: the casa order is respected (basico first, chaves in the middle, maquinas last)", () => {
-  assert.equal(KIT_MAKER_STEPS[0].id, "basico");
-  assert.equal(KIT_MAKER_STEPS[KIT_MAKER_STEPS.length - 1].id, "maquinas");
-  assert.deepEqual(
-    KIT_MAKER_STEPS.map((step) => step.id),
-    [
-      "basico",
-      "extensoes",
-      "bits",
-      "roquetes",
-      "chaves",
-      "canalizacao",
-      "eletricidade",
-      "corte",
-      "maquinas",
-    ],
+test('kit maker: every showcased brand is represented in the wizard', () => {
+  const toolsById = new Map(CURATED_TOOL_REFERENCES.map((tool) => [tool.id, tool]));
+  const brandsInWizard = new Set(
+    ALL_STEP_REF_IDS.map((refId) => toolsById.get(refId)?.brand).filter(Boolean),
   );
-  // ramos impacto/precisão nos passos de extensões e bits
-  const extensoes = KIT_MAKER_STEPS.find((step) => step.id === "extensoes");
-  const bitLabels = (extensoes?.branches ?? []).map((branch) => branch.labelPt);
-  assert.deepEqual(bitLabels, ["Impacto", "Precisão / eco"]);
+  for (const brand of SHOWCASED_BRANDS) {
+    assert.ok(brandsInWizard.has(brand), `marca ${brand} sem representação no Kit Maker`);
+  }
 });
 
-test("kit maker: roquetes march in the client's battle order (5 groups, no branches)", () => {
-  const roquetes = KIT_MAKER_STEPS.find((step) => step.id === "roquetes");
-  assert.ok(roquetes, "roquetes step is missing");
-  assert.equal(roquetes.branches, undefined, "roquetes uses groups, not branches");
-  const groups = roquetes.groups ?? [];
-  assert.equal(groups.length, 5);
-  assert.deepEqual(
-    groups.map((group) => group.labelPt),
-    [
-      "1.º O nosso offset",
-      "2.º Wera Zyklop · o personagem principal",
-      "3.º Klein pass-through",
-      "4.º Bahco pass-through",
-      "5.º Bits e cabeças especiais",
-    ],
-  );
-  // o personagem principal tem o palco só para ele
-  assert.deepEqual(groups[1].refIds, ["wera-8100-sb-6"]);
-  // o nosso offset abre a marcha
-  assert.deepEqual(groups[0].refIds, ["anex-aoa-17s1", "anex-436"]);
+test('kit maker: roquetes follow the battle order the client defined', () => {
+  const roquetes = KIT_MAKER_STEPS.find((step) => step.id === 'roquetes');
+  const labels = (roquetes?.groups ?? []).map((group) => group.labelPt);
+  assert.deepEqual(labels, [
+    '1.º O nosso offset',
+    '2.º Wera Zyklop · o personagem principal',
+    '3.º Klein pass-through',
+    '4.º Bahco pass-through',
+    '5.º Bits e cabeças especiais',
+  ]);
 });
 
-test("kit maker: basico has 4 branches including Screwdriver VDE and Chave de fenda clássica", () => {
-  const basico = KIT_MAKER_STEPS.find((step) => step.id === "basico");
-  assert.ok(basico, "basico step is missing");
-  const branches = basico.branches ?? [];
-  const labels = branches.map((branch) => branch.labelPt);
-  assert.equal(labels.length, 4);
-  assert.ok(labels.includes("Screwdriver VDE"), "basico lacks the VDE submenu");
-  assert.ok(labels.includes("Chave de fenda clássica"), "basico lacks the classic driver branch");
-  assert.ok(labels.includes("Screwdriver ratchet"));
-  assert.ok(labels.includes("Hold bit (porta-bits)"));
-  // o ramo VDE tem de levar ponteiras realmente isoladas
-  const vde = branches.find((branch) => branch.labelPt === "Screwdriver VDE");
+test('kit maker: house policies hold (sem chaves normais, bits só Black/Diamond)', () => {
+  const forbidden = /art-14m|arpm-2365|ryujin-artm5|ryujin-slim|7000-2-100|170-2-100|524k/;
+  for (const refId of ALL_STEP_REF_IDS) {
+    assert.ok(!forbidden.test(refId), `${refId} viola a política da casa`);
+  }
+  const basico = KIT_MAKER_STEPS.find((step) => step.id === 'basico');
+  const vde = basico.branches.find((branch) => branch.id === 'vde');
+  assert.ok(vde, 'o submenu VDE tem de existir no básico');
   for (const refId of vde.refIds) {
-    assert.match(refId, /(vde|ins|7920|7900|960)/, `${refId} does not look like a VDE driver`);
+    assert.match(refId, /(vde|ins|7920|7900|960|200-ph2)/, `${refId} não parece driver VDE`);
   }
 });

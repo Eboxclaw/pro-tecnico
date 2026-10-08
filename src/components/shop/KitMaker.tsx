@@ -12,13 +12,23 @@ const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 /** Padrão partilhado das sub-tabs (ramos no KitMaker, grupos no KitBuilder):
- *  maiores, com régua por baixo e a ativa plenamente dourada — lê-se como
- *  "aba" ao primeiro olhar, nunca como card. */
+ *  maiores (≥44px de toque), com régua por baixo e a ativa plenamente dourada —
+ *  lê-se como "aba" ao primeiro olhar, nunca como card. Scroll horizontal
+ *  quando não cabem (o contentor usa .tab-rail). */
 const SUB_TAB_BASE =
-  "-mb-px shrink-0 border border-transparent border-b-2 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.13em] transition-all duration-200";
+  "-mb-px min-h-11 shrink-0 whitespace-nowrap border border-transparent border-b-2 px-4 py-2.5 mono-caps transition-all duration-200 sm:px-5";
 const SUB_TAB_ACTIVE =
   "border-primary bg-primary font-semibold text-[#1b1917] shadow-[0_10px_28px_rgba(212,165,63,0.30)]";
 const SUB_TAB_INACTIVE = "text-foreground/70 hover:border-primary/50 hover:text-foreground";
+
+/** Mudanças de tab/passo nunca mexem no scroll: captura a posição, corre a
+ *  mutação e repõe no frame seguinte — protege contra saltos quando o
+ *  conteúdo acima encolhe ou o browser tenta reancorar. */
+const preserveScroll = (fn: () => void) => {
+  const y = window.scrollY;
+  fn();
+  requestAnimationFrame(() => window.scrollTo({ top: y, behavior: "auto" }));
+};
 
 /** Estado de um passo: peças escolhidas, ou um dos dois skips. */
 type StepState = { picked: string[]; mode: "picked" | "owned" | "notneeded" | null };
@@ -73,7 +83,7 @@ function MakerOptionCard({
           />
         )}
       </span>
-      <span className="mt-2 block truncate font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
+      <span className="mt-2 block truncate mono-caps text-primary">
         {tool.brand} {tool.model}
       </span>
       <span className="mt-0.5 line-clamp-2 text-xs leading-5 text-muted-foreground">
@@ -128,8 +138,19 @@ export function KitMaker() {
     return s.branches?.find((b) => b.id === wanted) ?? s.branches?.[0];
   };
 
-  const activeRefIds = (s: KitMakerStep): string[] =>
-    s.branches ? (activeBranch(s)?.refIds ?? []) : (s.refIds ?? []);
+  // sub-tabs temáticas (groups) por passo — ex.: roquetes na ordem de batalha
+  const [groupByStep, setGroupByStep] = useState<Record<string, string>>({});
+
+  const activeGroup = (s: KitMakerStep) => {
+    const wanted = groupByStep[s.id] ?? s.groups?.[0]?.id;
+    return s.groups?.find((g) => g.id === wanted) ?? s.groups?.[0];
+  };
+
+  const activeRefIds = (s: KitMakerStep): string[] => {
+    if (s.branches) return activeBranch(s)?.refIds ?? [];
+    if (s.groups) return activeGroup(s)?.refIds ?? [];
+    return s.refIds ?? [];
+  };
 
   const resolve = (refId: string) => referenceById(refId);
 
@@ -164,7 +185,7 @@ export function KitMaker() {
         <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <div className="mx-auto max-w-3xl">
             <p className="jp-label text-primary">キットメーカー · kit maker</p>
-            <h2 className="mt-4 font-display text-5xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-6xl">
+            <h2 className="mt-4 text-display-1">
               Diz-nos o teu nome.
               <br />
               <span className="text-primary">O kit constrói-se ao teu ritmo.</span>
@@ -175,7 +196,7 @@ export function KitMaker() {
               effort, high outcome
             </p>
 
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">
+            <p className="mt-5 max-w-2xl text-body text-muted-foreground">
               Pensamos em ferramentas como <span className="text-foreground">sinergias</span> e não
               como objectos individuais: cada cartão pergunta um gesto do teu dia, cada escolha
               completa a anterior. Sem preços — a fórmula termina em{" "}
@@ -229,10 +250,10 @@ export function KitMaker() {
         <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <div className="mx-auto max-w-4xl">
             <p className="jp-label text-primary">完成 · o teu kit</p>
-            <h2 className="mt-4 font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+            <h2 className="mt-4 text-display-1">
               O teu kit, <span className="text-primary">{name.trim()}</span>.
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
+            <p className="mt-4 max-w-2xl text-body text-muted-foreground">
               {totalPicked} peças pensadas como sinergia — light weight, high reach; low effort,
               high outcome. A fórmula:{" "}
               <span className="font-display text-foreground">tudo isto = </span>
@@ -250,17 +271,17 @@ export function KitMaker() {
                         <span className="jp-label ml-2 text-muted-foreground">{s.jp}</span>
                       </h3>
                       {st.mode === "owned" && (
-                        <span className="inline-flex items-center gap-1.5 border border-primary/40 bg-primary/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
+                        <span className="inline-flex items-center gap-1.5 border border-primary/40 bg-primary/10 px-2 py-0.5 mono-caps text-primary">
                           <Check className="h-3 w-3" aria-hidden /> já tenho
                         </span>
                       )}
                       {st.mode === "notneeded" && (
-                        <span className="inline-flex items-center gap-1.5 border border-border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+                        <span className="inline-flex items-center gap-1.5 border border-border px-2 py-0.5 mono-caps text-muted-foreground">
                           <X className="h-3 w-3" aria-hidden /> não preciso
                         </span>
                       )}
                       {st.mode === "picked" && (
-                        <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
+                        <span className="mono-caps text-primary">
                           {st.picked.length} escolhida{st.picked.length > 1 ? "s" : ""}
                         </span>
                       )}
@@ -294,7 +315,7 @@ export function KitMaker() {
                                   <span className="block truncate text-xs font-medium text-foreground/90">
                                     {tool.brand} {tool.model}
                                   </span>
-                                  <span className="block truncate font-mono text-[8px] uppercase tracking-[0.13em] text-muted-foreground">
+                                  <span className="mono-caps block truncate text-muted-foreground">
                                     {tool.namePt}
                                   </span>
                                 </span>
@@ -341,10 +362,10 @@ export function KitMaker() {
   return (
     <section className="border-b border-border bg-surface/45">
       <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-        {/* progresso */}
+        {/* progresso — barra expressiva: mais alta, com contagem e marcas visíveis */}
         <div className="mx-auto max-w-4xl">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+            <p className="mono-caps text-muted-foreground">
               passo{" "}
               <span className="font-display text-xl font-semibold leading-none text-primary">
                 {progress}
@@ -357,7 +378,7 @@ export function KitMaker() {
                 <span
                   key={s.id}
                   className={cn(
-                    "h-2 w-8 transition-all duration-500",
+                    "h-2.5 w-8 transition-all duration-500",
                     i < stepIndex && "bg-primary",
                     i === stepIndex &&
                       "kit-step-dot scale-y-110 bg-primary shadow-[0_0_14px_rgba(212,165,63,0.6)]",
@@ -368,7 +389,7 @@ export function KitMaker() {
             </div>
           </div>
           <div
-            className="mt-3 h-2 w-full overflow-hidden rounded-full bg-border"
+            className="mt-3 h-3 w-full overflow-hidden rounded-full bg-border shadow-[inset_0_1px_3px_rgba(0,0,0,0.35)]"
             role="progressbar"
             aria-valuenow={progress}
             aria-valuemin={0}
@@ -376,7 +397,7 @@ export function KitMaker() {
             aria-label={`passo ${progress} de ${KIT_MAKER_STEPS.length}`}
           >
             <div
-              className="kit-progress-fill h-full rounded-full bg-gradient-to-r from-[#a87c1f] via-primary to-[#e3c27c] shadow-[0_0_16px_rgba(212,165,63,0.45)] transition-[width] duration-500 ease-out"
+              className="kit-progress-fill h-full rounded-full bg-gradient-to-r from-[#a87c1f] via-primary to-[#e3c27c] shadow-[0_0_18px_rgba(212,165,63,0.55)] transition-[width] duration-500 ease-out"
               style={{ width: `${(progress / KIT_MAKER_STEPS.length) * 100}%` }}
             />
           </div>
@@ -395,9 +416,7 @@ export function KitMaker() {
               {step.jp}
             </span>
             <div className="relative flex flex-wrap items-baseline gap-x-3">
-              <h3 className="font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-                {step.topicPt}
-              </h3>
+              <h3 className="text-display-2">{step.topicPt}</h3>
               <p className="jp-label text-primary">{step.jp}</p>
             </div>
             <p className="relative mt-2 text-xl font-medium leading-snug tracking-[-0.01em] text-foreground">
@@ -415,7 +434,7 @@ export function KitMaker() {
               <div
                 role="tablist"
                 aria-label={`${step.topicPt}: escolhe o ramo`}
-                className="flex flex-wrap items-end gap-1.5 border-b border-border"
+                className="tab-rail -mx-1 flex items-end gap-1.5 overflow-x-auto border-b border-border px-1"
               >
                 {step.branches.map((b) => (
                   <button
@@ -423,7 +442,11 @@ export function KitMaker() {
                     type="button"
                     role="tab"
                     aria-selected={branch?.id === b.id}
-                    onClick={() => setBranchByStep((prev) => ({ ...prev, [step.id]: b.id }))}
+                    onClick={() =>
+                      preserveScroll(() =>
+                        setBranchByStep((prev) => ({ ...prev, [step.id]: b.id })),
+                      )
+                    }
                     className={cn(
                       SUB_TAB_BASE,
                       FOCUS_RING,
@@ -436,12 +459,37 @@ export function KitMaker() {
               </div>
             )}
 
+            {!step.branches && step.groups && (
+              <div
+                role="tablist"
+                aria-label={`${step.topicPt}: sub-tabs`}
+                className="tab-rail -mx-1 flex items-end gap-1.5 overflow-x-auto border-b border-border px-1"
+              >
+                {step.groups.map((g) => (
+                  <button
+                    key={g.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeGroup(step)?.id === g.id}
+                    onClick={() =>
+                      preserveScroll(() => setGroupByStep((prev) => ({ ...prev, [step.id]: g.id })))
+                    }
+                    className={cn(
+                      SUB_TAB_BASE,
+                      FOCUS_RING,
+                      activeGroup(step)?.id === g.id ? SUB_TAB_ACTIVE : SUB_TAB_INACTIVE,
+                    )}
+                  >
+                    {g.labelPt}
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div
               className={cn(
-                "grid gap-2",
-                step.branches
-                  ? "mt-4 grid-cols-2 sm:grid-cols-3"
-                  : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5",
+                "mt-4 grid grid-cols-1 gap-2 min-[480px]:grid-cols-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4",
+                (step.branches || step.groups) && "border-t border-border/60 pt-4",
               )}
             >
               {activeRefIds(step).map((refId) => {
@@ -460,15 +508,13 @@ export function KitMaker() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-2.5">
-              <p className="mr-1 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground/70">
-                ou:
-              </p>
+              <p className="mono-caps text-muted-foreground/70">ou:</p>
               <button
                 type="button"
-                onClick={() => markSkip(step.id, "owned")}
+                onClick={() => preserveScroll(() => markSkip(step.id, "owned"))}
                 aria-pressed={st.mode === "owned"}
                 className={cn(
-                  "inline-flex items-center gap-2 border px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.13em] transition-all duration-200",
+                  "inline-flex min-h-11 items-center gap-2 border px-5 mono-caps transition-all duration-200",
                   FOCUS_RING,
                   st.mode === "owned"
                     ? "border-primary bg-primary/15 text-foreground shadow-[0_8px_24px_rgba(212,165,63,0.16)]"
@@ -489,10 +535,10 @@ export function KitMaker() {
               </button>
               <button
                 type="button"
-                onClick={() => markSkip(step.id, "notneeded")}
+                onClick={() => preserveScroll(() => markSkip(step.id, "notneeded"))}
                 aria-pressed={st.mode === "notneeded"}
                 className={cn(
-                  "inline-flex items-center gap-2 border px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.13em] transition-all duration-200",
+                  "inline-flex min-h-11 items-center gap-2 border px-5 mono-caps transition-all duration-200",
                   FOCUS_RING,
                   st.mode === "notneeded"
                     ? "border-primary bg-primary/15 text-foreground shadow-[0_8px_24px_rgba(212,165,63,0.16)]"
@@ -515,20 +561,22 @@ export function KitMaker() {
           </div>
         </div>
 
-        {/* navegação */}
-        <div className="mx-auto mt-6 flex max-w-4xl items-center justify-between">
+        {/* navegação — mantém o contexto de scroll entre passos */}
+        <div className="mx-auto mt-6 flex max-w-4xl items-center justify-between gap-3">
           <Button
             variant="outline"
-            className="rounded-none px-5 py-3"
-            onClick={() => setStepIndex((i) => Math.max(0, i - 1))}
+            className="min-h-11 rounded-none px-5 py-3"
+            onClick={() => preserveScroll(() => setStepIndex((i) => Math.max(0, i - 1)))}
             disabled={stepIndex === 0}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Anterior
           </Button>
           <Button
-            className="rounded-none px-5 py-3 font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.22)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.35)]"
-            onClick={() => setStepIndex((i) => Math.min(KIT_MAKER_STEPS.length, i + 1))}
+            className="min-h-11 rounded-none px-5 py-3 font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.22)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.35)]"
+            onClick={() =>
+              preserveScroll(() => setStepIndex((i) => Math.min(KIT_MAKER_STEPS.length, i + 1)))
+            }
           >
             {stepIndex === KIT_MAKER_STEPS.length - 1 ? "Ver o meu kit" : "Seguinte"}
             <ArrowRight className="ml-2 h-4 w-4" />

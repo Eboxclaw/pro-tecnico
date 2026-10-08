@@ -30,7 +30,7 @@ function PackCard({ pack }: { pack: SmartPack }) {
         <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.03em]">
           {pack.title}
         </h3>
-        <p className="mt-3 text-sm leading-6 text-muted-foreground">{pack.dayPt}</p>
+        <p className="mt-3 text-body text-muted-foreground">{pack.dayPt}</p>
       </header>
       <ul className="flex-1 divide-y divide-border">
         {pieces.map(({ tool, quantity, whyPt }) => (
@@ -67,7 +67,7 @@ function PackCard({ pack }: { pack: SmartPack }) {
               <Link
                 to="/referencia/$id"
                 params={{ id: tool.id }}
-                className="mt-1 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.12em] text-primary hover:underline"
+                className="mono-caps mt-1 inline-flex items-center gap-1 text-primary hover:underline"
               >
                 Ficha <ArrowRight className="h-3 w-3" />
               </Link>
@@ -77,9 +77,7 @@ function PackCard({ pack }: { pack: SmartPack }) {
       </ul>
       <footer className="space-y-3 border-t border-border p-5">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-            Não inclui
-          </p>
+          <p className="mono-caps text-muted-foreground">Não inclui</p>
           <p className="mt-1 text-xs leading-5 text-muted-foreground">
             {pack.notIncludedPt.join(" · ")}
           </p>
@@ -100,7 +98,7 @@ function PackCard({ pack }: { pack: SmartPack }) {
 export function SmartPacksSection() {
   const trades = smartPacksByTrade();
   return (
-    <section className="section-reveal border-y border-border bg-[#1b1917] py-16 text-[#f5f0e5] lg:py-24">
+    <section className="section-reveal border-y border-border bg-[#1b1917] py-14 text-[#f5f0e5] lg:py-20">
       <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6">
         <RejendariSeal className="absolute -top-2 right-6 z-10 hidden h-20 w-20 opacity-80 lg:grid" />
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
@@ -109,11 +107,11 @@ export function SmartPacksSection() {
               <PackageCheck className="mr-2 inline h-3.5 w-3.5" />
               一日の仕事 · packs para o dia de trabalho
             </p>
-            <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+            <h2 className="mt-4 max-w-xl text-display-1">
               Não vendemos mais ferramentas. Desenhamos o dia.
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-white/58">
+          <p className="max-w-2xl text-body text-white/58">
             Cada pack REJENDARI é uma mala pensada para um dia real de trabalho: as peças
             escolhem-se umas pelas outras. Os níveis existem só quando a diferença é funcional,
             nunca para encher grelha. É proposta editorial: o pedido segue para o B2B com a
@@ -135,8 +133,8 @@ export function SmartPacksSection() {
 
         {trades.map(({ trade, packs }) => (
           <div key={trade} className="mt-14">
-            <h3 className="font-display text-2xl font-semibold tracking-[-0.03em]">{trade}</h3>
-            <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            <h3 className="text-display-2">{trade}</h3>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[...packs]
                 .sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier))
                 .map((pack) => (

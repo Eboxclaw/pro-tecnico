@@ -111,7 +111,7 @@ function KitCompactCard({
           </span>
           {kit.jp}
         </p>
-        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+        <span className="mono-caps text-muted-foreground">
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
@@ -140,7 +140,7 @@ function KitCompactCard({
         </div>
       )}
 
-      <h3 className="mt-3 font-display text-xl font-semibold leading-tight tracking-[-0.03em] group-hover:text-primary">
+      <h3 className="mt-3 line-clamp-2 font-display text-xl font-semibold leading-tight tracking-[-0.03em] group-hover:text-primary">
         {kit.title}
       </h3>
       <p className="mt-2 line-clamp-2 text-xs leading-5 text-muted-foreground">{kit.conceptPt}</p>
@@ -150,7 +150,7 @@ function KitCompactCard({
           {brands.map((brand) => (
             <span
               key={brand}
-              className="border border-border/80 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-foreground/80"
+              className="mono-caps border border-border/80 px-1.5 py-0.5 text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-foreground/80"
             >
               {brand}
             </span>
@@ -159,10 +159,10 @@ function KitCompactCard({
       )}
 
       <div className="mt-auto flex items-center justify-between gap-3 pt-4">
-        <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
+        <span className="mono-caps text-primary">
           {kit.pieces.length} peças · {mark.label}
         </span>
-        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground transition-all group-hover:text-primary">
+        <span className="mono-caps inline-flex items-center gap-1.5 text-foreground transition-all group-hover:text-primary">
           Ver dentro
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
@@ -213,7 +213,7 @@ function KitPieceRow({
               {tool.brand} {tool.model}
             </Link>
             {quantity > 1 && (
-              <span className="ml-2 font-mono text-[10px] text-muted-foreground">× {quantity}</span>
+              <span className="mono-caps ml-2 text-muted-foreground">× {quantity}</span>
             )}
           </p>
           <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{whyPt}</p>
@@ -226,7 +226,7 @@ function KitPieceRow({
             expanded ? `Fechar ficha de ${tool.model}` : `Expandir ficha de ${tool.model}`
           }
           className={cn(
-            "shrink-0 border border-border p-1.5 text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary",
+            "flex h-11 w-11 shrink-0 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary sm:h-9 sm:w-9",
             expanded && "border-primary/60 text-primary",
           )}
         >
@@ -242,23 +242,21 @@ function KitPieceRow({
         <div className="animate-in fade-in slide-in-from-top-1 mt-3 border-l-2 border-primary/40 bg-background/60 p-4 duration-300">
           <ToolSymbols tool={tool} />
           {tool.specPt && (
-            <p className="mt-3 font-mono text-[9px] uppercase leading-5 tracking-[0.13em] text-muted-foreground">
-              {tool.specPt}
-            </p>
+            <p className="mono-caps mt-3 leading-5 text-muted-foreground">{tool.specPt}</p>
           )}
           <p className="mt-3 text-xs leading-6 text-foreground/80">{tool.notePt}</p>
           {tool.storyPt && (
             <p className="mt-2 text-xs leading-6 text-muted-foreground">{tool.storyPt}</p>
           )}
           {tool.evidencePt && (
-            <p className="mt-3 border-t border-border pt-2 font-mono text-[8px] uppercase leading-4 tracking-[0.1em] text-muted-foreground/80">
+            <p className="mono-caps mt-3 border-t border-border pt-2 leading-4 text-muted-foreground/80">
               evidência: {tool.evidencePt}
             </p>
           )}
           <Link
             to="/referencia/$id"
             params={{ id: tool.id }}
-            className="mt-3 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-primary hover:underline"
+            className="mono-caps mt-3 inline-flex items-center gap-1.5 text-primary hover:underline"
           >
             Ficha completa
             <ArrowRight className="h-3 w-3" aria-hidden />
@@ -327,9 +325,7 @@ function KitDetailDialog({
 
           <div className="mt-5 space-y-3 text-xs leading-5 text-muted-foreground">
             <p>
-              <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-foreground">
-                Não inclui:{" "}
-              </span>
+              <span className="mono-caps text-foreground">Não inclui: </span>
               {kit.notIncludedPt.join(" · ")}
             </p>
             <p className="border-l-2 border-primary/40 pl-3">{kit.limitationsPt}</p>
@@ -363,13 +359,13 @@ export function KitsShowcase() {
         <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
           <div>
             <p className="jp-label text-primary">最初のキット · os primeiros kits REJENDARI</p>
-            <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+            <h2 className="mt-4 max-w-xl text-display-1">
               {REJENDARI_KITS.length} composições.
               <br />
               <span className="text-primary">Nada que não ganhe o seu lugar.</span>
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+          <p className="max-w-2xl text-body text-muted-foreground">
             A inspiração vem da produção integrada da ANEX em Sanjō, 一貫生産, cada bit do aço ao
             fio nas mesmas mãos, e da escola alemã das caixas pequenas bem pensadas que são um
             milagre de espaço. {malas} malas cobrem profissões, {kitsCount} kits dominam uma
@@ -381,7 +377,8 @@ export function KitsShowcase() {
           </p>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-2">
+        {/* Filtros: rail com scroll horizontal em mobile, alvos ≥44px. */}
+        <div className="tab-rail -mx-4 mt-8 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
           {FILTERS.map((option) => (
             <button
               key={option.id}
@@ -389,7 +386,7 @@ export function KitsShowcase() {
               onClick={() => setFilter(option.id)}
               aria-pressed={filter === option.id}
               className={cn(
-                "border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.13em] transition-colors",
+                "min-h-11 shrink-0 whitespace-nowrap border px-4 py-2.5 mono-caps transition-colors",
                 filter === option.id
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground",

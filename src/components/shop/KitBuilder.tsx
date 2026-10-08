@@ -14,21 +14,30 @@ type SlotOwned = Record<string, boolean>;
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
-/** Padrão partilhado das sub-tabs (grupos groupPt e tabs de pack): maiores,
- *  com régua por baixo e a ativa plenamente dourada — lê-se como "aba" ao
- *  primeiro olhar, nunca como card. Mesmo padrão do KitMaker. */
+/** Padrão partilhado das sub-tabs (grupos groupPt e tabs de pack): maiores
+ *  (≥44px de toque), com régua por baixo e a ativa plenamente dourada — lê-se
+ *  como "aba" ao primeiro olhar, nunca como card. Mesmo padrão do KitMaker;
+ *  o contentor usa .tab-rail para scroll horizontal em mobile. */
 const SUB_TAB_BASE =
-  "-mb-px shrink-0 border border-transparent border-b-2 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.13em] transition-all duration-200";
+  "-mb-px min-h-11 shrink-0 whitespace-nowrap border border-transparent border-b-2 px-4 py-2.5 mono-caps transition-all duration-200 sm:px-5";
 const SUB_TAB_ACTIVE =
   "border-primary bg-primary font-semibold text-[#1b1917] shadow-[0_10px_28px_rgba(212,165,63,0.30)]";
 const SUB_TAB_INACTIVE = "text-foreground/70 hover:border-primary/50 hover:text-foreground";
 
 /** Tabs de pack (nível acima das sub-tabs): ainda mais presença. */
 const PACK_TAB_BASE =
-  "-mb-px shrink-0 border border-transparent border-b-2 px-6 py-3 font-mono text-xs uppercase tracking-[0.13em] transition-all duration-200";
+  "-mb-px min-h-11 shrink-0 whitespace-nowrap border border-transparent border-b-2 px-4 py-3 mono-caps transition-all duration-200 sm:px-6";
 const PACK_TAB_ACTIVE =
   "border-primary bg-primary font-semibold text-[#1b1917] shadow-[0_12px_32px_rgba(212,165,63,0.30)]";
 const PACK_TAB_INACTIVE = "text-foreground/70 hover:border-primary/50 hover:text-foreground";
+
+/** Mudanças de tab nunca mexem no scroll: captura a posição, corre a mutação
+ *  e repõe no frame seguinte — sem salto para o topo nem reancoragem. */
+const preserveScroll = (fn: () => void) => {
+  const y = window.scrollY;
+  fn();
+  requestAnimationFrame(() => window.scrollTo({ top: y, behavior: "auto" }));
+};
 
 /** Opção de um slot: prato 48px + marca/modelo. Botão real com aria-pressed. */
 function SlotOptionChip({
@@ -77,9 +86,7 @@ function SlotOptionChip({
         <span className="block truncate text-sm font-medium leading-tight">
           {tool.brand} {tool.model}
         </span>
-        <span className="mt-0.5 block truncate font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-          {tool.namePt}
-        </span>
+        <span className="mt-0.5 block truncate mono-caps text-muted-foreground">{tool.namePt}</span>
       </span>
       {selected && (
         <Check
@@ -140,7 +147,7 @@ function SlotOptionCard({
           />
         )}
       </span>
-      <span className="mt-2 block truncate font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
+      <span className="mt-2 block truncate mono-caps text-primary">
         {tool.brand} {tool.model}
       </span>
       <span className="mt-0.5 line-clamp-2 text-xs leading-5 text-muted-foreground">
@@ -194,7 +201,7 @@ function ModularSlotRow({
           onClick={onToggleOwned}
           aria-pressed={owned}
           className={cn(
-            "inline-flex items-center gap-2 border px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.13em] transition-all duration-200",
+            "inline-flex min-h-11 items-center gap-2 border px-5 mono-caps transition-all duration-200",
             FOCUS_RING,
             owned
               ? "border-primary bg-primary/15 text-foreground shadow-[0_8px_24px_rgba(212,165,63,0.16)]"
@@ -221,7 +228,7 @@ function ModularSlotRow({
         <div
           role="tablist"
           aria-label={`${slot.rolePt}: sub-tabs`}
-          className="mt-4 flex flex-wrap items-end gap-1.5 border-b border-border"
+          className="tab-rail -mx-1 mt-4 flex items-end gap-1.5 overflow-x-auto border-b border-border px-1"
         >
           {groups.map((group) => (
             <button
@@ -229,7 +236,7 @@ function ModularSlotRow({
               type="button"
               role="tab"
               aria-selected={group === activeGroup}
-              onClick={() => setActiveGroup(group)}
+              onClick={() => preserveScroll(() => setActiveGroup(group))}
               className={cn(
                 SUB_TAB_BASE,
                 FOCUS_RING,
@@ -246,7 +253,7 @@ function ModularSlotRow({
         <div
           role="tabpanel"
           aria-label={activeGroup}
-          className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4"
+          className="mt-3 grid grid-cols-1 gap-2 min-[480px]:grid-cols-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4"
         >
           {visible.map(({ tool }) => (
             <SlotOptionCard
@@ -278,9 +285,7 @@ function ModularSlotRow({
 
       {owned && (
         <p className="mt-3 text-xs leading-5 text-muted-foreground">
-          <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-primary">
-            Declarado ·{" "}
-          </span>
+          <span className="mono-caps text-primary">Declarado · </span>
           já tens esta peça: o slot conta como satisfeito e as opções ficam em pausa.
         </p>
       )}
@@ -319,11 +324,11 @@ export function KitBuilder() {
       <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
         <div className="max-w-3xl">
           <p className="jp-label text-primary">モジュラー · packs modulares</p>
-          <h2 className="mt-4 font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+          <h2 className="mt-4 text-display-1">
             Monta o teu:{" "}
             <span className="text-primary">escolhe a chave, o lock, as ponteiras.</span>
           </h2>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">
+          <p className="mt-5 max-w-2xl text-body text-muted-foreground">
             Um roquete com porta-bits e sockets chega ao canto onde era preciso uma chave de curto —
             e a chave de curto não existe aqui. Somos mais inteligentes que múltiplas ferramentas:
             cada bloco escolhe-se à marca, e o que já tens, declara-se.
@@ -331,7 +336,7 @@ export function KitBuilder() {
         </div>
 
         <div
-          className="mt-8 flex flex-wrap items-end gap-1.5 border-b border-border"
+          className="tab-rail -mx-4 mt-8 flex items-end gap-1.5 overflow-x-auto border-b border-border px-4 sm:mx-0 sm:px-0"
           role="group"
           aria-label="Packs modulares"
         >
@@ -340,7 +345,7 @@ export function KitBuilder() {
               key={candidate.id}
               type="button"
               aria-pressed={candidate.id === pack.id}
-              onClick={() => switchPack(candidate.id)}
+              onClick={() => preserveScroll(() => switchPack(candidate.id))}
               className={cn(
                 PACK_TAB_BASE,
                 FOCUS_RING,
@@ -379,9 +384,7 @@ export function KitBuilder() {
         <div className="mt-8 border border-primary/30 bg-card shadow-[0_24px_64px_rgba(212,165,63,0.08)]">
           <div className="flex flex-col gap-6 p-6 lg:flex-row lg:items-end lg:justify-between lg:p-8">
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
-                A fórmula do pack
-              </p>
+              <p className="mono-caps text-muted-foreground">A fórmula do pack</p>
               <p className="mt-2 font-display text-3xl font-semibold leading-none tracking-[-0.04em] sm:text-4xl">
                 {pack.formulaPartsPt.join(" + ")} ={" "}
                 <span
@@ -392,7 +395,7 @@ export function KitBuilder() {
                   ?
                 </span>
               </p>
-              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
+              <p className="mono-caps mt-3 text-muted-foreground">
                 <span className="text-foreground">
                   {satisfied}/{pack.slots.length}
                 </span>{" "}
@@ -441,16 +444,12 @@ export function KitBuilder() {
 
           <div className="space-y-3 border-t border-border px-6 py-4 lg:px-8">
             <p className="border-l-2 border-primary/40 pl-3 text-xs leading-5 text-muted-foreground">
-              <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-foreground">
-                Limitações:{" "}
-              </span>
+              <span className="mono-caps text-foreground">Limitações: </span>
               {pack.limitationsPt}
             </p>
             {pack.pairsWithPt && (
               <p className="border-l-2 border-primary/40 pl-3 text-xs leading-5 text-muted-foreground">
-                <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-foreground">
-                  Pares com:{" "}
-                </span>
+                <span className="mono-caps text-foreground">Pares com: </span>
                 {pack.pairsWithPt}
               </p>
             )}
