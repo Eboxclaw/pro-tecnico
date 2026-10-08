@@ -1,5 +1,6 @@
 import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ToolGlyph, type ToolGlyphName } from "@/components/brand/ToolGlyph";
@@ -7,7 +8,9 @@ import { LegendaryCombos } from "@/components/shop/LegendaryCombos";
 import { SmartPacksSection } from "@/components/shop/SmartPacksSection";
 import { KitsShowcase } from "@/components/shop/KitsShowcase";
 import { KitBuilder } from "@/components/shop/KitBuilder";
+import { KitMaker } from "@/components/shop/KitMaker";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
+import { cn } from "@/lib/utils";
 import { communityDemand, featuredSystem, labSystems, systemsOfKind } from "@/data/systems";
 import { useSystemDemand } from "@/lib/systems-demand";
 import {
@@ -78,6 +81,8 @@ function PacksPage() {
   const modules = systemsOfKind("module");
   const lab = labSystems();
   const { data: demandBySystem } = useSystemDemand();
+  // tab do construtor: "modular" (slot a slot) ou "maker" (wizard guiado)
+  const [makerMode, setMakerMode] = useState(false);
 
   const realUnitsBySystem: Record<string, number> = {};
   const realLikesBySystem: Record<string, number> = {};
@@ -142,7 +147,42 @@ function PacksPage() {
         </section>
       )}
 
-      <KitBuilder />
+      {/* ── construtor: tabs Modular | Kit Maker ─────────────── */}
+      <section className="border-b border-border bg-[#1b1917]">
+        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-4 px-4 pt-10 sm:px-6">
+          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Modo do construtor">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={!makerMode}
+              onClick={() => setMakerMode(false)}
+              className={cn(
+                "border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.13em] transition-colors",
+                !makerMode
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-white/20 bg-transparent text-white/60 hover:border-[#e3c27c] hover:text-[#e3c27c]",
+              )}
+            >
+              Packs modulares
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={makerMode}
+              onClick={() => setMakerMode(true)}
+              className={cn(
+                "border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.13em] transition-colors",
+                makerMode
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-white/20 bg-transparent text-white/60 hover:border-[#e3c27c] hover:text-[#e3c27c]",
+              )}
+            >
+              Kit Maker · guiado
+            </button>
+          </div>
+        </div>
+        {makerMode ? <KitMaker /> : <KitBuilder />}
+      </section>
 
       <KitsShowcase />
 

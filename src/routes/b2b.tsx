@@ -2,6 +2,7 @@ import { referenceById, CURATED_TOOL_REFERENCES } from "@/data/curated-tool-refe
 import { smartPackById } from "@/data/smart-packs";
 import { kitById } from "@/data/kits";
 import { modularPackById } from "@/data/modular-packs";
+import { KIT_MAKER_STEPS } from "@/data/kit-maker";
 import { ProductImage } from "@/components/shop/ProductImage";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
@@ -24,6 +25,8 @@ export const Route = createFileRoute("/b2b")({
     mod?: string | undefined;
     sel?: string | undefined;
     owned?: string | undefined;
+    maker?: string | undefined;
+    mksel?: string | undefined;
   } => ({
     reference:
       typeof search["reference"] === "string" && referenceById(search["reference"])
@@ -40,6 +43,8 @@ export const Route = createFileRoute("/b2b")({
         : undefined,
     sel: typeof search["sel"] === "string" ? search["sel"] : undefined,
     owned: typeof search["owned"] === "string" ? search["owned"] : undefined,
+    maker: typeof search["maker"] === "string" ? search["maker"] : undefined,
+    mksel: typeof search["mksel"] === "string" ? search["mksel"] : undefined,
   }),
   head: () => ({
     meta: [
@@ -73,16 +78,18 @@ function parseSel(raw?: string): Record<string, string> | undefined {
 }
 
 function B2BRoute() {
-  const { reference, pack, kit, mod, sel, owned } = Route.useSearch();
+  const { reference, pack, kit, mod, sel, owned, maker, mksel } = Route.useSearch();
   return (
     <B2BPage
-      key={mod ?? kit ?? pack ?? reference ?? "general"}
+      key={mod ?? maker ?? kit ?? pack ?? reference ?? "general"}
       reference={reference}
       packId={pack}
       kitId={kit}
       modId={mod}
       modSel={parseSel(sel)}
       modOwned={owned?.split(",").filter(Boolean)}
+      maker={maker}
+      mksel={mksel}
     />
   );
 }
@@ -135,6 +142,33 @@ function modularPrefill(
   return `Pack modular REJENDARI · ${pack.trade}\n"${pack.title}"\nFórmula: ${pack.formulaPartsPt.join(" + ")} = ?\n\nComposição:\n${lines.join("\n")}\n\nQuantidade: \nObservações: `;
 }
 
+/** Pré-preenchimento do Kit Maker: nome, escolhas por tópico e skips declarados. */
+function makerPrefill(maker: string, mksel: string | undefined) {
+  const owned: string[] = [];
+  const skipped: string[] = [];
+  const byStep = new Map<string, string[]>();
+  for (const pair of (mksel ?? "").split(",").filter(Boolean)) {
+    const [stepId, value] = pair.split(":");
+    if (!stepId || !value) continue;
+    if (value === "@owned") owned.push(stepId);
+    else if (value === "@skip") skipped.push(stepId);
+    else byStep.set(stepId, [...(byStep.get(stepId) ?? []), value]);
+  }
+  const lines = KIT_MAKER_STEPS.map((step) => {
+    if (owned.includes(step.id)) return `- ${step.topicPt}: JÁ TENHO (declarado)`;
+    if (skipped.includes(step.id)) return `- ${step.topicPt}: NÃO PRECISO (declarado)`;
+    const refIds = byStep.get(step.id) ?? [];
+    const tools = refIds
+      .map((refId) => referenceById(refId))
+      .filter(Boolean)
+      .map((tool) => `${tool?.brand} ${tool?.model}`);
+    return tools.length
+      ? `- ${step.topicPt}: ${tools.join(", ")}`
+      : `- ${step.topicPt}: por escolher`;
+  });
+  return `Kit Maker REJENDARI · para ${maker}\nConceito: light weight, high reach · low effort, high outcome\n\nComposição:\n${lines.join("\n")}\n\nQuantidade: \nObservações: `;
+}
+
 function B2BPage({
   reference,
   packId,
@@ -142,6 +176,8 @@ function B2BPage({
   modId,
   modSel,
   modOwned,
+  maker,
+  mksel,
 }: {
   reference?: string | undefined;
   packId?: string | undefined;
@@ -149,6 +185,8 @@ function B2BPage({
   modId?: string | undefined;
   modSel?: Record<string, string> | undefined;
   modOwned?: string[] | undefined;
+  maker?: string | undefined;
+  mksel?: string | undefined;
 }) {
   const tool = reference ? referenceById(reference) : undefined;
   const t = useT();
@@ -163,13 +201,15 @@ function B2BPage({
     trade: "",
     message: tool
       ? `Gostaria de confirmar disponibilidade de ${tool.brand} ${tool.model}, ${tool.namePt}.\nQuantidade: \nAplicação: `
-      : modId
-        ? modularPrefill(modId, modSel, modOwned)
-        : kitId
-          ? kitPrefill(kitId)
-          : packId
-            ? packPrefill(packId)
-            : "",
+      : maker
+        ? makerPrefill(maker, mksel)
+        : modId
+          ? modularPrefill(modId, modSel, modOwned)
+          : kitId
+            ? kitPrefill(kitId)
+            : packId
+              ? packPrefill(packId)
+              : "",
   });
 
   const set =
