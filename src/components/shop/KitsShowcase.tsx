@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Box } from "lucide-react";
+import { ArrowRight, Box, ChevronDown, ChevronUp } from "lucide-react";
 import { referenceById, type CuratedToolReference } from "@/data/curated-tool-references";
 import { REJENDARI_KITS, type RejendariKit, type RejendariKitFormat } from "@/data/kits";
 import { ProductImage, ProductMonogram } from "@/components/shop/ProductImage";
+import { ToolSymbols } from "@/components/shop/ToolSymbols";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -170,6 +171,104 @@ function KitCompactCard({
   );
 }
 
+/** Peça do kit com vista expansível: o chevron abre a ficha completa do artigo. */
+function KitPieceRow({
+  tool,
+  quantity,
+  whyPt,
+}: {
+  tool: CuratedToolReference;
+  quantity: number;
+  whyPt: string;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <li className="py-3">
+      <div className="flex items-start gap-4">
+        <Link
+          to="/referencia/$id"
+          params={{ id: tool.id }}
+          aria-label={`${tool.brand} ${tool.model}`}
+        >
+          <span className="product-plate block h-12 w-12 overflow-hidden border border-border">
+            {tool.imageUrl ? (
+              <ProductImage
+                src={tool.imageUrl}
+                alt={tool.imageAlt ?? tool.namePt}
+                className="h-full w-full object-contain p-1"
+                loading="lazy"
+              />
+            ) : (
+              <ProductMonogram
+                brand={tool.brand}
+                label={tool.namePt}
+                className="flex h-full w-full items-center justify-center"
+              />
+            )}
+          </span>
+        </Link>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-medium">
+            <Link to="/referencia/$id" params={{ id: tool.id }} className="hover:text-primary">
+              {tool.brand} {tool.model}
+            </Link>
+            {quantity > 1 && (
+              <span className="ml-2 font-mono text-[10px] text-muted-foreground">× {quantity}</span>
+            )}
+          </p>
+          <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{whyPt}</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          aria-label={
+            expanded ? `Fechar ficha de ${tool.model}` : `Expandir ficha de ${tool.model}`
+          }
+          className={cn(
+            "shrink-0 border border-border p-1.5 text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary",
+            expanded && "border-primary/60 text-primary",
+          )}
+        >
+          {expanded ? (
+            <ChevronUp className="h-3.5 w-3.5" aria-hidden />
+          ) : (
+            <ChevronDown className="h-3.5 w-3.5" aria-hidden />
+          )}
+        </button>
+      </div>
+
+      {expanded && (
+        <div className="animate-in fade-in slide-in-from-top-1 mt-3 border-l-2 border-primary/40 bg-background/60 p-4 duration-300">
+          <ToolSymbols tool={tool} />
+          {tool.specPt && (
+            <p className="mt-3 font-mono text-[9px] uppercase leading-5 tracking-[0.13em] text-muted-foreground">
+              {tool.specPt}
+            </p>
+          )}
+          <p className="mt-3 text-xs leading-6 text-foreground/80">{tool.notePt}</p>
+          {tool.storyPt && (
+            <p className="mt-2 text-xs leading-6 text-muted-foreground">{tool.storyPt}</p>
+          )}
+          {tool.evidencePt && (
+            <p className="mt-3 border-t border-border pt-2 font-mono text-[8px] uppercase leading-4 tracking-[0.1em] text-muted-foreground/80">
+              evidência: {tool.evidencePt}
+            </p>
+          )}
+          <Link
+            to="/referencia/$id"
+            params={{ id: tool.id }}
+            className="mt-3 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-primary hover:underline"
+          >
+            Ficha completa
+            <ArrowRight className="h-3 w-3" aria-hidden />
+          </Link>
+        </div>
+      )}
+    </li>
+  );
+}
+
 /** Janela com o detalhe completo do kit (a ficha que estava inline antes). */
 function KitDetailDialog({
   kit,
@@ -222,47 +321,7 @@ function KitDetailDialog({
 
           <ul className="mt-5 divide-y divide-border border-y border-border">
             {pieces.map(({ tool, quantity, whyPt }) => (
-              <li key={tool.id} className="flex items-start gap-4 py-3">
-                <Link
-                  to="/referencia/$id"
-                  params={{ id: tool.id }}
-                  aria-label={`${tool.brand} ${tool.model}`}
-                >
-                  <span className="product-plate block h-12 w-12 overflow-hidden border border-border">
-                    {tool.imageUrl ? (
-                      <ProductImage
-                        src={tool.imageUrl}
-                        alt={tool.imageAlt ?? tool.namePt}
-                        className="h-full w-full object-contain p-1"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <ProductMonogram
-                        brand={tool.brand}
-                        label={tool.namePt}
-                        className="flex h-full w-full items-center justify-center"
-                      />
-                    )}
-                  </span>
-                </Link>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium">
-                    <Link
-                      to="/referencia/$id"
-                      params={{ id: tool.id }}
-                      className="hover:text-primary"
-                    >
-                      {tool.brand} {tool.model}
-                    </Link>
-                    {quantity > 1 && (
-                      <span className="ml-2 font-mono text-[10px] text-muted-foreground">
-                        × {quantity}
-                      </span>
-                    )}
-                  </p>
-                  <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{whyPt}</p>
-                </div>
-              </li>
+              <KitPieceRow key={tool.id} tool={tool} quantity={quantity} whyPt={whyPt} />
             ))}
           </ul>
 

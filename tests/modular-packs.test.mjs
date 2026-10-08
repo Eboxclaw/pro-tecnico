@@ -72,13 +72,34 @@ test("the 397 Lock builder carries lock-first, Ryujin-only, ratchets and adapter
   }
   assert.ok(roqueteIds.includes("anex-370"), "t-handle presente");
   assert.ok(!roqueteIds.includes("anex-395-d"), "quick ball 60 fora dos packs (a pedido)");
-  // soquetes: 3/8 primeiro, adaptadores depois, com honestidade sobre o roscado
+  // soquetes: sub-tabs por marca — sempre a melhor linha de impacto de cada uma
   const soquetesSlot = impact.slots.find((slot) => slot.id === "soquetes");
   assert.ok(soquetesSlot, "slot de soquetes presente no builder 397 Lock");
   const soquetesGroups = [...new Set(soquetesSlot.options.map((option) => option.groupPt))];
-  assert.equal(soquetesGroups[0], "3/8 impacto", "soquetes 3/8 primeiro");
-  assert.ok(soquetesGroups.includes("KNECT pass-through"), "pass-through KNECT presente");
-  assert.ok(soquetesGroups.includes("Chave de tubo M4-M12"), "chave de tubo M4-M12 presente");
+  assert.deepEqual(
+    soquetesGroups,
+    [
+      "Klein 3/8″",
+      "Wera Impaktor",
+      "Milwaukee SHOCKWAVE",
+      "VESSEL hex 40V",
+      "ANEX offset",
+      "Bahco 1/2″",
+      "KNECT pass-through",
+      "Flip métrico",
+      "Universal BAHCO",
+      "Roscado M8-M12",
+      "Chave de tubo M4-M12",
+      "Adaptadores KNECT",
+    ],
+    "sub-tabs por marca/linha",
+  );
+  // a chave de tubo tem de ser chave de tubo a sério: 1936M/12 cobre M4-M12
+  const tuboIds = soquetesSlot.options
+    .filter((option) => option.groupPt === "Chave de tubo M4-M12")
+    .map((option) => option.refId);
+  assert.ok(tuboIds.includes("bahco-1936m-12"), "chave de tubo verdadeira (1936M/12) presente");
+  assert.ok(tuboIds.includes("knipex-9804-t-socket-vde"), "chave de tubo VDE presente");
   assert.ok(
     soquetesSlot.notePt.includes("M12") &&
       soquetesSlot.notePt.includes("não há M12 em pass-through"),
