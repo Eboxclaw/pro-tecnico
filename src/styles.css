@@ -1286,11 +1286,14 @@ html, body { overflow-x: clip; }
   }
 }
 
-/* ══ Sessão UI/UX · escala tipográfica, tabs e scroll ═════════════════════ */
+/* ══ Sessão UI/UX · FUNDAÇÃO do design system ═════════════════════════════ */
 
-/* — Escala tipográfica partilhada.
-     Títulos display: text-3xl em mobile a subir para text-6xl em desktop,
-     com a mesma família, peso e tracking em todo o site. — */
+/* — FUNDAÇÃO · as únicas medidas de título/corpo/etiqueta da casa:
+     títulos  → text-display-1 (3xl→5xl→6xl) · text-display-2 (2xl→4xl) · text-display-3 (xl→3xl)
+     corpo    → text-body (14px/1.75) · text-body-sm (12px/1.6)
+     etiqueta → mono-caps (10px · 0.13em · uppercase · 500)
+     layout   → section-pad (ritmo vertical de secção) · page-max (moldura de página)
+     Nada de tamanhos de título/corpo hand-rolados fora deste bloco. — */
 @utility text-display-1 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -1359,6 +1362,29 @@ html, body { overflow-x: clip; }
   line-height: 1.5;
   letter-spacing: 0.13em;
   text-transform: uppercase;
+}
+
+/* — FUNDAÇÃO · layout. UM ritmo vertical de secção e UMA moldura de página:
+     section-pad substitui os py-16/py-20/py-24 ad hoc;
+     page-max substitui os max-w-*/mx-auto/px-* duplicados por secção. — */
+@utility section-pad {
+  padding-top: 3.5rem; /* py-14 */
+  padding-bottom: 3.5rem;
+
+  @media (min-width: 1024px) {
+    padding-top: 5rem; /* lg:py-20 */
+    padding-bottom: 5rem;
+  }
+}
+
+@utility page-max {
+  margin-inline: auto;
+  max-width: 1440px;
+  padding-inline: 1rem; /* px-4 */
+
+  @media (min-width: 640px) {
+    padding-inline: 1.5rem; /* sm:px-6 */
+  }
 }
 
 /* — Rails de tabs com scroll horizontal: barra escondida, gesto intacto. — */

@@ -8,6 +8,7 @@ import { buildReferralLink } from "@/lib/referrals";
 import { useSystemDemand } from "@/lib/systems-demand";
 import { isReservable, systemById } from "@/data/systems";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { DemandProgress } from "@/components/systems/SystemPrimitives";
 import { ToolGlyph } from "@/components/brand/ToolGlyph";
 
@@ -117,8 +118,18 @@ function AccountPage() {
 
   if (isLoading)
     return (
-      <div className="mx-auto max-w-3xl px-6 py-24" role="status">
-        A carregar a tua conta…
+      <div
+        className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20"
+        role="status"
+        aria-label="A carregar a tua conta"
+      >
+        <Skeleton className="h-5 w-44 max-w-full" />
+        <Skeleton className="mt-5 h-12 w-72 max-w-full" />
+        <div className="mt-10 grid gap-px border border-border bg-border md:grid-cols-4">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Skeleton key={index} className="h-40 w-full rounded-none" />
+          ))}
+        </div>
       </div>
     );
   if (isError)
@@ -135,7 +146,7 @@ function AccountPage() {
   return (
     <div>
       <section className="border-b border-border">
-        <div className="technical-grid mx-auto max-w-[1200px] px-4 py-12 sm:px-6">
+        <div className="technical-grid mx-auto max-w-[1440px] px-4 py-12 sm:px-6">
           <p className="tech-label text-primary">{data?.email ?? "REJENDARI"}</p>
           <h1 className="mt-4 font-display text-5xl font-semibold tracking-[-0.055em]">
             {t("account.title")}
@@ -148,7 +159,7 @@ function AccountPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:py-14">
+      <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:py-14">
         {(data?.profile?.region || data?.profile?.postal_code) && (
           <p className="mb-6 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
             Identificação:{" "}
@@ -256,7 +267,7 @@ function AccountPage() {
                       {system && isReservable(system) ? (
                         <Button asChild size="sm" variant="outline" className="rounded-none">
                           <Link to="/systems/$id" params={{ id: system.id }}>
-                            Ver estado do drop
+                            Ver a reserva
                           </Link>
                         </Button>
                       ) : null}

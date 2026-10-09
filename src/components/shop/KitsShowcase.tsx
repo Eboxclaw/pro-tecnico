@@ -334,7 +334,7 @@ function KitDetailDialog({
           <Button className="mt-5 w-full rounded-none" asChild>
             <Link to="/b2b" search={{ kit: kit.id }}>
               <Box className="mr-2 h-4 w-4" />
-              Pedir este kit no B2B
+              Pedir no B2B · este kit
             </Link>
           </Button>
         </div>
@@ -358,22 +358,20 @@ export function KitsShowcase() {
         <RejendariSeal className="absolute -top-2 right-6 z-10 hidden h-20 w-20 opacity-80 lg:grid" />
         <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
           <div>
-            <p className="jp-label text-primary">最初のキット · os primeiros kits REJENDARI</p>
-            <h2 className="mt-4 max-w-xl text-display-1">
+            <p className="jp-label text-primary">
+              <span className="font-mono">03</span> · 最初のキット · os primeiros kits REJENDARI
+            </p>
+            <h2 className="mt-4 max-w-xl text-display-2">
               {REJENDARI_KITS.length} composições.
               <br />
               <span className="text-primary">Nada que não ganhe o seu lugar.</span>
             </h2>
           </div>
           <p className="max-w-2xl text-body text-muted-foreground">
-            A inspiração vem da produção integrada da ANEX em Sanjō, 一貫生産, cada bit do aço ao
-            fio nas mesmas mãos, e da escola alemã das caixas pequenas bem pensadas que são um
-            milagre de espaço. {malas} malas cobrem profissões, {kitsCount} kits dominam uma
-            família, {caixas} caixas cobrem o dia de um ofício. Cross bit utilization: cada bit
-            serve o 397, a impacto e a Zyklop — um roquete com porta-bits e sockets 1/4 chega ao
-            canto onde era preciso uma chave de curto, e a chave de curto não existe no catálogo.
-            Somos mais inteligentes que múltiplas ferramentas. O pedido segue para o B2B com a
-            composição preenchida, sem SKU inventado.
+            A inspiração vem da produção integrada da ANEX em Sanjō, 一貫生産: cada bit nasce do aço
+            ao fio nas mesmas mãos. {malas} malas cobrem profissões, {kitsCount} kits dominam uma
+            família, {caixas} caixas cobrem o dia de um ofício. Cada peça entra porque resolve um
+            trabalho — o que não resolve, fica de fora.
           </p>
         </div>
 

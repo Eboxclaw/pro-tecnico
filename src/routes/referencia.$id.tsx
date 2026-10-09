@@ -49,7 +49,7 @@ function ReferencePage() {
             className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            Voltar às referências
+            Voltar à loja
           </Link>
         </div>
       </section>
@@ -112,6 +112,13 @@ function ReferencePage() {
             </div>
           )}
 
+          {tool.evidencePt && (
+            <div className="mt-4 flex gap-3 border border-border bg-surface p-4">
+              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <p className="text-xs leading-6 text-muted-foreground">{tool.evidencePt}</p>
+            </div>
+          )}
+
           <div className="mt-8">
             <p className="jp-label text-primary">物語 · a história desta ferramenta</p>
             <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
@@ -120,23 +127,18 @@ function ReferencePage() {
             </p>
           </div>
 
-          {tool.evidencePt && (
-            <div className="mt-7 flex gap-3 border border-border bg-surface p-4">
-              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <p className="text-xs leading-6 text-muted-foreground">{tool.evidencePt}</p>
-            </div>
-          )}
-
-          {tool.limitationsPt && (
-            <section className="mt-6 border-l-2 border-primary bg-surface p-4">
+          {(tool.limitationsPt || tool.manufacturedIn) && (
+            <section className="mt-7 border-l-2 border-primary bg-surface p-4">
               <h2 className="text-sm font-semibold">Antes de escolher</h2>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{tool.limitationsPt}</p>
+              {tool.limitationsPt && (
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{tool.limitationsPt}</p>
+              )}
+              {tool.manufacturedIn && (
+                <p className="mt-3 text-xs leading-5 text-muted-foreground">
+                  País de fabrico indicado pelo fabricante: <strong>{tool.manufacturedIn}</strong>
+                </p>
+              )}
             </section>
-          )}
-          {tool.manufacturedIn && (
-            <p className="mt-5 text-xs text-muted-foreground">
-              País de fabrico indicado pelo fabricante: <strong>{tool.manufacturedIn}</strong>
-            </p>
           )}
           {tool.catalogViewerPage && (
             <a
@@ -145,7 +147,7 @@ function ReferencePage() {
               target="_blank"
               rel="noreferrer"
             >
-              Ver no catálogo ANEX 2026 · página {tool.catalogViewerPage} do visualizador{" "}
+              Catálogo ANEX · capítulo {tool.catalogViewerPage}{" "}
               <ExternalLink size={12} aria-hidden="true" />
             </a>
           )}
@@ -189,7 +191,7 @@ function ReferencePage() {
                 search={{ brand: tool.brandSlug }}
                 className="mt-5 inline-flex items-center text-xs font-medium text-[#a87c1f]"
               >
-                Conhecer a marca e todos os produtos
+                Toda a marca
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Link>
             </div>

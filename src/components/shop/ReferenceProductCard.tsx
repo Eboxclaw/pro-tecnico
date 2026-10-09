@@ -59,7 +59,7 @@ export function ReferenceProductCard({
           </Button>
           <Button size="sm" variant="ghost" className="rounded-none" asChild>
             <Link to="/b2b" search={{ reference: tool.id }}>
-              Disponibilidade
+              Pedir no B2B
             </Link>
           </Button>
         </div>

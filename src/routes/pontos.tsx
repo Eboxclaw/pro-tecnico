@@ -139,7 +139,7 @@ function PointsPage() {
       <section className="border-b border-border">
         <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <p className="jp-label text-primary">ポイント · fidelização REJENDARI</p>
-          <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
+          <h1 className="mt-5 max-w-4xl font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
             Pontos e vantagens,
             <br />
             <span className="text-primary">num só lugar.</span>
@@ -211,7 +211,7 @@ function PointsPage() {
                 <p className="tech-label text-muted-foreground">O teu link pessoal</p>
                 <p className="mt-3 break-all font-mono text-xs text-foreground">{referralLink}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <Button variant="secondary" size="sm" onClick={copyReferral}>
+                  <Button variant="secondary" size="sm" className="min-h-11" onClick={copyReferral}>
                     {copied ? (
                       <Check className="mr-2 h-4 w-4" />
                     ) : (
@@ -219,7 +219,7 @@ function PointsPage() {
                     )}
                     {copied ? "Copiado" : "Copiar"}
                   </Button>
-                  <Button variant="outline" size="sm" onClick={shareReferral}>
+                  <Button variant="outline" size="sm" className="min-h-11" onClick={shareReferral}>
                     <Share2 className="mr-2 h-4 w-4" />
                     Partilhar
                   </Button>
@@ -266,7 +266,7 @@ function PointsPage() {
               </Button>
             </div>
           ) : !openRaffle ? (
-            <p className="mt-4 text-sm text-muted-foreground">{t("points.noWinners")}</p>
+            <p className="mt-4 text-sm text-muted-foreground">{t("points.noOpenRaffle")}</p>
           ) : (
             <div className="mt-5 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>

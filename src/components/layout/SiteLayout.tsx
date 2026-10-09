@@ -2,9 +2,7 @@ import { Outlet } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { WaitlistBanner } from "@/components/layout/WaitlistBanner";
 import { IntroSplash } from "@/components/brand/IntroSplash";
-import { SITE_OPEN } from "@/lib/site-config";
 import { useCartSync } from "@/hooks/useCartSync";
 import { ReferralCapture } from "@/components/layout/ReferralCapture";
 
@@ -22,7 +20,6 @@ export function SiteLayout() {
       </a>
       <Toaster position="top-center" richColors />
       <ReferralCapture />
-      {!SITE_OPEN && <WaitlistBanner />}
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className="flex-1">
         <Outlet />

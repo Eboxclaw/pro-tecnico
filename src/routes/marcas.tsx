@@ -5,7 +5,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ReferenceProductCard } from "@/components/shop/ReferenceProductCard";
-import { BRAND_STORIES, BRAND_STORY_MAP } from "@/data/brand-stories";
+import { BRAND_STORY_MAP } from "@/data/brand-stories";
 import { QUICK_BRANDS, referencesForBrand } from "@/data/curated-tool-references";
 
 export const Route = createFileRoute("/marcas")({
@@ -40,12 +40,11 @@ function BrandsPage() {
   const selected = BRAND_STORY_MAP[selectedSlug];
   if (!selected) return <p className="p-8">Ainda não existem marcas para apresentar.</p>;
   const products = referencesForBrand(selectedSlug);
-  const otherBrands = BRAND_STORIES.filter((brand) => brand.slug !== selectedSlug);
 
   return (
     <div>
       <section className="border-b border-border">
-        <div className="technical-grid mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-18">
+        <div className="technical-grid mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-20">
           <p className="jp-label text-primary">ブランド · marcas, japão e europa</p>
           <div className="mt-5 grid gap-7 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <h1 className="max-w-3xl font-display text-5xl font-semibold leading-[0.92] tracking-[-0.06em] sm:text-7xl">
@@ -78,7 +77,7 @@ function BrandsPage() {
                 key={brand}
                 to="/marcas"
                 search={{ brand }}
-                className={`flex min-w-max items-center gap-2 border px-3 py-2 text-xs transition-colors ${active ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"}`}
+                className={`flex min-h-11 min-w-max items-center gap-2 border px-3 py-2 text-xs transition-colors ${active ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"}`}
               >
                 <span className="font-semibold">{story?.name ?? brand}</span>
                 <span
@@ -123,7 +122,7 @@ function BrandsPage() {
                     className="aspect-[16/10] w-full object-contain p-8"
                   />
                   <p className="px-4 pb-4 text-xs text-foreground/70">
-                    {products[0].model} · conhecer a referência
+                    {products[0].model} · Ver ficha
                     {products[0].imageCaption && (
                       <span className="mt-2 block">{products[0].imageCaption}</span>
                     )}
@@ -180,62 +179,6 @@ function BrandsPage() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="jp-label text-primary">次のブランド · descobrir mais</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.045em]">
-              Outros especialistas japoneses
-            </h2>
-          </div>
-          <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-            Cada marca entra por uma especialidade concreta. Usa estes cartões como filtro rápido
-            para saltar diretamente para a história e os produtos.
-          </p>
-        </div>
-
-        <div className="mt-7 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {otherBrands.map((brand) => {
-            const brandProducts = referencesForBrand(brand.slug);
-            const count = brandProducts.length;
-            const cover = brandProducts.find((tool) => tool.imageUrl);
-            return (
-              <Link
-                key={brand.slug}
-                to="/marcas"
-                search={{ brand: brand.slug }}
-                className="group flex min-h-56 flex-col bg-card p-6 transition-colors hover:bg-secondary"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="jp-label text-primary">{brand.jp}</span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                    {count} refs.
-                  </span>
-                </div>
-                {cover && (
-                  <ProductImage
-                    src={cover.imageUrl}
-                    alt={`${cover.brand} ${cover.model}`}
-                    className="mt-5 aspect-[16/9] w-full bg-[#eee8dc] object-contain p-4"
-                  />
-                )}
-                <h3 className="mt-8 font-display text-3xl font-semibold tracking-[-0.05em]">
-                  {brand.name}
-                </h3>
-                <p className="mt-2 text-xs leading-5 text-muted-foreground">{brand.specialty}</p>
-                <p className="mt-5 line-clamp-2 text-sm leading-6 text-muted-foreground">
-                  {brand.headline}
-                </p>
-                <span className="mt-auto inline-flex items-center text-xs font-medium text-primary">
-                  Ver marca
-                  <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            );
-          })}
         </div>
       </section>
     </div>

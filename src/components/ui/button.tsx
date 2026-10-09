@@ -4,22 +4,36 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Botão base REJENDARI (KUROKIN). TODAS as variantes são rounded-none por
+ * defeito — a casa não usa cantos redondos em ações.
+ *
+ * Contrato de variantes:
+ *   default  → dourado (bg-primary, tinta ink-950, brilho suave no hover)
+ *   outline  → borda hairline, hover dourado
+ *   ghost    → sem fundo nem borda, hover neutro
+ *   secondary→ DEPRECATED (mantida só para usos legados; usar default/outline/ghost)
+ *
+ * Contrato de sizes: sm h-9 · default h-11 · lg h-12 — nada abaixo de h-9.
+ * icon é quadrado (h-11 w-11) e existe apenas para controlos de toolbar legados.
+ */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-sm font-medium cursor-pointer transition-[color,background-color,border-color,box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-secondary hover:text-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default:
+          "bg-primary text-[#1b1917] hover:bg-primary/90 hover:shadow-[0_0_24px_oklch(0.78_0.13_82/0.35)]",
+        outline:
+          "border border-input bg-transparent hover:border-primary/60 hover:bg-primary/10 hover:text-primary",
         ghost: "hover:bg-secondary hover:text-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        // DEPRECATED: manter até os usos legados migrarem para default/outline/ghost.
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       },
       size: {
         default: "h-11 px-5 py-2",
-        sm: "h-10 rounded-none px-3 text-xs",
-        lg: "h-12 rounded-none px-8",
+        sm: "h-9 px-3 text-xs",
+        lg: "h-12 px-8",
         icon: "h-11 w-11",
       },
     },

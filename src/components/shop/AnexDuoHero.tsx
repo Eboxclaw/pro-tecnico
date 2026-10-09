@@ -89,10 +89,6 @@ export function AnexDuoHero() {
             Ver a AOA-17 <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
         </div>
-        <span className="mt-6 block text-xs leading-5 text-white/65">
-          Escolha editorial independente da REJENDARI. Consulta limites e compatibilidade em cada
-          ficha.
-        </span>
       </div>
     </section>
   );

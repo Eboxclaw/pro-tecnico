@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ArrowUp, ChevronDown, Gift, LogOut, ShoppingBag, User } from "lucide-react";
+import { ArrowUp, ChevronDown, Gift, LogOut, Menu, ShoppingBag, User, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/i18n";
 import { useCartStore } from "@/stores/cartStore";
@@ -87,7 +87,18 @@ export function SiteHeader() {
   const items = useCartStore((s) => s.items);
   const [signedIn, setSignedIn] = useState(false);
   const [compact, setCompact] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+
+  // Menu hambúrguer fecha com Escape (acessibilidade de teclado).
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   // Colapso ao descer com histerese de 24 px: um só sentido conta de cada vez,
   // nada de oscilar com o bounce do scroll. Nunca colapsa perto do topo nem
@@ -175,23 +186,16 @@ export function SiteHeader() {
         className="site-header sticky top-0 z-50 border-b border-border bg-background/94 backdrop-blur-xl supports-[backdrop-filter]:bg-background/82"
       >
         <div className="site-topstrip border-b border-border/70 bg-black/20">
-          <div className="mono-caps mx-auto flex h-7 max-w-[1440px] items-center justify-between px-4 text-muted-foreground sm:px-6">
+          <div className="mono-caps mx-auto flex h-6 max-w-[1440px] items-center justify-between px-4 text-muted-foreground sm:h-7 sm:px-6">
             <span>JAPAN FIRST · PORTUGAL READY</span>
-            <span className="hidden sm:inline">
-              {CURATED_TOOL_REFERENCES.length} referências · métrico primeiro · códigos oficiais
-            </span>
+            <span>{CURATED_TOOL_REFERENCES.length} referências</span>
           </div>
         </div>
 
-        <div className="mx-auto flex h-[70px] max-w-[1440px] items-center gap-5 px-4 sm:px-6">
+        <div className="mx-auto flex h-12 max-w-[1440px] items-center gap-5 px-4 sm:h-[70px] sm:px-6">
           <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="REJENDARI">
             <RejendariLogo compact className="sm:hidden" />
             <RejendariLogo className="hidden transition-transform duration-300 group-hover:scale-[1.015] sm:flex" />
-            <span className="mono-caps hidden border-l border-border pl-3 text-muted-foreground 2xl:block">
-              selecionar × explicar
-              <br />
-              usar × confiar
-            </span>
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -269,7 +273,7 @@ export function SiteHeader() {
                           ),
                       )}
                     </div>
-                    <Link to="/shop" className="mt-4 inline-flex text-xs font-medium text-primary">
+                    <Link to="/shop" className="mono-caps mt-4 inline-flex text-primary">
                       Ver catálogo completo →
                     </Link>
                   </div>
@@ -297,7 +301,7 @@ export function SiteHeader() {
                         Entra diretamente na história e nas referências de cada fabricante.
                       </p>
                     </div>
-                    <Link to="/marcas" className="text-xs font-medium text-primary">
+                    <Link to="/marcas" className="mono-caps text-primary">
                       Todas →
                     </Link>
                   </div>
@@ -338,12 +342,6 @@ export function SiteHeader() {
               {t("nav.packs")}
             </Link>
             <Link
-              to="/pontos"
-              className="relative px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
-            >
-              {t("nav.points")}
-            </Link>
-            <Link
               to="/b2b"
               className="relative px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
             >
@@ -352,12 +350,28 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex items-center gap-1.5">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-11 w-11 lg:hidden"
+              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              {menuOpen ? (
+                <X className="h-4.5 w-4.5" aria-hidden />
+              ) : (
+                <Menu className="h-4.5 w-4.5" aria-hidden />
+              )}
+            </Button>
+
             <Link
               to="/pontos"
               className="mono-caps hidden items-center gap-2 rounded-md border border-border px-3 py-2 text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground md:flex"
             >
               <Gift className="h-3.5 w-3.5 text-primary" />
-              Pontos & vantagens
+              Pontos &amp; vantagens
             </Link>
 
             {signedIn ? (
@@ -366,7 +380,7 @@ export function SiteHeader() {
                   variant="ghost"
                   size="icon"
                   aria-label={t("nav.account")}
-                  className="h-11 w-11 sm:h-9 sm:w-9"
+                  className="h-11 w-11"
                   asChild
                 >
                   <Link to="/conta">
@@ -376,8 +390,8 @@ export function SiteHeader() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  aria-label={t("nav.signOut")}
-                  className="h-11 w-11 sm:h-9 sm:w-9"
+                  aria-label="Sair da conta"
+                  className="h-11 w-11"
                   onClick={() => supabase.auth.signOut()}
                 >
                   <LogOut className="h-4.5 w-4.5" />
@@ -410,6 +424,58 @@ export function SiteHeader() {
           </div>
         </div>
 
+        {/* Menu hambúrguer (mobile/tablet): nav de links fora do rail único. */}
+        {menuOpen && (
+          <nav
+            id="mobile-menu"
+            aria-label="Menu principal"
+            className="border-t border-border/70 bg-background lg:hidden"
+          >
+            <div className="mx-auto flex max-w-[1440px] flex-col px-4 py-2 sm:px-6">
+              {mobileNav.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex min-h-11 items-center border-b border-border/40 text-sm text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
+                  activeProps={{ className: "text-foreground" }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              {signedIn ? (
+                <>
+                  <Link
+                    to="/conta"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex min-h-11 items-center border-b border-border/40 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {t("nav.account")}
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      supabase.auth.signOut();
+                    }}
+                    className="flex min-h-11 items-center text-sm text-primary"
+                  >
+                    Sair da conta
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/auth"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex min-h-11 items-center text-sm text-primary"
+                >
+                  {t("nav.signIn")}
+                </Link>
+              )}
+            </div>
+          </nav>
+        )}
+
         <div className="hidden border-t border-border/70 lg:block">
           <div className="mx-auto flex max-w-[1440px] items-stretch px-4">
             {CATEGORIES.map((category, index) => {
@@ -420,13 +486,13 @@ export function SiteHeader() {
                   <Link
                     to="/shop"
                     search={{ task: category.task }}
-                    className="flex h-full items-center justify-center gap-2.5 border-r border-border/60 px-3 py-2.5 text-[11px] text-muted-foreground transition-colors first:border-l hover:bg-secondary/70 hover:text-foreground"
+                    className="flex h-11 items-center justify-center gap-2.5 border-r border-border/60 px-3 text-muted-foreground transition-colors first:border-l hover:bg-secondary/70 hover:text-foreground"
                   >
                     <ToolGlyph
                       name={category.icon}
                       className="h-4 w-4 text-muted-foreground transition-colors group-hover/cat:text-primary"
                     />
-                    <span>{category.label}</span>
+                    <span className="mono-caps">{category.label}</span>
                   </Link>
 
                   {quickProducts.length > 0 && (
@@ -475,38 +541,27 @@ export function SiteHeader() {
           </div>
         </div>
 
-        <div className="site-scrollrows flex snap-x snap-mandatory items-stretch overflow-x-auto border-t border-border/70 lg:hidden">
-          {CATEGORIES.map((category) => (
-            <Link
-              key={category.task}
-              to="/shop"
-              search={{ task: category.task }}
-              className="flex min-h-11 min-w-max snap-start items-center gap-2.5 border-r border-border/60 px-3 py-2.5 text-[11px] text-muted-foreground"
-            >
-              <ToolGlyph name={category.icon} className="h-4 w-4 text-primary" />
-              <span>{category.label}</span>
-            </Link>
-          ))}
-        </div>
-
-        <nav className="site-scrollrows flex snap-x snap-mandatory items-center gap-1 overflow-x-auto border-t border-border/60 px-4 py-2 lg:hidden">
-          {mobileNav.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className="flex min-h-11 min-w-max snap-start items-center whitespace-nowrap px-3 text-xs text-muted-foreground hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
-          {!signedIn && (
-            <Link
-              to="/auth"
-              className="flex min-h-11 min-w-max snap-start items-center whitespace-nowrap px-3 text-xs text-primary"
-            >
-              {t("nav.signIn")}
-            </Link>
-          )}
+        {/* Mobile/tablet: um só rail de categorias com scroll horizontal e
+            indicador visual (degradê na borda direita). Os links de navegação
+            vivem no menu hambúrguer. */}
+        <nav aria-label="Categorias" className="relative lg:hidden">
+          <div className="site-scrollrows flex snap-x snap-mandatory items-stretch overflow-x-auto border-t border-border/70">
+            {CATEGORIES.map((category) => (
+              <Link
+                key={category.task}
+                to="/shop"
+                search={{ task: category.task }}
+                className="flex h-11 min-w-max snap-start items-center gap-2.5 border-r border-border/60 px-3 text-muted-foreground"
+              >
+                <ToolGlyph name={category.icon} className="h-4 w-4 shrink-0 text-primary" />
+                <span className="mono-caps">{category.label}</span>
+              </Link>
+            ))}
+          </div>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 right-0 top-0 w-10 bg-gradient-to-l from-background to-transparent"
+          />
         </nav>
       </header>
       {/* Botão global "voltar ao topo" — presente em todas as páginas. */}

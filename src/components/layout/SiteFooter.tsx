@@ -41,8 +41,8 @@ export function SiteFooter() {
         <div>
           <RejendariLogo inverted className="max-w-[270px]" />
           <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">
-            Não queremos a maior loja de ferramentas. Queremos que cada referência tenha uma razão
-            técnica para estar aqui.
+            Especialistas em bits e soquetes · canalização e AVAC. Pouca ferramenta, alta
+            performance.
           </p>
           <p className="mt-7 max-w-md border-l border-primary/70 pl-4 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
             A origem da marca e o país de fabrico não são a mesma coisa. Quando essa informação está
@@ -125,10 +125,37 @@ export function SiteFooter() {
 
         <div>
           <p className="tech-label text-white/45">Porque REJENDARI · 選定</p>
-          <p className="mt-4 text-sm leading-6 text-muted-foreground">
-            Referência oficial, métrico quando aplicável, comparação útil e preferência por sistemas
-            que reduzem peças repetidas. Curadoria antes de catálogo.
-          </p>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            <li>
+              <Link to="/packs" className="text-muted-foreground hover:text-foreground">
+                Kits
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/packs"
+                hash="systems"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Systems
+              </Link>
+            </li>
+            <li>
+              <Link to="/packs" className="text-muted-foreground hover:text-foreground">
+                Kit Maker
+              </Link>
+            </li>
+            <li>
+              <Link to="/b2b" className="text-muted-foreground hover:text-foreground">
+                B2B
+              </Link>
+            </li>
+            <li>
+              <Link to="/packs" className="text-muted-foreground hover:text-foreground">
+                Especialistas em bits e soquetes
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -138,19 +165,6 @@ export function SiteFooter() {
             © {year} REJENDARI · {t("footer.rights")}
           </p>
           <p>{t("footer.contactNote")}</p>
-        </div>
-      </div>
-      <div className="border-t border-border/70">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 sm:px-6">
-          <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/35">
-            REJENDARI · ferramentas originais, combinações nossas
-          </p>
-          <Link
-            to="/pontos"
-            className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-white"
-          >
-            pontos e vantagens
-          </Link>
         </div>
       </div>
     </footer>

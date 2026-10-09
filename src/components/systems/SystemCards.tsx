@@ -46,7 +46,7 @@ function targetPriceRow(system: RejendariSystem, dark = false) {
         dark ? "text-white/50" : "text-muted-foreground",
       )}
     >
-      Target price <span className={dark ? "text-white" : "text-foreground"}>{price}</span>
+      Preço-alvo <span className={dark ? "text-white" : "text-foreground"}>{price}</span>
     </p>
   );
 }
@@ -94,13 +94,13 @@ export function FeaturedDropCard({ system }: { system: RejendariSystem }) {
         ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <ReserveButton system={system} dark size="lg" />
+          <ReserveButton system={system} dark />
           <LikeFavoriteButtons system={system} dark />
         </div>
         <p className="mt-4 font-mono text-[9px] uppercase tracking-[0.13em] text-white/40">
           {demand.reservations} reservas registadas ·{" "}
-          {targetPriceLabel(system) ? `target price ${targetPriceLabel(system)} · ` : ""}reservation
-          is free
+          {targetPriceLabel(system) ? `preço-alvo ${targetPriceLabel(system)} · ` : ""}reserva
+          grátis
         </p>
       </div>
 
@@ -156,13 +156,13 @@ export function SystemCard({ system }: { system: RejendariSystem }) {
             </p>
           </div>
           <div className="mt-4 flex items-center gap-2">
-            <ReserveButton system={system} size="sm" />
+            <ReserveButton system={system} />
             <Link
               to="/systems/$id"
               params={{ id: system.id }}
               className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-foreground transition-colors hover:text-primary"
             >
-              Ver system
+              Detalhe
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <LikeFavoriteButtons system={system} className="ml-auto" />

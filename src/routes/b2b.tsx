@@ -242,7 +242,7 @@ function B2BPage({
   return (
     <div>
       <section className="border-b border-border">
-        <div className="technical-grid mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:py-20">
+        <div className="technical-grid mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <span className="jp-label flex items-center gap-2 text-primary">
             <Building2 className="h-3.5 w-3.5" />
             法人 · profissionais & empresas
@@ -256,8 +256,8 @@ function B2BPage({
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[0.65fr_1.35fr] lg:py-14">
-        <aside className="h-fit border border-border bg-card p-6 lg:sticky lg:top-40">
+      <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[0.65fr_1.35fr] lg:py-14">
+        <aside className="order-last h-fit border border-border bg-card p-6 lg:order-first lg:sticky lg:top-[var(--header-h,106px)]">
           <div className="mb-6 grid grid-cols-2 gap-2" aria-label="Referências para profissionais">
             {["vessel-td6816mg", "anex-397-d", "knipex-cobra-250", "olfa-l5"].map((id) => {
               const item = CURATED_TOOL_REFERENCES.find((entry) => entry.id === id)!;

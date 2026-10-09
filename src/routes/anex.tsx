@@ -89,15 +89,11 @@ function AnexPage() {
           <ol className="anex-heritage-timeline">
             <li>
               <span>1949</span>
-              <p>Hideo Kaneko funda a Kaneko Seisakusho e começa a fazer chaves de parafusos.</p>
-            </li>
-            <li>
-              <span>1954</span>
-              <p>Formalização da empresa em Sanjo, na província de Niigata.</p>
+              <p>Hideo Kaneko funda a Kaneko Seisakusho, em Sanjō.</p>
             </li>
             <li>
               <span>1984</span>
-              <p>Primeiro de uma série contínua de Good Design Awards, 40 edições seguidas.</p>
+              <p>Primeiro de 40 Good Design Awards consecutivos.</p>
             </li>
             <li>
               <span>2022</span>
@@ -106,10 +102,7 @@ function AnexPage() {
           </ol>
           <div className="anex-heritage-provenance">
             <p className="anex-heritage-jp">三条市 NIIGATA · 日本</p>
-            <p>
-              Fábrica própria com maquinação, tratamento térmico, moldação e montagem integradas, 75
-              anos de ferramentas centradas na chave de parafusos.
-            </p>
+            <p>Fábrica própria: maquinação, tratamento térmico e montagem na mesma casa.</p>
             <p className="anex-heritage-bridge">
               Feito em Sanjo. <em>Escolhido em Portugal.</em>
             </p>
@@ -190,15 +183,9 @@ function AnexPage() {
           </div>
           <div>
             <p className="text-sm leading-7 text-muted-foreground">{chapter.talePt}</p>
-            <a
-              href={`${ANEX_CATALOG_URL}?page=${chapter.page}`}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-2 text-xs text-primary underline underline-offset-4"
-            >
-              Catálogo ANEX 2026 · páginas impressas {chapter.printed}{" "}
-              <ExternalLink size={12} aria-hidden="true" />
-            </a>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Catálogo ANEX 2026 · páginas impressas {chapter.printed}
+            </p>
           </div>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -251,8 +238,7 @@ function AnexPage() {
         <div>
           <h2 className="font-display text-2xl">Já tens uma referência em mente?</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-            Envia o código ANEX e a quantidade. Confirmamos preço, versão e prazo no orçamento. A
-            seleção editorial não indica stock.
+            Envia o código ANEX e a quantidade. Confirmamos preço, versão e prazo no orçamento.
           </p>
         </div>
         <Link to="/b2b" className="artisan-link border-border text-foreground">

@@ -284,13 +284,19 @@ function ShopPage() {
               medida usada profissionalmente.
             </p>
           </div>
+          <p className="mt-6 border-t border-border pt-4 text-xs leading-5 text-muted-foreground">
+            <span className="font-medium text-foreground">Referências editoriais</span> = seleção da
+            casa para pedido B2B ·{" "}
+            <span className="font-medium text-foreground">Produtos publicados</span> = loja com
+            carrinho
+          </p>
         </div>
       </section>
 
       {(!hasFilters || (brand === "ANEX" && !query)) && <AnexFeature compact />}
       {brand === "WERA" && <WeraFeature compact />}
       <section className="border-b border-border bg-surface">
-        <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-px bg-border sm:grid-cols-3 lg:grid-cols-7">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-px bg-border sm:grid-cols-3 lg:grid-cols-7">
           {TASKS.map((item) => (
             <button
               type="button"
@@ -320,7 +326,7 @@ function ShopPage() {
             <button
               type="button"
               onClick={() => setBrand("all")}
-              className={`min-w-max border px-3 py-2 text-xs transition-colors ${brand === "all" ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:border-primary/50"}`}
+              className={`inline-flex min-h-11 min-w-max items-center border px-3 py-2 text-xs transition-colors ${brand === "all" ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:border-primary/50"}`}
             >
               Todas as marcas
             </button>
@@ -329,7 +335,7 @@ function ShopPage() {
                 type="button"
                 key={value}
                 onClick={() => setBrand(value)}
-                className={`min-w-max border px-3 py-2 text-xs transition-colors ${brand === value ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:border-primary/50"}`}
+                className={`inline-flex min-h-11 min-w-max items-center border px-3 py-2 text-xs transition-colors ${brand === value ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:border-primary/50"}`}
               >
                 {BRAND_STORY_MAP[value]?.name ?? value}
               </button>
@@ -349,7 +355,7 @@ function ShopPage() {
             onClick={() => {
               setFocus("all");
             }}
-            className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === "all" ? "border-[#d4a53f] bg-[#d4a53f] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
+            className={`inline-flex min-h-11 min-w-max items-center border px-3 py-2 text-xs transition-colors ${focus === "all" ? "border-[#d4a53f] bg-[#d4a53f] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
           >
             Tudo
           </button>
@@ -359,7 +365,7 @@ function ShopPage() {
               key={item.id}
               aria-pressed={focus === item.id}
               onClick={() => setFocus(focus === item.id ? "all" : item.id)}
-              className={`min-w-max border px-3 py-2 text-xs transition-colors ${focus === item.id ? "border-[#d4a53f] bg-[#d4a53f] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
+              className={`inline-flex min-h-11 min-w-max items-center border px-3 py-2 text-xs transition-colors ${focus === item.id ? "border-[#d4a53f] bg-[#d4a53f] text-white" : "border-white/15 text-white/65 hover:border-white/35 hover:text-white"}`}
             >
               {item.label}{" "}
               <span aria-label="referências editoriais">
@@ -553,7 +559,7 @@ function ShopPage() {
                 Limpar filtros
               </Button>
               <Button className="mt-5 rounded-none" asChild>
-                <Link to="/b2b">Pedir referência</Link>
+                <Link to="/b2b">Pedir no B2B · referência</Link>
               </Button>
             </div>
           ) : (
@@ -658,7 +664,7 @@ function ShopPage() {
           </div>
           <Button className="w-fit rounded-none" asChild>
             <Link to="/b2b">
-              Pedir ajuda
+              Falar com a casa
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

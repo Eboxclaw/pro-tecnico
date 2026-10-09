@@ -37,36 +37,6 @@ const pt = {
       "Adiciona as ferramentas de que precisas. O carrinho fica guardado durante esta sessão.",
     checkoutNote: "Pagamento seguro com validação de preços no servidor.",
   },
-  home: {
-    badge: "Curadoria Japão + Europa",
-    title: "O melhor para cada regime de trabalho",
-    subtitle:
-      "Ferramenta escolhida por regime de trabalho, impacto, torsion, precisão, retenção, acesso estreito e 1000 V, com referências oficiais, medidas úteis e comparações claras.",
-    ctaShop: "Comprar ferramentas",
-    ctaPacks: "Ver kits profissionais",
-    packsTitle: "Kits por profissão",
-    packsSubtitle: "Seleções práticas para AVAC, eletricidade, manutenção, solar e canalização.",
-    brandsTitle: "Marcas que vale a pena conhecer",
-    brandsSubtitle:
-      "Fabricantes escolhidos pela especialização, qualidade de construção e utilidade no trabalho real.",
-    japanLabel: "Seleção japonesa",
-    japanTitle: "Referências japonesas para trabalho sério",
-    japanText:
-      "Aparafusamento, sockets, corte, medição, eletricidade e manutenção, organizados pela tarefa que tens pela frente.",
-    originNote: "Indicamos o país de fabrico quando está confirmado para a referência.",
-    pointsTitle: "Pontos REJENDARI",
-    pointsText:
-      "Cria conta, compra e acumula pontos para vantagens e descontos. Algumas campanhas podem ainda dar acesso a sorteios com participação gratuita.",
-    pointsCta: "Ver pontos e vantagens",
-    value1Title: "Escolha mais rápida",
-    value1Text:
-      "Organizamos por tarefa, compatibilidade e especificações para encontrares mais depressa a ferramenta certa.",
-    value2Title: "Kits para o trabalho",
-    value2Text:
-      "AVAC, eletricidade, manutenção, solar e canalização com níveis adaptados a diferentes necessidades.",
-    value3Title: "Vantagens que acompanham as compras",
-    value3Text: "A tua conta reúne pontos, convites, sorteios elegíveis e histórico num só lugar.",
-  },
   shop: {
     title: "Loja",
     subtitle: "Escolhe por tarefa, marca ou categoria e compara o que interessa antes de comprar.",
@@ -93,19 +63,6 @@ const pt = {
     whySelectedText:
       "Escolhemos ferramentas pela utilidade, construção, ergonomia e adequação ao trabalho profissional. A origem de fabrico é indicada quando está confirmada para a referência.",
   },
-  packs: {
-    title: "Kits por profissão",
-    subtitle:
-      "Três níveis para levares o essencial sem carregar ferramentas repetidas ou pouco úteis.",
-    core: "Core",
-    coreDesc: "A base essencial para começar bem equipado.",
-    compact: "Compact",
-    compactDesc: "Mais cobertura, sem perder mobilidade.",
-    pro: "Pro",
-    proDesc: "Seleção ampla para uso profissional diário.",
-    soon: "Disponível em breve",
-    cta: "Pedir proposta",
-  },
   points: {
     title: "Pontos e vantagens",
     subtitle:
@@ -123,6 +80,7 @@ const pt = {
     raffleFree: "A participação no sorteio é gratuita e não exige compra.",
     winners: "Vencedores anteriores",
     noWinners: "Ainda não há resultados para mostrar.",
+    noOpenRaffle: "Nenhum sorteio aberto agora — volta em breve.",
     rules: "Condições",
     rulesText:
       "Quando existir um sorteio ativo, o prémio, período de participação, elegibilidade e condições ficam publicados antes da participação.",
@@ -257,35 +215,6 @@ const en: Dict = {
     emptyCartHint: "Add tools and your cart stays saved in this session.",
     checkoutNote: "Secure checkout with server-side price validation.",
   },
-  home: {
-    badge: "Store in the works, opening soon",
-    title: "Professional tools chosen for the job",
-    subtitle:
-      "Japanese precision for European professionals. ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA and OLFA enter a short, technical and verified selection.",
-    ctaShop: "Browse the shop",
-    ctaPacks: "See packs by trade",
-    packsTitle: "Packs by trade",
-    packsSubtitle: "Sets designed for real work, in three tiers: Core, Compact and Pro.",
-    brandsTitle: "Japan, selected with purpose",
-    brandsSubtitle:
-      "ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA and OLFA are assessed for application, origin, support and availability.",
-    japanLabel: "Japanese selection",
-    japanTitle: "Precise tools. No noise.",
-    japanText:
-      "Driving, impact, precision, cutting, fastening and maintenance, organised by the real task, not marketing.",
-    originNote:
-      "Japanese brand and country of manufacture are verified separately for every product.",
-    pointsTitle: "Points & weekly draws",
-    pointsText:
-      "Buy, register and take part: points redeemable for a guaranteed discount and a weekly draw with free entry. The scratch card reveals an already-assigned prize.",
-    pointsCta: "How it works",
-    value1Title: "Technical selection",
-    value1Text: "A short catalog, verified products, full specs, EAN, VDE, measurements.",
-    value2Title: "Packs by trade",
-    value2Text: "HVAC, electrician, maintenance, solar and plumbing, ready to work.",
-    value3Title: "Points that mean discount",
-    value3Text: "A loyalty program with guaranteed value, never left to chance.",
-  },
   shop: {
     title: "Shop",
     subtitle: "Professional catalog, filter by brand, category and price.",
@@ -311,18 +240,6 @@ const en: Dict = {
     whySelectedText:
       "Selected for its application, construction and professional support. Manufacturing origin is only shown when confirmed for this SKU.",
   },
-  packs: {
-    title: "Packs by trade",
-    subtitle: "Our own sets, in three tiers for every stage of your career.",
-    core: "Core",
-    coreDesc: "The essentials to get started.",
-    compact: "Compact",
-    compactDesc: "The balance between coverage and transport.",
-    pro: "Pro",
-    proDesc: "Full coverage for demanding daily work.",
-    soon: "In preparation, opens with the catalog",
-    cta: "Notify me",
-  },
   points: {
     title: "Points & weekly draws",
     subtitle: "Loyalty program, guaranteed value, free entry into the weekly draw.",
@@ -340,6 +257,7 @@ const en: Dict = {
       "Free entry: all you need is an account and to opt in for the week. A purchase is never required.",
     winners: "Previous winners",
     noWinners: "No draws held yet.",
+    noOpenRaffle: "Nenhum sorteio aberto agora — volta em breve.",
     rules: "Rules",
     rulesText:
       "The draw is a promotion with a free alternative entry: no purchase required, prize announced in advance, registered winner and public rules. The scratch card is the reveal animation for an already-assigned prize.",
@@ -356,7 +274,7 @@ const en: Dict = {
     vat: "VAT number",
     trade: "Field of work",
     message: "Message",
-    submit: "Request pro account",
+    submit: "Pedir contacto comercial",
     success: "Request received. We reply on business days.",
     error: "Couldn't send. Check the fields and try again.",
   },
@@ -380,15 +298,15 @@ const en: Dict = {
     pending: "Legal text being prepared with our lawyer before the public opening.",
   },
   auth: {
-    title: "Sign in",
+    title: "Entrar na conta",
     subtitle: "Orders, points and draw entries.",
     email: "Email",
     password: "Password",
-    signIn: "Sign in",
-    signUp: "Create account",
+    signIn: "Entrar",
+    signUp: "Criar conta",
     needAccount: "No account? Create one, you get 50 points.",
     haveAccount: "Already registered? Sign in.",
-    google: "Continue with Google",
+    google: "Continuar com Google",
     googleUnavailable: "Google is unavailable right now.",
     or: "or",
     error: "Invalid credentials or email already in use.",
@@ -401,7 +319,7 @@ const en: Dict = {
     checkEmailTitle: "Confirm your email",
     checkEmailBody:
       "We sent a confirmation link. After confirming, sign in to activate points and referrals.",
-    checkEmailCta: "I've confirmed, sign in",
+    checkEmailCta: "Já confirmei, entrar",
     accountReady: "Account created. Welcome.",
   },
   account: {
@@ -471,37 +389,6 @@ const es: Dict = {
     emptyCartHint: "Añade herramientas y el carrito se guarda en esta sesión.",
     checkoutNote: "Pago seguro con validación de precios en el servidor.",
   },
-  home: {
-    badge: "Tienda en construcción, próxima apertura",
-    title: "Herramienta profesional elegida para el trabajo",
-    subtitle:
-      "Precisión japonesa para profesionales europeos. ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA y OLFA entran en una selección técnica, corta y verificada.",
-    ctaShop: "Ver la tienda",
-    ctaPacks: "Ver packs por oficio",
-    packsTitle: "Packs por oficio",
-    packsSubtitle:
-      "Conjuntos diseñados para el trabajo real, en tres niveles: Core, Compact y Pro.",
-    brandsTitle: "Japón, elegido con criterio",
-    brandsSubtitle:
-      "ANEX, VESSEL, Makita, Wera, Knipex, Bahco, TAJIMA y OLFA se evalúan por aplicación, origen, asistencia y disponibilidad.",
-    japanLabel: "Selección japonesa",
-    japanTitle: "Herramienta precisa. Sin ruido.",
-    japanText:
-      "Atornillado, impacto, precisión, corte, apriete y mantenimiento, organizados por la tarea real, no por el marketing.",
-    originNote:
-      "La marca japonesa y el país de fabricación se verifican por separado en cada producto.",
-    pointsTitle: "Puntos y sorteos semanales",
-    pointsText:
-      "Compra, regístrate y participa: puntos canjeables por descuento garantizado y un sorteo semanal con entrada gratuita. El rasca revela un premio ya asignado.",
-    pointsCta: "Cómo funciona",
-    value1Title: "Selección técnica",
-    value1Text:
-      "Catálogo corto, productos verificados y especificaciones completas, EAN, VDE, medidas.",
-    value2Title: "Packs por oficio",
-    value2Text: "HVAC, electricista, mantenimiento, solar y fontanería, listos para trabajar.",
-    value3Title: "Puntos que valen descuento",
-    value3Text: "Programa de fidelización con valor siempre garantizado, nunca a la suerte.",
-  },
   shop: {
     title: "Tienda",
     subtitle: "Catálogo profesional, filtra por marca, categoría y precio.",
@@ -528,18 +415,6 @@ const es: Dict = {
     whySelectedText:
       "Seleccionada por su aplicación, construcción y soporte profesional. El origen de fabricación solo se indica cuando está confirmado para este SKU.",
   },
-  packs: {
-    title: "Packs por oficio",
-    subtitle: "Conjuntos propios, en tres niveles para cada etapa de tu carrera.",
-    core: "Core",
-    coreDesc: "Las piezas esenciales para empezar.",
-    compact: "Compact",
-    compactDesc: "Equilibrio entre cobertura y transporte.",
-    pro: "Pro",
-    proDesc: "Cobertura completa para el trabajo diario exigente.",
-    soon: "En preparación, abre con el catálogo",
-    cta: "Avisadme",
-  },
   points: {
     title: "Puntos y sorteos semanales",
     subtitle:
@@ -558,6 +433,7 @@ const es: Dict = {
       "Participación gratuita: solo necesitas cuenta e inscribirte en la semana. Comprar nunca es obligatorio.",
     winners: "Ganadores anteriores",
     noWinners: "Aún no hay sorteos realizados.",
+    noOpenRaffle: "Nenhum sorteio aberto agora — volta em breve.",
     rules: "Reglamento",
     rulesText:
       "El sorteo es una promoción con alternativa de entrada gratuita: sin compra obligatoria, premio anunciado con antelación, ganador registrado y reglamento público. El rasca es la animación de revelación del premio ya asignado.",

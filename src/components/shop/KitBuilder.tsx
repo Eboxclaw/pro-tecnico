@@ -430,7 +430,7 @@ export function KitBuilder() {
                   }}
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  Envio a composição ao B2B
+                  Pedir no B2B · com a composição
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

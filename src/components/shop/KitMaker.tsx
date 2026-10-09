@@ -339,7 +339,7 @@ export function KitMaker() {
                     routeTree.gen ainda não refletem os novos params */}
                 <Link to="/b2b" search={b2bSearch as never}>
                   <Send className="mr-2 h-4 w-4" />
-                  Envio o meu kit ao B2B
+                  Pedir no B2B · o meu kit
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { CURATED_TOOL_REFERENCES } from "@/data/curated-tool-references";
 import { LEGENDARY_COMBOS } from "@/data/legendary-combos";
+import { Button } from "@/components/ui/button";
 
 type LegendaryCombo = {
   name: string;
@@ -14,12 +15,14 @@ type LegendaryCombo = {
 
 export function LegendaryCombos() {
   return (
-    <section className="section-reveal border-y border-border bg-[#1b1917] text-[#f5f0e5]">
-      <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6 lg:py-24">
+    <section className="section-reveal border-b border-border bg-[#1b1917] text-[#f5f0e5]">
+      <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
-            <p className="jp-label text-[#d4a53f]">伝説の組み合わせ · legendary combos</p>
-            <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+            <p className="jp-label text-[#d4a53f]">
+              <span className="font-mono">10</span> · 伝説の組み合わせ · legendary combos
+            </p>
+            <h2 className="mt-4 max-w-xl text-display-2">
               Combos que juntam fabricantes quando a combinação fica melhor.
             </h2>
           </div>
@@ -99,11 +102,18 @@ export function LegendaryCombos() {
           })}
         </div>
 
-        <p className="mt-8 border-t border-white/10 pt-5 font-mono text-[9px] uppercase leading-5 tracking-[0.13em] text-white/38">
-          Combos editoriais, não conjuntos fechados à venda. Isolamento do cabo não transforma uma
-          ferramenta comum em ferramenta para trabalho em tensão: a cadeia completa tem de ser
-          certificada.
-        </p>
+        <div className="mt-10 border-t border-white/10 pt-7">
+          <Button
+            asChild
+            size="lg"
+            className="rounded-none px-7 font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.25)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.38)]"
+          >
+            <Link to="/b2b">
+              Pedir no B2B · estes combos
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   );

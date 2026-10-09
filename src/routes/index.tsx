@@ -154,7 +154,7 @@ function Index() {
             procura da comunidade decide o que entra em produção.
           </p>
 
-          <div className="hero-rise hero-rise-4 mt-12 grid max-w-4xl grid-cols-2 gap-px border border-white/12 bg-white/12 sm:grid-cols-4">
+          <div className="hero-rise hero-rise-4 mt-12 grid max-w-4xl grid-cols-1 gap-px border border-white/12 bg-white/12 sm:grid-cols-2">
             {PIPELINE.map((step, index) => (
               <div key={step.kanji} className="relative bg-[#1b1917] p-4 sm:p-5">
                 <span className="absolute right-3 top-3 font-mono text-[9px] text-white/25">
@@ -212,7 +212,7 @@ function Index() {
                 <p className="jp-label text-[#e3c27c]">
                   <span className="mr-3 font-mono">01</span>注目のドロップ · featured drop
                 </p>
-                <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
+                <h2 className="mt-3 font-display text-4xl font-semibold text-white sm:text-5xl">
                   O primeiro system está em reservas.
                 </h2>
               </div>
@@ -249,7 +249,7 @@ function Index() {
             </div>
             <Button variant="outline" asChild className="rounded-none">
               <Link to="/packs">
-                Ver tudo no /packs
+                Ver kits e packs
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -260,7 +260,7 @@ function Index() {
               <Link
                 key={format.label}
                 to="/packs"
-                className="category-tile group flex min-h-44 flex-col bg-card p-5"
+                className="category-tile group flex min-h-40 flex-col bg-card p-5"
               >
                 <span className="flex items-center justify-between">
                   <span className="font-display text-3xl text-primary" aria-hidden>
@@ -306,7 +306,7 @@ function Index() {
               <div className="mt-7 flex flex-wrap gap-2">
                 <Button asChild className="rounded-none bg-black text-white hover:bg-black/85">
                   <Link to="/anex">
-                    O caderno ANEX
+                    A seleção ANEX ao detalhe
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -441,7 +441,7 @@ function Index() {
                 相談 · kit à medida
               </p>
             </div>
-            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1] tracking-[-0.05em]">
+            <h2 className="mt-4 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.05em] sm:text-5xl">
               Diz-nos o que já tens antes de comprares mais.
             </h2>
           </div>
@@ -454,7 +454,7 @@ function Index() {
             <div className="mt-6 flex flex-wrap gap-2">
               <Button className="rounded-none bg-black text-white hover:bg-black/85" asChild>
                 <Link to="/packs">
-                  Abrir o construtor
+                  Monta o teu kit
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

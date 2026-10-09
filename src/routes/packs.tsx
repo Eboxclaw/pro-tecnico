@@ -28,7 +28,7 @@ export const Route = createFileRoute("/packs")({
       {
         name: "description",
         content:
-          "Systems curados à volta das melhores ferramentas, ANEX 397, Wera Zyklop, com reservas sem pagar, target price aberto e procura da comunidade a decidir os próximos drops.",
+          "Systems curados à volta das melhores ferramentas, ANEX 397, Wera Zyklop, com reservas sem pagar, preço-alvo aberto e procura da comunidade a decidir os próximos drops.",
       },
       { property: "og:title", content: "Curated tool systems, REJENDARI" },
       { property: "og:type", content: "website" },
@@ -54,6 +54,15 @@ const OFFICIAL_SET_IDS = [
   "vessel-td6808tx",
   "vessel-900rt-7p",
 ];
+
+// Tabs do construtor: réplica do padrão PACK_TAB do KitBuilder (min-h-11, mono-caps,
+// ativa dourada com sombra), com texto claro para o fundo escuro da secção.
+const BUILDER_TAB_BASE =
+  "min-h-11 shrink-0 whitespace-nowrap border border-b-2 px-5 py-3 mono-caps transition-all duration-200";
+const BUILDER_TAB_ACTIVE =
+  "border-primary bg-primary font-semibold text-[#1b1917] shadow-[0_12px_32px_rgba(212,165,63,0.30)]";
+const BUILDER_TAB_INACTIVE =
+  "border-white/20 bg-transparent text-white/60 hover:border-primary/50 hover:text-[#e3c27c]";
 
 const TRADES: Array<{ key: string; icon: ToolGlyphName; label: string; desc: string }> = [
   { key: "hvac", icon: "hvac", label: "AVAC", desc: "Tubo, cobre e acesso difícil." },
@@ -132,8 +141,10 @@ function PacksPage() {
           <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
             <div className="flex flex-col gap-3 pb-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="jp-label text-[#e3c27c]">注目のドロップ · featured drop</p>
-                <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
+                <p className="jp-label text-[#e3c27c]">
+                  <span className="font-mono">01</span> · 注目のドロップ · featured drop
+                </p>
+                <h2 className="mt-3 text-display-2 text-white">
                   O primeiro drop está em reservas.
                 </h2>
               </div>
@@ -149,18 +160,19 @@ function PacksPage() {
 
       {/* ── construtor: tabs Modular | Kit Maker ─────────────── */}
       <section className="border-b border-border bg-[#1b1917]">
-        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-4 px-4 pt-10 sm:px-6">
-          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Modo do construtor">
+        <div className="mx-auto max-w-[1440px] px-4 pt-10 sm:px-6">
+          <p className="jp-label text-[#e3c27c]">
+            <span className="font-mono">02</span> · 組立 · construtor
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2" role="tablist" aria-label="Modo do construtor">
             <button
               type="button"
               role="tab"
               aria-selected={!makerMode}
               onClick={() => setMakerMode(false)}
               className={cn(
-                "border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.13em] transition-colors",
-                !makerMode
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-white/20 bg-transparent text-white/60 hover:border-[#e3c27c] hover:text-[#e3c27c]",
+                BUILDER_TAB_BASE,
+                !makerMode ? BUILDER_TAB_ACTIVE : BUILDER_TAB_INACTIVE,
               )}
             >
               Packs modulares
@@ -171,10 +183,8 @@ function PacksPage() {
               aria-selected={makerMode}
               onClick={() => setMakerMode(true)}
               className={cn(
-                "border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.13em] transition-colors",
-                makerMode
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-white/20 bg-transparent text-white/60 hover:border-[#e3c27c] hover:text-[#e3c27c]",
+                BUILDER_TAB_BASE,
+                makerMode ? BUILDER_TAB_ACTIVE : BUILDER_TAB_INACTIVE,
               )}
             >
               Kit Maker · guiado
@@ -187,15 +197,13 @@ function PacksPage() {
       <KitsShowcase />
 
       <section id="systems" className="scroll-mt-28 border-b border-border">
-        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="jp-label text-primary">
-                <span className="font-mono">01</span> · systems
+                <span className="font-mono">04</span> · systems
               </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-                Composições, não catálogos.
-              </h2>
+              <h2 className="mt-3 text-display-2">Composições, não catálogos.</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
               Cada system resolve um nível de trabalho. O investimento anterior continua útil quando
@@ -212,15 +220,13 @@ function PacksPage() {
       </section>
 
       <section id="modules" className="scroll-mt-28 border-b border-border bg-surface/45">
-        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="jp-label text-primary">
-                <span className="font-mono">02</span> · módulos
+                <span className="font-mono">05</span> · módulos
               </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-                Adiciona ao sistema que já possui.
-              </h2>
+              <h2 className="mt-3 text-display-2">Adiciona ao sistema que já possui.</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
               Módulos funcionais, PH, Torx, Hex, Lock, Reach, só entram se resolverem um problema
@@ -248,15 +254,13 @@ function PacksPage() {
       </section>
 
       <section id="lab" className="scroll-mt-28 border-b border-border">
-        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="jp-label text-primary">
-                <span className="font-mono">03</span> · 実験室 · lab
+                <span className="font-mono">06</span> · 実験室 · lab
               </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-                Combinações ainda em estudo.
-              </h2>
+              <h2 className="mt-3 text-display-2">Combinações ainda em estudo.</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
               O que vês no Lab não está à venda nem em reserva. Diz-nos que queres que exista, os
@@ -274,15 +278,13 @@ function PacksPage() {
 
       {comunidadeTemDados && (
         <section className="border-b border-border">
-          <div className="paper-panel mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+          <div className="paper-panel mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
             <div className="flex flex-col gap-4 pb-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="jp-label text-primary">
-                  <span className="font-mono">04</span> · 需要 · community demand
+                  <span className="font-mono">07</span> · 需要 · community demand
                 </p>
-                <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-                  A procura decide o próximo drop.
-                </h2>
+                <h2 className="mt-3 text-display-2">A procura decide o próximo drop.</h2>
               </div>
               <p className="max-w-xl text-sm leading-6 text-muted-foreground">
                 Reservas e likes reais de utilizadores registados. É assim que escolhemos o que
@@ -292,21 +294,21 @@ function PacksPage() {
 
             <div className="grid gap-4 lg:grid-cols-3">
               <CommunityDemandList
-                title="Most Wanted"
+                title="Mais desejados"
                 jp="一番人気"
                 systems={community.mostWanted}
                 realUnitsBySystem={realUnitsBySystem}
                 metric={(system) => `${realUnitsBySystem[system.id] ?? 0} unidades`}
               />
               <CommunityDemandList
-                title="Fastest Growing"
+                title="Crescimento mais rápido"
                 jp="急成長"
                 systems={community.fastestGrowing}
                 realUnitsBySystem={realUnitsBySystem}
                 metric={(system) => `${realLikesBySystem[system.id] ?? 0} likes`}
               />
               <CommunityDemandList
-                title="Almost Unlocked"
+                title="Quase desbloqueados"
                 jp="もうすぐ"
                 systems={community.almostUnlocked}
                 realUnitsBySystem={realUnitsBySystem}
@@ -320,11 +322,13 @@ function PacksPage() {
       )}
 
       <section className="border-b border-border bg-surface/45">
-        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
           <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="jp-label text-primary">メーカーセット · sets das próprias marcas</p>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+              <p className="jp-label text-primary">
+                <span className="font-mono">08</span> · メーカーセット · sets das próprias marcas
+              </p>
+              <h2 className="mt-3 text-display-2">
                 Conjuntos de origem. Peças pensadas em conjunto.
               </h2>
             </div>
@@ -383,8 +387,11 @@ function PacksPage() {
 
       <LegendaryCombos />
 
-      <section className="border-y border-border bg-surface">
-        <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+      <section className="border-b border-border bg-surface">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
+          <p className="jp-label text-primary">
+            <span className="font-mono">11</span> · 職業 · escolhe pelo teu ofício
+          </p>
           <div className="mt-7 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {TRADES.map((trade, index) => (
               <Link
@@ -405,7 +412,7 @@ function PacksPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:py-16">
+      <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
         <div className="paper-panel grid gap-7 p-7 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <div className="flex items-center gap-3">
@@ -414,9 +421,7 @@ function PacksPage() {
                 相談 · kit à medida
               </p>
             </div>
-            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1] tracking-[-0.05em]">
-              Diz-nos o que já tens antes de comprares mais.
-            </h2>
+            <h2 className="mt-4 text-display-2">Diz-nos o que já tens antes de comprares mais.</h2>
           </div>
           <div>
             <p className="text-sm leading-7 text-foreground/75">
@@ -427,7 +432,7 @@ function PacksPage() {
             </p>
             <Button className="mt-6 rounded-none bg-black text-white hover:bg-black/85" asChild>
               <Link to="/b2b">
-                Pedir proposta
+                Pedir no B2B · orçamento
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

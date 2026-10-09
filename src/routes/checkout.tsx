@@ -54,7 +54,7 @@ function CheckoutPage() {
           clientSecret: intent.clientSecret,
           appearance: {
             theme: "stripe",
-            variables: { colorPrimary: "#913d29", borderRadius: "0px" },
+            variables: { colorPrimary: "#d4a53f", borderRadius: "0px" },
           },
         }),
       );
@@ -140,7 +140,7 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
+    <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
       <div>
         <p className="jp-label text-primary">決済 · checkout</p>
         <h1 className="mt-4 font-display text-4xl font-semibold tracking-[-0.055em]">
@@ -245,7 +245,7 @@ function CheckoutPage() {
         )}
       </div>
 
-      <aside className="h-fit border border-border bg-surface p-6 lg:sticky lg:top-28">
+      <aside className="h-fit border border-border bg-surface p-6 lg:sticky lg:top-[var(--header-h,106px)]">
         <p className="tech-label text-muted-foreground">Resumo da encomenda</p>
         <ul className="mt-4 divide-y divide-border">
           {items.map((item) => (

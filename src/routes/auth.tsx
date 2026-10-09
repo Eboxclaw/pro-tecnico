@@ -167,7 +167,7 @@ function AuthPage() {
   }
 
   return (
-    <div className="mx-auto grid min-h-[720px] max-w-[1440px] border-x border-border lg:grid-cols-[1.05fr_0.95fr]">
+    <div className="mx-auto grid min-h-[100svh] max-w-[1440px] border-x border-border lg:grid-cols-[1.05fr_0.95fr]">
       <section className="relative hidden overflow-hidden border-r border-border bg-[#1b1917] lg:flex lg:flex-col lg:justify-between">
         <div className="washi-noise absolute inset-0 opacity-20" aria-hidden="true" />
         <div className="relative p-10 xl:p-14">
@@ -225,7 +225,7 @@ function AuthPage() {
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             {step === "email"
               ? "Entra com Google ou recebe um código de seis dígitos no email — sem password."
-              : `Enviámos um código de seis dígitos para ${email}. Vale pouco tempo, escreve-o aqui.`}
+              : `Enviámos um código de seis dígitos para ${email}.`}
           </p>
 
           {referralCode && step === "email" && (
@@ -346,10 +346,7 @@ function AuthPage() {
                 </button>
               </div>
 
-              <p className="mt-6 border border-border bg-background px-4 py-3 text-xs leading-5 text-muted-foreground">
-                Não chegou nada? Espera um minuto: os emails podem demorar ou cair no spam. Se o
-                email trouxer um link em vez de código, abre o link, entra na mesma.
-              </p>
+              <p className="mt-6 text-xs text-muted-foreground">Não chegou? Reenvia.</p>
             </>
           )}
         </div>

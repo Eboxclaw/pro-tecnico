@@ -69,7 +69,7 @@ function PackCard({ pack }: { pack: SmartPack }) {
                 params={{ id: tool.id }}
                 className="mono-caps mt-1 inline-flex items-center gap-1 text-primary hover:underline"
               >
-                Ficha <ArrowRight className="h-3 w-3" />
+                Ver ficha <ArrowRight className="h-3 w-3" />
               </Link>
             </div>
           </li>
@@ -87,7 +87,7 @@ function PackCard({ pack }: { pack: SmartPack }) {
         </p>
         <Button className="w-full rounded-none" asChild>
           <Link to="/b2b" search={{ pack: pack.id }}>
-            Pedir este pack no B2B
+            Pedir no B2B · este pack
           </Link>
         </Button>
       </footer>
@@ -98,17 +98,17 @@ function PackCard({ pack }: { pack: SmartPack }) {
 export function SmartPacksSection() {
   const trades = smartPacksByTrade();
   return (
-    <section className="section-reveal border-y border-border bg-[#1b1917] py-14 text-[#f5f0e5] lg:py-20">
+    <section className="section-reveal border-b border-border bg-[#1b1917] py-14 text-[#f5f0e5] lg:py-20">
       <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6">
         <RejendariSeal className="absolute -top-2 right-6 z-10 hidden h-20 w-20 opacity-80 lg:grid" />
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
             <p className="jp-label text-[#d4a53f]">
               <PackageCheck className="mr-2 inline h-3.5 w-3.5" />
-              一日の仕事 · packs para o dia de trabalho
+              <span className="font-mono">09</span> · 一日の仕事 · packs para o dia de trabalho
             </p>
-            <h2 className="mt-4 max-w-xl text-display-1">
-              Não vendemos mais ferramentas. Desenhamos o dia.
+            <h2 className="mt-4 max-w-xl text-display-2">
+              Primeiro o dia de trabalho. Depois a mala.
             </h2>
           </div>
           <p className="max-w-2xl text-body text-white/58">
@@ -133,7 +133,7 @@ export function SmartPacksSection() {
 
         {trades.map(({ trade, packs }) => (
           <div key={trade} className="mt-14">
-            <h3 className="text-display-2">{trade}</h3>
+            <h3 className="text-display-3">{trade}</h3>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[...packs]
                 .sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier))
