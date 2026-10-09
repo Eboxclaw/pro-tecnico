@@ -60,12 +60,14 @@ export const KIT_MAKER_STEPS: KitMakerStep[] = [
         id: "ratchet",
         labelPt: "Screwdriver ratchet",
         refIds: [
+          "anex-397-d",
           "klein-32305",
           "vessel-td70",
           "anex-525",
           "anex-307-d",
           "anex-370",
           "anex-431",
+          "bahco-808050p",
           "vessel-td24",
           "vessel-230w",
           "vessel-270bw",
@@ -74,14 +76,14 @@ export const KIT_MAKER_STEPS: KitMakerStep[] = [
       },
       {
         id: "vde",
-        labelPt: "Screwdriver VDE",
+        labelPt: "VDE · porta-bits e bits 1000 V",
         refIds: [
-          "anex-7900-2-100",
-          "anex-7920",
-          "vessel-960-ph2-100",
-          "vessel-200-ph2-100",
+          "wera-837i-ra-vde",
+          "wera-817-vde",
           "klein-32310ins",
           "klein-32604ins",
+          "anex-azm-2698",
+          "anex-azm-1598",
         ],
       },
       {
@@ -90,8 +92,8 @@ export const KIT_MAKER_STEPS: KitMakerStep[] = [
         refIds: [
           "milwaukee-shockwave-lock-73",
           "milwaukee-shockwave-lock-152",
+          "milwaukee-shockwave-lock-305",
           "anex-aqh-s1",
-          "wera-817-vde",
           "anex-amb-635",
         ],
       },
@@ -120,6 +122,15 @@ export const KIT_MAKER_STEPS: KitMakerStep[] = [
         refIds: ["vessel-exh-100", "vessel-exh-150", "vessel-dxh-350", "vessel-ibhbm-150"],
       },
       {
+        id: "milwaukee",
+        labelPt: "Milwaukee · a extensão é o lock",
+        refIds: [
+          "milwaukee-shockwave-lock-73",
+          "milwaukee-shockwave-lock-152",
+          "milwaukee-shockwave-lock-305",
+        ],
+      },
+      {
         id: "klein",
         labelPt: "Klein Dual-Lock",
         refIds: ["klein-32791", "klein-31088", "klein-31089"],
@@ -130,15 +141,10 @@ export const KIT_MAKER_STEPS: KitMakerStep[] = [
     id: "bits",
     topicPt: "Bits",
     jp: "先端",
-    questionPt: "Misto, impacto ou precisão? (multi-escolha — leva o que o dia pede)",
+    questionPt: "Impacto ou precisão? (multi-escolha — leva o que o dia pede)",
     notePt:
-      "Política da casa: Ryujin Black e Diamond apenas — impacto dimensionado ou diamante para o que escorrega. O misto 525 da ANEX cobre PH, Torx, hex e soquetes num estojo só.",
+      "Política da casa: Ryujin Black e Diamond apenas — impacto dimensionado ou diamante para o que escorrega. Kits com mini-roquete (o misto 525) vivem no passo de roquetes: são outra seção.",
     groups: [
-      {
-        id: "misto",
-        labelPt: "Misto ANEX 525",
-        refIds: ["anex-525-28b", "anex-525-9t", "anex-525-10b", "anex-acmh9-e"],
-      },
       {
         id: "black",
         labelPt: "Impacto · Black Ryujin",
@@ -178,7 +184,7 @@ export const KIT_MAKER_STEPS: KitMakerStep[] = [
       {
         id: "offset",
         labelPt: "1.º O nosso offset",
-        refIds: ["anex-aoa-17s1", "anex-aoa-19s3", "anex-aoa-30s1", "anex-436"],
+        refIds: ["anex-aoa-17s1", "anex-aoa-30s1", "anex-436"],
       },
       {
         id: "zyklop",
@@ -201,6 +207,10 @@ export const KIT_MAKER_STEPS: KitMakerStep[] = [
         refIds: [
           "anex-397-d",
           "anex-525",
+          "anex-525-28b",
+          "anex-525-9t",
+          "anex-525-10b",
+          "anex-acmh9-e",
           "anex-307-d",
           "anex-307-s1",
           "anex-aqh-s1",
