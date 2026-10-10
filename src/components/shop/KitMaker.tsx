@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, RefreshCw, Send, X } from "lucide-react";
 import { referenceById, type CuratedToolReference } from "@/data/curated-tool-references";
@@ -20,15 +20,6 @@ const SUB_TAB_BASE =
 const SUB_TAB_ACTIVE =
   "border-primary bg-primary font-semibold text-[#1b1917] shadow-[0_10px_28px_rgba(212,165,63,0.30)]";
 const SUB_TAB_INACTIVE = "text-foreground/70 hover:border-primary/50 hover:text-foreground";
-
-/** Mudanças de tab/passo nunca mexem no scroll: captura a posição, corre a
- *  mutação e repõe no frame seguinte — protege contra saltos quando o
- *  conteúdo acima encolhe ou o browser tenta reancorar. */
-const preserveScroll = (fn: () => void) => {
-  const y = window.scrollY;
-  fn();
-  requestAnimationFrame(() => window.scrollTo({ top: y, behavior: "auto" }));
-};
 
 /** Estado de um passo: peças escolhidas, ou um dos dois skips. */
 type StepState = { picked: string[]; mode: "picked" | "owned" | "notneeded" | null };
@@ -95,19 +86,46 @@ function MakerOptionCard({
 }
 
 /**
- * Kit Maker — wizard guiado: nome, sequência de cartões multi-escolha com
- * "já tenho" / "não preciso", e o resumo final com pedido B2B.
+ * Kit Maker — bloco de entrada compacto + wizard guiado dentro de uma modal
+ * popup: nome, sequência de cartões multi-escolha com "já tenho" / "não
+ * preciso" e o resumo final com pedido B2B — tudo no mesmo card centrado.
+ * Fechar na cruz (ou Escape) preserva o progresso; o bloco de entrada passa a
+ * mostrar "Continuar o meu kit" até o pedido seguir para o B2B ou Recomeçar.
  */
 export function KitMaker() {
-  const [started, setStarted] = useState(false);
+  const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [stepIndex, setStepIndex] = useState(0);
   const [branchByStep, setBranchByStep] = useState<Record<string, string>>({});
+  const [groupByStep, setGroupByStep] = useState<Record<string, string>>({});
   const [states, setStates] = useState<Record<string, StepState>>({});
 
+  const cardRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const prevOpen = useRef(false);
+
   const step: KitMakerStep | undefined = KIT_MAKER_STEPS[stepIndex];
-  const isSummary = started && !step;
-  const progress = started ? Math.min(stepIndex + 1, KIT_MAKER_STEPS.length) : 0;
+  const isSummary = stepIndex >= KIT_MAKER_STEPS.length;
+  const progress = Math.min(stepIndex + 1, KIT_MAKER_STEPS.length);
+  const hasProgress = stepIndex > 0 || Object.keys(states).length > 0;
+
+  // ── acessibilidade da modal: foco no card ao abrir e fechar com Escape ──
+  useEffect(() => {
+    if (!open) return;
+    cardRef.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // ao fechar, o foco regressa ao CTA do bloco de entrada
+  useEffect(() => {
+    if (prevOpen.current && !open) triggerRef.current?.focus();
+    prevOpen.current = open;
+  }, [open]);
 
   const stateOf = (id: string): StepState => states[id] ?? EMPTY_STATE;
 
@@ -138,9 +156,6 @@ export function KitMaker() {
     return s.branches?.find((b) => b.id === wanted) ?? s.branches?.[0];
   };
 
-  // sub-tabs temáticas (groups) por passo — ex.: roquetes na ordem de batalha
-  const [groupByStep, setGroupByStep] = useState<Record<string, string>>({});
-
   const activeGroup = (s: KitMakerStep) => {
     const wanted = groupByStep[s.id] ?? s.groups?.[0]?.id;
     return s.groups?.find((g) => g.id === wanted) ?? s.groups?.[0];
@@ -154,11 +169,27 @@ export function KitMaker() {
 
   const resolve = (refId: string) => referenceById(refId);
 
+  /** Mudanças de tab/skip nunca mexem no scroll: captura o scrollTop da área
+   *  scrollável do card e repõe no frame seguinte. */
+  const preserveScroll = (fn: () => void) => {
+    const el = scrollRef.current;
+    const top = el?.scrollTop ?? 0;
+    fn();
+    requestAnimationFrame(() => el?.scrollTo({ top, behavior: "auto" }));
+  };
+
+  /** Mudança de passo/resumo: o conteúdo novo começa no topo do card. */
+  const goToStep = (next: number) => {
+    setStepIndex(next);
+    requestAnimationFrame(() => scrollRef.current?.scrollTo({ top: 0, behavior: "auto" }));
+  };
+
   const reset = () => {
-    setStarted(false);
+    setOpen(false);
     setName("");
     setStepIndex(0);
     setBranchByStep({});
+    setGroupByStep({});
     setStates({});
   };
 
@@ -178,33 +209,25 @@ export function KitMaker() {
     mksel: encodeSelection() || undefined,
   };
 
-  // ── INTRO ──
-  if (!started) {
-    return (
+  const pickedSteps = KIT_MAKER_STEPS.map((s) => ({ step: s, st: stateOf(s.id) }));
+  const totalPicked = pickedSteps.reduce((sum, { st }) => sum + st.picked.length, 0);
+
+  return (
+    <>
+      {/* ── BLOCO DE ENTRADA (compacto) ── */}
       <section className="border-b border-border bg-surface/45">
-        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-          <div className="mx-auto max-w-3xl">
-            <p className="jp-label text-primary">キットメーカー · kit maker</p>
-            <h2 className="mt-4 text-display-1">
-              Diz-nos o teu nome.
-              <br />
-              <span className="text-primary">O kit constrói-se ao teu ritmo.</span>
-            </h2>
+        <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:py-10">
+          <div className="mx-auto flex max-w-4xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0">
+              <p className="jp-label text-primary">キットメーカー · kit maker</p>
+              <h2 className="mt-2 text-display-1">Faz o teu kit.</h2>
+              <p className="mt-3 border-l-2 border-primary pl-3 font-display text-base italic leading-relaxed text-foreground/90 sm:text-lg">
+                light weight, high reach <span className="not-italic text-primary">·</span> low
+                effort, high outcome
+              </p>
+            </div>
 
-            <p className="mt-6 border-l-2 border-primary pl-4 font-display text-lg italic leading-relaxed text-foreground/90 sm:text-xl">
-              light weight, high reach <span className="not-italic text-primary">·</span> low
-              effort, high outcome
-            </p>
-
-            <p className="mt-5 max-w-2xl text-body text-muted-foreground">
-              Pensamos em ferramentas como <span className="text-foreground">sinergias</span> e não
-              como objectos individuais: cada cartão pergunta um gesto do teu dia, cada escolha
-              completa a anterior. Sem preços — a fórmula termina em{" "}
-              <span className="font-display text-base font-semibold text-primary">?</span> e o
-              pedido segue para o B2B.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="w-full shrink-0 sm:w-80">
               <input
                 type="text"
                 value={name}
@@ -217,372 +240,400 @@ export function KitMaker() {
                 )}
               />
               <Button
+                ref={triggerRef}
                 size="lg"
-                className="shrink-0 rounded-none px-7 text-sm font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.25)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.38)]"
-                onClick={() => setStarted(true)}
+                className="mt-3 w-full rounded-none px-7 text-sm font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.25)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.38)]"
+                onClick={() => setOpen(true)}
                 disabled={!name.trim()}
               >
-                Quero o meu kit à medida
+                {hasProgress ? "Continuar o meu kit" : "Quero o meu kit à medida"}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </div>
-            <p className="mt-3 text-xs leading-5 text-muted-foreground">
-              <span className="font-display text-sm font-semibold text-foreground">
-                {KIT_MAKER_STEPS.length} passos.
-              </span>{" "}
-              Zero pressa. O kit sai à tua medida.
-            </p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // ── RESUMO ──
-  if (isSummary) {
-    const picked = KIT_MAKER_STEPS.map((s) => ({
-      step: s,
-      st: stateOf(s.id),
-    }));
-    const totalPicked = picked.reduce((sum, { st }) => sum + st.picked.length, 0);
-    return (
-      <section className="border-b border-border bg-surface/45">
-        <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-          <div className="mx-auto max-w-4xl">
-            <p className="jp-label text-primary">完成 · o teu kit</p>
-            <h2 className="mt-4 text-display-1">
-              O teu kit, <span className="text-primary">{name.trim()}</span>.
-            </h2>
-            <p className="mt-4 max-w-2xl text-body text-muted-foreground">
-              {totalPicked} peças pensadas como sinergia — light weight, high reach; low effort,
-              high outcome. A fórmula:{" "}
-              <span className="font-display text-foreground">tudo isto = </span>
-              <span className="font-display text-3xl text-primary">?</span>
-            </p>
-
-            <div className="mt-8 space-y-5">
-              {picked.map(({ step: s, st }) => {
-                const tools = st.picked.map(resolve).filter(Boolean);
-                return (
-                  <div key={s.id} className="border border-border bg-card p-5">
-                    <div className="flex flex-wrap items-baseline justify-between gap-3">
-                      <h3 className="font-display text-lg font-semibold tracking-[-0.03em]">
-                        {s.topicPt}{" "}
-                        <span className="jp-label ml-2 text-muted-foreground">{s.jp}</span>
-                      </h3>
-                      {st.mode === "owned" && (
-                        <span className="inline-flex items-center gap-1.5 border border-primary/40 bg-primary/10 px-2 py-0.5 mono-caps text-primary">
-                          <Check className="h-3 w-3" aria-hidden /> já tenho
-                        </span>
-                      )}
-                      {st.mode === "notneeded" && (
-                        <span className="inline-flex items-center gap-1.5 border border-border px-2 py-0.5 mono-caps text-muted-foreground">
-                          <X className="h-3 w-3" aria-hidden /> não preciso
-                        </span>
-                      )}
-                      {st.mode === "picked" && (
-                        <span className="mono-caps text-primary">
-                          {st.picked.length} escolhida{st.picked.length > 1 ? "s" : ""}
-                        </span>
-                      )}
-                    </div>
-                    {tools.length > 0 && (
-                      <ul className="mt-3 flex flex-wrap gap-2">
-                        {tools.map(
-                          (tool) =>
-                            tool && (
-                              <li
-                                key={tool.id}
-                                className="flex items-center gap-2.5 border border-border bg-background/50 py-1 pl-1 pr-3 transition-colors duration-200 hover:border-primary/50"
-                              >
-                                <span className="product-plate block h-8 w-8 shrink-0 overflow-hidden border border-border">
-                                  {tool.imageUrl ? (
-                                    <ProductImage
-                                      src={tool.imageUrl}
-                                      alt={tool.imageAlt ?? tool.namePt}
-                                      className="h-full w-full object-contain p-0.5"
-                                      loading="lazy"
-                                    />
-                                  ) : (
-                                    <ProductMonogram
-                                      brand={tool.brand}
-                                      label={tool.namePt}
-                                      className="flex h-full w-full items-center justify-center"
-                                    />
-                                  )}
-                                </span>
-                                <span className="min-w-0">
-                                  <span className="block truncate text-xs font-medium text-foreground/90">
-                                    {tool.brand} {tool.model}
-                                  </span>
-                                  <span className="mono-caps block truncate text-muted-foreground">
-                                    {tool.namePt}
-                                  </span>
-                                </span>
-                              </li>
-                            ),
-                        )}
-                      </ul>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button
-                size="lg"
-                className="rounded-none px-7 font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.25)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.38)]"
-                asChild
-              >
-                {/* maker/mksel são aceites no validateSearch da rota /b2b; o
-                    routeTree.gen ainda não refletem os novos params */}
-                <Link to="/b2b" search={b2bSearch as never}>
-                  <Send className="mr-2 h-4 w-4" />
-                  Pedir no B2B · o meu kit
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-none px-5" onClick={reset}>
-                <RefreshCw className="mr-2 h-4 w-4" />
-                Recomeçar do zero
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // ── PASSO CORRENTE ──
-  if (!step) return null;
-  const st = stateOf(step.id);
-  const branch = activeBranch(step);
-
-  return (
-    <section className="border-b border-border bg-surface/45">
-      <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:py-20">
-        {/* progresso — barra expressiva: mais alta, com contagem e marcas visíveis */}
-        <div className="mx-auto max-w-4xl">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="mono-caps text-muted-foreground">
-              passo{" "}
-              <span className="font-display text-xl font-semibold leading-none text-primary">
-                {progress}
-              </span>
-              <span className="text-muted-foreground/70">/{KIT_MAKER_STEPS.length}</span> ·{" "}
-              {name.trim()}
-            </p>
-            <div className="flex flex-wrap gap-1.5" aria-hidden>
-              {KIT_MAKER_STEPS.map((s, i) => (
-                <span
-                  key={s.id}
-                  className={cn(
-                    "h-2.5 w-8 transition-all duration-500",
-                    i < stepIndex && "bg-primary",
-                    i === stepIndex &&
-                      "kit-step-dot scale-y-110 bg-primary shadow-[0_0_14px_rgba(212,165,63,0.6)]",
-                    i > stepIndex && "bg-border",
-                  )}
-                />
-              ))}
-            </div>
-          </div>
-          <div
-            className="mt-3 h-3 w-full overflow-hidden rounded-full bg-border shadow-[inset_0_1px_3px_rgba(0,0,0,0.35)]"
-            role="progressbar"
-            aria-valuenow={progress}
-            aria-valuemin={0}
-            aria-valuemax={KIT_MAKER_STEPS.length}
-            aria-label={`passo ${progress} de ${KIT_MAKER_STEPS.length}`}
-          >
-            <div
-              className="kit-progress-fill h-full rounded-full bg-gradient-to-r from-[#a87c1f] via-primary to-[#e3c27c] shadow-[0_0_18px_rgba(212,165,63,0.55)] transition-[width] duration-500 ease-out"
-              style={{ width: `${(progress / KIT_MAKER_STEPS.length) * 100}%` }}
-            />
-          </div>
-        </div>
-
-        {/* cartão do passo */}
-        <div
-          key={step.id}
-          className="kit-card-enter mx-auto mt-8 max-w-4xl border border-border bg-card shadow-[0_24px_60px_rgba(20,17,14,0.35)]"
-        >
-          <div className="relative overflow-hidden border-b border-border p-6 sm:p-8">
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -top-3 right-4 select-none font-display text-6xl font-semibold leading-none text-primary/10 sm:-top-4 sm:right-8 sm:text-7xl"
-            >
-              {step.jp}
-            </span>
-            <div className="relative flex flex-wrap items-baseline gap-x-3">
-              <h3 className="text-display-2">{step.topicPt}</h3>
-              <p className="jp-label text-primary">{step.jp}</p>
-            </div>
-            <p className="relative mt-2 text-xl font-medium leading-snug tracking-[-0.01em] text-foreground">
-              {step.questionPt}
-            </p>
-            {step.notePt && (
-              <p className="relative mt-2 text-xs leading-5 text-muted-foreground/80">
-                {step.notePt}
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                <span className="font-display text-sm font-semibold text-foreground">
+                  {KIT_MAKER_STEPS.length} passos.
+                </span>{" "}
+                Zero pressa, sem preços — a fórmula termina em{" "}
+                <span className="font-display font-semibold text-primary">?</span> e o pedido segue
+                para o B2B.
               </p>
-            )}
-          </div>
-
-          <div className="p-6 sm:p-8">
-            {step.branches && (
-              <div
-                role="tablist"
-                aria-label={`${step.topicPt}: escolhe o ramo`}
-                className="tab-rail -mx-1 flex items-end gap-1.5 overflow-x-auto border-b border-border px-1"
-              >
-                {step.branches.map((b) => (
-                  <button
-                    key={b.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={branch?.id === b.id}
-                    onClick={() =>
-                      preserveScroll(() =>
-                        setBranchByStep((prev) => ({ ...prev, [step.id]: b.id })),
-                      )
-                    }
-                    className={cn(
-                      SUB_TAB_BASE,
-                      FOCUS_RING,
-                      branch?.id === b.id ? SUB_TAB_ACTIVE : SUB_TAB_INACTIVE,
-                    )}
-                  >
-                    {b.labelPt}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {!step.branches && step.groups && (
-              <div
-                role="tablist"
-                aria-label={`${step.topicPt}: sub-tabs`}
-                className="tab-rail -mx-1 flex items-end gap-1.5 overflow-x-auto border-b border-border px-1"
-              >
-                {step.groups.map((g) => (
-                  <button
-                    key={g.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={activeGroup(step)?.id === g.id}
-                    onClick={() =>
-                      preserveScroll(() => setGroupByStep((prev) => ({ ...prev, [step.id]: g.id })))
-                    }
-                    className={cn(
-                      SUB_TAB_BASE,
-                      FOCUS_RING,
-                      activeGroup(step)?.id === g.id ? SUB_TAB_ACTIVE : SUB_TAB_INACTIVE,
-                    )}
-                  >
-                    {g.labelPt}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            <div
-              className={cn(
-                "mt-4 grid grid-cols-1 gap-2 min-[480px]:grid-cols-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4",
-                (step.branches || step.groups) && "border-t border-border/60 pt-4",
-              )}
-            >
-              {activeRefIds(step).map((refId) => {
-                const tool = resolve(refId);
-                if (!tool) return null;
-                return (
-                  <MakerOptionCard
-                    key={refId}
-                    tool={tool}
-                    selected={st.mode === "picked" && st.picked.includes(refId)}
-                    disabled={st.mode !== null && st.mode !== "picked"}
-                    onToggle={() => togglePick(step.id, refId)}
-                  />
-                );
-              })}
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-2.5">
-              <p className="mono-caps text-muted-foreground/70">ou:</p>
-              <button
-                type="button"
-                onClick={() => preserveScroll(() => markSkip(step.id, "owned"))}
-                aria-pressed={st.mode === "owned"}
-                className={cn(
-                  "inline-flex min-h-11 items-center gap-2 border px-5 mono-caps transition-all duration-200",
-                  FOCUS_RING,
-                  st.mode === "owned"
-                    ? "border-primary bg-primary/15 text-foreground shadow-[0_8px_24px_rgba(212,165,63,0.16)]"
-                    : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
-                )}
-              >
-                <span
-                  className={cn(
-                    "flex h-4.5 w-4.5 items-center justify-center rounded-full border transition-colors duration-200",
-                    st.mode === "owned"
-                      ? "border-primary bg-primary text-[#1b1917]"
-                      : "border-current",
-                  )}
-                >
-                  <Check className="h-2.5 w-2.5" strokeWidth={4} aria-hidden />
-                </span>
-                já tenho
-              </button>
-              <button
-                type="button"
-                onClick={() => preserveScroll(() => markSkip(step.id, "notneeded"))}
-                aria-pressed={st.mode === "notneeded"}
-                className={cn(
-                  "inline-flex min-h-11 items-center gap-2 border px-5 mono-caps transition-all duration-200",
-                  FOCUS_RING,
-                  st.mode === "notneeded"
-                    ? "border-primary bg-primary/15 text-foreground shadow-[0_8px_24px_rgba(212,165,63,0.16)]"
-                    : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
-                )}
-              >
-                <span
-                  className={cn(
-                    "flex h-4.5 w-4.5 items-center justify-center rounded-full border transition-colors duration-200",
-                    st.mode === "notneeded"
-                      ? "border-primary bg-primary text-[#1b1917]"
-                      : "border-current",
-                  )}
-                >
-                  <X className="h-2.5 w-2.5" strokeWidth={4} aria-hidden />
-                </span>
-                não preciso
-              </button>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* navegação — mantém o contexto de scroll entre passos */}
-        <div className="mx-auto mt-6 flex max-w-4xl items-center justify-between gap-3">
-          <Button
-            variant="outline"
-            className="min-h-11 rounded-none px-5 py-3"
-            onClick={() => preserveScroll(() => setStepIndex((i) => Math.max(0, i - 1)))}
-            disabled={stepIndex === 0}
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Anterior
-          </Button>
-          <Button
-            className="min-h-11 rounded-none px-5 py-3 font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.22)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.35)]"
-            onClick={() =>
-              preserveScroll(() => setStepIndex((i) => Math.min(KIT_MAKER_STEPS.length, i + 1)))
+      {/* ── MODAL DO WIZARD ── */}
+      {open && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-background/60 backdrop-blur-sm sm:items-center sm:p-6">
+          <div
+            ref={cardRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={
+              isSummary
+                ? "O teu kit — resumo final"
+                : step
+                  ? `Faz o teu kit — passo ${progress} de ${KIT_MAKER_STEPS.length}: ${step.topicPt}`
+                  : "Faz o teu kit"
             }
+            tabIndex={-1}
+            className="absolute inset-x-3 bottom-6 top-6 flex min-h-0 flex-col overflow-hidden rounded-none border border-border bg-card shadow-[0_40px_120px_rgba(0,0,0,0.55)] outline-none sm:relative sm:max-h-[85vh] sm:w-full sm:max-w-2xl"
           >
-            {stepIndex === KIT_MAKER_STEPS.length - 1 ? "Ver o meu kit" : "Seguinte"}
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+            {/* header do card */}
+            <div className="flex items-start justify-between gap-4 border-b border-border p-5 sm:p-6">
+              {isSummary ? (
+                <div className="min-w-0">
+                  <p className="jp-label text-primary">完成 · o teu kit</p>
+                  <h3 className="mt-1 text-display-2">
+                    O teu kit, <span className="text-primary">{name.trim()}</span>.
+                  </h3>
+                </div>
+              ) : (
+                step && (
+                  <div className="min-w-0">
+                    <p className="jp-label text-primary">{step.jp}</p>
+                    <h3 className="mt-1 text-display-2">{step.topicPt}</h3>
+                  </div>
+                )
+              )}
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Fechar o kit maker"
+                className={cn(
+                  "inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border text-muted-foreground transition-all duration-200 hover:border-primary hover:text-foreground",
+                  FOCUS_RING,
+                )}
+              >
+                <X className="h-5 w-5" aria-hidden />
+              </button>
+            </div>
+
+            {/* conteúdo scrollável do card */}
+            <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
+              {isSummary ? (
+                /* ── RESUMO (dentro da modal) ── */
+                <div className="kit-card-enter">
+                  <p className="text-body text-muted-foreground">
+                    {totalPicked} peças pensadas como sinergia — light weight, high reach; low
+                    effort, high outcome. A fórmula:{" "}
+                    <span className="font-display text-foreground">tudo isto = </span>
+                    <span className="font-display text-3xl text-primary">?</span>
+                  </p>
+
+                  <div className="mt-5 space-y-4">
+                    {pickedSteps.map(({ step: s, st }) => {
+                      const tools = st.picked.map(resolve).filter(Boolean);
+                      return (
+                        <div key={s.id} className="border border-border bg-background/40 p-4">
+                          <div className="flex flex-wrap items-baseline justify-between gap-3">
+                            <h4 className="font-display text-lg font-semibold tracking-[-0.03em]">
+                              {s.topicPt}{" "}
+                              <span className="jp-label ml-2 text-muted-foreground">{s.jp}</span>
+                            </h4>
+                            {st.mode === "owned" && (
+                              <span className="inline-flex items-center gap-1.5 border border-primary/40 bg-primary/10 px-2 py-0.5 mono-caps text-primary">
+                                <Check className="h-3 w-3" aria-hidden /> já tenho
+                              </span>
+                            )}
+                            {st.mode === "notneeded" && (
+                              <span className="inline-flex items-center gap-1.5 border border-border px-2 py-0.5 mono-caps text-muted-foreground">
+                                <X className="h-3 w-3" aria-hidden /> não preciso
+                              </span>
+                            )}
+                            {st.mode === "picked" && (
+                              <span className="mono-caps text-primary">
+                                {st.picked.length} escolhida{st.picked.length > 1 ? "s" : ""}
+                              </span>
+                            )}
+                          </div>
+                          {tools.length > 0 && (
+                            <ul className="mt-3 flex flex-wrap gap-2">
+                              {tools.map(
+                                (tool) =>
+                                  tool && (
+                                    <li
+                                      key={tool.id}
+                                      className="flex items-center gap-2.5 border border-border bg-background/50 py-1 pl-1 pr-3 transition-colors duration-200 hover:border-primary/50"
+                                    >
+                                      <span className="product-plate block h-8 w-8 shrink-0 overflow-hidden border border-border">
+                                        {tool.imageUrl ? (
+                                          <ProductImage
+                                            src={tool.imageUrl}
+                                            alt={tool.imageAlt ?? tool.namePt}
+                                            className="h-full w-full object-contain p-0.5"
+                                            loading="lazy"
+                                          />
+                                        ) : (
+                                          <ProductMonogram
+                                            brand={tool.brand}
+                                            label={tool.namePt}
+                                            className="flex h-full w-full items-center justify-center"
+                                          />
+                                        )}
+                                      </span>
+                                      <span className="min-w-0">
+                                        <span className="block truncate text-xs font-medium text-foreground/90">
+                                          {tool.brand} {tool.model}
+                                        </span>
+                                        <span className="mono-caps block truncate text-muted-foreground">
+                                          {tool.namePt}
+                                        </span>
+                                      </span>
+                                    </li>
+                                  ),
+                              )}
+                            </ul>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : (
+                step && (
+                  <div key={step.id} className="kit-card-enter">
+                    {/* progresso compacto: contagem + segmentos + barra fina */}
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="mono-caps text-muted-foreground">
+                        passo{" "}
+                        <span className="font-display text-lg font-semibold leading-none text-primary">
+                          {progress}
+                        </span>
+                        <span className="text-muted-foreground/70">/{KIT_MAKER_STEPS.length}</span>{" "}
+                        · {name.trim()}
+                      </p>
+                      <div className="flex flex-wrap gap-1" aria-hidden>
+                        {KIT_MAKER_STEPS.map((s, i) => (
+                          <span
+                            key={s.id}
+                            className={cn(
+                              "h-1.5 w-5 transition-all duration-500 sm:w-6",
+                              i < stepIndex && "bg-primary",
+                              i === stepIndex &&
+                                "kit-step-dot scale-y-110 bg-primary shadow-[0_0_10px_rgba(212,165,63,0.6)]",
+                              i > stepIndex && "bg-border",
+                            )}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <div
+                      className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-border shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)]"
+                      role="progressbar"
+                      aria-valuenow={progress}
+                      aria-valuemin={0}
+                      aria-valuemax={KIT_MAKER_STEPS.length}
+                      aria-label={`passo ${progress} de ${KIT_MAKER_STEPS.length}`}
+                    >
+                      <div
+                        className="kit-progress-fill h-full rounded-full bg-gradient-to-r from-[#a87c1f] via-primary to-[#e3c27c] shadow-[0_0_12px_rgba(212,165,63,0.55)] transition-[width] duration-500 ease-out"
+                        style={{ width: `${(progress / KIT_MAKER_STEPS.length) * 100}%` }}
+                      />
+                    </div>
+
+                    {/* pergunta */}
+                    <p className="mt-4 text-lg font-medium leading-snug tracking-[-0.01em] text-foreground sm:text-xl">
+                      {step.questionPt}
+                    </p>
+                    {step.notePt && (
+                      <p className="mt-1.5 text-xs leading-5 text-muted-foreground/80">
+                        {step.notePt}
+                      </p>
+                    )}
+
+                    {/* sub-tabs temáticas (ramos / grupos) */}
+                    {step.branches && (
+                      <div
+                        role="tablist"
+                        aria-label={`${step.topicPt}: escolhe o ramo`}
+                        className="tab-rail -mx-1 mt-4 flex items-end gap-1.5 overflow-x-auto border-b border-border px-1"
+                      >
+                        {step.branches.map((b) => (
+                          <button
+                            key={b.id}
+                            type="button"
+                            role="tab"
+                            aria-selected={activeBranch(step)?.id === b.id}
+                            onClick={() =>
+                              preserveScroll(() =>
+                                setBranchByStep((prev) => ({ ...prev, [step.id]: b.id })),
+                              )
+                            }
+                            className={cn(
+                              SUB_TAB_BASE,
+                              FOCUS_RING,
+                              activeBranch(step)?.id === b.id ? SUB_TAB_ACTIVE : SUB_TAB_INACTIVE,
+                            )}
+                          >
+                            {b.labelPt}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    {!step.branches && step.groups && (
+                      <div
+                        role="tablist"
+                        aria-label={`${step.topicPt}: sub-tabs`}
+                        className="tab-rail -mx-1 mt-4 flex items-end gap-1.5 overflow-x-auto border-b border-border px-1"
+                      >
+                        {step.groups.map((g) => (
+                          <button
+                            key={g.id}
+                            type="button"
+                            role="tab"
+                            aria-selected={activeGroup(step)?.id === g.id}
+                            onClick={() =>
+                              preserveScroll(() =>
+                                setGroupByStep((prev) => ({ ...prev, [step.id]: g.id })),
+                              )
+                            }
+                            className={cn(
+                              SUB_TAB_BASE,
+                              FOCUS_RING,
+                              activeGroup(step)?.id === g.id ? SUB_TAB_ACTIVE : SUB_TAB_INACTIVE,
+                            )}
+                          >
+                            {g.labelPt}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* cards de opção — 2 colunas em mobile, 3 dentro da modal */}
+                    <div
+                      className={cn(
+                        "mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3",
+                        (step.branches || step.groups) && "border-t border-border/60 pt-4",
+                      )}
+                    >
+                      {activeRefIds(step).map((refId) => {
+                        const tool = resolve(refId);
+                        if (!tool) return null;
+                        return (
+                          <MakerOptionCard
+                            key={refId}
+                            tool={tool}
+                            selected={
+                              stateOf(step.id).mode === "picked" &&
+                              stateOf(step.id).picked.includes(refId)
+                            }
+                            disabled={
+                              stateOf(step.id).mode !== null && stateOf(step.id).mode !== "picked"
+                            }
+                            onToggle={() => togglePick(step.id, refId)}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+
+            {/* footer do card */}
+            <div className="border-t border-border p-4 sm:px-6 sm:py-4">
+              {isSummary ? (
+                /* ── RESUMO: pedido B2B + recomeçar ── */
+                <div className="flex flex-wrap items-center gap-3">
+                  <Button
+                    className="min-h-11 flex-1 rounded-none px-5 font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.25)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.38)] sm:flex-none"
+                    asChild
+                  >
+                    {/* maker/mksel são aceites no validateSearch da rota /b2b; o
+                        routeTree.gen ainda não refletem os novos params */}
+                    <Link to="/b2b" search={b2bSearch as never}>
+                      <Send className="mr-2 h-4 w-4" />
+                      Pedir no B2B · o meu kit
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button variant="outline" className="min-h-11 rounded-none px-5" onClick={reset}>
+                    <RefreshCw className="mr-2 h-4 w-4" />
+                    Recomeçar do zero
+                  </Button>
+                </div>
+              ) : (
+                step && (
+                  <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <p className="mono-caps text-muted-foreground/70">ou:</p>
+                      <button
+                        type="button"
+                        onClick={() => preserveScroll(() => markSkip(step.id, "owned"))}
+                        aria-pressed={stateOf(step.id).mode === "owned"}
+                        className={cn(
+                          "inline-flex min-h-11 items-center gap-2 border px-4 mono-caps transition-all duration-200 sm:px-5",
+                          FOCUS_RING,
+                          stateOf(step.id).mode === "owned"
+                            ? "border-primary bg-primary/15 text-foreground shadow-[0_8px_24px_rgba(212,165,63,0.16)]"
+                            : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            "flex h-4.5 w-4.5 items-center justify-center rounded-full border transition-colors duration-200",
+                            stateOf(step.id).mode === "owned"
+                              ? "border-primary bg-primary text-[#1b1917]"
+                              : "border-current",
+                          )}
+                        >
+                          <Check className="h-2.5 w-2.5" strokeWidth={4} aria-hidden />
+                        </span>
+                        já tenho
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => preserveScroll(() => markSkip(step.id, "notneeded"))}
+                        aria-pressed={stateOf(step.id).mode === "notneeded"}
+                        className={cn(
+                          "inline-flex min-h-11 items-center gap-2 border px-4 mono-caps transition-all duration-200 sm:px-5",
+                          FOCUS_RING,
+                          stateOf(step.id).mode === "notneeded"
+                            ? "border-primary bg-primary/15 text-foreground shadow-[0_8px_24px_rgba(212,165,63,0.16)]"
+                            : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            "flex h-4.5 w-4.5 items-center justify-center rounded-full border transition-colors duration-200",
+                            stateOf(step.id).mode === "notneeded"
+                              ? "border-primary bg-primary text-[#1b1917]"
+                              : "border-current",
+                          )}
+                        >
+                          <X className="h-2.5 w-2.5" strokeWidth={4} aria-hidden />
+                        </span>
+                        não preciso
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2.5">
+                      <Button
+                        variant="outline"
+                        className="min-h-11 rounded-none px-4 sm:px-5"
+                        onClick={() => goToStep(Math.max(0, stepIndex - 1))}
+                        disabled={stepIndex === 0}
+                      >
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        Anterior
+                      </Button>
+                      <Button
+                        className="min-h-11 rounded-none px-4 font-semibold shadow-[0_14px_36px_rgba(212,165,63,0.22)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(212,165,63,0.35)] sm:px-5"
+                        onClick={() => goToStep(Math.min(KIT_MAKER_STEPS.length, stepIndex + 1))}
+                      >
+                        {stepIndex === KIT_MAKER_STEPS.length - 1 ? "Ver o meu kit" : "Seguinte"}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      )}
+    </>
   );
 }

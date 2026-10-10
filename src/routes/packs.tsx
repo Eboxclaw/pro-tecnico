@@ -117,6 +117,9 @@ function PacksPage() {
           <p className="mt-5 max-w-2xl font-display text-2xl font-semibold tracking-[-0.04em]">
             Menos peças repetidas. Mais trabalho resolvido.
           </p>
+          <p className="mono-caps mt-5 inline-block border border-primary/35 bg-primary/[0.05] px-3 py-1.5 text-primary">
+            Especialistas em bits & soquetes · canalização & AVAC
+          </p>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
             A REJENDARI encontra ferramentas excecionais, testa compatibilidades e cria sistemas
             mais inteligentes combinando-as. Aqui, os drops nascem de procura real: reservas sem
@@ -147,6 +150,9 @@ function PacksPage() {
                 <h2 className="mt-3 text-display-2 text-white">
                   O primeiro drop está em reservas.
                 </h2>
+                <p className="mono-caps mt-4 inline-block border border-[#e3c27c]/40 px-3 py-1.5 text-[#e3c27c]">
+                  Lock oficial · Milwaukee SHOCKWAVE
+                </p>
               </div>
               <p className="max-w-md text-sm leading-6 text-white/55">
                 Quando a procura atingir o MOQ, o drop é confirmado e os reservas têm prioridade de
@@ -190,6 +196,10 @@ function PacksPage() {
               Kit Maker · guiado
             </button>
           </div>
+          <p className="mt-4 max-w-2xl text-xs leading-5 text-white/50">
+            Escolhe-se à marca. Declara-se o que já tens — o construtor cruza as duas listas antes
+            de propor peça.
+          </p>
         </div>
         {makerMode ? <KitMaker /> : <KitBuilder />}
       </section>
@@ -206,8 +216,8 @@ function PacksPage() {
               <h2 className="mt-3 text-display-2">Composições, não catálogos.</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              Cada system resolve um nível de trabalho. O investimento anterior continua útil quando
-              adicionas o módulo seguinte, sem recomprar o que já tens.
+              Cada system resolve um nível de trabalho. O módulo seguinte aproveita o anterior sem
+              recomprar nada: ferramentas como sinergias, não objectos soltos.
             </p>
           </div>
 
@@ -226,11 +236,14 @@ function PacksPage() {
               <p className="jp-label text-primary">
                 <span className="font-mono">05</span> · módulos
               </p>
-              <h2 className="mt-3 text-display-2">Adiciona ao sistema que já possui.</h2>
+              <h2 className="mt-3 text-display-2">
+                Um módulo entra só se resolver o problema seguinte.
+              </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              Módulos funcionais, PH, Torx, Hex, Lock, Reach, só entram se resolverem um problema
-              novo. Impacto antes de bits standard, sempre que existir opção documentada.
+              Módulos funcionais, PH, Torx, Hex, Lock, Reach: impacto antes de bits standard, sempre
+              que existir opção documentada. Antes de fechar, o atendimento cruza o módulo com o
+              punho e as máquinas que já trabalharam.
             </p>
           </div>
 
@@ -263,8 +276,8 @@ function PacksPage() {
               <h2 className="mt-3 text-display-2">Combinações ainda em estudo.</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              O que vês no Lab não está à venda nem em reserva. Diz-nos que queres que exista, os
-              likes do Lab orientam o que negociamos a seguir.
+              O que vês no Lab não está à venda nem em reserva. Um like é um pedido: orienta o que
+              negociamos a seguir — e quem pediu fica a saber quando entra.
             </p>
           </div>
 
@@ -287,8 +300,8 @@ function PacksPage() {
                 <h2 className="mt-3 text-display-2">A procura decide o próximo drop.</h2>
               </div>
               <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-                Reservas e likes reais de utilizadores registados. É assim que escolhemos o que
-                negociar com os fabricantes.
+                Reservas e likes de contas reais, nada estimado. É a procura que dita a ordem de
+                negociação com os fabricantes.
               </p>
             </div>
 
@@ -333,9 +346,26 @@ function PacksPage() {
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              Conjuntos com código de fabricante para comparar composição e aplicação. A
-              disponibilidade e o conteúdo da versão fornecida são confirmados no pedido.
+              Pouca ferramenta. Alta performance: só entram conjuntos com código de fabricante, para
+              comparar composição e aplicação — a versão fornecida confirma-se no pedido.
             </p>
+          </div>
+
+          <div className="mt-6 grid gap-px border border-border bg-border sm:grid-cols-2">
+            <div className="bg-card p-5">
+              <p className="mono-caps text-primary">Makita LXT · corpos + conjuntos</p>
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                Uma bateria 18 V para a mala inteira: os conjuntos DLX e os corpos que juntares
+                depois vivem na mesma plataforma.
+              </p>
+            </div>
+            <div className="bg-card p-5">
+              <p className="mono-caps text-foreground/80">Ryobi · em sourcing</p>
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                Na mesa de negociação com o distribuidor — sem referência confirmada, sem promessa
+                de catálogo.
+              </p>
+            </div>
           </div>
 
           <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -392,6 +422,10 @@ function PacksPage() {
           <p className="jp-label text-primary">
             <span className="font-mono">11</span> · 職業 · escolhe pelo teu ofício
           </p>
+          <h2 className="mt-3 text-display-2">Sete ofícios. Sete entradas diretas.</h2>
+          <p className="mt-2 max-w-xl text-xs leading-5 text-muted-foreground">
+            O tile abre a loja já filtrada; o acerto final faz-se no atendimento.
+          </p>
           <div className="mt-7 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {TRADES.map((trade, index) => (
               <Link
@@ -429,6 +463,10 @@ function PacksPage() {
               ferramentas existentes. A regra é evitar redundância: um bom roquete multi-bit, um
               sistema de sockets coerente e ferramentas de acesso específicas antes de encher a mala
               com duplicados.
+            </p>
+            <p className="mt-3 text-sm leading-7 text-foreground/75">
+              Quem responde conhece as fichas peça a peça: o orçamento volta justificado,
+              alternativa a alternativa.
             </p>
             <Button className="mt-6 rounded-none bg-black text-white hover:bg-black/85" asChild>
               <Link to="/b2b">

@@ -169,13 +169,14 @@ export function SiteHeader() {
     Boolean,
   );
 
+  // Ordem do cliente: Kits primeiro, Loja em último.
   const mobileNav = [
-    { to: "/shop", label: t("nav.shop") },
+    { to: "/packs", label: t("nav.packs") },
     { to: "/marcas", label: t("nav.brands") },
     { to: "/anex", label: "ANEX" },
-    { to: "/packs", label: t("nav.packs") },
-    { to: "/pontos", label: t("nav.points") },
     { to: "/b2b", label: t("nav.b2b") },
+    { to: "/pontos", label: t("nav.points") },
+    { to: "/shop", label: t("nav.shop") },
   ] as const;
 
   return (
@@ -195,14 +196,85 @@ export function SiteHeader() {
         <div className="mx-auto flex h-12 max-w-[1440px] items-center gap-5 px-4 sm:h-[70px] sm:px-6">
           <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="REJENDARI">
             <RejendariLogo compact className="sm:hidden" />
-            <RejendariLogo className="hidden transition-transform duration-300 group-hover:scale-[1.015] sm:flex" />
+            <RejendariLogo className="site-logo hidden transition-transform duration-300 group-hover:scale-[1.015] sm:flex" />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
+            <Link
+              to="/packs"
+              className="relative px-3 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
+              activeProps={{ className: "text-foreground" }}
+            >
+              {t("nav.packs")}
+            </Link>
+
+            <div className="group/nav relative">
+              <Link
+                to="/marcas"
+                className="relative flex items-center gap-1 px-3 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
+                activeProps={{ className: "text-foreground" }}
+              >
+                {t("nav.brands")}
+                <ChevronDown className="h-3.5 w-3.5" />
+                <span className="absolute inset-x-3 -bottom-[24px] h-px scale-x-0 bg-primary transition-transform [.active_&]:scale-x-100" />
+              </Link>
+
+              <div className="invisible absolute left-[-120px] top-full z-[80] w-[680px] pt-5 opacity-0 transition-all duration-150 group-hover/nav:visible group-hover/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:opacity-100">
+                <div className="border border-border bg-background p-5 shadow-[0_24px_70px_rgba(35,30,25,0.2)]">
+                  <div className="flex items-end justify-between gap-5">
+                    <div>
+                      <p className="jp-label text-primary">ブランド · escolher por marca</p>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Entra diretamente na história e nas referências de cada fabricante.
+                      </p>
+                    </div>
+                    <Link to="/marcas" className="mono-caps text-primary">
+                      Todas →
+                    </Link>
+                  </div>
+                  <div className="mt-5 grid grid-cols-3 gap-2">
+                    {QUICK_BRANDS.slice(0, 12).map((brand) => {
+                      const story = BRAND_STORY_MAP[brand];
+                      return (
+                        <Link
+                          key={brand}
+                          to="/marcas"
+                          search={{ brand }}
+                          className="border border-border bg-card p-3 transition-colors hover:border-primary/55 hover:bg-secondary"
+                        >
+                          <span className="block font-display text-sm font-semibold">
+                            {story?.name ?? brand}
+                          </span>
+                          <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                            {story?.specialty ?? "Ferramenta profissional por regime de trabalho"}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/anex"
+              className="px-3 py-2 text-[15px] font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              ANEX
+            </Link>
+            <Link
+              to="/b2b"
+              className="relative px-3 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
+              activeProps={{ className: "text-foreground" }}
+            >
+              {t("nav.b2b")}
+            </Link>
+
+            {/* Loja em último, mantendo o mega-menu funcional. */}
             <div className="group/nav relative">
               <Link
                 to="/shop"
-                className="relative flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
+                className="relative flex items-center gap-1 px-3 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
                 activeProps={{ className: "text-foreground" }}
               >
                 {t("nav.shop")}
@@ -280,73 +352,6 @@ export function SiteHeader() {
                 </div>
               </div>
             </div>
-
-            <div className="group/nav relative">
-              <Link
-                to="/marcas"
-                className="relative flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
-                activeProps={{ className: "text-foreground" }}
-              >
-                {t("nav.brands")}
-                <ChevronDown className="h-3.5 w-3.5" />
-                <span className="absolute inset-x-3 -bottom-[24px] h-px scale-x-0 bg-primary transition-transform [.active_&]:scale-x-100" />
-              </Link>
-
-              <div className="invisible absolute left-[-120px] top-full z-[80] w-[680px] pt-5 opacity-0 transition-all duration-150 group-hover/nav:visible group-hover/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:opacity-100">
-                <div className="border border-border bg-background p-5 shadow-[0_24px_70px_rgba(35,30,25,0.2)]">
-                  <div className="flex items-end justify-between gap-5">
-                    <div>
-                      <p className="jp-label text-primary">ブランド · escolher por marca</p>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        Entra diretamente na história e nas referências de cada fabricante.
-                      </p>
-                    </div>
-                    <Link to="/marcas" className="mono-caps text-primary">
-                      Todas →
-                    </Link>
-                  </div>
-                  <div className="mt-5 grid grid-cols-3 gap-2">
-                    {QUICK_BRANDS.slice(0, 12).map((brand) => {
-                      const story = BRAND_STORY_MAP[brand];
-                      return (
-                        <Link
-                          key={brand}
-                          to="/marcas"
-                          search={{ brand }}
-                          className="border border-border bg-card p-3 transition-colors hover:border-primary/55 hover:bg-secondary"
-                        >
-                          <span className="block font-display text-sm font-semibold">
-                            {story?.name ?? brand}
-                          </span>
-                          <span className="mt-1 block text-xs leading-5 text-muted-foreground">
-                            {story?.specialty ?? "Ferramenta profissional por regime de trabalho"}
-                          </span>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <Link
-              to="/anex"
-              className="px-3 py-2 text-[13px] font-semibold text-primary underline-offset-4 hover:underline"
-            >
-              ANEX
-            </Link>
-            <Link
-              to="/packs"
-              className="relative px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
-            >
-              {t("nav.packs")}
-            </Link>
-            <Link
-              to="/b2b"
-              className="relative px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
-            >
-              {t("nav.b2b")}
-            </Link>
           </nav>
 
           <div className="ml-auto flex items-center gap-1.5">
@@ -437,7 +442,7 @@ export function SiteHeader() {
                   key={item.to}
                   to={item.to}
                   onClick={() => setMenuOpen(false)}
-                  className="flex min-h-11 items-center border-b border-border/40 text-sm text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
+                  className="flex min-h-11 items-center border-b border-border/40 text-[15px] text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}
@@ -448,7 +453,7 @@ export function SiteHeader() {
                   <Link
                     to="/conta"
                     onClick={() => setMenuOpen(false)}
-                    className="flex min-h-11 items-center border-b border-border/40 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="flex min-h-11 items-center border-b border-border/40 text-[15px] text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {t("nav.account")}
                   </Link>
@@ -458,7 +463,7 @@ export function SiteHeader() {
                       setMenuOpen(false);
                       supabase.auth.signOut();
                     }}
-                    className="flex min-h-11 items-center text-sm text-primary"
+                    className="flex min-h-11 items-center text-[15px] text-primary"
                   >
                     Sair da conta
                   </button>
@@ -467,7 +472,7 @@ export function SiteHeader() {
                 <Link
                   to="/auth"
                   onClick={() => setMenuOpen(false)}
-                  className="flex min-h-11 items-center text-sm text-primary"
+                  className="flex min-h-11 items-center text-[15px] text-primary"
                 >
                   {t("nav.signIn")}
                 </Link>

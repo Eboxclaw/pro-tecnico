@@ -770,9 +770,9 @@
 
 @utility jp-label {
   font-family: "Noto Sans JP", var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.5625rem; /* 9px — JP discreto, etiqueta e não leitura */
+  font-weight: 500;
+  letter-spacing: 0.3em;
 }
 
 /* Shared editorial cards: product first, restrained surface and motion. */
@@ -932,6 +932,12 @@
 html, body { overflow-x: clip; }
 .site-header { padding-top: env(safe-area-inset-top, 0px); }
 .site-header[data-compact="true"] .site-topstrip { display: none; }
+/* Cliente: o wordmark "REJENDARI" ao lado do R estava escuro sobre o header
+   escuro e não se via. Creme, mesmo peso — regra não-layer, ganha à utility
+   text-[#1b1917] do componente; o R com o quadrado dourado mantém-se. */
+.site-header .site-logo .font-display {
+  color: #f5f0e5;
+}
 @media (max-width: 1023.98px) {
   .site-header[data-compact="true"] .site-scrollrows { display: none; }
 }
@@ -1290,7 +1296,7 @@ html, body { overflow-x: clip; }
 
 /* — FUNDAÇÃO · as únicas medidas de título/corpo/etiqueta da casa:
      títulos  → text-display-1 (3xl→5xl→6xl) · text-display-2 (2xl→4xl) · text-display-3 (xl→3xl)
-     corpo    → text-body (14px/1.75) · text-body-sm (12px/1.6)
+     corpo    → text-body (15px/1.75) · text-body-sm (13px/1.6)
      etiqueta → mono-caps (10px · 0.13em · uppercase · 500)
      layout   → section-pad (ritmo vertical de secção) · page-max (moldura de página)
      Nada de tamanhos de título/corpo hand-rolados fora deste bloco. — */
@@ -1352,14 +1358,15 @@ html, body { overflow-x: clip; }
   }
 }
 
-/* — Corpo de texto: dois degraus, nunca abaixo de text-xs. — */
+/* — Corpo de texto: dois degraus, nunca abaixo de text-xs.
+     Cliente: escala subida para leitura confortável (15/13). — */
 .text-body {
-  font-size: 0.875rem; /* text-sm — o corpo base */
+  font-size: 0.9375rem; /* 15px — o corpo base */
   line-height: 1.75;
 }
 
 .text-body-sm {
-  font-size: 0.75rem; /* text-xs — o mínimo legal para corpo */
+  font-size: 0.8125rem; /* 13px — o mínimo legal para corpo */
   line-height: 1.6;
 }
 

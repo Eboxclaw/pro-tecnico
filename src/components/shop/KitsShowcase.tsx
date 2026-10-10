@@ -50,6 +50,11 @@ function kitBrands(pieces: ResolvedKitPiece[]): string[] {
   return [...new Set(pieces.map(({ tool }) => tool.brand))].slice(0, 4);
 }
 
+/** A gama Kurokin (Fujiya) merece chamada própria quando entra numa composição. */
+function hasKurokin(brands: string[]): boolean {
+  return brands.some((brand) => /kurokin|fujiya/i.test(brand));
+}
+
 /** Prato editorial de uma peça: fotografia quando existe, monograma quando não. */
 function KitPiecePlate({
   piece,
@@ -96,6 +101,7 @@ function KitCompactCard({
   const hero = pieces[0];
   const fanPieces = [pieces[1], pieces[2]];
   const brands = kitBrands(pieces);
+  const kurokin = hasKurokin(brands);
 
   return (
     <button
@@ -146,16 +152,19 @@ function KitCompactCard({
       <p className="mt-2 line-clamp-2 text-xs leading-5 text-muted-foreground">{kit.conceptPt}</p>
 
       {brands.length > 0 && (
-        <p className="mt-3 flex flex-wrap gap-1.5">
-          {brands.map((brand) => (
-            <span
-              key={brand}
-              className="mono-caps border border-border/80 px-1.5 py-0.5 text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-foreground/80"
-            >
-              {brand}
-            </span>
-          ))}
-        </p>
+        <div className="mt-3">
+          <p className="flex flex-wrap gap-1.5">
+            {brands.map((brand) => (
+              <span
+                key={brand}
+                className="mono-caps border border-border/80 px-1.5 py-0.5 text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-foreground/80"
+              >
+                {brand}
+              </span>
+            ))}
+          </p>
+          {kurokin && <p className="mono-caps mt-2 text-primary">Kurokin dentro</p>}
+        </div>
       )}
 
       <div className="mt-auto flex items-center justify-between gap-3 pt-4">
@@ -367,12 +376,20 @@ export function KitsShowcase() {
               <span className="text-primary">Nada que não ganhe o seu lugar.</span>
             </h2>
           </div>
-          <p className="max-w-2xl text-body text-muted-foreground">
-            A inspiração vem da produção integrada da ANEX em Sanjō, 一貫生産: cada bit nasce do aço
-            ao fio nas mesmas mãos. {malas} malas cobrem profissões, {kitsCount} kits dominam uma
-            família, {caixas} caixas cobrem o dia de um ofício. Cada peça entra porque resolve um
-            trabalho — o que não resolve, fica de fora.
-          </p>
+          <div className="max-w-2xl">
+            <p className="text-body text-muted-foreground">
+              A inspiração vem da produção integrada da ANEX em Sanjō, 一貫生産: cada bit nasce do
+              aço ao fio nas mesmas mãos. {malas} malas cobrem profissões, {kitsCount} kits dominam
+              uma família, {caixas} caixas cobrem o dia de um ofício. Cada peça entra porque resolve
+              um trabalho — o que não resolve, fica de fora.
+            </p>
+            <p className="mono-caps mt-4 inline-flex flex-wrap items-baseline gap-x-2 border border-primary/30 bg-primary/[0.05] px-3 py-1.5 text-primary">
+              Kurokin · a gama
+              <span className="text-xs font-normal normal-case tracking-normal text-muted-foreground">
+                alicates e chaves Fujiya preto-dourado · ficha a ficha no atendimento
+              </span>
+            </p>
+          </div>
         </div>
 
         {/* Filtros: rail com scroll horizontal em mobile, alvos ≥44px. */}
