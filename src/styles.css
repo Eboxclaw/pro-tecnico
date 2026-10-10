@@ -1294,67 +1294,75 @@ html, body { overflow-x: clip; }
      etiqueta → mono-caps (10px · 0.13em · uppercase · 500)
      layout   → section-pad (ritmo vertical de secção) · page-max (moldura de página)
      Nada de tamanhos de título/corpo hand-rolados fora deste bloco. — */
-@utility text-display-1 {
+/* Convertidas para classes simples: @utility com @media aninhado rebenta
+   o lightningcss em dev (production aguenta, dev não — e o site vive nos dois). */
+.text-display-1 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.875rem; /* text-3xl em mobile */
   line-height: 1.04;
   letter-spacing: -0.045em;
   text-wrap: balance;
+}
 
-  @media (min-width: 640px) {
+@media (min-width: 640px) {
+  .text-display-1 {
     font-size: 3rem; /* text-5xl em tablet */
     line-height: 0.98;
   }
+}
 
-  @media (min-width: 1024px) {
+@media (min-width: 1024px) {
+  .text-display-1 {
     font-size: 3.75rem; /* text-6xl em desktop */
     line-height: 0.96;
     letter-spacing: -0.05em;
   }
 }
 
-@utility text-display-2 {
+.text-display-2 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.5rem; /* text-2xl em mobile */
   line-height: 1.12;
   letter-spacing: -0.035em;
   text-wrap: balance;
+}
 
-  @media (min-width: 1024px) {
+@media (min-width: 1024px) {
+  .text-display-2 {
     font-size: 2.25rem; /* text-4xl em desktop */
     line-height: 1.05;
   }
 }
 
-@utility text-display-3 {
+.text-display-3 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.25rem; /* text-xl em mobile */
   line-height: 1.18;
   letter-spacing: -0.03em;
   text-wrap: balance;
+}
 
-  @media (min-width: 1024px) {
+@media (min-width: 1024px) {
+  .text-display-3 {
     font-size: 1.875rem; /* text-3xl em desktop */
     line-height: 1.1;
   }
 }
 
 /* — Corpo de texto: dois degraus, nunca abaixo de text-xs. — */
-@utility text-body {
+.text-body {
   font-size: 0.875rem; /* text-sm — o corpo base */
   line-height: 1.75;
 }
 
-@utility text-body-sm {
+.text-body-sm {
   font-size: 0.75rem; /* text-xs — o mínimo legal para corpo */
   line-height: 1.6;
 }
 
-/* — Mono-caps: UMA medida em todo o site (10px · 0.13em · maiúsculas).
-     Substitui o serde text-[8px]/[9px]/[10px] espalhado. — */
 @utility mono-caps {
   font-family: var(--font-mono);
   font-size: 0.625rem;
@@ -1365,24 +1373,29 @@ html, body { overflow-x: clip; }
 }
 
 /* — FUNDAÇÃO · layout. UM ritmo vertical de secção e UMA moldura de página:
-     section-pad substitui os py-16/py-20/py-24 ad hoc;
-     page-max substitui os max-w-*/mx-auto/px-* duplicados por secção. — */
-@utility section-pad {
+     section-pad substitui os paddings ad hoc;
+     page-max substitui os max-width e padding-inline duplicados por secção.
+     (classes simples: @utility com @media aninhado rebenta o lightningcss em dev) — */
+.section-pad {
   padding-top: 3.5rem; /* py-14 */
   padding-bottom: 3.5rem;
+}
 
-  @media (min-width: 1024px) {
+@media (min-width: 1024px) {
+  .section-pad {
     padding-top: 5rem; /* lg:py-20 */
     padding-bottom: 5rem;
   }
 }
 
-@utility page-max {
+.page-max {
   margin-inline: auto;
   max-width: 1440px;
   padding-inline: 1rem; /* px-4 */
+}
 
-  @media (min-width: 640px) {
+@media (min-width: 640px) {
+  .page-max {
     padding-inline: 1.5rem; /* sm:px-6 */
   }
 }
